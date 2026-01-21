@@ -1,0 +1,171 @@
+<sb-tab-card [hideHeader]="true">
+  <ng-container card-body>
+    <div class="mt-2.5 md:mt-0">
+      <button
+        *ngIf="canCreate && itemsLength != null"
+        (click)="openAddOrUpdateItemDialog(null)"
+        mat-raised-button
+        color="primary"
+        aria-label="Нова тема"
+        type="button"
+        class="mb-2.5 mr-3"
+      >
+        <fa-icon [icon]="fasPlus" size="lg"></fa-icon>
+        <span>Нова тема</span>
+      </button>
+
+      <a
+        *ngIf="itemsLength != null && itemsLength > 0"
+        [href]="downloadUrl"
+        target="_blank"
+        download
+        color="primary"
+        mat-raised-button
+        [disabled]="!downloadUrl"
+        class="mb-2.5 mr-3"
+      >
+        <fa-icon [icon]="fasFileExcel" size="lg"></fa-icon>
+        <span>Свали</span>
+      </a>
+
+      <button
+        *ngIf="canCreate && itemsLength != null && itemsLength === 0"
+        type="button"
+        mat-raised-button
+        class="mb-2.5 mr-3"
+        color="primary"
+        aria-label="Зареди ТР"
+        (click)="openLoadFromTopicPlanDialog()"
+      >
+        <fa-icon [icon]="fasFileImport" size="lg"></fa-icon>
+        <span>Зареди ТР</span>
+      </button>
+
+      <button
+        *ngIf="canCreate && itemsLength != null && itemsLength === 0"
+        type="button"
+        class="mb-2.5 mr-3"
+        mat-raised-button
+        color="primary"
+        (click)="openImportFromExcelDialog()"
+      >
+        <fa-icon [icon]="fasFileImport" size="lg"></fa-icon>
+        <span>Зареди от Ексел</span>
+      </button>
+
+      <button
+        class="mb-2.5 mr-3"
+        *ngIf="canRemove && itemsLength != null && itemsLength > 0"
+        disabled-mode-buttons
+        mat-raised-button
+        color="warn"
+        type="button"
+        (click)="onRemove()"
+        [disabled]="removing"
+      >
+        <fa-icon [icon]="removing ? fasSpinnerThird : fasTrashAlt" [spin]="removing" size="lg"></fa-icon>
+        <span class="hidden sm:inline">Премахни</span>
+      </button>
+    </div>
+
+    <sb-table
+      [dataSource]="dataSource"
+      [displayedColumns]="
+        canEdit ? ['action', 'take', 'number', 'title', 'note'] : ['taken', 'number', 'title', 'note']
+      "
+    >
+      <ng-container cdkColumnDef="action">
+        <th cdk-header-cell *cdkHeaderCellDef></th>
+        <td cdk-cell *cdkCellDef="let row" class="sb-table-action">
+          <button
+            (click)="openAddOrUpdateItemDialog(row.classBookTopicPlanItemId)"
+            class="sb-link-btn"
+            type="button"
+            aria-label="детайли"
+            title="детайли"
+          >
+            <fa-icon [icon]="fasPencil"></fa-icon>
+          </button>
+          <button
+            (click)="onRemoveItem(row.classBookTopicPlanItemId)"
+            [disabled]="removingAct[row.classBookTopicPlanItemId]"
+            class="sb-link-btn"
+            type="button"
+            aria-label="изтрий"
+            title="изтрий"
+          >
+            <fa-icon
+              [icon]="removingAct[row.classBookTopicPlanItemId] ? fadSpinnerThird : fadTrashAlt"
+              [spin]="removingAct[row.classBookTopicPlanItemId]"
+            ></fa-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="take">
+        <th cdk-header-cell *cdkHeaderCellDef>Взета</th>
+        <td cdk-cell *cdkCellDef="let row" class="sb-table-action">
+          <button
+            *ngIf="row.taken"
+            (click)="onSetTakenItem(row, row.classBookTopicPlanItemId, false)"
+            [disabled]="row.taking"
+            class="sb-link-btn"
+            type="button"
+            aria-label="маркирай темата като невзета"
+            title="маркирай темата като невзета"
+          >
+            <ng-container></ng-container>
+            <fa-icon
+              [icon]="(row.taking | async) ? fadSpinnerThird : fasCheckCircle"
+              [spin]="(row.taking | async) ?? false"
+            ></fa-icon>
+          </button>
+          <button
+            *ngIf="!row.taken"
+            (click)="onSetTakenItem(row, row.classBookTopicPlanItemId, true)"
+            [disabled]="row.taking"
+            class="sb-link-btn"
+            type="button"
+            aria-label="маркирай темата като взета"
+            title="маркирай темата като взета"
+          >
+            <fa-icon
+              [icon]="(row.taking | async) ? fadSpinnerThird : farCircle"
+              [spin]="(row.taking | async) ?? false"
+            ></fa-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="taken">
+        <th cdk-header-cell *cdkHeaderCellDef>Взета</th>
+        <td cdk-cell *cdkCellDef="let row" class="sb-table-action">
+          <fa-icon [icon]="row.taken ? fasCheckCircle : farCircle"></fa-icon>
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="number" class="w-1">
+        <th cdk-header-cell *cdkHeaderCellDef>№</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.number }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="title">
+        <th cdk-header-cell *cdkHeaderCellDef>Тема</th>
+        <td cdk-cell *cdkCellDef="let row">
+          <span class="whitespace-pre-line">{{ row.title }}</span>
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="note">
+        <th cdk-header-cell *cdkHeaderCellDef>Забележки</th>
+        <td cdk-cell *cdkCellDef="let row">
+          <span class="whitespace-pre-line">{{ row.note }}</span>
+        </td>
+      </ng-container>
+
+      <ng-container no-data-row>
+        <td colspan="4" class="text-center">Няма заредено тематично разпределение</td>
+      </ng-container>
+    </sb-table>
+  </ng-container>
+</sb-tab-card>

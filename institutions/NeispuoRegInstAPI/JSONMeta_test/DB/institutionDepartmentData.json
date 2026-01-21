@@ -1,0 +1,58 @@
+{
+    "template": "SELECT /**select**/ FROM [reginst_basic].[RIInstitutionDepartment] RIIDs JOIN [inst_basic].[EKATTE] AS EKATTEID ON RIIDs.TownID = EKATTEID.TownID /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "RIIDs.RIinstitutionDepartmentID AS riinstitutionDepartmentID" 
+        },
+        {
+            "column": "RIIDs.Name AS departmentName"
+        },
+        {
+            "column": "RIIDs.CountryID AS departmentCountry"
+        },
+        {
+            "column": "EKATTEID.RegionID AS departmentRegion"
+        },
+        {
+            "column": "EKATTEID.MunicipalityID AS departmentMunicipality"
+        },
+        {
+            "column": "RIIDs.TownID AS departmentTown"
+        },
+        {
+            "column": "RIIDs.LocalAreaID AS departmentLocalArea"
+        },
+        {
+            "column": "RIIDs.Address AS departmentAddress" 
+        },
+        {
+            "column": "RIIDs.PostCode AS departmentPostalCode"
+        },
+        {
+            "column": "RIIDs.CadasterCode AS departmentCadasterCode"
+        },
+        {
+            "column": "RIIDs.Notes AS departmentNotes" 
+        }
+    ],
+    "params": [
+        {
+          "param": "@riinstitutionDepartmentid",
+          "column": "RIIDs.RIinstitutionDepartmentID",
+          "operator": "=",
+          "value": "riinstitutionDepartmentid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        }
+      ],
+      "order": [
+        {
+          "column": "RIIDs.RIinstitutionDepartmentID",
+          "type": "ASC"
+        }
+      ],
+      "inSelects": [
+    
+      ]
+}

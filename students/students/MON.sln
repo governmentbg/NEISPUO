@@ -1,0 +1,209 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32825.248
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MON.API", "src\MON.API\MON.API.csproj", "{2A3B3609-6629-439F-A24E-D0C698C539FC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MON.Models", "src\MON.Models\MON.Models.csproj", "{3DDE5616-DFA3-4563-AF08-72FE1B7ADA20}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C6609CCB-6D7D-443D-9DEB-D26F44BE98E7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{CAD097FD-2BF5-4B4E-9C96-2A7AB8B986B4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MON.Services", "src\MON.Services\MON.Services.csproj", "{22ED9CBB-89A5-4E10-A1F2-ECC7C9F770D1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DEBA4D0B-E02A-4253-8F40-FBB46DB28E04} = {DEBA4D0B-E02A-4253-8F40-FBB46DB28E04}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MON.DataAccess", "src\MON.DataAccess\MON.DataAccess.csproj", "{256ECB7F-4A5F-4239-96D3-BE5F02EDFBBD}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "MON.SPA", "src\MON.SPA\", "{DA25B765-9F7F-4388-96E7-2FEA0BD35B51}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_27214"
+		Debug.AspNetCompiler.PhysicalPath = "src\MON.SPA\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_27214\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_27214"
+		Release.AspNetCompiler.PhysicalPath = "src\MON.SPA\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_27214\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "27214"
+		SlnRelativePath = "src\MON.SPA\"
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "db", "db", "{18A23A9D-586F-47CB-845D-C8F4185A0176}"
+	ProjectSection(SolutionItems) = preProject
+		db\01 Init.sql = db\01 Init.sql
+		db\02 Address.sql = db\02 Address.sql
+		03 Students.sql = 03 Students.sql
+		db\04 Absences.sql = db\04 Absences.sql
+		db\05 Diplomas.sql = db\05 Diplomas.sql
+		06 ASP.sql = 06 ASP.sql
+		AspItegrationInit.sql = AspItegrationInit.sql
+		AspItegrationInit_v2.sql = AspItegrationInit_v2.sql
+		AspItegrationInit_v3.sql = AspItegrationInit_v3.sql
+		core.sql = core.sql
+		DocumentWithFactoryNumManagement.sql = DocumentWithFactoryNumManagement.sql
+		EduStateToStudentClass_InstitutionId_sync.sql = EduStateToStudentClass_InstitutionId_sync.sql
+		EuroZone.sql = EuroZone.sql
+		NewPersonalDevelopmentMigrationScripts.sql = NewPersonalDevelopmentMigrationScripts.sql
+		db\Old_Students.sql = db\Old_Students.sql
+		Radosveta.sql = Radosveta.sql
+		db\XX delete.sql = db\XX delete.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{126F044C-0892-46BA-A23D-E881AB3BDF28}"
+	ProjectSection(SolutionItems) = preProject
+		docs\diplomas\Integration\import.xml = docs\diplomas\Integration\import.xml
+		docs\diplomas\Integration\import.xsd = docs\diplomas\Integration\import.xsd
+		XSD_To_Classes.txt = XSD_To_Classes.txt
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MON.UnitTests", "tests\MON.UnitTests\MON.UnitTests.csproj", "{01023D60-D04A-4DB4-BE63-C3051BE11B00}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Regix", "Regix", "{488CA00B-2973-4059-BF00-8EC57F15D960}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kontrax.RegiX.Standard.Client", "src\Regix\Kontrax.RegiX.Standard.Client\Kontrax.RegiX.Standard.Client.csproj", "{DD4083AF-75BB-4128-A792-3B177F6C397F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kontrax.Utility.Xsd", "src\Regix\Kontrax.Utility.Xsd\Kontrax.Utility.Xsd.csproj", "{002B1436-0325-44E4-B3CC-5560BD54899A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kontrax.RegiX.Core", "src\Regix\Kontrax.RegiX.Core\Kontrax.RegiX.Core.csproj", "{A15C3816-396C-4AC7-900E-09638A891C76}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kontrax.Utility.Certificate", "src\Regix\Kontrax.Utility.Certificate\Kontrax.Utility.Certificate.csproj", "{0DDF0D45-5CE3-4A13-9784-BBB2E7352ED3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MON.Shared", "src\MON.Shared\MON.Shared.csproj", "{D13F16C8-3DB3-4124-9D6B-0395EDA3D7DB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{24B9E230-83E3-4091-B896-919827FC8125}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Report", "Report", "{4D45FF3A-4F14-45AE-8FF6-37FEA1D7BFAB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MON.Report.Model", "src\Report\MON.Report.Model\MON.Report.Model.csproj", "{BCE9B169-F189-408C-9544-00F87155E69A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MON.Report.Service", "src\Report\MON.Report.Service\MON.Report.Service.csproj", "{99EA9B60-B885-4663-8CE4-75A747E880B0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PerformanceTests", "PerformanceTests", "{C7EB610B-42A9-4E3D-B656-A2AC4160F0E8}"
+	ProjectSection(SolutionItems) = preProject
+		tests\PerformanceTests\ApiTests.js = tests\PerformanceTests\ApiTests.js
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "certificates", "certificates", "{3E7ACFAF-DEA9-4B34-BF05-E82D5BEA5BB1}"
+	ProjectSection(SolutionItems) = preProject
+		\\files\Write\MON\Regix\regix.mon.bg.pfx = \\files\Write\MON\Regix\regix.mon.bg.pfx
+		\\files\Write\MON\Regix\regix.mon.bg.test.pfx = \\files\Write\MON\Regix\regix.mon.bg.test.pfx
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MON.BackgroundWorker", "src\MON.BackgroundWorker\MON.BackgroundWorker.csproj", "{DEBA4D0B-E02A-4253-8F40-FBB46DB28E04}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{D6A08474-5548-471E-9D00-60CA7E06E29C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "src\Templates\Domain\Domain.csproj", "{492279F5-58DD-4B88-B5D7-565E92C22403}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MON.ASPDataAccess", "src\MON.ASPDataAcess\MON.ASPDataAccess.csproj", "{79BFCF82-27A6-4997-AD3D-FE4F0044F4E2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2A3B3609-6629-439F-A24E-D0C698C539FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A3B3609-6629-439F-A24E-D0C698C539FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A3B3609-6629-439F-A24E-D0C698C539FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A3B3609-6629-439F-A24E-D0C698C539FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DDE5616-DFA3-4563-AF08-72FE1B7ADA20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DDE5616-DFA3-4563-AF08-72FE1B7ADA20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DDE5616-DFA3-4563-AF08-72FE1B7ADA20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DDE5616-DFA3-4563-AF08-72FE1B7ADA20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22ED9CBB-89A5-4E10-A1F2-ECC7C9F770D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22ED9CBB-89A5-4E10-A1F2-ECC7C9F770D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22ED9CBB-89A5-4E10-A1F2-ECC7C9F770D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22ED9CBB-89A5-4E10-A1F2-ECC7C9F770D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{256ECB7F-4A5F-4239-96D3-BE5F02EDFBBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{256ECB7F-4A5F-4239-96D3-BE5F02EDFBBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{256ECB7F-4A5F-4239-96D3-BE5F02EDFBBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{256ECB7F-4A5F-4239-96D3-BE5F02EDFBBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA25B765-9F7F-4388-96E7-2FEA0BD35B51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA25B765-9F7F-4388-96E7-2FEA0BD35B51}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{01023D60-D04A-4DB4-BE63-C3051BE11B00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01023D60-D04A-4DB4-BE63-C3051BE11B00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01023D60-D04A-4DB4-BE63-C3051BE11B00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01023D60-D04A-4DB4-BE63-C3051BE11B00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD4083AF-75BB-4128-A792-3B177F6C397F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD4083AF-75BB-4128-A792-3B177F6C397F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD4083AF-75BB-4128-A792-3B177F6C397F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD4083AF-75BB-4128-A792-3B177F6C397F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{002B1436-0325-44E4-B3CC-5560BD54899A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{002B1436-0325-44E4-B3CC-5560BD54899A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{002B1436-0325-44E4-B3CC-5560BD54899A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{002B1436-0325-44E4-B3CC-5560BD54899A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A15C3816-396C-4AC7-900E-09638A891C76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A15C3816-396C-4AC7-900E-09638A891C76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A15C3816-396C-4AC7-900E-09638A891C76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A15C3816-396C-4AC7-900E-09638A891C76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DDF0D45-5CE3-4A13-9784-BBB2E7352ED3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DDF0D45-5CE3-4A13-9784-BBB2E7352ED3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DDF0D45-5CE3-4A13-9784-BBB2E7352ED3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DDF0D45-5CE3-4A13-9784-BBB2E7352ED3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D13F16C8-3DB3-4124-9D6B-0395EDA3D7DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D13F16C8-3DB3-4124-9D6B-0395EDA3D7DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D13F16C8-3DB3-4124-9D6B-0395EDA3D7DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D13F16C8-3DB3-4124-9D6B-0395EDA3D7DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCE9B169-F189-408C-9544-00F87155E69A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCE9B169-F189-408C-9544-00F87155E69A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCE9B169-F189-408C-9544-00F87155E69A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCE9B169-F189-408C-9544-00F87155E69A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99EA9B60-B885-4663-8CE4-75A747E880B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99EA9B60-B885-4663-8CE4-75A747E880B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99EA9B60-B885-4663-8CE4-75A747E880B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99EA9B60-B885-4663-8CE4-75A747E880B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEBA4D0B-E02A-4253-8F40-FBB46DB28E04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEBA4D0B-E02A-4253-8F40-FBB46DB28E04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEBA4D0B-E02A-4253-8F40-FBB46DB28E04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEBA4D0B-E02A-4253-8F40-FBB46DB28E04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{492279F5-58DD-4B88-B5D7-565E92C22403}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{492279F5-58DD-4B88-B5D7-565E92C22403}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{492279F5-58DD-4B88-B5D7-565E92C22403}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{492279F5-58DD-4B88-B5D7-565E92C22403}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79BFCF82-27A6-4997-AD3D-FE4F0044F4E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79BFCF82-27A6-4997-AD3D-FE4F0044F4E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79BFCF82-27A6-4997-AD3D-FE4F0044F4E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79BFCF82-27A6-4997-AD3D-FE4F0044F4E2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2A3B3609-6629-439F-A24E-D0C698C539FC} = {C6609CCB-6D7D-443D-9DEB-D26F44BE98E7}
+		{3DDE5616-DFA3-4563-AF08-72FE1B7ADA20} = {C6609CCB-6D7D-443D-9DEB-D26F44BE98E7}
+		{22ED9CBB-89A5-4E10-A1F2-ECC7C9F770D1} = {C6609CCB-6D7D-443D-9DEB-D26F44BE98E7}
+		{256ECB7F-4A5F-4239-96D3-BE5F02EDFBBD} = {C6609CCB-6D7D-443D-9DEB-D26F44BE98E7}
+		{DA25B765-9F7F-4388-96E7-2FEA0BD35B51} = {C6609CCB-6D7D-443D-9DEB-D26F44BE98E7}
+		{01023D60-D04A-4DB4-BE63-C3051BE11B00} = {CAD097FD-2BF5-4B4E-9C96-2A7AB8B986B4}
+		{488CA00B-2973-4059-BF00-8EC57F15D960} = {C6609CCB-6D7D-443D-9DEB-D26F44BE98E7}
+		{DD4083AF-75BB-4128-A792-3B177F6C397F} = {488CA00B-2973-4059-BF00-8EC57F15D960}
+		{002B1436-0325-44E4-B3CC-5560BD54899A} = {488CA00B-2973-4059-BF00-8EC57F15D960}
+		{A15C3816-396C-4AC7-900E-09638A891C76} = {488CA00B-2973-4059-BF00-8EC57F15D960}
+		{0DDF0D45-5CE3-4A13-9784-BBB2E7352ED3} = {488CA00B-2973-4059-BF00-8EC57F15D960}
+		{D13F16C8-3DB3-4124-9D6B-0395EDA3D7DB} = {C6609CCB-6D7D-443D-9DEB-D26F44BE98E7}
+		{4D45FF3A-4F14-45AE-8FF6-37FEA1D7BFAB} = {C6609CCB-6D7D-443D-9DEB-D26F44BE98E7}
+		{BCE9B169-F189-408C-9544-00F87155E69A} = {4D45FF3A-4F14-45AE-8FF6-37FEA1D7BFAB}
+		{99EA9B60-B885-4663-8CE4-75A747E880B0} = {4D45FF3A-4F14-45AE-8FF6-37FEA1D7BFAB}
+		{C7EB610B-42A9-4E3D-B656-A2AC4160F0E8} = {CAD097FD-2BF5-4B4E-9C96-2A7AB8B986B4}
+		{3E7ACFAF-DEA9-4B34-BF05-E82D5BEA5BB1} = {488CA00B-2973-4059-BF00-8EC57F15D960}
+		{DEBA4D0B-E02A-4253-8F40-FBB46DB28E04} = {C6609CCB-6D7D-443D-9DEB-D26F44BE98E7}
+		{D6A08474-5548-471E-9D00-60CA7E06E29C} = {C6609CCB-6D7D-443D-9DEB-D26F44BE98E7}
+		{492279F5-58DD-4B88-B5D7-565E92C22403} = {D6A08474-5548-471E-9D00-60CA7E06E29C}
+		{79BFCF82-27A6-4997-AD3D-FE4F0044F4E2} = {C6609CCB-6D7D-443D-9DEB-D26F44BE98E7}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F8A62E5A-68D8-4EBF-8385-1D0333839A66}
+	EndGlobalSection
+EndGlobal

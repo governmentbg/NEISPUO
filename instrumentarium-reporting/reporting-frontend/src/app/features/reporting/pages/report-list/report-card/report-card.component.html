@@ -1,0 +1,10 @@
+<div class="card" (click)="goToReport()">
+  <h5 class="card-header bg-transparent">
+    {{ report.title }}
+  </h5>
+  <div class="card-body">
+    <div class="card-text" [ngClass]="{ 'line-clamp line-clamp-3': !!report.description }">
+      {{ report.description }}
+    </div>
+  </div>
+</div>

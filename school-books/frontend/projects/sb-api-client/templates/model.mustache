@@ -1,0 +1,17 @@
+{{>licenseInfo}}
+import { mapValues, dateToLocalIsoString, dateTimeToLocalIsoString, isoStringToLocalDate, isoStringToLocalDateTime } from '../encoder';
+{{#models}}
+{{#model}}
+{{#tsImports}}
+import { {{classname}}, {{classname}}FromJSON, {{classname}}ToJSON } from '{{filename}}';
+{{/tsImports}}
+
+
+{{#description}}
+/**
+ * {{{description}}}
+ */
+{{/description}}
+{{#isEnum}}{{>modelEnum}}{{/isEnum}}{{^isEnum}}{{#isAlias}}{{>modelAlias}}{{/isAlias}}{{^isAlias}}{{#taggedUnions}}{{>modelTaggedUnion}}{{/taggedUnions}}{{^taggedUnions}}{{#oneOf}}{{#-first}}{{>modelOneOf}}{{/-first}}{{/oneOf}}{{^oneOf}}{{>modelGeneric}}{{/oneOf}}{{/taggedUnions}}{{/isAlias}}{{/isEnum}}
+{{/model}}
+{{/models}}

@@ -1,0 +1,42 @@
+@using SB.Domain
+@model AbsencesModel
+
+<div class="page">
+  <h3 class="page-header">Отсъствия на учениците</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th rowspan="2" class="three-rows-height align-bottom"><div class="vertical-text">№ на ученика</div></th>
+        <th rowspan="2">Трите имена на ученика</th>
+        <th colspan="2">За първи срок</th>
+        <th colspan="2">За годината</th>
+      </tr>
+      <tr>
+        <th>Уваж.</th>
+        <th>Неуваж.</th>
+        <th>Уваж.</th>
+        <th>Неуваж.</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (var absence in Model.Absences)
+      {
+        <tr>
+          <td>
+            @absence.ClassNumber
+            @if (absence.IsTransferred)
+            {
+              <span class="sb-badge">ОТПИСАН</span>
+            }
+          </td>
+          <td>@absence.FullName</td>
+          <td>@absence.FirstTermExcusedCount</td>
+          <td>@absence.FirstTermUnexcusedCount</td>
+          <td>@absence.WholeYearExcusedCount</td>
+          <td>@absence.WholeYearUnexcusedCount</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

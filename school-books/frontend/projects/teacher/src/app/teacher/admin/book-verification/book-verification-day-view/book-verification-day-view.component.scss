@@ -1,0 +1,13 @@
+::ng-deep .sb-open-closed-icon svg {
+  transform: translateY(0);
+  transition: transform 0.2s ease-in-out;
+}
+
+::ng-deep .sb-open-closed-icon.open svg {
+  transform: rotate(90deg);
+}
+
+::ng-deep .mat-tooltip {
+  font-size: small;
+  white-space: pre-wrap;
+}

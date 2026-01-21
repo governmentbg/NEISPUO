@@ -1,0 +1,157 @@
+{
+  "label": "Включване на дете",
+  "paramName": "studentid",
+  "procedureName": "inst_basic.studentClassCUD",
+  "sections": [
+    {
+      "order": 1,
+      "label": "Включване на дете",
+      "subsections": [
+        {
+          "order": 1,
+          "name": "studentClassData",
+          "fields": [
+            {
+              "label": "Детето/ученика е от друга институция",
+              "name": "isOtherInstitution",
+              "type": "checkbox",
+              "disabled": false,
+              "rendered": false,
+              "order": 1,
+              "influence": [
+                {
+                  "type": "hide",
+                  "fieldName": "personid",
+                  "condition": [
+                    true
+                  ]
+                },
+                {
+                  "type": "hide",
+                  "fieldName": "institutionID",
+                  "condition": [
+                    false
+                  ]
+                },
+                {
+                  "type": "hide",
+                  "fieldName": "otherPersonid",
+                  "condition": [
+                    false
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "Моля изберете дете/ученик",
+              "name": "personid",
+              "type": "select",
+              "optionsPath": "/data/get/studentOtherNom",
+              "disabled": false,
+              "rendered": "if(operationType==2) {field.rendered=false} else {field.rendered=true}",
+              "width": 800,
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ],
+              "order": 2
+            },
+            {
+              "label": "Моля изберете дете/ученик",
+              "name": "personidEdit",
+              "type": "select",
+              "optionsPath": "/data/get/studentOtherNomEdit",
+              "rendered": "if(operationType==1) {field.rendered=false} else {field.rendered=true}",
+              "disabled": true,
+              "defaultValue": "personid",
+              "width": 800,
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ],
+              "order": 3
+            },
+            {
+              "label": "Моля изберете институция",
+              "name": "institutionID",
+              "type": "searchselect",
+              "optionsPath": "/data/get/institutionNom",
+              "rendered": false,
+              "disabled": false,
+              "width": 800,
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ],
+              "influence": [
+                {
+                  "fieldName": "otherPersonid",
+                  "url": "/data/get/studentOtherOtherInstNom",
+                  "type": "options"
+                }
+              ],
+              "order": 4
+            },
+            {
+              "label": "Моля изберете дете/ученик",
+              "name": "otherPersonid",
+              "type": "searchselect",
+              "disabled": false,
+              "width": 800,
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ],
+              "order": 5
+            },
+            {
+              "label": "Дата на записване",
+              "name": "enrollmentDate",
+              "type": "date",
+              "width": 800,
+              "disabled": "if (operationType == 1) {field.disabled=false} else {field.disabled=true}",
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ],
+              "order": 6
+            },
+            {
+              "label": "Дата на отписване",
+              "name": "dischargeDate",
+              "type": "date",
+              "rendered": "if(operationType==1) {field.rendered=false} else {field.rendered=true}",
+              "width": 800,
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ],
+              "order": 7
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+
+
+

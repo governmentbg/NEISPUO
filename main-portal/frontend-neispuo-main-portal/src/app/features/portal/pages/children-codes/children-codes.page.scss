@@ -1,0 +1,76 @@
+@import "@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/variables/variables.scss";
+
+.children-codes-page {
+  padding-bottom: 3.125rem;
+  min-height: calc(100vh - 290px);
+
+  .child-code {
+    align-items: center;
+  }
+  .card {
+    border: none;
+    box-shadow: none;
+    &-btn {
+      min-width: 4rem;
+      border-radius: 1.25rem;
+      background-color: $blue-500;
+      color: $white;
+    }
+  }
+  .btn {
+    padding: 0.5rem 1rem;
+  }
+}
+
+.fixed-top {
+  left: auto;
+}
+.toast {
+  position: relative;
+  padding: 0.75rem 2.25rem;
+  margin: 0.5rem;
+  .toast-header {
+    border-bottom: none;
+    background-color: rgba(255, 255, 255, 0.85);
+  }
+  .toast-body {
+    padding: 0;
+  }
+  .btn-close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+  }
+}
+.toast:before {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  font-family: 'bootstrap-icons';
+}
+.success-toast {
+  border: solid $green-300;
+  border-width: 0 0 0 0.25rem;
+}
+.success-toast:before {
+  content: '\F26A';
+  color: $green-300;
+}
+.warning-toast {
+  border: solid $red-300;
+  border-width: 0 0 0 0.25rem;
+}
+.warning-toast:before {
+  content: '\F622';
+  color: $red-300;
+}
+
+.submit-form.ng-invalid {
+  border: 2px solid $red-300;
+}
+
+@media (max-width: 768px) {
+  .form-field {
+    margin-bottom: 0.5rem;
+  }
+}

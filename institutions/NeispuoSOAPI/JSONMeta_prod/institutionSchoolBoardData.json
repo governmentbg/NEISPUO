@@ -1,0 +1,177 @@
+{
+  "procedureName": "inst_basic.institutionSchoolBoardCUD",
+  "dataName": "if(operationType==1) {form.dataName=null} else {form.dataName='institutionSchoolBoardData'}",
+  "sections": [
+    {
+      "label": "Данни за училищно настоятелство",
+      "order": 1,
+      "subsections": [
+        {
+          "order": 1,
+          "label": "Роля",
+          "fields": [
+            {
+              "label": "Сист. ID на настоятелство",
+              "name": "institutionSchoolBoardID",
+              "type": "input",
+              "inputType": "number",
+              "rendered": false,
+              "disabled": true,
+              "order": 0
+            },
+            {
+              "label": "Сист. ID на контекста (институцията)",
+              "name": "instid",
+              "type": "input",
+              "inputType": "number",
+              "rendered": false,
+              "disabled": true,
+              "order": 0
+            },
+            {
+              "label": "Роля",
+              "name": "schoolBoardRole",
+              "type": "select",
+              "optionsPath": "/data/get/schoolBoardRoles",
+              "disabled": false,
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ],
+              "order": 2
+            },
+            {
+              "label": "Подпомага ученическия съвет на училището",
+              "name": "helpStudentGovernment",
+              "type": "checkbox",
+              "disabled": false,
+              "validations": [
+              ],
+              "order": 3
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "label": "Данни за лицето",
+          "fields": [
+            {
+              "label": "Име",
+              "name": "firstName",
+              "type": "input",
+              "inputType": "text",
+              "disabled": false,
+              "order": 3,
+              "width": 300,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 255,
+                  "message": "Максимална дължина 255 символа"
+                },
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ]
+            },
+            {
+              "label": "Презиме",
+              "name": "middleName",
+              "type": "input",
+              "inputType": "text",
+              "disabled": false,
+              "order": 4,
+              "width": 300,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 255,
+                  "message": "Максимална дължина 255 символа"
+                }
+              ]
+            },
+            {
+              "label": "Фамилия",
+              "name": "familyName",
+              "type": "input",
+              "inputType": "text",
+              "disabled": false,
+              "order": 5,
+              "width": 300,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 255,
+                  "message": "Максимална дължина 255 символа"
+                },
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "label": "Данни за контакт",
+          "fields": [
+            {
+              "label": "Електронна поща",
+              "name": "email",
+              "type": "input",
+              "inputType": "text",
+              "order": 6,
+              "disabled": false,
+              "width": 400,
+              "validations": [
+                {
+                  "name": "pattern",
+                  "validation": "^[A-Za-z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$",
+                  "message": "Невалиден адрес на електронна поща"
+                },
+                {
+                  "name": "maxLength",
+                  "validation": 50,
+                  "message": "Максимална дължина 50 символа"
+                },
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ]
+            },
+            {
+              "label": "Телефон",
+              "name": "phone",
+              "type": "input",
+              "inputType": "text",
+              "order": 7,
+              "disabled": false,
+              "width": 150,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 15,
+                  "message": "Максимална дължина 15 символа"
+                },
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

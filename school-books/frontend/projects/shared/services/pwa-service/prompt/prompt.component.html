@@ -1,0 +1,15 @@
+<div [ngClass]="data.mobileType" class="pwa-prompt border-blue-100 bg-blue-50 text-blue-900">
+  <button class="close-button" mat-button color="primary" (click)="close()">
+    <fa-icon [icon]="fasTimes"></fa-icon>
+  </button>
+  <div class="prompt-message">
+    <ng-container *ngIf="data.mobileType === 'android'">
+      За да инсталирате това приложение на вашето устройство, използвайте бутона 'Добави към началния екран' от менюто
+      на браузъра
+    </ng-container>
+    <ng-container *ngIf="data.mobileType === 'ios'">
+      За да инсталирате това приложение на вашето устройство, натиснете бутона Share (бутона със стрелка нагоре), след
+      което бутона 'Add to Home screen'
+    </ng-container>
+  </div>
+</div>

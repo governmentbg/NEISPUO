@@ -1,0 +1,151 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_basic].[BuildingRoom] BR JOIN [inst_basic].[Building] B ON BR.BuildingID=B.BuildingID /**where**/ /**orderby**/",
+  "columns": [
+      {
+        "column": "BR.BuildingRoomID AS buildingRoomID"
+      },
+      {
+        "column": "BR.InstitutionID AS instid"
+      },
+      {
+        "column": "BR.BuildingAreaTypeID AS buildingAreaTypeID"
+      },  
+      {
+        "column": "BR.BuildingID AS buildingID"
+      },	 
+      {
+        "column": "B.BuildingTypeID AS buildingTypeID"
+      },	  
+      {
+        "column": "BR.Name AS name"
+      },
+      {
+        "column": "BR.BuildingRoomTypeID AS buildingRoomTypeID"
+      },           
+      {
+        "column": "BR.MeetRequiredLevel AS meetRequiredLevel"
+      },
+      {
+        "column": "BR.Note AS note"
+      }
+  ],
+  "params": [
+	  {
+      "param": "@buildingRoomID",
+      "column": "BR.BuildingRoomID",
+      "operator": "=",
+      "value": "buildingRoomID",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+  	{
+      "param": "@instid",
+      "column": "BR.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+	{
+      "param": "@address",
+      "column": "B.InstitutionDepartmentID",
+      "operator": "=",
+      "value": "address",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "BR.BuildingRoomID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+    {
+      "arrayName": "buildingRoomEquipmentSpecial",
+      "template": "SELECT /**select**/ FROM [inst_basic].[BuildingRoomEquipment] BRE JOIN [inst_basic].[BuildingRoom] BR ON BRE.BuildingRoomID = BR.BuildingRoomID JOIN [inst_nom].[EquipmentType] ET ON BRE.EquipmentTypeID=ET.EquipmentTypeID /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "BRE.BuildingRoomEquipmentID AS id"
+        },
+		{
+          "column": "BRE.EquipmentTypeID AS equipmentTypeID"
+        },    
+		{
+          "column": "ET.EquipmentTypeName AS equipmentTypeName"
+        }
+      ],
+      "params": [
+        {
+          "param": "@isSpecial",
+          "column": "BRE.IsSpecial",
+          "operator": "=",
+          "value": 1,
+          "type": "int",
+          "logical_operator": "and",
+          "static": true
+        },
+        {
+          "param": "@buildingRoomID",
+          "column": "BR.BuildingRoomID",
+          "operator": "=",
+          "value": "buildingRoomID",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        }        
+      ],
+      "order": [
+        {
+          "column": "BRE.BuildingRoomEquipmentID",
+          "type": "ASC"
+        }
+      ]
+    },
+    {
+      "arrayName": "buildingRoomEquipmentBasic",
+      "template": "SELECT /**select**/ FROM [inst_basic].[BuildingRoomEquipment] BRE JOIN [inst_basic].[BuildingRoom] BR ON BRE.BuildingRoomID = BR.BuildingRoomID JOIN [inst_nom].[EquipmentType] ET ON BRE.EquipmentTypeID=ET.EquipmentTypeID /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "BRE.BuildingRoomEquipmentID AS id"
+        },
+		{
+          "column": "BRE.EquipmentTypeID AS equipmentTypeID"
+        }, 
+		{
+          "column": "ET.EquipmentTypeName AS equipmentTypeName"
+        }
+      ],
+      "params": [
+        {
+          "param": "@buildingRoomID",
+          "column": "BR.BuildingRoomID",
+          "operator": "=",
+          "value": "buildingRoomID",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        }, 
+        {
+          "param": "@isSpecial",
+          "column": "BRE.IsSpecial",
+          "operator": "=",
+          "value": 0,
+          "type": "int",
+          "logical_operator": "and",
+          "static": true
+        }        
+      ],
+      "order": [
+        {
+          "column": "BRE.BuildingRoomEquipmentID",
+          "type": "ASC"
+        }
+      ]
+    }  
+  ]
+}

@@ -1,0 +1,10 @@
+<span *ngIf="componentShouldInit" pTooltip="Запази" tooltipPosition="left">
+  <button
+    pButton
+    type="button"
+    class="p-button-primary p-button-sm"
+    (click)="openSaveReportDialog()"
+    icon="pi pi-save"
+    [disabled]="isSaveButtonDisabled"
+  ></button>
+</span>

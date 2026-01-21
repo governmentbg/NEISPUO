@@ -1,0 +1,103 @@
+.wrapper-body {
+  display: flex;
+  flex-direction: column;
+  padding: 5px 30px;
+  align-items: center;
+  overflow: auto;
+  .text-span {
+    padding: 15px;
+    font-size: 14px;
+    font-weight: 500;
+    .different-span {
+      color: #26b326;
+    }
+  }
+  .filter-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-evenly;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0 30px;
+  }
+  .span-or {
+    margin-top: 5px !important;
+    display: block;
+    text-align: center;
+  }
+  .search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    .block-field {
+      display: block;
+      margin: 10px 0 10px 15px;
+
+      border-radius: 0.25rem !important;
+      width: 600px;
+      max-width: calc(100vw - 80px);
+      mat-icon {
+        width: auto;
+        height: auto;
+        line-height: normal;
+        position: absolute;
+        top: 9px;
+        left: 8px;
+        font-size: 21px;
+        color: rgba(0, 0, 0, 0.54);
+      }
+    }
+    .btn-container {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      .btn-search {
+        width: 250px;
+        letter-spacing: 1px;
+        margin-top: 10px;
+        margin-left: 10px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 885px) {
+  .wrapper-body {
+    max-height: calc(100vh - 215px);
+  }
+}
+@media screen and (min-width: 840px) and (max-width: 884px) {
+  .wrapper-body {
+    max-height: calc(100vh - 221px);
+  }
+}
+@media screen and (min-width: 570px) and (max-width: 839px) {
+  .wrapper-body {
+    max-height: calc(100vh - 161px);
+    .filter-container {
+      justify-content: flex-start;
+    }
+  }
+}
+
+@media screen and (min-width: 300px) and (max-width: 650px) {
+  .filter-container {
+    justify-content: center !important;
+  }
+}
+
+@media screen and (min-width: 529px) and (max-width: 569px) {
+  .wrapper-body {
+    max-height: calc(100vh - 168px);
+  }
+}
+
+@media screen and (min-width: 300px) and (max-width: 528px) {
+  .wrapper-body {
+    max-height: calc(100vh - 191px);
+  }
+}

@@ -1,0 +1,12 @@
+.l-checkbox {
+  justify-content: center;
+  min-width: 125px !important;
+  mat-checkbox {
+    padding-bottom: 1.34375em;
+  }
+}
+
+.mat-checkbox-label {
+  white-space: normal;
+  line-height: normal;
+}

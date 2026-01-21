@@ -1,0 +1,56 @@
+<div class="send-modal-wrapper">
+  <p *ngIf="!isSending && !response">
+    Опционално посочете период, за който искате данните да бъдат взети.
+    Ако оставите празно, ще се използват стойности по подразбиране:
+  </p>
+  <ul class="defaults-list" *ngIf="!isSending && !response">
+    <li>От дата: 08:00 ч. на последния работен ден (Пн–Пт) спрямо днешната дата</li>
+    <li>До дата: текущият момент</li>
+  </ul>
+
+  <div class="date-inputs" *ngIf="!isSending && !response">
+    <div class="field">
+      <label for="fromDate">От дата</label>
+      <p-calendar id="fromDate"
+                  [(ngModel)]="fromDate"
+                  (ngModelChange)="onDateChange($event, 'from')"
+                  dateFormat="dd/mm/yy"
+                  [appendTo]="'body'"
+                  panelStyleClass="calendar-above"
+                  [maxDate]="maxSelectableDate"
+                  [showButtonBar]="true"></p-calendar>
+    </div>
+    <div class="field">
+      <label for="toDate">До дата</label>
+      <p-calendar id="toDate"
+                  [(ngModel)]="toDate"
+                  (ngModelChange)="onDateChange($event, 'to')"
+                  dateFormat="dd/mm/yy"
+                  [appendTo]="'body'"
+                  panelStyleClass="calendar-above"
+                  [maxDate]="maxSelectableDate"
+                  [showButtonBar]="true"></p-calendar>
+    </div>
+  </div>
+
+  <div *ngIf="response" class="response-box" [ngClass]="{ success: response.success, error: !response.success }">
+    <i class="pi" [ngClass]="response.success ? 'pi-check-circle' : 'pi-times-circle'"></i>
+    <span>{{ response.messageBG || (response.success ? 'Операцията приключи.' : 'Възникна грешка.') }}</span>
+    <span *ngIf="response.success && response.skipped" class="skipped-tag">(Пропуснат)</span>
+  </div>
+
+  <br>
+
+  <div class="actions" *ngIf="!isSending">
+    <button pButton type="button" label="Затвори" class="p-button-secondary" (click)="close()"></button>
+    <button pButton type="button" label="Изпрати" class="p-button-success"
+            (click)="send()"
+            [disabled]="isSendDisabled"
+            [attr.title]="disabledReason"
+            *ngIf="!response"></button>
+  </div>
+
+  <div class="sending-wrapper" *ngIf="isSending">
+    <p-progressSpinner styleClass="custom-spinner"></p-progressSpinner>
+  </div>
+</div> 

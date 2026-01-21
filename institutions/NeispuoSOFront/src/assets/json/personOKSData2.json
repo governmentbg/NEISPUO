@@ -1,0 +1,107 @@
+{
+  "label": "Данни за образование и квалификация на персонала",
+  "paramName": "personOKSid",
+  "sections": [
+    {
+      "order": 1,
+      "name": "staffOKSData",
+      "label": "Данни за образование",
+      "subsections": [
+        {
+          "order": 2,
+          "label": "Специалност и придобита ПК",
+          "fields": [
+            {
+              "label": "Наименование на специалността",
+              "name": "speciality",
+              "type": "textarea",
+              "order": 1,
+              "width": 1000,
+              "height": 5,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 1024,
+                  "message": "Максимална дължина 1024 символа"
+                }
+              ]
+            },
+            {
+              "label": "Наименование на ПК",
+              "name": "acquiredPK",
+              "type": "textarea",
+              "order": 2,
+              "width": 1000,
+              "height": 5,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 1024,
+                  "message": "Максимална дължина 1024 символа"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "label": "Придобита в учебно заведение",
+          "fields": [
+            {
+              "label": "Наименование",
+              "name": "university",
+              "type": "select",
+              "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+              "disabled": false,
+              "order": 1
+            },
+            {
+              "label": "Бележки",
+              "name": "universityNotes",
+              "type": "textarea",
+              "order": 2,
+              "width": 1000,
+              "height": 2,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 1024,
+                  "message": "Максимална дължина 1024 символа"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "order": 4,
+          "label": "Придобита в неучебно заведение",
+          "fields": [
+            {
+              "label": "Наименование",
+              "name": "course",
+              "type": "select",
+              "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+              "disabled": false,
+              "order": 1
+            },
+            {
+              "label": "Бележки",
+              "name": "courseNotes",
+              "type": "textarea",
+              "order": 2,
+              "width": 1000,
+              "height": 2,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 1024,
+                  "message": "Максимална дължина 1024 символа"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

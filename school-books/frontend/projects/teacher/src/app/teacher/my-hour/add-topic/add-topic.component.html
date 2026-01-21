@@ -1,0 +1,85 @@
+<div class="flex justify-between mb-2">
+  <sb-breadcrumb
+    class="block"
+    [icon]="fadChalkboardTeacher"
+    [text]="hourDescriptionShort"
+    [parentItems]="[{ text: 'Моите часове', routeCommands: ['../'] }]"
+  ></sb-breadcrumb>
+
+  <button class="sb-link-btn" [matMenuTriggerFor]="menu" aria-label="Настройки">
+    <fa-icon [icon]="fadCog" size="lg"></fa-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <sb-book-settings-form></sb-book-settings-form>
+  </mat-menu>
+</div>
+
+<form [formGroup]="form" #ngForm="ngForm" autocomplete="off" novalidate>
+  <sb-card>
+    <ng-container card-title>
+      Въвеждане на тема
+      <span class="hidden sm:inline">за {{ hourDescription }}</span>
+    </ng-container>
+    <sb-editor-panel card-buttons [isNew]="true" (save)="onSave($event)"></sb-editor-panel>
+    <div card-body class="flex">
+      <sb-textarea-field
+        *ngIf="!data.teacherLesson.hasTopicPlan || !useTopicPlan"
+        label="Тема"
+        formControlName="title"
+        class="flex-1 mr-2"
+      ></sb-textarea-field>
+
+      <div
+        *ngIf="data.teacherLesson.hasTopicPlan && useTopicPlan"
+        class="sb-nom-select ng-select-material flex-1 mr-2"
+        [class.sb-nom-select-error-state]="errorStateMatcher.isErrorState(classBookTopicPlanItemIdsFormControl, ngForm)"
+      >
+        <ng-select
+          placeholder="Тема"
+          [items]="topicPlanItems$ && (topicPlanItems$ | async)"
+          bindValue="classBookTopicPlanItemId"
+          bindLabel="title"
+          [multiple]="true"
+          [searchable]="true"
+          [closeOnSelect]="true"
+          [loading]="topicPlanItemsLoading === true"
+          (open)="onTopicPlanSelectOpened()"
+          formControlName="classBookTopicPlanItemIds"
+          [appendTo]="'#ng-select-dropdown-default'"
+          notFoundText="Няма намерени теми"
+          loadingText="Зареждане..."
+          clearAllText="Изчисти"
+          typeToSearchText="Напишете нещо за търсене"
+        >
+          <ng-template ng-label-tmp let-item="item">
+            <span class="px-1 whitespace-normal box-decoration-clone">{{ item.title }}</span>
+          </ng-template>
+          <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+            <fa-icon *ngIf="item.taken" [icon]="fasCheck" class="icon-taken"></fa-icon>
+            <span class="ng-option-label whitespace-normal box-decoration-clone" [title]="item.title">
+              {{ item.title }}
+            </span>
+          </ng-template>
+        </ng-select>
+
+        <mat-error
+          *ngIf="
+            classBookTopicPlanItemIdsFormControl.invalid && classBookTopicPlanItemIdsFormControl.hasError('required')
+          "
+        >
+          Задължително поле
+        </mat-error>
+      </div>
+
+      <button
+        *ngIf="data.teacherLesson.hasTopicPlan"
+        class="flex-none min-w-0 leading-8 h-8 px-1.5 ml-0.5"
+        mat-raised-button
+        type="button"
+        (click)="toggleUseTopicPlan()"
+      >
+        <fa-icon [icon]="useTopicPlan ? fasAlignJustify : fasAlignSlash"></fa-icon>
+      </button>
+    </div>
+  </sb-card>
+</form>

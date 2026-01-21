@@ -1,0 +1,37 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_basic].[DistanceLearningCondition] DLC /**where**/ /**orderby**/",
+  "columns": [
+      {
+        "column": "DLC.DistanceLearningConditionID AS distanceLearningConditionID"
+      },
+      {
+        "column": "DLC.InstitutionID AS instid"
+      },
+      {
+        "column": "DLC.Condition AS condition"
+      },      
+      {
+        "column": "DLC.CompliedDegree AS compliedDegree"
+      }
+  ],
+  "params": [
+  	{
+      "param": "@distanceLearningConditionID",
+      "column": "DLC.DistanceLearningConditionID",
+      "operator": "=",
+      "value": "distanceLearningConditionID",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "DLC.DistanceLearningConditionID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+
+  ]
+}

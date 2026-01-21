@@ -1,0 +1,35 @@
+<form [formGroup]="form" autocomplete="off" novalidate>
+  <sb-tab-card>
+    <ng-container card-title>
+      {{ title }}
+    </ng-container>
+    <sb-editor-panel card-buttons [isNew]="true" (save)="onSave($event)"></sb-editor-panel>
+    <ng-container card-body>
+      <div class="sm:grid grid-cols-5 gap-x-4 mb-2">
+        <sb-nom-select
+          class="col-span-2"
+          label="Ученик"
+          formControlName="studentId"
+          [nomService]="classBookStudentNomsService"
+          [readonly]="data.remark != null"
+        ></sb-nom-select>
+
+        <sb-nom-select
+          class="col-span-2"
+          label="Предмет"
+          formControlName="subject"
+          [nomService]="classBookCurriculumNomsService"
+          [readonly]="data.remark != null"
+        ></sb-nom-select>
+
+        <sb-date-field label="Дата" formControlName="date"></sb-date-field>
+
+        <sb-textarea-field
+          class="col-start-1 col-span-full"
+          label="Описание"
+          formControlName="description"
+        ></sb-textarea-field>
+      </div>
+    </ng-container>
+  </sb-tab-card>
+</form>

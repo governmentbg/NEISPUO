@@ -1,0 +1,12 @@
+@import '@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/variables/variables';
+
+.title {
+  &::after {
+    content: '';
+    width: 50px;
+    height: 3px;
+    background-color: $chart-1;
+    display: block;
+    margin-top: 1rem;
+  }
+}

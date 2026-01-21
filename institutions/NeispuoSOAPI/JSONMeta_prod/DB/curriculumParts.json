@@ -1,0 +1,30 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[CurriculumParts] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "CurriculumPartID as code"
+        },
+        {
+            "column": "Description as label"
+        }
+    ],
+    "params": [
+        {
+            "param": "@partid",
+            "column": "CurriculumPartDetailsID",
+            "operator": "=",
+            "value": "partid",
+            "type": "int",
+            "logical_operator": "and",
+            "optional": true,
+            "static": false
+        }
+    ],
+    "order": [
+        {
+            "column": "CurriculumPartDetailsID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

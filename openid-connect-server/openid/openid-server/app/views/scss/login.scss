@@ -1,0 +1,225 @@
+@import './neispuo-theme-styles/variables/variables';
+
+.login-page {
+  height: calc(100vh - 130px);
+  margin-top: 130px;
+  background-image: linear-gradient(rgba(23, 42, 83, 0.325), rgba(23, 42, 83, 0.325)),
+    url('/images/home.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  &-wrapper {
+    height: inherit;
+    align-items: center;
+    overflow-y: auto;
+    > .form-wrapper {
+      margin-top: 3rem;
+      margin-bottom: 3rem;
+    }
+    .page-title {
+      color: $white;
+      p {
+        font-size: 1.125rem;
+        font-weight: bold;
+        margin-top: 3.125rem;
+      }
+      h1 {
+        font-size: 3.125rem;
+      }
+    }
+    .mon-logo > img {
+      max-height: 4.875rem;
+    }
+
+    .card {
+      width: 90%;
+      margin: 0 auto;
+      &-body {
+        padding: 3rem 3.5rem 3rem;
+      }
+      &-title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .mon-logo {
+          margin-right: 2.5rem;
+        }
+        h2 {
+          font-size: 2.5rem;
+          font-weight: normal;
+        }
+      }
+      &-text {
+        font-size: 2rem;
+        line-height: 1.25;
+        text-align: center;
+        margin: 2.75rem 0;
+      }
+      &-footer {
+        background-color: transparent;
+        border-top-color: transparent;
+        text-align: center;
+        padding: 0 0 1.25rem 0;
+        .forgot-password-link {
+          text-align: left;
+          > a {
+            &:hover {
+              background-color: transparent;
+            }
+          }
+        }
+        button {
+          font-size: 1.25rem;
+          display: inline-flex;
+          align-items: center;
+        }
+      }
+      hr {
+        width: calc(100% - 7rem);
+        margin: -2rem auto 2rem;
+        background-color: $gray-600;
+       
+      }
+      .parent-login-btn-wrapper {
+        margin-bottom: 3rem;
+        button {
+          font-size: 1.25rem;
+          display: inline-flex;
+          align-items: center;
+        }
+      }
+      a.btn-link {
+        margin-top: -1.75rem;
+        margin-bottom: 3rem;
+        &:hover {
+          background-color: transparent;
+        }
+        &::before {
+          content: '';
+          width: 15%;
+          height: 1px;
+          display: block;
+          margin: 0 auto 0.875rem;
+          background-color: $gray-400;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 1199.98px) {
+  .login-page {
+    &-wrapper {
+      .page-title {
+        h1 {
+          font-size: 2.5rem;
+        }
+      }
+      .mon-logo > img {
+        max-height: 3.25rem;
+      }
+
+      .card {
+        &-title {
+          h2 {
+            font-size: 2rem;
+          }
+        }
+        &-text {
+          font-size: 1.625rem;
+          margin: 2.5rem 0;
+        }
+        &-footer {
+          // padding: 1.25rem;
+          button {
+            font-size: 1rem;
+          }
+        }
+        .parent-login-btn-wrapper {
+          button {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+    a.btn-link {
+      font-size: 0.75rem;
+      &::before {
+        width: 21%;
+      }
+    }
+  }
+}
+
+@media (max-width: 767.98px) {
+  .login-page {
+    height: calc(100vh - 100px);
+    margin-top: 100px;
+    &-wrapper {
+      .mon-logo > img {
+        max-height: 3.25rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 575.98px) {
+  .login-page {
+    &-wrapper {
+      .card {
+        &-body {
+          padding: 3rem 0.5rem 3rem;
+        }
+        &-title {
+          .mon-logo {
+            margin-right: 1.5rem;
+          }
+        }
+        &-text {
+          font-size: 1.5rem;
+          margin: 2rem 0;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 300px) {
+  .login-page {
+    &-wrapper {
+      .card {
+        &-body {
+          padding: 3rem 0.5rem 3rem;
+        }
+        &-title {
+          .mon-logo {
+            margin-right: 1rem;
+            > img {
+              max-height: 2.5rem;
+            }
+          }
+        }
+        &-text {
+          font-size: 1.125rem;
+          margin: 1.75rem 0;
+        }
+        &-footer {
+          button {
+            font-size: 0.75rem;
+          }
+        }
+        .parent-login-btn-wrapper {
+          button {
+            font-size: 0.75rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-height: 600px) {
+  .login-page {
+    &-wrapper {
+      padding: 2rem 0;
+    }
+  }
+}

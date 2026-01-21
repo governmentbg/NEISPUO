@@ -1,0 +1,37 @@
+{
+  "parentclassid": 780,
+  "instid": 2999994,
+  "detailedSchoolTypeID": 124,
+  "instType": 1,
+  "classKind": 1,
+  "classGroups": [
+    {
+      "id": 950,
+      "classTypeID": 5,
+      "className": "1 \u0430",
+      "studentCountPlaces": null,
+      "classEduFormID": 1,
+      "basicClassID": 1,
+      "classGroupID": 3,
+      "classEduDurationID": null,
+      "institutionDepartmentID": 21,
+      "classShiftID": 13,
+      "educationArea": -1,
+      "basicEducationArea": -1,
+      "budgetingClassTypeID": 5,
+      "entranceLevelID": null,
+      "SPPOOEducArea": -1,
+      "SPPOOProfArea": -1,
+      "SPPOOProfession": -1,
+      "SPPOOSpeciality": -1,
+      "flID": -1,
+      "flStudyTypeID": -1,
+      "isProfModule": false,
+      "notes": "",
+      "isCombined": false,
+      "isNoList": false,
+      "isSpecNeed": false,
+      "ProfileSubjects": []
+    }
+  ]
+}

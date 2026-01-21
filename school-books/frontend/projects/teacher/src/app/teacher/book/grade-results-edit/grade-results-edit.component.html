@@ -1,0 +1,89 @@
+<form [formGroup]="form">
+  <sb-tab-card>
+    <ng-container card-title>Въвеждане на резултати</ng-container>
+    <ng-container card-buttons>
+      <button mat-raised-button color="primary" type="submit" [disabled]="saveBtnDisabled" (click)="onSave()">
+        <fa-icon [icon]="saveBtnDisabled ? fasSpinnerThird : fasCheck" [spin]="saveBtnDisabled" size="lg"></fa-icon>
+        <span class="hidden sm:inline">Запази</span>
+      </button>
+      <a mat-raised-button class="ml-2" [routerLink]="['../']">
+        <fa-icon [icon]="fasArrowLeft" size="lg"></fa-icon>
+        <span class="hidden sm:inline">Назад</span>
+      </a>
+    </ng-container>
+    <ng-container card-body>
+      <div class="sb-table-container">
+        <table class="sb-table">
+          <thead>
+            <tr>
+              <th>Ученик</th>
+              <th class="text-center">Резултат</th>
+              <th class="text-center sb-exams-col">Полага изпит/и по</th>
+              <th class="text-center">Резултат от сесиите</th>
+            </tr>
+          </thead>
+          <tbody formArrayName="studentGrades">
+            <ng-container *ngFor="let student of students; index as i" [formGroupName]="i">
+              <tr
+                *ngIf="
+                  (localStorageService.bookTransferredHidden$ | async) !== true ||
+                  !student.isTransferred ||
+                  student.gradeResult?.initialResultType != null ||
+                  gradeResultSelectedAt(i)
+                "
+              >
+                <td class="sb-names whitespace-nowrap pr-1">
+                  {{ student.classNumber != null ? student.classNumber.toString() + '.' : '' }}
+
+                  {{ student.firstName }}
+                  {{ student.middleName }}
+                  {{ student.lastName }}
+
+                  <span *ngIf="student.abnormalStatus" class="sb-badge">{{ student.abnormalStatus }}</span>
+                </td>
+
+                <td class="whitespace-nowrap text-center align-middle p-1">
+                  <mat-button-toggle-group formControlName="initialResultType" aria-label="">
+                    <mat-button-toggle value="CompletesGrade" class="completes-grade">Завършва</mat-button-toggle>
+                    <mat-button-toggle [value]="null">
+                      <fa-icon [icon]="fasTimes"></fa-icon>
+                    </mat-button-toggle>
+                    <mat-button-toggle value="MustRetakeExams" class="must-retake-exams">
+                      Полага изпити по
+                    </mat-button-toggle>
+                  </mat-button-toggle-group>
+                </td>
+
+                <td class="w-px whitespace-nowrap text-center text-base align-middle p-1">
+                  <sb-nom-select
+                    class="sb-single-row-mat-field mt-2"
+                    *ngIf="form.value.studentGrades[i].initialResultType === 'MustRetakeExams'"
+                    label="Предмети"
+                    formControlName="retakeExamCurriculumIds"
+                    [nomService]="classBookCurriculumNomsService"
+                    [multiple]="true"
+                    [params]="{ gradeResultStudentPersonId: student.personId }"
+                  ></sb-nom-select>
+                </td>
+
+                <td class="w-px whitespace-nowrap text-center align-middle p-1">
+                  <mat-button-toggle-group
+                    *ngIf="form.value.studentGrades[i].initialResultType === 'MustRetakeExams'"
+                    formControlName="finalResultType"
+                    aria-label=""
+                  >
+                    <mat-button-toggle value="CompletesGrade" class="completes-grade">Завършва</mat-button-toggle>
+                    <mat-button-toggle [value]="null">
+                      <fa-icon [icon]="fasTimes"></fa-icon>
+                    </mat-button-toggle>
+                    <mat-button-toggle value="RepeatsGrade" class="repeats-grade">Повтаря</mat-button-toggle>
+                  </mat-button-toggle-group>
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </ng-container>
+  </sb-tab-card>
+</form>

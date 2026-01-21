@@ -1,0 +1,91 @@
+<ng-container *ngIf="form" [formGroup]="form">
+  <div class="fluid formgrid grid row-gap-4">
+    <div class="field col-12 col-md-4">
+      <label for="BaseSchoolType" [ngClass]="{
+      'is-invalid': form.get('BaseSchoolType').invalid && form.get('BaseSchoolType').dirty}"
+      >Вид според подготовка</label>
+      <p-dropdown
+        [options]="BaseSchoolTypes$ | async"
+        formControlName="BaseSchoolType"
+        [optionLabel]="'Name'"
+        [autoDisplayFirst]="false"
+        inputId="BaseSchoolType"
+      ></p-dropdown>
+      <small id="BaseSchoolType-help" class="form-wrapper-text">Вид по чл. 37 (общ. според вида подготовка)</small>
+      <ng-container *ngIf="form.get('BaseSchoolType').invalid && form.get('BaseSchoolType').dirty">
+        <br />
+        <small class="invalid-feedback">Задължително поле</small>
+      </ng-container>
+    </div>
+
+    <div class="field col-12 col-md-4">
+      <label for="DetailedSchoolType" [ngClass]="{
+      'is-invalid': form.get('DetailedSchoolType').invalid && form.get('DetailedSchoolType').dirty}"
+      >Детайлен вид</label>
+      <p-dropdown
+        [dataKey]="'DetailedSchoolTypeID'"
+        [options]="DetailedSchoolTypes$ | async"
+        formControlName="DetailedSchoolType"
+        [optionLabel]="'Name'"
+        [autoDisplayFirst]="false"
+        inputId="DetailedSchoolType"
+      ></p-dropdown>
+      <small id="DetailedSchoolType-help" class="form-wrapper-text"> Вид по чл 37(детайлен) </small>
+      <ng-container *ngIf="form.get('DetailedSchoolType').invalid && form.get('DetailedSchoolType').dirty">
+        <br />
+        <small class="invalid-feedback">Задължително поле</small>
+      </ng-container>
+    </div>
+
+    <div class="field col-12 col-md-4">
+      <label for="FinancialSchoolType" [ngClass]="{
+      'is-invalid': form.get('FinancialSchoolType').invalid && form.get('FinancialSchoolType').dirty}"
+      >Вид според собствеността</label>
+      <p-dropdown
+        [options]="FinancialSchoolTypes$ | async"
+        formControlName="FinancialSchoolType"
+        [optionLabel]="'Name'"
+        inputId="FinancialSchoolType"
+      ></p-dropdown>
+      <small id="FinancialSchoolType-help" class="form-wrapper-text"> Вид по чл. 35-36 (според собствеността) </small>
+      <ng-container *ngIf="form.get('FinancialSchoolType').invalid && form.get('FinancialSchoolType').dirty">
+        <br />
+        <small class="invalid-feedback">Задължително поле</small>
+      </ng-container>
+    </div>
+
+    <div class="field col-12 col-md-4">
+      <label for="BudgetingInstitution" [ngClass]="{
+      'is-invalid': form.get('BudgetingInstitution').invalid && form.get('BudgetingInstitution').dirty}"
+      >Източник на финансиране</label>
+      <p-dropdown
+        [options]="BudgetingInstitutions$ | async"
+        formControlName="BudgetingInstitution"
+        [optionLabel]="'Name'"
+        inputId="BudgetingInstitution"
+      ></p-dropdown>
+      <ng-container *ngIf="form.get('BudgetingInstitution').invalid && form.get('BudgetingInstitution').dirty">
+        <br />
+        <small class="invalid-feedback">Задължително поле</small>
+      </ng-container>
+    </div>
+    <div *ngIf="isCplrAreaHidden()" class="field col-12 col-md-4">
+      <label for="CPLRAreaType" [ngClass]="{
+      'is-invalid': form.get('CPLRAreaType').invalid && form.get('CPLRAreaType').dirty}"
+      >Предмет на дейност</label>
+      <p-dropdown
+        [panelStyleClass]="'limit-flex-field-p-dropdown-size'"
+        [dataKey]="'CPLRAreaTypeID'"
+        [options]="CPLRAreaTypes$ | async"
+        formControlName="CPLRAreaType"
+        [optionLabel]="'Name'"
+        [autoDisplayFirst]="false"
+        [virtualScroll]="true"
+        inputId="CPLRAreaType"
+        emptyFilterMessage="Няма намерени записи"
+        [filter]="true"
+        [virtualScroll]="true"
+      ></p-dropdown>
+    </div>
+  </div>
+</ng-container>

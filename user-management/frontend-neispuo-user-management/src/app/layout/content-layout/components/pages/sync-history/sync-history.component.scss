@@ -1,0 +1,27 @@
+@import '~@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/variables/variables';
+@import '~@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/mixins';
+
+.sync-history-container {
+    padding: 2rem;
+}
+
+.profile-section {
+    background: $white;
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 16px 0 rgba(31, 35, 41, 0.08);
+    margin-left: 4rem;
+    min-width: 42rem;
+    max-width: 48rem;
+}
+
+.profile-code-block {
+    background-color: $blue-100;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    width: 38rem;
+    height: 28rem;
+    overflow: auto;
+    position: relative;
+    box-shadow: 0 1px 8px 0 rgba(31, 35, 41, 0.06);
+    border: 1px solid $blue-200;
+}

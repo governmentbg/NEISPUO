@@ -1,0 +1,58 @@
+<div class="sm:flex justify-between items-end">
+  <sb-paginator class="mb-2.5" [items]="weekPaginatorItems"></sb-paginator>
+</div>
+
+<div class="sb-table-container">
+  <table class="sb-table">
+    <thead>
+      <tr>
+        <th class="w-px whitespace-nowrap">Час</th>
+        <th>Понеделник</th>
+        <th>Вторник</th>
+        <th>Сряда</th>
+        <th>Четвъртък</th>
+        <th>Петък</th>
+        <ng-container *ngIf="templateData.scheduleIncludesWeekend">
+          <th>Събота</th>
+          <th>Неделя</th>
+        </ng-container>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let shiftHour of templateData.shiftHours; let i = index">
+        <td class="w-px">
+          <span class="whitespace-nowrap">{{ shiftHour.startTime }} -</span>
+          {{ shiftHour.endTime }}
+        </td>
+        <td *ngFor="let slot of templateData.slotsByNumberByDay[i]">
+          <div class="divide-y divide-gray-200">
+            <div *ngFor="let hour of slot.hours" class="py-1 font-bold">
+              <a [routerLink]="hour.bookRouteCommands" class="text-primary underline">
+                {{ hour.classBookFullName }}
+              </a>
+
+              <div class="inline sm:hidden">
+                <ng-container *ngIf="hour.isEmptyHour; else shortSubject">
+                  - Св. час
+                  <div class="font-normal">({{ hour.subjectShort }})</div>
+                </ng-container>
+                <ng-template #shortSubject>- {{ hour.subject }}</ng-template>
+              </div>
+
+              <div class="hidden sm:inline">
+                <ng-container *ngIf="hour.isEmptyHour; else normalSubject">
+                  - Свободен час
+                  <div class="font-normal">({{ hour.subject }})</div>
+                </ng-container>
+                <ng-template #normalSubject>- {{ hour.subject }}</ng-template>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr *ngIf="!templateData.shiftHours.length">
+        <td colspan="6" class="text-center">Няма въведена програма за седмицата</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

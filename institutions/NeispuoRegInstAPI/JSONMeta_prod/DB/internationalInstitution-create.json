@@ -1,0 +1,29 @@
+{
+  "template": "SELECT /**select**/ FROM [reginst_basic].[RITRDataAll] RITR  /**where**/ /**orderby**/",
+  "columns": [
+    {
+      "column": "RITR.EIK AS bulstat"
+    }
+  ],
+  "params": [
+    {
+      "param": "@instid",
+      "column": "RITR.EIK",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false,
+	  "from_claim": false
+    }
+  ],
+  "order": [
+    {
+      "column": "RITR.EIK",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+  ]
+}

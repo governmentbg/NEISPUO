@@ -1,0 +1,62 @@
+@import '@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/variables/variables';
+@import '@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/mixins';
+
+.shared-report-list {
+  margin-top: 128px; // header height + second-nav height
+  padding-bottom: 72px; // footer height
+}
+
+:host ::ng-deep {
+  .p-dataview .p-dataview-header {
+    display: flex;
+    justify-content: flex-end;
+    position: fixed;
+    top: var(--dataview-header-top);
+    width: 100%;
+    background-color: $white;
+    z-index: 5;
+    border-width: 1px 0 1px;
+    border-top-color: $gray-100;
+    border-bottom-color: $gray-300;
+    transition: top 0.3s ease;
+  }
+
+  .p-dataview .p-dataview-content {
+    min-height: calc(100vh - 260px - var(--table-height-offset));
+    background: $gray-100;
+    transition: min-height 0.3s ease;
+  }
+
+  .p-dataview .p-paginator-bottom {
+    background: $gray-100;
+    border-bottom: 0;
+    border-top: $border-width solid $gray-200;
+  }
+
+  .p-paginator .p-paginator-pages .p-paginator-page:not(.p-highlight):hover {
+    background: $gray-200;
+    border-color: $gray-200;
+  }
+
+  .grid-nogutter {
+    margin-top: calc(4rem + 64px + var(--info-strip-height));
+    padding: 7rem 0.625rem 2rem 0.625rem;
+    transition: margin-top 0.3s ease;
+  }
+
+  .grid-nogutter > [class*='col'] {
+    padding: 0.5rem;
+  }
+
+  @include media-breakpoint-down(sm) {
+    .p-dataview .p-dataview-content {
+      min-height: calc(100vh - 301px - var(--table-height-offset));
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .shared-report-list {
+    padding-bottom: 113px; // footer height
+  }
+}

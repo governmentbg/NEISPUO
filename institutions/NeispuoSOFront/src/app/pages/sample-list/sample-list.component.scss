@@ -1,0 +1,13 @@
+.l-custom-wrapper-sample-list {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: flex-start;
+    .l-custom-body-sample-list {
+        overflow: auto;
+        height: 100%;
+        .sample-list-btn {
+            margin-top: 15px;
+        }
+    }
+}

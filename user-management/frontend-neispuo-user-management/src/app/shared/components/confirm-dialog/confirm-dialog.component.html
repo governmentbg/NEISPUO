@@ -1,0 +1,23 @@
+<p-confirmDialog #cd [style]="{ width: '50vw' }" icon="pi pi-exclamation-triangle">
+    <ng-template pTemplate="header">
+        <h2>{{ TITLE | translate }}</h2>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <button
+            type="button"
+            pButton
+            icon="pi"
+            [translate]="CONFIRM"
+            (click)="cd.accept()"
+            class="p-button-danger"
+        ></button>
+        <button
+            type="button"
+            pButton
+            icon="pi"
+            [translate]="DECLINE"
+            (click)="cd.reject()"
+            class="p-button-secondary p-button-outlined"
+        ></button>
+    </ng-template>
+</p-confirmDialog>

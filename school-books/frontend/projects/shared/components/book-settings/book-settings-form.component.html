@@ -1,0 +1,33 @@
+<span class="ml-4 flex items-center font-medium text-primary">
+  <span class="text-sm">Настройки на списъка с ученици:</span>
+  <button class="sb-link-btn" (click)="showInfo()" aria-label="Допълнителна информация за настройките">
+    <fa-icon [icon]="fadInfoCircle"></fa-icon>
+  </button>
+</span>
+
+<form [formGroup]="form">
+  <mat-slide-toggle
+    color="primary"
+    formControlName="hideTransferred"
+    class="flex text-sm mx-4 my-2"
+    (click)="stopPropagation($event)"
+  >
+    Скрий отписаните
+  </mat-slide-toggle>
+  <mat-slide-toggle
+    color="primary"
+    formControlName="hideNotEnrolled"
+    class="flex text-sm mx-4 my-2"
+    (click)="stopPropagation($event)"
+  >
+    Скрий неизучаващи предмета
+  </mat-slide-toggle>
+  <mat-slide-toggle
+    color="primary"
+    formControlName="hideGradeless"
+    class="flex text-sm mx-4 my-2"
+    (click)="stopPropagation($event)"
+  >
+    Скрий освободените
+  </mat-slide-toggle>
+</form>

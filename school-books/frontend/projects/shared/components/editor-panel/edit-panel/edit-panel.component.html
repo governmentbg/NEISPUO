@@ -1,0 +1,37 @@
+<button mat-raised-button color="primary" type="submit" [disabled]="saveBtnDisabled" [ngClass]="{ hidden: !editable }">
+  <fa-icon [icon]="saveBtnDisabled ? fasSpinnerThird : fasCheck" [spin]="saveBtnDisabled" size="lg"></fa-icon>
+  <span class="hidden sm:inline">Запази</span>
+</button>
+<button mat-raised-button type="button" [ngClass]="{ hidden: !editable }" (click)="cancel()">
+  <fa-icon [icon]="fasTimes" size="lg"></fa-icon>
+  <span class="hidden sm:inline">Откажи</span>
+</button>
+<button
+  mat-raised-button
+  color="primary"
+  type="button"
+  [disabled]="editBtnDisabled"
+  [ngClass]="{ hidden: editable || editBtnHidden }"
+  (click)="edit()"
+>
+  <fa-icon [icon]="fasPencil" size="lg"></fa-icon>
+  <span class="hidden sm:inline">Редакция</span>
+</button>
+<a
+  mat-raised-button
+  class="ml-2"
+  [disabled]="backBtnDisabled"
+  [ngClass]="{ hidden: editable || backBtnHidden }"
+  [routerLink]="backBtnRouteCommands"
+  [relativeTo]="backBtnRouteExtras ? backBtnRouteExtras.relativeTo : undefined"
+  [queryParams]="backBtnRouteExtras?.queryParams"
+  [fragment]="backBtnRouteExtras?.fragment"
+  [queryParamsHandling]="backBtnRouteExtras?.queryParamsHandling"
+  [preserveFragment]="backBtnRouteExtras?.preserveFragment || false"
+  [skipLocationChange]="backBtnRouteExtras?.skipLocationChange || false"
+  [replaceUrl]="backBtnRouteExtras?.replaceUrl || false"
+  [state]="backBtnRouteExtras?.state"
+>
+  <fa-icon [icon]="fasArrowLeft" size="lg"></fa-icon>
+  <span class="hidden sm:inline">Назад</span>
+</a>

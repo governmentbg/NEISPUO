@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Ri-institutionDetachService should successfully detach an institutions 1`] = `
+Array [
+  Object {
+    "InstitutionID": Object {
+      "InstitutionID": undefined,
+      "Town": "TownToCreate",
+    },
+    "IsActive": true,
+    "ProcedureType": Object {
+      "Description": null,
+      "IsValid": true,
+      "Name": "Откриване/ вписване на институция",
+      "ProcedureTypeID": 1,
+      "ValidFrom": "2020-11-18T22:00:00.000Z",
+      "ValidTo": null,
+    },
+    "RIProcedureID": null,
+    "StatusType": Object {
+      "Description": null,
+      "IsValid": true,
+      "Name": "Приключена, потвърдена",
+      "StatusTypeID": 4,
+      "ValidFrom": "2020-11-18T22:00:00.000Z",
+      "ValidTo": null,
+    },
+    "TransformType": Object {
+      "IsNEISPUOAccessDenied": false,
+      "IsNEISPUOActive": true,
+      "IsNEISPUOData": false,
+      "IsValid": true,
+      "Name": "откриване/вписване",
+      "PublicName": "действаща",
+      "TransformTypeID": 5,
+      "ValidFrom": "2020-11-18T22:00:00.000Z",
+      "ValidTo": null,
+    },
+    "__name__": "RIProcedureFromBody",
+  },
+  Object {
+    "getRepository": [Function],
+  },
+]
+`;

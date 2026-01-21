@@ -1,0 +1,37 @@
+{
+  "label": "Данни за позиция",
+  "procedureName": "inst_basic.NKPDPositionInstitutionCD",
+    "sections": [
+      {
+        "order": 1,
+        "name": "TableNKPDFoundInstitution",
+        "table": {
+          "name": "nkpdFoundInstitution",
+          "action": "edit",
+          "formName": "nkpdData",
+          "canDeleteRow": false,
+          "paramName": "nkpdPositionID",
+          "searchable": true,
+          "searchType": "column",
+          "fields": [
+            {
+              "label": "Длъжност",
+              "name": "nkpdPositionName",
+              "type": "input",
+              "inputType": "text",
+              "width": 60,
+              "order": 1
+            },
+            {
+              "label": "Категория",
+              "name": "nkpdPositionStaffType",
+              "type": "input",
+              "inputType": "text",
+              "width": 20,
+              "order": 2
+            }
+          ]
+        }
+      }
+    ]
+  }

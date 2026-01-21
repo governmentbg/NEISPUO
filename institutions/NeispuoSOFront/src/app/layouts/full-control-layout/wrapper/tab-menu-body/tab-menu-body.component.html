@@ -1,0 +1,24 @@
+<div class="custom-tab-wrapper">
+  <button mat-raised-button *ngIf="hasBackButton" (click)="goBack()" class="back-btn" color="secondary"><span class="material-icons"> keyboard_arrow_left </span>назад</button>
+  <div class="l-custom-wrapper-mat-tab">
+    <div class="l-custom-header-mat-tab custom-mat-tab-l" [ngClass]="{'go-back-button': hasBackButton}">
+      <mat-tab-group (selectedTabChange)="onTabChanged($event)" #matTabGroup>
+        <ng-container *ngFor="let tab of visibleTabs; let i = index">
+          <mat-tab [label]="tab.label" disableRipple></mat-tab>
+        </ng-container>
+      </mat-tab-group>
+    </div>
+    <div class="l-custom-body-mat-tab" [ngClass]="{'switch-control': (hasBackButton && data && current) || hasAddress || hasPeriodFilters }" >
+      <div *ngIf="hasBackButton && data && current" class="switch-control-wrapper">
+        <app-switch-control [data]="data" [current]="current" [switchLabel]="switchLabel" [paramName]="paramName"></app-switch-control>
+      </div>
+      <div *ngIf="hasAddress" class="switch-control-wrapper">
+        <app-address-control [data]="addressData"></app-address-control>
+      </div>
+      <div *ngIf="hasPeriodFilters" class="switch-control-wrapper">
+        <app-period-filters [years]="yearData" [periods]="periodData"></app-period-filters>  
+      </div>
+      <app-form-wrapper></app-form-wrapper>
+    </div>
+  </div>
+</div>

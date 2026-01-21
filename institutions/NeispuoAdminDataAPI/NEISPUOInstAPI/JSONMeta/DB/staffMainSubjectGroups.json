@@ -1,0 +1,27 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[SubjectGroup] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "SubjectGroupID as code"
+        },
+        {
+            "column": "Name as label"
+        },
+		{
+            "column": "IsValid as isValid"
+        }
+    ],
+    "params": [
+    ],
+    "order": [
+        {
+            "column": "SortOrd",
+            "type": "ASC"
+        },
+		{
+            "column": "SubjectGroupID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

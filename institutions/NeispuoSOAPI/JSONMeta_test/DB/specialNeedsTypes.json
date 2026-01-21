@@ -1,0 +1,23 @@
+{
+  "template": "SELECT /**select**/ FROM [student].[SpecialNeedsType] SNT /**where**/ /**orderby**/",
+  "columns": [
+	{
+      "column": "SNT.Id AS code"
+    },
+	{
+      "column": "SNT.Name AS label"
+    }
+   ],
+  "params": [
+
+  ],
+  "order": [
+    {
+      "column": "SNT.Name",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+
+  ]
+}

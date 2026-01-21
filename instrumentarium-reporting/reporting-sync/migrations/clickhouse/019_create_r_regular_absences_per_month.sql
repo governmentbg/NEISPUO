@@ -1,0 +1,22 @@
+-- Migration: Create R_Regular_Absences_Per_Month table
+-- Based on reporting.R_Regular_Absences_Per_Month view from the MS SQL server
+CREATE TABLE IF NOT EXISTS R_Regular_Absences_Per_Month (
+    RegionID Int32,
+    RegionName String,
+    MunicipalityName String,
+    TownName String,
+    InstitutionID Int32,
+    InstitutionName String,
+    DetailedSchoolTypeID Int32,
+    BudgetingSchoolTypeID Int32,
+    FinancialSchoolTypeID Int32,
+    SchoolYear Int16,
+    ClassOrGroupName Nullable(String),
+    Month Nullable(Int32),
+    Term Int32,
+    AbsencesPerMonth Nullable(Decimal(38,1)),
+    AbsencesTerm1 Nullable(Decimal(38,1)),
+    AbsencesTerm2 Nullable(Decimal(38,1)),
+    AbsencesPerYear Nullable(Decimal(38,1))
+) ENGINE = MergeTree()
+ORDER BY (RegionID, SchoolYear, InstitutionID, Term);

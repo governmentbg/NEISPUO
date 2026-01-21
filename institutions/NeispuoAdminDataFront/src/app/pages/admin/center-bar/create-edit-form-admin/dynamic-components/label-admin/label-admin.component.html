@@ -1,0 +1,7 @@
+<div class="l-container-component l-focused-element" [style.width.px]="field.width" (click)="focus()" [ngClass]="{'focused': updateJsonService.focusedElement.index === field.idntfr}">
+    <span class="l-custom-info-span">етикет</span>
+    <div class="fake-container-mat-form-field">
+        <label class="value-label">{{field.value || field.defaultValue}}</label>
+        <app-info-tooltip *ngIf="field.info" [info]="field.info"></app-info-tooltip>
+    </div>
+</div>

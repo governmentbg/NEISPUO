@@ -1,0 +1,159 @@
+{
+  "label": "Автобуси",
+  "procedureName": "inst_basic.institutionVechicleCUD",
+  "dataName": "if(operationType==1) {form.dataName=null} else {form.dataName='institutionVehicleData'}",
+  "paramName": "instid",
+  "sections": [
+    {
+      "order": 1,
+      "label": "Автобуси",
+      "subsections": [
+        {
+          "order": 1,
+          "label": "Данни за регистрацията",
+          "name": "institutionVehicleID",
+          "fields": [
+            {
+              "label": "Начин на придобиване",
+              "name": "acquisitionWayTypeID",
+              "type": "select",
+              "optionsPath": "/data/get/acquisitionWayTypes",
+              "disabled": false,
+              "width": 800,
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ],
+              "order": 1
+            },
+            {
+              "label": "Вид документ",
+              "name": "documentTypeID",
+              "type": "select",
+              "optionsPath": "/data/get/vehicleDocumentTypes",
+              "disabled": false,
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ],
+              "order": 2
+            },
+            {
+              "label": "Номер на документа",
+              "name": "documentNum",
+              "type": "input",
+              "inputType": "text",
+              "disabled": false,
+              "order": 3,
+              "width": 200,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 255,
+                  "message": "Максимална дължина 255 символа"
+                },
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ]
+            },
+            {
+              "label": "Дата на документа",
+              "name": "documentDate",
+              "type": "date",
+              "disabled": false,
+              "order": 4,
+              "width": 200,
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ]
+            },
+            {
+              "label": "Регистрационен номер",
+              "name": "registrationNum",
+              "type": "input",
+              "inputType": "text",
+              "disabled": false,
+              "order": 5,
+              "width": 200,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 255,
+                  "message": "Максимална дължина 255 символа"
+                },
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ]
+            },
+            {
+              "label": "Година на производство",
+              "name": "producedYear",
+              "type": "input",
+              "inputType": "number",
+              "order": 6,
+              "width": 95,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 4,
+                  "message": "Максимална дължина 4 символа"
+                },
+                {
+                  "name": "minLength",
+                  "validation": 4,
+                  "message": "Минимална дължина 4 символа"
+                },
+                {
+                  "name": "max",
+                  "validation": 9999,
+                  "message": "Невалидна година"
+                },
+                {
+                  "name": "pattern",
+                  "validation": "^\\d+$",
+                  "message": "Полето трябва да съдържа цяло неотрицателно число"
+                },
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ]
+            },
+            {
+              "label": "Брой места",
+              "name": "placeCountTypeID",
+              "type": "select",
+              "optionsPath": "/data/get/placeCountTypes",
+              "disabled": false,
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ],
+              "order": 7
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

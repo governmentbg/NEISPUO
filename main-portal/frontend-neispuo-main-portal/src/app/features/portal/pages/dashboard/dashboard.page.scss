@@ -1,0 +1,136 @@
+@import "@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/variables/variables.scss";
+
+.container-fluid {
+  padding: 0;
+}
+
+.row {
+  margin-right: 0;
+  margin-left: 0;
+  padding: 0;
+}
+
+.dashboard-page {
+  padding-bottom: 50px;
+  .section {
+    margin-bottom: 30px;
+    margin-left: 3.875rem;
+    margin-right: 2rem;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    &-title {
+      padding: 0 0.75rem;
+    }
+    .category-link {
+      float: right;
+      font-size: 0.75rem;
+      text-decoration: none;
+      text-align: right;
+      margin-right: 2.25rem;
+      &::after {
+        content: "\F285";
+        font-family: "bootstrap-icons";
+        font-size: 0.625rem;
+        padding-left: 0.5rem;
+        &:hover {
+          border-bottom: none;
+        }
+      }
+      &:hover {
+        text-decoration: none;
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+@media (max-width: 960px) {
+  .dashboard-page .section {
+    margin-left: 2rem;
+  }
+  small {
+    display: block;
+  }
+}
+
+.callback-page {  
+  height: calc(100vh - 153px);  
+  background-color:$gray-100;  
+  display: flex;  
+  justify-content: center;  
+  display: flex;  
+  align-items: center;  
+  &-content {    
+    text-align: center;    
+    p,    
+    p.h1 {      
+      color: $gray-800;    
+    }    
+    p:not(.h1) {      
+      color: $gray-700;    
+    }  
+  }  
+  .loader {    
+    display: inline-block;    
+    position: relative;    
+    width: 5rem;    
+    height: 9rem;   
+    div {      
+      display: inline-block;      
+      position: absolute;      
+      left: 0.5rem;      
+      width: 1rem;      
+      background: $blue-500;      
+      animation: loader 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;      
+      &:nth-child(1) {        
+        left: 0.5rem;        
+        animation-delay: -0.3s;      
+      }      
+      &:nth-child(2) {        
+        left: 2rem;        
+        animation-delay: -0.15s;      
+      }      
+      &:nth-child(3) {        
+        left: 3.5rem;        
+        animation-delay: 0;      
+      }    
+    }  
+  }  
+  @keyframes loader {    
+    0% {      
+      top: 0.5rem;      
+      height: 100px;    
+    }    
+    50%,    
+    100% {      
+      top: 24px;      
+      height: 50px;    
+    }  
+  }
+}
+
+.card {
+  width: 70%;
+  margin: auto;
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    i {
+      color: $red;
+      font-size: 2rem;
+    }
+    h5 {
+      display: inline-block;
+      margin: 0 0 0 1rem;
+    }
+  }
+  .card-header::before {
+    visibility: hidden;
+  }
+  small {
+    color: $gray-700;
+  }
+}

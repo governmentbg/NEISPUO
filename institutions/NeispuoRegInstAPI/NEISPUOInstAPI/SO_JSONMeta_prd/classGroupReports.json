@@ -1,0 +1,49 @@
+{
+  "paramName": "instid",
+  "sections": [
+    {
+      "order": 1,
+      "label": "Брой паралелки по видове",
+	  "name": "TableReportClassbyClassType",
+      "table": {
+	    "order": 1,
+        "name": "reportClassbyClassType",
+		"hasEditButton": false,
+		"sortable": false,
+		"searchable": false,
+        "fields": [
+          {
+            "label": "Година",
+            "name": "schoolYear",
+            "type": "input",
+            "inputType": "number",
+            "order": 1
+          },
+		  {
+            "label": "Вид паралелка",
+            "name": "classTypeName",
+            "type": "input",
+            "inputType": "text",
+            "order": 2
+          },
+		  {
+            "label": "Тип паралелка",
+            "name": "classKind",
+            "type": "input",
+            "inputType": "text",
+            "order": 3
+          },
+		  {
+            "label": "Брой",
+            "name": "cntClasses",
+            "type": "input",
+            "inputType": "text",
+            "order": 4
+          }
+        ]
+      }
+    }
+  ]
+}
+
+

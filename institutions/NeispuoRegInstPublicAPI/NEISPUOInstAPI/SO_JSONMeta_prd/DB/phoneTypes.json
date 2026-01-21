@@ -1,0 +1,21 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[PhoneType] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "PhoneTypeID as code"
+        },
+        {
+            "column": "Name as label"
+        }
+    ],
+    "params": [
+
+    ],
+    "order": [
+        {
+            "column": "PhoneTypeID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

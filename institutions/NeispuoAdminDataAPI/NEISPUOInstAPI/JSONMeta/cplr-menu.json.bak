@@ -1,0 +1,179 @@
+[
+  {
+    "label": "Институция",
+    "path": "institution",
+    "children": [
+      {
+        "label": "Институция",
+        "path": "institution",
+        "history": true
+      },
+      {
+        "label": "Други адреси за осъществяване на дейността",
+        "path": "institutionDepartmentList",
+        "history": true
+      },
+      {
+        "label": "Проектна и други дейности",
+        "path": "institutionProjects",
+        "history": true
+      },
+      {
+        "label": "Транспорт",
+        "path": "institutionVehicles",
+        "history": true
+      },
+      {
+        "label": "Обобщение",
+        "path": "institutionReports",
+        "history": false
+      }
+    ]
+  },
+  {
+    "label": "Групи",
+    "path": "classes",
+    "children": [
+      {
+        "label": "Групи",
+        "path": "classGroupsOther",
+        "children": [
+          {
+            "label": "Данни за групата",
+            "path": "classGroupData",
+            "history": true
+          },
+          {
+            "label": "Списък деца",
+            "path": "classStudentListOther",
+            "history": true
+          },
+          {
+            "label": "Дейности за ПЛР",
+            "path": "classGroupCurriculumInternalList",
+            "history": true
+          }
+        ]
+      },
+      {
+        "label": "Обобщение",
+        "path": "classGroupReports",
+        "history": false
+      }
+    ]
+  },
+  {
+    "label": "Персонал",
+    "path": "staff",
+    "children": [
+      {
+        "label": "Персонал",
+        "path": "staffList",
+        "history": true,
+        "children":[
+          {
+            "label": "Основни данни",
+            "path": "person"
+          },
+		  {
+            "label": "Образователна степен, ПКС",
+            "path": "personOKSPKSList"
+          },
+          {
+            "label": "Длъжности",
+            "path": "staffPositions"
+          },
+          {
+            "label": "Квалификационна дейност",
+            "path": "personQCourses"
+          },
+          {
+            "label": "Ключови компетентности",
+            "path": "personCLSkillsList"
+          }
+        ]
+      },
+      {
+        "label": "Обобщение",
+        "path": "personReports",
+        "history": false
+      }
+    ]
+  },
+  {
+    "label": "Деца/ученици",
+    "path": "students",
+    "children": [
+      {
+        "label": "Деца/ученици",
+        "path": "classStudentListAll",
+        "children":[
+          {
+            "label": "Основни данни",
+            "path": "student",
+            "history": true
+          },
+          {
+            "label": "Обучение в институцията",
+            "path": "studentClassGroupList",
+            "history": true
+          },
+          {
+            "label": "Данни за ресурсно подпомагане",
+            "path": "resourceSupportList",
+            "history": true
+          }
+        ]
+      },
+      {
+        "label": "Обобщение",
+        "path": "studentReports",
+        "history": false
+      }
+    ]
+  },
+  {
+    "label": "Дейности за ПЛР",
+    "path": "curriculum",
+    "children": [
+      {
+        "label": "Дейности за ПЛР",
+        "path": "curriculumClassList",
+        "children":[
+          {
+            "label": "Дейности за ПЛР",
+            "path": "curriculumList",
+            "history": true
+          }
+        ]
+      },
+      {
+        "label": "Рамкови/Типови УП - библиотека",
+        "path": "curriculumCatalogs",
+        "history": false,
+        "children":[
+          {
+            "label": "Съдържание",
+            "path": "curriculumCatalogDataList"
+          }
+        ]
+      },
+      {
+        "label": "Обобщение",
+        "path": "curriculumReports",
+        "history": false
+      }
+    ]
+  },
+  {
+    "label": "Настройки",
+    "path": "settings",
+    "history": false,
+    "children": [
+      {
+        "label": "Настройки за предоставяне на достъп на външни доставчици",
+        "path": "externalProvidersList"
+	  }
+    ]
+  }
+]

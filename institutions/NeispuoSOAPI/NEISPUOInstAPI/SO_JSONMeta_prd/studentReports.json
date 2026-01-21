@@ -1,0 +1,99 @@
+{
+  "paramName": "instid",
+  "sections": [
+    {
+      "order": 1,
+      "label": "Обобщена информация за брой деца/ученици",
+	  "name": "TableReportStudents",
+      "table": {
+	    "order": 1,
+        "name": "reportStudents",
+		"hasEditButton": false,
+		"sortable": false,
+		"searchable": false,
+        "fields": [
+          {
+            "label": "Година",
+            "name": "schoolYear",
+            "type": "input",
+            "inputType": "number",
+            "order": 1
+          },
+		  {
+            "label": "Общ брой",
+            "name": "numOfStdsAll",
+            "type": "input",
+            "inputType": "number",
+            "order": 2
+          },
+		  {
+            "label": "От тях: момичета",
+            "name": "numOfGirls",
+            "type": "input",
+            "inputType": "number",
+            "order": 3
+          },
+		  {
+            "label": "От тях: момчета",
+            "name": "numOfBoys",
+            "type": "input",
+            "inputType": "number",
+            "order": 4
+          },
+		  {
+            "label": "От тях: на целодневно обучение",
+            "name": "numOfStdsCDO",
+            "type": "input",
+            "inputType": "number",
+            "order": 5
+          }
+        ]
+      }
+    },
+	{
+      "order": 2,
+      "label": "Справка за профилиращите предмети на учениците",
+	  "name": "TableReportStudentProfileSubjects",
+      "table": {
+	    "order": 1,
+        "name": "reportStudentProfileSubjects",
+		"hasEditButton": false,
+		"sortable": true,
+		"searchable": true,
+		"searchType":"column",
+        "fields": [
+          {
+            "label": "Клас",
+            "name": "className",
+            "type": "input",
+            "inputType": "text",
+            "order": 1
+          },
+		  {
+            "label": "Име и фамилия на ученика",
+            "name": "studentName",
+            "type": "input",
+            "inputType": "text",
+            "order": 2
+          },
+		  {
+            "label": "Вид профилиращ предмет",
+            "name": "profSubjType",
+            "type": "input",
+            "inputType": "text",
+            "order": 3
+          },
+		   {
+            "label": "Вид профилиращ предмет",
+            "name": "subjectName",
+            "type": "input",
+            "inputType": "text",
+            "order": 3
+          }
+        ]
+      }
+    }
+  ]
+}
+
+

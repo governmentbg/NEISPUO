@@ -1,0 +1,284 @@
+<form [formGroup]="form" autocomplete="off" novalidate>
+  <sb-card>
+    <ng-container card-title>Редакция на запис от книга за движението на учениците от СПИ/ВУИ</ng-container>
+    <sb-editor-panel
+      [editBtnHidden]="!canEdit"
+      card-buttons
+      [backBtnRouteCommands]="['../../']"
+      [isNew]="false"
+      (save)="onSave($event)"
+    >
+      <button
+        *ngIf="canRemove"
+        disabled-mode-buttons
+        mat-raised-button
+        color="warn"
+        type="button"
+        (click)="onRemove()"
+        [disabled]="removing"
+      >
+        <fa-icon [icon]="removing ? fasSpinnerThird : fasTrashAlt" [spin]="removing" size="lg"></fa-icon>
+        <span class="hidden sm:inline">Премахни</span>
+      </button>
+    </sb-editor-panel>
+    <ng-container card-body>
+      <div class="sm:grid grid-cols-3 gap-x-4 mb-2">
+        <sb-text-field label="учебна година" formControlName="schoolYear" [readonly]="true"></sb-text-field>
+        <sb-text-field label="пореден номер" formControlName="recordNumber" [readonly]="true"></sb-text-field>
+
+        <p class="col-start-1 col-span-full">Лични данни</p>
+        <sb-text-field label="ЕГН/ЛНЧ" formControlName="personalId" [readonly]="true"></sb-text-field>
+        <sb-text-field class="col-start-1" label="Име" formControlName="firstName" [readonly]="true"></sb-text-field>
+        <sb-text-field label="Презиме" formControlName="middleName" [readonly]="true"></sb-text-field>
+        <sb-text-field label="Фамилия" formControlName="lastName" [readonly]="true"></sb-text-field>
+        <sb-text-field label="Пол" formControlName="gender" [readonly]="true"></sb-text-field>
+        <sb-text-field label="Клас" formControlName="className" [readonly]="true"></sb-text-field>
+
+        <p class="col-start-1 col-span-full">Място на раждане</p>
+        <sb-text-field label="държава" formControlName="birthPlaceCountry" [readonly]="true"></sb-text-field>
+        <sb-text-field label="град/село" formControlName="birthPlaceTown" [readonly]="true"></sb-text-field>
+
+        <p class="col-start-1 col-span-full">Местоживеене</p>
+        <sb-text-field label="град/село" formControlName="permanentTown" [readonly]="true"></sb-text-field>
+        <sb-text-field
+          class="col-span-2"
+          label="адрес"
+          formControlName="permanentAddress"
+          [readonly]="true"
+        ></sb-text-field>
+      </div>
+      <sb-card-section>Родители / Настойници</sb-card-section>
+      <sb-banner type="info" *ngIf="data.spbsBookRecord.relatives.length === 0" class="mb-4">
+        Няма въведени родители/настойници в системата
+      </sb-banner>
+      <div *ngIf="data.spbsBookRecord.relatives.length > 0" class="sb-table-container mb-8">
+        <table class="sb-table">
+          <thead>
+            <tr>
+              <th>Имена</th>
+              <th>Телефон</th>
+              <th>Имейл</th>
+              <th>Адрес</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let relative of data.spbsBookRecord.relatives">
+              <td>{{ relative.name }}</td>
+              <td>{{ relative.telephone }}</td>
+              <td>{{ relative.email }}</td>
+              <td>
+                {{ relative.permanentAddress }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="sm:grid grid-cols-3 gap-x-4 mb-2">
+        <sb-card-section class="col-start-1 col-span-full">МКБППМН предложила настаняването</sb-card-section>
+        <sb-text-field label="МКБППМН" formControlName="sendingCommission"></sb-text-field>
+        <sb-textarea-field label="Адрес" formControlName="sendingCommissionAddress"></sb-textarea-field>
+        <sb-text-field label="Телефони" formControlName="sendingCommissionPhoneNumber"></sb-text-field>
+
+        <sb-card-section class="col-start-1 col-span-full">Инспектор от Детска педагогическа стая</sb-card-section>
+        <sb-text-field label="Имена" formControlName="inspectorNames"></sb-text-field>
+        <sb-textarea-field label="Адрес" formControlName="inspectorAddress"></sb-textarea-field>
+        <sb-text-field label="Телефони" formControlName="inspectorPhoneNumber"></sb-text-field>
+
+        <sb-card-section class="col-start-1 col-span-full">Информация при настаняване</sb-card-section>
+        <sb-text-field label="Номер на съдебното решение" formControlName="courtDecisionNumber"></sb-text-field>
+        <sb-date-field label="Дата на съдебното решение" formControlName="courtDecisionDate"></sb-date-field>
+        <sb-text-field
+          class="col-start-1"
+          label="Номер на настанителното писмо"
+          formControlName="incommingLetterNumber"
+        ></sb-text-field>
+        <sb-date-field label="Дата на настанителното писмо" formControlName="incommingLetterDate"></sb-date-field>
+        <sb-date-field label="Дата на постъпване" formControlName="incommingDate"></sb-date-field>
+        <sb-text-field
+          label="Номер на удостоверението за преместване"
+          formControlName="incommingDocNumber"
+        ></sb-text-field>
+
+        <sb-card-section class="col-start-1 col-span-full">
+          Информация при преместване и прекратяване на настаняването
+        </sb-card-section>
+        <sb-textarea-field class="col-span-full" label="Основание" formControlName="transferReason"></sb-textarea-field>
+        <sb-text-field
+          label="Номер на протокола от педагогическия съвет"
+          formControlName="transferProtocolNumber"
+        ></sb-text-field>
+        <sb-date-field
+          label="Дата на протокола от педагогическия съвет"
+          formControlName="transferProtocolDate"
+        ></sb-date-field>
+        <sb-text-field
+          class="col-start-1"
+          label="Номер на писмото за преместване/прекратяване"
+          formControlName="transferLetterNumber"
+        ></sb-text-field>
+        <sb-date-field
+          label="Дата на писмото за преместване/прекратяване"
+          formControlName="transferLetterDate"
+        ></sb-date-field>
+        <sb-text-field
+          class="col-start-1"
+          label="Номер на удостоверението за преместване"
+          formControlName="transferCertificateNumber"
+        ></sb-text-field>
+        <sb-date-field
+          label="Дата на удостоверението за преместване"
+          formControlName="transferCertificateDate"
+        ></sb-date-field>
+        <sb-text-field
+          class="col-start-1"
+          label="Номер на съобщението за преместване"
+          formControlName="transferMessageNumber"
+        ></sb-text-field>
+        <sb-date-field label="Дата на съобщението за преместване" formControlName="transferMessageDate"></sb-date-field>
+      </div>
+
+      <sb-card-section class="col-span-full">Информация за бягствата от СПИ и от ВУИ</sb-card-section>
+      <button
+        *ngIf="canEdit"
+        (click)="openAddOrUpdateEscapeDialog(null)"
+        [disabled]="editable"
+        mat-raised-button
+        color="primary"
+        aria-label="Ново бягство"
+        type="button"
+        class="mb-2.5"
+      >
+        <fa-icon [icon]="fasPlus" size="lg"></fa-icon>
+        <span>Ново бягство</span>
+      </button>
+
+      <sb-table
+        [dataSource]="escapesDataSource"
+        [displayedColumns]="[
+          'action',
+          'escapeDateTime',
+          'policeNotificationDateTime',
+          'policeLetterNumber',
+          'policeLetterDate',
+          'returnDate',
+          'escapeDays'
+        ]"
+      >
+        <ng-container cdkColumnDef="action">
+          <th cdk-header-cell *cdkHeaderCellDef></th>
+          <td cdk-cell *cdkCellDef="let row" class="sb-table-action">
+            <button
+              *ngIf="canEdit"
+              aria-label="Детайли"
+              (click)="openAddOrUpdateEscapeDialog(row.orderNum)"
+              [disabled]="editable"
+              class="sb-link-btn"
+              type="button"
+            >
+              <fa-icon [icon]="fasPencil"></fa-icon>
+            </button>
+            <button
+              (click)="onRemoveEscape(row.orderNum)"
+              [disabled]="editable || removingEscapeAct[row.orderNum]"
+              aria-label="Изтрий"
+              class="sb-link-btn"
+              type="button"
+            >
+              <fa-icon
+                [icon]="removingEscapeAct[row.orderNum] ? fasSpinnerThird : fasTrashAlt"
+                [spin]="removingEscapeAct[row.orderNum]"
+                size="lg"
+              ></fa-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <ng-container cdkColumnDef="escapeDateTime">
+          <th cdk-header-cell *cdkHeaderCellDef>Дата и час на регистриране на бягството</th>
+          <td cdk-cell *cdkCellDef="let row">{{ row.escapeDateTime | sbDateTime }}</td>
+        </ng-container>
+
+        <ng-container cdkColumnDef="policeNotificationDateTime">
+          <th cdk-header-cell *cdkHeaderCellDef>Дата и час на уведомяването на РПУ</th>
+          <td cdk-cell *cdkCellDef="let row">{{ row.policeNotificationDateTime | sbDateTime }}</td>
+        </ng-container>
+
+        <ng-container cdkColumnDef="policeLetterNumber">
+          <th cdk-header-cell *cdkHeaderCellDef>№ на писмо до РПУ/НС „Полиция“</th>
+          <td cdk-cell *cdkCellDef="let row">{{ row.policeLetterNumber }}</td>
+        </ng-container>
+
+        <ng-container cdkColumnDef="policeLetterDate">
+          <th cdk-header-cell *cdkHeaderCellDef>Дата на писмо до РПУ/НС „Полиция“</th>
+          <td cdk-cell *cdkCellDef="let row">{{ row.policeLetterDate | sbDate }}</td>
+        </ng-container>
+
+        <ng-container cdkColumnDef="returnDate">
+          <th cdk-header-cell *cdkHeaderCellDef>Дата на връщане</th>
+          <td cdk-cell *cdkCellDef="let row">{{ row.returnDate | sbDate }}</td>
+        </ng-container>
+
+        <ng-container cdkColumnDef="escapeDays">
+          <th cdk-header-cell *cdkHeaderCellDef>Брой дни в бягство</th>
+          <td cdk-cell *cdkCellDef="let row">{{ row.escapeDays }}</td>
+        </ng-container>
+      </sb-table>
+
+      <sb-card-section class="col-span-full">Други отсъствия на ученика от СПИ и от ВУИ</sb-card-section>
+      <button
+        *ngIf="canEdit"
+        (click)="openAddOrUpdateAbsenceDialog(null)"
+        [disabled]="editable"
+        mat-raised-button
+        color="primary"
+        aria-label="Ново отсъствие"
+        type="button"
+        class="mb-2.5"
+      >
+        <fa-icon [icon]="fasPlus" size="lg"></fa-icon>
+        <span>Ново отсъствие</span>
+      </button>
+
+      <sb-table [dataSource]="absencesDataSource" [displayedColumns]="['action', 'absenceDate', 'absenceReason']">
+        <ng-container cdkColumnDef="action">
+          <th cdk-header-cell *cdkHeaderCellDef></th>
+          <td cdk-cell *cdkCellDef="let row" class="sb-table-action">
+            <button
+              *ngIf="canEdit"
+              aria-label="Детайли"
+              (click)="openAddOrUpdateAbsenceDialog(row.orderNum)"
+              [disabled]="editable"
+              class="sb-link-btn"
+              type="button"
+            >
+              <fa-icon [icon]="fasPencil"></fa-icon>
+            </button>
+            <button
+              (click)="onRemoveAbsence(row.orderNum)"
+              [disabled]="editable || removingAbsenceAct[row.orderNum]"
+              aria-label="Изтрий"
+              class="sb-link-btn"
+              type="button"
+            >
+              <fa-icon
+                [icon]="removingAbsenceAct[row.orderNum] ? fasSpinnerThird : fasTrashAlt"
+                [spin]="removingAbsenceAct[row.orderNum]"
+                size="lg"
+              ></fa-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <ng-container cdkColumnDef="absenceDate">
+          <th cdk-header-cell *cdkHeaderCellDef>Дата</th>
+          <td cdk-cell *cdkCellDef="let row">{{ row.absenceDate | sbDate }}</td>
+        </ng-container>
+
+        <ng-container cdkColumnDef="absenceReason">
+          <th cdk-header-cell *cdkHeaderCellDef>Основание</th>
+          <td cdk-cell *cdkCellDef="let row">{{ row.absenceReason }}</td>
+        </ng-container>
+      </sb-table>
+    </ng-container>
+  </sb-card>
+</form>

@@ -1,0 +1,32 @@
+@using SB.Domain
+@model GradeResultsModel
+
+<div class="page">
+  <h3 class="page-header">Резултати на учениците</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th class="three-rows-height align-bottom"><div class="vertical-text">№ на ученика</div></th>
+        <th>Трите имена на ученика</th>
+        <th>Резултати<br/>завършва/ще полага изпит/и по</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (var result in Model.Results)
+      {
+        <tr>
+          <td>
+            @result.ClassNumber
+            @if (result.IsTransferred)
+            {
+              <span class="sb-badge">ОТПИСАН</span>
+            }
+          </td>
+          <td>@result.FullName</td>
+          <td>@result.ResultText</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,59 @@
+scenarios:
+  - name: "Browse grades and select a grade"
+    flow:
+      - get:
+          url: "/classbooks/{{ schoolYear }}/{{ instId }}/getall"
+          capture:
+            - json: "$[*].classBookId"
+              as: "classBookId"
+      - get:
+          url: "/classbooks/{{ schoolYear }}/{{ instId }}/get/{{ classBookId }}"
+      - get:
+          url: "/classbooks/{{ schoolYear }}/{{ instId }}/getcurriculum/{{ classBookId }}"
+          capture:
+            - json: "$[*].curriculumId"
+              as: "curriculumId"
+      - get:
+          url: "/grades/{{ schoolYear }}/{{ instId }}/{{ classBookId }}/getcurriculumstudents?curriculumId={{ curriculumId }}"
+      - get:
+          url: "/grades/{{ schoolYear }}/{{ instId }}/{{ classBookId }}/getcurriculumgrades?curriculumId={{ curriculumId }}"
+          capture:
+            - json: "$[*].gradeId"
+              as: "gradeId"
+      - pause: 5
+      - get:
+          url: "/grades/{{ schoolYear }}/{{ instId }}/{{ classBookId }}/get/{{ gradeId }}"
+
+  - name: "Browse absences and select an absence"
+    flow:
+      - get:
+          url: "/classbooks/{{ schoolYear }}/{{ instId }}/getall"
+          capture:
+            - json: "$[*].classBookId"
+              as: "classBookId"
+      - get:
+          url: "/classbooks/{{ schoolYear }}/{{ instId }}/get/{{ classBookId }}"
+      - get:
+          url: "/absences/{{ schoolYear }}/{{ instId }}/{{ classBookId }}/getallforclassbook"
+      - get:
+          url: "/classbooks/{{ schoolYear }}/{{ instId }}/getstudents/{{ classBookId }}"
+          capture:
+            - json: "$[*].personId"
+              as: "personId"
+      - pause: 5
+      - get:
+          url: "/absences/{{ schoolYear }}/{{ instId }}/{{ classBookId }}/getallforstudentandtype?personId={{ personId }}&type=Late"
+
+  - name: "Browse topics"
+    flow:
+      - get:
+          url: "/classbooks/{{ schoolYear }}/{{ instId }}/getall"
+          capture:
+            - json: "$[*].classBookId"
+              as: "classBookId"
+      - get:
+          url: "/classbooks/{{ schoolYear }}/{{ instId }}/get/{{ classBookId }}"
+      - get:
+          url: "/schedules/{{ schoolYear }}/{{ instId }}/{{ classBookId }}/getclassbookscheduleforweek/2021/36"
+      - get:
+          url: "/topics/{{ schoolYear }}/{{ instId }}/{{ classBookId }}/getallforweek?year=2021&weekNumber=36"

@@ -1,0 +1,59 @@
+@using SB.Domain
+@model Book_CSOPModel
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    @{ await IncludeAsync("ClassBookPrint.Parts._Styles", null); }
+  </head>
+  <body>
+    @{ await IncludeAsync("ClassBookPrint.Parts.CoverPage.CoverPageCSOP", Model.CoverPageModel); }
+
+    @{ await IncludeAsync("ClassBookPrint.Parts.Teachers.Teachers", Model.TeachersModel); }
+
+    @{ await IncludeAsync("ClassBookPrint.Parts.Schedules.Schedules", Model.SchedulesModel); }
+
+    @if (Model.ParentMeetingsModel.ParentMeetings.Any())
+    {
+      await IncludeAsync("ClassBookPrint.Parts.ParentMeetings.ParentMeetings", Model.ParentMeetingsModel);
+    }
+
+    @{ await IncludeAsync("ClassBookPrint.Parts.Students.StudentsCDO", Model.StudentsModel); }
+
+    @{ await IncludeAsync("ClassBookPrint.Parts.AbsencesCdo.AbsencesCdo", Model.AbsencesCdoModel); }
+
+    @{ await IncludeAsync("ClassBookPrint.Parts.ScheduleAndAbsences.ScheduleAndAbsences", Model.ScheduleAndAbsencesModel); }
+
+    @{ await IncludeAsync("ClassBookPrint.Parts.Grades.Grades", Model.TermOneGradesModel); }
+
+    @{ await IncludeAsync("ClassBookPrint.Parts.Grades.Grades", Model.TermTwoGradesModel); }
+
+    @if (Model.HasFirstGradeResults)
+    {
+      await IncludeAsync("ClassBookPrint.Parts.FirstGradeResults.FirstGradeResults", Model.FirstGradeResultsModel);
+    }
+
+    @if (Model.HasFinalGrades)
+    {
+      await IncludeAsync("ClassBookPrint.Parts.FinalGrades.FinalGrades", Model.FinalGradesModel);
+    }
+
+    @if (Model.SupportsModel.Supports.Any())
+    {
+      await IncludeAsync("ClassBookPrint.Parts.Supports.Supports", Model.SupportsModel);
+    }
+
+    @{ await IncludeAsync("ClassBookPrint.Parts.Absences.Absences", Model.AbsencesModel); }
+
+    @if (Model.IndividualWorksModel.IndividualWorks.Any())
+    {
+      await IncludeAsync("ClassBookPrint.Parts.IndividualWorks.IndividualWorks", Model.IndividualWorksModel);
+    }
+
+    @if (Model.NotesModel.Notes.Any())
+    {
+      await IncludeAsync("ClassBookPrint.Parts.Notes.Notes", Model.NotesModel);
+    }
+  </body>
+</html>

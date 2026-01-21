@@ -1,0 +1,22 @@
+[
+  {
+    "code": "school",
+    "label": "Училище"
+  },
+  {
+    "code": "kindergarden",
+    "label": "ДГ"
+  },
+  {
+    "code": "cplr",
+    "label": "ЦПЛР"
+  },
+  {
+    "code": "csop",
+    "label": "ЦСОП"
+  },
+  {
+    "code": "soz",
+    "label": "СОЗ"
+  }
+]

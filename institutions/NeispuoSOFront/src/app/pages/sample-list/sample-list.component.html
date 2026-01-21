@@ -1,0 +1,13 @@
+<div class="l-custom-wrapper-sample-list">
+    <div class="custom-mat-tab-l">
+        <mat-tab-group (selectedTabChange)="onTabChange($event)" #matTabGroup>
+            <mat-tab disableRipple [label]="tabs[0]"></mat-tab>
+            <mat-tab disableRipple [label]="tabs[1]"></mat-tab>
+        </mat-tab-group>
+    </div>
+    <div class="l-custom-body-sample-list">
+        <app-list-view *ngIf="tabIndex === 0" [infoLs]="infoLs" (onGetListView)="onGetListView()"></app-list-view>
+        <app-form-wrapper *ngIf="tabIndex === 1"></app-form-wrapper>
+    </div>
+</div>
+<app-loader *ngIf="isLoading"></app-loader>

@@ -1,0 +1,13 @@
+<div class="block-container" [ngClass]="{'mon-ruo': isMonRuo}">
+  <span class="l-custom-span-label">
+    <span class="required-span">*</span>
+    <span class="label-label">Адрес на осъществяване на обучението:</span>
+  </span>
+  <div class="l-select new-design-select" appearance="outline" matTooltipClass="l-custom-tooltip" [matTooltip]="s.selectedItems && s.selectedItems[0] ? s.selectedItems[0].label : ''">
+    <ng-select #s [items]="data" virtualScroll="true" [clearable]="false" [(ngModel)]="current" notFoundText="Няма намерени резултати" (change)="onSelectionChange($event.code)">
+      <ng-template ng-option-tmp let-item="item" let-search="searchTerm">
+        <span [ngOptionHighlight]="search">{{ item.label }}</span>
+      </ng-template>
+    </ng-select>
+  </div>
+</div>

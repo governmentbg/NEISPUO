@@ -1,0 +1,58 @@
+{
+    "template": "SELECT DISTINCT /**select**/ FROM [inst_nom].[SubjectInstitutionCode] S JOIN [inst_nom].[ProfSubjectLimit] PSL ON S.SubjectID=PSL.ProfSubjectID /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "S.SubjectID as code"
+        },
+        {
+            "column": "S.SubjectName as label"
+        }
+    ],
+    "params": [
+        {
+            "param": "@instid",
+            "column": "S.InstitutionID",
+            "operator": "=",
+            "value": "instid",
+            "type": "int",
+            "logical_operator": "and",
+            "static": false
+        },
+        {
+            "param": "@isValid",
+            "column": "S.IsValid",
+            "operator": "=",
+            "value": 1,
+            "type": "int",
+            "logical_operator": "and",
+            "static": true
+        },
+        {
+            "param": "@classTypeID",
+            "column": "PSL.ClassTypeID",
+            "operator": "=",
+            "value": "classTypeID",
+            "type": "int",
+            "logical_operator": "and",
+            "optional": true,
+            "static": false
+        },
+        {
+            "param": "@subjectTypeID",
+            "column": "PSL.ProfSubjectTypeID",
+            "operator": "=",
+            "value": "subjectTypeID",
+            "type": "int",
+            "logical_operator": "and",
+            "optional": true,
+            "static": false
+        }
+    ],
+    "order": [
+        {
+            "column": "S.SubjectID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

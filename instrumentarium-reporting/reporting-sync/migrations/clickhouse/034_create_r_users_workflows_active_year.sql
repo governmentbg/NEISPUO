@@ -1,0 +1,38 @@
+-- Migration: Create R_Users_Workflows_Active_Year table
+-- Based on azure_temp.AzureUsersView from the MS SQL server
+CREATE TABLE IF NOT EXISTS R_Users_Workflows_Active_Year (
+    rowID Int32,
+    userID Nullable(String),
+    workflowType Int32,
+    identifier Nullable(String),
+    firstName Nullable(String),
+    middleName Nullable(String),
+    surname Nullable(String),
+    password Nullable(String),
+    email Nullable(String),
+    phone Nullable(String),
+    grade Nullable(String),
+    schoolId Nullable(String),
+    birthDate Nullable(DateTime64(7, 'UTC')),
+    userRole Nullable(String),
+    accountEnabled Nullable(Int32),
+    inProcessing Nullable(Int32),
+    errorMessage Nullable(String),
+    createdOn DateTime64(7, 'UTC'),
+    updatedOn DateTime64(7, 'UTC'),
+    guid Nullable(String),
+    retryAttempts Nullable(Int32),
+    username Nullable(String),
+    status Int32,
+    personID Nullable(Int32),
+    deletionType Nullable(Int32),
+    additionalRole Nullable(Int32),
+    hasNeispuoAccess Nullable(Int32),
+    assignedAccountantSchools Nullable(String),
+    azureID Nullable(String),
+    inProgressResultCount Nullable(Int32),
+    isForArchivation Int32,
+    sisAccessSecondaryRole Nullable(Int32),
+    createdBy Nullable(String)
+) ENGINE = MergeTree()
+ORDER BY (rowID);

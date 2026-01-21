@@ -1,0 +1,23 @@
+<div class="sm:w-96">
+  <div class="sb-btn-wrapper sb-btn-wrapper-right">
+    <a
+      [href]="downloadUrl"
+      target="_blank"
+      download
+      color="primary"
+      mat-raised-button
+      [disabled]="!downloadUrl || spinning"
+    >
+      <fa-icon [icon]="spinning ? fasSpinnerThird : fasFileExcel" [spin]="spinning" size="lg"></fa-icon>
+      <span>Свали</span>
+    </a>
+    <button mat-raised-button mat-dialog-close>Затвори</button>
+  </div>
+
+  <sb-select-field
+    class="sb-single-row-mat-field"
+    label="Учебна година"
+    [formControl]="selectedYear"
+    [items]="schoolYears"
+  ></sb-select-field>
+</div>

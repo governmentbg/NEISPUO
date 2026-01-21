@@ -1,0 +1,12 @@
+import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Setting } from './setting.entity';
+
+@Module({
+    imports: [TypeOrmModule.forFeature([Setting])],
+    exports: [TypeOrmModule],
+
+    controllers: [],
+    providers: [],
+})
+export class SettingModule {}

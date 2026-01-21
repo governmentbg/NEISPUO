@@ -1,0 +1,96 @@
+{
+  "arrayName": "classGroupList",
+  "template": "SELECT /**select**/ FROM [inst_year].[ClassGroupList] CD /**where**/ /**orderby**/",
+  "sotemplate": "SELECT /**select**/ FROM [sob].[ClassGroupList] CD /**where**/ /**orderby**/",
+  "columns": [
+	{
+      "column": "CD.ClassID AS id"
+    },
+	{
+      "column": "CD.ClassName AS className"
+    },
+	{
+      "column": "CD.BasicClass AS basicClass"
+    },
+	{
+      "column": "CD.ClassTypeName AS classTypeName"
+    },
+	{
+      "column": "CD.ClassSpecialityName AS specialityName"
+    },
+	{
+      "column": "CD.EduFormName AS eduFormName"
+    },
+	{
+      "column": "CD.FLName AS flName"
+    },
+	{
+      "column": "CD.ClassDepartmentID AS instdept"
+    },
+	{
+      "column": "CD.DepartmentName AS departmentName"
+    },
+	{
+      "column": "CD.IsClassGroup AS isClassGroup"
+    },
+	{
+      "column": "'classGroupData' AS formName"
+    },
+	{
+      "column": "CD.ClassID AS formDataId"
+    }
+   ],
+  "params": [
+    {
+      "param": "@instid",
+      "column": "CD.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+	{
+      "param": "@classKind",
+      "column": "CD.ClassKind",
+      "operator": "=",
+      "value": 1,
+      "type": "int",
+      "logical_operator": "and",
+      "static": true
+    },
+		{
+			"param": "@year",
+			"column": "CD.SchoolYear",
+			"operator": "=",
+			"value": "year",
+			"type": "int",
+			"logical_operator": "and",
+			"optional": true,
+			"static": false
+    },
+		{
+			"param": "@period",
+			"column": "CD.Period",
+			"operator": "=",
+      "value": "period",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "CD.BasicClassID",
+      "type": "ASC"
+    },
+    {
+      "column": "CD.ClassName",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+
+  ]
+}

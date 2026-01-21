@@ -1,0 +1,35 @@
+{
+    "template": "SELECT /**select**/ FROM [student].[SelfGovernmentPosition] ST /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "ST.Id as code"
+        },
+        {
+            "column": "ST.Name as label"
+        }
+    ],
+        "params": [
+	{
+      "param": "@isValid",
+      "column": "ST.IsValid",
+      "operator": "=",
+      "value": 1,
+      "type": "int",
+      "logical_operator": "and",
+      "static": true
+    },
+	{
+      "param": "@validForStudent",
+      "column": "ST.ValidForStudent",
+      "operator": "=",
+      "value": 1,
+      "type": "int",
+      "logical_operator": "and",
+      "static": true
+    }
+    ],
+    "order": [
+
+    ],
+    "inSelects": []
+}

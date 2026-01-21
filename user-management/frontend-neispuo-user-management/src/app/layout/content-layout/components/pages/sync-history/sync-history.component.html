@@ -1,0 +1,11 @@
+<app-organization-history
+    *ngIf="entityType === SyncHistoryEntityEnum.INSTITUTION"
+    [institutionID]="entityId"
+></app-organization-history>
+
+<app-user-history
+    *ngIf="entityType === SyncHistoryEntityEnum.TEACHER || entityType === SyncHistoryEntityEnum.STUDENT"
+    [personID]="entityId"
+></app-user-history>
+
+<app-parent-history *ngIf="entityType === SyncHistoryEntityEnum.PARENT" [personID]="entityId"></app-parent-history>

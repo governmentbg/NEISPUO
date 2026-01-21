@@ -1,0 +1,24 @@
+{
+    "template": "SELECT /**select**/ FROM [noms].[FinancialSchoolType] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "FinancialSchoolTypeID as code"
+        },
+        {
+            "column": "Name as label"
+        },
+		{
+            "column": "IsValid as isValid"
+        }
+    ],
+    "params": [
+    
+    ],
+    "order": [
+        {
+            "column": "FinancialSchoolTypeID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

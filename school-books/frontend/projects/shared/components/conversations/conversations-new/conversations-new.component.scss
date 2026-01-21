@@ -1,0 +1,61 @@
+.conversations-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  height: 100vh;
+  gap: 1rem;
+  padding: 1rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+}
+
+.conversations-menu {
+  border-right: 1px solid #ccc;
+  overflow-y: auto;
+  padding-right: 1rem;
+
+  @media (max-width: 768px) {
+    border-right: none;
+    border-bottom: 1px solid #ccc;
+    padding-right: 0;
+    padding-bottom: 1rem;
+  }
+}
+
+.new-conversation-button {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.conversations-list {
+  overflow-y: auto;
+  max-height: calc(100vh - 4rem);
+
+  @media (max-width: 768px) {
+    max-height: none;
+  }
+}
+
+.conversation-details {
+  overflow-y: auto;
+  padding-left: 1rem;
+
+  @media (max-width: 768px) {
+    padding-left: 0;
+  }
+}
+
+.messages-list {
+  margin-top: 1rem;
+}
+
+.messages-list p {
+  margin: 0;
+}
+
+.messages-list small {
+  display: block;
+  color: #888;
+}

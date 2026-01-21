@@ -1,0 +1,365 @@
+{
+  "status": 1,
+  "data": [
+    {
+      "id": 755,
+      "staffPositionID": 755,
+      "fullName": "1 \u0414\u0438\u043B\u044F\u043D\u0430 \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434458
+    },
+    {
+      "id": 970,
+      "staffPositionID": 970,
+      "fullName": "1 \u041F\u0435\u0442\u044A\u0440 \u041F\u0435\u0442\u0440\u043E\u0432",
+      "personID": 1436324
+    },
+    {
+      "id": 761,
+      "staffPositionID": 761,
+      "fullName": "100 \u0410\u0441\u0435\u043D \u0418\u0432\u0430\u043D\u043E\u0432",
+      "personID": 1434841
+    },
+    {
+      "id": 971,
+      "staffPositionID": 971,
+      "fullName": "111\u0433 \u0413\u0430\u043D\u0447\u043E \u0413\u0430\u043D\u0447\u043E\u0432",
+      "personID": 1436328
+    },
+    {
+      "id": 668,
+      "staffPositionID": 668,
+      "fullName": "15 \u0418\u0432\u0430 \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434599
+    },
+    {
+      "id": 592,
+      "staffPositionID": 592,
+      "fullName": "17 \u0415\u043C\u0438\u043B \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434487
+    },
+    {
+      "id": 604,
+      "staffPositionID": 604,
+      "fullName": "18 \u0414\u0438\u0430\u043D\u0430 \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434503
+    },
+    {
+      "id": 965,
+      "staffPositionID": 965,
+      "fullName": "2 \u041F\u0435\u0442\u044A\u0440 \u041F\u0435\u0442\u0440\u043E\u0432",
+      "personID": 1436324
+    },
+    {
+      "id": 748,
+      "staffPositionID": 748,
+      "fullName": "21 \u0414\u0438\u043B\u044F\u043D\u0430 \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434458
+    },
+    {
+      "id": 584,
+      "staffPositionID": 584,
+      "fullName": "25 \u0412\u0440\u044A\u0431\u043A\u0430 \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434474
+    },
+    {
+      "id": 613,
+      "staffPositionID": 613,
+      "fullName": "26 \u0420\u0435\u043D\u0438 \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434521
+    },
+    {
+      "id": 753,
+      "staffPositionID": 753,
+      "fullName": "2\u0430 \u0418\u0432\u0430 \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434599
+    },
+    {
+      "id": 966,
+      "staffPositionID": 966,
+      "fullName": "3 \u0423\u0447\u0438\u0442\u0435\u043B    \u041F\u0435\u0442\u0440\u043E\u0432",
+      "personID": 1436319
+    },
+    {
+      "id": 619,
+      "staffPositionID": 619,
+      "fullName": "31 \u0414\u0438\u043B\u044F\u043D\u0430 \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434527
+    },
+    {
+      "id": 620,
+      "staffPositionID": 620,
+      "fullName": "32 \u0414\u0435\u0442\u0435\u043B\u0438\u043D\u0430 \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434528
+    },
+    {
+      "id": 969,
+      "staffPositionID": 969,
+      "fullName": "321 \u0414\u0438\u043B\u044F\u043D\u0430 \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434458
+    },
+    {
+      "id": 580,
+      "staffPositionID": 580,
+      "fullName": "34 \u041C\u0430\u043B\u0438\u043D\u0430 \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434469
+    },
+    {
+      "id": 605,
+      "staffPositionID": 605,
+      "fullName": "35 \u0411\u0438\u043B\u044F\u043D\u0430 \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434504
+    },
+    {
+      "id": 548,
+      "staffPositionID": 548,
+      "fullName": "35 \u041C\u0430\u044F \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434415
+    },
+    {
+      "id": 565,
+      "staffPositionID": 565,
+      "fullName": "36 \u0424\u0438\u043B\u0438\u043F\u043A\u0430 \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434439
+    },
+    {
+      "id": 618,
+      "staffPositionID": 618,
+      "fullName": "37 \u041A\u0440\u0430\u0441\u0438\u043C\u0438\u0440 \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434526
+    },
+    {
+      "id": 658,
+      "staffPositionID": 658,
+      "fullName": "37\u0430 \u041C\u0438\u043B\u0435\u043D\u0430 \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434587
+    },
+    {
+      "id": 638,
+      "staffPositionID": 638,
+      "fullName": "38 \u0412\u0430\u043B\u0435\u043D\u0442\u0438\u043D\u0430 \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434555
+    },
+    {
+      "id": 622,
+      "staffPositionID": 622,
+      "fullName": "39 \u0426\u0432\u0435\u0442\u0435\u043B\u0438\u043D\u0430 \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434534
+    },
+    {
+      "id": 562,
+      "staffPositionID": 562,
+      "fullName": "40 \u0414\u0430\u043D\u0438\u0435\u043B\u0430 \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434436
+    },
+    {
+      "id": 607,
+      "staffPositionID": 607,
+      "fullName": "41 \u0413\u0435\u0440\u0433\u0430\u043D\u0430 \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434510
+    },
+    {
+      "id": 681,
+      "staffPositionID": 681,
+      "fullName": "41\u0430 \u041D\u0438\u043A\u043E\u043B\u0435\u0442\u0430 \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434626
+    },
+    {
+      "id": 600,
+      "staffPositionID": 600,
+      "fullName": "42 \u0418\u0440\u0435\u043D\u0430 \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434497
+    },
+    {
+      "id": 642,
+      "staffPositionID": 642,
+      "fullName": "43 \u041C\u0430\u0440\u0438\u044F \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434559
+    },
+    {
+      "id": 633,
+      "staffPositionID": 633,
+      "fullName": "44 \u0422\u0440\u0430\u044F\u043D\u0430 \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434550
+    },
+    {
+      "id": 553,
+      "staffPositionID": 553,
+      "fullName": "45 \u0411\u043E\u0440\u044F\u043D\u0430 \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434421
+    },
+    {
+      "id": 644,
+      "staffPositionID": 644,
+      "fullName": "46 \u0411\u043B\u0430\u0433\u043E\u0432\u0435\u0441\u0442\u0430 \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434562
+    },
+    {
+      "id": 662,
+      "staffPositionID": 662,
+      "fullName": "47 \u0422\u0430\u043D\u044F \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434592
+    },
+    {
+      "id": 611,
+      "staffPositionID": 611,
+      "fullName": "48 \u0412\u0435\u0441\u0435\u043B\u043A\u0430 \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434516
+    },
+    {
+      "id": 610,
+      "staffPositionID": 610,
+      "fullName": "49 \u042F\u0432\u043E\u0440 \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434513
+    },
+    {
+      "id": 646,
+      "staffPositionID": 646,
+      "fullName": "50 \u0412\u0430\u0441\u0438\u043B \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434567
+    },
+    {
+      "id": 663,
+      "staffPositionID": 663,
+      "fullName": "51 \u041F\u0430\u0432\u043B\u0438\u043D\u0430 \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434593
+    },
+    {
+      "id": 552,
+      "staffPositionID": 552,
+      "fullName": "52 \u0420\u0443\u043C\u0435\u043D \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434419
+    },
+    {
+      "id": 665,
+      "staffPositionID": 665,
+      "fullName": "53 \u0417\u043E\u0440\u043D\u0438\u0446\u0430 \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434596
+    },
+    {
+      "id": 676,
+      "staffPositionID": 676,
+      "fullName": "53\u0430 \u0425\u0440\u0438\u0441\u0442\u0438\u044F\u043D\u0430 \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434614
+    },
+    {
+      "id": 680,
+      "staffPositionID": 680,
+      "fullName": "54\u0430 \u0418\u0432\u0430\u043B\u0438\u043D\u0430 \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434625
+    },
+    {
+      "id": 685,
+      "staffPositionID": 685,
+      "fullName": "55 \u041D\u0435\u0432\u0435\u043D\u0430 \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434633
+    },
+    {
+      "id": 647,
+      "staffPositionID": 647,
+      "fullName": "56 \u041D\u0430\u0442\u0430\u043B\u0438\u044F \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434568
+    },
+    {
+      "id": 682,
+      "staffPositionID": 682,
+      "fullName": "57 \u0414\u0435\u043D\u0438\u0446\u0430 \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434627
+    },
+    {
+      "id": 683,
+      "staffPositionID": 683,
+      "fullName": "58 \u041C\u0438\u043B\u0435\u043D\u0430 \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434630
+    },
+    {
+      "id": 677,
+      "staffPositionID": 677,
+      "fullName": "59\u0430 \u041A\u0430\u0442\u0435\u0440\u0438\u043D\u0430 \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434615
+    },
+    {
+      "id": 666,
+      "staffPositionID": 666,
+      "fullName": "60 \u0413\u0430\u0431\u0440\u0438\u0435\u043B\u0430 \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434597
+    },
+    {
+      "id": 678,
+      "staffPositionID": 678,
+      "fullName": "60\u0430 \u0418\u0432\u0430\u043B\u0438\u043D\u0430 \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434616
+    },
+    {
+      "id": 684,
+      "staffPositionID": 684,
+      "fullName": "60\u0431 \u041B\u044A\u0447\u0435\u0437\u0430\u0440 \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434632
+    },
+    {
+      "id": 609,
+      "staffPositionID": 609,
+      "fullName": "61 \u042E\u043B\u0438\u044F \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434512
+    },
+    {
+      "id": 569,
+      "staffPositionID": 569,
+      "fullName": "62 \u0412\u0438\u043B\u043C\u0430 \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434449
+    },
+    {
+      "id": 670,
+      "staffPositionID": 670,
+      "fullName": "63 \u0414\u0435\u043D\u0438\u0446\u0430 \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434603
+    },
+    {
+      "id": 624,
+      "staffPositionID": 624,
+      "fullName": "64 \u0412\u0435\u043B\u0438\u043A\u0430 \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434536
+    },
+    {
+      "id": 630,
+      "staffPositionID": 630,
+      "fullName": "65 \u0426\u0432\u0435\u0442\u043E\u043C\u0438\u043B\u0430 \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434548
+    },
+    {
+      "id": 656,
+      "staffPositionID": 656,
+      "fullName": "66 \u0413\u0435\u0440\u0433\u0430\u043D\u0430 \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434583
+    },
+    {
+      "id": 542,
+      "staffPositionID": 542,
+      "fullName": "67 \u0422\u0435\u043C\u0435\u043D\u0443\u0436\u043A\u0430 \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434404
+    },
+    {
+      "id": 573,
+      "staffPositionID": 573,
+      "fullName": "68 \u0426\u0432\u0435\u0442\u0430\u043D\u043A\u0430 \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434455
+    },
+    {
+      "id": 626,
+      "staffPositionID": 626,
+      "fullName": "69 \u0412\u0438\u043E\u043B\u0435\u0442\u0430 \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434540
+    },
+    {
+      "id": 631,
+      "staffPositionID": 631,
+      "fullName": "89 \u0426\u0432\u0435\u0442\u043E\u043C\u0438\u043B\u0430 \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434548
+    },
+    {
+      "id": 575,
+      "staffPositionID": 575,
+      "fullName": "9 \u0414\u0438\u043B\u044F\u043D\u0430 \u0441\u043B\u0443\u0436\u0438\u0442\u0435\u043B",
+      "personID": 1434458
+    }
+  ]
+}

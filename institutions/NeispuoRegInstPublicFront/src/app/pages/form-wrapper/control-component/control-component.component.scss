@@ -1,0 +1,33 @@
+.container-control {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    border-bottom: 1px solid #002966 !important;
+    padding-bottom: 15px;
+    align-items: center;
+    box-sizing: border-box;
+    justify-content: flex-end;
+    .back-container{
+        display: flex;
+        flex-grow: 100;
+        justify-content: flex-start;
+        padding-left: 10px;
+    }
+    .btn-history {
+        &.active {
+            background-color: #243042 !important;
+            color: white;
+        }
+        &:hover {
+            background-color: #2f73da;
+            color: white;
+        }
+        margin-right: 10px;
+        background-color: #80808061;
+        transition: 0.1s all;
+        border: 1px solid #00000036;
+        mat-icon {
+            margin-right: 5px;
+        }
+    }
+}

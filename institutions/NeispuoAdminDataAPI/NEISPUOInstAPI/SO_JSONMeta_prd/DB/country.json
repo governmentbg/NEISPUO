@@ -1,0 +1,20 @@
+{
+    "template": "SELECT /**select**/ FROM [location].[Country] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "CountryID as code"
+        },
+        {
+            "column": "Name as label"
+        }
+    ],
+    "params": [
+    ],
+    "order": [
+        {
+            "column": "CountryID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

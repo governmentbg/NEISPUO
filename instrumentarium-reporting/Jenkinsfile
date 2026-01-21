@@ -1,0 +1,161 @@
+def reporitngFrontendImage
+def reporitngBackendImage
+def reporitngCubeJSImage
+def reporitngSyncImage
+
+def reporitngFrontendImageNameTag
+def reporitngBackendImageNameTag
+def reporitngCubeJSImageNameTag
+def reporitngSyncImageNameTag
+
+def reporitngFrontendImageLatestTag
+def reporitngBackendImageLatestTag
+def reporitngCubeJSImageLatestTag
+def reporitngSyncImageLatestTag
+
+def tag
+def branchName
+def buildLatest = true
+
+def credentialsId = "${env.GIT_CREDENTIALS_ID}"
+def azurePatId = "${env.AZURE_PAT_ID}"
+
+def adoRegistry = "${env.ADO_REGISTRY_NAME}/${env.ADO_REGISTRY_PROJECT_NAME}"
+def adoRegistryCredentials = env.ADO_REGISTRY_CREDENTIALS
+
+def decodeBase64(String encoded) {
+    return sh(script: "echo '${encoded}' | base64 -d", returnStdout: true).trim()
+}
+
+pipeline {
+    agent { node { label 'mon-neispuo-image-builder' } }
+    stages {
+        stage('Run semantic-release') {
+            steps {
+                script {
+                    branchName = "${env.GIT_BRANCH}".tokenize('/').last()
+                    buildName "#${env.BUILD_NUMBER} ${branchName} TBD"
+                    def lastCommitMessage = sh(script: "git log -1 | grep '.*\\[skip ci\\].*'", returnStatus: true)
+                    // if (lastCommitMessage == 0) {
+                    //     env.CI_SKIP = 'true'
+                    //     error "'[ci skip]' found in git commit message. Aborting."
+                    // }
+                    def currentBranch = sh(script: "git rev-parse --abbrev-ref HEAD", returnStdout: true).trim()
+                    if (currentBranch == env.BRANCH_NAME) {
+                        sh('git tag -l | xargs git tag -d')
+                        withCredentials([
+                            gitUsernamePassword(credentialsId: "${credentialsId}",
+                                gitToolName: 'git-tool'),
+                            string(credentialsId: azurePatId, variable: 'AZURE_PAT_ENCODED')
+                        ]) {
+                            env.AZURE_PAT_DECODED = decodeBase64(env.AZURE_PAT_ENCODED)
+                            sh('git fetch -t')
+                            nvm('v16.13.0') {
+                                sh "npm=\$(which npm)"
+                                sh 'npm install'
+                                sh 'npm run release'
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        stage('Preset environment details details') {
+            steps {
+                script {
+                    branchName = "${env.GIT_BRANCH}".tokenize('/').last()
+                    if (branchName == 'staging') {
+                        tag = sh(returnStdout: true, script: "git tag --sort version:refname | cat | awk '/next/' | tail -1").trim()
+                    } else if (branchName == 'main') {
+                        buildLatest = false
+                        tag = sh(returnStdout: true, script: "git tag --sort version:refname | cat | awk '!/next/' | tail -1").trim()
+                    } else {
+                        scmSkip(deleteBuild: true)
+                    }
+                    reporitngFrontendImageNameTag = "${adoRegistry}/${env.REPORTING_FRONTEND_IMAGE_NAME}:${tag}"
+                    reporitngBackendImageNameTag = "${adoRegistry}/${env.REPORTING_BACKEND_IMAGE_NAME}:${tag}"
+                    reporitngCubeJSImageNameTag = "${adoRegistry}/${env.REPORTING_CUBEJS_IMAGE_NAME}:${tag}"
+                    reporitngSyncImageNameTag = "${adoRegistry}/${env.REPORTING_SYNC_IMAGE_NAME}:${tag}"
+                    if (buildLatest) {
+                        reporitngFrontendImageLatestTag = "${adoRegistry}/${env.REPORTING_FRONTEND_IMAGE_NAME}:latest"
+                        reporitngBackendImageLatestTag = "${adoRegistry}/${env.REPORTING_BACKEND_IMAGE_NAME}:latest"
+                        reporitngCubeJSImageLatestTag = "${adoRegistry}/${env.REPORTING_CUBEJS_IMAGE_NAME}:latest"
+                        reporitngSyncImageLatestTag = "${adoRegistry}/${env.REPORTING_SYNC_IMAGE_NAME}:latest"
+                    }
+                    // https://plugins.jenkins.io/build-name-setter/
+                    buildName "#${env.BUILD_NUMBER} ${branchName} ${tag}"
+                }
+            }
+        }
+
+        stage('Build and tag images') {
+            steps {
+                withCredentials([string(credentialsId: azurePatId, variable: 'AZURE_PAT')]) {
+                    dir ("${env.WORKSPACE}/${env.REPORTING_FRONTEND_PROJECT_PATH}") {
+                        script {
+                            sh "echo 'registry=https://registry.npmjs.org/' > .npmrc"
+                            sh "echo '@${env.AZURE_SCOPE}:registry=https://pkgs.dev.azure.com/${env.AZURE_ORG}/${env.AZURE_PROJECT}/_packaging/${env.AZURE_FEED}/npm/registry/' >> .npmrc"
+                            sh "echo 'always-auth=true' >> .npmrc"
+                            sh "echo '//pkgs.dev.azure.com/${env.AZURE_ORG}/${env.AZURE_PROJECT}/_packaging/${env.AZURE_FEED}/npm/registry/:username=VssSessionToken' >> .npmrc"
+                            sh "echo '//pkgs.dev.azure.com/${env.AZURE_ORG}/${env.AZURE_PROJECT}/_packaging/${env.AZURE_FEED}/npm/registry/:_password=${AZURE_PAT}' >> .npmrc"
+                            sh "echo '//pkgs.dev.azure.com/${env.AZURE_ORG}/${env.AZURE_PROJECT}/_packaging/${env.AZURE_FEED}/npm/registry/:email=not-used@example.com' >> .npmrc"
+
+                            reporitngFrontendImage = docker.build("${reporitngFrontendImageNameTag}", ". --no-cache -f ${env.WORKSPACE}/${env.REPORTING_FRONTEND_PROJECT_PATH}/Dockerfile")
+                        }
+                    }
+                    dir ("${env.WORKSPACE}/${env.REPORTING_BACKEND_PROJECT_PATH}") {
+                            script {
+                                reporitngBackendImage = docker.build("${reporitngBackendImageNameTag}", ". --no-cache -f ${env.WORKSPACE}/${env.REPORTING_BACKEND_PROJECT_PATH}/Dockerfile")
+                            }
+                    }
+                    dir ("${env.WORKSPACE}/${env.REPORTING_CUBEJS_PROJECT_PATH}") {
+                            script {
+                                reporitngCubeJSImage = docker.build("${reporitngCubeJSImageNameTag}", ". --no-cache -f ${env.WORKSPACE}/${env.REPORTING_CUBEJS_PROJECT_PATH}/Dockerfile")
+                            }
+                    }
+                    dir ("${env.WORKSPACE}/${env.REPORTING_SYNC_PROJECT_PATH}") {
+                            script {
+                                reporitngSyncImage = docker.build("${reporitngSyncImageNameTag}", ". --no-cache -f ${env.WORKSPACE}/${env.REPORTING_SYNC_PROJECT_PATH}/Dockerfile")
+                            }
+                    }
+                }
+            }
+        }
+        stage('Push images to Azure DevOps registry') {
+            steps {
+                script {
+                    docker.withRegistry("https://${adoRegistry}", "${adoRegistryCredentials}") {
+                        reporitngFrontendImage.push(tag)
+                        reporitngBackendImage.push(tag)
+                        reporitngCubeJSImage.push(tag)
+                        reporitngSyncImage.push(tag)
+                        if (buildLatest) {
+                            reporitngFrontendImage.push('latest')
+                            reporitngBackendImage.push('latest')
+                            reporitngCubeJSImage.push('latest')
+                            reporitngSyncImage.push('latest')
+                        }
+                    }
+                }
+            }
+        }
+        stage('Clean up images') {
+            steps {
+                sh "docker rmi ${reporitngFrontendImageNameTag} -f"
+                sh "docker rmi ${reporitngBackendImageNameTag} -f"
+                sh "docker rmi ${reporitngCubeJSImageNameTag} -f"
+                sh "docker rmi ${reporitngSyncImageNameTag} -f"
+                script {
+                    if (buildLatest) {
+                        sh "docker rmi ${reporitngFrontendImageLatestTag} -f"
+                        sh "docker rmi ${reporitngBackendImageLatestTag} -f"
+                        sh "docker rmi ${reporitngCubeJSImageLatestTag} -f"
+                        sh "docker rmi ${reporitngSyncImageLatestTag} -f"
+                    }
+                }
+
+                sh 'docker system prune -f'
+            }
+        }
+    }
+}

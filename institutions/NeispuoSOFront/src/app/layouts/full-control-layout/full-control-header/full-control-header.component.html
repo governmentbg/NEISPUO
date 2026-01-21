@@ -1,0 +1,18 @@
+<mat-toolbar>
+  <div class="flex flex-row items-center justify-start">
+    <img routerLink="/home" class="mon-logo" src="assets/images/mon-logo.png" alt="" />
+    <h3 class="mon-title">НЕИСПУО</h3>
+  </div>
+  <div class="container-menu-main-tab">
+    <div class="main-container">
+      <app-main-tab></app-main-tab>
+    </div>
+  </div>
+  <div class="right-container">
+    <!-- <div class="container-help">
+      <span>За въпроси, моля да използвате <a target="_blank" href="https://helpdesk-neispuo.mon.bg">системата за поддръжка</a></span>
+    </div> -->
+    <app-dashboard-menu></app-dashboard-menu>
+    <app-menu-profile></app-menu-profile>
+  </div>
+</mat-toolbar>

@@ -1,0 +1,41 @@
+<app-help *ngIf="subsection.help" [helpText]="subsection.help"></app-help>
+<div class="l-focused-element l-subsection-focused" [ngClass]="{'display-none-element' : !subsection.labelOnly , 'focused': updateJsonService.focusedElement.index === subsection.idntfr}" (click)="focus(subsection)">
+  <span class="l-custom-info-span">{{subsection.labelOnly ? 'текст' : 'подсекция'}}</span>
+  <ng-container *ngIf="!subsection.labelOnly">
+    <div *ngIf="subsection.canDuplicate === undefined || subsection.canDuplicate === null" class="subsection-container" [ngClass]="{'no-label-section': !subsection.label, 'label-section-not-duplicate': subsection.label, 'custom-accordion': subsection.accordion}">
+      <span *ngIf="subsection.label" class="section-label">{{ subsection.pseudoLabel }}
+      </span>
+      <ng-container>
+        <ng-container *ngFor="let field of subsection.fields">
+          <ng-container *ngIf="!field.hidden && field.rendered !== false" dynamicFieldAdmin [field]="field"></ng-container>
+        </ng-container>
+        <ng-container *ngFor="let subsubsection of subsection.subsections">
+          <div class="wrapper-body one" *ngIf="!subsubsection.hidden && subsubsection.rendered !== false" [ngClass]="{'custom-accordion': subsubsection.accordion}">
+            <app-subsection-admin [ngClass]="{'custom-accordion': subsubsection.accordion}" [subsection]="subsubsection" [section]="section"></app-subsection-admin>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
+    <div *ngIf="subsection.canDuplicate !== undefined && subsection.canDuplicate !== null" class="subsection-container duplicate-subsection-container" [ngClass]="{'no-label-section': !subsection.label, 'custom-accordion': subsection.accordion}">
+      <span *ngIf="subsection.label" class="sub-subsection-label">{{ subsection.pseudoLabel }}
+      </span>
+      <button mat-raised-button class="add-btn-section both" *ngIf="subsection.canDuplicate" type="button" matTooltip="добави секция">
+        <mat-icon>add</mat-icon>
+      </button>
+      <button mat-raised-button class="delete-btn-section" color="warn" *ngIf="subsection.canDuplicate" type="button" matTooltip="изтрий секция">
+        <mat-icon>remove</mat-icon>
+      </button>
+      <ng-container>
+        <ng-container *ngFor="let field of subsection.fields; index as k; trackBy: trackByName">
+          <ng-container *ngIf="!field.hidden && field.rendered !== false" dynamicFieldAdmin [field]="field"></ng-container>
+        </ng-container>
+        <ng-container *ngFor="let subsubsection of subsection.subsections">
+          <div class="wrapper-body one" *ngIf="!subsubsection.hidden && subsubsection.rendered !== false" [ngClass]="{'custom-accordion': subsubsection.accordion}">
+            <app-subsection-admin [ngClass]="{'custom-accordion': subsubsection.accordion}" [subsection]="subsubsection" [section]="section"></app-subsection-admin>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
+  </ng-container>
+  <span *ngIf="subsection.labelOnly" class="subsection-span-card">{{ subsection.pseudoLabel }}<app-info-tooltip *ngIf="subsection.info" [info]="subsection.info"></app-info-tooltip></span>
+</div>

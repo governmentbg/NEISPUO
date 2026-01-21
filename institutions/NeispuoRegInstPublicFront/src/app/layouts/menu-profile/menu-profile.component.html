@@ -1,0 +1,16 @@
+<button type="button" mat-icon-button class="btn-menu-profile" #menuTrigger="matMenuTrigger" [matMenuTriggerFor]="menu">
+    <span>LK</span>
+</button>
+<mat-menu #menu="matMenu" class="profile-menu-container">
+  <div class="container-profile">
+    <span class="like-btn-item">LK</span>
+    <div class="name-container">
+      <span class="name-span">Lyubomir Kolev</span>
+      <span class="mail-span">lkolev@2i-digitals.com</span>
+    </div>
+  </div>
+  <div class="btn-container">
+    <button class="mat-primary" mat-raised-button color="primary">Моят профил</button>
+    <button class="sign-out-btn" (click)="logout()">Изход</button>
+  </div>
+</mat-menu>

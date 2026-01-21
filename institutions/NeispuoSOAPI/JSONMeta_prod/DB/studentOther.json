@@ -1,0 +1,55 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_year].[ClassStudentList] CL /**where**/ /**orderby**/",
+  "columns": [
+    {
+      "column": "CL.ID AS id"
+    },
+    {
+      "column": "CL.PersonID AS personid"
+    },
+    {
+      "column": "CL.PersonID AS personidEdit"
+    },
+    {
+      "column": "CL.EnrollmentDate AS enrollmentDate"
+    },
+    {
+      "column": "CL.DischargeDate AS dischargeDate"
+    }
+  ],
+  "params": [
+    {
+      "param": "@instid",
+      "column": "CL.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+    {
+      "param": "@bClassID",
+      "column": "CL.BasicClassID",
+      "operator": "=",
+      "value": "bClassID",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+    {
+      "param": "@studentid",
+      "column": "CL.ID",
+      "operator": "=",
+      "value": "studentid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+  ],
+  "order": [
+
+  ],
+  "inSelects": [
+
+  ]
+}

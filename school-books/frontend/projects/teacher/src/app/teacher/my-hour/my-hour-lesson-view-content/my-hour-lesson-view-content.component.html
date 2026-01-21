@@ -1,0 +1,314 @@
+<sb-banner
+  *ngIf="!data.classBookInfo.schoolYearIsFinalized && data.classBookInfo.isFinalized"
+  class="mb-2.5"
+  type="warning"
+>
+  Дневникът е приключен
+  <ng-container *ngIf="!data.classBookInfo.hasCBExtProvider">
+    и потребителският интерфейс е в режим само за преглед
+  </ng-container>
+</sb-banner>
+
+<sb-banner *ngIf="bookLockedMessage" class="mb-2.5" type="warning">
+  {{ bookLockedMessage }}
+</sb-banner>
+
+<sb-placeholder-field *ngIf="isTaken" label="Тема" class="block mb-[-11.5px]">
+  <ng-container placeholder-content>
+    <span *ngIf="data.teacherLesson.topicTitles.length === 1" class="whitespace-pre-line inline-block mr-6">
+      {{ data.teacherLesson.topicTitles[0] }}
+    </span>
+
+    <ul *ngIf="data.teacherLesson.topicTitles.length > 1" class="list-disc list-inside mr-6">
+      <li *ngFor="let title of data.teacherLesson.topicTitles" class="whitespace-pre-line">
+        {{ title }}
+      </li>
+    </ul>
+
+    <button
+      *ngIf="
+        templateData.topicCanRemove || (templateData.topicCanUndo && (templateData.topicUndoExpired$ | async) === false)
+      "
+      (click)="removeTopic()"
+      [disabled]="removingTopic"
+      type="button"
+      aria-label="Премахни темата"
+      class="absolute top-0 right-0"
+    >
+      <fa-icon [icon]="removingTopic ? fadSpinnerThird : fadTrashAlt" [spin]="removingTopic" size="lg"></fa-icon>
+    </button>
+  </ng-container>
+</sb-placeholder-field>
+
+<sb-banner *ngIf="!isTaken" type="info" class="mb-2.5">
+  Няма въведена тема. Часът се счита за взет след въвеждане на тема.
+</sb-banner>
+
+<sb-banner type="info" *ngIf="data.teacherLesson.individualCurriculumPersonId != null">
+  Избрали сте занятие за ученик с ИУП
+</sb-banner>
+
+<a *ngIf="canCreate && !isTaken" class="mb-2.5 mr-3" [routerLink]="['./add-topic']" mat-raised-button color="primary">
+  <fa-layers class="fa-lg top-1 -left-1">
+    <fa-icon [icon]="fadCommentDots"></fa-icon>
+    <fa-icon [icon]="fasPlus" transform="shrink-4 right-6 down-6"></fa-icon>
+  </fa-layers>
+  <span class="hidden sm:inline">Въведи тема</span>
+  <span class="sm:hidden">Тема</span>
+</a>
+
+<sb-banner type="warning" *ngIf="!templateData.students.length">
+  Паралелката няма въведени ученици, които да изучават този предмет от учебния план.
+</sb-banner>
+
+<ng-container *ngIf="templateData.students.length">
+  <a *ngIf="canCreate && !isPg" class="mb-2.5 mr-3" [routerLink]="['./add-absences']" mat-raised-button color="primary">
+    <fa-icon [icon]="fadCalendarTimes" size="lg"></fa-icon>
+    <span class="hidden sm:inline">Въведи {{ !isDplr ? 'отсъствия' : 'присъствия/отсъствия' }}</span>
+    <span class="sm:hidden">{{ !isDplr ? 'Отсъствия' : 'Присъствия/Отсъствия' }}</span>
+  </a>
+
+  <a
+    *ngIf="canCreate && bookTypeAllowsGrades"
+    class="mb-2.5"
+    [routerLink]="['./add-grades']"
+    mat-raised-button
+    color="primary"
+  >
+    <fa-icon [icon]="fadPencilAlt" size="lg"></fa-icon>
+    <span class="hidden sm:inline">Въведи оценки</span>
+    <span class="sm:hidden">Оценки</span>
+  </a>
+
+  <div *ngIf="!isPg" class="sb-table-container mt-2.5 md:mt-0">
+    <table
+      class="sb-table table-grades"
+      [attr.aria-label]="
+        bookTypeAllowsGrades
+          ? 'Оценки и отсъствия на учениците'
+          : !isDplr
+          ? 'Отсъствия на учениците'
+          : 'Присъствия/отсъствия на учениците'
+      "
+    >
+      <thead>
+        <tr>
+          <th>Ученик</th>
+          <th>{{ !isDplr ? 'Отсъствие' : 'Присъствие/Отсъствие' }}</th>
+          <th *ngIf="bookTypeAllowsGrades">Оценки</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let student of templateData.students">
+        <tr>
+          <td scope="row">
+            {{ student.classNumber != null ? student.classNumber.toString() + '.' : '' }}
+
+            {{ student.firstName }}
+            {{ student.middleName }}
+            {{ student.lastName }}
+
+            <span *ngIf="student.abnormalStatus" class="sb-badge">
+              {{ student.abnormalStatus }}
+            </span>
+          </td>
+          <td>
+            <button
+              *ngIf="student.absence"
+              class="sb-pill text-white tracking-wider"
+              [class.selected-absence]="student.absence.absenceId === selectedAbsenceId"
+              [ngClass]="{
+                'bg-yellow-500 border-yellow-700': student.absence.type === ABSENCE_TYPE_LATE,
+                'bg-red-500 border-red-700':
+                  student.absence.type === ABSENCE_TYPE_UNEXCUSED || student.absence.type === ABSENCE_TYPE_DPLR_ABSENCE,
+                'bg-green-500 border-green-700':
+                  student.absence.type === ABSENCE_TYPE_EXCUSED || student.absence.type === ABSENCE_TYPE_DPLR_ATTENDANCE
+              }"
+              (click)="selectStudentAbsence(student.personId, student.absence.absenceId)"
+            >
+              <span *ngIf="student.absence.type === ABSENCE_TYPE_LATE">Закъснение</span>
+              <span *ngIf="student.absence.type === ABSENCE_TYPE_UNEXCUSED">Неуважително</span>
+              <span *ngIf="student.absence.type === ABSENCE_TYPE_EXCUSED">Уважително</span>
+              <span *ngIf="student.absence.type === ABSENCE_TYPE_DPLR_ABSENCE">Отсъствие</span>
+              <span *ngIf="student.absence.type === ABSENCE_TYPE_DPLR_ATTENDANCE">Присъствие</span>
+            </button>
+          </td>
+          <td *ngIf="bookTypeAllowsGrades">
+            <sb-grade-link
+              *ngFor="let grade of student.grades"
+              class="mr-2"
+              [grade]="grade"
+              [isSelected]="grade.gradeId === selectedGradeId"
+              (click)="selectStudentGrade(student.personId, grade.gradeId)"
+            ></sb-grade-link>
+          </td>
+        </tr>
+        <tr *ngIf="selectedAbsenceStudentPersonId === student.personId && selectedAbsence">
+          <td colspan="3" class="relative bg-yellow-50">
+            <div class="sm:flex">
+              <div class="sm:grow">
+                <div class="text-sm whitespace-nowrap">
+                  <fa-icon [icon]="farCalendarTimes"></fa-icon>
+                  <span class="font-bold">{{ selectedAbsence.typeName }}</span>
+                </div>
+                <div *ngIf="selectedAbsence.excusedReasonId" class="text-xs italic">
+                  Причини:
+                  <span class="font-bold">{{ selectedAbsence.excusedReasonName }}</span>
+                </div>
+                <div *ngIf="selectedAbsence.excusedReasonComment" class="text-xs italic">
+                  Коментар:
+                  <ng-container *ngIf="selectedAbsence.excusedReasonComment.indexOf('\n') !== -1"><br /></ng-container>
+                  <span class="font-bold whitespace-pre-line">{{ selectedAbsence.excusedReasonComment }}</span>
+                </div>
+
+                <div class="text-xs italic">
+                  <span class="inline sm:hidden">Създ. от</span>
+                  <span class="hidden sm:inline">Създадено от</span>
+                  <span class="font-bold">
+                    {{ selectedAbsence.createdBySysUserFirstName }} {{ selectedAbsence.createdBySysUserLastName }}
+                  </span>
+                  на
+                  <span class="font-bold">{{ selectedAbsence.createDate | sbDateTime }}</span>
+                </div>
+
+                <div
+                  *ngIf="selectedAbsence.createDate.getTime() !== selectedAbsence.modifyDate.getTime()"
+                  class="text-xs italic"
+                >
+                  <span class="inline sm:hidden">Пром. от</span>
+                  <span class="hidden sm:inline">Последна промяна от</span>
+
+                  <span class="font-bold">
+                    {{ selectedAbsence.modifiedBySysUserFirstName }} {{ selectedAbsence.modifiedBySysUserLastName }}
+                  </span>
+                  на
+                  <span class="font-bold">{{ selectedAbsence.modifyDate | sbDateTime }}</span>
+                </div>
+              </div>
+
+              <div class="sm:shrink-0">
+                <button
+                  *ngIf="selectedAbsence.canConvert && (selectedAbsenceUndoExpired$ | async) === false"
+                  class="mt-2 sm:mt-0 mr-2 convert-late-button"
+                  mat-raised-button
+                  type="button"
+                  (click)="convertToLateAbsence(selectedAbsence.absenceId)"
+                  [disabled]="convertingAbsence"
+                >
+                  <fa-icon *ngIf="convertingAbsence" [icon]="fasSpinnerThird" [spin]="true" size="lg"></fa-icon>
+                  <span *ngIf="!convertingAbsence">&nbsp;½&nbsp;</span>
+                  <span>Закъснение</span>
+                </button>
+
+                <button
+                  *ngIf="selectedAbsence.canExcuse"
+                  class="mt-2 sm:mt-0 mr-2"
+                  mat-raised-button
+                  color="accent"
+                  type="button"
+                  (click)="openExcuseAbsenceDialog(selectedAbsence.absenceId)"
+                  [disabled]="excusingAbsence"
+                >
+                  <fa-icon
+                    [icon]="excusingAbsence ? fasSpinnerThird : farCircle"
+                    [spin]="excusingAbsence"
+                    size="lg"
+                  ></fa-icon>
+                  <span>Уважи</span>
+                </button>
+
+                <button
+                  class="mt-2 sm:mt-0"
+                  *ngIf="
+                    selectedAbsence.canRemove ||
+                    (selectedAbsence.canUndo && (selectedAbsenceUndoExpired$ | async) === false)
+                  "
+                  mat-raised-button
+                  color="warn"
+                  type="button"
+                  (click)="removeAbsence(selectedAbsence.absenceId)"
+                  [disabled]="removingAbsence"
+                >
+                  <fa-icon
+                    [icon]="removingAbsence ? fasSpinnerThird : fasTrashAlt"
+                    [spin]="removingAbsence"
+                    size="lg"
+                  ></fa-icon>
+                  <span>Премахни</span>
+                </button>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr *ngIf="selectedGradeStudentPersonId === student.personId">
+          <td colspan="3" class="relative bg-yellow-50" [class.h-16]="loadingGrade">
+            <mat-spinner
+              *ngIf="loadingGrade"
+              [diameter]="40"
+              class="absolute top-1/2 left-1/2 -mt-5 -ml-5"
+            ></mat-spinner>
+            <div *ngIf="!loadingGrade && selectedGrade" class="sm:flex">
+              <div class="sm:grow">
+                <div class="text-sm whitespace-nowrap">
+                  <fa-icon [icon]="fasPencilAlt"></fa-icon>
+                  Оценка
+                  <span [ngSwitch]="selectedGrade.category" class="font-bold">
+                    <span *ngSwitchCase="GRADE_CATEGORY_DECIMAL">
+                      "{{ selectedGrade.decimalGrade | sbDecimalGradeName }} ({{
+                        selectedGrade.decimalGrade | sbDecimalGradeNumber
+                      }})"
+                    </span>
+                    <span *ngSwitchCase="GRADE_CATEGORY_QUALITATIVE">
+                      "{{ selectedGrade.qualitativeGrade | sbQualitativeGradeName }}"
+                    </span>
+                    <span *ngSwitchCase="GRADE_CATEGORY_SPECIAL_NEEDS">
+                      "{{ selectedGrade.specialGrade | sbSpecialGradeName }}"
+                    </span>
+                  </span>
+                </div>
+                <div class="text-xs italic">
+                  Вид:
+                  <span class="font-bold">{{ selectedGrade.type | sbGradeTypeName }}</span>
+                </div>
+                <div class="text-xs italic">
+                  <span class="inline sm:hidden">Създ. от</span>
+                  <span class="hidden sm:inline">Създадено от</span>
+                  <span class="font-bold">
+                    {{ selectedGrade.createdBySysUserFirstName }} {{ selectedGrade.createdBySysUserLastName }}
+                  </span>
+                  на
+                  <span class="font-bold">{{ selectedGrade.createDate | sbDateTime }}</span>
+                </div>
+                <div *ngIf="selectedGrade.comment" class="text-xs italic">
+                  Коментар:
+                  <ng-container *ngIf="selectedGrade.comment.indexOf('\n') !== -1"><br /></ng-container>
+                  <span class="font-bold whitespace-pre-line">{{ selectedGrade.comment }}</span>
+                </div>
+              </div>
+
+              <div>
+                <button
+                  *ngIf="
+                    selectedGrade.canRemove || (selectedGrade.canUndo && (selectedGradeUndoExpired$ | async) === false)
+                  "
+                  mat-raised-button
+                  class="mt-2 sm:mt-0"
+                  color="warn"
+                  type="button"
+                  (click)="removeSelectedGrade()"
+                  [disabled]="removingGrade"
+                >
+                  <fa-icon
+                    [icon]="removingGrade ? fasSpinnerThird : fasTrashAlt"
+                    [spin]="removingGrade"
+                    size="lg"
+                  ></fa-icon>
+                  <span>Премахни</span>
+                </button>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ng-container>

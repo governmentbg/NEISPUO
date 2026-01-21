@@ -1,0 +1,120 @@
+.downloads-table {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.downloads-header,
+.downloads-row {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+.downloads-header {
+  font-weight: bold;
+  font-size: 0.95em;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+.downloads-row {
+  border-bottom: 1px solid #f3f4f6;
+  padding: 0.25rem 0;
+  font-size: 0.95em;
+  word-break: break-all;
+}
+.downloads-col {
+  flex: 1 1 0;
+  min-width: 0;
+  padding-right: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+.downloads-col.filename {
+  flex: 2 1 0;
+  min-width: 80px;
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.downloads-col.status {
+  flex: 1 1 0;
+  min-width: 60px;
+}
+.downloads-col.action {
+  flex: 0 0 36px;
+  justify-content: flex-end;
+}
+@media (max-width: 480px) {
+  .downloads-header,
+  .downloads-row {
+    font-size: 0.85em;
+  }
+  .downloads-col.filename {
+    max-width: 90px;
+  }
+}
+.downloads-btn {
+  background: var(--bg-color-blue-500);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.2s;
+  outline: none;
+}
+.downloads-btn:hover,
+.downloads-btn:focus {
+  background: var(--bg-color-blue-900);
+}
+.downloads-btn .pi {
+  font-size: 1.25rem;
+  vertical-align: middle;
+}
+.downloads-nav {
+  position: relative;
+  display: inline-block;
+  flex-shrink: 0;
+  flex-grow: 1;
+}
+.downloads-list {
+  position: absolute;
+  right: 0;
+  top: 2.5rem;
+  background: #fff;
+  border: 1px solid #ccc;
+  min-width: 450px;
+  max-width: 600px;
+  width: 260px;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 0.75rem;
+  white-space: normal;
+}
+.download-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+.status {
+  margin-left: 0.5rem;
+}
+.badge {
+  background: (--bg-color-blue-100);
+  border-color: #fff;
+  border-style: solid;
+  color: #fff;
+  border-radius: 50%;
+  padding: 0.2em 0.5em;
+  font-size: 0.5em;
+  position: absolute;
+  top: -8px;
+  right: -8px;
+}

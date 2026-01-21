@@ -1,0 +1,75 @@
+@import '@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/variables/variables';
+@import '@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/mixins';
+
+.navbar.second-nav {
+  display: flex;
+  background-color: $white;
+  position: fixed;
+  top: var(--second-nav-top);
+  padding: 0;
+  width: 100%;
+  z-index: 1020;
+  box-shadow: 2px 1px 10px #6a73811f;
+  transition: top 0.3s ease;
+  
+  .navbar-content {
+    height: inherit;
+    width: 100%;
+    button {
+      height: 100%;
+      border-radius: 0;
+      border-bottom: 1px solid $gray-100;
+      border-right: none;
+      &:focus {
+        box-shadow: none;
+      }
+      span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        i {
+          font-size: 2rem;
+          margin-left: 0.5rem;
+        }
+      }
+    }
+    .nav-tabs {
+      border-color: transparent;
+    }
+    .nav-link {
+      padding: 1.25rem;
+      &.active {
+        color: $blue;
+      }
+    }
+    .navbar-collapse {
+      background: $white;
+      .nav-tabs {
+        width: 100%;
+      }
+      &.show {
+        border-bottom: 1px solid $gray-100;
+        box-shadow: 2px 1px 10px #6a73811f;
+      }
+    }
+  }
+  .navbar-mobile {
+    display: none;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 0.25rem;
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .navbar.second-nav {
+    height: 64px;
+    .nav-link.active {
+      border-bottom: 0;
+    }
+    .navbar-mobile {
+      display: flex;
+    }
+  }
+}

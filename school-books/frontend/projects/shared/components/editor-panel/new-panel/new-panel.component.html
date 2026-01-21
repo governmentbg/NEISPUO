@@ -1,0 +1,22 @@
+<button mat-raised-button color="primary" type="submit" [disabled]="saveBtnDisabled">
+  <fa-icon [icon]="saveBtnDisabled ? fasSpinnerThird : fasCheck" [spin]="saveBtnDisabled" size="lg"></fa-icon>
+  <span class="hidden sm:inline">Запази</span>
+</button>
+<a
+  mat-raised-button
+  class="ml-2"
+  [disabled]="backBtnDisabled"
+  [ngClass]="{ hidden: backBtnHidden }"
+  [routerLink]="backBtnRouteCommands"
+  [relativeTo]="backBtnRouteExtras ? backBtnRouteExtras.relativeTo : undefined"
+  [queryParams]="backBtnRouteExtras?.queryParams"
+  [fragment]="backBtnRouteExtras?.fragment"
+  [queryParamsHandling]="backBtnRouteExtras?.queryParamsHandling"
+  [preserveFragment]="backBtnRouteExtras?.preserveFragment || false"
+  [skipLocationChange]="backBtnRouteExtras?.skipLocationChange || false"
+  [replaceUrl]="backBtnRouteExtras?.replaceUrl || false"
+  [state]="backBtnRouteExtras?.state"
+>
+  <fa-icon [icon]="fasArrowLeft" size="lg"></fa-icon>
+  <span class="hidden sm:inline">Назад</span>
+</a>

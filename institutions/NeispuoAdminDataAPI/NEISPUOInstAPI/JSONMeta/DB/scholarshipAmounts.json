@@ -1,0 +1,21 @@
+{
+    "template": "SELECT /**select**/ FROM [student].[ScholarshipAmount] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "Id as code"
+        },
+        {
+            "column": "Name as label"
+        }
+    ],
+    "params": [
+
+    ],
+    "order": [
+        {
+            "column": "Id",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

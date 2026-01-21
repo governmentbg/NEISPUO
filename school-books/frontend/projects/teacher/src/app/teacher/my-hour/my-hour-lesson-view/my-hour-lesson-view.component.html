@@ -1,0 +1,39 @@
+<div class="flex justify-between">
+  <sb-breadcrumb class="block mb-3 flex-1" [icon]="fadChalkboardTeacher" text="Моите часове"></sb-breadcrumb>
+
+  <button class="sb-link-btn mt-[-15px] mr-2" [matMenuTriggerFor]="menu" aria-label="Настройки">
+    <fa-icon [icon]="fadCog" size="lg"></fa-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <sb-book-settings-form></sb-book-settings-form>
+  </mat-menu>
+
+  <div class="relative mt-[-9px] w-[140px] mr-2 sm:mr-0">
+    <input class="sb-form-control text-gray-900" matInput [matDatepicker]="picker" [formControl]="dateFormControl" />
+    <button
+      type="button"
+      class="sb-datepicker-button absolute top-1.5 right-1"
+      (click)="picker.open()"
+      aria-label="Избери дата"
+    >
+      <fa-icon [icon]="fadCalendarDay" size="lg"></fa-icon>
+    </button>
+    <mat-datepicker [disabled]="false" #picker></mat-datepicker>
+  </div>
+</div>
+
+<sb-card>
+  <ng-container card-title>Моите часове за {{ data.date | sbDate }}</ng-container>
+  <ng-container card-body>
+    <div *ngIf="tabs?.length" class="md:grid grid-cols-4 gap-4">
+      <div>
+        <sb-vertical-tabs class="block mb-2.5 md:mb-0" [tabs]="tabs" ariaLabel="Занятия"></sb-vertical-tabs>
+      </div>
+      <div class="col-span-3">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+
+    <sb-banner type="info" *ngIf="!tabs?.length">За избраната дата няма занятия</sb-banner>
+  </ng-container>
+</sb-card>

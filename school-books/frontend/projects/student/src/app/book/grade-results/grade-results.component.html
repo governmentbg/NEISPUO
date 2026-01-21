@@ -1,0 +1,58 @@
+<sb-banner type="info" *ngIf="!data.gradeResults.initialResultType">Няма въведен годишен резултат</sb-banner>
+
+<ng-container *ngIf="data.gradeResults.initialResultType === 'MustRetakeExams'">
+  <sb-card-section>Ученикът полага изпити по</sb-card-section>
+
+  <div class="sb-table-container mb-4">
+    <table class="sb-table">
+      <thead>
+        <tr>
+          <th colspan="2" rowspan="2" class="text-center">Предмет</th>
+          <th colspan="2" class="text-center">Редовни сесии</th>
+          <th rowspan="2" class="text-center">Допълнителна сесия</th>
+        </tr>
+        <tr>
+          <th class="text-center">I сесия</th>
+          <th class="text-center">II сесия</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let result of data.gradeResults.gradeResultSessions">
+          <tr>
+            <td colspan="2" class="whitespace-nowrap font-medium align-middle text-center p-1">
+              {{ result.curriculum }}
+            </td>
+
+            <td class="whitespace-nowrap font-medium align-middle text-center p-1">
+              <span *ngIf="result.session1NoShow">{{ noShowText }}</span>
+              <span *ngIf="result.session1ResultText">{{ result.session1ResultText }}</span>
+            </td>
+
+            <td class="whitespace-nowrap font-medium align-middle text-center p-1">
+              <span *ngIf="result.session2NoShow">{{ noShowText }}</span>
+              <span *ngIf="result.session2ResultText">{{ result.session2ResultText }}</span>
+            </td>
+
+            <td class="whitespace-nowrap font-medium align-middle text-center p-1">
+              <span *ngIf="result.session3NoShow">{{ noShowText }}</span>
+              <span *ngIf="result.session3ResultText">{{ result.session3ResultText }}</span>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+</ng-container>
+
+<sb-banner type="warning" *ngIf="data.gradeResults.finalResultType === 'RepeatsGrade'">
+  Въз основа на годишния успех ученикът повтаря
+</sb-banner>
+
+<sb-banner
+  type="success"
+  *ngIf="
+    data.gradeResults.initialResultType === 'CompletesGrade' || data.gradeResults.finalResultType === 'CompletesGrade'
+  "
+>
+  Въз основа на годишния успех ученикът завършва
+</sb-banner>

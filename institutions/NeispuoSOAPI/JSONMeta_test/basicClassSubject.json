@@ -1,0 +1,131 @@
+{
+    "label": "Учебници",
+    "sections": [
+        {
+            "order": 1,
+            "label": "Учебници за всички випуски, с изключение на учебници за чужди езици за випуски 8 – 12",
+            "name": "BasicClassSubjectTable",
+            "accordion": {
+                "state": "closed"
+                },
+            "table": {
+                "name": "BasicClassSubjectTable",
+                "searchable": true,
+                "searchType": "column",
+                "formName":  "basicClassSubjectData",
+                "paramName": "id",
+                "canDeleteRow": false,
+                "procedureName": "",
+                "fields": [
+                    {
+                        "label": "Випуск",
+                        "name": "basicClassName",
+                        "type": "input",
+                        "inputType": "text",
+                        "width": 5,
+                        "order": 1
+                    },
+		            {
+                        "label": "Учебен предмет",
+                        "name": "subjectName",
+                        "type": "input",
+                        "inputType": "text",
+                        "width": 10,
+                        "order": 2
+                    },
+                    {
+                      "label": "Учебник",
+                      "name": "textbookName",
+                      "type": "input",
+                      "inputType": "text",
+                      "width": 20,
+                      "order": 3
+                    },
+		            {
+                        "label": "Издателство",
+                        "name": "publisherName",
+                        "type": "input",
+                        "inputType": "text",
+                        "width": 20,
+                        "order": 4
+                    },
+                    {
+                        "label": "Авторски колектив",
+                        "name": "authorsName",
+                        "type": "input",
+                        "inputType": "text",
+                        "width": 20,
+                        "order": 5
+                    }
+                ]
+            }
+        },
+        {
+            "order": 2,
+            "label": "Учебници за чужди езици за випуски 8 – 12",
+            "name": "BasicClassSubjectTableFL",
+            "accordion": {
+                "state": "closed"
+                },
+            "table": {
+                "name": "BasicClassSubjectTableFL",
+                "searchable": true,
+                "searchType": "column",
+                "formName":  "basicClassSubjectDataFL",
+                "paramName": "id",
+                "canDeleteRow": false,
+                "procedureName": "",
+                "fields": [
+                    {
+                        "label": "Клас - Група",
+                        "name": "basicClassName",
+                        "type": "input",
+                        "inputType": "text",
+                        "width": 5,
+                        "order": 1
+                    },
+		            {
+                        "label": "Ниво по ОЕЕР",
+                        "name": "levelFL",
+                        "type": "input",
+                        "inputType": "text",
+                        "width": 5,
+                        "order": 2
+                    },
+                    {
+                        "label": "Учебен предмет",
+                        "name": "subjectName",
+                        "type": "input",
+                        "inputType": "text",
+                        "width": 10,
+                        "order": 3
+                    },
+                    {
+                      "label": "Учебник",
+                      "name": "textbookName",
+                      "type": "input",
+                      "inputType": "text",
+                      "width": 20,
+                      "order": 4
+                    },
+		            {
+                        "label": "Издателство",
+                        "name": "publisherName",
+                        "type": "input",
+                        "inputType": "text",
+                        "width": 20,
+                        "order": 5
+                    },
+                    {
+                        "label": "Авторски колектив",
+                        "name": "authorsName",
+                        "type": "input",
+                        "inputType": "text",
+                        "width": 20,
+                        "order": 6
+                    }
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,58 @@
+{
+  "status": 1,
+  "sql": "SELECT IDF.InstitutionDepartmentID AS id , IDF.Name AS departmentName , IDF.FullAddress AS fullAddress , IDF.PostCode AS departmentPostalCode , IDF.IsCentralText AS isCentral , IDF.IsProtectedText AS isProtected , \u0027institutionDepartmentData\u0027 AS formName , IDF.InstitutionDepartmentID AS formDataId\n FROM [inst_basic].[InstitutionDepartmentList] IDF WHERE IDF.InstitutionID = @instid AND IDF.IsValid = @isValid\n ORDER BY IDF.InstitutionDepartmentID ASC\n",
+  "data": {
+    "institutionDepartments": [
+      {
+        "id": 21,
+        "departmentName": "\u0411\u0430\u0437\u0430 2",
+        "fullAddress": "\u043E\u0431\u043B.\u041F\u043B\u043E\u0432\u0434\u0438\u0432, \u043E\u0431\u0449.\u041F\u043B\u043E\u0432\u0434\u0438\u0432, \u041F\u043B\u043E\u0432\u0434\u0438\u0432, \u0431\u0443\u043B. \u0022\u0412\u0442\u043E\u0440\u0438 \u044E\u043D\u0438\u0022 60",
+        "departmentPostalCode": 4000,
+        "isCentral": "\u043D\u0435",
+        "isProtected": "\u043D\u0435",
+        "formName": "institutionDepartmentData",
+        "formDataId": 21
+      },
+      {
+        "id": 35,
+        "departmentName": "\u0411\u0430\u0437\u0430 3",
+        "fullAddress": "\u043E\u0431\u043B.\u0421\u043E\u0444\u0438\u044F-\u0433\u0440\u0430\u0434, \u043E\u0431\u0449.\u0421\u0442\u043E\u043B\u0438\u0447\u043D\u0430, \u0421\u043E\u0444\u0438\u044F, \u0443\u043B. \u0022\u041E\u0431\u043E\u0440\u0438\u0449\u0435\u0022 \u2116 5",
+        "departmentPostalCode": 1000,
+        "isCentral": "\u043D\u0435",
+        "isProtected": "\u043D\u0435",
+        "formName": "institutionDepartmentData",
+        "formDataId": 35
+      },
+      {
+        "id": 43,
+        "departmentName": "\u0411\u0430\u0437\u0430 5 - \u0426\u0414\u041E 1 \u043A\u043B\u0430\u0441",
+        "fullAddress": "\u043E\u0431\u043B.\u0421\u043E\u0444\u0438\u044F-\u0433\u0440\u0430\u0434, \u043E\u0431\u0449.\u0421\u0442\u043E\u043B\u0438\u0447\u043D\u0430, \u0421\u043E\u0444\u0438\u044F, \u0431\u0443\u043B. \u0414\u043E\u043D\u0434\u0443\u043A\u043E\u0432 30",
+        "departmentPostalCode": null,
+        "isCentral": "\u043D\u0435",
+        "isProtected": "\u043D\u0435",
+        "formName": "institutionDepartmentData",
+        "formDataId": 43
+      },
+      {
+        "id": 50,
+        "departmentName": "\u0422\u0435\u0441\u0442\u043E\u0432\u0438 \u0430\u0434\u0440\u0435\u0441",
+        "fullAddress": "\u043E\u0431\u043B.\u0411\u043B\u0430\u0433\u043E\u0435\u0432\u0433\u0440\u0430\u0434, \u043E\u0431\u0449.\u0411\u0430\u043D\u0441\u043A\u043E, \u0411\u0430\u043D\u0441\u043A\u043E, \u0436.\u043A. \u0425\u0440\u0438\u0441\u0442\u043E \u0421\u043C\u0438\u0440\u043D\u0435\u0440\u043D\u0441\u043A\u0438",
+        "departmentPostalCode": null,
+        "isCentral": "\u043D\u0435",
+        "isProtected": "\u043D\u0435",
+        "formName": "institutionDepartmentData",
+        "formDataId": 50
+      },
+      {
+        "id": 51,
+        "departmentName": "\u0422\u0435\u0441\u0442\u043E\u0432\u0438 \u0430\u0434\u0440\u0435\u0441 1",
+        "fullAddress": "\u043E\u0431\u043B.\u0411\u043B\u0430\u0433\u043E\u0435\u0432\u0433\u0440\u0430\u0434, \u043E\u0431\u0449.\u0411\u0430\u043D\u0441\u043A\u043E, \u0411\u0430\u043D\u0441\u043A\u043E, \u0436.\u043A. \u0425\u0440\u0438\u0441\u0442\u043E \u0421\u043C\u0438\u0440\u043D\u0435\u0440\u043D\u0441\u043A\u0438",
+        "departmentPostalCode": null,
+        "isCentral": "\u043D\u0435",
+        "isProtected": "\u043D\u0435",
+        "formName": "institutionDepartmentData",
+        "formDataId": 51
+      }
+    ]
+  }
+}

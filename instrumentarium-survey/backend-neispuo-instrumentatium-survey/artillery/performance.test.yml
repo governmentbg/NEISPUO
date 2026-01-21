@@ -1,0 +1,72 @@
+config:
+  target: "http://localhost:3003"
+  payload:
+    # path is relative to the location of the test script
+    path: "user_jwt_tokens.csv"
+    skipHeader: true
+    fields:
+      - "role"
+      - "submittedQuestionaire"
+      - "expiredCampaignId"
+      - "activeCampaignId"
+      - "token"
+  tls:
+    rejectUnauthorized: false
+  http:
+    # you need to add large timeout 1000s in this case to wait for the responses otherwise you start getting 499 from NGINX + pm2 hangs
+    # This might be some side effect from nginx -> pm2 communication need to verify
+    timeout: 1000
+  phases:
+    - duration: 60
+      arrivalRate: 5
+      name: Warm up
+    - duration: 120
+      arrivalRate: 10
+      rampTo: 50
+      name: Ramp up load
+    - duration: 600
+      arrivalRate: 50
+      name: Sustained load
+
+
+scenarios:
+
+  - name: "Get aggregated results used for displaying charts in FE"
+    flow:
+      - get:
+          url: '/v1/aggregated-results/?s={"campaignId.ID": {{ expiredCampaignId }} }'
+          headers:
+            Authorization: "Bearer {{ token }}"
+
+  - name: "Get whole questionaire with all Q&A"
+    flow:
+      - get:
+          url: '/v1/submitted-questionaire/whole-questionaire/{{ activeCampaignId }}'
+          headers:
+            Authorization: "Bearer {{ token }}"
+
+  - name: "Get all campaigns (used on home screen)"
+    flow:
+      - get:
+          url: '/v1/campaign?s={"$and":[]}&page=1&limit=10&sort=id,DESC&years=[]'
+          headers:
+            Authorization: "Bearer {{ token }}"
+
+  - name: "Get how many people have and haven't filled a certain campaign"
+    flow:
+      - get:
+          url: '/v1/campaign/aggregated?campaignId={{ activeCampaignId }}'
+          headers:
+            Authorization: "Bearer {{ token }}"
+
+  - name: "Submit questionaire"
+    flow:
+      - patch:
+          url: '/v1/submitted-questionaire/{{ submittedQuestionaire }}'
+          headers:
+            Authorization: "Bearer {{ token }}"
+          json:
+            state: 0
+            submittedQuestionaireObject: '[{"choiceId":2}]'
+
+  

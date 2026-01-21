@@ -1,0 +1,57 @@
+@import "@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/variables/variables.scss";
+
+.details-container {
+    overflow: hidden;
+    border-radius: 0.313rem;
+    background-color: $white;
+    .stepper-info {
+        display: flex;
+        margin-bottom: 1.25rem;
+        .stepper-details .step-title {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        .stepper-details .step-description {
+            margin: 0;
+            color: $gray-600;
+            font-size: 10.25rem;
+            font-weight: 400;
+        }
+        .step-number {
+            width: 2.5rem;
+            height: 2.5rem;
+            color: $blue-400;
+            font-weight: 600;
+            display: inline-block;
+            background-color: $blue-100;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 1rem;
+        }
+    }
+    .form-details {
+        .campaign-name,
+        ::ng-deep .p-dropdown,
+        ::ng-deep .p-calendar {
+            height: 3rem!important;
+            width: 100%!important;
+            border-radius: 0.25rem!important;
+        }
+        ::ng-deep .p-calendar-w-btn .p-datepicker-trigger.p-button span {
+            color: $blue;
+        }
+        ::ng-deep .p-dropdown .p-dropdown-label {
+            padding: 0.688rem;
+        }
+        .btn-continue {
+            float: right;
+        }
+    }
+}
+
+.details-container .form-details ::ng-deep .p-dropdown .p-dropdown-label {
+    padding: 0;
+}

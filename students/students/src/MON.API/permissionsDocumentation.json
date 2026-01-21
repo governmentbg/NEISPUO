@@ -1,0 +1,478 @@
+﻿[
+    {
+        "permissionName": "PermissionNameForStudentModuleUse",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForNomenclatureRead",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForNomenclatureCreate",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForNomenclatureUpdate",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForNomenclatureDelete",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForNomenclatureManage",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForDemonstrationSectionShow",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForBasicDocumentTeplatesShow",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForSettingsSectionShow",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForDiplomasShow",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForAuditLogsShow",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForChangeTrackerLogsShow",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForDashboardShow",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForInstitutionsShow",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForAbsencesImport",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForDocumentationShow",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForAbsencesImportDetailsShow",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForAbsencesImportDetailsDownload",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForClassAbsenceShow",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForDiplomaTemplatesAdd",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForDiplomaTemplatesUpdate",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForDiplomaTemplatesShow",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForDiplomaBarcodesShow",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForDiplomaBarcodesAdd",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForDiplomaBarcodesEdit",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForDiplomaTemplatesDelete",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForContextualInformationManage",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForLodAccessConfigurationShow",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForBasicDocumentsListShow",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForBasicDocumentEdit",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForLodAccessConfigurationEdit",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForInstitutionDetailsShow",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForInstitutionStudentsShow",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForInstitutionClassShow",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentValidationDocumentRead",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentValidationDocumentCreate",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentValidationDocumentUpdate",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentRecognitionsShow",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentRecognitionRead",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentRecognitionCreate",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentRecognitionUpdate",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentRecognitionDelete",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentSearch",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentCreate",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentToClassEntrollment",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentDetailsShow",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentPersonalDataShow",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentMovementShow",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentOtherInstitutionsShow",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentPersonalDevelopmentShow",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentEvaluationsShow",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentLodDocumentsShow",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentAwardsShow",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentSanctionsShow",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentSanctionsAdd",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentSanctionsEdit",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentSopShow",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentResourceSupportShow",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentEnvironmentCharacteristicsShow",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentGeneralTrainingDataShow",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentPreSchoolEvaluationShow",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentCurrentInstitutionDetailsShow",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentExternalEvaluationShow",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentDiplomasShow",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentAbsenceShow",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentScholarshipsShow",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentScholarshipsEdit",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentScholarshipsAdd",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentLodShow",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentAwardsAdd",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentAwardsEdit",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentDiplomasAdd",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentClassesShow",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentClassDetailsShow",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentDischargeDocumentRead",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentDischargeDocumentCreate",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentDischargeDocumentUpdate",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentDischargeDocumentDelete",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentDischargeDocumentsShow",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentClasseChange",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentAdmissionDocumentRead",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentAdmissionDocumentCreate",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentAdmissionDocumentUpdate",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentAdmissionDocumentDelete",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentAdmissionDocumentsShow",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentRelocationDocumentCreate",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentRelocationDocumentUpdate",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentRelocationDocumentDelete",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentRelocationDocumentsShow",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentOtherDocumentsShow",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentOtherDocumentRead",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentOtherDocumentCreate",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentOtherDocumentUpdate",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permissionName": "PermissionNameForStudentOtherDocumentDelete",
+        "description": "",
+        "usage": ""
+    },
+    {
+        "permission": "Permission_ContextualInformation_Manage",
+        "permissionName": "PermissionNameForContextualInformationManage",
+        "description": "",
+        "usage": "Видимост на меню 'Контестна информация'. Зареждане на елементите от грида. Редакция на елемент от грида."
+    }
+]

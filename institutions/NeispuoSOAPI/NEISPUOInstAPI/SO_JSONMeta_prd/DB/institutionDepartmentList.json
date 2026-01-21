@@ -1,0 +1,72 @@
+{
+  "arrayName": "institutionDepartments",
+  "template": "SELECT /**select**/ FROM [inst_basic].[InstitutionDepartmentList] IDF /**where**/ /**orderby**/",
+  "sotemplate": "SELECT /**select**/ FROM [sob].[InstitutionDepartmentList] IDF /**where**/ /**orderby**/",
+  "columns": [
+        {
+          "column": "IDF.InstitutionDepartmentID AS id"
+        },
+		{
+          "column": "IDF.Name AS departmentName"
+        },
+		{
+          "column": "IDF.FullAddress AS fullAddress"
+        },
+		{
+          "column": "IDF.PostCode AS departmentPostalCode"
+        },
+		{
+          "column": "IDF.IsCentralText AS isCentral"
+        },
+		{
+          "column": "IDF.IsProtectedText AS isProtected"
+        },
+		{
+          "column": "'institutionDepartmentData' AS formName"
+        },
+		{
+          "column": "IDF.InstitutionDepartmentID AS formDataId"
+        }		
+  ],
+  "params": [
+    {
+      "param": "@instid",
+      "column": "IDF.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+	{
+      "param": "@year",
+      "column": "IDF.SchoolYear",
+      "operator": "=",
+      "value": "year",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    },
+	{
+      "param": "@period",
+      "column": "IDF.Period",
+      "operator": "=",
+      "value": "period",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "IDF.InstitutionDepartmentID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+
+
+  ]
+}

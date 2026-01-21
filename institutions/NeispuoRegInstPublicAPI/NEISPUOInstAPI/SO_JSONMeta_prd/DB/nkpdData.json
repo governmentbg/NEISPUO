@@ -1,0 +1,29 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_nom].[NKPDPosition] CD /**where**/ /**orderby**/",
+  "columns": [
+    {
+      "column": "CD.NKPDPositionID AS id"
+    },
+    {
+      "column": "CD.Name AS positionName"
+    }
+  ],
+  "params": [
+    {
+      "param": "@nkpdPositionID",
+      "column": "CD.NKPDPositionID",
+      "operator": "=",
+      "value": "nkpdPositionID",
+      "type": "int",
+      "logical_operator": "and",
+      "optional": true,
+      "static": false
+  }
+  ],
+  "order": [
+
+  ],
+  "inSelects": [
+  
+  ]
+}

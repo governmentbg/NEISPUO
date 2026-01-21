@@ -1,0 +1,50 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[SubjectAdditionalInstitution] SAI  /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "SAI.SubjectID AS subjectID"
+        },
+        {
+            "column": "SAI.SubjectName AS subjectName"
+        },
+        {
+            "column": "SAI.SubjectShortName AS subjectShortName"
+        },
+        {
+            "column": "SAI.SubjectGroupID AS subjectGroupID"
+        },
+        {
+            "column": "SAI.SubjectGroupName AS subjectGroupName"
+        },
+        {
+            "column": "SAI.MainSubjectID AS mainSubjectID"
+        },
+        {
+            "column": "SAI.MainSubjectName AS mainSubjectName"
+        },
+        {
+            "column": "SAI.ActiveForInstitution AS activeForInstitution"
+        },
+        {
+            "column": "SAI.IsValid AS isValid"
+        }
+    ],
+    "params": [
+        {
+            "param": "@customVarValueID",
+            "column": "SAI.CustomVarValueID",
+            "operator": "=",
+            "value": "customVarValueID",
+            "type": "int",
+            "logical_operator": "and",
+            "static": false
+        }
+    ],
+    "order": [
+        {
+            "column": "SAI.SubjectID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

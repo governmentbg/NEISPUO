@@ -1,0 +1,21 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[TerminationReason] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "TerminationReasonID as code"
+        },
+        {
+            "column": "Name as label"
+        },
+		{
+            "column": "IsValid as isValid"
+        }
+    ],
+    "params": [
+
+    ],
+    "order": [
+
+    ],
+    "inSelects": []
+}

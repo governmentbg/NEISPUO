@@ -1,0 +1,143 @@
+{
+  "paramName": "instid",
+  "sections": [
+    {
+      "order": 1,
+      "label": "Обобщена информация за лекторските часове",
+      "name": "TableReportCurriculumLect",
+      "table": {
+        "order": 1,
+        "name": "reportCurriculumLect",
+        "hasEditButton": false,
+        "sortable": false,
+        "searchable": false,
+        "fields": [
+          {
+            "label": "Лекторски часове за годината",
+            "name": "lectALL",
+            "type": "input",
+            "inputType": "number",
+            "order": 1
+          },
+          {
+            "label": "От тях: на щатни преподаватели",
+            "name": "lectShtat",
+            "type": "input",
+            "inputType": "number",
+            "order": 2
+          },
+          {
+            "label": "От тях: на външни лектори и не възложени часове",
+            "name": "lectNonShtat",
+            "type": "input",
+            "inputType": "number",
+            "order": 3
+          }
+        ]
+      }
+    },
+    {
+      "order": 2,
+      "label": "Обща информация",
+      "name": "generalInfo",
+      "table": {
+        "order": 1,
+        "name": "generalInformation",
+        "hasEditButton": false,
+        "searchable": true,
+        "searchType": "column",
+        "fields": [
+          {
+            "label": "Клас",
+            "name": "classNames",
+            "type": "input",
+            "inputType": "text",
+            "width": 10,
+            "order": 1
+          },
+          {
+            "label": "Група",
+            "name": "curriculumGroupNum",
+            "type": "input",
+            "inputType": "number",
+            "width": 10,
+            "order": 2
+          },
+          {
+            "label": "Учебен предмет",
+            "name": "subjectName",
+            "type": "input",
+            "inputType": "text",
+            "width": 30,
+            "order": 3
+          },
+          {
+            "label": "Начин на изучаване",
+            "name": "subjectTypeName",
+            "type": "input",
+            "inputType": "text",
+            "width": 30,
+            "order": 4
+          },
+          {
+            "label": "I срок УС",
+            "name": "weeksFirstTerm",
+            "type": "input",
+            "inputType": "number",
+            "width": 10,
+            "order": 5
+          },
+          {
+            "label": "I срок ЧС",
+            "name": "hoursWeeklyFirstTerm",
+            "type": "input",
+            "inputType": "number",
+            "width": 10,
+            "order": 6
+          },
+          {
+            "label": "II срок УС",
+            "name": "weeksSecondTerm",
+            "type": "input",
+            "inputType": "number",
+            "width": 10,
+            "order": 7
+          },
+          {
+            "label": "II срок ЧС",
+            "name": "hoursWeeklySecondTerm",
+            "type": "input",
+            "inputType": "number",
+            "width": 10,
+            "order": 8
+          },
+          {
+            "label": "Общ бр.ч.",
+            "name": "totalHours",
+            "type": "input",
+            "inputType": "number",
+            "width": 10,
+            "order": 9
+          },
+          {
+            "label": "Брой деца/ ученици",
+            "name": "studentsCount",
+            "type": "input",
+            "inputType": "number",
+            "width": 15,
+            "order": 10
+          },
+          {
+            "label": "Преподавател",
+            "name": "teacherNames",
+            "type": "input",
+            "inputType": "number",
+            "width": 20,
+            "order": 11
+          }
+        ]
+      }
+
+    }
+  ]
+}

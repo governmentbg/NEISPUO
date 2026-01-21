@@ -1,0 +1,34 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[SubjectGroup] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "SubjectGroupID as code"
+        },
+        {
+            "column": "Name as label"
+        },
+		{
+            "column": "IsValid as isValid"
+        }
+		
+    ],
+    "params": [
+{
+              "param": "@canChoose",
+              "column": "CanChoose",
+              "operator": "=",
+              "value": 1,
+              "type": "int",
+              "logical_operator": "and",
+              "optional": false,
+              "static": true
+            }
+    ],
+    "order": [
+        {
+            "column": "SortOrd",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

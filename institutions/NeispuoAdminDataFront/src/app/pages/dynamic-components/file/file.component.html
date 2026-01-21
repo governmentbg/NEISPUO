@@ -1,0 +1,21 @@
+<div class="l-container-component" *ngIf="mode === modes.Edit">
+  <div class="wrap upload-file-container">
+    <div class="text-container">
+      <span class="l-custom-span-label">
+        <span class="required-span" *ngIf="required">*</span>
+        <span class="label-label">{{ field.label }}</span>
+        <app-info-tooltip *ngIf="field.info" [info]="field.info"></app-info-tooltip>
+      </span>
+      <img class="icon-pdf" *ngIf="field.value" src="../../../../assets/images/pdf-icon.png" />
+    </div>
+  </div>
+  <ng-container *ngFor="let validation of field.validations" ngProjectAs="mat-error">
+    <mat-error *ngIf="group.get(field.name).hasError(validation.name)" class="l-custom-error">{{ validation.message }}</mat-error>
+  </ng-container>
+</div>
+<div class="l-container-component preview-mode" *ngIf="mode === modes.View">
+  <div class="wrap">
+    <span class="l-custom-span-label" *ngIf="showLabel">{{ field.label }}<app-info-tooltip *ngIf="field.info" [info]="field.info"></app-info-tooltip></span>
+    <img class="icon-pdf" *ngIf="field.value" src="../../../../assets/images/pdf-icon.png" />
+  </div>
+</div>

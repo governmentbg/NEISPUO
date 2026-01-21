@@ -1,0 +1,11 @@
+{
+  "name": "load-tests",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "load-test": "DEBUG=http,http:capture,http:response artillery run --config scenarios/config.yaml scenarios/view.yaml"
+  },
+  "dependencies": {
+    "artillery": "^1.7.8"
+  }
+}

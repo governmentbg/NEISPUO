@@ -1,0 +1,7 @@
+<div class="l-container-component l-focused-element" (click)="focus()" [ngClass]="{'focused': updateJsonService.focusedElement.index === field.idntfr}">
+    <span class="l-custom-info-span">информация</span>
+    <div class="fake-container-mat-form-field">
+      <label class="value-label" [innerHtml]="field.defaultValue | dompurify"></label>
+    </div>
+</div>
+  

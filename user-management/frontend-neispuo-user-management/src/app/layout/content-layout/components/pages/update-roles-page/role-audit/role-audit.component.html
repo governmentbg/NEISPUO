@@ -1,0 +1,114 @@
+<p-toolbar>
+    <div class="w-100 flex justify-content-end align-items-center">
+        <p-multiSelect
+            [dropdownIcon]="'pi pi-cog'"
+            [filter]="false"
+            [displaySelectedLabel]="false"
+            [defaultLabel]="CONSTANTS.PRIMENG_MULTISELECT_LABEL_PLACEHOLDER | translate"
+            [options]="columnService.optionallyVisibleColumns | async"
+            [emptyMessage]="CONSTANTS.PRIMENG_MULTISELECT_LABEL_EMPTY | translate"
+            [(ngModel)]="columnService.selectedOptionalColumns"
+            [options]="columnService.optionallyVisibleColumns | async"
+            (onChange)="onColumnChoiceChange($event)"
+            appendTo="body"
+        ></p-multiSelect>
+        <div class="ms-3">
+            <app-export-button (onClick)="exportExcel()" [loading]="exporting"></app-export-button>
+        </div>
+    </div>
+</p-toolbar>
+<p-table
+    id="rolesAuditTable"
+    #rolesAuditTable
+    [value]="paginatedEntries.data"
+    [columns]="columnService.visibleColumns | async"
+    [paginator]="true"
+    [rowHover]="true"
+    [lazy]="true"
+    (onLazyLoad)="navigate($event)"
+    [lazyLoadOnInit]="false"
+    [loading]="loading"
+    [rows]="pageSize"
+    [filterDelay]="filterDelay"
+    [totalRecords]="paginatedEntries.total"
+>
+    <ng-template pTemplate="colgroup" let-columns>
+        <colgroup>
+            <col *ngFor="let col of columns" [ngStyle]="{ width: col.width }" />
+        </colgroup>
+    </ng-template>
+
+    <ng-template pTemplate="header" let-user let-columns>
+        <tr>
+            <th *ngFor="let col of columns" [pSortableColumn]="col?.notSortable ? '' : col.field">
+                {{ col.header }}
+                <p-sortIcon *ngIf="!col?.notSortable" [field]="col.field"></p-sortIcon>
+            </th>
+        </tr>
+        <tr>
+            <th *ngFor="let col of columns">
+                <p-dropdown
+                    *ngIf="col.filter?.type === 'select'"
+                    [ngModel]="rolesAuditTable.filters[col.field]?.value"
+                    [options]="col.filter?.selectionOptions"
+                    (onChange)="rolesAuditTable.filter($event.value, col.field, col.filter?.operator)"
+                    [placeholder]="CONSTANTS.PRIMENG_DROPDOWN_PLACEHOLDER | translate"
+                >
+                    <ng-template let-option pTemplate="selectedItem">
+                        <span [class]="'customer-badge status-' + option.value">{{ option.label | translate }}</span>
+                    </ng-template>
+                    <ng-template let-option pTemplate="item">
+                        <span [class]="'customer-badge status-' + option.value">{{ option.label | translate }}</span>
+                    </ng-template>
+                </p-dropdown>
+
+                <p-calendar
+                    *ngIf="col.filter?.type === 'date'"
+                    appendTo="body"
+                    [monthNavigator]="true"
+                    [yearNavigator]="true"
+                    yearRange="1900:2050"
+                    dateFormat="yy-mm-dd"
+                    firstDayOfWeek="1"
+                    [showButtonBar]="true"
+                    [dataType]="date"
+                    class="p-column-filter"
+                    (onSelect)="onDateSelect($event, col.field, col.filter?.operator)"
+                    (onClearClick)="onDateClear(col.field, col.filter?.operator)"
+                    [ngModel]="tempDate"
+                    [placeholder]="CONSTANTS.PRIMENG_CALENDAR_PLACEHOLDER | translate"
+                ></p-calendar>
+
+                <input
+                    *ngIf="col.filter?.type === 'text' || col.filter?.type === 'number'"
+                    class="filter-text"
+                    pInputText
+                    type="text"
+                    [placeholder]="CONSTANTS.PRIMENG_INPUT_PLACEHOLDER | translate"
+                    (input)="rolesAuditTable.filter($event.target.value, col.field, col.filter?.operator)"
+                    [readonly]="loading"
+                    [ngModel]="rolesAuditTable.filters[col.field]?.value"
+                />
+            </th>
+        </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-roleAudit let-columns="columns">
+        <tr class="ui-selectable-row">
+            <td class="table-cell" *ngFor="let col of columns">
+                <span *ngIf="col.filter?.type === 'int'" class="row-content">
+                    {{ getToDisplayValue(roleAudit, col.field) | translate }}
+                </span>
+                <span *ngIf="col.filter?.type === 'date'" class="row-content">
+                    {{ getToDisplayValue(roleAudit, col.field) | date: 'yyyy-MM-dd HH:mm:ss' }}
+                </span>
+                <span *ngIf="col.filter?.type === 'text'" class="row-content">
+                    {{ getToDisplayValue(roleAudit, col.field) | translate }}
+                </span>
+                <span *ngIf="col.filter?.type === 'select'" class="row-content">
+                    {{ getToDisplayValue(roleAudit, col.field) | enum: col.filter?.selectionOptions | translate }}
+                </span>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>

@@ -1,0 +1,24 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[FL] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "FLID as code"
+        },
+        {
+            "column": "Name as label"
+        },
+		{
+            "column": "IsValid as isValid"
+        }
+    ],
+    "params": [
+
+    ],
+    "order": [
+        {
+            "column": "FLID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

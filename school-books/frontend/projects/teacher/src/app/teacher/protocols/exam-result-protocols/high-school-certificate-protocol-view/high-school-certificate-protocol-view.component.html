@@ -1,0 +1,193 @@
+<form [formGroup]="form" autocomplete="off" novalidate>
+  <sb-card>
+    <ng-container card-title>
+      {{
+        data.highSchoolCertificateProtocol == null
+          ? 'Създаване на протокол за удостоверяване на завършен гимназиален етап'
+          : 'Редакция на протокол за удостоверяване на завършен гимназиален етап'
+      }}
+    </ng-container>
+    <sb-editor-panel
+      card-buttons
+      [editBtnHidden]="!canEdit"
+      [isNew]="data.highSchoolCertificateProtocol == null"
+      [backBtnRouteCommands]="data.highSchoolCertificateProtocol == null ? ['../'] : ['../../']"
+      (save)="onSave($event)"
+      (editableChange)="editable = $event"
+    >
+      <a
+        [href]="downloadUrl"
+        class="mr-3"
+        disabled-mode-buttons
+        target="_blank"
+        download
+        color="primary"
+        mat-raised-button
+        [disabled]="!downloadUrl || loading"
+      >
+        <fa-icon [icon]="loading ? fasSpinnerThird : fasFileWord" [spin]="loading" size="lg"></fa-icon>
+        <span>Свали</span>
+      </a>
+      <a
+        [href]="downloadTemplateUrl"
+        class="mr-3"
+        new-mode-buttons
+        target="_blank"
+        download
+        color="primary"
+        mat-raised-button
+        [disabled]="!downloadTemplateUrl || loadingTemplate"
+      >
+        <fa-icon [icon]="loadingTemplate ? fasSpinnerThird : fasFileWord" [spin]="loadingTemplate" size="lg"></fa-icon>
+        <span>Свали шаблон</span>
+      </a>
+      <a
+        [href]="downloadTemplateUrl"
+        class="mr-3"
+        disabled-mode-buttons
+        target="_blank"
+        download
+        color="primary"
+        mat-raised-button
+        [disabled]="!downloadTemplateUrl || loadingTemplate"
+      >
+        <fa-icon [icon]="loadingTemplate ? fasSpinnerThird : fasFileWord" [spin]="loadingTemplate" size="lg"></fa-icon>
+        <span>Свали шаблон</span>
+      </a>
+      <button
+        *ngIf="canRemove"
+        disabled-mode-buttons
+        mat-raised-button
+        color="warn"
+        type="button"
+        (click)="onRemove()"
+        [disabled]="removing"
+      >
+        <fa-icon [icon]="removing ? fasSpinnerThird : fasTrashAlt" [spin]="removing" size="lg"></fa-icon>
+        <span class="hidden sm:inline">Премахни</span>
+      </button>
+    </sb-editor-panel>
+    <ng-container card-body>
+      <sb-banner type="error" class="mb-5" *ngFor="let error of errors">{{ error }}</sb-banner>
+
+      <sb-text-field
+        class="col-start-1 col-span-full whitespace-pre-wrap"
+        label="Вид на протокола"
+        formControlName="protocolName"
+        [readonly]="true"
+      ></sb-text-field>
+
+      <div class="sm:grid grid-cols-3 gap-x-4 mb-2">
+        <sb-nom-select label="Гимназиален етап" formControlName="stage" [nomService]="stageNomsService"></sb-nom-select>
+
+        <sb-text-field label="Номер на протокола" formControlName="protocolNum"></sb-text-field>
+
+        <sb-date-field label="Дата на протокола" formControlName="protocolDate"></sb-date-field>
+
+        <sb-text-field label="Сесия" formControlName="examSession"></sb-text-field>
+
+        <sb-date-field label="Дата на заседанието на комисията" formControlName="commissionMeetingDate"></sb-date-field>
+
+        <sb-text-field
+          label="Номер на заповед за назначаване на комисията"
+          formControlName="commissionNominationOrderNumber"
+        ></sb-text-field>
+
+        <sb-date-field
+          label="Дата на заповед за назначаване на комисията"
+          formControlName="commissionNominationOrderDate"
+        ></sb-date-field>
+
+        <sb-nom-select
+          class="col-span-2"
+          label="Директор"
+          formControlName="directorPersonId"
+          [nomService]="instTeacherNomsService"
+        ></sb-nom-select>
+
+        <sb-card-section class="col-span-full">Комисия</sb-card-section>
+        <sb-nom-select
+          class="col-start-1 col-span-full"
+          label="Председател на комисията"
+          formControlName="commissionChairman"
+          [nomService]="instTeacherNomsService"
+        ></sb-nom-select>
+
+        <sb-nom-select
+          class="col-start-1 col-span-full"
+          label="Членове на комисията"
+          formControlName="commissionMembers"
+          [nomService]="instTeacherNomsService"
+          [multiple]="true"
+        ></sb-nom-select>
+      </div>
+      <sb-card-section class="col-span-full">Ученици</sb-card-section>
+
+      <sb-banner type="info" *ngIf="data.highSchoolCertificateProtocol == null">
+        Трябва да запишете протокола, за да може да добавите ученици
+      </sb-banner>
+
+      <ng-container *ngIf="data.highSchoolCertificateProtocol != null">
+        <button
+          *ngIf="canEdit"
+          (click)="openAddStudentDialog()"
+          [disabled]="editable"
+          mat-raised-button
+          color="primary"
+          aria-label="Добави ученици"
+          type="button"
+          class="mb-2.5 mr-3"
+        >
+          <fa-icon [icon]="fasPlus" size="lg"></fa-icon>
+          <span>Добави ученици</span>
+        </button>
+        <button
+          *ngIf="canEdit"
+          (click)="openAddWholeClassDialog()"
+          [disabled]="editable"
+          mat-raised-button
+          color="primary"
+          aria-label="Добави цяла паралелка/група"
+          type="button"
+          class="mb-2.5"
+        >
+          <fa-icon [icon]="fasPlus" size="lg"></fa-icon>
+          <span>Добави цяла паралелка/група</span>
+        </button>
+        <sb-table
+          [dataSource]="dataSource"
+          [displayedColumns]="canEdit ? ['action', 'className', 'studentName'] : ['className', 'studentName']"
+        >
+          <ng-container cdkColumnDef="action">
+            <th cdk-header-cell *cdkHeaderCellDef></th>
+            <td cdk-cell *cdkCellDef="let row" class="sb-table-action">
+              <button
+                (click)="onRemoveStudent(row.classId, row.personId)"
+                [disabled]="editable || removingStud[row.classId + '-' + row.personId]"
+                aria-label="Изтрий"
+                class="sb-link-btn"
+                type="button"
+              >
+                <fa-icon
+                  [icon]="removingStud[row.classId + '-' + row.personId] ? fasSpinnerThird : fasTrashAlt"
+                  [spin]="removingStud[row.classId + '-' + row.personId]"
+                  size="lg"
+                ></fa-icon>
+              </button>
+            </td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="className">
+            <th cdk-header-cell *cdkHeaderCellDef>Клас</th>
+            <td cdk-cell *cdkCellDef="let row">{{ row.className }}</td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="studentName">
+            <th cdk-header-cell *cdkHeaderCellDef>Ученик</th>
+            <td cdk-cell *cdkCellDef="let row">{{ row.studentName }}</td>
+          </ng-container>
+        </sb-table>
+      </ng-container>
+    </ng-container>
+  </sb-card>
+</form>

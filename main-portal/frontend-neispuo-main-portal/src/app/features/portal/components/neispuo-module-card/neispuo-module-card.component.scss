@@ -1,0 +1,54 @@
+@import "@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/variables/variables.scss";
+
+.card {
+  margin: 0.875rem;
+  padding: 1.25rem 2.25rem;
+  padding-left: 3.5rem;
+  height: calc(100% - 1.75rem);
+  .card-header {
+    font-weight: bold;
+    padding: 0;
+    padding-bottom: 1.25rem;
+  }
+  .card-text {
+    font-size: 0.875rem;
+    a {
+      background-image: linear-gradient(180deg, transparent calc(100% - 1px), rgba(38, 92, 174, 0.75) 0) !important;
+      &:hover {
+        background-image: linear-gradient(180deg, transparent calc(100% - 1px), rgba(38, 92, 174, 0.75) 0) !important;
+      }
+    }
+  }
+  .card-body {
+    padding: 0;
+    padding-bottom: 0.5rem;
+  }
+  .card-footer {
+    padding: 0;
+  }
+  .card-footer-right {
+    .module-link {
+      float: right;
+      font-size: 0.75rem;
+      text-decoration: none;
+      &::after {
+        content: "\F285";
+        font-family: "bootstrap-icons";
+        font-size: 0.625rem;
+        padding-left: 0.5rem;
+        &:hover {
+          border-bottom: none;
+        }
+      }
+      &:hover {
+        text-decoration: none;
+      }
+    }
+    .btn-link:hover {
+      background-color: transparent;
+      &::after {
+        border-bottom: none;
+      }
+    }
+  }
+}

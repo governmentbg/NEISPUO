@@ -1,0 +1,246 @@
+// Grade colors
+$grade-poor-color: hsl(0, 100%, 50%);
+$grade-fair-color: hsl(30, 100%, 50%);
+$grade-good-color: hsl(50, 100%, 47%);
+$grade-very-good-color: hsl(70, 90%, 40%);
+$grade-excellent-color: hsl(120, 50%, 40%);
+
+@mixin grade($grade-color) {
+  background-color: $grade-color;
+  border-color: $grade-color;
+}
+
+.grade {
+  @apply text-sm text-center;
+
+  display: inline-block;
+  color: white;
+  cursor: pointer;
+  border: 1px solid transparent;
+  width: 26px;
+  height: 26px;
+  user-select: none;
+
+  &:not(.active).grade-important {
+    @apply border-0 ring-inset ring-2 ring-gray-900;
+  }
+
+  &.grade-decimal {
+    padding: 2px;
+  }
+
+  &.grade-qualitative {
+    padding: 1px;
+  }
+
+  &.grade-sp-needs {
+    padding: 2px;
+    color: theme('colors.primary');
+    border-color: theme('colors.primary');
+  }
+
+  &.active {
+    transform: scale(1.2);
+    box-shadow: 0 0 3px 2px theme('colors.blue.100');
+    z-index: 5;
+  }
+
+  &.grade-none {
+    @apply bg-white border-gray-400;
+  }
+
+  &.grade-poor {
+    @include grade($grade-poor-color);
+  }
+
+  &.grade-fair {
+    @include grade($grade-fair-color);
+  }
+
+  &.grade-good {
+    @include grade($grade-good-color);
+  }
+
+  &.grade-very-good {
+    @include grade($grade-very-good-color);
+  }
+
+  &.grade-excellent {
+    @include grade($grade-excellent-color);
+  }
+
+  &.grade-forecast {
+    background-color: transparent !important;
+    border-color: transparent !important;
+    color: theme('colors.primary');
+    padding-left: 0;
+    padding-right: 0;
+    width: auto;
+
+    @media (max-width: theme('screens.sm') - 1) {
+      font-size: 12px;
+      margin-left: -3px;
+      margin-right: -3px;
+    }
+  }
+
+  .em {
+    margin-top: 0;
+  }
+}
+
+.readonly .grade {
+  cursor: auto;
+  filter: grayscale(80%);
+
+  &.grade-poor {
+    @include grade(lighten($grade-poor-color, 20%));
+  }
+
+  &.grade-excellent {
+    @include grade(lighten($grade-excellent-color, 15%));
+  }
+}
+
+.grade-picker .grade {
+  position: relative; // fix for transform overriding z-index by creating new stacking context
+  width: 32px;
+  height: 29px;
+  padding: 3px;
+
+  &.grade-qualitative {
+    vertical-align: middle;
+    padding-left: 4px;
+  }
+
+  &.grade-none {
+    width: 29px;
+  }
+}
+
+.grade-picker:not(.readonly) .grade :hover {
+  transform: scale(1.2);
+  z-index: 4;
+}
+
+.em {
+  display: block;
+  height: 1em;
+  width: 1em;
+  overflow: hidden;
+  line-height: 18px;
+  font-size: 22px;
+  vertical-align: middle;
+  margin-top: -4px;
+  color: transparent !important;
+  background: url('^assets/images/sheet_apple_64_indexed_256colors.png');
+  background-size: 100%;
+}
+
+.em.em-anguished {
+  background-position: 0% 0%;
+}
+
+.em.em-hushed {
+  background-position: 0% 25%;
+}
+
+.em.em-neutral_face {
+  background-position: 0% 50%;
+}
+
+.em.em-blush {
+  background-position: 0% 75%;
+}
+
+.em.em-smiley {
+  background-position: 0% 100%;
+}
+
+.book-count-button {
+  display: inline-block;
+  width: 40px;
+  padding: 3px;
+  color: white;
+  border: 1px solid transparent;
+
+  @screen sm {
+    width: 50px;
+  }
+
+  &.active {
+    box-shadow: 0 0 3px 2px theme('colors.blue.100');
+  }
+
+  &.disabled {
+    pointer-events: none;
+  }
+
+  &.unexcused {
+    background-color: $grade-fair-color;
+    border-color: darken($grade-fair-color, 20%);
+  }
+
+  &.late {
+    background-color: $grade-good-color;
+    border-color: darken($grade-good-color, 20%);
+  }
+
+  &.excused {
+    background-color: $grade-excellent-color;
+    border-color: darken($grade-excellent-color, 20%);
+  }
+}
+
+.book-item-cell {
+  &.unexcused {
+    background-color: lighten($grade-fair-color, 40%);
+  }
+
+  &.late {
+    background-color: lighten($grade-good-color, 40%);
+  }
+
+  &.excused {
+    background-color: lighten($grade-excellent-color, 50%);
+  }
+}
+
+.convert-late-button {
+  background-color: $grade-good-color;
+  color: white;
+}
+
+.selected-absence {
+  transform: scale(1.2);
+  box-shadow: 0 0 3px 2px theme('colors.blue.100');
+  z-index: 5;
+}
+
+.sb-table.sb-schedule-table td {
+  @apply text-sm align-top p-2;
+}
+
+@screen md {
+  .sb-names {
+    width: 360px;
+  }
+}
+
+#twroot .sb-schedule-day {
+  @apply bg-gray-100 border-r text-center text-xs font-medium text-gray-500 uppercase tracking-wider;
+  height: 130px;
+
+  > div {
+    width: 30px;
+    transform: rotate(-90deg) translate(-80px);
+  }
+}
+
+#twroot .sb-schedule-subject {
+  @screen sm {
+    min-width: 350px;
+  }
+
+  @apply md:w-px md:whitespace-nowrap;
+}

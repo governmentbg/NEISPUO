@@ -1,0 +1,53 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_basic].[InstitutionVehicle] IV /**where**/ /**orderby**/",
+  "sotemplate": "SELECT /**select**/ FROM [sob].[InstitutionVehicle] IV /**where**/ /**orderby**/",
+  "columns": [
+		{
+          "column": "IV.InstitutionVehicleID AS institutionVehicleID"
+        },
+		{
+          "column": "IV.InstitutionID AS instid"
+        },
+		{
+          "column": "IV.AcquisitionWayTypeID AS acquisitionWayTypeID"
+        },
+		{
+          "column": "IV.DocumentTypeID AS documentTypeID"
+        },
+		{
+          "column": "IV.DocumentNum AS documentNum"
+        },
+		{
+          "column": "IV.DocumentDate AS documentDate"
+        },
+		{
+          "column": "IV.RegistrationNum AS registrationNum"
+        },
+		{
+          "column": "IV.ProducedYear AS producedYear"
+        },
+		{
+          "column": "IV.PlaceCountTypeID AS placeCountTypeID"
+        }
+  ],
+  "params": [
+    {
+      "param": "@institutionVehicleID",
+      "column": "IV.InstitutionVehicleID",
+      "operator": "=",
+      "value": "institutionVehicleID",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "IV.InstitutionVehicleID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+
+  ]
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "label": "Общи данни",
+	  "path": "buildings",
+    "children": [
+      {
+        "label": "Сграден фонд",
+        "path": "buildingList"
+      },
+	  {
+        "label": "Учебни зони",
+        "path": "buildingStudyRoomList"
+      },
+	  {
+        "label": "Обща зона",
+        "path": "buildingGeneralRoomList"
+      },
+	  {
+        "label": "Общежития",
+        "path": "buildingBedRoomList"
+      },
+	  {
+        "label": "IT активи",
+        "path": "itAssets"
+      }
+    ]
+  },
+  {
+    "label": "Дистанционна форма",
+	  "path": "distance",
+    "children": [
+      {
+        "label": "Осигуреност на дистанционна форма на обучение",
+        "path": "distanceLearningConditionList"
+      }
+    ]
+  }
+]

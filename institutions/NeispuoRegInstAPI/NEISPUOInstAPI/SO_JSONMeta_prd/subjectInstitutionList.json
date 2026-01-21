@@ -1,0 +1,60 @@
+{
+    "label": "Други предмети",
+    "sections": [
+        {
+            "order": 1,
+            "table": {
+                "name": "settings",
+                "action": "edit",
+                "formName": "subejctInstitutionDataList",
+                "procedureName": "inst_basic.subjectInstitution",
+                "paramName": "customVarValueID",
+                "searchable": true,
+                "canDeleteRow": true,
+                "searchType": "column",
+                "fields": [
+                    {
+                        "label": "Учебен предмет",
+                        "name": "subjectName",
+                        "type": "input",
+                        "inputType": "text",
+                        "width": 80,
+                        "order": 1
+                    },
+                    {
+                        "label": "Предметна група",
+                        "name": "subjectGroupName",
+                        "type": "input",
+                        "inputType": "text",
+                        "width": 50,
+                        "order": 3
+                    },
+                    {
+                        "label": "Отнася се към базов предмет",
+                        "name": "mainSubjectName",
+                        "type": "input",
+                        "inputType": "text",
+                        "width": 50,
+                        "order": 4
+                    },
+                    {
+                        "label": "Активен само за институцията",
+                        "name": "activeForInstitutionRecode",
+                        "type": "input",
+                        "inputType": "text",
+                        "width": 30,
+                        "order": 5
+                    },
+					{
+                        "label": "Сортиране",
+                        "name": "sortOrd",
+                        "type": "input",
+                        "inputType": "number",
+                        "width": 10,
+                        "order": 6
+                    }
+                ]
+            }
+        }
+    ]
+}

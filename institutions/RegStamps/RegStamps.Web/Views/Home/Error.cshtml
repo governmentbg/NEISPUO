@@ -1,0 +1,18 @@
+﻿@{
+
+    ViewBag.Tittle = "Грешка";
+    ViewBag.Error = "Страницата не е намерена или нямате права за достъп до нея";
+}
+
+<div class="row page-header">
+    <h2 class="text-danger">@ViewBag.Error</h2>
+
+    @{
+        if (User.Identity.IsAuthenticated)
+        {
+            <h4>@Html.ActionLink("Начало", "Index", "Home", null, new { @class = "btn btn-primary" })</h4>
+        }
+    }
+
+</div>
+

@@ -1,0 +1,193 @@
+<div class="flex">
+  <sb-breadcrumb
+    class="block mb-3 flex-1"
+    [icon]="fadTasksAlt"
+    [text]="templateData.dateName"
+    [parentItems]="[
+      { text: 'Проверка на дневници', routeCommands: ['../../../'], routeExtras: { queryParamsHandling: 'preserve' } },
+      { text: templateData.monthName, routeCommands: ['../'], routeExtras: { queryParamsHandling: 'preserve' } }
+    ]"
+  ></sb-breadcrumb>
+
+  <sb-book-verification-classbook-teacher-selector
+    class="mt-[-6px] w-[500px]"
+  ></sb-book-verification-classbook-teacher-selector>
+</div>
+
+<sb-card>
+  <ng-container card-title>Проверка на дневници</ng-container>
+  <ng-container card-buttons>
+    <a mat-raised-button class="ml-2" [routerLink]="['../']" [queryParamsHandling]="'preserve'">
+      <fa-icon [icon]="fasArrowLeft" size="lg"></fa-icon>
+      <span class="hidden sm:inline">Назад</span>
+    </a>
+  </ng-container>
+  <ng-container card-body>
+    <button *ngIf="!allGroupsExpanded" type="button" mat-raised-button class="mb-4 mr-4" (click)="expandAllGroups()">
+      <fa-icon [icon]="farCalendarPlus" size="lg"></fa-icon>
+      <span>Покажи всички</span>
+    </button>
+    <button *ngIf="!allGroupsCollapsed" type="button" mat-raised-button class="mb-4 mr-4" (click)="collapseAllGroups()">
+      <fa-icon [icon]="farCalendarMinus" size="lg"></fa-icon>
+      <span>Скрий всички</span>
+    </button>
+
+    <ng-container *ngFor="let group of templateData.groups">
+      <sb-card-section>
+        <button class="flex outline-offset-[-1px]" (click)="toggleGroupExpanded(group)">
+          <fa-icon class="sb-open-closed-icon mr-2" [class.open]="group.isExpanded" [icon]="fasChevronRight"></fa-icon>
+
+          <fa-icon class="mr-2" [icon]="fasUsersClass"></fa-icon>
+
+          {{ group.classBookFullName }}
+
+          <sb-progress-bar
+            *ngIf="!group.isOffDay"
+            class="ml-4 w-[120px]"
+            [percentage]="(group.lessonsTaken * 100) / group.lessonsTotal"
+            color="primary"
+            [attr.aria-label]="'взет ' + (group.lessonsTaken * 100) / group.lessonsTotal + '%'"
+          ></sb-progress-bar>
+
+          <sb-progress-bar
+            *ngIf="!group.isOffDay"
+            class="ml-4 w-[120px]"
+            [percentage]="(group.lessonsVerified * 100) / group.lessonsTotal"
+            [attr.aria-label]="'проверен' + (group.lessonsVerified * 100) / group.lessonsTotal + '%'"
+            color="success"
+          ></sb-progress-bar>
+        </button>
+
+        <ng-container
+          *ngIf="
+            canEdit &&
+            !group.isOffDay &&
+            group.isExpanded &&
+            group.lessonsTaken === group.lessonsTotal &&
+            group.lessonsVerified !== group.lessonsTotal
+          "
+          card-section-buttons
+        >
+          <button class="sb-link-btn mb-[-1px] mt-[-3px] outline-offset-0" (click)="verifyGroup(group)">
+            <fa-icon
+              *ngIf="group.verifying | async"
+              class="relative bottom-[-3px]"
+              [icon]="fadSpinnerThird"
+              [spin]="true"
+            ></fa-icon>
+            провери всички
+          </button>
+        </ng-container>
+      </sb-card-section>
+
+      <div *ngIf="group.isExpanded" [@inOutAnimation] class="sb-table-container mb-4">
+        <sb-banner type="info" class="mb-2" *ngIf="group.isOffDay">
+          <span>Неучебен ден: {{ group.description + '(' + group.offDayPeriod + ')' }}</span>
+        </sb-banner>
+        <table *ngIf="!group.isOffDay || group.hasData" class="sb-table">
+          <thead>
+            <tr>
+              <th>Час</th>
+              <th>Предмет</th>
+              <th>Учител</th>
+              <th>Лекторски час</th>
+              <th>Взет (тема)</th>
+
+              <th *ngIf="group.classBookHasAbsences">Отсъствия</th>
+              <th *ngIf="group.classBookHasAbsences">Закъснения</th>
+
+              <th *ngIf="group.classBookHasAbsencesDplr">Присъствия/Отсъствия</th>
+
+              <th *ngIf="group.classBookHasGrades">Оценки</th>
+
+              <th>Проверен</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let scheduleLesson of group.scheduleLessons">
+              <tr [class.bg-red-50]="!scheduleLesson.isTaken" [class.bg-green-50]="scheduleLesson.isVerified">
+                <td>
+                  <a
+                    class="sb-link-btn"
+                    [routerLink]="['./', scheduleLesson.classBookId, scheduleLesson.scheduleLessonId]"
+                    [queryParamsHandling]="'preserve'"
+                  >
+                    #{{ scheduleLesson.hourNumber }} ({{ scheduleLesson.startTime }} - {{ scheduleLesson.endTime }})
+                  </a>
+                </td>
+                <td>
+                  <div class="inline sm:hidden">
+                    {{ scheduleLesson.lessonNameShort }}
+                  </div>
+
+                  <div class="hidden sm:inline">
+                    {{ scheduleLesson.lessonName }}
+                  </div>
+                </td>
+                <td>
+                  {{ scheduleLesson.teacherNames }}
+                </td>
+                <td>
+                  <span>{{ scheduleLesson.isLectureScheduleHour ? 'Да' : 'Не' }}</span>
+                </td>
+                <td>
+                  <ng-container *ngIf="scheduleLesson.isTaken; else notTaken">
+                    <span>Да</span>
+                    <fa-icon
+                      [icon]="fadCheckSquare"
+                      matTooltip="{{ scheduleLesson.topicTitles | topicTitlesList }}"
+                      matTooltipPosition="right"
+                    ></fa-icon>
+                  </ng-container>
+                  <ng-template #notTaken>Не</ng-template>
+                </td>
+                <td *ngIf="group.classBookHasAbsences || group.classBookHasAbsencesDplr">
+                  {{ scheduleLesson.absencesCount }}
+                </td>
+                <td *ngIf="group.classBookHasAbsences">
+                  {{ scheduleLesson.lateAbsencesCount }}
+                </td>
+                <td *ngIf="group.classBookHasGrades">
+                  {{ scheduleLesson.gradesCount }}
+                </td>
+                <td>
+                  <ng-container *ngIf="canEdit && scheduleLesson.isTaken">
+                    <button
+                      *ngIf="scheduleLesson.isVerified"
+                      (click)="setIsVerified(scheduleLesson, group, false)"
+                      [disabled]="scheduleLesson.verifying | async"
+                      class="sb-link-btn text-green-500 hover:text-green-900"
+                      type="button"
+                      aria-label="маркирай часа като непроверен"
+                      title="маркирай часа като непроверен"
+                    >
+                      <ng-container></ng-container>
+                      <fa-icon
+                        [icon]="(scheduleLesson.verifying | async) ? fadSpinnerThird : fasCheckCircle"
+                        [spin]="(scheduleLesson.verifying | async) ?? false"
+                      ></fa-icon>
+                    </button>
+                    <button
+                      *ngIf="!scheduleLesson.isVerified"
+                      (click)="setIsVerified(scheduleLesson, group, true)"
+                      [disabled]="scheduleLesson.verifying | async"
+                      class="sb-link-btn text-green-500 hover:text-green-900"
+                      type="button"
+                      aria-label="маркирай часа като проверен"
+                      title="маркирай часа като проверен"
+                    >
+                      <fa-icon
+                        [icon]="(scheduleLesson.verifying | async) ? fadSpinnerThird : farCircle"
+                        [spin]="(scheduleLesson.verifying | async) ?? false"
+                      ></fa-icon>
+                    </button>
+                  </ng-container>
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </ng-container>
+  </ng-container>
+</sb-card>

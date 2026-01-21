@@ -1,0 +1,33 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[FL] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "FLID as code"
+        },
+        {
+            "column": "Name as label"
+        },
+		{
+            "column": "IsValid as isValid"
+        }
+    ],
+    "params": [
+	{
+              "param": "@canChoose",
+              "column": "CanChoose",
+              "operator": "=",
+              "value": 1,
+              "type": "int",
+              "logical_operator": "and",
+              "optional": false,
+              "static": true
+    }
+    ],
+    "order": [
+        {
+            "column": "FLID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

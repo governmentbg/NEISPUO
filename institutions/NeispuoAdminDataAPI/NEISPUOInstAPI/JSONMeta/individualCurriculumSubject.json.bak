@@ -1,0 +1,344 @@
+{
+  "procedureName": "inst_basic.curriculumCUD",
+  "sections": [
+    {
+      "order": 1,
+      "label": "Данни за учебни предмети в индивидуален учебен план на ученик",
+      "name": "headerData",
+      "subsections": [
+        {
+          "order": 1,
+          "name": "curriculumStudents",
+          "canDuplicate": false,
+          "fields": [
+            {
+              "name": "id",
+              "label": "Имена на детето",
+              "type": "select",
+              "disabled": true,
+              "defaultValue": "studentid",
+              "optionsPath": "/data/get/studentListIndividualNom",
+              "order": 1
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "name": "curriculumClasses",
+          "canDuplicate": false,
+          "fields": [
+            {
+              "name": "classID",
+              "label": "Група/Клас",
+              "type": "select",
+              "optionsPath": "/data/get/studentClassNom",
+              "defaultValue": "classID",
+              "disabled": true,
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ],
+              "order": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "label": "if(instType==2) {section.label='Данни за образователно направление'} else {section.label='Данни за учебен предмет'}",
+      "name": "curriculumSubject",
+      "subsections": [
+        {
+          "order": 1,
+          "name": "basicData",
+          "label": "Основни данни",
+          "fields": [
+            {
+              "label": "Сист. ID на учебен план",
+              "name": "curriculumID",
+              "type": "input",
+              "inputType": "number",
+              "rendered": false,
+              "disabled": true,
+              "order": 0
+            },
+            {
+              "label": "Индивидуален учебен план",
+              "name": "isIndividualCurriculum",
+              "type": "checkbox",
+              "disabled": true,
+              "rendered": false,
+              "defaultValue": true,
+              "order": 0
+            },
+            {
+              "label": "Раздел",
+              "name": "curriculumPartID",
+              "type": "select",
+              "optionsPath": "/data/get/curriculumParts",
+              "width": 400,
+              "disabled": true,
+              "influence": [
+                {
+                  "fieldName": "subjectTypeID",
+                  "url": "/data/get/subjectTypes",
+                  "type": "options"
+                },
+                {
+                  "type": "hide",
+                  "fieldName": "mainSubject",
+                  "condition": [
+                    5,
+                    7
+                  ]
+                },
+                {
+                  "type": "hide",
+                  "fieldName": "mainSubjectLimit",
+                  "condition": [
+                    5,
+                    7
+                  ]
+                }
+              ],
+              "defaultValue": "partid",
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ],
+              "order": 1
+            },
+            {
+              "label": "if(instType==2) {field.label='Образователно направление'} else if(instType==1) {field.label='Учебен предмет'} else {field.label='Дейност'}",
+              "name": "subjectID",
+              "type": "searchselect",
+              "width": 500,
+              "optionsPath": "/data/get/subjects",
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ],
+              "influence": [
+                {
+                  "fieldName": "mainSubject",
+                  "type": "render",
+                  "condition": "subjectsInfluence"
+                }
+              ],
+              "order": 2
+            },
+            {
+              "label": "Предметът се изучава на ЧЕ",
+              "name": "isFL",
+              "type": "checkbox",
+              "disabled": false,
+              "influence": [
+                {
+                  "type": "render",
+                  "fieldName": "FLSubjectID",
+                  "condition": [
+                    true
+                  ]
+                },
+                {
+                  "fields": [
+                    "FLSubjectID"
+                  ],
+                  "type": "require",
+                  "message": "Полето е задължително",
+                  "condition": [
+                    true
+                  ]
+                }
+              ],
+              "order": 3
+            },
+            {
+              "label": "Чужд език",
+              "name": "FLSubjectID",
+              "type": "searchselect",
+              "width": 400,
+              "optionsPath": "/data/get/fLs",
+              "order": 4
+            },
+            {
+              "label": "if(instType==2) {field.label='Форма на педаг.взаимодействие'} else {field.label='Начин на изучаване'}",
+              "name": "subjectTypeID",
+              "type": "select",
+              "width": 500,
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ],
+              "influence": [
+                {
+                  "type": "render",
+                  "fieldName": "mainSubjectLimit",
+                  "condition": [
+                    102
+                  ]
+                },
+                {
+                  "type": "hide",
+                  "fieldName": "mainSubject",
+                  "condition": [
+                    102
+                  ]
+                },
+                {
+                  "type": "hide",
+                  "fieldName": "mainSubjectLimit",
+                  "condition": [
+                    null
+                  ]
+                }
+              ],
+              "order": 5
+            },
+            {
+              "label": "Отнася се към базов предмет",
+              "name": "mainSubject",
+              "type": "searchselect",
+              "optionsPath": "/data/get/mainSubjects",
+              "order": 6,
+              "width": 500,
+              "disabled": false
+            },
+            {
+              "label": "Отнася се към базов предмет",
+              "name": "mainSubjectLimit",
+              "type": "searchselect",
+              "optionsPath": "/data/get/mainSubjectsLimit",
+              "order": 7,
+              "width": 500,
+              "disabled": false
+            },
+            {
+              "label": "Група",
+              "name": "curriculumGroupID",
+              "type": "input",
+              "inputType": "number",
+              "rendered": false,
+              "defaultValue": 0,
+              "order": 8
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "name": "horarium",
+          "label": "Хорариум",
+          "fields": [
+            {
+              "label": "if(instType==2 || instType==3) {field.label='УС годишно'} else {field.label='I срок УС'}",
+              "name": "weeksFirstTerm",
+              "type": "input",
+              "inputType": "number",
+              "order": 1
+            },
+            {
+              "label": "if(instType==2 || instType==3) {field.label='ЧС годишно'} else {field.label='I срок ЧС'}",
+              "name": "hoursWeeklyFirstTerm",
+              "type": "input",
+              "inputType": "number",
+              "order": 2
+            },
+            {
+              "label": "II срок УС",
+              "name": "weeksSecondTerm",
+              "type": "input",
+              "inputType": "number",
+              "rendered": "if(instType==2 || instType==3) {field.rendered=false} else {field.rendered=true}",
+              "order": 3
+            },
+            {
+              "label": "II срок ЧС",
+              "name": "hoursWeeklySecondTerm",
+              "type": "input",
+              "inputType": "number",
+              "rendered": "if(instType==2 || instType==3) {field.rendered=false} else {field.rendered=true}",
+              "order": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "name": "curriculumTeachersList",
+      "label": "Преподаватели",
+      "table": {
+        "name": "curriculumTeachers",
+        "hasEditButton": false,
+        "searchable": true,
+        "searchType": "column",
+        "multiAdd": {
+          "addFrom": "teachers",
+          "listColumns": [
+            "fullName"
+          ],
+          "title": "Включване на преподаватели",
+          "comparisonColumn": "staffPositionID",
+          "tableColumns": [
+            "fullName"
+          ],
+          "dependsOn": []
+        },
+        "fields": [
+          {
+            "name": "id",
+            "type": "input",
+            "inputType": "number",
+            "width": 5,
+            "rendered": false,
+            "order": 0
+          },
+          {
+            "name": "personID",
+            "type": "input",
+            "inputType": "number",
+            "width": 5,
+            "rendered": false,
+            "order": 0
+          },
+          {
+            "name": "staffPositionID",
+            "type": "input",
+            "inputType": "number",
+            "width": 5,
+            "rendered": false,
+            "order": 1
+          },
+          {
+            "name": "fullName",
+            "type": "input",
+            "inputType": "text",
+            "width": 80,
+            "rendered": true,
+            "order": 2
+          },
+          {
+            "label": "Не отговаря на изискванията",
+            "name": "isNotRegularTeacher",
+            "type": "checkbox",
+            "disabled": false,
+            "order": 3
+          }
+        ]
+      }
+    }
+  ]
+}

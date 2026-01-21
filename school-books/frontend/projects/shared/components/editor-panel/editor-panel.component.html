@@ -1,0 +1,24 @@
+<ng-content *ngIf="!isNew && !editable" select="[disabled-mode-buttons]"></ng-content>
+<ng-content *ngIf="isNew" select="[new-mode-buttons]"></ng-content>
+
+<sb-new-panel
+  *ngIf="isNew"
+  [backBtnHidden]="backBtnHidden"
+  [backBtnDisabled]="backBtnDisabled"
+  [backBtnRouteCommands]="backBtnRouteCommands"
+  [backBtnRouteExtras]="backBtnRouteExtras"
+  (save)="save.emit($event)"
+></sb-new-panel>
+
+<sb-edit-panel
+  *ngIf="!isNew"
+  [editBtnHidden]="editBtnHidden"
+  [editBtnDisabled]="editBtnDisabled"
+  [backBtnHidden]="backBtnHidden"
+  [backBtnDisabled]="backBtnDisabled"
+  [backBtnRouteCommands]="backBtnRouteCommands"
+  [backBtnRouteExtras]="backBtnRouteExtras"
+  [editable]="editable"
+  (editableChange)="editable = $event; editableChange.emit($event)"
+  (save)="save.emit($event)"
+></sb-edit-panel>

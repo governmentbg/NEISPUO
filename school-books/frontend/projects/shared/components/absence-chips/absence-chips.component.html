@@ -1,0 +1,29 @@
+<mat-chip-list
+  #chipList
+  [class.focused]="chipList.focused || false"
+  [class.disabled]="disableInput || false"
+  (focus)="!disableInput ? chipInput.focus() : null"
+  [tabIndex]="-1"
+>
+  <mat-basic-chip *ngFor="let absenceChip of absenceChips" [disabled]="true" (click)="chipSelected(absenceChip)">
+    <div
+      class="chip-content"
+      [class.readonly]="absenceChip.readonly"
+      [class.excused]="absenceChip.excused"
+      [class.removed]="absenceChip.removed"
+    >
+      {{ absenceChip.classNumber ?? 'N' }}
+    </div>
+  </mat-basic-chip>
+  <input
+    #chipInput
+    [class.hidden]="disableInput"
+    inputmode="decimal"
+    autocomplete="off"
+    [matChipInputFor]="chipList"
+    [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+    [matChipInputAddOnBlur]="true"
+    (matChipInputTokenEnd)="add($event)"
+    (keydown)="chipInputKeydown(chipInput, $event)"
+  />
+</mat-chip-list>

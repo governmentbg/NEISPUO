@@ -1,0 +1,23 @@
+.modal-dialog {
+  max-width: calc(80vw);
+  margin: auto;
+  margin-top: 30vh;
+  .modal-body {
+    padding-top: 1.5rem;
+    text-align: center;
+  }
+  .modal-footer {
+    justify-content: center;
+  }
+}
+
+.show {
+  display: block;
+  background: rgba(0,0,0, .5)
+}
+
+@media (min-width: 980px) {
+  .modal-dialog {
+    max-width: calc(60vw);
+  }
+}

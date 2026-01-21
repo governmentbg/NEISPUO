@@ -1,0 +1,45 @@
+﻿[
+   {
+      "SchemaName": "document",
+      "Tables": [
+         {
+            "Columns": [ ],
+            "Name": "EducationType",
+            "NewName": "DocumentEducationType"
+         }
+      ],
+      "UseSchemaName": false
+   },
+   {
+      "SchemaName": "school_books",
+      "Tables": [
+         {
+            "Columns": [ ],
+            "Name": "Absence",
+            "NewName": "SchoolBooksAbsence"
+         },
+         {
+            "Columns": [ ],
+            "Name": "Grade",
+            "NewName": "SchoolBooksGrade"
+         },
+         {
+            "Columns": [ ],
+            "Name": "Sanction",
+            "NewName": "SchoolBooksSanction"
+         }
+      ],
+      "UseSchemaName": false
+   },
+   {
+      "SchemaName": "student",
+      "Tables": [
+         {
+            "Columns": [ ],
+            "Name": "ORESType",
+            "NewName": "ORESType"
+         }
+      ],
+      "UseSchemaName": false
+   }
+]

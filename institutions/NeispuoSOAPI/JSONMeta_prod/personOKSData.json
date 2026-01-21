@@ -1,0 +1,222 @@
+{
+  "label": "Данни за образование и квалификация на персонала",
+  "procedureName": "inst_basic.personOKSCUD",
+  "dataName": "if(operationType==1) {form.dataName=null} else {form.dataName='personOKSData'}",
+  "paramName": "personid",
+  "sections": [
+    {
+      "order": 1,
+      "name": "staffOKSData",
+      "label": "Данни за образование",
+      "subsections": [
+        {
+          "order": 1,
+          "name": "staffOKS",
+          "label": "Данни за образование",
+          "fields": [
+            {
+              "label": "Поредна специалност",
+              "name": "specialityOrdTypeID",
+              "type": "select",
+              "optionsPath": "/data/get/specialityOrdTypes",
+              "disabled": false,
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ],
+              "order": 1,
+              "width": 400
+            },
+            {
+              "label": "Образователна степен",
+              "name": "educationGradeTypeID",
+              "type": "select",
+              "optionsPath": "/data/get/educationGradeTypes",
+              "disabled": false,
+              "order": 2,
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ],
+              "width": 400
+            },
+            {
+              "label": "Диплома №",
+              "name": "certifcateNo",
+              "type": "input",
+              "inputType": "text",
+              "disabled": false,
+              "order": 3,
+              "width": 200,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 50,
+                  "message": "Максимална дължина 50 символа"
+                }
+              ]
+            },
+            {
+              "label": "Година на завършване",
+              "name": "yearOfGraduation",
+              "type": "input",
+              "inputType": "number",
+              "order": 4,
+              "width": 95,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 4,
+                  "message": "Максимална дължина 4 символа"
+                },
+                {
+                  "name": "minLength",
+                  "validation": 4,
+                  "message": "Минимална дължина 4 символа"
+                },
+                {
+                  "name": "max",
+                  "validation": 9999,
+                  "message": "Невалидна година"
+                },
+                {
+                  "name": "pattern",
+                  "validation": "^\\d+$",
+                  "message": "Полето трябва да съдържа цяло неотрицателно число"
+                }
+              ]
+            },
+            {
+              "label": "ПК учител",
+              "name": "isPKTeacher",
+              "type": "checkbox",
+              "influence": [
+                {
+                  "type": "render",
+                  "fieldName": "personOKSSubjectGroup",
+                  "condition": [
+                    true
+                  ]
+                },
+				 {
+                      "type": "require",
+                      "fields": [
+                       "personOKSSubjectGroup"
+                      ],
+                      "message": "Полето е задължително",
+                      "condition": [
+                        true
+                      ]
+                    }
+              ],
+              "order": 5
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "label": "Специалност и придобита ПК",
+          "name": "specialityData",
+          "fields": [
+            {
+              "label": "Наименование на специалността",
+              "name": "speciality",
+              "type": "textarea",
+              "order": 1,
+              "width": 1000,
+              "height": 5,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 1024,
+                  "message": "Максимална дължина 1024 символа"
+                },
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ]
+            },
+            {
+              "label": "Придобита професионална квалификация",
+              "name": "acquiredPK",
+              "type": "textarea",
+              "order": 2,
+              "width": 1000,
+              "height": 5,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 1024,
+                  "message": "Максимална дължина 1024 символа"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "label": "Придобита в учебно заведение",
+          "name": "universityData",
+          "fields": [
+            {
+              "label": "Наименование",
+              "name": "universityID",
+              "type": "searchselect",
+              "optionsPath": "/data/get/university",
+              "width": 800,
+              "disabled": false,
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ],
+              "order": 1
+            },
+            {
+              "label": "Бележки",
+              "name": "universityNotes",
+              "type": "textarea",
+              "order": 2,
+              "width": 1000,
+              "height": 2,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 1024,
+                  "message": "Максимална дължина 1024 символа"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "order": 4,
+          "label": "Учител по",
+          "name": "personOKSSubjectGroupData",
+          "canDuplicate": true,
+          "fields": [
+            {
+              "label": "Наименование",
+              "name": "personOKSSubjectGroup",
+              "type": "searchselect",
+              "optionsPath": "/data/get/subjectGroups",
+              "width": 400,
+              "disabled": false,
+              "order": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

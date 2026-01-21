@@ -1,0 +1,87 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_basic].[TeacherAll] PER /**where**/ /**orderby**/",
+  "columns": [
+		{
+          "column": "PER.PersonID AS personid"
+        },
+		{
+          "column": "PER.FirstName AS firstName"
+        },
+		{
+          "column": "PER.MiddleName AS middleName"
+        },
+		{
+          "column": "PER.LastName AS lastName"
+        },
+		{
+          "column": "PER.PermanentAddress AS permanentAddress"
+        },
+		{
+          "column": "PER.PermanentRegion AS permanentRegion"
+        },
+		{
+          "column": "PER.PermanentMunicipality AS permanentMunicipality"
+        },
+		{
+          "column": "PER.PermanentTownID AS permanentTown"
+        },
+{
+          "column": "PER.CurrentAddress AS currentAddress"
+        },
+		{
+          "column": "PER.CurrentRegion AS currentRegion"
+        },
+		{
+          "column": "PER.CurrentMunicipality AS currentMunicipality"
+        },
+{
+          "column": "PER.CurrentTownID AS currentTown"
+        },
+{
+          "column": "PER.PublicEduNumber AS publicEduNumber"
+        },
+{
+          "column": "PER.PersonalIDType AS personalIDType"
+        },
+{
+          "column": "PER.NationalityID AS nationalityID"
+        },
+{
+          "column": "PER.PersonalID AS personalID"
+        },
+{
+          "column": "PER.BirthDate AS birthDate"
+        },
+{
+          "column": "PER.BirthPlaceTownID AS birthPlaceTownID"
+        },
+{
+          "column": "PER.BirthPlaceCountry AS birthPlaceCountry"
+        },
+{
+          "column": "PER.Gender AS gender"
+        }
+		
+  ],
+  "params": [
+	{
+          "param": "@personalID",
+          "column": "PER.PersonalID",
+          "operator": "=",
+          "value": "personalID",
+          "type": "string",
+          "logical_operator": "and",
+		  "optional": true,
+          "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "PER.PersonID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+	]
+
+}

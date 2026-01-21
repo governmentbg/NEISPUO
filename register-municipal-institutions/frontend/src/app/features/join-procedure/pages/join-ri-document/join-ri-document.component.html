@@ -1,0 +1,20 @@
+<div class="grid fluid">
+    <div class="col-12">
+        <app-join-mi-preview-ri-document
+          [displayRIPremInstitution]="false"
+          [displayDocument]="true"
+          [resp]="misToDeleteFirst$ | async"
+        ></app-join-mi-preview-ri-document>
+      </div>
+    <div class="col-12">
+        <app-stepper-actions
+           [showBack]="true"
+           [backLabel]="'Назад'"
+           [backRouterLink]="['..', 'mi-to-update']"
+           [showForward]="true"
+           [forwardLabel]="'Напред'"
+           [forwardCallback]="forwardCallback"
+           [showSubmit]="false"
+        ></app-stepper-actions>
+    </div>
+  </div>

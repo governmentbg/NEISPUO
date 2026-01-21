@@ -1,0 +1,57 @@
+{
+    "arrayName": "settings",
+    "template": "SELECT /**select**/ FROM [inst_nom].[SubjectInstitution] SI  /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "SI.CustomVarValueID AS id"
+        },
+        {
+            "column": "SI.SubjectName AS subjectName"
+        },
+        {
+            "column": "SI.SubjectGroupName AS subjectGroupName"
+        },
+        {
+            "column": "SI.SubjectID AS subjectID"
+        }
+    ],
+    "params": [
+        {
+            "param": "@instid",
+            "column": "SI.InstitutionID",
+            "operator": "=",
+            "value": "instid",
+            "type": "int",
+            "logical_operator": "and",
+            "static": false
+        },
+        {
+            "param": "@isValid",
+            "column": "SI.IsValid",
+            "operator": "=",
+            "value": 1,
+            "type": "int",
+            "logical_operator": "and",
+            "static": true
+        },
+        {
+            "param": "@subjectID",
+            "column": "SI.SubjectID",
+            "operator": "<",
+            "value": 200,
+            "type": "int",
+            "logical_operator": "and",
+            "static": true
+        }
+    ],
+    "order": [
+        {
+          "column": "SI.SortOrd",
+          "type": "ASC"
+        }
+    ],
+    "inSelects": [
+    ]
+
+
+}

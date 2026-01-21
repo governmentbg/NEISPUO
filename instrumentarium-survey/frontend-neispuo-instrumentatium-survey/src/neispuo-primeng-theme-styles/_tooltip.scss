@@ -1,0 +1,24 @@
+@import "../neispuo-theme-styles/variables/tooltip-variables";
+
+.p-tooltip .p-tooltip-text {
+    font-size: 0.875rem;
+    background: $tooltip-bg;
+    padding: 0.875rem 0.75rem;
+    max-width: $tooltip-max-width;
+}
+
+.p-tooltip.p-tooltip-right .p-tooltip-arrow {
+    border-right-color: $tooltip-bg;
+}
+
+.p-tooltip.p-tooltip-left .p-tooltip-arrow {
+    border-left-color: $tooltip-bg;
+}
+
+.p-tooltip.p-tooltip-top .p-tooltip-arrow {
+    border-top-color: $tooltip-bg;
+}
+
+.p-tooltip.p-tooltip-bottom .p-tooltip-arrow {
+    border-bottom-color: $tooltip-bg;
+}

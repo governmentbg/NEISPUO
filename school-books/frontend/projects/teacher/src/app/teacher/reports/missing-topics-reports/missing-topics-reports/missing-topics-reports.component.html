@@ -1,0 +1,46 @@
+<sb-breadcrumb class="block mb-3" [icon]="fadCalendarWeek" text="Невписани теми"></sb-breadcrumb>
+
+<sb-card>
+  <ng-container card-title>Невписани теми</ng-container>
+  <ng-container card-buttons>
+    <a [routerLink]="['./', 'new']" mat-raised-button color="primary" aria-label="Нова справка невписани теми">
+      <fa-icon [icon]="fasPlus" size="lg"></fa-icon>
+      <span class="hidden sm:inline">Нова справка невписани теми</span>
+    </a>
+  </ng-container>
+  <ng-container card-body>
+    <sb-table
+      [dataSource]="dataSource"
+      [displayedColumns]="['action', 'period', 'yearAndMonth', 'teacherName', 'createDate']"
+    >
+      <ng-container cdkColumnDef="action">
+        <th cdk-header-cell *cdkHeaderCellDef></th>
+        <td cdk-cell *cdkCellDef="let row" class="sb-table-action">
+          <a [routerLink]="['./', row.missingTopicsReportId]" aria-label="Редактирай" class="sb-link-btn">
+            <fa-icon [icon]="fadChevronCircleRight"></fa-icon>
+          </a>
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="period">
+        <th cdk-header-cell *cdkHeaderCellDef>Период</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.period }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="yearAndMonth">
+        <th cdk-header-cell *cdkHeaderCellDef>Година и месец</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.yearAndMonth }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="teacherName">
+        <th cdk-header-cell *cdkHeaderCellDef>Учител</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.teacherName }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="createDate">
+        <th cdk-header-cell *cdkHeaderCellDef>Създадена на</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.createDate | sbDateTime }}</td>
+      </ng-container>
+    </sb-table>
+  </ng-container>
+</sb-card>

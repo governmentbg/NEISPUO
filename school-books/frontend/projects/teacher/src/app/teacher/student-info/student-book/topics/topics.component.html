@@ -1,0 +1,10 @@
+<div *ngIf="tabs?.length" class="md:grid grid-cols-4 gap-4">
+  <div>
+    <sb-vertical-tabs [tabs]="tabs" ariaLabel="Предмети от учебния план"></sb-vertical-tabs>
+  </div>
+  <div class="col-span-3">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<sb-banner type="warning" *ngIf="!tabs?.length">Паралелката няма въведен учебен план</sb-banner>

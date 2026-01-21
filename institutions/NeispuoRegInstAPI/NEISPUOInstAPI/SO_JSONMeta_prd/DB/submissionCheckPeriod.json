@@ -1,0 +1,38 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[CampaignData] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "IsOpen as isOpenPeriod"
+        },
+        {
+            "column": "SchoolYear as schoolYear"
+        },
+		{
+            "column": "Period as period"
+        }
+    ],
+    "params": [
+	{
+      "param": "@instType",
+      "column": "InstType",
+      "operator": "=",
+      "value": "instType",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+	{
+      "param": "@isOpen",
+      "column": "IsOpen",
+      "operator": "=",
+      "value": 1,
+      "type": "int",
+      "logical_operator": "and",
+      "static": true
+    }
+    ],
+    "order": [
+
+    ],
+    "inSelects": []
+}

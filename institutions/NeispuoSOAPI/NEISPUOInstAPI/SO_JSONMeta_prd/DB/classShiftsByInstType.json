@@ -1,0 +1,38 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[ClassShift] CS JOIN [inst_nom].[ClassShiftLimit] CSL ON CS.ClassShiftID=CSL.ClassShiftID /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "CS.ClassShiftID as code"
+        },
+        {
+            "column": "CS.Name as label"
+        }
+    ],
+    "params": [
+        {
+            "param": "@IsValid",
+            "column": "IsValid",
+            "operator": "=",
+            "value": 1,
+            "type": "int",
+            "logical_operator": "and",
+            "static": true
+        },
+		  {
+      "param": "@filterValue",
+      "column": "CSL.InstTypeID",
+      "operator": "=",
+      "value": "filterValue",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+    ],
+    "order": [
+        {
+            "column": "CS.SortOrd",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

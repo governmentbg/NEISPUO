@@ -1,0 +1,94 @@
+@using SB.Domain
+@model StudentAbsencesCdoModel
+
+<div class="page">
+  <h3 class="page-header">Отсъствия</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th colspan="2">Септември</th>
+        <th colspan="2">Октомври</th>
+        <th colspan="2">Ноември</th>
+        <th colspan="2">Декември</th>
+      </tr>
+      <tr>
+        <th>Уваж.</th>
+        <th>Неуваж.</th>
+        <th>Уваж.</th>
+        <th>Неуваж.</th>
+        <th>Уваж.</th>
+        <th>Неуваж.</th>
+        <th>Уваж.</th>
+        <th>Неуваж.</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>@Model.SepAbsences.ExcusedAbsences</td>
+        <td>@Model.SepAbsences.UnexcusedAbsences</td>
+        <td>@Model.OctAbsences.ExcusedAbsences</td>
+        <td>@Model.OctAbsences.UnexcusedAbsences</td>
+        <td>@Model.NovAbsences.ExcusedAbsences</td>
+        <td>@Model.NovAbsences.UnexcusedAbsences</td>
+        <td>@Model.DecAbsences.ExcusedAbsences</td>
+        <td>@Model.DecAbsences.UnexcusedAbsences</td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br />
+
+  <table>
+    <thead>
+      <tr>
+        <th colspan="2">Януари</th>
+        <th colspan="2">Февруари</th>
+        <th colspan="2">Март</th>
+        <th colspan="2">Април</th>
+        <th colspan="2">Май</th>
+        <th colspan="2">Юни</th>
+        <th colspan="2">Юли</th>
+        <th colspan="2">Август</th>
+      </tr>
+      <tr>
+        <th>Уваж.</th>
+        <th>Неуваж.</th>
+        <th>Уваж.</th>
+        <th>Неуваж.</th>
+        <th>Уваж.</th>
+        <th>Неуваж.</th>
+        <th>Уваж.</th>
+        <th>Неуваж.</th>
+        <th>Уваж.</th>
+        <th>Неуваж.</th>
+        <th>Уваж.</th>
+        <th>Неуваж.</th>
+        <th>Уваж.</th>
+        <th>Неуваж.</th>
+        <th>Уваж.</th>
+        <th>Неуваж.</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>@Model.JanAbsences.ExcusedAbsences</td>
+        <td>@Model.JanAbsences.UnexcusedAbsences</td>
+        <td>@Model.FebAbsences.ExcusedAbsences</td>
+        <td>@Model.FebAbsences.UnexcusedAbsences</td>
+        <td>@Model.MarAbsences.ExcusedAbsences</td>
+        <td>@Model.MarAbsences.UnexcusedAbsences</td>
+        <td>@Model.AprAbsences.ExcusedAbsences</td>
+        <td>@Model.AprAbsences.UnexcusedAbsences</td>
+        <td>@Model.MayAbsences.ExcusedAbsences</td>
+        <td>@Model.MayAbsences.UnexcusedAbsences</td>
+        <td>@Model.JunAbsences.ExcusedAbsences</td>
+        <td>@Model.JunAbsences.UnexcusedAbsences</td>
+        <td>@Model.JulAbsences.ExcusedAbsences</td>
+        <td>@Model.JulAbsences.UnexcusedAbsences</td>
+        <td>@Model.AugAbsences.ExcusedAbsences</td>
+        <td>@Model.AugAbsences.UnexcusedAbsences</td>
+        </tr>
+    </tbody>
+  </table>
+</div>

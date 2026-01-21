@@ -1,0 +1,45 @@
+user  nginx;
+worker_processes  1;
+error_log  /var/log/nginx/error.log warn;
+pid        /var/run/nginx.pid;
+events {
+  worker_connections  1024;
+}
+http {
+  include       /etc/nginx/mime.types;
+  default_type  application/octet-stream;
+
+  sendfile        on;
+  keepalive_timeout  65;
+  server {
+    listen       80;
+    server_name  localhost;
+
+    # gzip
+    gzip on;
+    gzip_static on;
+    gzip_vary on;
+    gzip_comp_level 6;
+    gzip_types text/plain text/css text/xml application/javascript application/json image/svg+xml;
+
+    # security headers
+    add_header X-Frame-Options "SAMEORIGIN" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header Referrer-Policy "no-referrer" always;
+    add_header Content-Security-Policy "default-src 'self' 'unsafe-inline' 'unsafe-eval'; frame-ancestors 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval';  connect-src 'self' http://localhost:5339 http://127.0.0.1:5339 https://api-students.mon.bg wss://api-students.mon.bg https://blobs.mon.bg https://oidc.mon.bg; object-src 'none'; img-src * data: blob: 'unsafe-inline'; frame-src 'self' blob: https://oidc.mon.bg; style-src 'self' https://api-students.mon.bg 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src 'self' data: https://api-students.mon.bg https://fonts.gstatic.com https://cdn.jsdelivr.net; script-src-elem 'self'  'unsafe-inline' https://api-students.mon.bg https://storage.googleapis.com; report-uri https://api-students.mon.bg/api/error/cspreport;" always;
+    add_header Permissions-Policy "accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), cross-origin-isolated=(), display-capture=(), document-domain=(), encrypted-media=(), execution-while-not-rendered=(), execution-while-out-of-viewport=(), fullscreen=(), geolocation=(), gyroscope=(), keyboard-map=(), magnetometer=(), microphone=(), midi=(), navigation-override=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), sync-xhr=(), usb=(), web-share=(), xr-spatial-tracking=()" always;
+
+    location / {
+      root   /app;
+      index  index.html;
+      try_files $uri $uri/ /index.html;
+      location = /version { 
+        default_type  text/plain;
+      }
+    }
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+      root   /usr/share/nginx/html;
+    }
+  }
+}

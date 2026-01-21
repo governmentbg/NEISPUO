@@ -1,0 +1,21 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[FinancingMethod] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "FinancingMethodID as code"
+        },
+        {
+            "column": "Description as label"
+        }
+    ],
+    "params": [
+		
+    ],
+    "order": [
+        {
+            "column": "FinancingMethodID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

@@ -1,0 +1,63 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+	  <DebugType>portable</DebugType>
+	  <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+	  <ApplicationIcon />
+	  <OutputType>Library</OutputType>
+	  <StartupObject />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Schema\import.xsd" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Schema\import.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EFCore.BulkExtensions" Version="3.6.6" />
+    <PackageReference Include="EPPlus" Version="4.5.3.3" />
+    <PackageReference Include="ErikEJ.EntityFrameworkCore.DgmlBuilder" Version="3.1.1" />
+    <PackageReference Include="Hangfire.AspNetCore" Version="1.7.31" />
+    <PackageReference Include="MailKit" Version="2.10.1" />
+    <PackageReference Include="MetadataExtractor" Version="2.8.1" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Core" Version="1.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="5.0.0" />
+    <PackageReference Include="MimeKit" Version="2.10.1" />
+    <PackageReference Include="nClam" Version="6.0.1" />
+    <PackageReference Include="Newtonsoft.Json.Schema" Version="3.0.14" />
+    <PackageReference Include="SendGrid" Version="9.25.1" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="1.0.4" />
+    <PackageReference Include="StackExchange.Redis" Version="2.6.48" />
+    <PackageReference Include="System.Data.Common" Version="4.3.0" />
+    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.2.7" />
+    <PackageReference Include="System.Security.Cryptography.Xml" Version="5.0.0" />
+    <PackageReference Include="ZKWeb.System.Drawing" Version="4.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+	 <ProjectReference Include="..\MON.ASPDataAcess\MON.ASPDataAccess.csproj" />
+	 <ProjectReference Include="..\MON.BackgroundWorker\MON.BackgroundWorker.csproj" />
+    <ProjectReference Include="..\MON.DataAccess\MON.DataAccess.csproj" />
+    <ProjectReference Include="..\MON.Models\MON.Models.csproj" />
+    <ProjectReference Include="..\MON.Shared\MON.Shared.csproj" />
+    <ProjectReference Include="..\Report\MON.Report.Model\MON.Report.Model.csproj" />
+    <ProjectReference Include="..\Templates\Domain\Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="zxing">
+      <HintPath>..\..\Lib\ZXing.net\netstandard2.1\zxing.dll</HintPath>
+    </Reference>
+    <Reference Include="ZXing.ZKWeb.System.Drawing">
+      <HintPath>..\..\Lib\ZXing.net\ZKWebBinding\netstandard2.0\ZXing.ZKWeb.System.Drawing.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

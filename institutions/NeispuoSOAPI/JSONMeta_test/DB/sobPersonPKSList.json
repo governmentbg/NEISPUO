@@ -1,0 +1,48 @@
+{
+  "arrayName": "staffPKS",
+  "template": "SELECT /**select**/ FROM [inst_basic].[sobPersonPKSList] SPL /**where**/ /**orderby**/",
+  "columns": [
+    {
+      "column": "SPL.ID AS id"
+    },
+    {
+      "column": "SPL.PersonID AS personID"
+    },
+    {
+      "column": "SPL.FullName AS fullName"
+    },
+    {
+      "column": "SPL.PKS AS pksType"
+    },
+    {
+      "column": "SPL.CertifcateNoPKS AS pksCertifcateNo"
+    },
+    {
+      "column": "SPL.YearOfGraduationPKS AS pksYearOfGraduation"
+    },
+    {
+      "column": "SPL.SpecialityPKS AS pksSpeciality"
+    },
+    {
+      "column": "SPL.UniversityPKS AS pksUniversity"
+    }
+  ],
+  "params": [
+     {
+      "param": "@instid",
+      "column": "SPL.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "SPL.PersonID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": []
+}

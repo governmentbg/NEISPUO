@@ -1,0 +1,177 @@
+<sb-breadcrumb class="block mb-3" [icon]="fadLock" text="Приключване"></sb-breadcrumb>
+
+<form [formGroup]="form" autocomplete="off" novalidate>
+  <sb-card>
+    <ng-container card-title>Приключване</ng-container>
+    <ng-container card-buttons>
+      <button
+        mat-raised-button
+        color="accent"
+        type="button"
+        (click)="onFinalize()"
+        [disabled]="!canFinalize || finalizing"
+      >
+        <fa-icon [icon]="finalizing ? fadSpinnerThird : fasLock" [spin]="finalizing" size="lg"></fa-icon>
+        <span>Приключи</span>
+      </button>
+      <button mat-raised-button color="primary" type="button" (click)="onSign()" [disabled]="!canSign">
+        <fa-icon [icon]="fasKey" size="lg"></fa-icon>
+        <span>Подпиши</span>
+      </button>
+    </ng-container>
+    <ng-container *ngIf="data.classBooks.length === 0" card-body>
+      <sb-banner type="info">Няма дневници</sb-banner>
+    </ng-container>
+    <ng-container *ngIf="data.classBooks.length > 0" card-body>
+      <sb-banner type="error" class="mb-2" *ngIf="!data.signingServiceExists">
+        Не може да бъде открита инсталация на Локален сървър за достъп до електронни сертификати. Моля проверете своята
+        инсталация или свалете сървъра от
+        <a target="_blank" href="{{ signingServicePage }}" title="Локален сървър" class="text-primary underline">тук</a>
+        .
+      </sb-banner>
+      <sb-banner type="success" class="mb-2" *ngIf="signedTotal === data.classBooks.length">
+        Всички дневници са успешно приключени
+      </sb-banner>
+      <sb-card-section>
+        <div class="flex">
+          Дневници
+
+          <div class="ml-[100px] flex-1">
+            <div class="flex items-center mt-1">
+              <div class="shadow rounded w-full bg-gray-100 overflow-hidden">
+                <div
+                  class="rounded-l py-1 bg-primary"
+                  [style.width.%]="(signedTotal / data.classBooks.length) * 100"
+                ></div>
+              </div>
+              <span class="text-xs ml-1 min-w-[195px] text-right">
+                приключени и подписани {{ signedTotal }}/{{ data.classBooks.length }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </sb-card-section>
+      <div class="sb-table-container">
+        <table class="sb-table text-sm" formArrayName="classBooks">
+          <thead>
+            <tr>
+              <th class="px-4 w-10 whitespace-nowrap">Клас</th>
+              <th class="pl-1 w-10 whitespace-nowrap">Випуск (клас)</th>
+              <th class="pl-1 w-10 whitespace-nowrap">Наименование</th>
+              <th class="pl-1 w-[100px] whitespace-nowrap">
+                <mat-checkbox
+                  color="primary"
+                  [checked]="allClassBooksSelectedForFinalization"
+                  (change)="toggleAllClassBooksSelectedForFinalization()"
+                ></mat-checkbox>
+                Приключи
+              </th>
+              <th class="pl-1 w-[100px] whitespace-nowrap">
+                <mat-checkbox
+                  color="primary"
+                  [checked]="allClassBooksSelectedForSigning"
+                  [disabled]="!data.signingServiceExists"
+                  (change)="toggleAllClassBooksSelectedForSigning()"
+                ></mat-checkbox>
+                Подпиши
+              </th>
+              <th class="pl-1 w-full min-w-[250px]">Статус</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let classBook of classBooksFormArray.controls; let i = index" [formGroupName]="i">
+              <td class="px-4 py-1 whitespace-nowrap">{{ data.classBooks[i].className }}</td>
+              <td class="p-1 whitespace-nowrap">
+                {{ data.classBooks[i].basicClassName ?? '(на групи)' }}
+              </td>
+              <td class="p-1 whitespace-nowrap">
+                {{ data.classBooks[i].fullBookName }}
+              </td>
+              <td class="pl-1 whitespace-nowrap">
+                <mat-checkbox
+                  color="primary"
+                  *ngIf="data.classBooks[i].finalPrintStatus == null"
+                  formControlName="selectedForFinalization"
+                ></mat-checkbox>
+
+                <fa-icon
+                  *ngIf="data.classBooks[i].finalPrintStatus != null"
+                  class="-ml-1 text-primary"
+                  [icon]="fadLock"
+                  size="lg"
+                  title="Дневникът е приключен"
+                ></fa-icon>
+
+                <fa-icon
+                  *ngIf="data.classBooks[i].finalPrintStatus === CLASS_BOOK_PRINT_STATUS_PENDING"
+                  class="-ml-1 text-primary"
+                  [icon]="fadSpinnerThird"
+                  [spin]="true"
+                  size="lg"
+                  title="Дневникът се принтира"
+                ></fa-icon>
+
+                <fa-icon
+                  *ngIf="data.classBooks[i].finalPrintStatus === CLASS_BOOK_PRINT_STATUS_ERRORED"
+                  class="-ml-1 text-error"
+                  [icon]="fadExclamationCircle"
+                  size="lg"
+                  aria-label="Възникна грешка при принтиране. Моля, пишете в системата за поддръжка."
+                  matTooltip="Възникна грешка при принтиране. Моля, пишете в системата за поддръжка."
+                ></fa-icon>
+
+                <a
+                  *ngIf="data.classBooks[i].finalPrintStatus === CLASS_BOOK_PRINT_STATUS_PROCESSED"
+                  [href]="data.classBooks[i].blobDownloadUrl"
+                  target="_blank"
+                  class="sb-link-btn -ml-1 text-primary"
+                  download
+                  title="Свали принтирания дневник"
+                >
+                  <fa-icon [icon]="fasFilePdf"></fa-icon>
+                </a>
+              </td>
+              <td class="pl-1 whitespace-nowrap">
+                <mat-checkbox
+                  color="primary"
+                  *ngIf="data.classBooks[i].finalPrintIsSigned !== true && !signing[data.classBooks[i].classBookId]"
+                  formControlName="selectedForSigning"
+                ></mat-checkbox>
+
+                <fa-icon
+                  *ngIf="data.classBooks[i].finalPrintIsSigned !== true && signing[data.classBooks[i].classBookId]"
+                  class="-ml-1 text-primary"
+                  [icon]="fadSpinnerThird"
+                  [spin]="true"
+                  size="lg"
+                  title="Дневникът се подписва"
+                ></fa-icon>
+
+                <fa-icon
+                  *ngIf="
+                    data.classBooks[i].finalPrintIsSigned !== true &&
+                    !signing[data.classBooks[i].classBookId] &&
+                    signingError[data.classBooks[i].classBookId]
+                  "
+                  class="text-error"
+                  [icon]="fadExclamationCircle"
+                  size="lg"
+                  [attr.aria-label]="signingError[data.classBooks[i].classBookId]"
+                  [matTooltip]="signingError[data.classBooks[i].classBookId]"
+                ></fa-icon>
+
+                <fa-icon
+                  *ngIf="data.classBooks[i].finalPrintIsSigned === true"
+                  class="-ml-1 text-primary"
+                  [icon]="fadKey"
+                  size="lg"
+                ></fa-icon>
+              </td>
+              <td class="pl-1">{{ data.classBooks[i].lastStatusChangeDescription }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </ng-container>
+  </sb-card>
+</form>

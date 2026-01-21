@@ -1,0 +1,161 @@
+<sb-breadcrumb
+  class="block mb-3"
+  [icon]="fadLock"
+  text="Приключване на дневниците за училища с външен доставчик"
+></sb-breadcrumb>
+
+<sb-card>
+  <ng-container card-title>Приключване на дневниците за училища с външен доставчик</ng-container>
+  <ng-container *ngIf="data.classBooks.length === 0" card-body>
+    <sb-banner type="info">Няма дневници</sb-banner>
+  </ng-container>
+  <ng-container *ngIf="data.classBooks.length > 0" card-body>
+    <div *ngIf="signedTotal !== data.classBooks.length" class="mb-4">
+      <uppy-progress-bar
+        [uppy]="uppy"
+        [props]="{
+          hideAfterFinish: true
+        }"
+        class="col-span-full mt-2"
+      ></uppy-progress-bar>
+      <uppy-drag-drop
+        [uppy]="uppy"
+        [props]="{
+          locale: BgLocale
+        }"
+        class="col-span-full"
+      ></uppy-drag-drop>
+    </div>
+
+    <sb-banner type="success" class="mb-2" *ngIf="signedTotal === data.classBooks.length">
+      Всички дневници са успешно приключени
+    </sb-banner>
+
+    <ng-container *ngIf="files.length !== 0">
+      <sb-card-section class="col-span-full">В процес на обработка</sb-card-section>
+      <div class="sb-table-container col-span-full mb-4">
+        <table class="sb-table" role="table">
+          <thead>
+            <th>Файл</th>
+            <th class="sm:min-w-[380px]">Прогрес</th>
+            <th>Статус</th>
+          </thead>
+          <tbody role="rowgroup">
+            <tr *ngFor="let file of files" role="row">
+              <td>
+                {{ file.fileName }}
+              </td>
+              <td *ngIf="file.error">
+                <span class="text-error">{{ file.error }}</span>
+              </td>
+              <td *ngIf="!file.error">
+                <span *ngIf="!file.pending" class="text-success">
+                  Дневникът '{{ file.classBookName }}' е успешно приключен
+                </span>
+                <div *ngIf="file.pending" class="flex-1">
+                  <div class="flex items-center mt-1">
+                    <div class="shadow rounded w-full bg-gray-100 overflow-hidden">
+                      <div
+                        class="rounded-l py-1 bg-success"
+                        [style.width.%]="(file.bytesUploaded / file.bytesTotal) * 100"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <fa-icon
+                  *ngIf="file.pending"
+                  class="text-primary"
+                  [icon]="fadSpinnerThird"
+                  size="lg"
+                  [spin]="true"
+                  title="В процес на обработка"
+                ></fa-icon>
+                <fa-icon
+                  *ngIf="!file.pending && file.error"
+                  class="text-error"
+                  [icon]="fadExclamationCircle"
+                  size="lg"
+                  title="Грешка"
+                ></fa-icon>
+                <fa-icon
+                  *ngIf="!file.pending && !file.error"
+                  class="text-success"
+                  [icon]="fasCheckCircle"
+                  size="lg"
+                  title="Приключен"
+                ></fa-icon>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </ng-container>
+
+    <sb-card-section>
+      <div class="flex">
+        Дневници
+
+        <div class="ml-[100px] flex-1">
+          <div class="flex items-center mt-1">
+            <div class="shadow rounded w-full bg-gray-100 overflow-hidden">
+              <div
+                class="rounded-l py-1 bg-primary"
+                [style.width.%]="(signedTotal / data.classBooks.length) * 100"
+              ></div>
+            </div>
+            <span class="text-xs ml-1 min-w-[195px] text-right">
+              приключени и подписани {{ signedTotal }}/{{ data.classBooks.length }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </sb-card-section>
+    <div class="sb-table-container">
+      <table class="sb-table text-sm">
+        <thead>
+          <tr>
+            <th class="px-4 w-10">Клас</th>
+            <th class="pl-1 w-10">Випуск (клас)</th>
+            <th class="pl-1 w-10">Наименование</th>
+            <th class="pl-1 w-10"></th>
+            <th class="pl-1 w-full min-w-[250px]">Статус</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let classBook of data.classBooks">
+            <td class="px-4 py-1 whitespace-nowrap">{{ classBook.className }}</td>
+            <td class="p-1 whitespace-nowrap">
+              {{ classBook.basicClassName ?? '(на групи)' }}
+            </td>
+            <td class="p-1 whitespace-nowrap">
+              {{ classBook.fullBookName }}
+            </td>
+            <td class="p-1 whitespace-nowrap">
+              <fa-icon
+                *ngIf="classBook.finalPrintIsSigned === true"
+                class="-ml-1 text-primary"
+                [icon]="fadLock"
+                size="lg"
+                title="Дневникът е приключен"
+              ></fa-icon>
+              <fa-icon
+                *ngIf="classBook.finalPrintIsSigned === true"
+                class="-ml-1 text-primary"
+                [icon]="fadKey"
+                size="lg"
+                title="Дневникът е подписан"
+              ></fa-icon>
+            </td>
+            <td class="pl-1">
+              <span class="text-xs">
+                {{ classBook.lastStatusChangeDescription }}
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </ng-container>
+</sb-card>

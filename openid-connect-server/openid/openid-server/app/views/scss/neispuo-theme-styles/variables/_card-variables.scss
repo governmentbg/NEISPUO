@@ -1,0 +1,19 @@
+//
+// Override bootstrap variables
+//
+$card-border-color: #d5d5d5;
+$card-border-radius: 0.5rem;
+$card-border-width: 1px;
+$card-inner-border-radius: subtract($card-border-radius, $card-border-width);
+$card-box-shadow: 0 0.1875rem 0.375rem #00000029;
+$card-cap-bg: #e7eef9;
+$card-spacer-y: 1.25rem;
+$card-spacer-x: 3.5rem;
+$card-cap-padding-y: $card-spacer-y;
+$card-cap-padding-x: $card-spacer-x;
+$link-hover-decoration: underline;
+
+// //
+// // Custom variables
+// //
+$card-cap-sm-bg: #f4f7fc;

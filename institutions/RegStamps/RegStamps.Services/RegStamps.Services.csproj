@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DinkToPdf" Version="1.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="8.0.8" />
+    <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="8.0.8" />
+  </ItemGroup>
+
+
+   <ItemGroup>
+	 <ProjectReference Include="..\RegStamps.Data\RegStamps.Data.csproj" />
+	 <ProjectReference Include="..\RegStamps.Infrastructure\RegStamps.Infrastructure.csproj" />
+	 <ProjectReference Include="..\RegStamps.Models\RegStamps.Models.csproj" />
+	 <ProjectReference Include="..\RegStamps.Settings\RegStamps.Settings.csproj" />
+   </ItemGroup>
+
+</Project>

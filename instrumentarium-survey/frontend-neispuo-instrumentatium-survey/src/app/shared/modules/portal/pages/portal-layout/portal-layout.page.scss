@@ -1,0 +1,44 @@
+@import "@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/variables/variables.scss";
+
+.fixed-top {
+  z-index: 100;
+}
+.navbar {
+  padding: 1rem 0.75rem;
+  box-shadow: -2px 0 5px $blue-500;
+  .container-fluid {
+    .logo {
+      display: flex;
+      align-items: center;
+      color: $white;
+      a {
+        background-size: 0;
+      }
+      .mon-logo {
+        height: 2rem;
+        width: auto;
+        padding-right: 1rem;
+      }
+      .mon-title {
+        margin: 0;
+      }
+    }
+  }
+}
+
+.portal-content {
+  margin-top: 4rem;
+  padding-bottom: 5.563rem;
+}
+
+footer {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  background-color: $white;
+  box-shadow: $box-shadow-top;
+  z-index: 1030;
+  .app-version {
+    margin-top: 0.3125rem;
+  }
+} 

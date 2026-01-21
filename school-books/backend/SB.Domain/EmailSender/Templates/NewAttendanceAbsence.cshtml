@@ -1,0 +1,12 @@
+@{
+  var attendanceTypeText = (string)Model["attendanceTypeText"]!;
+  var studentName = (string)Model["studentName"]!;
+}
+
+<th:block>
+  <th:block-row>
+    <th:p>
+      В НЕИСПУО има ново <strong>@attendanceTypeText</strong> на <strong>@studentName</strong>.
+    </th:p>
+  </th:block-row>
+</th:block>

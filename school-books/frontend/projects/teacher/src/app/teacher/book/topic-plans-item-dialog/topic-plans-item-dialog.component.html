@@ -1,0 +1,24 @@
+<form [formGroup]="form" novalidate (ngSubmit)="onSave()" class="sm:w-96">
+  <div class="sb-btn-wrapper sb-btn-wrapper-right">
+    <button mat-raised-button color="primary" type="submit" [disabled]="saving">
+      <fa-icon [icon]="saving ? fasSpinnerThird : fasCheck" [spin]="saving" size="lg"></fa-icon>
+      <span>Запази</span>
+    </button>
+    <button mat-raised-button mat-dialog-close>Затвори</button>
+  </div>
+
+  <sb-number-field label="№" formControlName="number"></sb-number-field>
+
+  <sb-textarea-field label="Тема" formControlName="title"></sb-textarea-field>
+
+  <sb-select-field
+    formControlName="taken"
+    label="Взета"
+    [items]="[
+      { id: false, name: 'Не' },
+      { id: true, name: 'Да' }
+    ]"
+  ></sb-select-field>
+
+  <sb-textarea-field label="Забележки" formControlName="note"></sb-textarea-field>
+</form>

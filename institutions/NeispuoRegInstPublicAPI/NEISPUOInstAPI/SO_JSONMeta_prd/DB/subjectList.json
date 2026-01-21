@@ -1,0 +1,45 @@
+{
+    "arrayName": "subjectList",
+	"template": "SELECT /**select**/ FROM [inst_nom].[SubjectInstitution] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "CustomVarValueID as id"
+        },
+        {
+            "column": "SubjectName as subjectName"
+        },
+		{
+            "column": "SubjectGroupName as subjectGroupName"
+        },
+		{
+            "column": "SortOrd as sortOrd"
+        }		
+    ],
+    "params": [
+{
+      "param": "@instid",
+      "column": "InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+	{
+      "param": "@isValid",
+      "column": "IsValid",
+      "operator": "=",
+      "value": 1,
+      "type": "int",
+      "logical_operator": "and",
+      "static": true
+    }
+    ],
+    "order": [
+        {
+            "column": "SortOrd",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

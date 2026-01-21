@@ -1,0 +1,6 @@
+<div class="flex items-center mt-1">
+  <div class="shadow rounded w-full bg-gray-100 overflow-hidden">
+    <div class="rounded-l py-1" [style.width.%]="percentage" [ngClass]="'bg-' + color"></div>
+  </div>
+  <span class="text-xs ml-1 min-w-[29px] text-right">{{ percentage | number: '1.0-0' }}%</span>
+</div>

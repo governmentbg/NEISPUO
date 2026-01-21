@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MailKit" Version="4.1.0" />
+    <PackageReference Include="MimeKit" Version="4.1.0" />
+    <PackageReference Include="Scriban" Version="6.2.1" />
+    <PackageReference Include="SendGrid" Version="9.28.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Neispuo.Tools.DataAccess\Neispuo.Tools.DataAccess.csproj" />
+    <ProjectReference Include="..\Neispuo.Tools.Models\Neispuo.Tools.Models.csproj" />
+    <ProjectReference Include="..\Neispuo.Tools.Shared\Neispuo.Tools.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

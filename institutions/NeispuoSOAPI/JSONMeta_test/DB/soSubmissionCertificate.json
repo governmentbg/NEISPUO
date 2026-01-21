@@ -1,0 +1,167 @@
+{
+  "template": "SELECT /**select**/ FROM [sob].[SubmissionCertificateData] SCD /**where**/ /**orderby**/",
+  "columns": [
+    {
+      "column": "SCD.SubmissionDataID AS id"
+    },
+    {
+      "column": "SCD.CertificateNumber AS certificateNumber"
+    },
+    {
+      "column": "SCD.SchoolYearInfo AS schoolYearInfo"
+    },
+    {
+      "column": "SCD.CampaignPeriod AS campaignPeriod"
+    },
+    {
+      "column": "SCD.InstitutionName AS institutionName"
+    },
+    {
+      "column": "SCD.Bulstat AS bulstat"
+    },
+    {
+      "column": "SCD.InstitutionType AS institutionType"
+    },
+    {
+      "column": "SCD.InstFinancialType AS instFinancialType"
+    },
+    {
+      "column": "SCD.BudgetingInstitution AS budgetingInstitution"
+    },
+    {
+      "column": "SCD.Code AS code"
+    },
+    {
+      "column": "SCD.InstAddress AS instAddress"
+    }
+  ],
+  "params": [
+    {
+      "param": "@submissionDataID",
+      "column": "SCD.SubmissionDataID",
+      "operator": "=",
+      "value": "submissionDataID",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+  ],
+  "order": [
+  ],
+  "inSelects": [
+    {
+      "arrayName": "firstRow",
+      "template": "SELECT /**select**/ FROM [sob].[SubmissionCertificateDetail] SCDD /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "SCDD.SubmissionDetailID AS id"
+        },
+        {
+          "column": "SCDD.SignerNamePos AS signerNamePos"
+        },
+        {
+          "column": "SCDD.SignDate AS signDate"
+        }
+      ],
+      "params": [
+        {
+          "param": "@submissionDataID",
+          "column": "SCDD.SubmissionDataID",
+          "operator": "=",
+          "value": "submissionDataID",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        },
+        {
+          "param": "@userType",
+          "column": "SCDD.UserType",
+          "operator": "=",
+          "value": 2,
+          "type": "int",
+          "logical_operator": "and",
+          "static": true
+        }
+      ],
+      "order": [
+
+      ]
+    },
+    {
+      "arrayName": "secondRow",
+      "template": "SELECT /**select**/ FROM [sob].[SubmissionCertificateDetail] SCDD /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "SCDD.SubmissionDetailID AS id"
+        },
+        {
+          "column": "SCDD.SignerNamePos AS signerNamePos"
+        },
+        {
+          "column": "SCDD.SignDate AS signDate"
+        }
+      ],
+      "params": [
+        {
+          "param": "@submissionDataID",
+          "column": "SCDD.SubmissionDataID",
+          "operator": "=",
+          "value": "submissionDataID",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        },
+        {
+          "param": "@userType",
+          "column": "SCDD.UserType",
+          "operator": "=",
+          "value": 1,
+          "type": "int",
+          "logical_operator": "and",
+          "static": true
+        }
+      ],
+      "order": [
+   
+      ]
+    },
+    {
+      "arrayName": "thirdRow",
+      "template": "SELECT /**select**/ FROM [sob].[SubmissionCertificateDetail] SCDD /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "SCDD.SubmissionDetailID AS id"
+        },
+        {
+          "column": "SCDD.SignerNamePos AS signerNamePos"
+        },
+        {
+          "column": "SCDD.SignDate AS signDate"
+        }
+      ],
+      "params": [
+        {
+          "param": "@submissionDataID",
+          "column": "SCDD.SubmissionDataID",
+          "operator": "=",
+          "value": "submissionDataID",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        },
+        {
+          "param": "@userType",
+          "column": "SCDD.UserType",
+          "operator": "=",
+          "value": 3,
+          "type": "int",
+          "logical_operator": "and",
+          "static": true
+        }
+      ],
+      "order": [
+ 
+      ]
+    }
+  ]
+}

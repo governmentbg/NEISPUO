@@ -1,0 +1,67 @@
+@import '@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/variables/variables';
+@import '@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/mixins';
+
+.info-strip {
+  position: fixed;
+  top: 4rem;
+  left: 0;
+  right: 0;
+  z-index: 1025; // Between header (1030) and second-nav (1020)
+  background-color: $blue-100;
+  color: $blue-300;
+  border-bottom: 1px solid $blue-200;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  
+  .container-fluid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    position: relative;
+  }
+  
+  .info-text {
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+    
+    i {
+      font-size: 1.1rem;
+      margin-right: 0.75rem;
+      color: $blue-300;
+    }
+  }
+  
+  .btn-close {
+    background: none;
+    border: none;
+    color: $blue-300;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+    padding: 0.25rem;
+    font-size: 1.2rem;
+    line-height: 1;
+    
+    &:hover {
+      opacity: 1;
+    }
+    
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .info-strip {
+    .info-text {
+      font-size: 0.85rem;
+    }
+  }
+}

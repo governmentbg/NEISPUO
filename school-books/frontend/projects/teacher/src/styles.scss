@@ -1,0 +1,25 @@
+@import 'tailwindcss';
+@import 'google-fonts';
+@import 'material/material-teacher';
+@import 'material/material-fixes';
+@import 'base';
+@import 'ng-select-vars';
+.ng-select-default {
+  @import '@ng-select/ng-select/scss/default.theme';
+}
+.ng-select-material {
+  @import '@ng-select/ng-select/scss/material.theme';
+}
+@import '@uppy/core/src/style';
+@import '@uppy/drag-drop/src/style';
+@import '@uppy/progress-bar/src/style';
+
+@import 'components/book';
+@import 'components/badge';
+@import 'components/button';
+@import 'components/dialog';
+@import 'components/form-control';
+@import 'components/nom-select';
+@import 'components/schedule';
+@import 'components/table';
+@import 'components/snackbar';

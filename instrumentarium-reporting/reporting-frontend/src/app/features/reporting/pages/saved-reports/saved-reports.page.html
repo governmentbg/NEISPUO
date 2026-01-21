@@ -1,0 +1,26 @@
+<div class="saved-report-list">
+  <p-dataView
+    #savedReportsDataView
+    [value]="savedReports"
+    [paginator]="true"
+    [rows]="9"
+    [loading]="isLoading"
+    [emptyMessage]="isLoading === true ? ' ' : 'Няма намерени резултати'"
+    filterBy="Name"
+    layout="grid"
+  >
+    <ng-template pTemplate="header">
+      <div>
+        <span class="p-input-icon-left p-mb-2 p-mb-md-0">
+          <input class="form-control" type="search" placeholder="Търси по име" (input)="applyFilter($event, 'contains')" />
+        </span>
+      </div>
+    </ng-template>
+    <ng-template let-report pTemplate="gridItem" class="placeholder" dtPlaceholder>
+      <div class="col-12 col-sm-6 col-md-4">
+        <app-saved-report-card [report]="report"></app-saved-report-card>
+      </div>
+    </ng-template>
+  </p-dataView>
+</div>
+<router-outlet></router-outlet>

@@ -1,0 +1,38 @@
+<div
+  class="user-guides-menu collapse p-3 boreder-radius-md shadow-right container"
+  id="userGuidesMenu"
+  #dashboardMenu
+  clickOutside
+>
+  <div class="dashboard-menu-title col">Ръководства за работа с модули в НЕИСПУО</div>
+  <ng-container *ngFor="let category of categories$ | async">
+    <div class="xsmall color-blue-300">{{ category.name }}</div>
+    <div class="mb-3 content-wraper boreder-radius-md">
+      <div *ngFor="let userGuide of category.userGuides" (click)="$event.stopPropagation()" class="p-3 user-guide">
+        <a class="px-0 icon download-file" (click)="userGuideManagementService.downloadUserGuide(userGuide)">
+          <span class="d-sm-inline">{{ userGuide.name }}</span></a
+        >
+        <i
+          *ngIf="shouldShowCopyLink(userGuide)"
+          class="bi bi-link"
+          (click)="userGuideManagementService.copyUserGuideLink(userGuide)"
+          data-bs-toggle="tooltip"
+          data-bs-placement="right"
+          [title]="copyLinkMessage"
+        ></i>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+<button
+  class="btn btn-icon user-guides-menu-btn"
+  [ngClass]="{ pulse: (isUserGuideClickedOnce$ | async) === false }"
+  (click)="onOpenUserGuideMenu()"
+  data-bs-toggle="collapse"
+  data-bs-target="#userGuidesMenu"
+  type="button"
+  aria-expanded="false"
+>
+  <i class="bi bi-question-circle"></i>
+</button>

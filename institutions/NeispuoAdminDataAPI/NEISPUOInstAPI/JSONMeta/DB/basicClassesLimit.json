@@ -1,0 +1,52 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[BasicClass] BC JOIN [inst_nom].[BasicClassLimit] BCL ON BC.BasicClassID=BCL.BasicClassID  /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "BC.BasicClassID as code"
+        },
+        {
+            "column": "BC.Name as label"
+        },
+		{
+            "column": "BC.IsValid as isValid"
+        }
+    ],
+    "params": [
+        {
+      "param": "@classKind",
+      "column": "BCL.ClassKind",
+      "operator": "=",
+      "value": "classKind",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+		},
+		 {
+      "param": "@instType",
+      "column": "BCL.InstType",
+      "operator": "=",
+      "value": "instType",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+		},
+		 {
+      "param": "@detailedSchoolTypeID",
+      "column": "BCL.DetailedSchoolTypeID",
+      "operator": "=",
+      "value": "detailedSchoolTypeID",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+		}
+    ],
+    "order": [
+  {
+            "column": "BC.SortOrd",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

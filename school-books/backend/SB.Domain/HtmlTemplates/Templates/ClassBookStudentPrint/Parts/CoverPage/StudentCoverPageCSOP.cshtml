@@ -1,0 +1,13 @@
+@using SB.Domain
+@model StudentCoverPageModel
+
+<div class="page cover-page" style="text-align: center">
+  @{ await IncludeAsync("ClassBookStudentPrint.Parts.CoverPage.InstitutionInfo", Model); }
+  <h1>Ученическа книжка</h1>
+  <p>на <span>@Model.StudentName</span></p>
+  <p>ученик от @Model.ClassName клас през @Model.SchoolYear / @(Model.SchoolYear + 1) учебна година</p>
+
+  <div class="cover-page-photo-slot">
+    Място за снимка
+  </div>
+</div>

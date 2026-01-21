@@ -1,0 +1,13 @@
+<div class="icon-dot-container" #menuTrigger="matMenuTrigger" [matMenuTriggerFor]="menu">
+    <div *ngFor="let dot of [].constructor(9)" class="dot"></div>
+</div>
+<mat-menu #menu="matMenu" class="dashboard-menu-container">
+    <div class="container-dashboard">
+        <span class="dashboard-menu-title">Табло за управление</span>
+        <a [href]="targetLink" target="_blank" class="link-custom">
+            <span class="mat-button-wrapper">Към табло за управление
+            </span>
+            <span class="mat-ripple mat-button-ripple"></span>
+        </a>
+    </div>
+</mat-menu>

@@ -1,0 +1,6 @@
+[*.cs]
+# CA1707: Identifiers should not contain underscores
+dotnet_diagnostic.CA1707.severity = none
+
+# VSTHRD200: Use "Async" suffix in names of methods that return an awaitable type
+dotnet_diagnostic.VSTHRD200.severity = none

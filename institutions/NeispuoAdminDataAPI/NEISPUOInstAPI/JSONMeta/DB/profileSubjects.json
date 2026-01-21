@@ -1,0 +1,56 @@
+{
+  "arrayName": "profileSubjects",
+  "template": "SELECT /**select**/ FROM [inst_year].[ClassesProfile] PC /**where**/ /**orderby**/",
+  "sotemplate": "SELECT /**select**/ FROM [sob].[ClassesProfile] PC /**where**/ /**orderby**/",
+  "columns": [
+    {
+      "column": "PC.ProfileClassID AS id"
+    },
+    {
+      "column": "PC.ProfSubjType AS profSubjType"
+    },
+    {
+      "column": "PC.ProfSubjID AS profSubjID"
+    }
+      ],
+      "params": [
+        {
+          "param": "@parentclassid",
+          "column": "PC.ParentClassID",
+          "operator": "=",
+          "value": "parentclassid",
+          "type": "int",
+          "logical_operator": "and",
+          "optional": false,
+          "static": false
+        },
+        {
+          "param": "@year",
+          "column": "PC.SchoolYear",
+          "operator": "=",
+          "value": "year",
+          "type": "int",
+          "logical_operator": "and",
+          "optional": true,
+          "static": false
+        },
+        {
+          "param": "@period",
+          "column": "PC.Period",
+          "operator": "=",
+          "value": "period",
+          "type": "int",
+          "logical_operator": "and",
+          "optional": true,
+          "static": false
+        }
+      ],
+      "order": [
+        {
+          "column": "PC.SubjectTypeID",
+          "type": "ASC"
+        }
+
+      ],
+      "inSelects": []
+    }

@@ -1,0 +1,33 @@
+<sb-banner type="warning" class="mb-2" *ngIf="showNoInstFoundError">
+  Няма записани ученици/деца за текущата {{ getCurrentSchoolYear() }}/{{ getCurrentSchoolYear() + 1 }} учебна година.
+</sb-banner>
+
+<form *ngIf="!showNoInstFoundError" [formGroup]="form" autocomplete="off" novalidate>
+  <sb-card>
+    <ng-container card-title>Създаване на ново съобщение</ng-container>
+    <sb-editor-panel card-buttons [isNew]="true" (save)="onSave()"></sb-editor-panel>
+    <ng-container card-body>
+      <sb-select-field
+        *ngIf="this.isStudentApp && !showCreateForm"
+        label="Институция"
+        formControlName="instId"
+        [items]="instIds"
+      ></sb-select-field>
+
+      <div *ngIf="showCreateForm">
+        <sb-nom-select
+          label="Участници"
+          formControlName="participants"
+          [nomService]="conversationParticipantsService!"
+          [multiple]="true"
+        ></sb-nom-select>
+
+        <sb-text-field label="Тема" formControlName="title" [textMaxSize]="200"></sb-text-field>
+
+        <sb-textarea-field class="sb-textarea-field" label="Съобщение" formControlName="message"></sb-textarea-field>
+
+        <sb-slide-toggle formControlName="isLocked" label="Забрани отговор"></sb-slide-toggle>
+      </div>
+    </ng-container>
+  </sb-card>
+</form>

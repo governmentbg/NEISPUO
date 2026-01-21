@@ -1,0 +1,272 @@
+<sb-breadcrumb
+  class="block mb-3"
+  [icon]="
+    data.mode === TeacherAbsencesMode.All
+      ? fadCalendarMinus
+      : data.mode === TeacherAbsencesMode.My
+      ? fadUserMinus
+      : data.mode === TeacherAbsencesMode.MyRepl
+      ? fadUserPlus
+      : undefined
+  "
+  [text]="data.teacherAbsence == null ? 'Създаване на учителско отсъствие' : 'Учителско отсъствие'"
+  [parentItems]="[
+    {
+      text:
+        data.mode === TeacherAbsencesMode.All
+          ? 'Всички отсъствия'
+          : data.mode === TeacherAbsencesMode.My
+          ? 'Мои отсъствия'
+          : data.mode === TeacherAbsencesMode.MyRepl
+          ? 'Мои замествания'
+          : '',
+      routeCommands: ['../']
+    }
+  ]"
+></sb-breadcrumb>
+
+<form [formGroup]="form" #ngForm="ngForm" autocomplete="off" novalidate>
+  <sb-card>
+    <ng-container card-title>
+      {{ data.teacherAbsence == null ? 'Създаване на учителско отсъствие' : 'Редакция на учителско отсъствие' }}
+    </ng-container>
+    <sb-editor-panel
+      [editBtnHidden]="!canEdit"
+      card-buttons
+      (editableChange)="onEditableChange($event)"
+      [isNew]="data.teacherAbsence == null"
+      (save)="onSave($event)"
+    >
+      <button
+        *ngIf="canRemove"
+        disabled-mode-buttons
+        mat-raised-button
+        color="warn"
+        type="button"
+        (click)="onRemove()"
+        [disabled]="removing"
+      >
+        <fa-icon [icon]="removing ? fasSpinnerThird : fasTrashAlt" [spin]="removing" size="lg"></fa-icon>
+        <span class="hidden sm:inline">Премахни</span>
+      </button>
+    </sb-editor-panel>
+    <ng-container card-body>
+      <div class="sm:grid grid-cols-2 gap-x-4 mb-2">
+        <sb-nom-select
+          class="col-start-1"
+          label="Отсъстващ"
+          formControlName="teacherPersonId"
+          [nomService]="instTeacherNomsService"
+          [readonly]="data.teacherAbsenceId != null"
+        ></sb-nom-select>
+
+        <sb-date-field
+          class="col-start-1"
+          label="Начална дата"
+          formControlName="startDate"
+          [readonly]="data.teacherAbsenceId != null"
+        ></sb-date-field>
+
+        <sb-date-field
+          class="col-start-1"
+          label="Крайна дата"
+          formControlName="endDate"
+          [readonly]="data.teacherAbsenceId != null"
+        ></sb-date-field>
+
+        <sb-textarea-field class="col-start-1" label="Причина" formControlName="reason"></sb-textarea-field>
+      </div>
+
+      <sb-banner type="error" class="mb-2" *ngIf="ngForm.submitted && !teacherAbsenceHours.length">
+        Трябва да въведете информация за заместване за поне един час от разписанието, за да можете да запишете
+        учителското отсъствие.
+      </sb-banner>
+
+      <sb-banner type="warning" class="mb-2" *ngIf="hasInvalidHours">
+        В учителското отсъствие има часове със замествания от архивиран дневник. Моля, създайте идентично учителско
+        отсъствие за тези часове и в новия дневник, за да могат часовете от архивирания да фигурират и там.
+      </sb-banner>
+
+      <sb-card-section>График за заместване</sb-card-section>
+
+      <div *ngIf="loadingSchedule" class="relative h-[40px]">
+        <mat-spinner [diameter]="40" class="absolute top-1/2 left-1/2 mt-[-20px] ml-[-20px]"></mat-spinner>
+      </div>
+
+      <sb-banner *ngIf="!loadingSchedule && !mappedSchedule" type="warning">
+        Изберете отсъстващ и период на отсъствието, за да видите графика.
+      </sb-banner>
+
+      <ng-container *ngIf="!loadingSchedule && mappedSchedule">
+        <div class="mb-4">
+          <button *ngIf="!allGroupsExpanded" type="button" mat-raised-button class="mr-4" (click)="expandAllGroups()">
+            <fa-icon [icon]="farCalendarPlus" size="lg"></fa-icon>
+            <span>Покажи</span>
+          </button>
+          <button
+            *ngIf="!allGroupsCollapsed"
+            type="button"
+            mat-raised-button
+            class="mr-4"
+            (click)="collapseAllGroups()"
+          >
+            <fa-icon [icon]="farCalendarMinus" size="lg"></fa-icon>
+            <span>Скрий</span>
+          </button>
+          <button
+            *ngIf="(editable$ | async) && mappedSchedule.slotsByNumberByDay.length"
+            type="button"
+            mat-raised-button
+            class="mr-4"
+            (click)="fillAll()"
+          >
+            <fa-icon [icon]="farCalendarCheck" size="lg"></fa-icon>
+            <span>Попълни всички</span>
+          </button>
+          <button
+            *ngIf="(editable$ | async) && mappedSchedule.slotsByNumberByDay.length"
+            type="button"
+            mat-raised-button
+            (click)="fillSelected()"
+          >
+            <fa-icon [icon]="farCalendarCheck" size="lg"></fa-icon>
+            <span>Попълни избрани</span>
+          </button>
+        </div>
+
+        <sb-banner *ngIf="!mappedSchedule.slotsByNumberByDay.length" type="warning">
+          Учителят няма часове за избрания период.
+        </sb-banner>
+
+        <div *ngIf="mappedSchedule.slotsByNumberByDay.length" class="sb-table-container">
+          <table class="sb-table">
+            <thead>
+              <tr>
+                <th class="w-px whitespace-nowrap">Час</th>
+                <th>Понеделник</th>
+                <th>Вторник</th>
+                <th>Сряда</th>
+                <th>Четвъртък</th>
+                <th>Петък</th>
+                <ng-container *ngIf="mappedSchedule.scheduleIncludesWeekend">
+                  <th>Събота</th>
+                  <th>Неделя</th>
+                </ng-container>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let shiftHour of mappedSchedule.shiftHours; let i = index">
+                <td class="w-px">
+                  <span class="whitespace-nowrap">{{ shiftHour.startTime }} -</span>
+                  {{ shiftHour.endTime }}
+                </td>
+                <td *ngFor="let slot of mappedSchedule.slotsByNumberByDay[i]">
+                  <div *ngFor="let group of slot.curriculumGroups; let first = first">
+                    <button
+                      *ngIf="!group.isReplHour"
+                      type="button"
+                      [class]="
+                        group.hasNoReplacementTeacher
+                          ? 'schedule-card schedule-card-no-replacement-teacher'
+                          : 'schedule-card'
+                      "
+                      [class.mt-2]="!first"
+                      (click)="viewGroup(group)"
+                    >
+                      <div *ngIf="group.teachers.length" class="mr-2">
+                        <button
+                          type="button"
+                          (click)="toggleGroup($event, group)"
+                          aria-label="Покажи/скрий групата"
+                          [attr.aria-expanded]="group.isExpanded"
+                        >
+                          <fa-icon [icon]="group.isExpanded ? fasMinus : fasPlus"></fa-icon>
+                        </button>
+                      </div>
+
+                      <div class="flex-1 mr-2">
+                        <fa-icon [icon]="fasUsersClass"></fa-icon>
+                        {{ group.classBookFullName }} -
+                        <div class="inline sm:hidden">
+                          {{ group.subjectShort }}
+                        </div>
+
+                        <div class="hidden sm:inline">
+                          {{ group.subject }}
+                        </div>
+                        <span *ngIf="!group.isValid" class="sb-badge">АРХИВИРАН</span>
+                      </div>
+
+                      <div>
+                        <fa-icon [icon]="farClock"></fa-icon>
+
+                        <ng-container *ngIf="editable$ | async; else notEditable">
+                          <span>{{ group.absenceHours.length }}/{{ group.curriculumHours.length }}</span>
+                        </ng-container>
+
+                        <ng-template #notEditable>
+                          <span>{{ group.absenceHours.length }}</span>
+                        </ng-template>
+                      </div>
+                    </button>
+
+                    <button
+                      *ngIf="group.isReplHour && group.isValid"
+                      type="button"
+                      class="schedule-card schedule-card-danger"
+                      [class.mt-2]="!first"
+                      (click)="viewReplHours(group)"
+                    >
+                      <div class="flex-1 mr-2">
+                        <fa-icon [icon]="fasUsersClass"></fa-icon>
+                        {{ group.classBookFullName }} -
+                        <div class="inline sm:hidden">
+                          {{ group.subjectShort }}
+                        </div>
+
+                        <div class="hidden sm:inline">
+                          {{ group.subject }}
+                        </div>
+                      </div>
+
+                      <div>
+                        <fa-icon [icon]="farClock"></fa-icon>
+
+                        <ng-container>
+                          <span>{{ group.curriculumHours.length }}</span>
+                        </ng-container>
+                      </div>
+                    </button>
+
+                    <ng-container *ngIf="group.isExpanded">
+                      <div *ngFor="let teacher of group.teachers" class="schedule-card schedule-card-warning ml-5 mt-2">
+                        <div *ngIf="teacher.id" class="flex-1 inline sm:hidden mr-2">
+                          {{ teacher.lastName }} {{ teacher.isNonSpecialist ? '(ГО)' : '' }}
+                        </div>
+
+                        <div *ngIf="teacher.id" class="flex-1 hidden sm:inline mr-2">
+                          {{ teacher.firstName }} {{ teacher.lastName }} {{ teacher.isNonSpecialist ? '(ГО)' : '' }}
+                        </div>
+
+                        <div *ngIf="!teacher.id && !teacher.extReplTeacherName" class="flex-1 mr-2">Свободен час</div>
+
+                        <div *ngIf="teacher.extReplTeacherName" class="flex-1 mr-2">
+                          {{ teacher.extReplTeacherName }} (външен лектор)
+                        </div>
+
+                        <div class="flex-none">
+                          <fa-icon [icon]="farClock"></fa-icon>
+                          <span>{{ teacher.count }}</span>
+                        </div>
+                      </div>
+                    </ng-container>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </ng-container>
+    </ng-container>
+  </sb-card>
+</form>

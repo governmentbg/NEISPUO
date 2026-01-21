@@ -1,0 +1,211 @@
+{
+  "status": 1,
+  "sql": "SELECT CRR.CurriculumID AS curriculumID , CRR.SchoolYear AS schoolYear , CRR.InstitutionID AS institutionID , CRR.IsWholeClass AS isWholeClass , CRR.IsAllStudents AS isAllStudents , CRR.CurriculumGroupNum AS curriculumGroupID , CRR.SubjectID AS subjectID , CRR.SubjectTypeID AS subjectTypeID , CRR.NormaS AS normaS , CRR.IsIndividualLesson AS isIndividualLesson , CRR.WeeksFirstTerm AS weeksFirstTerm , CRR.HoursWeeklyFirstTerm AS hoursWeeklyFirstTerm , CRR.WeeksSecondTerm AS weeksSecondTerm , CRR.HoursWeeklySecondTerm AS hoursWeeklySecondTerm , CRR.IsFL AS isFL , CRR.FLSubjectID AS FLSubjectID , CRR.IsIndividualCurriculum AS isIndividualCurriculum , CRR.NormaS AS normaS , CRR.InstitutionDepartmentID AS institutionDepartmentID , CRR.ParentCurriculumID AS parentCurriculumID , CRR.CurriculumPartID AS curriculumPartID , CRR.SortOrder AS sortOrder , CRR.ClassDepartment AS classDepartment\n FROM [inst_year].[CurriculumData] CRR WHERE CRR.CurriculumID = @curriculumid\n ",
+  "data": [
+    {
+      "aserehe": 12,
+      "curriculumID": 5597,
+      "schoolYear": 2021,
+      "institutionID": 2999952,
+      "isWholeClass": true,
+      "isAllStudents": null,
+      "curriculumGroupID": null,
+      "subjectID": 27,
+      "subjectTypeID": 101,
+      "normaS": 21,
+      "isIndividualLesson": false,
+      "weeksFirstTerm": 18,
+      "hoursWeeklyFirstTerm": 1,
+      "weeksSecondTerm": 14,
+      "hoursWeeklySecondTerm": 1,
+      "isFL": false,
+      "FLSubjectID": null,
+      "isIndividualCurriculum": false,
+      "institutionDepartmentID": 59,
+      "parentCurriculumID": null,
+      "curriculumPartID": 1,
+      "sortOrder": null,
+      "classDepartment": 59,
+      "curriculumClasses": [{ "id": 4993, "classID": 11 }],
+      "curriculumStudents": [
+        {
+          "id": 9870,
+          "curriculumStudentID": 40742,
+          "personID": 1423937,
+          "className": "3 \u0432",
+          "publicEduNumber": 201690,
+          "fullName": "\u0421\u0442\u0430\u043D\u0438\u0441\u043B\u0430\u0432 \u0442\u0435\u0441\u0442\u043E\u0432 \u0443\u0447\u0435\u043D\u0438\u043A"
+        },
+        {
+          "id": 9872,
+          "curriculumStudentID": 41008,
+          "personID": 1423956,
+          "className": "3 \u0432",
+          "publicEduNumber": 201709,
+          "fullName": "\u0415\u043C\u0438\u043B\u0438 \u0442\u0435\u0441\u0442\u043E\u0432 \u0443\u0447\u0435\u043D\u0438\u043A"
+        },
+        {
+          "id": 9874,
+          "curriculumStudentID": 41016,
+          "personID": 1424042,
+          "className": "3 \u0432",
+          "publicEduNumber": 201795,
+          "fullName": "\u041D\u0438\u043A\u043E\u043B\u0438\u043D\u0430 \u0442\u0435\u0441\u0442\u043E\u0432 \u0443\u0447\u0435\u043D\u0438\u043A"
+        },
+        {
+          "id": 9877,
+          "curriculumStudentID": 41728,
+          "personID": 1424051,
+          "className": "3 \u0432",
+          "publicEduNumber": 201804,
+          "fullName": "\u0411\u0440\u0430\u044F\u043D \u0442\u0435\u0441\u0442\u043E\u0432 \u0443\u0447\u0435\u043D\u0438\u043A"
+        },
+        {
+          "id": 9876,
+          "curriculumStudentID": 42073,
+          "personID": 1424050,
+          "className": "3 \u0432",
+          "publicEduNumber": 201803,
+          "fullName": "\u041B\u044E\u0431\u043E\u043C\u0438\u0440 \u0442\u0435\u0441\u0442\u043E\u0432 \u0443\u0447\u0435\u043D\u0438\u043A"
+        },
+        {
+          "id": 9868,
+          "curriculumStudentID": 43885,
+          "personID": 1423917,
+          "className": "3 \u0432",
+          "publicEduNumber": 201670,
+          "fullName": "\u0410\u043D\u0430\u0441\u0442\u0430\u0441\u0438\u044F \u0442\u0435\u0441\u0442\u043E\u0432 \u0443\u0447\u0435\u043D\u0438\u043A"
+        },
+        {
+          "id": 9881,
+          "curriculumStudentID": 44688,
+          "personID": 1424077,
+          "className": "3 \u0432",
+          "publicEduNumber": 201830,
+          "fullName": "\u0410\u043B\u0435\u043A\u0441\u0430\u043D\u0434\u044A\u0440 \u0442\u0435\u0441\u0442\u043E\u0432 \u0443\u0447\u0435\u043D\u0438\u043A"
+        },
+        {
+          "id": 9873,
+          "curriculumStudentID": 45891,
+          "personID": 1424007,
+          "className": "3 \u0432",
+          "publicEduNumber": 201760,
+          "fullName": "\u041C\u0438\u043B\u0435\u043D \u0442\u0435\u0441\u0442\u043E\u0432 \u0443\u0447\u0435\u043D\u0438\u043A"
+        },
+        {
+          "id": 9866,
+          "curriculumStudentID": 46421,
+          "personID": 1423904,
+          "className": "3 \u0432",
+          "publicEduNumber": 201657,
+          "fullName": "\u041D\u0438\u043A\u043E\u043B \u0442\u0435\u0441\u0442\u043E\u0432 \u0443\u0447\u0435\u043D\u0438\u043A"
+        },
+        {
+          "id": 9863,
+          "curriculumStudentID": 46788,
+          "personID": 1423706,
+          "className": "3 \u0432",
+          "publicEduNumber": 201459,
+          "fullName": "\u0426\u0432\u0435\u0442\u043E\u0441\u043B\u0430\u0432\u0430 \u0442\u0435\u0441\u0442\u043E\u0432 \u0443\u0447\u0435\u043D\u0438\u043A"
+        },
+        {
+          "id": 9878,
+          "curriculumStudentID": 46855,
+          "personID": 1424053,
+          "className": "3 \u0432",
+          "publicEduNumber": 201806,
+          "fullName": "\u0410\u043D\u0430\u0442\u043E\u043B\u0438 \u0442\u0435\u0441\u0442\u043E\u0432 \u0443\u0447\u0435\u043D\u0438\u043A"
+        },
+        {
+          "id": 9879,
+          "curriculumStudentID": 47406,
+          "personID": 1424063,
+          "className": "3 \u0432",
+          "publicEduNumber": 201816,
+          "fullName": "\u0414\u0438\u043C\u0438\u0442\u044A\u0440 \u0442\u0435\u0441\u0442\u043E\u0432 \u0443\u0447\u0435\u043D\u0438\u043A"
+        },
+        {
+          "id": 9883,
+          "curriculumStudentID": 49827,
+          "personID": 1424117,
+          "className": "3 \u0432",
+          "publicEduNumber": 201870,
+          "fullName": "\u041B\u044A\u0447\u0435\u0437\u0430\u0440\u0430 \u0442\u0435\u0441\u0442\u043E\u0432 \u0443\u0447\u0435\u043D\u0438\u043A"
+        },
+        {
+          "id": 9884,
+          "curriculumStudentID": 51343,
+          "personID": 1424130,
+          "className": "3 \u0432",
+          "publicEduNumber": 201883,
+          "fullName": "\u0417\u043E\u0440\u043D\u0438\u0446\u0430 \u0442\u0435\u0441\u0442\u043E\u0432 \u0443\u0447\u0435\u043D\u0438\u043A"
+        },
+        {
+          "id": 9875,
+          "curriculumStudentID": 51423,
+          "personID": 1424047,
+          "className": "3 \u0432",
+          "publicEduNumber": 201800,
+          "fullName": "\u041A\u0430\u0442\u0440\u0438\u043D \u0442\u0435\u0441\u0442\u043E\u0432 \u0443\u0447\u0435\u043D\u0438\u043A"
+        },
+        {
+          "id": 9871,
+          "curriculumStudentID": 52311,
+          "personID": 1423948,
+          "className": "3 \u0432",
+          "publicEduNumber": 201701,
+          "fullName": "\u0425\u0430\u0440\u0438 \u0442\u0435\u0441\u0442\u043E\u0432 \u0443\u0447\u0435\u043D\u0438\u043A"
+        },
+        {
+          "id": 9865,
+          "curriculumStudentID": 52576,
+          "personID": 1423898,
+          "className": "3 \u0432",
+          "publicEduNumber": 201651,
+          "fullName": "\u0418\u0432\u0430\u043D\u0438\u043D\u0430 \u0442\u0435\u0441\u0442\u043E\u0432 \u0443\u0447\u0435\u043D\u0438\u043A"
+        },
+        {
+          "id": 9864,
+          "curriculumStudentID": 53655,
+          "personID": 1423897,
+          "className": "3 \u0432",
+          "publicEduNumber": 201650,
+          "fullName": "\u0426\u0432\u0435\u0442\u043E\u043C\u0438\u0440 \u0442\u0435\u0441\u0442\u043E\u0432 \u0443\u0447\u0435\u043D\u0438\u043A"
+        },
+        {
+          "id": 9869,
+          "curriculumStudentID": 53837,
+          "personID": 1423926,
+          "className": "3 \u0432",
+          "publicEduNumber": 201679,
+          "fullName": "\u0414\u0430\u044F\u043D\u0430 \u0442\u0435\u0441\u0442\u043E\u0432 \u0443\u0447\u0435\u043D\u0438\u043A"
+        },
+        {
+          "id": 9880,
+          "curriculumStudentID": 54130,
+          "personID": 1424074,
+          "className": "3 \u0432",
+          "publicEduNumber": 201827,
+          "fullName": "\u0418\u0432\u0430\u043D\u0430 \u0442\u0435\u0441\u0442\u043E\u0432 \u0443\u0447\u0435\u043D\u0438\u043A"
+        },
+        {
+          "id": 9882,
+          "curriculumStudentID": 55264,
+          "personID": 1424111,
+          "className": "3 \u0432",
+          "publicEduNumber": 201864,
+          "fullName": "\u0422\u0435\u043E\u0434\u043E\u0440 \u0442\u0435\u0441\u0442\u043E\u0432 \u0443\u0447\u0435\u043D\u0438\u043A"
+        },
+        {
+          "id": 9867,
+          "curriculumStudentID": 57043,
+          "personID": 1423915,
+          "className": "3 \u0432",
+          "publicEduNumber": 201668,
+          "fullName": "\u041D\u0438\u044F \u0442\u0435\u0441\u0442\u043E\u0432 \u0443\u0447\u0435\u043D\u0438\u043A"
+        }
+      ],
+      "curriculumTeachers": []
+    }
+  ]
+}

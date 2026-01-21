@@ -1,0 +1,8 @@
+<mat-form-field class="block-field default-field padding-0" floatLabel="never">
+    <mat-icon>search</mat-icon>
+    <mat-label>Филтър</mat-label>
+    <input matInput (keyup)="getList($event)" />
+</mat-form-field>
+<ul class="custom-navigation-json">
+    <li class="li-item-json" [ngClass]="{'active-json': jsonSelected === item.name}" *ngFor="let item of filteredList" (click)="onJsonChange(item.name)">{{ item.label }}</li>
+</ul>

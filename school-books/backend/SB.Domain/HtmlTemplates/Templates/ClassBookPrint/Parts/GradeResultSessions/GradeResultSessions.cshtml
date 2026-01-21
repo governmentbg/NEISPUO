@@ -1,0 +1,54 @@
+@using SB.Domain
+@model GradeResultSessionsModel
+
+<div class="page">
+  <h3 class="page-header">Оценки от изпити на учениците</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th rowspan="2" class="three-rows-height align-bottom"><div class="vertical-text">№ на ученика</div></th>
+        <th rowspan="2">Трите имена на ученика</th>
+        <th rowspan="2">Учебен предмет/модул</th>
+        <th colspan="2">Редовни сесии</th>
+        <th rowspan="2">Допълнителна<br/>сесия</th>
+        <th rowspan="2">Резултати от сесиите</th>
+      </tr>
+      <tr>
+        <th>I сесия</th>
+        <th>II сесия</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (var student in Model.Students)
+      {
+        int rowspan = student.Sessions.Length;
+
+        for (int i = 0; i < student.Sessions.Length; i++)
+        {
+          <tr>
+            @if (i == 0)
+            {
+              <td rowspan="@rowspan">@student.ClassNumber</td>
+              <td rowspan="@rowspan">
+                @student.FullName
+                @if (student.IsTransferred)
+                {
+                  <span class="sb-badge">ОТПИСАН</span>
+                }
+              </td>
+            }
+            <td>@student.Sessions[i].SubjectName</td>
+            <td>@student.Sessions[i].Session1ResultText</td>
+            <td>@student.Sessions[i].Session2ResultText</td>
+            <td>@student.Sessions[i].Session3ResultText</td>
+            @if (i == 0)
+            {
+              <td rowspan="@rowspan">@student.FinalResultText</td>
+            }
+          </tr>
+        }
+      }
+    </tbody>
+  </table>
+</div>

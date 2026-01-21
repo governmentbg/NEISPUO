@@ -1,0 +1,230 @@
+<form [formGroup]="form" autocomplete="off" novalidate class="sm:w-[700px]">
+  <div class="sb-btn-wrapper sb-btn-wrapper-right">
+    <button mat-raised-button color="primary" type="button" (click)="onSave()" [disabled]="saving">
+      <fa-icon [icon]="saving ? fasSpinnerThird : fasCheck" [spin]="saving" size="lg"></fa-icon>
+      <span>Запази</span>
+    </button>
+    <button mat-raised-button mat-dialog-close>Затвори</button>
+  </div>
+
+  <div class="sm:grid grid-cols-5 gap-x-4">
+    <sb-text-field class="col-span-4" label="Ученик" formControlName="studentFullName"></sb-text-field>
+    <sb-text-field label="Номер" formControlName="classNumber"></sb-text-field>
+
+    <sb-textarea-field
+      *ngIf="hasActivities"
+      class="col-span-full"
+      label="{{ activitiesFieldName }}"
+      formControlName="activities"
+    ></sb-textarea-field>
+
+    <sb-text-field
+      *ngIf="hasSpeciality"
+      class="col-span-full"
+      label="Профил, професия"
+      formControlName="speciality"
+      [disabled]="true"
+    ></sb-text-field>
+
+    <sb-nom-select
+      *ngIf="hasGradelessCurriculums"
+      class="col-span-full"
+      label="Освободен по"
+      formControlName="curriculumIds"
+      [multiple]="true"
+      [nomService]="curriculumNomsService"
+    ></sb-nom-select>
+
+    <div *ngIf="hasGradelessCurriculums && gradelessCurriculums.length" class="col-span-full sb-table-container mb-5">
+      <table class="sb-table">
+        <thead>
+          <tr>
+            <th>Предмет</th>
+            <th>
+              <span class="inline">I срок</span>
+            </th>
+            <th>
+              <span class="inline">II срок</span>
+            </th>
+            <th>
+              <span class="inline">Годишна</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let gc of gradelessCurriculums">
+            <td class="whitespace-normal">{{ gc.curriculumName }}</td>
+            <td>
+              <input
+                type="checkbox"
+                [checked]="gc.withoutFirstTermGrade"
+                (change)="toggleGc(gc.curriculumId, true, null, null)"
+              />
+              <small>
+                {{ gc.withoutFirstTermGrade ? 'ОСВ.' : '' }}
+              </small>
+            </td>
+            <td>
+              <input
+                type="checkbox"
+                [checked]="gc.withoutSecondTermGrade"
+                (change)="toggleGc(gc.curriculumId, null, true, null)"
+              />
+              <small>
+                {{ gc.withoutSecondTermGrade ? 'ОСВ.' : '' }}
+              </small>
+            </td>
+            <td>
+              <input
+                type="checkbox"
+                [checked]="gc.withoutFinalGrade"
+                (change)="toggleGc(gc.curriculumId, null, null, true)"
+              />
+              <small>
+                {{ gc.withoutFinalGrade ? 'ОСВ.' : '' }}
+              </small>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <sb-select-field
+      *ngIf="hasSpecialNeedsCurriculums"
+      class="col-span-full sb-single-row-mat-field"
+      label="Има СОП оценки"
+      [formControl]="hasSpecialNeedsControl"
+      [items]="[
+        { id: false, name: 'Не' },
+        { id: true, name: 'Да' }
+      ]"
+    ></sb-select-field>
+
+    <div *ngIf="hasSpecialNeedsCurriculums && hasSpecialNeedsControl.value" class="col-span-full mt-3">
+      <div *ngIf="data.showSpecialNeedFirstGradeResult" class="checkbox mb-3">
+        <label>
+          <input type="checkbox" formControlName="hasSpecialNeedFirstGradeResult" />
+          <span>&nbsp;Общ годишен успех</span>
+        </label>
+      </div>
+
+      <label class="checkbox mt-5"><span class="font-bold">Предмети с оценки за СОП</span></label>
+      <div>
+        <label>
+          <input
+            type="checkbox"
+            [checked]="data.studentInfo.studentCurriculums.length === data.studentInfo.specialNeedsCurriculumIds.length"
+            (change)="toggleAllCurriculumsWithSpecialNeeds()"
+          />
+          <span class="font-bold">&nbsp;Всички предмети</span>
+        </label>
+      </div>
+      <div class="checkbox" *ngFor="let curriculum of data.studentInfo.studentCurriculums">
+        <label>
+          <input
+            type="checkbox"
+            [checked]="data.studentInfo.specialNeedsCurriculumIds.indexOf(curriculum.curriculumId) > -1"
+            (change)="toggleCurriculum(curriculum.curriculumId)"
+          />
+          {{
+            !curriculum.curriculumGroupName
+              ? curriculum.curriculumName
+              : curriculum.curriculumName + ' - ' + curriculum.curriculumGroupName
+          }}
+        </label>
+      </div>
+    </div>
+
+    <sb-select-field
+      *ngIf="hasCarriedAbsences"
+      class="col-span-full sb-single-row-mat-field mt-5"
+      label="Има пренесени отсъствия"
+      [formControl]="hasCarriedAbsencesControl"
+      [items]="[
+        { id: false, name: 'Не' },
+        { id: true, name: 'Да' }
+      ]"
+    ></sb-select-field>
+
+    <div *ngIf="hasCarriedAbsences && hasCarriedAbsencesControl.value" class="col-span-full sb-table-container mt-5">
+      <table class="sb-table">
+        <thead>
+          <tr>
+            <th>Тип</th>
+            <th>
+              <span class="inline">I срок</span>
+            </th>
+            <th>
+              <span class="inline">II срок</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Уважителни</td>
+            <td class="p-0.5">
+              <input
+                sbNumber
+                [sbNumberPrecision]="0"
+                class="sb-form-control"
+                matInput
+                formControlName="firstTermExcusedCount"
+              />
+            </td>
+            <td class="p-0.5">
+              <input
+                sbNumber
+                [sbNumberPrecision]="0"
+                class="sb-form-control"
+                matInput
+                formControlName="secondTermExcusedCount"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>Неуважителни</td>
+            <td class="p-0.5">
+              <input
+                sbNumber
+                [sbNumberPrecision]="0"
+                class="sb-form-control"
+                matInput
+                formControlName="firstTermUnexcusedCount"
+              />
+            </td>
+            <td class="p-0.5">
+              <input
+                sbNumber
+                [sbNumberPrecision]="0"
+                class="sb-form-control"
+                matInput
+                formControlName="secondTermUnexcusedCount"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>Закъснения</td>
+            <td class="p-0.5">
+              <input
+                sbNumber
+                [sbNumberPrecision]="0"
+                class="sb-form-control"
+                matInput
+                formControlName="firstTermLateCount"
+              />
+            </td>
+            <td class="p-0.5">
+              <input
+                sbNumber
+                [sbNumberPrecision]="0"
+                class="sb-form-control"
+                matInput
+                formControlName="secondTermLateCount"
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,9 @@
+.help-btn {
+    position: absolute;
+    &:hover {
+        color: #3f3386;
+    }
+    mat-icon {
+        display: flex;
+    }
+}

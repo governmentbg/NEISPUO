@@ -1,0 +1,14 @@
+@import "@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/variables/variables.scss";
+
+:host ::ng-deep {
+    @media (min-width: 200px) {
+        .p-dialog {
+            min-width: 60%;
+
+            &.p-confirm-dialog .p-confirm-dialog-icon {
+                margin-right: 0.625rem;
+                color: $yellow;
+            }
+        }
+    }
+}

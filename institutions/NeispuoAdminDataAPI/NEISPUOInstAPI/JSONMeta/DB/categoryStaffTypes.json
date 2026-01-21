@@ -1,0 +1,32 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[CategoryStaffType] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "CategoryStaffTypeID as code"
+        },
+        {
+            "column": "Name as label"
+        },
+		{
+            "column": "IsValid as isValid"
+        }
+    ],
+    "params": [
+	{
+      "param": "@filterValue",
+      "column": "StaffTypeID",
+      "operator": "=",
+      "value": "filterValue",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+    ],
+    "order": [
+        {
+            "column": "SortOrd",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

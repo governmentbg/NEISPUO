@@ -1,0 +1,7 @@
+@import '@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/variables/variables';
+
+:host ::ng-deep {
+  .field {
+    display: block;
+  }
+}

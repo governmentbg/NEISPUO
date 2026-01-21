@@ -1,0 +1,70 @@
+{
+    "label": "Данни за предмет",
+    "procedureName": "inst_basic.subjectInstitution",
+    "sections": [
+    {
+        "order": 1,
+        "table": {
+            "name": "subjectFoundInst",
+            "action": "edit",
+            "formName": "subejctInstitutionData",
+            "canDeleteRow": false,
+            "paramName": "subjectID",
+            "additionalParams": ["isInstitution","customVarValueID","isValid"],
+            "searchable": true,
+            "searchType": "column",
+            "fields": [
+            {
+                "label": "Учебен предмет",
+                "name": "subjectName",
+                "type": "input",
+                "inputType": "text",
+                "width": 50,
+                "order": 1
+            },
+            {
+                "label": "Kратко наименование",
+                "name": "subjectShortName",
+                "type": "input",
+                "inputType": "text",
+                "width": 50,
+                "order": 2
+            },
+            {
+                "label": "Предметна група",
+                "name": "subjectGroup",
+                "type": "input",
+                "inputType": "text",
+                "width": 50,
+                "order": 3
+            },
+            {
+                "label": "Наличен за институцията",
+                "name": "isInstitutionRecode",
+                "type": "input",
+                "inputType": "text",
+                "width": 50,
+                "order": 4
+            },
+            {
+                "label": "Активен за институцията",
+                "name": "isValidRecode",
+                "type": "input",
+                "inputType": "text",
+                "width": 50,
+                "order": 5
+            },
+            {
+                "label": "Уникално ID на списъка",
+                "name": "subjectID",
+                "type": "input",
+                "rendered": false,
+                "inputType": "number",
+                "width": 50,
+                "order": 6
+            }
+            ]
+        }
+    }
+    ]
+}

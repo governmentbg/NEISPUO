@@ -1,0 +1,20 @@
+DROP INDEX [UQ_ExamResultProtocolCommissioner_SchoolYear_ExamResultProtocolId] ON [school_books].[ExamResultProtocolCommissioner]
+GO
+
+DROP INDEX [IX_GradeChangeExamsAdmProtocolCommissioner_SchoolYear_GradeChangeExamsAdmProtocolId] ON [school_books].[GradeChangeExamsAdmProtocolCommissioner]
+GO
+
+DROP INDEX [UQ_GraduationThesisDefenseProtocolCommissioner_SchoolYear_GraduationThesisDefenseProtocolId] ON [school_books].[GraduationThesisDefenseProtocolCommissioner]
+GO
+
+DROP INDEX [UQ_HighSchoolCertificateProtocolCommissioner_SchoolYear_HighSchoolCertificateProtocolId] ON [school_books].[HighSchoolCertificateProtocolCommissioner]
+GO
+
+DROP INDEX [UQ_QualificationAcquisitionProtocolCommissioner_SchoolYear_QualificationAcquisitionProtocolId] ON [school_books].[QualificationAcquisitionProtocolCommissioner]
+GO
+
+DROP INDEX [UQ_QualificationExamResultProtocolCommissioner_SchoolYear_QualificationExamResultProtocolId] ON [school_books].[QualificationExamResultProtocolCommissioner]
+GO
+
+DROP INDEX [IX_StateExamsAdmProtocolCommissioner_SchoolYear_StateExamsAdmProtocolId] ON [school_books].[StateExamsAdmProtocolCommissioner]
+GO

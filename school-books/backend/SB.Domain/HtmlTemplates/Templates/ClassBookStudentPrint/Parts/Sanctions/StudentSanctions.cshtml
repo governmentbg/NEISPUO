@@ -1,0 +1,34 @@
+@using SB.Domain
+@model StudentSanctionsModel
+
+<div class="page">
+  <h3 class="page-header">Наложени и отменени санкции на ученици</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th rowspan="2">Основание</th>
+        <th colspan="2">Заповед за налагане</th>
+        <th colspan="2">Заповед за отмяна</th>
+      </tr>
+      <tr>
+        <th>Номер</th>
+        <th>Дата</th>
+        <th>Номер</th>
+        <th>Дата</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (var sanction in Model.Sanctions)
+      {
+        <tr>
+          <td>@sanction.SanctionType</td>
+          <td>@sanction.OrderNumber</td>
+          <td>@sanction.OrderDate.ToString("dd.MM.yy")</td>
+          <td>@sanction.CancelOrderNumber</td>
+          <td>@(sanction.CancelOrderDate?.ToString("dd.MM.yy") ?? "")</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

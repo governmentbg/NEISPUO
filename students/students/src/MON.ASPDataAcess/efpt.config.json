@@ -1,0 +1,93 @@
+﻿{
+   "CodeGenerationMode": 1,
+   "ContextClassName": "MONASPContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": false,
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": null,
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "MON.ASPDataAccess",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "Name": "[dbo].[ASP_ASKING]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ASP_CONF]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ASP_PROMPT]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ASP_SANCTIONED]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ASP2MON_SESSION_INFO]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[MON_ABS]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[MON_CONF]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[MON_NOM_CLASS]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[MON_NOM_FORM]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[MON_NOM_SCHOOL]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[MON_ORES]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[MON_ZP]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[MON2ASP_SESSION_INFO]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[POMPT_TEMP_DATA]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": "SQL-CLUSTER\\CLUSTER.MON-ASPAbsence",
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": false,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": true,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoConstructor": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UseSchemaFolders": false,
+   "UseSpatial": false,
+   "UseT4": false
+}

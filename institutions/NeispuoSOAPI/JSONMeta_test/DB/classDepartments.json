@@ -1,0 +1,29 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_year].[ClassDepartments] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "InstitutionDepartmentID as code"
+        },
+        {
+            "column": "Address as label"
+        }
+    ],
+    "params": [
+	{
+      "param": "@instid",
+      "column": "InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+    ],
+    "order": [
+        {
+            "column": "InstitutionDepartmentID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

@@ -1,0 +1,51 @@
+{
+   "arrayName": "activeInstitutions",
+  "template": "SELECT /**select**/ FROM [neispuo].[reginst_basic].[RIActiveInstitutions] RIAI  /**where**/ /**orderby**/",
+      "columns": [
+  	{
+      "column": "RIAI.InstitutionID AS id"
+    },
+	{
+      "column": "RIAI.InstitutionID AS codeNEISPUO"
+    },
+    {
+      "column": "RIAI.Name AS name"
+    },
+	{
+      "column": "RIAI.RegionID AS region"
+    },
+	{
+      "column": "RIAI.MunicipalityID AS municipality"
+    },
+	{
+      "column": "RIAI.TownID AS town"
+    },
+	{
+      "column": "RIAI.BaseSchoolTypeID AS baseSchoolType"
+    },
+	{
+      "column": "RIAI.DetailedSchoolTypeID AS detailedSchoolType"
+    },
+	{
+      "column": "RIAI.TransformTypeID AS transformType"
+    },
+	{
+      "column": "RIAI.FormName AS formName"
+    },
+	{
+       "column": "RIAI.RIprocedureID AS formDataId"
+    }
+	],
+  "params": [
+ 
+  ],
+  "order": [
+      {
+          "column": "RIAI.RIprocedureID",
+          "type": "ASC"
+        }
+  ],
+  "inSelects": [
+ 
+  ]
+}

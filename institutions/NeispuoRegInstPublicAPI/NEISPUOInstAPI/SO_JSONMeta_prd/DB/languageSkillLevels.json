@@ -1,0 +1,24 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[FLLevel] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "FLLevelID as code"
+        },
+        {
+            "column": "Name as label"
+        },
+		{
+            "column": "IsValid as isValid"
+        }
+    ],
+    "params": [
+
+    ],
+    "order": [
+        {
+            "column": "FLLevelID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

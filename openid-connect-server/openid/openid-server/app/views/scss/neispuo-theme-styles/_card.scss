@@ -1,0 +1,67 @@
+.card {
+  box-shadow: $card-box-shadow;
+  border-radius: $card-border-radius;
+  &-body {
+    padding: $card-spacer-y $card-spacer-x;
+    color: $card-color;
+  }
+  &-header {
+    padding: $card-cap-padding-y $card-cap-padding-x;
+    &::before {
+      content: "\F5F9";
+      font-family: "bootstrap-icons";
+      font-size: 1.125rem;
+      color: $chart-mono-4;
+      position: absolute;
+      left: 1.75rem;
+    }
+    &.bg-transparent {
+      background: transparent;
+      border-bottom-color: transparent;
+    }
+  }
+  &-text {
+    font-size: 1.125rem;
+  }
+  &-link {
+    font-size: 0.875rem;
+    &:hover {
+      text-decoration: $link-hover-decoration;
+    }
+    &.icon-right {
+      &::after {
+        content: "\F285";
+        font-family: "bootstrap-icons";
+        font-size: 0.875;
+        padding-left: 0.5rem;
+        line-height: 1;
+      }
+      &.card-link:hover::after,
+      &.card-link:focus::after {
+        border-bottom: 1px solid;
+        padding-bottom: 1px;
+      }
+    }
+    &.icon-left {
+      &::before {
+        content: "\F64D";
+        font-family: "bootstrap-icons";
+        font-size: 0.875;
+        padding-right: 0.5rem;
+        line-height: 1;
+      }
+      &.card-link:hover::before,
+      &.card-link:focus::before {
+        border-bottom: 1px solid;
+        padding-bottom: 1px;
+      }
+    }
+  }
+
+  &-footer {
+    &.bg-transparent {
+      background: transparent;
+      border-top-color: transparent;
+    }
+  }
+}

@@ -1,0 +1,118 @@
+<div class="content-wrapper">
+  <h4 class="main-title">{{ isEditMode ? 'Редактиране на съобщение' : 'Ново съобщение' }}</h4>
+
+  <div class="inputs-container">
+    <div class="p-field p-field-flex">
+      <div class="dropdown-wrapper">
+        <div [title]="isTemplateTypeDisabled ? 'Премахнете всички плейсхолдъри преди да смените типа съобщение.' : ''">
+          <p-dropdown
+            id="templateTypeSelect"
+            [options]="emailTemplateTypes"
+            [(ngModel)]="form.emailTemplateTypeId"
+            optionLabel="displayName"
+            optionValue="id"
+            placeholder="Изберете вид съобщение"
+            (onChange)="onTemplateTypeChange()"
+            [showClear]="true"
+            [disabled]="isTemplateTypeDisabled"
+          ></p-dropdown>
+        </div>
+        <small *ngIf="formSubmitted && !form.emailTemplateTypeId" class="p-error">Изберете вид съобщение</small>
+        <small *ngIf="templateTypesError" class="p-error"> Грешка при зареждане на съобщенията </small>
+      </div>
+
+      <div class="checkbox-wrapper ms-3 d-flex align-items-center">
+        <p-checkbox id="isActiveCheckbox" [(ngModel)]="form.isActive" binary="true"></p-checkbox>
+        <label for="isActiveCheckbox" class="ms-2">Активен</label>
+      </div>
+    </div>
+
+    <div class="p-field">
+      <p-autoComplete
+        [(ngModel)]="recipientInput"
+        [suggestions]="filteredSuggestions"
+        (completeMethod)="onEmailInput($event)"
+        (onSelect)="onEmailSelect($event)"
+        [dropdown]="false"
+        [forceSelection]="false"
+        placeholder="До"
+        [autoHighlight]="false"
+        class="recipient-autocomplete"
+      ></p-autoComplete>
+
+      <div class="email-chip-list" *ngIf="form.recipients.length > 0">
+        <span *ngFor="let email of form.recipients" class="email-chip">
+          {{ email }}
+          <span class="remove" (click)="removeRecipient(email)">×</span>
+        </span>
+      </div>
+      <small *ngIf="formSubmitted && !hasValidRecipients()" class="p-error"> Всички имейли трябва да са валидни </small>
+    </div>
+
+    <div class="p-field">
+      <input type="text" pInputText id="emailSubjectInput" [(ngModel)]="form.title" class="w-100" placeholder="Тема" />
+      <small *ngIf="formSubmitted && !form.title.trim()" class="p-error">Темата е задължителна</small>
+    </div>
+
+    <div class="p-field">
+      <editor
+        #tinymceEditorComponent
+        [(ngModel)]="form.content"
+        [init]="EDITOR_CONFIG"
+        placeholder="Въведете текст тук..."
+        (onInit)="onEditorInit()"
+      ></editor>
+      <small *ngIf="formSubmitted && !form.content.trim()" class="p-error">Съдържанието е задължително</small>
+    </div>
+
+    <div class="p-field mb-2">
+      <div class="placeholder-tags">
+        <div *ngIf="scalarVariableMappings.length">
+          <h4>Скаларни Стойности</h4>
+          <div class="placeholder-tag-group">
+            <span
+              *ngFor="let variable of scalarVariableMappings"
+              class="placeholder-tag"
+              (click)="insertPlaceholder(variable)"
+            >
+              {{ variable.label }}
+            </span>
+          </div>
+        </div>
+        <div *ngIf="tabularVariableMappings.length" class="mt-2">
+          <h4>Таблични Стойности</h4>
+          <ng-container *ngFor="let group of tabularVariableGroups">
+            <i>{{ group.name }}</i>
+            <div class="placeholder-tag-group">
+              <span *ngFor="let variable of group.variables" class="placeholder-tag" (click)="insertPlaceholder(variable)">
+                {{ variable.label }}
+              </span>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+      <small *ngIf="placeholdersError" class="p-error"> Грешка при зареждане на плейсхолдърите </small>
+    </div>
+  </div>
+
+  <div class="button-container">
+    <button
+      pButton
+      type="button"
+      class="cancel-btn"
+      label="Отказ"
+      icon="pi pi-times"
+      (click)="cancel()"
+      [disabled]="isLoading"
+    ></button>
+    <button
+      pButton
+      type="button"
+      class="save-btn"
+      [label]="isEditMode ? 'Обнови' : 'Запази'"
+      [icon]="isLoading ? 'pi pi-spinner pi-spin' : isEditMode ? 'pi pi-check' : 'pi pi-save'"
+      (click)="saveTemplate()"
+      [disabled]="isLoading"
+    ></button>
+  </div>
+</div>

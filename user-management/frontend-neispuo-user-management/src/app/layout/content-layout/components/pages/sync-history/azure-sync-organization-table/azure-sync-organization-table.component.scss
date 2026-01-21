@@ -1,0 +1,102 @@
+.azure-sync-organization-table #yearSelect,
+.azure-sync-organization-table ::ng-deep .p-multiselect {
+    width: 16rem;
+    min-width: 12rem;
+    max-width: 20rem;
+}
+
+.azure-sync-organization-table {
+    position: relative;
+    background: #fff;
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.azure-sync-organization-table-flex {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-left: 0;
+}
+
+.azure-sync-organization-table .d-flex.align-items-center {
+    margin-bottom: 0;
+}
+
+.azure-sync-organization-table .p-datatable .p-datatable-tbody > tr > td {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.empty-message-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 6rem;
+    text-align: center;
+}
+
+.year-select-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+:host ::ng-deep .p-datatable-wrapper {
+    min-height: 1rem !important;
+    height: auto !important;
+}
+
+:host ::ng-deep .p-datatable {
+    min-height: unset !important;
+    height: auto !important;
+}
+
+.table-scroll-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.5rem;
+}
+
+.fixed-table {
+    table-layout: fixed;
+    min-width: 72rem;
+}
+
+:host ::ng-deep .p-datatable-table {
+    min-width: 72rem !important;
+}
+
+.col-organizationID {
+    width: 12%;
+}
+
+.col-workflowType {
+    width: 12%;
+}
+
+.col-createdOn {
+    width: 14%;
+}
+
+.col-guid {
+    width: 12%;
+}
+
+.col-retryAttempts {
+    width: 10%;
+}
+
+.col-errorMessage {
+    width: 14%;
+}
+
+.col-status {
+    width: 12%;
+}
+
+.col-options {
+    width: 14%;
+}

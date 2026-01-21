@@ -1,0 +1,37 @@
+@{
+  var remarkTypeText = (string)Model["remarkTypeText"]!;
+  var note = (string)Model["note"]!;
+  var curriculumName = (string)Model["curriculumName"]!;
+  var studentName = (string)Model["studentName"]!;
+}
+
+<th:block>
+  <th:block-row>
+    <th:p>
+      В НЕИСПУО има нова <strong>@remarkTypeText</strong> по <strong>@curriculumName</strong> на <strong>@studentName</strong>.
+    </th:p>
+  </th:block-row>
+</th:block>
+
+@if (!string.IsNullOrWhiteSpace(note))
+{
+  <th:block-spacer />
+
+  <th:block>
+    <th:block-row>
+      @foreach (var line in note.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None))
+      {
+        <th:p>
+          @if (string.IsNullOrWhiteSpace(line))
+          {
+            <br/>
+          }
+          else
+          {
+            @line
+          }
+        </th:p>
+      }
+    </th:block-row>
+  </th:block>
+}

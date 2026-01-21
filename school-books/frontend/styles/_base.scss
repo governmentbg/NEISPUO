@@ -1,0 +1,8 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  @apply font-sans text-base bg-gray-50 text-gray-900;
+}

@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>Добавяне на файл</h1>
+<div class="file-upload-container">
+  <file-upload [control]="fileUploadControl" accept=".pdf" multiple="false" minsize="10">
+    <ng-template let-isFileDragDropAvailable="isFileDragDropAvailable" #placeholder>
+      <file-upload-drop-zone>
+        <ng-container *ngIf="isFileDragDropAvailable; else isNotDragDropAvailable">
+          {{ text }}
+        </ng-container>
+        <ng-template #isNotDragDropAvailable>
+          {{ text }}
+        </ng-template>
+      </file-upload-drop-zone>
+    </ng-template>
+
+    <ng-template let-i="index" let-file="file" let-control="control" #item>
+      <file-upload-list-item [index]="i" [file]="file" [control]="control">Изтрий</file-upload-list-item>
+    </ng-template>
+  </file-upload>
+</div>
+<div class="footer-container">
+  <button mat-raised-button (click)="close(true)" color="primary" [disabled]="!fileToUpload">Приложи</button>
+  <button mat-raised-button (click)="close(false)">Затвори</button>
+</div>

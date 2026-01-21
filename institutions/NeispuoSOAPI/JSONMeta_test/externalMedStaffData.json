@@ -1,0 +1,143 @@
+{
+  "label": "Външен медицински персонал",
+  "procedureName": "inst_basic.externalMedStaffCUD",
+  "dataName": "if(operationType==1) {form.dataName=null} else {form.dataName='externalMedStaffData'}",
+  "sections": [
+    {
+      "order": 1,
+      "label": "Външен медицински персонал",
+      "subsections": [
+        {
+          "order": 1,
+          "name": "medicalStaff",
+          "fields": [
+            {
+                  "label": "Име",
+                  "name": "firstName",
+                  "type": "input",
+                  "inputType": "text",
+                  "order": 1,
+                  "disabled": false,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 255,
+                      "message": "Максимална дължина 255 символа"
+                    },
+                    {
+                      "name": "required",
+                      "validator": "",
+                      "message": "Полето е задължително"
+                    },
+                    {
+                      "name": "pattern",
+                      "validation": "^[а-яА-Я-,.:;()/\"' \\\\]*$",
+                      "message": "Моля, въведете на кирилица"
+                    }
+                  ]
+                },
+                {
+                  "label": "Презиме",
+                  "name": "middleName",
+                  "type": "input",
+                  "inputType": "text",
+                  "order": 2,
+                  "width": 200,
+                  "disabled": false,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 255,
+                      "message": "Максимална дължина 255 символа"
+                    },
+                    {
+                      "name": "pattern",
+                      "validation": "^[а-яА-Я-,.:;()/\"' \\\\]*$",
+                      "message": "Моля, въведете на кирилица"
+                    }
+                  ]
+                },
+                {
+                  "label": "Фамилия",
+                  "name": "lastName",
+                  "type": "input",
+                  "inputType": "text",
+                  "order": 3,
+                  "width": 200,
+                  "disabled": false,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 255,
+                      "message": "Максимална дължина 255 символа"
+                    },
+                    {
+                      "name": "required",
+                      "validator": "",
+                      "message": "Полето е задължително"
+                    },
+                    {
+                      "name": "pattern",
+                      "validation": "^[а-яА-Я-,.:;()/\"' \\\\]*$",
+                      "message": "Моля, въведете на кирилица"
+                    }
+                  ]
+                },
+	    {
+              "label": "Длъжност",
+              "name": "nkpdPositionID",
+              "type": "searchselect",
+	      "optionsPath": "/data/get/medStaffPosition",
+              "width": 500,
+              "disabled": false,
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ],
+              "order": 4
+            },
+            {
+                  "label": "Тип идентификатор",
+                  "name": "personalIDType",
+                  "type": "searchselect",
+                  "optionsPath": "/data/get/personalIDTypes",
+    		  "disabled": false,
+                  "defaultValue": "personalIdType",
+                  "validations": [
+                    {
+                      "name": "required",
+                      "validator": "",
+                      "message": "Полето е задължително"
+                    }
+                  ],
+                  "order": 5
+            },
+            {
+              "label": "Идентификатор",
+              "name": "personalID",
+              "type": "input",
+              "inputType": "number",
+              "order": 6,
+              "width": 500,
+              "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 255,
+                      "message": "Максимална дължина 255 символа"
+                    },
+                    {
+                      "name": "required",
+                      "validator": "",
+                      "message": "Полето е задължително"
+                    }
+             ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

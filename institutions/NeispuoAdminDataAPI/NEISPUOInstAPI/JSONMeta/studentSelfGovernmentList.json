@@ -1,0 +1,156 @@
+{
+  "sections": [
+    {
+      "order": 1,
+      "name": "TableStudentSelfGovernmentList",
+      "label": "Ученически съвет на училището",
+      "table":
+      {
+        "name": "selfGovernmentData",
+        "searchable": true,
+        "searchType": "column",
+        "paramName":"Id",
+        "createNew": "redirect",
+        "formName": "studentSelfGovernmentData",
+        "hasEditButton": true,
+        "canDeleteRow": true,
+        "procedureName": "inst_basic.studentSelfGovernmentCUD",
+        "fields": [
+          {
+            "label": "Име на ученика (клас)",
+            "name": "studentName",
+            "type": "input",
+            "inputType": "text",
+            "width": 50,
+            "order": 1
+          },
+          {
+            "label": "Позиция",
+            "name": "selfGovernmentPositionName",
+            "type": "input",
+            "inputType": "text",
+            "width": 30,
+            "order": 3
+          },
+          {
+            "label": "Допълнителна информация",
+            "name": "additionalInformation",
+            "type": "input",
+            "inputType": "text",
+            "width": 80,
+            "order": 4
+          },
+          {
+            "label": "Електронна поща",
+            "name": "email",
+            "type": "input",
+            "inputType": "text",
+            "width": 50,
+            "order": 5
+          },
+          {
+            "label": "Моб. телефон",
+            "name": "mobilePhone",
+            "type": "input",
+            "inputType": "text",
+			"rendered":false,
+            "width": 50,
+            "order": 6
+          }
+        ]
+      }
+    },
+    {
+      "order": 2,
+      "name": "TableSchoolStaffGovernmentList",
+      "label": "Представители от педагогическия състав",
+      "table":
+      {
+        "name": "schoolStaffGovernmentData",
+        "searchable": true,
+        "searchType": "column",
+        "hasEditButton": false,
+        "fields": [
+          {
+            "label": "Име на лицето",
+            "name": "personName",
+            "type": "input",
+            "inputType": "text",
+            "width": 50,
+            "order": 1
+          },
+          {
+            "label": "Позиция",
+            "name": "selfGovernmentPositionName",
+            "type": "input",
+            "inputType": "text",
+            "width": 30,
+            "order": 2
+          },
+          {
+            "label": "Електронна поща",
+            "name": "email",
+            "type": "input",
+            "inputType": "text",
+            "width": 50,
+            "order": 3
+          },
+          {
+            "label": "Телефон",
+            "name": "phoneNumber",
+            "type": "input",
+            "inputType": "text",
+            "width": 50,
+            "order": 4
+          }
+        ]
+      }
+    },
+    {
+      "order": 2,
+      "name": "TableSchoolGovernmentList",
+      "label": "Представители на училищното настоятелство",
+      "table":
+      {
+        "name": "schoolGovernmentData",
+        "searchable": true,
+        "searchType": "column",
+        "hasEditButton": false,
+        "fields": [
+          {
+            "label": "Име на лицето",
+            "name": "personName",
+            "type": "input",
+            "inputType": "text",
+            "width": 50,
+            "order": 1
+          },
+          {
+            "label": "Позиция",
+            "name": "positionName",
+            "type": "input",
+            "inputType": "text",
+            "width": 30,
+            "order": 2
+          },
+          {
+            "label": "Електронна поща",
+            "name": "email",
+            "type": "input",
+            "inputType": "text",
+            "width": 50,
+            "order": 3
+          },
+          {
+            "label": "Телефон",
+            "name": "phoneNumber",
+            "type": "input",
+            "inputType": "text",
+            "width": 50,
+            "order": 4
+          }
+        ]
+      }
+    }
+  ]
+}

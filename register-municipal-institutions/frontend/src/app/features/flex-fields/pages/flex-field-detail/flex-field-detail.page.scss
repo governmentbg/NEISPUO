@@ -1,0 +1,20 @@
+:host::ng-deep {
+.p-buttonset {
+    & .p-button {
+        line-height: 1.7;
+    }
+    & .p-button:first-of-type {
+        width:50%
+    }
+     & .p-button:last-of-type {
+        width:50%
+    }
+  }
+}
+
+.position-right {
+    float: right;
+}
+.form-wrapper-label {
+    z-index: 99;
+}

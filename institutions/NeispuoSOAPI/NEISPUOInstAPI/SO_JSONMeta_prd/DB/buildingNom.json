@@ -1,0 +1,50 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_basic].[Building] B /**where**/ /**orderby**/",
+  "columns": [
+	  {
+      "column": "B.BuildingID AS code"
+    },
+	  {
+      "column": "B.Name AS label"
+    }
+   ],
+  "params": [
+		{
+      "param": "@filterValue",
+      "column": "B.BuildingTypeID",
+      "operator": "=",
+      "value": "filterValue",
+      "type": "int",
+      "logical_operator": "and",
+      "optional": true,
+      "static": false
+    },
+		{
+      "param": "@instid",
+      "column": "B.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+	{
+      "param": "@address",
+      "column": "B.InstitutionDepartmentID",
+      "operator": "=",
+      "value": "address",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "B.Name",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+
+  ]
+}

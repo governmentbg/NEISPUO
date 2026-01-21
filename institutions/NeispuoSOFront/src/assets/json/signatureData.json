@@ -1,0 +1,177 @@
+{
+  "label": "Обобщени данни",
+  "procedureName": "if(operationType==1) {form.procedureName='classGroupNew'} else {form.procedureName=''}",
+  "paramName": "instid",
+  "sections": [
+    {
+      "order": 1,
+      "label": "Данни на заявлението",
+      "subsections": [
+        {
+          "order": 1,
+          "label": "Данни за статус",
+          "fields": [
+            {
+              "label": "Статус",
+              "name": "status",
+              "type": "input",
+              "inputType": "text",
+              "rendered": false,
+              "order": 1,
+              "influence": [
+                {
+                  "type": "render",
+                  "subsectionName": "accountantSection",
+                  "condition": [3]
+                },
+                {
+                  "type": "render",
+                  "subsectionName": "financialSection",
+                  "condition": [4]
+                },
+                {
+                  "type": "render",
+                  "subsectionName": "confirmSection",
+                  "condition": [4, 6, 7]
+                },
+                {
+                  "type": "render",
+                  "subsectionName": "certificateSection",
+                  "condition": [10]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "label": "Подаване от директор",
+          "name": "directorSection",
+          "fields": [
+            {
+              "label": "Подпиши",
+              "name": "directorSignature",
+              "type": "button",
+              "disabled": false,
+              "procParams": { "param1": 1, "param2": 2 },
+              "procName": "proc",
+              "order": 1,
+              "canSign": true,
+              "searchByEik": false
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "label": "Съгласуване от счетоводител",
+          "name": "accountantSection",
+          "fields": [
+            {
+              "label": "Подпиши",
+              "name": "accountantSignature",
+              "type": "button",
+              "disabled": false,
+              "procName": "proc",
+              "order": 1
+            },
+            {
+              "label": "Върни за корекция",
+              "name": "sendBack",
+              "type": "button",
+              "disabled": false,
+              "procName": "proc",
+              "order": 2
+            }
+          ]
+        },
+        {
+          "order": 4,
+          "label": "Съгласуване от финансиращ орган",
+          "name": "financialSection",
+          "canDuplicate": false,
+          "fields": [
+            {
+              "label": "Върни за корекция",
+              "name": "financialCorrection",
+              "type": "button",
+              "disabled": false,
+              "procName": "proc",
+              "order": 1
+            },
+            {
+              "label": "Съгласуване с бележки",
+              "name": "commentCoordination",
+              "type": "button",
+              "disabled": false,
+              "procName": "proc",
+              "order": 2,
+              "requiredFields": ["comment"]
+            },
+            {
+              "label": "Съгласуване",
+              "name": "coordination",
+              "type": "button",
+              "disabled": false,
+              "procName": "proc",
+              "order": 3
+            },
+            {
+              "label": "Коментар",
+              "name": "comment",
+              "type": "input",
+              "inputType": "text",
+              "disabled": false,
+              "order": 4
+            }
+          ]
+        },
+        {
+          "order": 5,
+          "label": "Утвърждаване от директор",
+          "name": "confirmSection",
+          "fields": [
+            {
+              "name": "confirmSignature",
+              "type": "button",
+              "disabled": false,
+              "procName": "proc",
+              "order": 1,
+              "generateCertificate": true
+            }, 
+            {
+              "label": "Коментар",
+              "name": "commentN",
+              "type": "input",
+              "inputType": "text",
+              "disabled": false,
+              "order": 4
+            }
+          ]
+        },
+        {
+          "order": 6,
+          "label": "Удостоверение",
+          "name": "certificateSection",
+          "fields": [
+            {
+              "label": "Генерирай сертификат",
+              "name": "generateCertificate",
+              "type": "button",
+              "procName": "proc",
+              "disabled": false,
+              "order": 1
+            },
+            {
+              "label": "Свали сертификат",
+              "name": "getCertificate",
+              "type": "button",
+              "procName": "proc",
+              "disabled": false,
+              "order": 2
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

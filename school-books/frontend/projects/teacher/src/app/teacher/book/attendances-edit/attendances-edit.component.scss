@@ -1,0 +1,6 @@
+// make the day name fixed width so that the right arrow is always in the same place
+// allowing the user to quickly click through the days
+:host ::ng-deep nav.sb-paginator > span.sb-paginator-item:nth-child(2) {
+  min-width: 155px;
+  justify-content: center;
+}

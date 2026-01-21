@@ -1,0 +1,41 @@
+{
+  "template": "SELECT DISTINCT /**select**/ FROM [inst_basic].[BuildingRoom] BR JOIN [inst_nom].[BuildingRoomType] BRT ON BR.BuildingAreaTypeID=BRT.BuildingAreaTypeID /**where**/ /**orderby**/",
+  "columns": [
+	{
+      "column": "BRT.BuildingRoomTypeID AS code"
+    },
+	{
+      "column": "BRT.BuildingRoomTypeName AS label"
+    }
+   ],
+  "params": [
+        {
+          "param": "@filterValue",
+          "column": "BR.BuildingID",
+          "operator": "=",
+          "value": "filterValue",
+          "type": "int",
+          "logical_operator": "and",
+		  "optional": true,
+          "static": false
+        },
+		{
+      "param": "@instid",
+      "column": "BR.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "BRT.BuildingRoomTypeName",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+
+  ]
+}

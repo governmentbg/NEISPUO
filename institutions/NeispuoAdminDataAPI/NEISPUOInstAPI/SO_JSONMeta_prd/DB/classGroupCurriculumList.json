@@ -1,0 +1,62 @@
+{
+  "arrayName": "classGroupList",
+  "template": "SELECT /**select**/ FROM [inst_year].[ClassGroupList] CD /**where**/ /**orderby**/",
+  "columns": [
+	{
+      "column": "CD.ClassID AS id"
+    },
+	{
+      "column": "CD.ClassName AS className"
+    },
+	{
+      "column": "CD.BasicClass AS basicClass"
+    },
+	{
+      "column": "CD.EduFormName AS еduFormName"
+    },
+	{
+      "column": "CD.ClassShiftName AS classShiftName"
+    },
+	{
+      "column": "CD.ClassEdDurationName AS classEdDurationName"
+    },
+	{
+      "column": "CD.ClassEntranceLevelName AS classEntranceLevelName"
+    },
+	{
+      "column": "CD.FLName AS flName"
+    },
+	{
+      "column": "CD.ClassBudgetName AS classBudgetName"
+    },
+	{
+      "column": "CD.DepartmentName AS departmentName"
+    },
+	{
+      "column": "'classGroupData' AS formName"
+    },
+	{
+      "column": "CD.ClassID AS formDataId"
+    }
+   ],
+  "params": [
+    {
+      "param": "@instid",
+      "column": "CD.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "CD.ClassName",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_year].[ChangeYearDataList] ICD /**where**/ /**orderby**/",
+  "columns": [
+	  {
+        "column": "ICD.FromSchoolYear AS fromSchoolYear"
+      },
+	  {
+        "column": "ICD.ToSchoolYear AS toSchoolYear"
+      },
+	  {
+        "column": "ICD.ChangeYearStatusID AS changeYearStatus"
+      },
+	  {
+        "column": "ICD.FromSchoolYearText AS fromSchoolYearText"
+      },
+	  {
+        "column": "ICD.ToSchoolYearText AS toSchoolYearText"
+      }
+  ],
+  "params": [
+    {
+      "param": "@instid",
+      "column": "ICD.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+  ],
+  "order": [
+
+  ],
+  "inSelects": [
+   {
+      "arrayName": "studentsAmendatoryList",
+      "template": "SELECT /**select**/ FROM [inst_year].[CurriculumAddedStudentAmendatoryList] CS /**where**/ /**orderby**/",
+      "columns": [
+	      {
+          "column": "CS.SClassID AS id"
+        },
+		{
+          "column": "CS.PersonId AS personID"
+        },
+        {
+          "column": "CS.ClassName AS className"
+        },
+        {
+          "column": "CS.PublicEduNumber AS publicEduNumber"
+        },
+        {
+          "column": "CS.FullName AS fullName"
+        }
+      ],
+      "params": [
+	 {
+      "param": "@instid",
+      "column": "CS.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+      ],
+      "order": [
+        {
+          "column": "CS.FullName",
+          "type": "ASC"
+        }
+      ]
+    },
+	{
+      "arrayName": "curriculumCreated",
+      "template": "SELECT /**select**/ FROM [inst_year].[Curriculum] C JOIN [core].[InstitutionConfData] ICF ON C.InstitutionID=ICF.InstitutionID AND C.SchoolYear=ICF.SchoolYear /**where**/ /**orderby**/",
+      "columns": [
+	    {
+          "column": "C.CurriculumID AS id"
+        },
+		{
+          "column": "C.ClassNames AS classNames"
+        },
+		{
+          "column": "C.SubjectName AS subjectName"
+        },
+		{
+          "column": "C.SubjectTypeName AS subjectTypeName"
+        }
+      ],
+      "params": [
+	 {
+      "param": "@instid",
+      "column": "C.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+      ],
+      "order": [
+
+      ]
+    }
+  ]
+}

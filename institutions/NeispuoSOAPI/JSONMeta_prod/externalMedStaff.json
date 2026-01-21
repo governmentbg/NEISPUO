@@ -1,0 +1,68 @@
+{
+    "label": "Външен медицински персонал",
+    "sections": [
+        {
+            "order": 1,
+            "table": {
+                "name": "MedicalStaffTable",
+                "searchable": true,
+                "searchType": "column",
+                "formName":  "externalMedStaffData",
+                "paramName": "exMedStaffID",
+                "createNew": "samePage",
+                "canDeleteRow": true,
+                "procedureName": "inst_basic.externalMedStaffCUD",
+                "fields": [
+                    {
+                        "label": "Име",
+                        "name": "firstName",
+                        "type": "input",
+                        "inputType": "text",
+                        "width": 10,
+                        "order": 1
+                    },
+		    {
+                        "label": "Презиме",
+                        "name": "middleName",
+                        "type": "input",
+                        "inputType": "text",
+                        "width": 10,
+                        "order": 2
+                    },
+		    {
+                        "label": "Фамилия",
+                        "name": "lastName",
+                        "type": "input",
+                        "inputType": "text",
+                        "width": 10,
+                        "order": 2
+                    },
+                    {
+                      "label": "Длъжност",
+                      "name": "nkpdPositionID",
+                      "type": "input",
+                      "inputType": "text",
+                      "width": 30,
+                      "order": 3
+                    },
+                    {
+                      "label": "Тип идентификатор",
+                      "name": "personalIDType",
+                      "type": "input",
+                      "inputType": "text",
+                      "width": 5,
+                      "order": 4
+                    },
+                    {
+                      "label": "Идентификатор",
+                      "name": "personalID",
+                      "type": "input",
+                      "inputType": "text",
+                      "width": 10,
+                      "order": 5
+                    }
+                ]
+            }
+        }
+    ]
+}

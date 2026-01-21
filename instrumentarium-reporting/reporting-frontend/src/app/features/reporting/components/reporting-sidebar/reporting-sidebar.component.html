@@ -1,0 +1,10 @@
+<div class="sidebar" [ngClass]="{ toggled: !sidebarService?.isSidebarOpen }">
+  <div class="container-fluid sidebar-content">
+    <ng-container [ngSwitch]="sidebarService?.options?.value">
+      <app-visualization *ngSwitchCase="'visualization'"></app-visualization>
+      <app-settings *ngSwitchCase="'settings'"></app-settings>
+      <app-summary *ngSwitchCase="'summary'"></app-summary>
+      <app-details *ngSwitchCase="'details'"></app-details>
+    </ng-container>
+  </div>
+</div>

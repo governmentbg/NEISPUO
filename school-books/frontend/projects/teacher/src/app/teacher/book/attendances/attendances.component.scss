@@ -1,0 +1,43 @@
+.sb-attendances-table thead,
+.sb-attendances-table tfoot {
+  @apply divide-y;
+}
+
+.sb-attendances-table thead tr,
+.sb-attendances-table tbody tr,
+.sb-attendances-table tfoot tr {
+  @apply divide-x;
+}
+
+.sb-attendances-table tbody td {
+  @apply text-sm align-top p-2;
+}
+
+.sb-attendance-cell {
+  text-align: center;
+  vertical-align: middle !important;
+  padding: 0 !important;
+  min-width: 22px;
+
+  .fa-stack {
+    top: 1px;
+    height: 1em;
+    width: 1.25em;
+  }
+
+  a:hover .fas {
+    transform: scale(1.2);
+  }
+}
+
+.attendance-header {
+  text-align: center;
+  vertical-align: middle !important;
+  font-weight: 500 !important;
+  letter-spacing: normal !important;
+}
+
+.attendance-count-cell {
+  font-weight: 600 !important;
+  font-size: 16px;
+}

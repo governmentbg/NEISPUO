@@ -1,0 +1,24 @@
+@using SB.Domain
+@model StudentIndividualWorksModel
+
+<div class="page">
+  <h3 class="page-header">Проведени индивидуални работи с ученика</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Дата</th>
+        <th>Проведена индивидуална работа с ученика</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (var individualWork in Model.IndividualWorks)
+      {
+        <tr>
+          <td>@individualWork.Date.ToString("dd.MM.yy")</td>
+          <td>@individualWork.IndividualWorkActivity</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

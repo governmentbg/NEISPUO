@@ -1,0 +1,27 @@
+/* it is very important that this ENUM, the one from the Front end and the database
+ table with roles are at sync at all times */
+export enum RoleEnum {
+    INSTITUTION = 0,
+    MON_ADMIN = 1,
+    RUO = 2,
+    MUNICIPALITY = 3,
+    BUDGETING_INSTITUTION = 4,
+    TEACHER = 5,
+    STUDENT = 6,
+    PARENT = 7,
+    CLASS_TEACHER = 8,
+    RUO_EXPERT = 9,
+    CIOO = 10,
+    EXTERNAL_INSTITUTIONS_EXPERT = 11,
+    MON_EXPERT = 12,
+    MON_USER_ADMIN = 13,
+    TECHNICAL_INSTITUTION = 14,
+    MON_OBGUM = 15,
+    MON_OBGUM_FINANCES = 16,
+    MON_CHRAO = 17,
+    CONSORTIUM_HELPDESK = 18,
+    NIO = 19,
+    ACCOUNTANT = 20,
+    OUTSIDER_PROVIDER = 21,
+    VU_TEACHER = 22,
+}

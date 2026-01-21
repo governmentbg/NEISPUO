@@ -1,0 +1,228 @@
+@import "@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/variables/variables.scss";
+
+.sidebar-container {
+  .wrapper {
+    flex: auto;
+    padding: 1rem 1.5rem 0 1.5rem;
+    position: relative;
+
+    .top-container {
+      margin: 0 0 0.625rem 0;
+      overflow: hidden;
+      align-items: center;
+
+      .heading {
+        display: inline;
+        margin-bottom: 0.625rem;
+        margin-top: 0;
+        font-size: 2rem;
+        font-weight: 700;
+      }
+
+      .form-container {
+        .search-name {
+          width: 100%;
+          height: 2.75rem;
+        }
+
+      }
+
+      .create-button {
+        height: 2.75rem;
+        align-self: center;
+      }
+    }
+  }
+
+  .filters-container {
+    margin-bottom: 1.5rem;
+    position: relative;
+
+    .filter-icon-btn {
+      width: 2.188rem;
+    }
+    .p-button.p-button-icon-only {
+      width: 2.357rem;
+      padding: 0.5rem 0;
+    }
+  }
+}
+
+.message {
+  opacity: 1;
+  height: 2.25rem;
+  background-color: $green;
+  color: $white;
+  text-align: center;
+  border-radius: 0.25rem;
+  font-size: 10.25rem;
+  line-height: 0.75rem;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+
+  &.successfully {
+    -o-transition: opacity 5s ease-in-out;
+    -ms-transition: opacity 5s ease-in-out;
+    -moz-transition: opacity 5s ease-in-out;
+    -webkit-transition: opacity 5s ease-in-out;
+  }
+
+  &.delete {
+    background-color: $red;
+    -o-transition: opacity 5s ease-in-out;
+    -ms-transition: opacity 5s ease-in-out;
+    -moz-transition: opacity 5s ease-in-out;
+    -webkit-transition: opacity 5s ease-in-out;
+  }
+}
+
+  .portal-table-container {
+    .campaign-name {
+      color: $chart-mono-5;
+    }
+    .campaign-type {
+      span {
+        padding: 3px 8px;
+        border-radius: 20px;
+        font-size: 10px;
+        font-weight: 600;
+        font-family: "Inter", sans-serif;
+        text-transform: uppercase;
+        &.esui {
+          color: $green-500;
+          margin-left: 24px;
+          background: #ddfded;
+        }
+        &.self-esteem {
+          color: $blue-400;
+          background: #eaf1fb;
+        }
+      }
+    }
+    .campaign-isActive {
+      i {
+        font-size: 11px;
+        margin-right: 5px;
+        &.active {
+          color: $green;
+        }
+        &.past {
+          color: $red;
+        }
+      }
+    }
+  }
+
+  #filter {
+    display: block;
+    width: 352px;
+    height: 160px;
+    box-shadow: 0px 12px 20px rgba(106, 115, 129, 0.22);
+    border-radius: 4px;
+    position: absolute;
+    background-color: white;
+    top: 60px;
+    left: 0px;
+    z-index: 99;
+    .title {
+      margin: 24px;
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+
+.spinner-container {
+  justify-content: center;
+  text-align: center;
+  display: block;
+  min-height: 100vh;
+  padding-top: 1.875rem;
+}
+
+.new-campaign-icon {
+  padding-right: 0.563rem;
+}
+
+.p-input-icon-left,
+.p-input-icon-right {
+  width: 100%;
+}
+
+::ng-deep .p-button-outlined {
+  padding: 0.5rem;
+}
+
+@media (max-width: 2000px) and (min-width: 768px) {
+  .form-container {
+    justify-content: end;
+  }
+
+  .search-form {
+    width: 46%
+  }
+}
+//     justify-content: center;
+//     text-align: center;
+//     display: block;
+//     min-height: 100vh;
+//     padding-top: 30px;
+//   }
+  
+// :host {
+//   ::ng-deep .p-datatable {
+//     margin-bottom: 100px;
+//     table {
+//       table-layout: unset;
+//     }
+//     .p-paginator-bottom {
+//       width: 100%;
+//       height: 60px;
+//       display: inline-table;
+//       background-color: #eef1f6;
+//       text-align: center;
+//     }
+//   }
+//   ::ng-deep .p-paginator .p-paginator-current {
+//     width: 75%;
+//     height: unset;
+//     margin: 0;
+//     padding: 0;
+//     margin-right: auto;
+//     display: table-cell;
+//   }
+//   ::ng-deep .p-multiselect-header {
+//     display: none;
+//   }
+//   ::ng-deep .p-multiselect-panel .p-multiselect-items .p-multiselect-item.p-highlight {
+//     color: #165ecc;
+//     background: #eaf1fb;
+//     border-radius: 4px;
+//     margin: 3px;
+//   }
+//   ::ng-deep .p-multiselect.p-multiselect-chip .p-multiselect-token {
+//     padding: 2px 6px;
+//     background: #eaf1fb;
+//     color: black;
+//     font-size: 12px;
+//     border-radius: 4px;
+//     margin-top: 3px;
+//   }
+//   ::ng-deep .p-multiselect.p-multiselect-chip .p-multiselect-token .p-multiselect-token-icon {
+//     color: #165ecc;
+//   }
+//   ::ng-deep .p-multiselect .p-multiselect-panel {
+//     margin-top: 3px;
+//   }
+//   ::ng-deep .p-dropdown {
+//     width: 100%;
+//   }
+//   ::ng-deep .p-dropdown-items-wrapper {
+//     max-height: none !important;
+//   }
+//   ::ng-deep .p-dropdown-panel .p-dropdown-items .p-dropdown-item,
+//   ::ng-deep .p-dropdown-label {
+//     padding: 10px;
+//   }
+// }

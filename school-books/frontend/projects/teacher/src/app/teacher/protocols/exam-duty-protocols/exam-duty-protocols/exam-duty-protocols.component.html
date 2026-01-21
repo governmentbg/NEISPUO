@@ -1,0 +1,73 @@
+<sb-card>
+  <ng-container card-title>Протоколи за провеждане на изпити</ng-container>
+  <ng-container card-body>
+    <div [formGroup]="searchForm" novalidate class="sm:grid grid-cols-6 gap-x-4">
+      <p class="col-start-1 col-span-full">Филтри</p>
+      <sb-nom-select
+        class="col-span-3"
+        label="Вид на протокола"
+        formControlName="protocolType"
+        [nomService]="examDutyProtocolTypeNomsService"
+      ></sb-nom-select>
+      <sb-text-field label="Номер на заповед" formControlName="orderNumber"></sb-text-field>
+      <sb-date-field label="Дата на заповед" formControlName="orderDate"></sb-date-field>
+      <sb-date-field label="Дата" formControlName="protocolDate"></sb-date-field>
+    </div>
+
+    <button type="button" *ngIf="canCreate" (click)="onClick()" mat-raised-button color="primary" class="mb-2.5">
+      <fa-icon [icon]="fasPlus" size="lg"></fa-icon>
+      <span>Нов протокол</span>
+    </button>
+
+    <sb-table
+      [dataSource]="dataSource"
+      [displayedColumns]="['action', 'protocolType', 'orderNumber', 'orderDate', 'protocolDate', 'sessionType']"
+    >
+      <ng-container cdkColumnDef="action">
+        <th cdk-header-cell *cdkHeaderCellDef></th>
+        <td cdk-cell *cdkCellDef="let row" class="sb-table-action">
+          <a
+            [routerLink]="
+              row.protocolType === 'State'
+                ? ['./state', row.examDutyProtocolId]
+                : row.protocolType === 'SkillsCheck'
+                ? ['./skillsCheck', row.examDutyProtocolId]
+                : row.protocolType === 'Nvo'
+                ? ['./nvo', row.examDutyProtocolId]
+                : ['./', row.examDutyProtocolId]
+            "
+            aria-label="Детайли"
+            class="sb-link-btn"
+          >
+            <fa-icon [icon]="fadChevronCircleRight"></fa-icon>
+          </a>
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="protocolType">
+        <th cdk-header-cell *cdkHeaderCellDef>Вид на протокола за дежурство</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.protocolTypeName }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="orderNumber">
+        <th cdk-header-cell *cdkHeaderCellDef>Номер на заповед</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.orderNumber }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="orderDate">
+        <th cdk-header-cell *cdkHeaderCellDef>Дата на заповед</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.orderDate | sbDate }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="protocolDate">
+        <th cdk-header-cell *cdkHeaderCellDef>Дата</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.protocolDate | sbDate }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="sessionType">
+        <th cdk-header-cell *cdkHeaderCellDef>Сесия</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.sessionType }}</td>
+      </ng-container>
+    </sb-table>
+  </ng-container>
+</sb-card>

@@ -1,0 +1,56 @@
+{
+    "template": "SELECT /**select**/ FROM [noms].[DetailedSchoolType] DST LEFT JOIN [reginst_nom].[DetailedSchoolTypeLimit] DSTL ON DST.DetailedSchoolTypeID=DSTL.DetailedSchoolTypeID /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "DST.DetailedSchoolTypeID as code"
+        },
+        {
+            "column": "DST.Name as label"
+        },
+        {
+            "column": "DST.IsValid as isValid"
+        } 
+    ],
+    "params": [
+        {
+            "param": "@IsValid",
+            "column": "DST.IsValid",
+            "operator": "=",
+            "value": 1,
+            "type": "int",
+            "logical_operator": "and",
+			"optional": true,
+  			"static": true,
+			"from_claim": false
+        },
+		{
+            "param": "@instKind",
+            "column": "DSTL.InstKind",
+            "operator": "=",
+            "value": "instKind",
+            "type": "int",
+            "logical_operator": "and",
+			"optional": true,
+			"static": false,
+			"from_claim": false
+        },
+        {
+            "param": "@filterValue",
+            "column": "DST.BaseSchoolTypeID",
+            "operator": "=",
+            "value": "filterValue",
+            "type": "int",
+            "logical_operator": "and",
+            "optional": true,
+            "static": false,
+			"from_claim": false
+        }        
+    ],
+    "order": [
+        {
+            "column": "DST.DetailedSchoolTypeID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

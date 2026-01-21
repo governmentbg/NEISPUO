@@ -1,0 +1,63 @@
+{
+  "template": "SELECT TOP 1 /**select**/ FROM [inst_year].[CurriculumClassList] CS /**where**/ /**orderby**/",
+  "columns": [
+    {
+      "column": "CS.ClassID as id"
+    },
+    {
+      "column": "CS.ClassKind as classKind"
+    },
+    {
+      "column": "CS.ClassName as className"
+    },
+    {
+      "column": "CS.InstType as instType"
+    },
+    {
+      "column": "CS.DetailedSchoolTypeID as detailedSchoolTypeID"
+    },
+    {
+      "column": "CS.BasicClassID as basicClassID"
+    },
+    {
+      "column": "CS.ClassTypeID as classTypeID"
+    }
+  ],
+  "params": [
+    {
+      "param": "@parentclassid",
+      "column": "CS.ClassID",
+      "operator": "=",
+      "value": "parentclassid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+    {
+      "param": "@instid",
+      "column": "CS.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+    {
+      "param": "@year",
+      "column": "CS.SchoolYear",
+      "operator": "=",
+      "value": "year",
+      "type": "int",
+      "logical_operator": "and",
+      "optional": true,
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "CS.ClassID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": []
+}

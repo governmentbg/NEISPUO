@@ -1,0 +1,46 @@
+.body-body-container {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  background-color: #f8f9fb;
+  .btn-hide-tree {
+    &.active {
+      &:hover {
+        background-color: #ffffff52;
+      }
+      background-color: #ffffff2e;
+    }
+    &:hover {
+      background-color: #ffffff2e;
+      transition: 0.3s all;
+    }
+    background-color: #ffffff00;
+    color: white;
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+    outline: 0;
+    border: 0;
+    padding: 0;
+    position: fixed;
+    top: 8px;
+    left: 5px;
+    transition: 0.3s all;
+    cursor: pointer;
+  }
+  .left-body-container {
+    &.hidden-tree {
+      display: inline-block;
+      max-width: 0;
+      overflow: hidden;
+      transition: 0.3s all;
+      border-right: 0px solid #0800446e;
+    }
+    display: inline-block;
+    max-width: 275px;
+    background-color: white;
+    border-right: 0px solid #0800446e;
+    transition: 0.3s all;
+    z-index: 1000;
+  }
+}

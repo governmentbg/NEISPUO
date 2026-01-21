@@ -1,0 +1,60 @@
+<div class="grade-picker whitespace-nowrap" [class.readonly]="disabled">
+  <ng-container *ngIf="showGradeButtons">
+    <label
+      *ngIf="allowEmpty"
+      class="grade grade-decimal grade-none"
+      [class.active]="pickerValue == null && !disabled"
+      (click)="setDecimalGrade(null)"
+    >
+      <span>&nbsp;</span>
+    </label>
+
+    <label
+      class="grade grade-decimal grade-poor"
+      [class.active]="pickerValue === 2 && !disabled"
+      (click)="setDecimalGrade(2)"
+    >
+      <span>2</span>
+    </label>
+
+    <label
+      class="grade grade-decimal grade-fair"
+      [class.active]="pickerValue === 3 && !disabled"
+      (click)="setDecimalGrade(3)"
+    >
+      <span>3</span>
+    </label>
+
+    <label
+      class="grade grade-decimal grade-good"
+      [class.active]="pickerValue === 4 && !disabled"
+      (click)="setDecimalGrade(4)"
+    >
+      <span>4</span>
+    </label>
+
+    <label
+      class="grade grade-decimal grade-very-good"
+      [class.active]="pickerValue === 5 && !disabled"
+      (click)="setDecimalGrade(5)"
+    >
+      <span>5</span>
+    </label>
+
+    <label
+      class="grade grade-decimal grade-excellent"
+      [class.active]="pickerValue === 6 && !disabled"
+      (click)="setDecimalGrade(6)"
+    >
+      <span>6</span>
+    </label>
+  </ng-container>
+
+  <input
+    #input
+    class="sb-precise-grade sb-form-control ml-1 font-bold"
+    [class.hidden]="!showNumberInput || disabled"
+    (change)="onInputChange()"
+    (blur)="onTouched()"
+  />
+</div>

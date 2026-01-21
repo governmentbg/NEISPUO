@@ -1,0 +1,19 @@
+<div class="l-container-component" *ngIf="mode===modes.Edit" [style.width.px]="field.width">
+    <span class="l-custom-span-label" *ngIf="showLabel">{{field.label}}
+        <span class="required-span" *ngIf="required">*</span>
+    </span>
+    <mat-form-field  class="l-select" [formGroup]="group" appearance="outline" [title]="field.disabled?s.triggerValue:''">
+        <mat-select #s [formControlName]="field.name" (selectionChange)="onSelectionChange($event)" [attr.disabled]="!field.options?.length" multiple>
+          <mat-option>
+            <ngx-mat-select-search [formControl]="filterCtrl" placeholderLabel="Търсене..." noEntriesFoundLabel="'няма намерени резултати'"></ngx-mat-select-search>
+          </mat-option>
+          <mat-option *ngFor="let item of filteredOptions | async; let i = index" [value]="item" [disabled]="item.isValid===false">
+            {{item.label}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+</div>
+<div class="l-container-component preview-mode" *ngIf="mode===modes.View">
+    <span class="l-custom-span-label" *ngIf="showLabel">{{field.label}}</span>
+    <label class="value-label">{{optionLabel}}</label>
+</div>

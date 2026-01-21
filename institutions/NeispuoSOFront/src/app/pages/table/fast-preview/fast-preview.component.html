@@ -1,0 +1,31 @@
+<tr class="fast-preview">
+  <td [attr.colspan]="columnNumber">
+    <ng-container *ngFor="let section of form?.sections">
+      <div *ngIf="!section.hidden && section.rendered !== false" class="container-in-preview-data-table-td">
+        <span *ngIf="section.label" class="section-title-data-table-td">{{ section.label }}</span>
+        <div *ngFor="let subsection of section?.subsections" class="sub-container-in-preview-table">
+          <ng-container *ngIf="!subsection.hidden && subsection.rendered !== false && hasNonHiddenField(subsection)">
+            <span *ngIf="subsection.label" class="sub-section-title-data-table-td">{{ subsection.label }}</span>
+            <div class="body-sub-container-in-preview-table">
+              <ng-container *ngFor="let field of subsection.fields">
+                <ng-container *ngIf="!field.hidden && field.rendered !== false" dynamicField [field]="field" [group]="formGroup" [mode]="mode"></ng-container>
+              </ng-container>
+            </div>
+            <!-- if subsubsection -->
+            <ng-container *ngFor="let sub of subsection.subsections">
+              <div *ngIf="!sub.hidden && sub.rendered !== false && hasNonHiddenField(sub)" class="sub-sub-container-in-preview-table">
+                <span *ngIf="sub.label" class="sub-sub-section-title-data-table-td">{{ sub.label }}</span>
+                <div class="body-sub-sub-container-in-preview-table">
+                  <ng-container *ngFor="let field of sub.fields">
+                    <ng-container *ngIf="!field.hidden && field.rendered !== false" dynamicField [field]="field" [group]="formGroup" [mode]="mode"></ng-container>
+                  </ng-container>
+                </div>
+              </div>
+            </ng-container>
+          </ng-container>
+        </div>
+      </div>
+    </ng-container>
+  </td>
+</tr>
+<app-loader *ngIf="isLoading"></app-loader>

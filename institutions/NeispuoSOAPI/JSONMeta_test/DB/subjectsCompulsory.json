@@ -1,0 +1,35 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[SubjectClassCode] SC /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "SC.SubjectID as code"
+        },
+        {
+            "column": "SC.SubjectName as label"
+        }
+    ],
+    "params": [
+        {
+            "param": "@instid",
+            "column": "SC.InstitutionID",
+            "operator": "=",
+            "value": "instid",
+            "type": "int",
+            "logical_operator": "and",
+            "static": false
+        },
+        {
+            "param": "@parentclassid",
+            "column": "SC.ClassID",
+            "operator": "=",
+            "value": "parentclassid",
+            "type": "int",
+            "logical_operator": "and",
+            "optional": true,
+            "static": false
+        }
+    ],
+    "order": [
+    ],
+    "inSelects": []
+}

@@ -1,0 +1,12 @@
+<mat-icon mat-icon-button class="btn-dashboard" #menuTrigger="matMenuTrigger" [matMenuTriggerFor]="menu">view_module</mat-icon>
+<mat-menu #menu="matMenu" class="dashboard-menu-container">
+  <div class="container-dashboard">
+    <span class="dashboard-menu-title">Табло за управление</span>
+    <a [href]="targetLink" target="_blank" class="link-custom mat-focus-indicator with-icon mat-small mat-button mat-button-base">
+      <span class="mat-button-wrapper">Към табло за управление
+        <mat-icon class="mat-icon material-icons">keyboard_arrow_right</mat-icon>
+      </span>
+      <span class="mat-ripple mat-button-ripple"></span>
+    </a>
+  </div>
+</mat-menu>

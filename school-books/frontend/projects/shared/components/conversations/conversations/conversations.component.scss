@@ -1,0 +1,13 @@
+.list-container {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.list-container::-webkit-scrollbar {
+  display: none;
+}
+
+::ng-deep .cdk-virtual-scroll-content-wrapper {
+  position: absolute !important;
+  width: 100% !important;
+}

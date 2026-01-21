@@ -1,0 +1,123 @@
+<p-table
+  *ngIf="reportService.selectedColumns.length; else noSelectedColumnsMessage"
+  #rbTable
+  id="rbTable"
+  [lazy]="true"
+  [loading]="tableTypeReportService.isLoading"
+  [scrollable]="true"
+  [rows]="tableTypeReportService.rows"
+  (onLazyLoad)="tableTypeReportService.load($event)"
+  [value]="tableTypeReportService.data$ | async"
+  responsiveLayout="scroll"
+  [reorderableColumns]="true"
+  [resizableColumns]="true"
+  [(first)]="tableTypeReportService.first"
+  [columns]="reportService.selectedColumns"
+  [scrollHeight]="'100%'"
+  [styleClass]="!reportService.isCubeData ? 'recalculate p-datatable-sm' : 'p-datatable-sm'"
+  [sortOrder]="reportService.lastLazyLoadEvent?.sortOrder"
+  [sortField]="reportService.lastLazyLoadEvent?.sortField"
+  [filterDelay]="300"
+>
+  <ng-template pTemplate="header">
+    <tr>
+      <th
+        [pSortableColumn]="col.name"
+        *ngFor="let col of reportService.selectedColumns; trackBy: trackByRowId"
+        pReorderableColumn
+      >
+        {{ col.shortTitle }}
+        <p-sortIcon [field]="col.name"></p-sortIcon>
+        <!-- Removed filter for type date, because Cube.js doesn't support time dimension filters  -->
+        <p-columnFilter
+          *ngIf="col.type !== 'time'"
+          [type]="getColumnFilterType(col.type)"
+          [field]="col.name"
+          [matchMode]="primengConfig.getDefaultMatchMode(getColumnFilterType(col.type))"
+          display="menu"
+          [maxConstraints]="10"
+          [showOperator]="false"
+        >
+        </p-columnFilter>
+
+        <p-columnFilter
+          *ngIf="col.type === 'time'"
+          [type]="getColumnFilterType(col.type)"
+          [field]="col.name"
+          [matchMode]="primengConfig.getDefaultMatchMode(getColumnFilterType(col.type))"
+          display="menu"
+          [maxConstraints]="1"
+          [showOperator]="false"
+        >
+          <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+            <p-calendar
+              [(ngModel)]="this.rbTable.filters[col.name][0].value"
+              styleClass="filter-calendar"
+              [readonlyInput]="true"
+              [selectionMode]="
+                CONSTANTS.DATE_RANGE_MATCH_MODES.includes(rbTable.filters[col.name][0]?.matchMode) ? 'range' : 'single'
+              "
+              dateFormat="dd/mm/yy"
+              [inline]="true"
+            ></p-calendar>
+          </ng-template>
+        </p-columnFilter>
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowData let-i="rowIndex">
+    <tr>
+      <td
+        *ngFor="let col of reportService.selectedColumns; trackBy: trackByRowId"
+        [ngClass]="{ measure: reportService.columnIsMeasure(col.name) }"
+        (click)="openDrillDownDialog(col.name, i)"
+      >
+        <ng-container *ngIf="tableTypeReportService.isLoading">
+          <p-skeleton [ngStyle]="{ width: '100%' }"></p-skeleton>
+        </ng-container>
+        <ng-container *ngIf="!tableTypeReportService.isLoading">
+          <ng-container *ngIf="getColumnFilterType(col.type) !== 'date'; else dateCol">
+            <span
+              *ngIf="rowData[col.name]?.length > 20; else noTooltip"
+              [pTooltip]="rowData[col.name]"
+              tooltipPosition="top"
+            >
+              {{ rowData[col.name] }}
+            </span>
+            <ng-template #noTooltip>
+              <span>{{ rowData[col.name] }}</span>
+            </ng-template>
+          </ng-container>
+          <ng-template #dateCol>
+            <span> {{ rowData[col.name] | date: 'dd/MM/yyyy' }}</span>
+          </ng-template>
+        </ng-container>
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="summary">
+    <app-reporting-sidebar-toggle></app-reporting-sidebar-toggle>
+    <div class="d-flex align-items-center">
+      <div
+        *ngIf="tableTypeReportService.rows == tableTypeReportService.lastFetchedRowsCount"
+        (click)="tableTypeReportService.loadNext()"
+        class="load-next"
+      >
+        Зареди още {{ tableTypeReportService.rows }} записа
+      </div>
+      <div
+        *ngIf="
+          !tableTypeReportService.isLoading && tableTypeReportService.rows > tableTypeReportService.lastFetchedRowsCount
+        "
+      >
+        Няма повече записи
+      </div>
+      <app-export-excel-button></app-export-excel-button>
+      <app-save-report-button></app-save-report-button>
+    </div>
+  </ng-template>
+</p-table>
+<ng-template #noSelectedColumnsMessage>
+  <div>Няма избрани колони</div>
+  <app-reporting-sidebar-toggle></app-reporting-sidebar-toggle>
+</ng-template>

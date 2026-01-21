@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <!--
+        If this script is changed its hash (sha256-NuF9mPEA+1gRp+HtOtdJgJHdzeLTSFCIKJnBJbvpSuM=) must be
+        updated as well in docker-nginx-default.conf or our CSP will block its execution
+    -->
+    <script>
+      var checks = [/[\?|&|#]code=/, /[\?|&|#]error=/, /[\?|&|#]token=/, /[\?|&|#]id_token=/];
+
+      function isResponse(str) {
+        var count = 0;
+        if (!str) return false;
+        for (var i = 0; i < checks.length; i++) {
+          if (str.match(checks[i])) return true;
+        }
+        return false;
+      }
+
+      var message = isResponse(location.hash) ? location.hash : '#' + location.search;
+
+      (window.opener || window.parent).postMessage(message, location.origin);
+    </script>
+  </body>
+</html>

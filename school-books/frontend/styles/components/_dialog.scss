@@ -1,0 +1,7 @@
+.sb-dialog {
+  max-width: 100vw !important;
+
+  .mat-dialog-container {
+    @apply p-2.5 sm:p-4 rounded-none sm:rounded w-screen sm:w-auto max-h-screen;
+  }
+}

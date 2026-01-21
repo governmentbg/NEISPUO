@@ -1,0 +1,94 @@
+{
+  "submitUrl": "",
+  "sections": [
+    {
+      "label": "Отворени процедури",
+      "order": 1,
+      "table": {
+        "name": "openProcedures",
+        "paramName": "procID",
+        "fields": [
+          {
+            "label": "Код по НЕИСПУО",
+            "name": "instid",
+            "type": "input",
+            "inputType": "text",
+            "order": 1,
+            "width": 5
+          },
+          {
+            "label": "Наименование",
+            "name": "name",
+            "type": "input",
+            "inputType": "text",
+            "order": 2,
+            "width": 19
+          },
+          {
+            "label": "Вид процедура",
+            "name": "procedureTypeID",
+            "type": "select",
+            "optionsPath": "/data/get/procedureTypes",
+            "order": 3,
+            "width": 15
+          },
+          {
+            "label": "Дата",
+            "name": "procedureDate",
+            "type": "date",
+            "order": 4,
+            "width": 7
+          },
+          {
+            "type": "select",
+            "optionsPath": "/data/get/baseSchoolTypes",
+            "order": 5,
+            "label": "Вид по чл. 37 (общ)",
+            "name": "baseSchoolTypeID",
+            "width": 10
+          },
+          {
+            "order": 6,
+            "label": "Вид по чл. 38 (детайлен)",
+            "name": "detailedSchoolTypeID",
+            "width": 12,
+            "type": "select",
+            "optionsPath": "/data/get/detailedSchoolTypes"
+          },
+		      {
+            "name": "region",
+            "label": "Област",
+            "type": "select",
+            "optionsPath": "/data/get/region",
+            "order": 3,
+            "width": 10
+          },
+          {
+            "order": 7,
+            "label": "Статус",
+            "name": "statusTypeID",
+            "width": 12,
+            "type": "select",
+            "optionsPath": "/data/get/statusTypes"
+          },
+          {
+            "label": "Генериран сертификат",
+            "name": "generatedCertificateFile",
+            "type": "input",
+            "inputType": "text",
+            "order": 1,
+            "width": 5
+          },
+          {
+            "label": "Прикачен сканиран сертификат",
+            "name": "scannedCertificateFile",
+            "type": "input",
+            "inputType": "text",
+            "order": 1,
+            "width": 5
+          }                              
+        ]
+      }
+    }
+  ]
+}

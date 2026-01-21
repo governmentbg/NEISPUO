@@ -1,0 +1,45 @@
+{
+    "template": "SELECT DISTINCT /**select**/ FROM [reginst_nom].[SPPOOList] SEA /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "SEA.SPPOOSpecialityID as code"
+        },
+        {
+            "column": "SEA.SPPOOSpecialityName as label"
+        },
+        {
+            "column": "SEA.SpecialityIsValid as isValid"
+        }
+    ],
+    "params": [
+    {
+        "param": "@filterValue",
+        "column": "SEA.SPPOOProfessionID",
+        "operator": "=",
+        "value": "filterValue",
+        "type": "int",
+        "logical_operator": "and",
+		"optional": true,
+      	"static": false,
+		"from_claim": false
+    },
+		        {
+            "param": "@IsValid",
+            "column": "SEA.SpecialityIsValid",
+            "operator": "=",
+            "value": 1,
+            "type": "int",
+            "logical_operator": "and",
+			"optional": true,
+			"static": true,
+			"from_claim": false
+			}
+    ],
+    "order": [
+        {
+            "column": "SEA.SPPOOSpecialityID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

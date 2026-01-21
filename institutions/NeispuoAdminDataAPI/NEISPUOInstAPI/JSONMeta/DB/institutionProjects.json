@@ -1,0 +1,189 @@
+{
+  "template": "SELECT TOP 1 /**select**/ FROM [inst_basic].[InstitutionAll] IALL /**where**/ /**orderby**/",
+  "sotemplate": "SELECT TOP 1 /**select**/ FROM [sob].[InstitutionAll] IALL /**where**/ /**orderby**/",
+  "columns": [
+	{
+      "column": "IALL.InstitutionID AS codeNEISPUO"
+	}
+     
+  ],
+  "params": [
+    {
+      "param": "@instid",
+      "column": "IALL.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "IALL.InstitutionID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+  {
+  "arrayName": "institutionProjects",
+  "template": "SELECT /**select**/ FROM [inst_basic].[InstitutionProjectList] IPR /**where**/ /**orderby**/",
+  "sotemplate": "SELECT /**select**/ FROM [sob].[InstitutionProjectList] IPR /**where**/ /**orderby**/",
+  "columns": [
+	  { 
+		"column": "IPR.InstitutionProjectID AS id" 
+	  },
+      { 
+		"column": "IPR.ProjectType AS projectType" 
+	  },
+      { 
+		"column": "IPR.ProjectProgram AS programType" 
+	  },
+      { 
+		"column": "IPR.Name AS projectName"
+	  },
+      { 
+		"column": "IPR.Website AS projectWebsite"
+	  },
+      { 
+		"column": "IPR.StartDate AS startDate"
+	  },
+      { 
+		"column": "IPR.EndDate AS endDate"
+	  },
+	  { 
+		"column": "'institutionProjectData' AS formName"
+	  },
+	  { 
+		"column": "IPR.InstitutionProjectID AS formDataId"
+	  }
+  ],
+  "params": [
+    {
+      "param": "@instid",
+      "column": "IPR.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+	{
+      "param": "@isArchive",
+      "column": "IPR.IsArchive",
+      "operator": "=",
+      "value": 0,
+      "type": "int",
+      "logical_operator": "and",
+      "static": true
+    },
+	{
+      "param": "@year",
+      "column": "IPR.SchoolYear",
+      "operator": "=",
+      "value": "year",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    },
+	{
+      "param": "@period",
+      "column": "IPR.Period",
+      "operator": "=",
+      "value": "period",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "IPR.InstitutionProjectID",
+      "type": "ASC"
+    }
+	]
+	},
+	{
+  "arrayName": "institutionArchiveProjects",
+  "template": "SELECT /**select**/ FROM [inst_basic].[InstitutionProjectList] IPR /**where**/ /**orderby**/",
+  "sotemplate": "SELECT /**select**/ FROM [sob].[InstitutionProjectList] IPR /**where**/ /**orderby**/",
+  "columns": [
+	  { 
+		"column": "IPR.InstitutionProjectID AS id" 
+	  },
+      { 
+		"column": "IPR.ProjectType AS projectType" 
+	  },
+      { 
+		"column": "IPR.ProjectProgram AS programType" 
+	  },
+      { 
+		"column": "IPR.Name AS projectName"
+	  },
+      { 
+		"column": "IPR.Website AS projectWebsite"
+	  },
+      { 
+		"column": "IPR.StartDate AS startDate"
+	  },
+      { 
+		"column": "IPR.EndDate AS endDate"
+	  },
+	  { 
+		"column": "'institutionProjectData' AS formName"
+	  },
+	  { 
+		"column": "IPR.InstitutionProjectID AS formDataId"
+	  }
+  ],
+  "params": [
+    {
+      "param": "@instid",
+      "column": "IPR.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+	{
+      "param": "@isArchive",
+      "column": "IPR.IsArchive",
+      "operator": "=",
+      "value": 1,
+      "type": "int",
+      "logical_operator": "and",
+      "static": true
+    },
+	{
+      "param": "@year",
+      "column": "IPR.SchoolYear",
+      "operator": "=",
+      "value": "year",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    },
+	{
+      "param": "@period",
+      "column": "IPR.Period",
+      "operator": "=",
+      "value": "period",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "IPR.InstitutionProjectID",
+      "type": "ASC"
+    }
+	]
+	}
+  ]
+}

@@ -1,0 +1,62 @@
+{
+	"arrayName": "specialNeedsData",
+     "template": "SELECT /**select**/ FROM [inst_year].[StudentSpecialNeedsData] SN /**where**/ /**orderby**/",
+	 "sotemplate": "SELECT /**select**/ FROM [sob].[StudentSpecialNeedsData] SN /**where**/ /**orderby**/",
+  "columns": [
+		{
+          "column": "SN.Id as id"
+        },
+		{
+          "column": "SN.SpecialNeedsTypeName as specialNeedsTypeName"
+        },
+		{
+          "column": "SN.SpecialNeedsSubTypeName as specialNeedsSubTypeName"
+        } 		
+  ],
+  "params": [
+	{
+          "param": "@personid",
+          "column": "SN.PersonID",
+          "operator": "=",
+          "value": "personid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+    },
+	{
+      "param": "@instid",
+      "column": "SN.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+	{
+      "param": "@year",
+      "column": "SC.SchoolYear",
+      "operator": "=",
+      "value": "year",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    },
+	{
+      "param": "@period",
+      "column": "SC.Period",
+      "operator": "=",
+      "value": "period",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    }	
+  ],
+  "order": [
+
+  ],
+  "inSelects": [
+	
+  ]
+}

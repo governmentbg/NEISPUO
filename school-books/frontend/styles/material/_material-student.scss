@@ -1,0 +1,55 @@
+@use '@angular/material' as mat;
+@import 'palette';
+
+@include mat.core();
+
+$frontend-primary: mat.define-palette(mat.$blue-palette);
+$frontend-accent: mat.define-palette(mat.$cyan-palette);
+$frontend-warn: mat.define-palette(mat.$red-palette);
+$frontend-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $frontend-primary,
+      accent: $frontend-accent,
+      warn: $frontend-warn
+    )
+  )
+);
+
+// Expand the angular-material-theme mixin and comment all unused components
+// @include mat.all-component-themes($frontend-theme);
+@include mat.core-theme($frontend-theme);
+//@include mat.autocomplete-theme($frontend-theme);
+@include mat.badge-theme($frontend-theme);
+//@include mat.bottom-sheet-theme($frontend-theme);
+@include mat.button-theme($frontend-theme);
+@include mat.button-toggle-theme($frontend-theme);
+//@include mat.card-theme($frontend-theme);
+//@include mat.checkbox-theme($frontend-theme);
+//@include mat.chips-theme($frontend-theme);
+//@include mat.table-theme($frontend-theme);
+//@include mat.datepicker-theme($frontend-theme);
+@include mat.dialog-theme($frontend-theme);
+//@include mat.divider-theme($frontend-theme);
+//@include mat.expansion-theme($frontend-theme);
+@include mat.form-field-theme($frontend-theme);
+//@include mat.grid-list-theme($frontend-theme);
+//@include mat.icon-theme($frontend-theme);
+@include mat.input-theme($frontend-theme);
+//@include mat.list-theme($frontend-theme);
+@include mat.menu-theme($frontend-theme);
+//@include mat.paginator-theme($frontend-theme);
+//@include mat.progress-bar-theme($frontend-theme);
+@include mat.progress-spinner-theme($frontend-theme);
+//@include mat.radio-theme($frontend-theme);
+@include mat.select-theme($frontend-theme);
+//@include mat.sidenav-theme($frontend-theme);
+@include mat.slide-toggle-theme($frontend-theme);
+//@include mat.slider-theme($frontend-theme);
+//@include mat.stepper-theme($frontend-theme);
+//@include mat.sort-theme($frontend-theme);
+@include mat.tabs-theme($frontend-theme);
+//@include mat.toolbar-theme($frontend-theme);
+//@include mat.tooltip-theme($frontend-theme);
+//@include mat.tree-theme($frontend-theme);
+@include mat.snack-bar-theme($frontend-theme);

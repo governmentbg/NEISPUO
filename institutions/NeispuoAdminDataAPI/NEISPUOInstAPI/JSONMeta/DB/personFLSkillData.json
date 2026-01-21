@@ -1,0 +1,38 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_basic].[PersonFLSkill] PFLS /**where**/ /**orderby**/",
+  "sotemplate": "SELECT /**select**/ FROM [sob].[PersonFLSkill] PFLS /**where**/ /**orderby**/",
+  "columns": [
+        {
+          "column": "PFLS.PersonFLSkillID AS personFLSkillID"
+        },
+		{
+          "column": "PFLS.FLID AS flID"
+        },
+		{
+          "column": "PFLS.FLLevelID AS flLevelID"
+        },	
+		{
+          "column": "PFLS.Notes AS notes"
+        }
+  ],
+  "params": [
+	{
+          "param": "@personFLSkillID",
+          "column": "PFLS.PersonFLSkillID",
+          "operator": "=",
+          "value": "personFLSkillID",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "PFLS.FLID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+ 
+  ]
+}

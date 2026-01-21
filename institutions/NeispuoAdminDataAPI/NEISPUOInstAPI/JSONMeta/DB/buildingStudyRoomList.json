@@ -1,0 +1,618 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_basic].[InstitutionDepartment] ID JOIN [core].[Institution] I ON ID.InstitutionID=I.InstitutionID /**where**/ /**orderby**/",
+  "columns": [
+    {
+      "column": "ID.InstitutionDepartmentID AS instDepID"
+    },
+	  {
+	  "column": "I.DetailedSchoolTypeID AS detailedSchoolTypeID"
+    }
+  ],
+  "params": [
+    {
+      "param": "@address",
+      "column": "ID.InstitutionDepartmentID",
+      "operator": "=",
+      "value": "address",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "ID.InstitutionDepartmentID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+    {
+      "arrayName": "buildingAreaTypeKinderGarden",
+      "template": "SELECT /**select**/ FROM [inst_basic].[BuildingRoomList] BRL JOIN [inst_basic].[InstitutionDepartment] ID ON ID.InstitutionDepartmentID=BRL.InstitutionDepartmentID /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "BRL.BuildingRoomID AS id"
+        },
+        {
+          "column": "BRL.BuildingName AS buildingName"
+        },
+		{
+          "column": "BRL.BuildingTypeID AS buildingTypeID"
+        },
+        {
+          "column": "BRL.Name AS name"
+        },
+        {
+          "column": "BRL.BuildingRoomTypeName AS buildingRoomTypeName"
+        },
+		{
+          "column": "BRL.IsSuppEnv AS isSuppEnv"
+        },
+        {
+          "column": "BRL.MeetRequirementsLevelName AS meetRequirementsLevelName"
+        },
+		{
+          "column": "'buildingRoom' AS formName"
+        },
+        {
+          "column": "BRL.BuildingRoomID AS formDataId"
+        }
+      ],
+      "params": [
+        {
+          "param": "@buildingAreaTypeID",
+          "column": "BRL.BuildingAreaTypeID",
+          "operator": "=",
+          "value": 11,
+          "type": "int",
+          "logical_operator": "and",
+          "static": true
+        },
+			{
+      "param": "@instid",
+      "column": "BRL.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+    {
+      "param": "@address",
+      "column": "ID.InstitutionDepartmentID",
+      "operator": "=",
+      "value": "address",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }    
+      ],
+      "order": [
+        {
+          "column": "BRL.BuildingRoomTypeName",
+          "type": "ASC"
+        }
+      ]
+    },
+    {
+      "arrayName": "buildingAreaTypeStudyOne",
+      "template": "SELECT /**select**/ FROM [inst_basic].[BuildingRoomList] BRL JOIN [inst_basic].[InstitutionDepartment] ID ON ID.InstitutionDepartmentID=BRL.InstitutionDepartmentID /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "BRL.BuildingRoomID AS id"
+        },
+        {
+          "column": "BRL.BuildingName AS buildingName"
+        },
+        {
+          "column": "BRL.Name AS name"
+        },
+        {
+          "column": "BRL.BuildingRoomTypeName AS buildingRoomTypeName"
+        },
+        {
+          "column": "BRL.IsSuppEnv AS isSuppEnv"
+        },
+        {
+          "column": "BRL.MeetRequirementsLevelName AS meetRequirementsLevelName"
+        },
+		{
+          "column": "'buildingRoom' AS formName"
+        },
+        {
+          "column": "BRL.BuildingRoomID AS formDataId"
+        }
+      ],
+      "params": [
+        {
+          "param": "@buildingAreaTypeID",
+          "column": "BRL.BuildingAreaTypeID",
+          "operator": "=",
+          "value": 13,
+          "type": "int",
+          "logical_operator": "and",
+          "static": true
+        },
+					{
+      "param": "@instid",
+      "column": "BRL.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+    {
+      "param": "@address",
+      "column": "ID.InstitutionDepartmentID",
+      "operator": "=",
+      "value": "address",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }    
+      ],
+      "order": [
+        {
+          "column": "BRL.BuildingRoomTypeName",
+          "type": "ASC"
+        }
+      ]
+    },
+    {
+      "arrayName": "buildingAreaTypeStudyTwoFirst",
+      "template": "SELECT /**select**/ FROM [inst_basic].[BuildingRoomList] BRL JOIN [inst_basic].[InstitutionDepartment] ID ON ID.InstitutionDepartmentID=BRL.InstitutionDepartmentID /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "BRL.BuildingRoomID AS id"
+        },
+        {
+          "column": "BRL.BuildingName AS buildingName"
+        },
+        {
+          "column": "BRL.Name AS name"
+        },
+        {
+          "column": "BRL.BuildingRoomTypeName AS buildingRoomTypeName"
+        },
+        {
+          "column": "BRL.IsSuppEnv AS isSuppEnv"
+        },
+        {
+          "column": "BRL.MeetRequirementsLevelName AS meetRequirementsLevelName"
+        },
+		{
+          "column": "'buildingRoom' AS formName"
+        },
+        {
+          "column": "BRL.BuildingRoomID AS formDataId"
+        }
+      ],
+      "params": [
+        {
+          "param": "@buildingAreaTypeID",
+          "column": "BRL.BuildingAreaTypeID",
+          "operator": "=",
+          "value": 14,
+          "type": "int",
+          "logical_operator": "and",
+          "static": true
+        },
+					{
+      "param": "@instid",
+      "column": "BRL.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+    {
+      "param": "@address",
+      "column": "ID.InstitutionDepartmentID",
+      "operator": "=",
+      "value": "address",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }    
+      ],
+      "order": [
+        {
+          "column": "BRL.BuildingRoomTypeName",
+          "type": "ASC"
+        }
+      ]
+    },
+    {
+      "arrayName": "buildingAreaTypeStudyTwoSecond",
+      "template": "SELECT /**select**/ FROM [inst_basic].[BuildingRoomList] BRL JOIN [inst_basic].[InstitutionDepartment] ID ON ID.InstitutionDepartmentID=BRL.InstitutionDepartmentID /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "BRL.BuildingRoomID AS id"
+        },
+        {
+          "column": "BRL.BuildingName AS buildingName"
+        },
+        {
+          "column": "BRL.Name AS name"
+        },
+        {
+          "column": "BRL.BuildingRoomTypeName AS buildingRoomTypeName"
+        },
+        {
+          "column": "BRL.IsSuppEnv AS isSuppEnv"
+        },
+        {
+          "column": "BRL.MeetRequirementsLevelName AS meetRequirementsLevelName"
+        },
+		{
+          "column": "'buildingRoom' AS formName"
+        },
+        {
+          "column": "BRL.BuildingRoomID AS formDataId"
+        }
+      ],
+      "params": [
+        {
+          "param": "@buildingAreaTypeID",
+          "column": "BRL.BuildingAreaTypeID",
+          "operator": "=",
+          "value": 15,
+          "type": "int",
+          "logical_operator": "and",
+          "static": true
+        },
+					{
+      "param": "@instid",
+      "column": "BRL.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+    {
+      "param": "@address",
+      "column": "ID.InstitutionDepartmentID",
+      "operator": "=",
+      "value": "address",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }    
+      ],
+      "order": [
+        {
+          "column": "BRL.BuildingRoomTypeName",
+          "type": "ASC"
+        }
+      ]
+    },
+    {
+      "arrayName": "buildingAreaTypeStudyTwoThird",
+      "template": "SELECT /**select**/ FROM [inst_basic].[BuildingRoomList] BRL JOIN [inst_basic].[InstitutionDepartment] ID ON ID.InstitutionDepartmentID=BRL.InstitutionDepartmentID /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "BRL.BuildingRoomID AS id"
+        },
+        {
+          "column": "BRL.BuildingName AS buildingName"
+        },
+        {
+          "column": "BRL.Name AS name"
+        },
+        {
+          "column": "BRL.BuildingRoomTypeName AS buildingRoomTypeName"
+        },
+        {
+          "column": "BRL.IsSuppEnv AS isSuppEnv"
+        },
+        {
+          "column": "BRL.MeetRequirementsLevelName AS meetRequirementsLevelName"
+        },
+		{
+          "column": "'buildingRoom' AS formName"
+        },
+        {
+          "column": "BRL.BuildingRoomID AS formDataId"
+        }
+      ],
+      "params": [
+        {
+          "param": "@buildingAreaTypeID",
+          "column": "BRL.BuildingAreaTypeID",
+          "operator": "=",
+          "value": 16,
+          "type": "int",
+          "logical_operator": "and",
+          "static": true
+        },
+					{
+      "param": "@instid",
+      "column": "BRL.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+    {
+      "param": "@address",
+      "column": "ID.InstitutionDepartmentID",
+      "operator": "=",
+      "value": "address",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }    
+      ],
+      "order": [
+        {
+          "column": "BRL.BuildingRoomTypeName",
+          "type": "ASC"
+        }
+      ]
+    },
+    {
+      "arrayName": "buildingAreaTypeStudyTwoFourth",
+      "template": "SELECT /**select**/ FROM [inst_basic].[BuildingRoomList] BRL JOIN [inst_basic].[InstitutionDepartment] ID ON ID.InstitutionDepartmentID=BRL.InstitutionDepartmentID /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "BRL.BuildingRoomID AS id"
+        },
+        {
+          "column": "BRL.BuildingName AS buildingName"
+        },
+        {
+          "column": "BRL.Name AS name"
+        },
+        {
+          "column": "BRL.BuildingRoomTypeName AS buildingRoomTypeName"
+        },
+        {
+          "column": "BRL.IsSuppEnv AS isSuppEnv"
+        },
+        {
+          "column": "BRL.MeetRequirementsLevelName AS meetRequirementsLevelName"
+        },
+		{
+          "column": "'buildingRoom' AS formName"
+        },
+        {
+          "column": "BRL.BuildingRoomID AS formDataId"
+        }
+      ],
+      "params": [
+        {
+          "param": "@buildingAreaTypeID",
+          "column": "BRL.BuildingAreaTypeID",
+          "operator": "=",
+          "value": 17,
+          "type": "int",
+          "logical_operator": "and",
+          "static": true
+        },
+					{
+      "param": "@instid",
+      "column": "BRL.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+    {
+      "param": "@address",
+      "column": "ID.InstitutionDepartmentID",
+      "operator": "=",
+      "value": "address",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }    
+      ],
+      "order": [
+        {
+          "column": "BRL.BuildingRoomTypeName",
+          "type": "ASC"
+        }
+      ]
+    },
+    {
+      "arrayName": "buildingAreaTypeStudyTwoFifth",
+      "template": "SELECT /**select**/ FROM [inst_basic].[BuildingRoomList] BRL JOIN [inst_basic].[InstitutionDepartment] ID ON ID.InstitutionDepartmentID=BRL.InstitutionDepartmentID /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "BRL.BuildingRoomID AS id"
+        },
+        {
+          "column": "BRL.BuildingName AS buildingName"
+        },
+        {
+          "column": "BRL.Name AS name"
+        },
+        {
+          "column": "BRL.BuildingRoomTypeName AS buildingRoomTypeName"
+        },
+        {
+          "column": "BRL.IsSuppEnv AS isSuppEnv"
+        },
+        {
+          "column": "BRL.MeetRequirementsLevelName AS meetRequirementsLevelName"
+        },
+		{
+          "column": "'buildingRoom' AS formName"
+        },
+        {
+          "column": "BRL.BuildingRoomID AS formDataId"
+        }
+      ],
+      "params": [
+        {
+          "param": "@buildingAreaTypeID",
+          "column": "BRL.BuildingAreaTypeID",
+          "operator": "=",
+          "value": 18,
+          "type": "int",
+          "logical_operator": "and",
+          "static": true
+        },
+					{
+      "param": "@instid",
+      "column": "BRL.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+    {
+      "param": "@address",
+      "column": "ID.InstitutionDepartmentID",
+      "operator": "=",
+      "value": "address",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }    
+      ],
+      "order": [
+        {
+          "column": "BRL.BuildingRoomTypeName",
+          "type": "ASC"
+        }
+      ]
+    },
+    {
+      "arrayName": "buildingAreaTypeStudyTrainingBase",
+      "template": "SELECT /**select**/ FROM [inst_basic].[BuildingRoomList] BRL JOIN [inst_basic].[InstitutionDepartment] ID ON ID.InstitutionDepartmentID=BRL.InstitutionDepartmentID /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "BRL.BuildingRoomID AS id"
+        },
+        {
+          "column": "BRL.BuildingName AS buildingName"
+        },
+        {
+          "column": "BRL.Name AS name"
+        },
+        {
+          "column": "BRL.BuildingRoomTypeName AS buildingRoomTypeName"
+        },
+        {
+          "column": "BRL.IsSuppEnv AS isSuppEnv"
+        },
+        {
+          "column": "BRL.MeetRequirementsLevelName AS meetRequirementsLevelName"
+        },
+		{
+          "column": "'buildingRoom' AS formName"
+        },
+        {
+          "column": "BRL.BuildingRoomID AS formDataId"
+        }
+      ],
+      "params": [
+        {
+          "param": "@buildingAreaTypeID",
+          "column": "BRL.BuildingAreaTypeID",
+          "operator": "=",
+          "value": 19,
+          "type": "int",
+          "logical_operator": "and",
+          "static": true
+        },
+					{
+      "param": "@instid",
+      "column": "BRL.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+    {
+      "param": "@address",
+      "column": "ID.InstitutionDepartmentID",
+      "operator": "=",
+      "value": "address",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }    
+      ],
+      "order": [
+        {
+          "column": "BRL.BuildingRoomTypeName",
+          "type": "ASC"
+        }
+      ]
+    },
+    {
+      "arrayName": "buildingAreaTypeStudySTEM",
+      "template": "SELECT /**select**/ FROM [inst_basic].[BuildingRoomList] BRL JOIN [inst_basic].[InstitutionDepartment] ID ON ID.InstitutionDepartmentID=BRL.InstitutionDepartmentID /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "BRL.BuildingRoomID AS id"
+        },
+        {
+          "column": "BRL.BuildingName AS buildingName"
+        },
+        {
+          "column": "BRL.Name AS name"
+        },
+        {
+          "column": "BRL.BuildingRoomTypeName AS buildingRoomTypeName"
+        },
+        {
+          "column": "BRL.IsSuppEnv AS isSuppEnv"
+        },
+        {
+          "column": "BRL.MeetRequirementsLevelName AS meetRequirementsLevelName"
+        },
+		{
+          "column": "'buildingRoom' AS formName"
+        },
+        {
+          "column": "BRL.BuildingRoomID AS formDataId"
+        }
+      ],
+      "params": [
+        {
+          "param": "@buildingAreaTypeID",
+          "column": "BRL.BuildingAreaTypeID",
+          "operator": "=",
+          "value": 50,
+          "type": "int",
+          "logical_operator": "and",
+          "static": true
+        },
+					{
+      "param": "@instid",
+      "column": "BRL.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+	{
+      "param": "@address",
+      "column": "ID.InstitutionDepartmentID",
+      "operator": "=",
+      "value": "address",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }    
+      ],
+      "order": [
+        {
+          "column": "BRL.BuildingRoomTypeName",
+          "type": "ASC"
+        }
+      ]
+    }
+  ]
+}

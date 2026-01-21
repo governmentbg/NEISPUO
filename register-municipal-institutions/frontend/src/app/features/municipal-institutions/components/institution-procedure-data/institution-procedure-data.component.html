@@ -1,0 +1,88 @@
+<ng-container *ngIf="form" [formGroup]="form">
+  <div class="fluid formgrid grid row-gap-4">
+    <div class="field col-12 col-md-4" *ngIf="displayProcedureFields">
+      <label for="ProcedureType" [ngClass]="{
+      'is-invalid': form.get('ProcedureType').invalid && form.get('ProcedureType').dirty}"
+      >Вид процедура</label>
+      <p-dropdown
+        [options]="ProcedureTypes$ | async"
+        [dataKey]="'ProcedureTypeID'"
+        formControlName="ProcedureType"
+        [optionLabel]="'Name'"
+        [autoDisplayFirst]="false"
+        inputId="ProcedureType"
+      ></p-dropdown>
+      <ng-container *ngIf="form.get('ProcedureType')?.invalid && form.get('ProcedureType')?.dirty"
+        ><br />
+        <small class="invalid-feedback">Задължително поле</small>
+      </ng-container>
+    </div>
+
+    <div class="field col-12 col-md-4"   *ngIf="displayProcedureFields">
+      <label for="TransformType" [ngClass]="{
+        'is-invalid': form.get('TransformType').invalid && form.get('TransformType').dirty}"
+        >Вид трансформация</label>
+      <p-dropdown
+        [options]="TransformTypes$ | async"
+        formControlName="TransformType"
+        [dataKey]="'TransformTypeID'"
+        [optionLabel]="'Name'"
+        [autoDisplayFirst]="false"
+        inputId="TransformType"
+      ></p-dropdown>
+      <ng-container *ngIf="form.get('TransformType')?.invalid && form.get('TransformType')?.dirty">
+        <br />
+        <small class="invalid-feedback">Задължително поле</small></ng-container
+      >
+    </div>
+
+    <div class="field col-12 col-md-4" *ngIf="displayProcedureFields">
+      <label for="ProcedureDate" [ngClass]="{
+      'is-invalid': form.get('ProcedureDate').invalid && form.get('ProcedureDate').dirty}"
+      >Дата на вписване/промяна</label>
+      <p-calendar
+        [monthNavigator]="true"
+        [yearNavigator]="true"
+        [yearRange]="getYearRange()"
+        dateFormat="dd-mm-yy"
+        formControlName="ProcedureDate"
+        inputId="ProcedureDate"
+      ></p-calendar>
+      <ng-container *ngIf="form.get('ProcedureDate')?.invalid && form.get('ProcedureDate')?.dirty">
+        <small class="invalid-feedback">Задължително поле</small>
+      </ng-container>
+    </div>
+
+    <div class="field col-12 col-md-4" *ngIf="displayProcedureFields">
+      <label for="YearDue" [ngClass]="{
+      'is-invalid': form.get('YearDue').invalid && form.get('YearDue').dirty}"
+      >Влиза в сила от (година)</label>
+      <p-inputNumber
+        formControlName="YearDue"
+        mode="decimal"
+        [min]="2004"
+        [max]="(CurrentYear$ | async)+1"
+         inputId="YearDue"
+        [useGrouping]="false"
+        [maxlength]="4"
+        styleClass="w-12"
+      >
+      </p-inputNumber>
+      <ng-container *ngIf="form.get('YearDue')?.invalid && form.get('YearDue')?.dirty">
+        <small class="invalid-feedback">Задължително поле</small>
+      </ng-container>
+    </div>
+    <div class="field col-12" *ngIf="displayProcedureFields">
+      <label for="TransformDetails" [ngClass]="{
+      'is-invalid': form.get('TransformDetails').invalid && form.get('TransformDetails').dirty}"
+      >Допълнителни бележки</label>
+      <textarea pInputTextarea formControlName="TransformDetails"></textarea>
+
+      <ng-container *ngIf="form.get('TransformDetails')?.invalid && form.get('TransformDetails')?.dirty">
+        <small class="invalid-feedback">Задължително поле</small>
+      </ng-container>
+    </div>
+
+    <app-ri-document [controlName]="'RIDocument'" [isView]="isView" [displayDocument]="displayDocument"></app-ri-document>
+  </div>
+</ng-container>

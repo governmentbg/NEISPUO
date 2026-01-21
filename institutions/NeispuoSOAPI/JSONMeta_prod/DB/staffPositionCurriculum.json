@@ -1,0 +1,262 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_basic].[StaffPosition] SP /**where**/ /**orderby**/",
+  "columns": [
+	    {
+          "column": "SP.StaffOrd AS staffOrd"
+        },
+		{
+          "column": "SP.StaffPositionNo AS staffPositionNo"
+        },
+		{
+          "column": "SP.StaffTypeID AS staffTypeID"
+        },
+		{
+          "column": "SP.PositionKindID AS positionKindID"
+        },
+		{
+          "column": "SP.NKPDPositionID AS NKPDPositionID"
+        },
+		{
+          "column": "SP.PositionCount AS positionCount"
+        },
+		{
+          "column": "SP.StaffMainSubjectGroup AS staffMainSubjectGroup"
+        },	
+		{
+          "column": "SP.PositionNotes AS positionNotes"
+        },
+		{
+          "column": "SP.IsAccoutablePerson AS isAccoutablePerson"
+        },
+		{
+		  "column": "SP.ContractTypeID AS contractTypeID"
+		},
+		{
+			"column": "SP.ContractReasonID AS contractReasonID"
+		},
+		{
+			"column": "SP.ContractNo AS contractNo"
+		},
+		{
+			"column": "SP.ContractYear AS contractYear"
+		},
+		{
+			"column": "SP.ContractWithID AS contractWithID"
+		},
+		{
+			"column": "SP.ContractNotes AS contractNotes"
+		},
+		{
+			"column": "SP.ContractWithID AS contractWithID"
+		},
+		{
+			"column": "SP.IsAccoutablePerson AS isAccoutablePerson"
+		},
+		{
+			"column": "SP.StaffTypeID AS staffTypeID"
+		},
+		{
+			"column": "SP.CategoryStaffTypeID AS categoryStaffTypeID"
+		},	
+		{
+			"column": "SP.NKPDPositionID AS nKPDPositionID"
+		},
+		{
+			"column": "SP.PositionKindID AS positionKindID"
+		},
+		{
+			"column": "SP.PositionNotes AS positionNotes"
+		},
+		{
+			"column": "SP.PositionCount AS positionCount"
+		},
+		{
+			"column": "SP.ExperienceYear AS experienceYear"
+		},
+		{
+			"column": "SP.WorkStartYear AS workStartYear"
+		},
+		{
+			"column": "SP.WorkExpTotalYears AS workExpTotalYears"
+		},
+		{
+			"column": "SP.WorkExpSpecYears AS workExpSpecYears"
+		},
+		{
+			"column": "SP.WorkExpTeachYears AS workExpTeachYears"
+		},
+		{
+			"column": "SP.Notes AS notes"
+		},
+		{
+			"column": "SP.IsTravel AS isTravel"
+		},
+		{		
+			"column": "SP.TeachStageID AS teachStageID"
+		},
+		{
+			"column": "SP.IsHospital AS isHospital"
+		},
+		{
+			"column": "SP.IsMentor AS isMentor"
+		},
+		{
+			"column": "SP.IsTrainee AS isTrainee"
+		},
+		{
+			"column": "SP.IsNotMeetReq AS isNotMeetReq"
+		},
+		{
+			"column": "SP.CurrentlyValid AS currentlyValid"
+		}		
+  ],
+  "params": [
+	{
+          "param": "@staffPositionID",
+          "column": "SP.StaffPositionID",
+          "operator": "=",
+          "value": "staffPositionID",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "SP.StaffPositionID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+{
+      "arrayName": "norma",
+      "template": "SELECT /**select**/ FROM [inst_year].[PedStaffData] PSD /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "PSD.PedStaffDataID AS id"
+        },
+		{
+          "column": "PSD.NormaS AS normaS"
+        },
+		{
+          "column": "PSD.Norma AS norma"
+        },
+		{
+          "column": "PSD.NormaT AS normaT"
+        },
+		{
+          "column": "PSD.DeficitNorma AS deficitNorma"
+        },
+		{
+          "column": "PSD.DeficitNormaT AS deficitNormaT"
+        },
+		{
+          "column": "PSD.ReductionCoef AS reductionCoef"
+        },
+		{
+          "column": "PSD.DiffNorma AS diffNorma"
+        },
+		{
+          "column": "PSD.HoursForReduction AS hoursForReduction"
+        },
+		{
+          "column": "PSD.ReductionHours AS reductionHours"
+        },
+		{
+          "column": "PSD.Lect AS lect"
+        },
+		{
+          "column": "PSD.LectYear AS lectYear"
+        }		
+      ],
+      "params": [
+	{
+          "param": "@staffPositionID",
+          "column": "PSD.StaffPositionID",
+          "operator": "=",
+          "value": "staffPositionID",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+    }
+      ],
+      "order": [
+        {
+          "column": "PSD.StaffPositionID",
+          "type": "ASC"
+        }
+      ]
+    },
+	{
+      "arrayName": "staffPositionHorarium",
+      "template": "SELECT /**select**/ FROM [inst_year].[StaffPositionHorarium] SPH /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "SPH.CurriculumID AS curriculumID"
+        },
+        {
+          "column": "SPH.CurriculumTeacherID AS curriculumTeacherID"
+        },              
+		{
+          "column": "SPH.PersonID AS personID"
+        },
+		{
+          "column": "SPH.StaffOrd AS staffOrd"
+        },
+		{
+          "column": "SPH.StaffPositionNo AS staffPositionNo"
+        },
+		{
+          "column": "SPH.SubjectID AS subjectID"
+        },
+		{
+          "column": "SPH.SubjectTypeID AS subjectTypeID"
+        },
+		{
+          "column": "SPH.ClassName AS className"
+        },
+		{
+          "column": "SPH.CurriculumGroupNum AS curriculumGroupID"
+        },
+		{
+          "column": "SPH.WeeksFirstTerm AS weeksFirstTerm"
+        },
+		{
+          "column": "SPH.HoursWeeklyFirstTerm AS hoursWeeklyFirstTerm"
+        },
+		{
+          "column": "SPH.WeeksSecondTerm AS weeksSecondTerm"
+        },
+		{
+          "column": "SPH.HoursWeeklySecondTerm AS hoursWeeklySecondTerm"
+        },
+		{
+          "column": "SPH.HoursAll AS hoursAll"
+        },
+		{
+          "column": "SPH.NormaS AS normaS"
+        },
+		{
+          "column": "SPH.NotRegularTeacher AS notRegularTeacher"
+        }		
+      ],
+      "params": [
+	{
+          "param": "@staffPositionID",
+          "column": "SPH.StaffPositionID",
+          "operator": "=",
+          "value": "staffPositionID",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+    }
+      ],
+      "order": [
+        {
+          "column": "SPH.CurriculumID",
+          "type": "ASC"
+        }
+      ]
+    }
+  ]
+}

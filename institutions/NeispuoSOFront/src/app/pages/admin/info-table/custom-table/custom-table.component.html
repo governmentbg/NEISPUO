@@ -1,0 +1,86 @@
+<div class="wrapper-table">
+  <mat-card class="section-card card-table">
+    <mat-card-header class="no-color">
+      <mat-card-title *ngIf="tableLabel"><span>{{ tableLabel }}</span></mat-card-title>
+
+      <!-- Global Search -->
+      <div class="search-container" *ngIf="tableMeta?.searchable !== false && tableMeta?.searchType !== 'column'">
+        <mat-icon>search</mat-icon>
+        <input matInput (keyup)="applyGlobalFilter($event)" #input />
+      </div>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="mat-elevation-z8">
+        <div class="table-container">
+          <table mat-table [dataSource]="dataSource" matSort class="l-custom-table"
+            matSortActive="{{displayedColumns[0]}}" matSortDisableClear matSortDirection="asc">
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" class="custom-tr-for-th"></tr>
+
+            <ng-container *ngIf="tableMeta?.searchable !== false && tableMeta?.searchType === 'column'">
+              <tr mat-header-row *matHeaderRowDef="displayedFilterColumns; sticky: true" class="custom-tr-for-filter">
+              </tr>
+            </ng-container>
+
+            <ng-container matColumnDef="reorder-filter"
+              *ngIf="tableMeta.reorder && tableMeta.searchable !== false && tableMeta.searchType === 'column'">
+              <th mat-header-cell *matHeaderCellDef></th>
+            </ng-container>
+
+            <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                {{ columnLabels[column] }}
+              </th>
+              <td mat-cell *matCellDef="let element; let i = index">
+                {{ formatCellValue(element[column], getFieldType(column)) }}
+              </td>
+            </ng-container>
+
+
+            <ng-container *ngIf="tableMeta?.searchable !== false && tableMeta?.searchType === 'column'">
+              <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column + 'filter'">
+                <th mat-header-cell *matHeaderCellDef>
+                  <div class="search-field-th">
+                    <mat-icon class="search-custom-icon">search</mat-icon>
+                    <mat-form-field [formGroup]="filterGroup"
+                      class="block-field default-field padding-0 mat-form-field-search-container" floatLabel="never">
+                      <input matInput [formControl]="filterGroup.controls[column]" type="text" />
+                    </mat-form-field>
+                  </div>
+                </th>
+                <!-- <th mat-header-cell *matHeaderCellDef class="custom-filter-cell">
+                  <div class="search-field-th">
+                    <mat-form-field [formGroup]="filterGroup"
+                      class="block-field default-field padding-0 mat-form-field-search-container no-bottom-padding"
+                      floatLabel="never" appearance="standard">
+                      <mat-icon matPrefix class="search-custom-icon">search</mat-icon>
+                      <input matInput [formControl]="filterGroup.controls[column]" />
+                    </mat-form-field>
+                  </div>
+                </th> -->
+              </ng-container>
+            </ng-container>
+
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+        </div>
+      </div>
+      <div class="footer-container-custom-table">
+        <div class="l-pagination-container">
+          <mat-paginator [pageSizeOptions]="[10, 25, 50, 100]" [pageSize]="25" showFirstLastButtons></mat-paginator>
+        </div>
+
+        <div class="wrapper-button-table-container">
+          <div class="div-right-container">
+            <span class="extract-excel-btn" (click)="exportExcel()" matTooltip="експорт в excel"><img class="icon-btn"
+                src="../../../assets/images/excel.png" /></span>
+            <span class="extract-pdf-btn" (click)="exportPdf()" matTooltip="експорт в pdf">
+              <img class="icon-btn" src="../../../assets/images/pdf.png" />
+            </span>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

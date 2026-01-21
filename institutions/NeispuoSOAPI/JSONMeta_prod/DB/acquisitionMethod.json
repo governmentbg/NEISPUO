@@ -1,0 +1,23 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_nom].[AcquisitionMethod] AM /**where**/ /**orderby**/",
+  "columns": [
+	{
+      "column": "AM.AcquisitionMethodID AS code"
+    },
+	{
+      "column": "AM.Description AS label"
+    }
+   ],
+  "params": [
+
+  ],
+  "order": [
+    {
+      "column": "AM.Description",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+
+  ]
+}

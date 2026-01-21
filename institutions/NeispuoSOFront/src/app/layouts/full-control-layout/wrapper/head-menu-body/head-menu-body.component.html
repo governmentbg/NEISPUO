@@ -1,0 +1,10 @@
+<ul class="l-custom-main-tab">
+  <li class="button-item text-select-disabled img-drag-disable" [ngClass]="{'active': tabIndex === 0}" (click)="onPathChanged(0)">Текущи данни</li>
+  <li class="button-item text-select-disabled img-drag-disable" [ngClass]="{'active': tabIndex === 1}" (click)="onPathChanged(1)">Подаване на
+    Списък-образец</li>
+  <!-- <li class="button-item text-select-disabled img-drag-disable" [ngClass]="{'active': tabIndex === 2}" (click)="onPathChanged(2)">Утвърден
+    Списък-образец</li> -->
+  <li class="button-item text-select-disabled img-drag-disable" [ngClass]="{'active': tabIndex === 2}" (click)="onPathChanged(2)">Физическа среда</li>
+  <li class="button-item text-select-disabled img-drag-disable" [ngClass]="{'active': tabIndex === 3}" (click)="onPathChanged(3)">История</li>
+</ul>
+<app-loader *ngIf="isLoading"></app-loader>

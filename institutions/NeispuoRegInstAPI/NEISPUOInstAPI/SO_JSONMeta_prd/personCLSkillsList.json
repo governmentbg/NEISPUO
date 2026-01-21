@@ -1,0 +1,125 @@
+{
+  "label": "Умения на персонала",
+  "changeData": false,
+  "sections": [
+    {
+      "label": "Име на служител",
+      "order": 1,
+      "subsections": [
+        {
+          "order": 1,
+          "label": "fullName",
+          "type": "input",
+          "name": "fullName",
+          "bold": true,
+          "width": 200,
+          "disabled": false,
+          "flexible": false
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "label": "Компютърни умения",
+      "name": "TableComputerSkills",
+	  "accordion": {"state":"closed"},
+      "table":
+      {
+        "name": "staffComputerSkills",
+        "createNew": "redirect",
+        "formName": "personComputerSkillData",
+        "paramName": "personCompSkillID",
+        "procedureName": "inst_basic.personCompSkillCUD",
+        "canDeleteRow": true,
+		"searchable":false,
+        "fields": [
+          {
+            "label": "Компютърно умение",
+            "name": "computerSkill",
+            "type": "input",
+            "inputType": "text",
+            "validations": [
+              {
+                "name": "required",
+                "validator": "",
+                "message": "Полето е задължително"
+              }
+            ],
+            "order": 1
+          },
+          {
+            "label": "Ниво",
+            "name": "computerSkillLevel",
+            "type": "input",
+            "inputType": "text",
+            "validations": [
+              {
+                "name": "required",
+                "validator": "",
+                "message": "Полето е задължително"
+              }
+            ],
+            "order": 2
+          },
+          {
+            "label": "Бележки",
+            "name": "computerSkillNotes",
+            "type": "textarea",
+            "order": 3
+          }
+        ]
+      }
+    },
+    {
+      "order": 3,
+      "label": "Езикови умения",
+      "name": "TableLanguageSkills",
+	  "accordion": {"state":"closed"},
+      "table": {
+        "name": "staffLanguageSkills",
+        "createNew": "redirect",
+        "formName": "personFLSkillData",
+        "canDeleteRow": true,
+        "paramName": "personFLSkillID",
+        "procedureName": "inst_basic.personFLSkillCUD",
+		"searchable":false,
+        "fields": [
+          {
+            "label": "Чужд език",
+            "name": "languageSkill",
+            "type": "input",
+            "inputType": "text",
+            "validations": [
+              {
+                "name": "required",
+                "validator": "",
+                "message": "Полето е задължително"
+              }
+            ],
+            "order": 1
+          },
+          {
+            "label": "Ниво на владеене",
+            "name": "languageSkillLevel",
+            "type": "input",
+            "inputType": "text",
+            "validations": [
+              {
+                "name": "required",
+                "validator": "",
+                "message": "Полето е задължително"
+              }
+            ],
+            "order": 2
+          },
+          {
+            "label": "Бележки",
+            "name": "languageSkillNotes",
+            "type": "textarea",
+            "order": 3
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+<div class="l-container-component l-focused-element" [ngClass]="{'focused': updateJsonService.focusedElement.index === field.idntfr}" (click)="focus()">
+    <span class="l-custom-info-span">файл</span>
+    <div class="wrap upload-file-container">
+      <div class="text-container">
+        <span class="l-custom-span-label">
+          <span class="required-span" *ngIf="required">*</span>
+          <span class="label-label">{{ field.pseudoLabel }}</span>
+          <app-info-tooltip *ngIf="field.info" [info]="field.info"></app-info-tooltip>
+        </span>
+        <img class="icon-pdf" src="../../../../../../../assets/images/pdf-icon.png" />
+      </div>
+      <div class="btn-container">
+        <span class="upload-button disabled">
+          <mat-icon>attach_file</mat-icon>
+        </span>
+      </div>
+    </div>
+</div>
+  

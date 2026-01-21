@@ -1,0 +1,98 @@
+<sb-breadcrumb
+  class="block mb-3"
+  [icon]="fadCalendarMinus"
+  [text]="
+    data.sessionStudentsReport == null
+      ? 'Създаване на справка ученици за поправителни изпити'
+      : 'Преглед на справка ученици за поправителни изпити'
+  "
+  [parentItems]="[{ text: 'Ученици за поправителни изпити', routeCommands: ['../'] }]"
+></sb-breadcrumb>
+
+<form [formGroup]="form" autocomplete="off" novalidate>
+  <sb-card>
+    <ng-container card-title>
+      {{
+        data.sessionStudentsReport == null
+          ? 'Създаване на справка ученици за поправителни изпити'
+          : 'Преглед на справка ученици за поправителни изпити'
+      }}
+    </ng-container>
+    <sb-editor-panel card-buttons [isNew]="data.sessionStudentsReport == null" [editBtnHidden]="true">
+      <a
+        *ngIf="data.sessionStudentsReport != null"
+        [href]="downloadUrl"
+        class="mr-3"
+        disabled-mode-buttons
+        target="_blank"
+        download
+        color="primary"
+        mat-raised-button
+        [disabled]="!downloadUrl"
+      >
+        <fa-icon [icon]="fasFileExcel" size="lg"></fa-icon>
+        <span>Свали</span>
+      </a>
+      <button
+        disabled-mode-buttons
+        mat-raised-button
+        color="warn"
+        type="button"
+        (click)="onRemove()"
+        [disabled]="removing"
+      >
+        <fa-icon [icon]="removing ? fasSpinnerThird : fasTrashAlt" [spin]="removing" size="lg"></fa-icon>
+        <span class="hidden sm:inline">Премахни</span>
+      </button>
+    </sb-editor-panel>
+    <ng-container card-body>
+      <sb-card-section *ngIf="data.sessionStudentsReport != null" class="col-span-full">
+        Ученици за поправителни изпити към {{ data.sessionStudentsReport.createDate | sbDateTime }}
+      </sb-card-section>
+      <ng-container *ngIf="data.sessionStudentsReport != null && dataSource != null">
+        <sb-table
+          [dataSource]="dataSource"
+          [displayedColumns]="[
+            'studentNames',
+            'classBookName',
+            'session1CurriculumNames',
+            'session2CurriculumNames',
+            'session3CurriculumNames'
+          ]"
+        >
+          <ng-container cdkColumnDef="studentNames">
+            <th cdk-header-cell *cdkHeaderCellDef>Ученик</th>
+            <td cdk-cell *cdkCellDef="let row">
+              {{ row.studentNames }}
+              <span *ngIf="row.isTransferred" class="sb-badge">ОТПИСАН</span>
+            </td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="classBookName">
+            <th cdk-header-cell *cdkHeaderCellDef>Паралелка</th>
+            <td cdk-cell *cdkCellDef="let row">{{ row.classBookName }}</td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="session1CurriculumNames">
+            <th cdk-header-cell *cdkHeaderCellDef>I сесия</th>
+            <td cdk-cell *cdkCellDef="let row">{{ row.session1CurriculumNames }}</td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="session2CurriculumNames">
+            <th cdk-header-cell *cdkHeaderCellDef>II сесия</th>
+            <td cdk-cell *cdkCellDef="let row">{{ row.session2CurriculumNames }}</td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="session3CurriculumNames">
+            <th cdk-header-cell *cdkHeaderCellDef>Допълнителна сесия</th>
+            <td cdk-cell *cdkCellDef="let row">{{ row.session3CurriculumNames }}</td>
+          </ng-container>
+
+          <ng-container no-data-row>
+            <td colspan="6" class="text-center">Няма ученици за поправителни изпити за периода</td>
+          </ng-container>
+        </sb-table>
+      </ng-container>
+    </ng-container>
+  </sb-card>
+</form>

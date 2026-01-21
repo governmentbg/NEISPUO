@@ -1,0 +1,42 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[CategoryStaffType] CST JOIN [inst_nom].[CategoryStaffDetailedSchoolTypeLimit] CSL ON CST.CategoryStaffTypeID=CSL.CategoryStaffTypeID /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "CST.CategoryStaffTypeID as code"
+        },
+        {
+            "column": "CST.Name as label"
+        },
+        {
+            "column": "CST.IsValid as isValid"
+        }
+    ],
+    "params": [
+        {
+            "param": "@staffTypeID",
+            "column": "CST.StaffTypeID",
+            "operator": "=",
+            "value": "staffTypeID",
+            "type": "int",
+            "logical_operator": "and",
+            "static": false
+        },
+        {
+            "param": "@detailedSchoolTypeID",
+            "column": "CSL.DetailedSchoolTypeID",
+            "operator": "=",
+            "value": "detailedSchoolTypeID",
+            "type": "int",
+            "logical_operator": "and",
+            "optional": true,
+            "static": false
+        }
+    ],
+    "order": [
+        {
+            "column": "SortOrd",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

@@ -1,0 +1,38 @@
+-- Migration: Create R_Personal_Staff table
+-- Based on reporting.R_Personal_Staff view from the MS SQL server
+CREATE TABLE IF NOT EXISTS R_Personal_Staff (
+    `Код по НЕИСПУО` Int32,
+    `Наименование` String,
+    `Населено място` Nullable(String),
+    `Община` Nullable(String),
+    `Област` Nullable(String),
+    `RegionID` Nullable(Int32),
+    `Вид по чл. 35-36 (според собствеността)` Nullable(String),
+    `Вид по чл. 38 (детайлен)` Nullable(String),
+    `Финансиращ орган` Nullable(String),
+    `Email` Nullable(String),
+    `Име` Nullable(String),
+    `Презиме` Nullable(String),
+    `Фамилия` Nullable(String),
+    `ЛОН` Nullable(String),
+    `Пол` Nullable(String),
+    `Дата на раждане` Nullable(DateTime64(3, 'UTC')),
+    `Месторождение(държава)` Nullable(String),
+    `Месторождение(град)` Nullable(String),
+    `Гражданство` Nullable(String),
+    `Постоянен адрес – Община` Nullable(String),
+    `Постоянен адрес – Област` Nullable(String),
+    `Постоянен адрес – Населено място` Nullable(String),
+    `Постоянен адрес` Nullable(String),
+    `Настоящ адрес  – Община` Nullable(String),
+    `Настоящ адрес – Област` Nullable(String),
+    `Настоящ адрес – Населено място` Nullable(String),
+    `Настоящ адрес` Nullable(String),
+    `Телефон` Nullable(String),
+    `Електронна поща` Nullable(String),
+    `Работещ пенсионер` Nullable(String),
+    `Продължава образованието си` Nullable(String),
+    `Активни длъжности` Nullable(String),
+    `Категория персонал` Nullable(String)
+) ENGINE = MergeTree()
+ORDER BY (`Код по НЕИСПУО`, `Наименование`);

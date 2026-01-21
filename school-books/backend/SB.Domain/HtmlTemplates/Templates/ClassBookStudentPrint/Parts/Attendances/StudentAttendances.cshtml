@@ -1,0 +1,40 @@
+@using SB.Domain
+@model StudentAttendancesModel
+
+<div class="page">
+
+    <h3 class="page-header">Сведение за присъствието в групата</h3>
+
+    @for(int i = 0; i < Model.Months.Length; i++)
+    {
+      <table>
+        <thead>
+        <tr>
+          <th colspan="@Model.Months[i].Days.Length" class="text-center px-0">@Model.Months[i].MonthName</th>
+          <th rowspan="2" class="px-0">Общо<br/>присъствия</th>
+        </tr>
+        <tr>
+          @foreach (var day in Model.Months[i].Days)
+          {
+            <th class="attendance-header">@day.DayOfMonth</th>
+          }
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          @for (int j = 0; j < Model.Months[i].Attendances.Attendances.Length; j++)
+          {
+            var type = Model.Months[i].Attendances.Attendances[j];
+            <td class="@(Model.Months[i].Days[j].IsOffDay ? "bg-lighhtgray w-px sb-attendance-cell" : "w-px sb-attendance-cell")">
+              @(type == AttendanceType.Presence ? "✓" : type == AttendanceType.ExcusedAbsence ? "X" : type == AttendanceType.UnexcusedAbsence ? "⁄" : string.Empty)
+            </td>
+          }
+
+          <td class="px-0 whitespace-nowrap attendance-header attendance-count-cell">
+            @Model.Months[i].Attendances.PresencesTotal
+          </td>
+          </tr>
+      </tbody>
+    </table>
+    }
+</div>

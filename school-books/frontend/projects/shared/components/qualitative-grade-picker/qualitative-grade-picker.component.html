@@ -1,0 +1,54 @@
+<div class="grade-picker whitespace-nowrap" [class.readonly]="disabled">
+  <label
+    *ngIf="allowEmpty"
+    class="grade grade-qualitative grade-none"
+    [class.active]="qualitativeGrade == null && !disabled"
+    (click)="setQualitativeGrade(null)"
+  >
+    <span>&nbsp;</span>
+  </label>
+
+  <label
+    class="grade grade-qualitative grade-poor"
+    [class.active]="qualitativeGrade === QUALITATIVE_GRADE_POOR && !disabled"
+    (click)="setQualitativeGrade(QUALITATIVE_GRADE_POOR)"
+  >
+    <i class="em em-anguished"></i>
+  </label>
+
+  <label
+    class="grade grade-qualitative grade-fair"
+    [class.active]="qualitativeGrade === QUALITATIVE_GRADE_FAIR && !disabled"
+    (click)="setQualitativeGrade(QUALITATIVE_GRADE_FAIR)"
+  >
+    <i class="em em-hushed"></i>
+  </label>
+
+  <label
+    class="grade grade-qualitative grade-good"
+    [class.active]="qualitativeGrade === QUALITATIVE_GRADE_GOOD && !disabled"
+    (click)="setQualitativeGrade(QUALITATIVE_GRADE_GOOD)"
+  >
+    <i class="em em-neutral_face"></i>
+  </label>
+
+  <label
+    class="grade grade-qualitative grade-very-good"
+    [class.active]="qualitativeGrade === QUALITATIVE_GRADE_VERY_GOOD && !disabled"
+    (click)="setQualitativeGrade(QUALITATIVE_GRADE_VERY_GOOD)"
+  >
+    <i class="em em-blush"></i>
+  </label>
+
+  <label
+    class="grade grade-qualitative grade-excellent"
+    [class.active]="qualitativeGrade === QUALITATIVE_GRADE_EXCELLENT && !disabled"
+    (click)="setQualitativeGrade(QUALITATIVE_GRADE_EXCELLENT)"
+  >
+    <i class="em em-smiley"></i>
+  </label>
+
+  <label *ngIf="showGradeName" class="font-bold pl-1">
+    {{ qualitativeGrade | sbQualitativeGradeName }}
+  </label>
+</div>

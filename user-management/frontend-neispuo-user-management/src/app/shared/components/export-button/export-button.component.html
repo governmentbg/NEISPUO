@@ -1,0 +1,13 @@
+<button
+    pButton
+    icon="{{ loading ? 'pi pi-spin pi-spinner' : 'pi pi-file-excel' }}"
+    label="{{
+        (loading
+            ? CONSTANTS.CONTENT_TOOLBAR_EXPORT_BUTTON_LABEL_LOADING
+            : CONSTANTS.CONTENT_TOOLBAR_EXPORT_BUTTON_LABEL_NOT_LOADING
+        ) | translate
+    }}"
+    (click)="onClickButton($event)"
+    [disabled]="loading"
+    class="p-button-success export-button"
+></button>

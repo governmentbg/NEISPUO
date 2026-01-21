@@ -1,0 +1,91 @@
+{
+  "arrayName": "sobCurriculumList",
+  "template": "SELECT /**select**/ FROM [inst_year].[CurriculumList] CD LEFT JOIN [inst_nom].[CurriculumPart] CP ON CP.CurriculumPartID=CD.CurriculumPartID /**where**/ /**orderby**/",
+  "columns": [
+        {
+          "column": "CD.CurriculumID AS id"
+        },
+        {
+          "column": "CD.ClassNames AS classNames"
+        },
+        {
+          "column": "CD.CurriculumGroupNum AS curriculumGroupNum"
+        },
+        {
+          "column": "CD.SubjectName AS subjectName"
+        },
+        {
+          "column": "CD.SubjectTypeName AS subjectTypeName"
+        },
+        {
+          "column": "CD.StudentsCount AS studentsCount"
+        },
+        {
+          "column": "CD.TotalHours AS totalHours"
+        },
+        {
+          "column": "CD.WeeksFirstTerm AS weeksFirstTerm"
+        },
+        {
+          "column": "CD.HoursWeeklyFirstTerm AS hoursWeeklyFirstTerm"
+        },
+        {
+          "column": "CD.WeeksSecondTerm AS weeksSecondTerm"
+        },
+        {
+          "column": "CD.HoursWeeklySecondTerm AS hoursWeeklySecondTerm"
+        },
+        {
+          "column": "CP.Name AS curriculumPart"
+        },
+        {
+          "column": "CD.TeacherNames AS teacherNames"
+        },
+        {
+          "column": "CD.DepartmentName AS departmentName"
+        },
+        {
+          "column": "CD.ParentSubjectName AS parentSubjectName"
+        }
+      ],
+  "params": [
+        {
+          "param": "@instid",
+          "column": "CD.InstitutionID",
+          "operator": "=",
+          "value": "instid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        },
+        {
+          "param": "@year",
+          "column": "CD.SchoolYear",
+          "operator": "=",
+          "value": "year",
+          "type": "int",
+          "logical_operator": "and",
+          "optional": true,
+          "static": false
+        }
+      ],
+  "order": [
+        {
+          "column": "CD.ClassNames",
+          "type": "ASC"
+        },
+        {
+          "column": "CD.CurriculumPartID",
+          "type": "ASC"
+        },
+        {
+          "column": "CD.ParentSubjectName",
+          "type": "ASC"
+        },
+        {
+          "column": "CD.SubjectTypeID",
+          "type": "ASC"
+        }
+      ],
+  "inSelects": []  
+}

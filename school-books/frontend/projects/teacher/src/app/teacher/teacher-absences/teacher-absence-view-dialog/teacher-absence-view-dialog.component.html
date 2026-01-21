@@ -1,0 +1,85 @@
+<form [formGroup]="form" novalidate (ngSubmit)="onSave()" class="sm:w-[700px]">
+  <div class="sb-btn-wrapper sb-btn-wrapper-right">
+    <button mat-raised-button color="primary" type="submit" [disabled]="saving" *ngIf="data.editable">
+      <fa-icon [icon]="saving ? fasSpinnerThird : fasCheck" [spin]="saving" size="lg"></fa-icon>
+      <span>Запази</span>
+    </button>
+    <button mat-raised-button mat-dialog-close>Затвори</button>
+  </div>
+
+  <sb-banner class="mb-2" *ngIf="data.editable && hasReadOnlyHours && !hasInvalidHours" type="warning">
+    Не могат да се редактират часове, за които има въведени оценки/отсъствия/теми, или часа е маркиран като лекторски.
+    За улеснение при проверка на това в кои дневници са оценките/отсъствията/темите за тези дни, може да използвате
+    функционалността "Администрация > Проверка на дневници."
+  </sb-banner>
+
+  <sb-banner class="mt-2 mb-2" *ngIf="data.editable && hasNoReplacementHours && !hasInvalidHours" type="info">
+    Избрани са часове без титуляр, които са обозначени като "без постоянно заместващ учител" в модул Институции. За да
+    се позволи въвеждането на оценки, отсъствия или теми за тези часове без титуляр, можете да посочете временно
+    заместващ учител.
+  </sb-banner>
+
+  <sb-banner class="mt-2 mb-2" *ngIf="data.editable && hasInvalidHours" type="warning">
+    Часовете са от архивиран дневник и не могат да бъдат редактирани
+  </sb-banner>
+
+  <div *ngIf="data.group" class="font-bold mb-2">
+    {{ data.group.dayName }}
+    <span class="whitespace-nowrap">({{ data.group.shiftHour.startTime }} - {{ data.group.shiftHour.endTime }})</span>
+    /
+    {{ data.group.classBookFullName }} -
+    <span class="inline sm:hidden">
+      {{ data.group.subjectShort }}
+    </span>
+    <span class="hidden sm:inline">
+      {{ data.group.subject }}
+    </span>
+  </div>
+
+  <div class="sb-table-container">
+    <table class="sb-table" formArrayName="hours">
+      <thead>
+        <tr>
+          <th class="pl-1 w-1" *ngIf="!data.singleHourMode">Дата</th>
+          <th class="pl-1" colspan="2">Заместник</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let _ of hours.controls; let i = index" [formGroupName]="i">
+          <td class="p-1 w-1" *ngIf="!data.singleHourMode">{{ data.hours[i].date | sbDate }}</td>
+          <td class="p-1 w-[230px]">
+            <mat-select
+              class="sb-form-control"
+              formControlName="replType"
+              [disabled]="!data.editable || data.hours[i].isReadOnly || hasInvalidHours"
+            >
+              <mat-option [value]="replType.id" *ngFor="let replType of replTypes">
+                {{ replType.text }}
+              </mat-option>
+            </mat-select>
+          </td>
+          <td class="p-1">
+            <sb-nom-select
+              *ngIf="
+                form.value.hours[i].replType === ReplTypeNonSpecialist ||
+                form.value.hours[i].replType === ReplTypeSpecialist
+              "
+              [readonly]="!data.editable || data.hours[i].isReadOnly || hasInvalidHours"
+              class="sb-single-row-mat-field"
+              label="Заместник"
+              formControlName="replTeacherPersonId"
+              [nomService]="instTeacherNomsService"
+            ></sb-nom-select>
+            <input
+              matInput
+              *ngIf="form.value.hours[i].replType === ReplTypeExtTeacher"
+              [readonly]="!data.editable || data.hours[i].isReadOnly || hasInvalidHours"
+              class="sb-form-control"
+              formControlName="extReplTeacherName"
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</form>

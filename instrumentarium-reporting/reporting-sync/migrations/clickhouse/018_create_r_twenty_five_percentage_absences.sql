@@ -1,0 +1,36 @@
+-- Migration: Create R_Twenty_Five_Percentage_Absences table
+-- Based on reporting.R_Twenty_Five_Percentage_Absences view from the MS SQL server
+CREATE TABLE IF NOT EXISTS R_Twenty_Five_Percentage_Absences (
+    RegionID Int32,
+    RegionName String,
+    MunicipalityName String,
+    TownName String,
+    InstitutionID Int32,
+    InstitutionName String,
+    DetailedSchoolTypeID Int32,
+    BudgetingSchoolTypeID Int32,
+    FinancialSchoolTypeID Int32,
+    PersonID Int32,
+    FirstName String,
+    MiddleName Nullable(String),
+    LastName String,
+    PublicEduNumber Nullable(String),
+    BirthDate Nullable(DateTime64(3, 'UTC')),
+    Gender Nullable(Int32),
+    SchoolYear Int16,
+    ClassOrGroupName Nullable(String),
+    CurriculumId Int32,
+    CurriculumPartID Nullable(Int32),
+    SubjectName Nullable(String),
+    SubjectTypeName String,
+    Absences_Term1 Nullable(Decimal(38,1)),
+    TotalHours_Term1 Nullable(Float32),
+    AbsencePercent_Term1 Nullable(Float64),
+    Absences_Term2 Nullable(Decimal(38,1)),
+    TotalHours_Term2 Nullable(Float32),
+    AbsencePercent_Term2 Nullable(Float64),
+    TotalAbsences Nullable(Decimal(38,1)),
+    TotalHours_WholeYear Nullable(Float32),
+    TotalPercent_WholeYear Nullable(Float64)
+) ENGINE = MergeTree()
+ORDER BY (RegionID, SchoolYear, InstitutionID, PersonID);

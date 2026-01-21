@@ -1,0 +1,181 @@
+{
+  "i18nHelp": {
+    "pluralization": "При налично примерно 'title': 'Ученик | Ученици' може да го използваме чрез $tc('title', 1), което връща 'Ученик'. $tc('title', 2) връща 'Ученици' и т.н."
+  },
+  "moduleTitle": "НЕИСПУО",
+  "appTitle": "Система за поддръжка",
+  "appFooter": {
+    "title": "© Министерство на образованието и науката",
+    "subtitle": "",
+    "phoneInfo": "Телефон за връзка с екипа по поддръжка",
+    "phone": "02 437 04 56"
+  },
+  "moduleName": "Модул @:appTitle",
+  "dashboard" : {
+    "title" : "Дашборд"
+  },
+  "dashboardMenu" : {
+    "title": "Табло за управление",
+    "toPortalURL": "Към табло за управление",
+    "remoteSupport": "Отдалечена поддръжка"
+  },
+  "common": {
+    "home": "Начало",
+    "saveSuccess": "Успешен запис.",
+    "deleteSuccess": "Успешно изтриване.",
+    "confirm": "Потвърждаване",
+    "resolveSuccess": "Успешно затваряне",
+    "name": "Име",
+    "description": "Описание",
+    "viewFAQ": "Вижте секцията с Често Задавани Въпроси",
+    "FAQ": "Често задавани въпроси",
+    "FAQAbbr": "ЧЗВ",
+    "CategoryStats": "Статистика - категории",
+    "CategoryStatsAbbr": "Стат.",
+    "leadTeacher": "Класен ръководител"
+  },
+  "errors": {
+    "401": "@:errors.authError",
+    "403": "@:errors.authError",
+    "authError": "Възникна грешка при автентикацията!",
+    "pageNotFound": "Страницата не е намерена",
+    "accessDenied": "Нямате достъп до този ресурс!",
+    "accessDeniedInfo": "Проверете дали сте въвели данни за правилния потребител, с който искате да се оторизирате",
+    "validationErrors": "Има валидационни грешки",
+    "saveError": "Неуспешен запис.",
+    "resolveError": "Неуспешено затваряне.",
+    "deleteError": "Неуспешно изтриване.",
+    "nothingToComment": "Нищо за коментиране"
+  },
+  "menu":{
+    "profile": "Профил"
+  },
+  "profile":{
+    "userData": "Данни за потребителя"
+  },
+  "validation": {
+    "fieldMaxlengh": "Полето има максимална дължина от {0} символа.",
+    "requiredField": "Полето е задължително.",
+    "emailNotValid": "Невалидна електронна поща.",
+    "invalidIndentifier": "Невалиден идентификатор.",
+    "existingIndentifier": "Въведеният идентификатор вече съществува в системата!",
+    "requiredFieldByName": "Полето {name} е задължително.",
+    "minLength": "Необходими са минимум {count} символа.",
+    "maxLength": "Позволени са максимум {count} символа.",
+    "minNumber": "Числото трябва да се по-голямо от {number}.",
+    "maxNumber": "Числото трябва да се по-малко от {number}.",
+    "onlyNumbersAllowed": "Позволени са само цифри.",
+    "optionNotExisting": "Невалидна стойност."
+  },
+  "account": {
+    "institution": "{institution}",
+    "region": "Област: {region}",
+    "municipality": "Община: {municipality}",
+    "address": "{address}",
+    "role": "Роля: {role}"
+  },
+  "buttons": {
+    "save": "Запази",
+    "search": "Търсене",
+    "close": "Затвори",
+    "cancel": "Отказ",
+    "ok": "OK",
+    "details": "Детайли",
+    "edit": "Редакция",
+    "delete": "Изтриване",
+    "logout": "Изход",
+    "login": "Вход",
+    "prev_a": "Предишна",
+    "next_a": "Следваща",
+    "back": "Обратно",
+    "reload": "Презареждане",
+    "scrollToTop": "Отиди най-горе",
+    "comment": "Коментирай",
+    "addFile": "Добави файл | Добави файлове",
+    "download": "Изтегляне",
+    "scan": "Сканирай",
+    "assign": "Назначи",
+    "exportInFormat": "Експорт в {fileExtension}",
+    "reopen": "Отвори повторно"
+  },
+  "question":{
+    "list":"Често задавани въпроси",
+    "createTitle": "Създаване на нов въпрос",
+    "detailsTitle": "Преглед на често задаван въпрос",
+    "home": "Често задавани въпроси",
+    "newBtn":"Нов въпрос",
+    "question":"Въпрос",
+    "answer":"Отговор",
+    "createDate": "Създаден на",
+    "modifyDate": "Променен на",
+    "headers":{
+      "question":"@:question.question",
+      "answer":"@:question.answer",
+      "createDate":"@:question.createDate",
+      "modifyDate":"@:question.modifyDate"
+    }
+  },
+  "stats":{
+    "category":{
+      "home": "Статистика по категории",
+      "headers": {
+        "code": "Код",
+        "name": "Име",
+        "allIssues": "Всички заявки",
+        "new": "Нови",
+        "assigned": "Назначени",
+        "resolved": "Затворени",
+        "oldest": "Най-стар незатворен"
+      }
+    }
+  },
+  "issue": {
+    "list": "Списък заявки",
+    "createTitle": "Създаване на нова заявка",
+    "detailsTitle": "Преглед на заявка",
+    "newBtn": "Нова заявка",
+    "title": "Заглавие",
+    "phone": "Телефон за връзка",
+    "description": "Описание",
+    "category": "Категория",
+    "subcategory": "Подкатегория",
+    "priority": "Приоритет",
+    "status": "Статус",
+    "submitterUsername": "Потребител",
+    "isEscalated": "Ескалиран",
+    "isLevel3Support": "L3 поддръжка",
+    "assignee": "Назначен на",
+    "assignLevel": "Назначен на",
+    "requestForInformation": "Искане за информация от подателя",
+    "headers": {
+      "title" : "@:issue.title",
+      "description": "@:issue.description",
+      "category": "@:issue.category",
+      "subcategory": "@:issue.subcategory",
+      "status": "@:issue.status",
+      "priority": "@:issue.priority",
+      "createDate": "Създаден на",
+      "resolveDate": "Приключен на",
+      "submitterUsername": "@:issue.submitterUsername",
+      "isEscalated": "@:issue.isEscalated",
+      "isLevel3Support": "@:issue.isLevel3Support",
+      "assignee": "@:issue.assignee",
+      "lastActivityDate": "Последна активност"
+    },
+    "resolve": "Приключи",
+    "resolveWithComment": "Приключи с коментар",
+    "assigneToMyself": "назначи на мен",
+    "missingAssigment": "липсва назначение",
+    "assignTo": "Назначи на",
+    "assignedTo": "назначено на {name}",
+    "assignToTooltip": "Назначаване на потребител",
+    "unreadChanges": "Съществуват непрочетени промени",
+    "assignedToMe": "Назначени на мен",
+    "searchEverywhere": "Търсене навсякъде"
+  },
+  "issueComment": {
+    "comment": "Коментар",
+    "resolveConfirmation": "Сигурни ли сте, че искате да затворите тази заявка?",
+    "resolveConfirmationTitle": "Затваряне на заявка"
+  }
+}

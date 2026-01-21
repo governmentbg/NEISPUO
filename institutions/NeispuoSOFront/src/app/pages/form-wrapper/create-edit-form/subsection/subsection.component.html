@@ -1,0 +1,50 @@
+<ng-container>
+    <app-help *ngIf="subsection.help" [helpText]="subsection.help"></app-help>
+    <div *ngIf="subsection.canDuplicate === undefined || subsection.canDuplicate === null" class="subsection-container" [ngClass]="{'no-label-section' : !subsection.label, 'label-section-not-duplicate' : subsection.label, 'subsection-closed': subsection.accordion && subsection.accordion.state === 'closed', 'custom-accordion' : subsection.accordion}">
+        <span *ngIf="subsection.label" class="section-label" (click)="changeSubsectionState()">{{subsection.label}}
+            <button class="l-accordion-custom-button" *ngIf="subsection.accordion" type="button" mat-icon-button>
+                <mat-icon> {{ subsection.accordion.state === 'closed' ? "expand_more" : "expand_less" }} </mat-icon>
+            </button>
+        </span>
+        <ng-container *ngIf="!isLoading || checkActive">
+            <ng-container *ngFor="let field of subsection.fields">
+                <ng-container *ngIf="!field.hidden && field.rendered !== false" dynamicField [field]="field" [group]="formGroup" [mode]="mode" (valueChange)="onValueChange($event)" (filterTable)="onFilterTable($event)" (performProcedure)="onPerformProcedure($event)" (performRegixProc)="onPerformRegixProc($event)"></ng-container>
+            </ng-container>
+            <ng-container *ngFor="let subsubsection of subsection.subsections">
+                <div class="wrapper-body one" *ngIf="!subsubsection.hidden && subsubsection.rendered !== false && hasNonHiddenField(subsubsection)" [ngClass]="{'custom-accordion' : subsubsection.accordion}">
+                    <app-subsection [ngClass]="{'custom-accordion' : subsubsection.accordion}" [subsection]="subsubsection" [section]="section" [formGroup]="getFormGroup(subsubsection)" [form]="form"
+                        [parentGroup]="formGroup" [wholeFormGroup]="wholeFormGroup" [mode]="mode" [subsectionAdded]="subAdded" [isHistory]="isHistory" (sectionChanged)="onSectionChanged($event)" (influenceChanged)="onValueChange($event)" (procedurePerformed)="procedurePerformed.emit($event)" (performRegixProc)="onPerformRegixProc($event)"></app-subsection>
+                </div>
+            </ng-container>
+        </ng-container>
+        <app-inner-loader *ngIf="isLoading && !checkActive"></app-inner-loader>
+    </div>
+    <div *ngIf="subsection.canDuplicate !== undefined && subsection.canDuplicate !== null" class="subsection-container duplicate-subsection-container" [ngClass]="{'no-label-section' : !subsection.label, 'subsection-closed': subsection.accordion && subsection.accordion.state === 'closed', 'custom-accordion' : subsection.accordion}">
+        <span *ngIf="subsection.label" class="sub-subsection-label" (click)="changeSubsectionState()">{{subsection.label}}
+            <button class="l-accordion-custom-button" *ngIf="subsection.accordion" type="button" mat-icon-button>
+                <mat-icon> {{ subsection.accordion.state === 'closed' ? "expand_more" : "expand_less" }} </mat-icon>
+            </button>
+        </span>
+        <button mat-raised-button class="add-btn-section" [ngClass]="{'both': hasDeleteButton()}" *ngIf="mode !== modes.View && subsection.canDuplicate && subsection.position === subsection.subsectionRecordsCount - 1 && !subsection.disabled"
+            type="button" (click)="onAddSubsection()" matTooltip="добави секция">
+            <mat-icon>add</mat-icon>
+        </button>
+        <button mat-raised-button class="delete-btn-section" color="warn" *ngIf="hasDeleteButton() && !subsection.disabled"
+            type="button" (click)="onRemoveSubsection()" matTooltip="изтрий секция">
+            <mat-icon>remove</mat-icon>
+        </button>
+        <ng-container *ngIf="!isLoading || checkActive">
+            <ng-container *ngFor="let field of subsection.fields; index as k; trackBy: trackByName">
+                <ng-container *ngIf="!field.hidden && field.rendered !== false" dynamicField [field]="field" [group]="formGroup" [mode]="mode" (valueChange)="onValueChange($event)" (filterTable)="onFilterTable($event)" (performProcedure)="onPerformProcedure($event)" (performRegixProc)="onPerformRegixProc($event)"></ng-container>
+            </ng-container>
+            <ng-container *ngFor="let subsubsection of subsection.subsections">
+                <div class="wrapper-body one" *ngIf="!subsubsection.hidden && subsubsection.rendered !== false && hasNonHiddenField(subsubsection)" [ngClass]="{'custom-accordion' : subsubsection.accordion}">
+                    <app-subsection [ngClass]="{'custom-accordion' : subsubsection.accordion}" [subsection]="subsubsection" [section]="section" [formGroup]="getFormGroup(subsubsection)" [form]="form"
+                        [parentGroup]="formGroup" [wholeFormGroup]="wholeFormGroup" [mode]="mode" [subsectionAdded]="subAdded" [isHistory]="isHistory" (sectionChanged)="onSectionChanged($event)" (influenceChanged)="onValueChange($event)" (procedurePerformed)="procedurePerformed.emit($event)" (performRegixProc)="onPerformRegixProc($event)"></app-subsection>
+                </div>
+            </ng-container>
+        </ng-container>
+        <app-inner-loader *ngIf="isLoading && !checkActive"></app-inner-loader>
+    </div>
+</ng-container>
+<app-loader *ngIf="checkActive"></app-loader>

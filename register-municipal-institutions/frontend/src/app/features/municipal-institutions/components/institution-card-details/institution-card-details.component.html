@@ -1,0 +1,41 @@
+<form *ngIf="!!this.form" [formGroup]="form">
+  <p-fieldset legend="Данни за институцията">
+    <div class="fluid formgrid grid">
+      <div class="field col-12">
+        <p-fieldset legend="Обща информация">
+          <app-institution-identifier-data></app-institution-identifier-data>
+        </p-fieldset>
+      </div>
+      <div class="field col-12 mb-6">
+        <p-fieldset legend="Седалище и адрес на управление">
+          <app-rmt-selection></app-rmt-selection>
+        </p-fieldset>
+      </div>
+      <div class="field col-12 pb-6">
+        <p-fieldset legend="Данни за директор">
+          <app-institution-headmaster-data></app-institution-headmaster-data>
+        </p-fieldset>
+      </div>
+
+      <div class="field col-12">
+        <p-fieldset legend="Вид на институцията">
+          <app-institution-type-data [BaseSchoolTypes$]="BaseSchoolTypes$"></app-institution-type-data>
+        </p-fieldset>
+      </div>
+
+      <div class="field col-12">
+        <p-fieldset legend="Данни за процедура">
+          <app-institution-procedure-data
+            [controlName]="'RIProcedure'"
+          ></app-institution-procedure-data>
+        </p-fieldset>
+      </div>
+
+      <div class="field col-12" *ngIf="displayRIPremInstitution">
+        <p-fieldset legend="Данни за приемаща институция">
+          <app-prem-institution-data [controlName]="'RIProcedure.RIPermInstitution'"> </app-prem-institution-data>
+        </p-fieldset>
+      </div>
+    </div>
+  </p-fieldset>
+</form>

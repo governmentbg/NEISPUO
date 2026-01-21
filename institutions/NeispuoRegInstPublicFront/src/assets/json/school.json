@@ -1,0 +1,434 @@
+{
+  "submitUrl": "",
+  "sections": [
+    {
+      "label": "Основни данни за институцията",
+      "order": 1,
+      "subsections": [
+        {
+          "order": 1,
+          "rendered": "if(instKind==='school'){subsection.rendered=true}else{subsection.rendered=false}",
+          "fields": [
+            {
+              "label": "Код по НЕИСПУО",
+              "name": "codeNEISPUO",
+              "type": "input",
+              "inputType": "text",
+              "order": 1,
+              "width": 95,
+              "defaultValue": "if(instKind==='school'){field.defaultValue='asdf'}else{field.defaultValue=null}",
+              "rendered": "if(instKind==='school'){field.rendered=true}else{field.rendered=false}",
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 10,
+                  "message": "Максимална дължина 10 символа"
+                }
+              ]
+            },
+            {
+              "label": "Наименование",
+              "name": "name",
+              "type": "input",
+              "inputType": "text",
+              "disabled": true,
+              "order": 2,
+              "width": 400,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 50,
+                  "message": "Максимална дължина 50 символа"
+                }
+              ]
+            },
+            {
+              "label": "Кратко наименование",
+              "name": "shortName",
+              "type": "input",
+              "inputType": "text",
+              "order": 3,
+              "width": 250,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 25,
+                  "message": "Максимална дължина 25 символа"
+                }
+              ]
+            },
+            {
+              "label": "ЕИК",
+              "name": "eik",
+              "type": "input",
+              "inputType": "text",
+              "disabled": true,
+              "order": 4,
+              "width": 95,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 10,
+                  "message": "Максимална дължина 10 символа"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Основен адрес",
+      "order": 2,
+      "rendered": "if(instKind==='cplr'){section.rendered=true}else{section.rendered=false}",
+      "subsections": [
+        {
+          "order": 2,
+          "canDuplicate": false,
+          "name": "address",
+          "fields": [
+            {
+              "label": "Област",
+              "name": "region",
+              "type": "select",
+              "optionsPath": "/data/get/region",
+              "influence": [
+                {
+                  "fieldName": "municipality",
+                  "url": "/data/get/municipality",
+                  "type": "options"
+                }
+              ],
+              "order": 3,
+              "width": 400
+            },
+            {
+              "label": "Община",
+              "name": "municipality",
+              "type": "select",
+              "influence": [
+                {
+                  "fieldName": "town",
+                  "url": "/data/get/town",
+                  "type": "options"
+                }
+              ],
+              "order": 4,
+              "width": 400
+            },
+            {
+              "label": "Населено място",
+              "name": "town",
+              "type": "select",
+              "order": 5,
+              "width": 400
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Данни за основаване",
+      "order": 3,
+      "subsections": [
+        {
+          "order": 1,
+          "fields": [
+            {
+              "label": "Основана през година",
+              "name": "createdYear",
+              "type": "input",
+              "inputType": "number",
+              "order": 1,
+              "width": 95,
+              "validations": [
+                {
+                  "name": "max",
+                  "validation": 9999,
+                  "message": "Невалидна година"
+                },
+                {
+                  "name": "pattern",
+                  "validation": "^\\d+$",
+                  "message": "Полето трябва да съдържа цяло неотрицателно число"
+                },
+                {
+                  "name": "maxLength",
+                  "validation": 4,
+                  "message": "Максимална дължина 4 символа"
+                }
+              ]
+            },
+            {
+              "label": "Вид, номер и дата на юридическия акт на създаване",
+              "name": "createdDtl",
+              "type": "input",
+              "order": 2,
+              "inputType": "text",
+              "width": 400,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 50,
+                  "message": "Максимална дължина 50 символа"
+                }
+              ]
+            },
+            {
+              "label": "Вид, номер и дата на последния акт за преобразуване",
+              "name": "updatedDtl",
+              "type": "input",
+              "inputType": "text",
+              "order": 3,
+              "width": 400,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 50,
+                  "message": "Максимална дължина 50 символа"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Начин на финансиране",
+      "order": 4,
+      "subsections": [
+        {
+          "order": 1,
+          "fields": [
+            {
+              "label": "На делегиран бюджет",
+              "name": "isDelegatedBudget",
+              "type": "checkbox",
+              "order": 1
+            },
+            {
+              "label": "Утвърден бюджет за текущата каледнарна година",
+              "name": "yearlyBudgetApproved",
+              "type": "input",
+              "inputType": "number",
+              "order": 2,
+              "width": 95,
+              "validations": [
+                {
+                  "name": "pattern",
+                  "validation": "^\\d+(\\.\\d{1,2})?$",
+                  "message": "Числото трябва да съдържа до 2 цифри след десетичната запетая и да е неотрицателно"
+                },
+                {
+                  "name": "maxLength",
+                  "validation": 7,
+                  "message": "Максимална дължина 7 символа"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Банкова сметка",
+      "order": 5,
+      "subsections": [
+        {
+          "order": 1,
+          "fields": [
+            {
+              "label": "IBAN",
+              "name": "iban",
+              "type": "input",
+              "inputType": "text",
+              "order": 1,
+              "width": 400,
+              "validations": [
+                {
+                  "name": "pattern",
+                  "validation": "^([A-Z]{2}[ -]?[0-9]{2})(?=(?:[ -]?[A-Z0-9]){9,30}$)((?:[ -]?[A-Z0-9]{3,5}){2,7})([ -]?[A-Z0-9]{1,3})?$",
+                  "message": "Грешен IBAN"
+                },
+                {
+                  "name": "maxLength",
+                  "validation": 22,
+                  "message": "Максимална дължина 2 символа"
+                }
+              ]
+            },
+            {
+              "label": "BIC",
+              "name": "bic",
+              "type": "input",
+              "inputType": "text",
+              "order": 2,
+              "width": 95,
+              "validations": [
+                {
+                  "name": "pattern",
+                  "validation": "^([A-Z]{6}[A-Z2-9][A-NP-Z1-9])(X{3}|[A-WY-Z0-9][A-Z0-9]{2})?$",
+                  "message": "Грешен BIC"
+                },
+                {
+                  "name": "maxLength",
+                  "validation": 8,
+                  "message": "Максимална дължина 8 символа"
+                }
+              ]
+            },
+            {
+              "label": "Банка",
+              "name": "bank",
+              "type": "input",
+              "inputType": "text",
+              "order": 3,
+              "width": 400,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 50,
+                  "message": "Максимална дължина 50 символа"
+                }
+              ]
+            },
+            {
+              "label": "Титуляр на сметката",
+              "name": "accountHolder",
+              "type": "input",
+              "inputType": "text",
+              "order": 4,
+              "width": 400,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 50,
+                  "message": "Максимална дължина 50 символа"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Численост на персонала",
+      "order": 6,
+      "subsections": [
+        {
+          "order": 1,
+          "fields": [
+            {
+              "label": "Брой педагогически персонал",
+              "name": "nmbrPedagogical",
+              "type": "input",
+              "inputType": "number",
+              "order": 1,
+              "width": 95,
+              "validations": [
+                {
+                  "name": "pattern",
+                  "validation": "^\\d+$",
+                  "message": "Полето трябва да съдържа цяло неотрицателно число"
+                },
+                {
+                  "name": "maxLength",
+                  "validation": 3,
+                  "message": "Максимална дължина 3 символа"
+                }
+              ]
+            },
+            {
+              "label": "Средна брутна заплата на педагогическия персонал",
+              "name": "avrgSalaryPedagogical",
+              "type": "input",
+              "inputType": "number",
+              "order": 2,
+              "width": 95,
+              "validations": [
+                {
+                  "name": "pattern",
+                  "validation": "^\\d+(\\.\\d{1,2})?$",
+                  "message": "Числото трябва да съдържа до 2 цифри след десетичната запетая и да е неотрицателно"
+                },
+                {
+                  "name": "maxLength",
+                  "validation": 5,
+                  "message": "Максимална дължина 5 символа"
+                }
+              ]
+            },
+            {
+              "label": "Брой непедагогически персонал",
+              "name": "nmbrNonPedagogical",
+              "type": "input",
+              "inputType": "number",
+              "order": 3,
+              "width": 95,
+              "validations": [
+                {
+                  "name": "pattern",
+                  "validation": "^\\d+$",
+                  "message": "Полето трябва да съдържа цяло неотрицателно число"
+                },
+                {
+                  "name": "maxLength",
+                  "validation": 3,
+                  "message": "Максимална дължина 3 символа"
+                }
+              ]
+            },
+            {
+              "label": "Средна брутна заплата на непедагогическия персонал",
+              "name": "avrgSalaryNonPedagogical",
+              "type": "input",
+              "inputType": "number",
+              "order": 4,
+              "width": 95,
+              "validations": [
+                {
+                  "name": "pattern",
+                  "validation": "^\\d+(\\.\\d{1,2})?$",
+                  "message": "Числото трябва да съдържа до 2 цифри след десетичната запетая и да е неотрицателно"
+                },
+                {
+                  "name": "maxLength",
+                  "validation": 5,
+                  "message": "Максимална дължина 5 символа"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Табличка",
+      "order": 7,
+      "table": {
+        "name": "subjects",
+        "hasEditButton": false,
+        "sortable": false,
+        "searchable": false,
+        "fields": [
+          {
+            "label": "Предмет",
+            "name": "subject",
+            "type": "input",
+            "inputType": "text",
+            "order": 1,
+            "width": 400
+          },
+          {
+            "label": "Паралелка",
+            "name": "grade",
+            "type": "input",
+            "inputType": "text",
+            "order": 2,
+            "width": 400
+          }
+        ]
+      }
+    }
+  ]
+}

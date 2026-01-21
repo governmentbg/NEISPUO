@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <RootNamespace>SB.JobHost</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <PreserveCompilationContext>true</PreserveCompilationContext>
+    <RestoreAdditionalProjectSources>
+      $(MSBuildThisFileDirectory)/../packages/
+    </RestoreAdditionalProjectSources>
+    <AnalysisMode>Recommended</AnalysisMode>
+    <AnalysisLevel>latest</AnalysisLevel>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="CliWrap" Version="3.4.4" />
+    <PackageReference Include="Microsoft.IO.RecyclableMemoryStream" Version="2.3.2" />
+    <PackageReference Include="Serilog.AspNetCore" Version="7.0.0" />
+    <PackageReference Include="prometheus-net.AspNetCore" Version="8.0.0" />
+    <PackageReference Include="prometheus-net.AspNetCore.HealthChecks" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SB.Domain\SB.Domain.csproj" />
+    <ProjectReference Include="..\SB.Data\SB.Data.csproj" />
+    <ProjectReference Include="..\SB.ApiAbstractions\SB.ApiAbstractions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="$(RootNamespace)" />
+  </ItemGroup>
+
+</Project>

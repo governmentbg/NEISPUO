@@ -1,0 +1,17 @@
+.info-tooltip-container {
+  margin-top: -10px;
+  margin-left: 3px;
+  display: inline-block;
+  mat-icon {
+    font-size: 20px;
+    width: auto;
+    height: auto !important;
+    color: #080044;
+  }
+}
+.container-tooltip-after {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  cursor: default;
+}

@@ -1,0 +1,68 @@
+{
+"template": "SELECT /**select**/ FROM [inst_year].[BasicClassSubjectFL] BCS  /**where**/ /**orderby**/",
+"sotemplate": "",
+  "columns": [
+    {
+      "column": "BCS.ID AS id"
+    },
+    {
+      "column": "BCS.SubjectID AS subjectID"
+    },
+    {
+      "column": "BCS.BasicClassName AS basicClassName"
+    },
+    {
+      "column": "BCS.SubjectName AS subjectName"
+    },
+    {
+      "column": "BCS.PublisherName AS publisherName"
+    },
+    {
+      "column": "BCS.TextbookFLID AS textBookID"
+    },
+    {
+      "column": "BCS.TextbookName AS textbookName"
+    },
+    {
+      "column": "BCS.TextbookNameFull AS textbookNameFull"
+    },
+    {
+      "column": "BCS.AuthorsName AS authorsName"
+    },
+    {
+      "column": "BCS.LevelFL AS levelFL"
+    },
+    {
+      "column": "BCS.LevelFLID AS levelFLID"
+    },
+    {
+      "column": "BCS.ClassID AS classID"
+    },
+    {
+      "column": "BCS.CurriculumGroupNum AS curriculumGroupNum"
+    }
+
+  ],
+  "params": [
+    {
+      "param": "@id",
+      "column": "BCS.ID",
+      "operator": "=",
+      "value": "id",
+      "type": "text",
+      "logical_operator": "and",
+      "static": false
+    },
+    {
+      "param": "@instid",
+      "column": "BCS.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+  ],
+  "order": [],
+  "inSelects": []
+}

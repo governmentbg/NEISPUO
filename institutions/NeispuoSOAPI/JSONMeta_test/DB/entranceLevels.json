@@ -1,0 +1,33 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[EntranceLevel] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "EntranceLevelID as code"
+        },
+        {
+            "column": "Name as label"
+        },
+		{
+            "column": "IsValid as isValid"
+        }
+    ],
+    "params": [
+      {
+              "param": "@canChoose",
+              "column": "CanChoose",
+              "operator": "=",
+              "value": 1,
+              "type": "int",
+              "logical_operator": "and",
+              "optional": false,
+              "static": true
+            }
+    ],
+    "order": [
+        {
+            "column": "EntranceLevelID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

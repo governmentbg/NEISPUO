@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width" />
+    <title></title>
+	<style>
+		@@font-face {
+		  font-family: calibri;
+		  src: url(@Model.path/font/calibri.ttf);
+		}
+		@@font-face {
+		  font-family: calibri-regular;
+		  src: url(@Model.path/font/calibri-regular.ttf);
+		}
+		body {
+		  padding: 0;
+		  margin: 0;
+		  width: 100vw;
+		  height: 100vh;
+		  text-align: center;
+		  background-image: url("@Model.path/img/Scan4.jpg");
+		  background-repeat: no-repeat;
+		  background-size: 100% 100%;
+		  background-position: 0 0;
+		}
+		.wrapper-a4 {
+		  display: inline-block;
+		  width: 210mm;
+		  height: 371mm;
+		  padding: 0;
+		  margin: 0;
+		  position: relative;
+		  text-align: center;
+		}
+		.center-number{
+			display: block;
+			width: 100%;
+			margin-top: 115mm;
+			text-align: center;
+		}
+		.number-span{
+		font-size: 31pt;
+			font-weight: bold;
+				color: #3d3d3d;
+		}
+		.name-u{
+				display: block;
+			text-align: center;
+			margin-top: 40mm;
+			padding: 0 17mm;
+		}
+		.name{
+			font-size: 31pt;
+			text-transform: uppercase;
+			line-height: 31pt;
+			font-family: 'calibri';
+			color: #3d3d3d;
+		}
+		.specific{
+				display: block;
+			padding: 0 20mm;
+			margin-top: 16mm;
+			font-family: 'calibri-regular';
+			color: #3d3d3d;
+			text-align: center;
+		}
+		.text{
+		display: block;
+		}
+		strong{
+			color: black;
+		}
+		.text-hardcode{
+			margin-top: 12mm;
+			display: block;
+			line-height: 5mm;
+			padding: 0 23mm;
+			font-size: 4mm;
+			font-family: 'calibri';
+		}
+		.date-container{
+				position: absolute;
+			bottom: 66mm;
+			left: 31mm;
+				font-size: 14pt;
+			font-family: 'calibri';
+			color: #3d3d3d;
+		}
+		.name-container{
+			position: absolute;
+			right: 32mm;
+			bottom: 51mm;
+			font-family: 'calibri';
+			color: #3d3d3d;
+			text-align: left;
+		}
+		.name-name{
+			display: block;
+			text-transform: uppercase;
+			font-size: 14pt;
+			font-weight: bold;
+		}
+		.under{
+			 font-size: 10pt;
+			font-style: italic;
+			max-width: 44mm;
+			width: 100%;
+			display: block;
+			text-align: left;
+			line-height: 10pt;
+		}
+	</style>
+  </head>
+  <body>
+    <div class="wrapper-a4">
+		<div class="center-number">
+			<span class="number-span">No. @Model.data[0].certificateNo</span>
+		</div>
+		<div class="name-u">
+			<span class="name">@Model.data[0].institutionName</span>
+		</div>
+		<div class="specific">
+			<span class="text"><strong>ЕИК/Булстат: </strong><span>@Model.data[0].eik</span></span>
+			<span class="text"><strong>Седалище: </strong><span>@Model.data[0].TRFullAddress</span></span>
+			<span class="text"><strong>Официален адрес: </strong><span>@Model.data[0].instDepFullAddress</span></span>
+			<span class="text-hardcode">Институцията е вписана в Регистъра на институциите в системата на предучилищното и училищното образование на основание заповед No. <span>@Model.data[0].documentInfo</span> г. на Министъра на образованието и науката</span>
+		</div>
+		<div class="date-container">
+		<span>@Model.data[0].certificateDate</span><span>г.</span>
+		</div>
+		<div class="name-container">
+		<span class="name-name">@Model.data[0].signatoryPerson</span>
+		<span class="under">@Model.data[0].signatoryPosition</span>
+		</div>
+    </div>
+  </body>
+</html>

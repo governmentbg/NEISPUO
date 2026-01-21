@@ -1,0 +1,36 @@
+-- Migration: Create R_Occupations_By_Qualifications table
+-- Based on reporting.R_Occupations_By_Qualifications view from the MS SQL server
+CREATE TABLE IF NOT EXISTS R_Occupations_By_Qualifications (
+    Year Int32,
+    Region String,
+    col2 Int32,
+    col3 Int32,
+    col4 Int32,
+    col5 Int32,
+    col6 Int32,
+    col7 Int32,
+    col8 Int32,
+    col9 Int32,
+    col10 Int32,
+    col11 Int32,
+    col12 Int32,
+    col13 Int32,
+    col14 Int32,
+    col15 Int32,
+    col16 Int32,
+    col17 Int32,
+    col18 Int32,
+    col19 Int32,
+    col20 Int32,
+    col21 Int32,
+    col22 Int32,
+    col23 Int32,
+    col24 Int32,
+    col25 Int32,
+    col26 Int32,
+    col27 Int32,
+    col28 Int32,
+    col29 Int32,
+    col30 Int32
+) ENGINE = MergeTree()
+ORDER BY (Year, Region);

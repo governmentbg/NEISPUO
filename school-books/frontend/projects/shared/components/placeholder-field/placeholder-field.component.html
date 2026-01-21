@@ -1,0 +1,6 @@
+<mat-form-field class="w-full" appearance="fill">
+  <mat-label *ngIf="label">{{ label }}</mat-label>
+  <input matInput class="hidden" value="hidden" />
+
+  <ng-content select="[placeholder-content]"></ng-content>
+</mat-form-field>

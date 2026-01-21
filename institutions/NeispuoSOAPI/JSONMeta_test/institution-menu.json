@@ -1,0 +1,186 @@
+[
+  {
+    "label": "Институция",
+    "path": "institution",
+    "children": [
+      {
+        "label": "Институция",
+        "path": "institution"
+      },
+      {
+        "label": "Други адреси за осъществяване на дейността",
+        "path": "institutionDepartmentList"
+      },
+      {
+        "label": "Обществен съвет",
+        "path": "institutionPublicCouncils"
+      },
+      {
+        "label": "Проектна и други дейности",
+        "path": "institutionProjects"
+      },
+      {
+        "label": "Транспорт",
+        "path": "institutionVehicles"
+      },
+	  {
+        "label": "Обобщение",
+        "path": "institutionReports"
+      }
+    ]
+  },
+  {
+    "label": "Групи/Класове",
+    "path": "classes",
+    "children": [
+      {
+        "label": "Паралелки/групи",
+        "path": "classGroups",
+		"children": [
+		{
+			"label": "Данни за група/клас",
+			"path": "classGroupList"
+		},
+		{
+			"label": "Списък деца",
+			"path": "classStudentList"
+		},
+		{
+			"label": "Учебен план",
+			"path": "classGroupCurriculumInternalList"
+		}
+	  ]
+	},
+	      {
+        "label": "Групи в ЦДО",
+        "path": "classGroupsCDO",
+		"children": [
+		{
+			"label": "Данни за групата",
+			"path": "classGroupData"
+		},
+		{
+			"label": "Списък деца",
+			"path": "classStudentListCDO"
+		},
+		{
+			"label": "Дейности в ЦДО",
+			"path": "classGroupCurriculumInternalList"
+		}
+	  ]
+	},
+	{
+        "label": "Други групи",
+        "path": "classGroupsOther",
+		"children": [
+		{
+			"label": "Данни за групата",
+			"path": "classGroupData"
+		},
+		{
+			"label": "Списък деца",
+			"path": "classStudentListOtherGroups"
+		},
+		{
+			"label": "Дейности за ПЛР",
+			"path": "classGroupCurriculumInternalList"
+		}
+	  ]
+	},
+	 {
+        "label": "Обобщение",
+        "path": "classGroupReports"
+      }
+	]
+  },
+  {
+    "label": "Персонал",
+    "path": "staff",
+    "children": [
+      {
+        "label": "Персонал",
+        "path": "staffList",
+		"children":[
+      {
+        "label": "Основни данни",
+        "path": "person"
+      },
+	  {
+        "label": "Длъжности",
+        "path": "staffPositions"
+      },
+      {
+        "label": "Образователна степен, ПКС",
+        "path": "personOKSPKSList"
+      },
+	  {
+        "label": "Квалификационна дейност",
+        "path": "personQCourses"
+      },
+      {
+        "label": "Ключови компетентности",
+        "path": "personCLSkillsList"
+      }
+	  ]
+	 },
+	 {
+        "label": "Обобщение",
+        "path": "personReports"
+      }
+    ]
+  },
+  {
+    "label": "Деца/ученици",
+    "path": "students",
+    "children": [
+      {
+        "label": "Деца/ученици",
+        "path": "studentList"
+      },
+	  {
+        "label": "Обобщение",
+        "path": "studentReports"
+      }
+    ]
+  },
+  {
+    "label": "Учебен план",
+    "path": "curriculum",
+    "children": [
+      {
+        "label": "Рамкови/Типови УП - библиотека",
+        "path": "curriculumCatalogs",
+		"children":[
+			{
+				"label": "Съдържание",
+				"path": "curriculumCatalogDataList"
+			}
+		]
+      },
+	  {
+        "label": "Училищни учебни планове",
+        "path": "curriculumClassList",
+		"children":[
+			{
+				"label": "Учебен план",
+				"path": "curriculumList"
+			}
+		]
+      },
+	  {
+        "label": "Индивидуални учебни планове",
+        "path": "studentListIndividual",
+		"children":[
+			{
+				"label": "Учебен план на ученик",
+				"path": "curriculumIndividualSubjects"
+			}
+		]
+      },
+	  {
+        "label": "Обобщение",
+        "path": "curriculumReports"
+      }
+    ]
+  }
+]

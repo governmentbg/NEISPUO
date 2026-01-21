@@ -1,0 +1,70 @@
+{
+  "arrayName": "studentScholarships",
+  "template": "SELECT /**select**/ FROM [inst_year].[ScholarshipStudent] SS /**where**/ /**orderby**/",
+  "sotemplate": "SELECT /**select**/ FROM [sob].[ScholarshipStudentData] SS /**where**/ /**orderby**/",
+  "columns": [
+    {
+      "column": "SS.ID as id"
+    },
+    {
+      "column": "SS.ScholarshipType as scholarshipType"
+    },
+    {
+      "column": "SS.ScholarshipAmount as scholarshipAmount"
+    },
+    {
+      "column": "SS.AmountRate as amountRate"
+    },
+    {
+      "column": "SS.Description as description"
+    },
+    {
+      "column": "SS.ValidFrom AS validFrom"
+    },
+    {
+      "column": "SS.ValidTo AS validTo"
+    }
+  ],
+  "params": [
+    {
+      "param": "@personid",
+      "column": "SS.PersonId",
+      "operator": "=",
+      "value": "personid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+    {
+      "param": "@instid",
+      "column": "SS.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+    {
+      "param": "@year",
+      "column": "SS.SchoolYear",
+      "operator": "=",
+      "value": "year",
+      "type": "int",
+      "logical_operator": "and",
+      "optional": true,
+      "static": false
+    },
+    {
+      "param": "@period",
+      "column": "SS.Period",
+      "operator": "=",
+      "value": "period",
+      "type": "int",
+      "logical_operator": "and",
+      "optional": true,
+      "static": false
+    }
+  ],
+  "order": [],
+  "inSelects": []
+}

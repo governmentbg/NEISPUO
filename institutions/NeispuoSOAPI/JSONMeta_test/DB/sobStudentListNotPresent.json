@@ -1,0 +1,85 @@
+{
+  "arrayName": "sobStudentListNotPresent",
+  "template": "SELECT /**select**/ FROM [inst_year].[StudentList] CD /**where**/ /**orderby**/",
+  "columns": [
+    {
+      "column": "CD.ID AS id"
+    },
+    {
+      "column": "CD.PublicEduNumber AS publicEduNumber"
+    },
+    {
+      "column": "CD.FullName AS fullName"
+    },
+    {
+      "column": "CD.BirthDate AS birthDate"
+    },
+    {
+      "column": "CD.BasicClassName AS basicClassName"
+    },
+    {
+      "column": "CD.Name AS name"
+    },
+    {
+      "column": "CD.StudentEdFormName AS studentEdFormName"
+    },
+    {
+      "column": "CD.ClassSpecialityName AS classSpecialityName"
+    },
+    {
+      "column": "CD.PersonID AS personid"
+    },
+    {
+      "column": "'student' AS formName"
+    },
+    {
+      "column": "CD.PersonID AS formDataId"
+    },
+    {
+      "column": "CD.CommuterTypeName AS commuterTypeName"
+    },
+    {
+      "column": "CD.IsHourlyOrganization AS isHourlyOrganization"
+    },
+    {
+      "column": "CD.IsIndividualCurriculum AS isIndividualCurriculum"
+    }
+  ],
+  "params": [
+    {
+      "param": "@instid",
+      "column": "CD.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+    {
+      "param": "@year",
+      "column": "CD.SchoolYear",
+      "operator": "=",
+      "value": "year",
+      "type": "int",
+      "logical_operator": "and",
+      "optional": true,
+      "static": false
+    },
+    {
+      "param": "@isNotPresentForm",
+      "column": "CD.IsNotPresentForm",
+      "operator": "=",
+      "value": 1,
+      "type": "int",
+      "logical_operator": "and",
+      "static": true
+    }
+  ],
+  "order": [
+    {
+      "column": "CD.FullName",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": []
+}

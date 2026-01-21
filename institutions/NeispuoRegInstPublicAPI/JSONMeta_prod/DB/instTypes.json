@@ -1,0 +1,21 @@
+{
+    "template": "SELECT /**select**/ FROM [reginst_nom].[InstType] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "InstTypeID as code"
+        },
+        {
+            "column": "Name as label"
+        }
+    ],
+    "params": [
+
+    ],
+    "order": [
+        {
+            "column": "InstTypeID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

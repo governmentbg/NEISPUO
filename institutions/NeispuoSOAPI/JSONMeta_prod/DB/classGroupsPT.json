@@ -1,0 +1,82 @@
+{
+  "arrayName": "classGroupListPT",
+  "template": "SELECT /**select**/ FROM [inst_year].[ClassGroupListPT] CD /**where**/ /**orderby**/",
+  "columns": [
+    {
+      "column": "CD.ClassID AS id"
+    },
+    {
+      "column": "CD.ClassName AS className"
+    },
+    {
+      "column": "CD.ClassKind AS classKind"
+    },
+    {
+      "column": "CD.ClassTypeID AS classTypeID"
+    },
+    {
+      "column": "CD.ClassTypeName AS classTypeName"
+    },
+    {
+      "column": "CD.DepartmentName AS departmentName"
+    },
+    {
+      "column": "CD.ClassEduFormID AS classEduFormID"
+    },
+    {
+      "column": "CD.ClassEduFormName AS classEduFormName"
+    },
+    {
+      "column": "CD.SPPOOProfessionID AS SPPOOProfessionID"
+    },
+    {
+      "column": "CD.SPPOOProfessionName AS SPPOOProfessionName"
+    },
+    {
+      "column": "CD.StartDate AS startDate"
+    },
+    {
+      "column": "CD.Duration AS duration"
+    },
+    {
+      "column": "CD.IsFinished AS isFinished"
+    }
+  ],
+  "params": [
+    {
+      "param": "@instid",
+      "column": "CD.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+    {
+      "param": "@classKind",
+      "column": "CD.ClassKind",
+      "operator": "=",
+      "value": 4,
+      "type": "int",
+      "logical_operator": "and",
+      "static": true
+    },
+    {
+      "param": "@year",
+      "column": "CD.SchoolYear",
+      "operator": "=",
+      "value": "year",
+      "type": "int",
+      "logical_operator": "and",
+      "optional": true,
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "CD.ClassName",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": []
+}

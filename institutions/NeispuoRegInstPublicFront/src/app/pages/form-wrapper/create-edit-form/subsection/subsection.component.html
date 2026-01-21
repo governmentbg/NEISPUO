@@ -1,0 +1,27 @@
+<ng-container *ngIf="!subsection.hidden && subsection.rendered !== false">
+    <div *ngIf="!(subsection.canDuplicate !== undefined && subsection.canDuplicate !== null)" class="subsection-container" [ngClass]="{'label-section-not-duplicate' : subsection.label}">
+        <span *ngIf="subsection.label" class="section-label" >{{subsection.label}}</span>
+        <ng-container *ngFor="let field of subsection.fields">
+            <ng-container *ngIf="!field.hidden && field.rendered !== false" dynamicField [field]="field" [group]="formGroup" [mode]="mode"></ng-container>
+        </ng-container>
+        <div class="wrapper-body">
+            <ng-container *ngFor="let subsubsection of subsection.subsections">
+                <app-subsection *ngIf="!subsubsection.hidden && subsubsection.rendered !== false && hasNonHiddenField(subsubsection)" [procId]="procId" [subsection]="subsubsection" [formGroup]="getFormGroup(subsubsection)" ></app-subsection>
+            </ng-container>
+        </div>
+    </div>
+    <div *ngIf="subsection.canDuplicate !== undefined && subsection.canDuplicate !== null" class="subsection-container duplicate-subsection-container" [ngClass]="{'no-label-section' : !subsection.label}">
+        <span *ngIf="subsection.label" class="sub-subsection-label">{{subsection.label}}</span>
+        <ng-container *ngFor="let field of subsection.fields; index as k; trackBy: trackByName">
+            <ng-container *ngIf="!field.hidden && field.rendered !== false" dynamicField [field]="field" [group]="formGroup" [mode]="mode"></ng-container>
+        </ng-container>
+        <div class="wrapper-body one" *ngFor="let subsubsection of subsection.subsections">
+            <ng-container> 
+                <app-subsection *ngIf="!subsubsection.hidden && subsubsection.rendered !== false && hasNonHiddenField(subsubsection)" [procId]="procId" [subsection]="subsubsection" [formGroup]="getFormGroup(subsubsection)"></app-subsection>
+            </ng-container>
+        </div>
+        <app-file *ngIf="subsection.canHaveCertificate && subsection.certificateId" [procId]="procId" [fileLabel]="subsection.certificateLabel" [fileId]="subsection.certificateId" [mode]="mode"></app-file>
+        <app-file *ngIf="subsection.canHaveCertificate && subsection.copyCertificateId" [procId]="procId" [fileLabel]="subsection.copyCertificateLabel" [fileId]="subsection.copyCertificateId" [mode]="mode"></app-file>
+        <app-file *ngIf="subsection.canHaveFiles && subsection.fileId" [procId]="procId" [fileLabel]="subsection.fileLabel" [fileId]="subsection.fileId" [mode]="mode"></app-file>
+    </div>
+</ng-container>

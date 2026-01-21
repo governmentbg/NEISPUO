@@ -1,0 +1,71 @@
+{
+	"arrayName": "resourceSupportReport",
+	"template": "SELECT /**select**/ FROM [inst_year].[StudentResourseSupport] R /**where**/ /**orderby**/",
+	"sotemplate": "SELECT /**select**/ FROM [sob].[StudentResourseSupport] R /**where**/ /**orderby**/",
+    "columns": [
+        {
+          "column": "R.ID as id"
+        },
+        {
+          "column": "R.ReportNumber as reportNumber"
+        },
+		{
+          "column": "R.ReportDate as reportDate"
+        },
+		{
+          "column": "R.ResourceSupportTypeName as resourceSupportTypeName"
+        },
+		{
+          "column": "'resourceSupport' AS formName"
+        },
+        {
+          "column": "R.ResourceSupportID AS formDataId"
+        }
+    ],
+    "params": [
+		{
+          "param": "@personid",
+          "column": "R.PersonId",
+          "operator": "=",
+          "value": "personid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+		},
+		    {
+      "param": "@instid",
+      "column": "R.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+				{
+      "param": "@year",
+      "column": "R.SchoolYear",
+      "operator": "=",
+      "value": "year",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    },
+	{
+      "param": "@period",
+      "column": "R.Period",
+      "operator": "=",
+      "value": "period",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    }
+    ],
+    "order": [
+
+    ],
+    "inSelects": [
+
+	]
+}

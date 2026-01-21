@@ -1,0 +1,54 @@
+<ng-container *ngIf="form" [formGroup]="form">
+  <div class="fluid formgrid grid row-gap-4 mb-2">
+    <div class="field institutioID-field col-12 col-md-2">
+      <label for="InstitutionID" >Код по НЕИСПУО</label>
+      <input id="InstitutionID" type="text" pInputText formControlName="InstitutionID" />
+    </div>
+    <div class="field bulstat-field col-12 col-md-2">
+      <label for="Bulstat" class="label-bulstat" [ngClass]="{
+      'is-invalid': form.get('Bulstat').invalid && form.get('Bulstat').dirty
+      }">Булстат/ЕИК</label>
+      <span class="search-icon">
+        <button *ngIf="isBulstatLookupEnabled" pButton pRipple type="button" icon="pi pi-search" class="p-button-text btn-icon-primary"
+        (click)="onBulstatLoad($event)"
+        ></button>
+      </span> 
+      <input id="Bulstat" type="text" pInputText formControlName="Bulstat" maxlength='13'/>
+      <ng-container *ngIf="form.get('Bulstat').hasError('minlength') && form.get('Bulstat').dirty;else invalid">
+        <small class="invalid-feedback">Полето трябва да съдържа 9 или 13 символа</small>
+      </ng-container>
+      <ng-template #invalid>
+        <ng-container *ngIf="form.get('Bulstat').hasError('bulstatInvalid') && form.get('Bulstat').dirty;else incorrect">
+          <small class="invalid-feedback">Въведения Булстат/ЕИК е невалиден</small>
+        </ng-container>
+      </ng-template>
+      <ng-template #incorrect>
+        <ng-container *ngIf="form.get('Bulstat').invalid && form.get('Bulstat').dirty">
+          <small class="invalid-feedback">Задължително поле</small>
+        </ng-container>
+      </ng-template>
+    </div>
+    <div class="field abbreviation-field col-12 col-md-4">
+      <label for="Abbreviation" [ngClass]="{
+      'is-invalid': form.get('Abbreviation').invalid && form.get('Abbreviation').dirty}"
+      >Съкратено име</label>
+      <input id="Abbreviation" type="text" pInputText formControlName="Abbreviation" />
+      <ng-container *ngIf="form.get('Abbreviation').invalid && form.get('Abbreviation').dirty">
+        <small class="invalid-feedback">Задължително поле</small>
+      </ng-container>
+    </div>
+    <div class="field name-field col-12 col-md-4">
+      <label for="Name" [ngClass]="{
+      'is-invalid': form.get('Name').invalid && form.get('Name').dirty}"
+      >Наименование</label>
+      <input id="Name" type="text" pInputText formControlName="Name" />
+      <ng-container *ngIf="form.get('Name').invalid && form.get('Name').dirty">
+        <small class="invalid-feedback">Задължително поле</small>
+      </ng-container>
+    </div>
+    <div class="col-12">
+      <span  class="load-bustat-helper-msg" *ngIf="isBulstatLookupEnabled && displayBulstatMessage" > <i class="bi bi-exclamation-circle"></i>
+      Натиснете върху  <i class="bi bi-search"></i> , за да заредите данните за организацията след въвеждане на нейния "Булстат/ЕИК". </span>
+    </div>
+    </div>
+</ng-container>

@@ -1,0 +1,21 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[ClassKind] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "ClassKindID as code"
+        },
+        {
+            "column": "Name as label"
+        }
+    ],
+    "params": [
+
+    ],
+    "order": [
+        {
+            "column": "ClassKindID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

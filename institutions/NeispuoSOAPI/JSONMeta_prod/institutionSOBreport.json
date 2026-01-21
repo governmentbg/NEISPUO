@@ -1,0 +1,84 @@
+{
+  "label": "Институции подали данни за Списък-образец",
+  "sections": [
+    {
+      "order": 1,
+      "label": "Институции подали данни за Списък-образец",
+      "name": "TableReportSOB",
+      "table": {
+	    "order": 1,
+        "name": "reportSOB",
+	      "hasEditButton": false,
+        "sortable": true,
+        "searchable": true,
+	      "searchType": "column",
+        "fields": [
+          {
+            "label": "Код на институцията",
+            "name": "institutionID",
+            "type": "input",
+            "inputType": "number",
+	          "width":15,
+            "order": 1
+          },
+	        {
+            "label": "Име на институцията",
+            "name": "institutionName",
+            "type": "input",
+            "inputType": "text",
+	          "width":40,
+            "order": 2
+          },
+          {
+            "label": "Област",
+            "name": "municipalityName",
+            "type": "input",
+            "inputType": "text",
+	          "width":15,
+            "order": 3
+          },
+          {
+            "label": "Община",
+            "name": "regionName",
+            "type": "input",
+            "inputType": "text",
+	          "width":15,
+            "order": 4
+          },
+          {
+            "label": "Населено място",
+            "name": "townName",
+            "type": "input",
+            "inputType": "text",
+	          "width":15,
+            "order": 5
+          },
+          {
+            "label": "Статус на подаване",
+            "name": "submissionStatusName",
+            "type": "input",
+            "inputType": "text",
+	          "width":40,
+            "order": 6
+          },
+          {
+            "label": "Създаден на",
+            "name": "createdOn",
+            "type": "date",
+	          "width":15,
+            "order": 7
+          },
+	        {
+            "label": "Променен на",
+            "name": "modifiedOn",
+            "type": "date",
+	          "width":15,
+            "order": 8
+          }
+        ]
+      }
+    }
+  ]
+}
+
+

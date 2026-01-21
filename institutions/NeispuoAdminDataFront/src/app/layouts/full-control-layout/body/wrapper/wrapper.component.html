@@ -1,0 +1,13 @@
+<button class="btn-hide-menu" (click)="hidden = !hidden" [ngClass]="{'active': hidden}">
+  <span class="material-icons" *ngIf="!hidden"> keyboard_arrow_left </span>
+  <span class="material-icons" *ngIf="hidden"> keyboard_arrow_right </span>
+</button>
+<div class="flex-wrapper">
+  <div class="menu-body-container" [ngClass]="{'hidden-menu': hidden}">
+    <app-second-main-tab></app-second-main-tab>
+  </div>
+  <div class="right-body-container">
+    <app-tab-menu-body></app-tab-menu-body>
+  </div>
+</div>
+

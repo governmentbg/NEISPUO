@@ -1,0 +1,23 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_nom].[ITAssetCategory] AC /**where**/ /**orderby**/",
+  "columns": [
+	{
+      "column": "AC.ITAssetCategoryID AS code"
+    },
+	{
+      "column": "AC.Description AS label"
+    }
+   ],
+  "params": [
+
+  ],
+  "order": [
+    {
+      "column": "AC.Description",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+
+  ]
+}

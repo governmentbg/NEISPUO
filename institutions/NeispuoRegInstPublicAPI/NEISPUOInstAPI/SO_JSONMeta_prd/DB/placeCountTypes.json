@@ -1,0 +1,29 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[PlaceCountType] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "PlaceCountTypeID as code"
+        },
+        {
+            "column": "Name as label"
+        }
+    ],
+    "params": [
+        {
+            "param": "@IsValid",
+            "column": "IsValid",
+            "operator": "=",
+            "value": 1,
+            "type": "int",
+            "logical_operator": "and",
+            "static": true
+        }
+    ],
+    "order": [
+        {
+            "column": "PlaceCountTypeID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

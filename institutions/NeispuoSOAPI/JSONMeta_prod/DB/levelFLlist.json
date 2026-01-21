@@ -1,0 +1,31 @@
+{
+  "template": "SELECT DISTINCT /**select**/ FROM [inst_nom].[TextbooksInstFL] TB /**where**/ /**orderby**/",
+  "columns": [
+	{
+      "column": "TB.[LevelFLID] AS code"
+    },
+	{
+      "column": "TB.[LevelFL] AS label"
+    }
+   ],
+  "params": [
+    {
+      "param": "@instid",
+      "column": "TB.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "TB.LevelFLID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+
+  ]
+}

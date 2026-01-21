@@ -1,0 +1,64 @@
+<!--
+  !!! IMPORTANT !!! Current implementation only supports single file upload ([fileLimit]="1").
+  If/when multiple file upload is needed we must implement a custom upload method, as blob server persists the first file and discards the rest.
+  See blob server docs for more: https://github.com/Neispuo/school-books/tree/dev/blobs#uploading
+ -->
+<p-fileUpload
+  #pFileUpload
+  [url]="blobServerUrl"
+  [auto]="true"
+  [disabled]="formControl.disabled || fileMetadata"
+  (onUpload)="onUpload($event)"
+  (onBeforeUpload)="onBeforeUpload()"
+  (onError)="onError()"
+  [chooseLabel]="'Добавете файл'"
+  [uploadLabel]="'Прикачи'"
+  [fileLimit]="1"
+  maxFileSize="1000000"
+  invalidFileSizeMessageSummary="{0}: Невалиден размер"
+  invalidFileSizeMessageDetail="Максималнят размер на файла е {0}."
+>
+  <!-- ng-template adapted from primeNg's source code: https://github.com/primefaces/primeng/blob/master/src/app/components/fileupload/fileupload.ts -->
+  <ng-template pTemplate="file">
+    <div class="p-fileupload-row" class="p-fileupload-row" *ngFor="let file of pFileUpload.files; let i = index">
+      <div>{{ file.name }}</div>
+      <div>{{ file.size | filesize }}</div>
+      <div>
+        <button
+          class="file-action"
+          type="button"
+          icon="pi pi-times"
+          pButton
+          (click)="pFileUpload.remove($event, i)"
+          [disabled]="pFileUpload.uploading || formControl.disabled"
+        ></button>
+      </div>
+    </div>
+  </ng-template>
+
+  <!-- ng-template adapted from primeNg's source code: https://github.com/primefaces/primeng/blob/master/src/app/components/fileupload/fileupload.ts -->
+  <ng-template pTemplate="content">
+    <div *ngIf="fileMetadata" class="p-fileupload-row">
+      <div>{{ fileMetadata.name }}</div>
+      <div>{{ fileMetadata.size | filesize }}</div>
+      <div>
+        <button
+          class="file-action"
+          type="button"
+          icon="pi pi-download"
+          pButton
+          (click)="downloadFile()"
+          [disabled]="pFileUpload.uploading"
+        ></button>
+        <button *ngIf="!isView"
+          class="file-action"
+          type="button"
+          icon="pi pi-times"
+          pButton
+          (click)="removeFile()"
+          [disabled]="pFileUpload.uploading || formControl.disabled"
+        ></button>
+      </div>
+    </div>
+  </ng-template>
+</p-fileUpload>

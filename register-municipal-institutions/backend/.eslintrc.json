@@ -1,0 +1,45 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "jest": true
+    },
+    "extends": ["airbnb-base"],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "project": ["./tsconfig.json"],
+        "sourceType": "module"
+    },
+    "plugins": ["@typescript-eslint", "unused-imports"],
+    "rules": {
+        "import/prefer-default-export": "off",
+        "import/no-unresolved": "off",
+        "indent": "off",
+        "no-await-in-loop": "off",
+        "linebreak-style": "off",
+        "class-methods-use-this": "off",
+        "no-useless-constructor": "off",
+        "import/no-extraneous-dependencies": "off",
+        "no-restricted-syntax": "off",
+        "no-underscore-dangle": "off",
+        "no-shadow": "off",
+        "no-use-before-define": "off",
+        "no-return-await": "off",
+        "global-require": "off",
+        "@typescript-eslint/no-empty-function": "off",
+        "no-param-reassign": "off",
+        "consistent-return": "off",
+        "max-len": "off",
+        "no-empty-function": [
+            "error",
+            {
+                "allow": ["constructors", "asyncMethods"]
+            }
+        ],
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": ["error", { "args": "none" }],
+        "@typescript-eslint/no-shadow": "error",
+        "unused-imports/no-unused-imports": "error"
+    }
+}

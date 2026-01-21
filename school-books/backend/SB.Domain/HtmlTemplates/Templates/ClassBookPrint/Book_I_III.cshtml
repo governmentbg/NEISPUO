@@ -1,0 +1,77 @@
+@using SB.Domain
+@model Book_I_IIIModel
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    @{ await IncludeAsync("ClassBookPrint.Parts._Styles", null); }
+  </head>
+  <body>
+    @{ await IncludeAsync("ClassBookPrint.Parts.CoverPage.CoverPageRegular", Model.CoverPageModel); }
+
+    @{ await IncludeAsync("ClassBookPrint.Parts.Teachers.Teachers", Model.TeachersModel); }
+
+    @{ await IncludeAsync("ClassBookPrint.Parts.Schedules.Schedules", Model.SchedulesModel); }
+
+    @if (Model.ParentMeetingsModel.ParentMeetings.Any())
+    {
+      await IncludeAsync("ClassBookPrint.Parts.ParentMeetings.ParentMeetings", Model.ParentMeetingsModel);
+    }
+
+    @if (Model.ClassWorkExamsModel.Exams.Any())
+    {
+      await IncludeAsync("ClassBookPrint.Parts.Exams.Exams", Model.ClassWorkExamsModel);
+    }
+
+    @if (Model.ExamsModel.Exams.Any())
+    {
+      await IncludeAsync("ClassBookPrint.Parts.Exams.Exams", Model.ExamsModel);
+    }
+
+    @{ await IncludeAsync("ClassBookPrint.Parts.Students.Students", Model.StudentsModel); }
+
+    @{ await IncludeAsync("ClassBookPrint.Parts.ScheduleAndAbsences.ScheduleAndAbsences", Model.ScheduleAndAbsencesModel); }
+
+    @{ await IncludeAsync("ClassBookPrint.Parts.Grades.Grades", Model.TermOneGradesModel); }
+
+    @{ await IncludeAsync("ClassBookPrint.Parts.Grades.Grades", Model.TermTwoGradesModel); }
+
+    @if (Model.RemarksModel.Students.Any())
+    {
+      await IncludeAsync("ClassBookPrint.Parts.Remarks.Remarks", Model.RemarksModel);
+    }
+
+    @if (Model.HasFirstGradeResults)
+    {
+      await IncludeAsync("ClassBookPrint.Parts.FirstGradeResults.FirstGradeResults", Model.FirstGradeResultsModel);
+    }
+
+    @if (Model.HasFinalGrades)
+    {
+      await IncludeAsync("ClassBookPrint.Parts.FinalGrades.FinalGrades", Model.FinalGradesModel);
+    }
+
+    @{ await IncludeAsync("ClassBookPrint.Parts.Absences.Absences", Model.AbsencesModel); }
+
+    @if (Model.IndividualWorksModel.IndividualWorks.Any())
+    {
+      await IncludeAsync("ClassBookPrint.Parts.IndividualWorks.IndividualWorks", Model.IndividualWorksModel);
+    }
+
+    @if (Model.SanctionsModel.Students.Any())
+    {
+      await IncludeAsync("ClassBookPrint.Parts.Sanctions.Sanctions", Model.SanctionsModel);
+    }
+
+    @if (Model.SupportsModel.Supports.Any())
+    {
+      await IncludeAsync("ClassBookPrint.Parts.Supports.Supports", Model.SupportsModel);
+    }
+
+    @if (Model.NotesModel.Notes.Any())
+    {
+      await IncludeAsync("ClassBookPrint.Parts.Notes.Notes", Model.NotesModel);
+    }
+  </body>
+</html>

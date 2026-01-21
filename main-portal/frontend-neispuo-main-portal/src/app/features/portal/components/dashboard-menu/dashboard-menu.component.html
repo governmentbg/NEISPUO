@@ -1,0 +1,46 @@
+<div
+  class="dashboard-menu collapse p-3 boreder-radius-md shadow-right container"
+  id="dashboardMenu"
+  #dashboardMenu
+  clickOutside
+>
+  <div class="dashboard-menu-title col">Табло за управление</div>
+  <ng-container *ngFor="let category of categories$ | async">
+    <div class="xsmall color-blue-300">{{ category.name }}</div>
+    <div class="mb-3 content-wraper boreder-radius-md">
+      <div *ngFor="let module of category.neispuoModules; let i = index" class="p-3">
+        <a [href]="module.link" class="px-0 icon">
+          <span class="d-sm-inline">{{ module.name }}</span></a
+        >
+      </div>
+      <hr />
+      <div class="load-all p-2">
+        <button
+          type="button"
+          class="btn btn-link btn-load-all icon-right color-gray-600"
+          [routerLink]="category.id"
+          data-bs-toggle="collapse"
+          href="#dashboardMenu"
+        >
+          Зареди всички
+        </button>
+      </div>
+    </div>
+  </ng-container>
+  <div>
+    <button
+      type="button"
+      class="btn btn-link icon-right mt-2 float-right color-blue-500"
+      routerLink="/portal"
+      routerLinkActive="active-link"
+      data-bs-toggle="collapse"
+      href="#dashboardMenu"
+    >
+      Към табло за управление
+    </button>
+  </div>
+</div>
+
+<a class="btn btn-primary dashboard-btn" data-bs-toggle="collapse" href="#dashboardMenu" role="button" aria-expanded="false">
+  <i class="bi bi-grid-3x3-gap-fill"></i>
+</a>

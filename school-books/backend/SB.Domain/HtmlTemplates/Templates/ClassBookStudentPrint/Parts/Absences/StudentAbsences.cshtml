@@ -1,0 +1,34 @@
+@using SB.Domain
+@model StudentAbsencesModel
+
+<div class="page">
+  <h3 class="page-header">Отсъствия от учебни часове</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th colspan="2">За първи срок</th>
+        <th colspan="2">За втори срок</th>
+        <th colspan="2">За годината</th>
+      </tr>
+      <tr>
+        <th>Уваж.</th>
+        <th>Неуваж.</th>
+        <th>Уваж.</th>
+        <th>Неуваж.</th>
+        <th>Уваж.</th>
+        <th>Неуваж.</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>@Model.FirstTermExcusedCount</td>
+        <td>@Model.FirstTermUnexcusedCount</td>
+        <td>@Model.SecondTermExcusedCount</td>
+        <td>@Model.SecondTermUnexcusedCount</td>
+        <td>@Model.WholeYearExcusedCount</td>
+        <td>@Model.WholeYearUnexcusedCount</td>
+       </tr>
+    </tbody>
+  </table>
+</div>

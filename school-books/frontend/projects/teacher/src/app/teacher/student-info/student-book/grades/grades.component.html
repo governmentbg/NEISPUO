@@ -1,0 +1,130 @@
+<div class="sb-table-container mt-2.5 md:mt-0">
+  <table class="sb-table table-grades">
+    <thead>
+      <tr>
+        <th rowspan="2">Предмет</th>
+        <th class="text-center px-1 sm:px-2" colspan="2" rowspan="1">
+          <span class="inline sm:hidden text-vertical-rl whitespace-nowrap">I срок</span>
+          <span class="hidden sm:inline">Първи срок</span>
+        </th>
+        <th class="text-center px-1 sm:px-2" colspan="2" rowspan="1">
+          <span class="inline sm:hidden text-vertical-rl whitespace-nowrap">II срок</span>
+          <span class="hidden sm:inline">Втори срок</span>
+        </th>
+        <th *ngIf="showFinalGrades" rowspan="2" class="text-center px-1 sm:px-2">
+          <span class="text-vertical-rl sm:text-horizontal-tb">Годишна</span>
+        </th>
+      </tr>
+      <tr>
+        <th class="first-term-only">Текущи</th>
+        <th class="first-term-only">
+          <span class="inline sm:hidden">Ср</span>
+          <span class="hidden sm:inline">Срочна</span>
+        </th>
+        <th class="second-term-only">Текущи</th>
+        <th class="second-term-only">
+          <span class="inline sm:hidden">Ср</span>
+          <span class="hidden sm:inline">Срочна</span>
+        </th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let curriculum of data.grades">
+      <tr>
+        <td>
+          {{ curriculum.curriculumName }}
+          <span *ngIf="curriculum.curriculumIsValid === false" class="sb-badge">Архивиран</span>
+        </td>
+        <td class="grade-cell first-term-only">
+          <sb-grade-link
+            *ngFor="let grade of curriculum.firstTermRegularGrades"
+            [grade]="grade"
+            [isSelected]="grade.gradeId === selectedGradeId"
+            (click)="selectStudentGrade(curriculum.curriculumId, grade.gradeId)"
+          ></sb-grade-link>
+        </td>
+        <td class="grade-cell">
+          <sb-grade-link
+            *ngFor="let grade of curriculum.firstTermTermGrades"
+            [grade]="grade"
+            [isSelected]="grade.gradeId === selectedGradeId"
+            (click)="selectStudentGrade(curriculum.curriculumId, grade.gradeId)"
+          ></sb-grade-link>
+        </td>
+        <td class="grade-cell second-term-only">
+          <sb-grade-link
+            *ngFor="let grade of curriculum.secondTermRegularGrades"
+            [grade]="grade"
+            [isSelected]="grade.gradeId === selectedGradeId"
+            (click)="selectStudentGrade(curriculum.curriculumId, grade.gradeId)"
+          ></sb-grade-link>
+        </td>
+        <td class="grade-cell">
+          <sb-grade-link
+            *ngFor="let grade of curriculum.secondTermTermGrades"
+            [grade]="grade"
+            [isSelected]="grade.gradeId === selectedGradeId"
+            (click)="selectStudentGrade(curriculum.curriculumId, grade.gradeId)"
+          ></sb-grade-link>
+        </td>
+        <td *ngIf="showFinalGrades" class="grade-cell">
+          <sb-grade-link
+            *ngFor="let grade of curriculum.finalGrades"
+            [grade]="grade"
+            [isSelected]="grade.gradeId === selectedGradeId"
+            [subjectTypeIsProfilingSubject]="curriculum.subjectTypeIsProfilingSubject"
+            (click)="selectStudentGrade(curriculum.curriculumId, grade.gradeId)"
+          ></sb-grade-link>
+        </td>
+      </tr>
+      <tr *ngIf="selectedCurriculumId === curriculum.curriculumId">
+        <td [attr.colspan]="breakpointService.sm ? 6 : 5" class="relative bg-yellow-50" [class.h-16]="loadingGrade">
+          <mat-spinner *ngIf="loadingGrade" [diameter]="40" class="absolute top-1/2 left-1/2 -mt-5 -ml-5"></mat-spinner>
+          <div *ngIf="!loadingGrade && selectedGrade" class="sm:flex">
+            <div class="sm:grow">
+              <div>
+                <span class="block sm:inline whitespace-nowrap">
+                  <fa-icon [icon]="fasPencilAlt"></fa-icon>
+                  Оценка
+                  <span [ngSwitch]="selectedGrade.category" class="font-bold">
+                    <span *ngSwitchCase="GRADE_CATEGORY_DECIMAL">
+                      "{{ selectedGrade.decimalGrade | sbDecimalGradeName }} ({{
+                        selectedGrade.decimalGrade | sbDecimalGradeNumber
+                      }})"
+                    </span>
+                    <span *ngSwitchCase="GRADE_CATEGORY_QUALITATIVE">
+                      "{{ selectedGrade.qualitativeGrade | sbQualitativeGradeName }}"
+                    </span>
+                    <span *ngSwitchCase="GRADE_CATEGORY_SPECIAL_NEEDS">
+                      "{{ selectedGrade.specialGrade | sbSpecialGradeName }}"
+                    </span>
+                  </span>
+                </span>
+                {{ ' ' }}
+                <span class="block sm:inline whitespace-nowrap">
+                  по
+                  <fa-icon [icon]="fasBookOpen"></fa-icon>
+                  <span class="font-bold">{{ selectedGrade.subjectName }} / {{ selectedGrade.subjectTypeName }}</span>
+                </span>
+                {{ ' ' }}
+                <span class="block sm:inline whitespace-nowrap">
+                  на
+                  <fa-icon [icon]="fasCalendarAlt"></fa-icon>
+                  <span class="font-bold">{{ selectedGrade.date | sbDate }}</span>
+                </span>
+              </div>
+              <div class="text-xs italic">
+                Вид:
+                <span class="font-bold">{{ selectedGrade.type | sbGradeTypeName }}</span>
+              </div>
+              <div *ngIf="selectedGrade.comment" class="text-xs italic">
+                Коментар:
+                <ng-container *ngIf="selectedGrade.comment.indexOf('\n') !== -1"><br /></ng-container>
+                <span class="font-bold whitespace-pre-line">{{ selectedGrade.comment }}</span>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,80 @@
+<sb-banner type="info" *ngIf="!students?.length">Няма ученици, които се явяват на поправителни изпити.</sb-banner>
+
+<ng-container *ngIf="students?.length">
+  <a *ngIf="canEdit" class="mb-2.5" [routerLink]="['./edit']" mat-raised-button color="primary">
+    <fa-icon [icon]="fasPlus" size="lg"></fa-icon>
+    <span>Редакция</span>
+  </a>
+
+  <div class="sb-table-container">
+    <table class="sb-table">
+      <thead>
+        <tr>
+          <th colspan="2" rowspan="2">Ученик</th>
+          <th colspan="2" rowspan="2" class="text-center">Предмет</th>
+          <th colspan="2" class="text-center">Редовни сесии</th>
+          <th rowspan="2" class="text-center">Допълнителна сесия</th>
+        </tr>
+        <tr>
+          <th class="text-center">I сесия</th>
+          <th class="text-center">II сесия</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let student of students">
+          <tr>
+            <td *ngIf="student.showInfoLink" colspan="2" class="sb-names whitespace-nowrap">
+              <a
+                [routerLink]="[
+                  '../../../student-info',
+                  this.data.classBookId,
+                  student.personId,
+                  'student-book',
+                  this.data.classBookId
+                ]"
+                class="text-primary"
+              >
+                {{ student.classNumber != null ? student.classNumber.toString() + '.' : '' }}
+
+                {{ student.firstName }}
+                {{ student.middleName }}
+                {{ student.lastName }}
+
+                <span *ngIf="student.abnormalStatus" class="sb-badge">{{ student.abnormalStatus }}</span>
+              </a>
+            </td>
+
+            <td *ngIf="!student.showInfoLink" colspan="2" class="sb-names whitespace-nowrap">
+              {{ student.classNumber != null ? student.classNumber.toString() + '.' : '' }}
+
+              {{ student.firstName }}
+              {{ student.middleName }}
+              {{ student.lastName }}
+
+              <span *ngIf="student.abnormalStatus" class="sb-badge">{{ student.abnormalStatus }}</span>
+            </td>
+
+            <td colspan="2" class="whitespace-nowrap font-medium align-middle text-center p-1">
+              {{ student.curriculum }}
+            </td>
+
+            <td class="whitespace-nowrap font-medium align-middle text-center p-1">
+              <span *ngIf="student.session1NoShow">{{ noShowText }}</span>
+              <span *ngIf="student.session1ResultText">{{ student.session1ResultText }}</span>
+            </td>
+
+            <td class="whitespace-nowrap font-medium align-middle text-center p-1">
+              <span *ngIf="student.session2NoShow">{{ noShowText }}</span>
+              <span *ngIf="student.session2ResultText">{{ student.session2ResultText }}</span>
+            </td>
+
+            <td class="whitespace-nowrap font-medium align-middle text-center p-1">
+              <span *ngIf="student.session3NoShow">{{ noShowText }}</span>
+              <span *ngIf="student.session3ResultText">{{ student.session3ResultText }}</span>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+</ng-container>

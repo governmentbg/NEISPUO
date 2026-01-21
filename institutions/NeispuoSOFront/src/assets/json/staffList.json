@@ -1,0 +1,93 @@
+{
+  "label": "Данни за персонал",
+  "paramName": "instid",
+  "sections": [
+    {
+      "label": "Данни за персонала",
+      "order": 1,
+      "table": {
+        "name": "staff",
+        "paramName": "staffId",
+        "canDeleteRow": true,
+        "action": "preview",
+        "label": "персонал",
+        "additionalParams": ["meme", "tete"],
+        "switchControl": { "listColumns": ["staffFirstName", "staffLastName"], "label": "Име на персонал" },
+        "fields": [
+          {
+            "label": "Пореден номер",
+            "name": "staffOrd",
+            "type": "input",
+            "inputType": "number",
+            "order": 1,
+            "width": 10,
+            "validations": [
+              {
+                "name": "maxLength",
+                "validation": 4,
+                "message": "Максимална дължина 4 символа"
+              }
+            ]
+          },
+          {
+            "label": "Име",
+            "name": "staffFirstName",
+            "type": "input",
+            "inputType": "text",
+            "order": 1,
+            "width": 30,
+            "disabled": false,
+            "validations": [
+              {
+                "name": "maxLength",
+                "validation": 255,
+                "message": "Максимална дължина 255 символа"
+              }
+            ]
+          },
+          {
+            "label": "Фамилия",
+            "name": "staffLastName",
+            "type": "input",
+            "inputType": "text",
+            "order": 3,
+            "width": 30,
+            "disabled": false,
+            "validations": [
+              {
+                "name": "maxLength",
+                "validation": 255,
+                "message": "Максимална дължина 255 символа"
+              }
+            ]
+          },
+          {
+            "label": "Вид",
+            "name": "staffTypeID",
+            "type": "select",
+            "width": 10,
+            "disabled": false,
+            "order": 4
+          },
+          {
+            "label": "Категория персонал",
+            "name": "categoryStaffTypeID",
+            "type": "select",
+            "width": 10,
+            "disabled": false,
+            "order": 5
+          },
+          {
+            "label": "Длъжност",
+            "name": "nkpdPositionID",
+            "type": "select",
+            "rendered": "if(instType==1){field.rendered=false}else{field.rendered=true}",
+            "width": 10,
+            "disabled": false,
+            "order": 6
+          }
+        ]
+      }
+    }
+  ]
+}

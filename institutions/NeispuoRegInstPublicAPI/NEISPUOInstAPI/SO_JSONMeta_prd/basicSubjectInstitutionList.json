@@ -1,0 +1,35 @@
+{
+    "label": "Задължителни предмети",
+    "sections": [
+    {
+        "order": 1,
+        "table": {
+            "name": "settings",
+            "action": "preview",
+            "procedureName": "inst_basic.subjectInstitution",
+            "paramName": "subjectID",
+		    "searchable": true,
+            "canDeleteRow": false,
+		    "searchType": "column",
+            "fields": [
+            {
+                "label": "Учебен предмет",
+                "name": "subjectName",
+                "type": "input",
+                "inputType": "text",
+                "width": 50,
+                "order": 2
+            },
+            {
+                "label": "Предметна група",
+                "name": "subjectGroupName",
+                "type": "input",
+                "inputType": "text",
+                "width": 50,
+                "order": 3
+            }
+            ]
+        }
+    }
+    ]
+}

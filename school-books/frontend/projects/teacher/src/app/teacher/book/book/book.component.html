@@ -1,0 +1,35 @@
+<div class="flex justify-between mb-2">
+  <sb-breadcrumb
+    [icon]="isGroup ? fasBallPile : fasUsersClass"
+    [text]="
+      '&nbsp;' +
+      data.classBookInfo.fullBookName +
+      (data.classBookInfo.leadTeacherName ? ' (' + data.classBookInfo.leadTeacherName + ' - ' + teachersType + ')' : '')
+    "
+  ></sb-breadcrumb>
+
+  <button class="sb-link-btn" [matMenuTriggerFor]="menu" aria-label="Настройки">
+    <fa-icon [icon]="fadCog" size="lg"></fa-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <sb-book-settings-form></sb-book-settings-form>
+  </mat-menu>
+</div>
+
+<sb-tabs [tabs]="tabs" ariaLabel="Раздели на дневника">
+  <sb-banner
+    *ngIf="data.classBookInfo.isValid && !data.classBookInfo.schoolYearIsFinalized && data.classBookInfo.isFinalized"
+    class="mb-3"
+    type="warning"
+  >
+    Дневникът е приключен
+    <ng-container *ngIf="!data.classBookInfo.hasCBExtProvider">
+      и потребителският интерфейс е в режим само за преглед
+    </ng-container>
+  </sb-banner>
+  <sb-banner *ngIf="!data.classBookInfo.isValid" class="mb-3" type="warning">
+    Дневникът е архивиран на {{ data.classBookInfo.modifyDate | sbDateTime }} и потребителският интерфейс е в режим само
+    за преглед
+  </sb-banner>
+  <router-outlet></router-outlet>
+</sb-tabs>

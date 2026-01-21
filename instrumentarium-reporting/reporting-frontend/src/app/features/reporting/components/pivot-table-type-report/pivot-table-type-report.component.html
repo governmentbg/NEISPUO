@@ -1,0 +1,91 @@
+<div *ngIf="reportSummaryService.sumarizedBy.name && pivotTableReportService.lazyLoadOnInit; else pivotMessage">
+  <p-table
+    #rbPivotTable
+    id="rbPivotTable"
+    [lazy]="true"
+    [loading]="pivotTableReportService.isLoading"
+    [scrollable]="true"
+    (onLazyLoad)="pivotTableReportService.loadPivot($event)"
+    [lazyLoadOnInit]="pivotTableReportService.lazyLoadOnInit"
+    [value]="pivotTableReportService.tablePivotData"
+    responsiveLayout="scroll"
+    [reorderableColumns]="true"
+    [resizableColumns]="true"
+    [(first)]="pivotTableReportService.first"
+    [columns]="pivotTableReportService.pivotTableHeaderRows"
+    [scrollHeight]="'100%'"
+    [styleClass]="!reportService.isCubeData ? 'recalculate p-datatable-sm' : 'p-datatable-sm'"
+  >
+    <ng-template pTemplate="headergrouped">
+      <tr *ngFor="let headerRow of pivotTableReportService.pivotTableHeaderRows">
+        <th *ngFor="let th of headerRow" [attr.colspan]="th?.children?.length">
+          <span [pTooltip]="th?.shortTitle" tooltipPosition="top"> {{ th?.shortTitle }}</span>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-i="rowIndex">
+      <tr>
+        <td
+          *ngFor="let dataIndex of pivotTableReportService.pivotTableDataIndexes"
+          [ngClass]="{ measure: reportService.columnIsMeasure(dataIndex) }"
+          (click)="openDrillDownDialog(dataIndex, i)"
+          [pTooltip]="reportService.columnIsMeasure(dataIndex) ? 'Прегледай тези ' + (report$ | async).title : ''"
+          tooltipPosition="bottom"
+        >
+          <ng-container *ngIf="pivotTableReportService.isLoading; else pivotData">
+            <p-skeleton [ngStyle]="{ width: '100%' }"></p-skeleton>
+          </ng-container>
+          <ng-template #pivotData>
+            <span *ngIf="isISODate(rowData)">
+              {{ rowData[dataIndex] | date: 'dd/MM/yyyy' }}
+            </span>
+            <span *ngIf="!isISODate(rowData)">
+              {{ rowData[dataIndex] }}
+            </span>
+          </ng-template>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <app-reporting-sidebar-toggle></app-reporting-sidebar-toggle>
+      <div class="d-flex align-items-center">
+        <div
+          *ngIf="pivotTableReportService.rows == pivotTableReportService.lastFetchedRowsCount"
+          (click)="pivotTableReportService.loadNextPivot()"
+          class="load-next"
+        >
+          Зареди още {{ pivotTableReportService.rows }} записа
+        </div>
+        <div
+          *ngIf="
+            !pivotTableReportService.isLoading && pivotTableReportService.rows > pivotTableReportService.lastFetchedRowsCount
+          "
+        >
+          Няма повече записи
+        </div>
+        <app-export-excel-button [visualizationType]="visualizatonType"></app-export-excel-button>
+        <app-save-report-button></app-save-report-button>
+      </div>
+    </ng-template>
+  </p-table>
+</div>
+<ng-template #pivotMessage>
+  <div
+    class="pivot-spinner"
+    [ngClass]="{ toggled: !sidebarService?.isSidebarOpen }"
+    *ngIf="pivotTableReportService.isLoading; else message"
+  >
+    <p-progressSpinner [style]="{ width: '2rem', height: '2rem' }" strokeWidth="4"></p-progressSpinner>
+  </div>
+  <ng-template #message>
+    <div class="pivot-table-msg-wrapper" [ngClass]="{ recalculate: !reportService.isCubeData }">
+      <div class="icon">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+      </div>
+      <h3>Пивот таблици могат да се използват само с агрегирани заявки.</h3>
+    </div>
+    <div class="settings">
+      <app-reporting-sidebar-toggle></app-reporting-sidebar-toggle>
+    </div>
+  </ng-template>
+</ng-template>

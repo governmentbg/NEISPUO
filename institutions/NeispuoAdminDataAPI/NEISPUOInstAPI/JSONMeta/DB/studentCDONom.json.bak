@@ -1,0 +1,41 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_year].[MS_StudentCDO_MS] CL /**where**/ /**orderby**/",
+  "columns": [
+	{
+      "column": "CL.PersonID AS code"
+    },
+	{
+      "column": "CL.FullName AS label"
+    }	
+   ],
+  "params": [
+    {
+      "param": "@instid",
+      "column": "CL.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+	{
+      "param": "@basicClassID",
+      "column": "CL.BCClassID",
+      "operator": "=",
+      "value": "basicClassID",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+	
+  ],
+  "order": [
+    {
+      "column": "CL.FullName",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+
+  ]
+}

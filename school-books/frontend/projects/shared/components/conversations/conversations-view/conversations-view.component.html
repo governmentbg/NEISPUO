@@ -1,0 +1,66 @@
+<div class="h-full flex flex-col">
+  <div class="border rounded-xl border-gray-200 flex flex-col flex-1">
+    <div class="border-b border-gray-300 px-4 pt-2 bg-gray-100">
+      <mat-expansion-panel [expanded]="expendMainPanel">
+        <mat-expansion-panel-header class="border-b pb-2">
+          <mat-panel-title class="flex justify-between font-bold text-blue-700 break-words border-gray-300">
+            <div class="flex-1 pr-2">{{ this.data.conversationInfo.title }}</div>
+            <fa-icon [icon]="fadInfoCircle" size="lg" class="cursor-pointer self-end"></fa-icon>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="flex flex-col text-sm text-gray-400 pt-2 spa">
+          <div>Участници: {{ this.data.conversationInfo.participantsInfo }}</div>
+          <div>Създадено: {{ this.data.conversationInfo.createDate | timeAgo }}</div>
+          <div>Създадено от: {{ getCreator() }}</div>
+          <div *ngIf="this.data.conversationInfo.isCurrentUserCreator">Прочетено от: {{ getReadParticipants() }}</div>
+        </div>
+      </mat-expansion-panel>
+    </div>
+    <div class="flex-1 overflow-hidden pb-4">
+      <cdk-virtual-scroll-viewport
+        class="list-container h-full my-2"
+        itemSize="80"
+        (scrolledIndexChange)="onScrolledIndexChange($event)"
+      >
+        <div class="flex flex-col space-y-4 p-4">
+          <div *cdkVirtualFor="let message of messagesData$ | async" class="bg-gray-200 p-3 rounded-lg shadow-md my-2">
+            <div class="text-sm text-gray-800 break-words">
+              {{ message.content }}
+            </div>
+            <div class="flex justify-between text-sm text-gray-500 mt-2">
+              <div>{{ message.createDate | timeAgo }}</div>
+              <div>{{ getParticipantName(message.createdByParticipantId) }}</div>
+            </div>
+          </div>
+        </div>
+      </cdk-virtual-scroll-viewport>
+    </div>
+    <div class="flex border-t border-gray-300 p-4 bg-gray-100">
+      <form [formGroup]="form" class="flex w-full">
+        <sb-textarea-field
+          [maxRows]="5"
+          class="custom-text-area flex-1 mr-4"
+          label="Добави съобщение..."
+          formControlName="message"
+        ></sb-textarea-field>
+        <div class="flex flex-col items-center">
+          <button
+            mat-raised-button
+            class="flex-shrink-0 h-fit"
+            color="primary"
+            (click)="sendMessage()"
+            [disabled]="isFetching || this.data.conversationInfo.isLocked"
+          >
+            Изпрати
+          </button>
+          <div
+            *ngIf="isFetching || this.data.conversationInfo.isLocked"
+            class="text-xs text-gray-500 mt-2 text-center w-full max-w-[100px] break-words"
+          >
+            Изпращане на отговор е забранено
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

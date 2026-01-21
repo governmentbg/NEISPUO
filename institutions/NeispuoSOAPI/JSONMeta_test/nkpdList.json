@@ -1,0 +1,35 @@
+{
+  "sections": [
+    {
+      "order": 1,
+      "name": "TableNKPDList",
+      "table": {
+        "name": "nkpdList",
+        "searchable": true,
+        "searchType": "column",
+        "paramName": "customVarValueID",
+        "hasEditButton": false,
+        "procedureName": "inst_basic.NKPDPositionInstitutionCD",
+        "canDeleteRow": true,
+        "fields": [
+          {
+            "label": "Длъжност",
+            "name": "positionName",
+            "type": "input",
+            "inputType": "text",
+            "width": 60,
+            "order": 1
+          },
+          {
+            "label": "Категория",
+            "name": "staffTypeName",
+            "type": "input",
+            "inputType": "number",
+            "width": 20,
+            "order": 2
+          }
+        ]
+      }
+    }
+  ]
+}

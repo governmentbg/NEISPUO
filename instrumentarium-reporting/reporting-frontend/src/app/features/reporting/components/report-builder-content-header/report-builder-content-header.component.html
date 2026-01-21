@@ -1,0 +1,55 @@
+<div class="content-header" *ngIf="componentShouldInit">
+  <div class="report-title">
+    {{ report.Name }}
+  </div>
+
+  <div *ngIf="(selectedRole$ | async).SysUserID === report.CreatedBy?.SysUserID; else copyButton" class="dropdown">
+    <button
+      class="btn btn-outline-secondary dropdown-toggle report-action-toggle"
+      type="button"
+      id="reportActionsButton"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+      [disabled]="isActionButtonDisabled"
+    ></button>
+    <ul class="dropdown-menu" aria-labelledby="reportActionsButton">
+      <li>
+        <button class="dropdown-item copy" type="button" (click)="openCopyReportDialog()">
+          <i class="pi pi-copy"></i>Копирай справка
+        </button>
+      </li>
+      <li>
+        <button
+          class="dropdown-item delete"
+          type="button"
+          appActionConfirmation
+          (onAcceptConfirmation)="deleteReport()"
+          [confirmationOutletKey]="'deleteReport'"
+        >
+          <i class="pi pi-trash"></i>Изтрий справка
+        </button>
+      </li>
+    </ul>
+  </div>
+  <p-confirmDialog
+    [key]="'deleteReport'"
+    [header]="'Потвърждаване'"
+    [acceptLabel]="'Да'"
+    [rejectLabel]="'Не'"
+    [acceptButtonStyleClass]="'p-button-secondary'"
+    [rejectButtonStyleClass]="'p-button-outlined p-button-secondary'"
+    [message]="'Сигурни ли сте, че искате да изтриете тази справка?'"
+  ></p-confirmDialog>
+  <ng-template #copyButton>
+    <span pTooltip="Копирай" tooltipPosition="top">
+      <button
+        pButton
+        type="button"
+        class="p-button-outlined p-button-secondary btn-copy"
+        (click)="openCopyReportDialog()"
+        icon="pi pi-copy"
+        [disabled]="isActionButtonDisabled"
+      ></button>
+    </span>
+  </ng-template>
+</div>

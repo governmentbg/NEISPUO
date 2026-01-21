@@ -1,0 +1,17 @@
+.snackbar-error {
+  color: white;
+  background: theme('colors.error');
+
+  .mat-button {
+    color: white;
+  }
+}
+
+.snackbar-warning {
+  color: white;
+  background: theme('colors.warning');
+
+  .mat-button {
+    color: white;
+  }
+}

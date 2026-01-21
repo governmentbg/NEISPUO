@@ -1,0 +1,100 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_basic].[TeacherAll] PA /**where**/ /**orderby**/",
+  "sotemplate": "SELECT /**select**/ FROM [sob].[TeacherAll] PA /**where**/ /**orderby**/",
+  "columns": [
+        {
+          "column": "PA.PersonID AS personid"
+        },
+		{
+          "column": "PA.Title AS title"
+        },
+		{
+          "column": "PA.FirstName AS firstName"
+        },
+		{
+          "column": "PA.MiddleName AS middleName"
+        },
+		{
+          "column": "PA.LastName AS lastName"
+        },
+		{
+          "column": "PA.PersonalIDType AS personalIDType"
+        },
+		{
+          "column": "PA.PublicEduNumber AS publicEduNumber"
+        },
+		{
+          "column": "PA.PersonalID AS personalID"
+        },
+		{
+          "column": "PA.Gender AS gender"
+        },
+		{
+          "column": "PA.BirthDate AS birthDate"
+        },
+		{
+          "column": "PA.PermanentRegion AS permanentRegion"
+        },
+		{
+          "column": "PA.PermanentMunicipality AS permanentMunicipality"
+        },
+		{
+          "column": "PA.PermanentTownID AS permanentTown"
+        },
+		{
+          "column": "PA.PermanentAddress AS permanentAddress"
+		   },
+		{
+          "column": "PA.CurrentRegion AS currentRegion"
+        },
+		{
+          "column": "PA.CurrentMunicipality AS currentMunicipality"
+        },
+		{
+          "column": "PA.CurrentTownID AS currentTown"
+        },
+		{
+          "column": "PA.CurrentAddress AS currentAddress"
+        },
+		{
+          "column": "PA.PhoneNumber AS phoneNumber"
+        },
+		{
+          "column": "PA.IsExtendStudent AS isExtendStudent"
+        },
+		{
+          "column": "PA.IsPensioneer AS isPensioneer"
+        },
+		{
+          "column": "PA.NationalityID AS nationalityID"
+        },
+		{
+          "column": "PA.BirthPlaceTownID AS birthPlaceTownID"
+        },
+		{
+          "column": "PA.BirthPlaceCountry AS birthPlaceCountry"
+        },
+		{
+          "column": "PA.Email AS email"
+        }
+  ],
+  "params": [
+	{
+          "param": "@personid",
+          "column": "PA.PersonID",
+          "operator": "=",
+          "value": "personid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+    }	
+  ],
+  "order": [
+			{
+          "column": "PA.PersonID",
+          "type": "ASC"
+        }
+  ],
+  "inSelects": [
+  ]
+}

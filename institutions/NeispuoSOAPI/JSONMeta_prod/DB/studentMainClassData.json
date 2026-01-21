@@ -1,0 +1,71 @@
+{
+"template": "SELECT /**select**/ FROM [inst_year].[MS_StudentCurriculumListData] CD /**where**/ /**orderby**/",
+"sotemplate": "",
+  "columns": [
+    {
+      "column": "CD.CurriculumStudentID AS id"
+    },
+    {
+      "column": "CD.SubjectName AS subjectName"
+    },
+    {
+      "column": "CD.CurriculumStudentID AS curriculumStudentID"
+    },
+    {
+      "column": "CD.SubjectTypeName AS subjectTypeName"
+    },
+    {
+      "column": "CD.CurriculumGroupNum AS curriculumGroupID"
+    },
+    {
+      "column": "CD.ID as curriculumID"
+    },
+    {
+      "column": "CD.WeeksFirstTerm as weeksFirstTerm"
+    },
+    {
+      "column": "CD.HoursWeeklyFirstTerm as hoursWeeklyFirstTerm"
+    },
+    {
+      "column": "CD.WeeksSecondTerm as weeksSecondTerm"
+    },
+    {
+      "column": "CD.HoursWeeklySecondTerm as hoursWeeklySecondTerm"
+    },
+    {
+      "column": "CD.HoursAll as hoursAll"
+    },
+    {
+      "column": "CD.TeacherName as teacherName"
+    },
+    {
+      "column": "CD.StudentName as studentName"
+    },
+    {
+      "column": "CD.StudentEduFormId as studentEduFormId"
+    }
+  ],
+  "params": [
+    {
+      "param": "@curriculumStudentID",
+      "column": "CD.CurriculumStudentID",
+      "operator": "=",
+      "value": "curriculumStudentID",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+    
+  ],
+  "order": [
+    {
+      "column": "CD.SubjectID",
+      "type": "ASC"
+    },
+    {
+      "column": "CD.SubjectTypeID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": []
+}

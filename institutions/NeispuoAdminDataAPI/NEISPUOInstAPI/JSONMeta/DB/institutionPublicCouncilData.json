@@ -1,0 +1,53 @@
+{
+      "template": "SELECT /**select**/ FROM [inst_basic].[InstitutionPublicCouncil] IPC /**where**/ /**orderby**/",
+	  "sotemplate": "SELECT /**select**/ FROM [sob].[InstitutionPublicCouncil] IPC /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "IPC.InstitutionPublicCouncilID AS publicCouncilID"
+        },
+		{
+          "column": "IPC.InstitutionID AS instid"
+        },
+		{
+          "column": "IPC.FirstName AS firstName"
+        },
+		{
+          "column": "IPC.MiddleName AS middleName"
+        },
+		{
+          "column": "IPC.FamilyName AS familyName"
+        },
+		{
+          "column": "IPC.PublicCouncilTypeID AS publicCouncilTypeID"
+        },
+		{
+          "column": "IPC.PublicCouncilRoleID AS publicCouncilRoleID"
+        },
+		{
+          "column": "IPC.Email AS email"
+        },
+		{
+          "column": "IPC.PhoneNumber AS phone"
+        }
+      ],
+      "params": [
+		{
+          "param": "@publicCouncilID",
+          "column": "IPC.InstitutionPublicCouncilID",
+          "operator": "=",
+          "value": "publicCouncilID",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        }
+      ],
+      "order": [
+        {
+          "column": "IPC.InstitutionPublicCouncilID",
+          "type": "ASC"
+        }
+      ],
+  "inSelects": [
+
+  ]
+}

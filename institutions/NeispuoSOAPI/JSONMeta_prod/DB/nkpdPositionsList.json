@@ -1,0 +1,24 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[NKPDPosition] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "NKPDPositionID as code"
+        },
+        {
+            "column": "Name as label"
+        },
+		{
+            "column": "IsValid as isValid"
+        }
+    ],
+    "params": [
+
+    ],
+    "order": [
+        {
+            "column": "NKPDPositionID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

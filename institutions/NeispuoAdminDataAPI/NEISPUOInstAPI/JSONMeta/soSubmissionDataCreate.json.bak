@@ -1,0 +1,848 @@
+{
+  "label": "Подаване на данни за списък образец",
+  "procedureName": "if(operationType==1) {form.procedureName='so.submissionDataCreateUpdate'} else {form.procedureName=''}",
+  "sections": [
+    {
+      "label": "Обобщени данни за подаване",
+      "order": 1,
+      "name": "submissionDataAll"
+    },
+    {
+      "label": "Основни данни за подаването",
+      "order": 2,
+      "name": "submissionData",
+      "subsections": [
+        {
+          "order": 1,
+          "name": "submissionDataFields",
+          "fields": [
+            {
+              "label": "ЕИК",
+              "name": "eik",
+              "type": "input",
+              "inputType": "number",
+              "disabled": true,
+              "rendered": false,
+              "order": 0
+            },
+            {
+              "label": "Отворена кампания",
+              "name": "isOpen",
+              "type": "checkbox",
+              "disabled": true,
+              "rendered": false,
+              "order": 0,
+              "influence": [
+                {
+                  "type": "hide",
+                  "fieldName": "directorAfterBIReturnAfterFinalButton",
+                  "condition": [false]
+                },
+                {
+                  "type": "hide",
+                  "fieldName": "directorReturnAfterFinalButton",
+                  "condition": [false]
+                }
+              ],
+              "validations": [],
+              "info": ""
+            },
+            {
+              "defaultValue": "С това действие вие ще създадете ново подаване на списък образец за:",
+              "name": "newSubmission",
+              "type": "info",
+              "rendered": "if(operationType==1) {field.rendered=true} else {field.rendered=false}",
+              "order": 1
+            },
+            {
+              "label": "Период",
+              "name": "period",
+              "type": "input",
+              "inputType": "number",
+              "defaultValue": "period",
+              "disabled": true,
+              "rendered": "if(operationType==1) {field.rendered=true} else {field.rendered=false}",
+              "order": 2
+            },
+            {
+              "label": "Година",
+              "name": "schoolYear",
+              "type": "input",
+              "inputType": "number",
+              "defaultValue": "schoolYear",
+              "disabled": true,
+              "rendered": "if(operationType==1) {field.rendered=true} else {field.rendered=false}",
+              "order": 3
+            },
+            {
+              "label": "Статус",
+              "name": "submissionStatusID",
+              "optionsPath": "/data/get/submissionStatuses",
+              "type": "select",
+              "rendered": true,
+              "disabled": true,
+              "defaultValue":0,
+              "influence": [
+                {
+                  "type": "render",
+                  "fieldName": "validationButton",
+                  "condition": [0]
+                },
+                {
+                  "type": "render",
+                  "fieldName": "accountantSignButton",
+                  "condition": [2]
+                },
+                {
+                  "type": "render",
+                  "fieldName": "validationCorrectionButton",
+                  "condition": [2]
+                },
+                {
+                  "type": "render",
+                  "subsectionName": "accountantSignData",
+                  "condition": [2,3,4,5,6,7,8,9,10,11,12,13,99]
+                },
+                {
+                  "type": "render",
+                  "fieldName": "directorSignButton",
+                  "condition": [3]
+                },
+                {
+                  "type": "render",
+                  "subsectionName": "directorSignData",
+                  "condition": [3,4,5,6,7,8,9,10,11,12,13,99]
+                },
+                {
+                  "type": "render",
+                  "fieldName": "directorSignCorrectionButton",
+                  "condition": [3]
+                },
+                {
+                  "type": "render",
+                  "fieldName": "directorConfirmationAfterBIInfo",
+                  "condition": [6,7]
+                },
+                {
+                  "type": "render",
+                  "fieldName": "directorConfirmationInfo",
+                  "condition": [4]
+                },
+                {
+                  "type": "render",
+                  "fieldName": "budgetingInstitutionSignButton",
+                  "condition": [4]
+                },
+                {
+                  "type": "render",
+                  "fieldName": "budgetingInstitutionCommentSignButton",
+                  "condition": [4]
+                },
+                {
+                  "type": "render",
+                  "fieldName": "signAccountantInfo",
+                  "condition": [2]
+                },
+                {
+                  "type": "render",
+                  "fieldName": "submissionDirectorInfo",
+                  "condition": [3]
+                },
+                {
+                  "type": "render",
+                  "fieldName": "budgetingInstitutionCorrectionButton",
+                  "condition": [4]
+                },
+                {
+                  "type": "render",
+                  "fieldName": "budgetingSubmissionInfo",
+                  "condition": [4]
+                },
+                {
+                  "type": "render",
+                  "subsectionName": "budgetingInstitutionSignData",
+                  "condition": [4,5,6,7,8,9,10,11,12,13,99]
+                },
+                {
+                  "type": "render",
+                  "fieldName": "directorConfirmationAfterBISignButton",
+                  "condition": [6,7]
+                },
+                {
+                  "type": "render",
+                  "fieldName": "directorConfirmationSignButton",
+                  "condition": [4]
+                },
+                {
+                  "type": "render",
+                  "fieldName": "directorReturnAfterFinalButton",
+                  "condition": [11,12]
+                },
+                {
+                  "type": "render",
+                  "fieldName": "directorAfterBIReturnAfterFinalButton",
+                  "condition": [11,12]
+                },
+                {
+                  "type": "render",
+                  "subsectionName": "directorConfirmationSignData",
+                  "condition": [4,5,9,10,11,12,13,99]
+                },
+                {
+                  "type": "render",
+                  "subsectionName": "directorConfirmationAfterBISignData",
+                  "condition": [6,7,8,9,10,11,12,13,99]
+                },
+                {
+                  "type": "render",
+                  "subsectionName": "generateCertificateData",
+                  "condition": [11,12]
+                }
+              ],
+              "order": 5,
+              "validations": [],
+              "info": ""
+            },
+            {
+              "label": "Специален тип институция (с подписващ финансиращ орган)",
+              "name": "specialInstType",
+              "type": "input",
+              "inputType": "number",
+              "disabled": true,
+              "rendered": false,
+              "influence": [
+                {
+                  "type": "render",
+                  "subsectionName": "budgetingInstitutionSignData",
+                  "condition": [1]
+                },
+                {
+                  "type": "render",
+                  "fieldName": "budgetingInstitutionSignButton",
+                  "condition": [1]
+                },
+                {
+                  "type": "render",
+                  "fieldName": "budgetingInstitutionCommentSignButton",
+                  "condition": [1]
+                },
+                {
+                  "type": "render",
+                  "fieldName": "budgetingSubmissionInfo",
+                  "condition": [1]
+                },
+                {
+                  "type": "render",
+                  "fieldName": "directorConfirmationInfo",
+                  "condition": [1]
+                },
+                {
+                  "type": "render",
+                  "fieldName": "budgetingInstitutionCorrectionButton",
+                  "condition": [1]
+                },
+                {
+                  "type": "render",
+                  "fieldName": "directorConfirmationSignButton",
+                  "condition": [0]
+                },
+                {
+                  "type": "render",
+                  "subsectionName": "directorConfirmationSignData",
+                  "condition": [0]
+                },
+                {
+                  "type": "render",
+                  "subsectionName": "directorConfirmationAfterBISignData",
+                  "condition": [1]
+                },
+                {
+                  "type": "render",
+                  "fieldName": "directorReturnAfterFinalButton",
+                  "condition": [0]
+                },
+                {
+                  "type": "render",
+                  "fieldName": "directorAfterBIReturnAfterFinalButton",
+                  "condition": [1]
+                }
+              ],
+              "order": 6
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "name": "signData",
+      "subsections": [
+        {
+          "order": 1,
+          "name": "validationData",
+          "label": "Проверка и валидиране на данни",
+          "canDuplicate": false,
+          "rendered": "if(operationType==1) {subsection.rendered=false} else {subsection.rendered=true}",
+          "fields": [
+            {
+              "label": "Идентификатор на подписващ",
+              "name": "validationSysUserID",
+              "type": "input",
+              "inputType": "number",
+              "rendered": false,
+              "disabled": true,
+              "influence": [
+              ],
+              "order": 1,
+              "validations": [],
+              "info": ""
+            },
+            {
+              "label": "Тип на подписващия",
+              "name": "validationSignDataType",
+              "optionsPath": "/data/get/signerType",
+              "type": "select",
+              "rendered": false,
+              "disabled": true,
+              "defaultValue": 0,
+              "influence": [
+              ],
+              "order": 2,
+              "validations": [],
+              "info": ""
+            },
+            {
+              "label": "Дата",
+              "name": "validationSignDate",
+              "type": "date",
+              "rendered": true,
+              "disabled": true,
+              "flexible": true,
+              "influence": [
+              ],
+              "order": 3,
+              "validations": [],
+              "info": ""
+            },
+            {
+              "label": "Проверка",
+              "name": "validationButton",
+              "type": "button",
+              "procName": "so.submissionDataCreateUpdate",
+              "rendered": "if(sysroleid==0) {field.rendered=true} else {field.rendered=false}",
+              "procParams": {"submissionStatusID":2},
+              "order": 4
+            },
+            {
+              "label": "Върни за корекция",
+              "name": "validationCorrectionButton",
+              "type": "button",
+              "procName": "so.submissionDataCreateUpdate",
+              "rendered": "if(sysroleid==0) {field.rendered=true} else {field.rendered=false}",
+              "procParams": {"submissionStatusID":5},
+              "order": 5
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "name": "accountantSignData",
+          "label": "Съгласуване от счетоводител",
+          "canDuplicate":false,
+          "rendered": "if(operationType==1) {subsection.rendered=false} else {subsection.rendered=true}",
+          "fields": [
+            {
+              "label": "Идентификатор на подписващ",
+              "name": "accountantSysUserID",
+              "type": "input",
+              "inputType": "number",
+              "rendered": false,
+              "disabled": true,
+              "influence": [
+
+              ],
+              "order": 1,
+              "validations": [],
+              "info": ""
+            },
+            {
+              "label": "Тип на подписващия",
+              "name": "accountantSignDataType",
+              "optionsPath": "/data/get/signerType",
+              "type": "select",
+              "rendered": false,
+              "disabled": true,
+              "defaultValue": 1,
+              "influence": [
+
+              ],
+              "order": 2,
+              "validations": [],
+              "info": ""
+            },
+            {
+              "label": "Подписано от",
+              "name": "accountantSignerName",
+              "type": "input",
+              "inputType": "text",
+              "rendered": true,
+              "disabled": true,
+              "flexible": true,
+              "width":300,
+              "influence": [
+
+              ],
+              "order": 3,
+              "validations": [],
+              "info": ""
+            },
+            {
+              "label": "Дата",
+              "name": "accountantSignDate",
+              "type": "date",
+              "rendered": true,
+              "disabled": true,
+              "flexible": true,
+              "influence": [
+
+              ],
+              "order": 4,
+              "validations": [],
+              "info": ""
+            },
+            {
+              "defaultValue": "Очаква подписване от счетоводител",
+              "name": "signAccountantInfo",
+              "type": "info",
+              "rendered": true,
+              "order": 5
+            },
+            {
+              "label": "Подпиши",
+              "name": "accountantSignButton",
+              "type": "button",
+              "canSign": true,
+              "procName": "so.submissionDataCreateUpdate",
+              "rendered": "if(sysroleid==20) {field.rendered=true} else {field.rendered=false}",
+              "procParams": {"submissionStatusID":3},
+              "order": 6
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "name": "directorSignData",
+          "label": "Подаване на данни от директор",
+          "rendered": "if(operationType==1) {subsection.rendered=false} else {subsection.rendered=true}",
+          "canDuplicate":false,
+          "fields": [
+            {
+              "label": "Идентификатор на подписващ",
+              "name": "directorSysUserID",
+              "type": "input",
+              "inputType": "number",
+              "rendered": false,
+              "disabled": true,
+              "influence": [
+
+              ],
+              "order": 1,
+              "validations": [],
+              "info": ""
+            },
+            {
+              "label": "Тип на подписващия",
+              "name": "directorSignDataType",
+              "optionsPath": "/data/get/signerType",
+              "type": "select",
+              "rendered": false,
+              "disabled": true,
+              "defaultValue": 2,
+              "influence": [
+
+              ],
+              "order": 2,
+              "validations": [],
+              "info": ""
+            },
+            {
+              "label": "Подписано от",
+              "name": "directorSignerName",
+              "type": "input",
+              "inputType": "text",
+              "rendered": true,
+              "disabled": true,
+              "flexible": true,
+              "width":300,
+              "influence": [
+
+              ],
+              "order": 3,
+              "validations": [],
+              "info": ""
+            },
+            {
+              "label": "Дата",
+              "name": "directorSignDate",
+              "type": "date",
+              "rendered": true,
+              "disabled": true,
+              "flexible": true,
+              "influence": [
+
+              ],
+              "order": 4,
+              "validations": [],
+              "info": ""
+            },
+            {
+              "defaultValue": "Очаква подаване от директор",
+              "name": "submissionDirectorInfo",
+              "type": "info",
+              "rendered": true,
+              "order": 5
+            },
+            {
+              "label": "Върни за корекция",
+              "name": "directorSignCorrectionButton",
+              "type": "button",
+              "procName": "so.submissionDataCreateUpdate",
+              "procParams": {"submissionStatusID":5},
+              "rendered": "if(sysroleid==0) {field.rendered=true} else {field.rendered=false}",
+              "order": 6
+            },
+            {
+              "label": "Подпиши",
+              "name": "directorSignButton",
+              "procName": "so.submissionDataCreateUpdate",
+              "procParams": {"submissionStatusID":4},
+              "rendered": "if(sysroleid==0) {field.rendered=true} else {field.rendered=false}",
+              "canSign": true,
+              "searchByEik":false,
+              "type": "button",
+              "order": 7
+            }
+          ]
+        },
+        {
+          "order": 4,
+          "name": "budgetingInstitutionSignData",
+          "label": "Съгласуване от финансиращ орган",
+          "rendered": "if(operationType==1) {subsection.rendered=false} else {subsection.rendered=true}",
+          "canDuplicate":false,
+          "fields": [
+            {
+              "defaultValue": "Очаква съгласуване от финансиращ орган",
+              "name": "budgetingSubmissionInfo",
+              "type": "info",
+              "rendered": true,
+              "order": 1
+            },
+            {
+              "label": "Идентификатор на подписващ",
+              "name": "budgetingInstitutionSysUserID",
+              "type": "input",
+              "inputType": "number",
+              "rendered": false,
+              "disabled": true,
+              "influence": [
+
+              ],
+              "order": 2,
+              "validations": [],
+              "info": ""
+            },
+            {
+              "label": "Тип на подписващия",
+              "name": "budgetingInstitutionDataType",
+              "optionsPath": "/data/get/signerType",
+              "type": "select",
+              "rendered": false,
+              "disabled": true,
+              "defaultValue": 3,
+              "influence": [
+
+              ],
+              "order": 3,
+              "validations": [],
+              "info": ""
+            },
+            {
+              "label": "Подписано от",
+              "name": "budgetingInstitutionSignerName",
+              "type": "input",
+              "inputType": "text",
+              "rendered": true,
+              "disabled": true,
+              "flexible": true,
+              "width":300,
+              "influence": [
+
+              ],
+              "order": 4,
+              "validations": [],
+              "info": ""
+            },
+            {
+              "label": "Дата",
+              "name": "budgetingInstitutionSignDate",
+              "type": "date",
+              "rendered": true,
+              "disabled": true,
+              "flexible": true,
+              "influence": [
+
+              ],
+              "order": 5,
+              "validations": [],
+              "info": ""
+            },
+            {
+              "label": "Коментар",
+              "name": "budgetingInstitutionComment",
+              "type": "input",
+              "inputType": "textArea",
+              "width":500,
+              "rendered": true,
+              "order": 6
+            },
+            {
+              "label": "Върни за корекция",
+              "name": "budgetingInstitutionCorrectionButton",
+              "procName": "so.submissionDataCreateUpdate",
+              "procParams": {"submissionStatusID":8},
+              "type": "button",
+              "rendered": "if(sysroleid==3 || sysroleid==4 || sysroleid==16) {field.rendered=true} else {field.rendered=false}",
+              "requiredFields":["budgetingInstitutionComment"],
+              "order": 7
+            },
+            {
+              "label": "Подпиши:Съгласуване с бележки",
+              "name": "budgetingInstitutionCommentSignButton",
+              "procName": "so.submissionDataCreateUpdate",
+              "procParams": {"submissionStatusID":7},
+              "type": "button",
+              "rendered": "if(sysroleid==3 || sysroleid==4 || sysroleid==16) {field.rendered=true} else {field.rendered=false}",
+              "canSign": true,
+              "requiredFields":["budgetingInstitutionComment"],
+              "order": 8
+            },
+            {
+              "label": "Подпиши:Съгласуване",
+              "name": "budgetingInstitutionSignButton",
+              "procName": "so.submissionDataCreateUpdate",
+              "procParams": {"submissionStatusID":6},
+              "type": "button",
+              "rendered": "if(sysroleid==3 || sysroleid==4 || sysroleid==16) {field.rendered=true} else {field.rendered=false}",
+              "canSign": true,
+              "order": 9
+            }
+          ]
+        },
+        {
+          "order": 5,
+          "name": "directorConfirmationSignData",
+          "label": "Утвърждаване на данни от директор",
+          "rendered": "if(operationType==1) {subsection.rendered=false} else {subsection.rendered=true}",
+          "canDuplicate":false,
+          "fields": [
+            {
+              "defaultValue": "Очаква утвърждаване от директор",
+              "name": "directorConfirmationInfo",
+              "type": "info",
+              "rendered": true,
+              "order": 1
+            },
+            {
+              "label": "Идентификатор на подписващ",
+              "name": "directorConfirmationSysUserID",
+              "type": "input",
+              "inputType": "number",
+              "rendered": false,
+              "disabled": true,
+              "influence": [
+
+              ],
+              "order": 2,
+              "validations": [],
+              "info": ""
+            },
+            {
+              "label": "Тип на подписващия",
+              "name": "directorConfirmationSignDataType",
+              "optionsPath": "/data/get/signerType",
+              "type": "select",
+              "rendered": false,
+              "disabled": true,
+              "defaultValue": 4,
+              "influence": [
+
+              ],
+              "order": 3,
+              "validations": [],
+              "info": ""
+            },
+            {
+              "label": "Подписано от",
+              "name": "directorConfirmationSignerName",
+              "type": "input",
+              "inputType": "text",
+              "rendered": true,
+              "disabled": true,
+              "flexible": true,
+              "width":300,
+              "influence": [
+
+              ],
+              "order": 4,
+              "validations": [],
+              "info": ""
+            },
+            {
+              "label": "Дата",
+              "name": "directorConfirmationSignDate",
+              "type": "date",
+              "rendered": true,
+              "disabled": true,
+              "flexible": true,
+              "influence": [
+
+              ],
+              "order": 5,
+              "validations": [],
+              "info": ""
+            },
+            {
+              "label": "Подпиши",
+              "name": "directorConfirmationSignButton",
+              "procName": "so.submissionDataCreateUpdate",
+              "procParams": {"submissionStatusID":9},
+              "type": "button",
+              "rendered": "if(sysroleid==0) {field.rendered=true} else {field.rendered=false}",
+              "canSign": true,
+              "order": 6
+            },
+            {
+              "label": "Върни за корекция",
+              "name": "directorReturnAfterFinalButton",
+              "procName": "so.submissionDataCreateUpdate",
+              "procParams": {"submissionStatusID":13},
+              "type": "button",
+              "rendered": "if(sysroleid==0) {field.rendered=true} else {field.rendered=false}",
+              "order": 7
+            }
+          ]
+        },
+        {
+          "order": 6,
+          "name": "directorConfirmationAfterBISignData",
+          "label": "Утвърждаване на данни от директор",
+          "rendered": "if(operationType==1) {subsection.rendered=false} else {subsection.rendered=true}",
+          "canDuplicate":false,
+          "fields": [
+            {
+              "defaultValue": "Очаква утвърждаване от директор",
+              "name": "directorConfirmationAfterBIInfo",
+              "type": "info",
+              "rendered": true,
+              "order": 1
+            },
+            {
+              "label": "Идентификатор на подписващ",
+              "name": "directorConfirmationAfterBISysUserID",
+              "type": "input",
+              "inputType": "number",
+              "rendered": false,
+              "disabled": true,
+              "influence": [
+
+              ],
+              "order": 2,
+              "validations": [],
+              "info": ""
+            },
+            {
+              "label": "Тип на подписващия",
+              "name": "directorConfirmationAfterBISignDataType",
+              "optionsPath": "/data/get/signerType",
+              "type": "select",
+              "rendered": false,
+              "disabled": true,
+              "defaultValue": 5,
+              "influence": [
+
+              ],
+              "order": 3,
+              "validations": [],
+              "info": ""
+            },
+            {
+              "label": "Подписано от",
+              "name": "directorConfirmationAfterBISignerName",
+              "type": "input",
+              "inputType": "text",
+              "rendered": true,
+              "disabled": true,
+              "flexible": true,
+              "width":300,
+              "influence": [
+
+              ],
+              "order": 4,
+              "validations": [],
+              "info": ""
+            },
+            {
+              "label": "Дата",
+              "name": "directorConfirmationAfterBISignDate",
+              "type": "date",
+              "rendered": true,
+              "disabled": true,
+              "flexible": true,
+              "order": 5,
+              "validations": [],
+              "info": ""
+            },
+            {
+              "label": "Подпиши",
+              "name": "directorConfirmationAfterBISignButton",
+              "procName": "so.submissionDataCreateUpdate",
+              "procParams": {"submissionStatusID":9},
+              "type": "button",
+              "rendered": "if(sysroleid==0) {field.rendered=true} else {field.rendered=false}",
+              "canSign": true,
+              "order": 6
+            },
+            {
+              "label": "Върни за корекция",
+              "name": "directorAfterBIReturnAfterFinalButton",
+              "procName": "so.submissionDataCreateUpdate",
+              "procParams": {"submissionStatusID":13},
+              "type": "button",
+              "rendered": "if(sysroleid==0) {field.rendered=true} else {field.rendered=false}",
+              "order": 7
+            }
+          ]
+        },
+        {
+          "order": 7,
+          "name": "generateCertificateData",
+          "label": "Генериране на удостоверение",
+          "rendered": "if(operationType==1) {subsection.rendered=false} else {subsection.rendered=true}",
+          "canDuplicate":false,
+          "fields": [
+            {
+              "name": "generateCertificateButton",
+              "procName": "so.submissionDataCreateUpdate",
+              "procParams": {"submissionStatusID":12},
+              "type": "button",
+              "rendered": true,
+              "generateCertificate": true,
+              "order": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-lg second-nav">
+  <div class="navbar-content">
+    <div class="navbar-mobile">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#secondNav"
+        aria-controls="secondNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span>
+          <i class="bi bi-list"></i>
+        </span>
+      </button>
+      <app-reporting-sidebar-toggle></app-reporting-sidebar-toggle>
+    </div>
+    <div class="collapse navbar-collapse" id="secondNav">
+      <ul class="navbar-nav nav-tabs">
+        <ng-container *ngFor="let menuList of sideMenuList">
+          <li class="nav-item" *ngFor="let listItem of menuList.items; let i = index">
+            <a
+              class="nav-link"
+              routerLink="{{ listItem.routerLink }}"
+              routerLinkActive="active"
+              data-bs-toggle="collapse"
+              data-bs-target=".navbar-collapse.show"
+            >
+              {{ listItem.label }}
+            </a>
+          </li>
+        </ng-container>
+      </ul>
+    </div>
+  </div>
+</nav>

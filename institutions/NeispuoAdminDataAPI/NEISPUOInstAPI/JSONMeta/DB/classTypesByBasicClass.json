@@ -1,0 +1,32 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[ClassType] CT JOIN [inst_nom].[ClassTypeLimit] CTL ON CT.ClassTypeID=CTL.ClassTypeID JOIN [inst_nom].[BasicClassLimit] BCL ON BCL.BasicClassID=CTL.BasicClassID /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "CT.ClassTypeID as code"
+        },
+        {
+            "column": "CT.Name as label"
+        },
+		{
+            "column": "CT.IsValid as isValid"
+        }
+    ],
+    "params": [
+      {
+      "param": "@filterValue",
+      "column": "CTL.BasicClassID",
+      "operator": "=",
+      "value": "filterValue",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+    ],
+    "order": [
+        {
+            "column": "CT.ClassTypeID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

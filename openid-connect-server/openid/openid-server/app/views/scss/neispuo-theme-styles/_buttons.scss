@@ -1,0 +1,95 @@
+.btn.icon-left {
+  &::before {
+    content: "\F64D";
+    font-family: "bootstrap-icons";
+    padding-right: 0.5rem;
+    line-height: 0;
+  }
+  &.btn-link:hover::before,
+  &.btn-link:focus::before {
+    border-bottom: 1px solid;
+    padding-bottom: 1px;
+  }
+}
+
+.btn.icon-right {
+  &::after {
+    content: "\F285";
+    font-family: "bootstrap-icons";
+    padding-left: 0.5rem;
+    line-height: 0;
+  }
+  &.btn-link:hover::after,
+  &.btn-link:focus::after {
+    border-bottom: 1px solid;
+    padding-bottom: 1px;
+  }
+}
+
+@each $color, $value in $theme-colors {
+  .btn-#{$color} {
+    @include button-variant($value, $color);
+  }
+}
+
+@each $color, $value in $theme-colors {
+  .btn-outline-#{$color} {
+    @include button-outline-variant($value);
+  }
+}
+
+@each $color, $value in $theme-colors {
+  .btn-tertitary-#{$color} {
+    @include button-tertitary-variant($value, $color);
+  }
+}
+
+//second page
+
+.btn-link {
+  font-size: 0.875rem;
+  padding: 0;
+  &:hover {
+    background-color: $blue-100;
+  }
+}
+
+//third page
+
+@each $color, $value in $theme-colors {
+  .small-outline-#{$color} {
+    @include small-outline-variant($value, $color);
+  }
+}
+
+//fourth page
+@each $color, $value in $theme-colors {
+  .btn-icon-#{$color} {
+    @include btn-icon-variant($value, $color);
+  }
+}
+
+//fifth page
+@each $color, $value in $theme-colors {
+  .btn-transparent-#{$color} {
+    @include btn-transparent-variant($value);
+  }
+}
+
+.btn-group {
+  > .btn:not(:first-child),
+  > .btn-group:not(:first-child) {
+    margin-left: 1rem;
+  }
+
+  > .btn:nth-child(n + 3),
+  > :not(.btn-check) + .btn,
+  > .btn-group:not(:first-child) > .btn {
+    @include border-start-radius(0.25rem);
+  }
+
+  > .btn:not(:last-child):not(.dropdown-toggle),
+  > .btn-group:not(:last-child) > .btn {
+    @include border-end-radius(0.25rem);
+  }
+}

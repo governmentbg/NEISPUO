@@ -1,0 +1,88 @@
+{
+  "arrayName": "openProcedures",
+  "template": "SELECT /**select**/ FROM [reginst_basic].[RIOpenProc] RIOP /**where**/ /**orderby**/",
+  "columns": [
+    {
+      "column": "RIOP.InstitutionID AS id"
+    },
+    {
+      "column": "RIOP.InstitutionID AS instid"
+    },
+    {
+      "column": "RIOP.RIprocedureID AS procID"
+    },
+    {
+      "column": "RIOP.Abbreviation AS name"
+    },
+    {
+      "column": "RIOP.ProcedureTypeID AS procedureTypeID"
+    },
+    {
+      "column": "RIOP.ProcedureDate AS procedureDate"
+    },
+    {
+      "column": "RIOP.BaseSchoolTypeID AS baseSchoolTypeID"
+    },
+    {
+      "column": "RIOP.DetailedSchoolTypeID AS detailedSchoolTypeID"
+    },
+    {
+      "column": "RIOP.StatusTypeID AS statusTypeID"
+    },
+    {
+      "column": "RIOP.InstType AS instType"
+    },
+    {
+      "column": "RIOP.InstKind AS instKind"
+    },
+    {
+      "column": "RIOP.RegionID AS region"
+    },
+    {
+      "column": "RIOP.GeneratedCertificateFile AS generatedCertificateFile"
+    },
+    {
+      "column": "RIOP.ScannedCertificateFile AS scannedCertificateFile"
+    },
+    {
+      "column": "RIOP.NavigateActiveProc AS navigateActiveProc"
+    },
+    {
+      "column": "RIOP.IsRIActive AS isActive"
+    },
+    {
+      "column": "'institution' AS formName"
+    }
+  ],
+  "params": [
+    {
+      "param": "@RegID",
+      "column": "RIOP.RegionID",
+      "operator": "=",
+      "value": "RegionID",
+      "type": "int",
+      "logical_operator": "and",
+      "optional": true,
+      "static": false,
+      "from_claim": true
+    },
+    {
+      "param": "@role",
+      "column": "RIOP.RoleID",
+      "operator": "=",
+      "value": "SysRoleID",
+      "type": "int",
+      "logical_operator": "and",
+      "optional": true,
+      "static": false,
+      "from_claim": true
+    }
+  ],
+  "order": [
+    {
+      "column": "RIOP.RIprocedureID",
+      "type": "DESC"
+    }
+  ],
+  "inSelects": []
+}

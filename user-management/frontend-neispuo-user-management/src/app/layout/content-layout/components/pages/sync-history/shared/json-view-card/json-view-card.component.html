@@ -1,0 +1,30 @@
+<div class="json-view-card">
+    <div class="json-content">
+        <ng-container *ngIf="loading; else notLoading">
+            <div class="spinner-center">
+                <i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i>
+            </div>
+        </ng-container>
+        <ng-template #notLoading>
+            <ng-container *ngIf="error; else noError">
+                <div class="d-flex flex-column justify-content-center align-items-center h-100 text-danger">
+                    <i class="pi pi-info-circle" style="font-size: 1.5rem"></i>
+                    <div>{{ error | translate }}</div>
+                </div>
+            </ng-container>
+            <ng-template #noError>
+                <ng-container *ngIf="empty; else showJson">
+                    <div
+                        class="d-flex flex-column justify-content-center align-items-center h-100 w-100 text-center text-muted"
+                    >
+                        <i class="pi pi-info-circle" style="font-size: 1.5rem"></i>
+                        <div>{{ CONSTANTS.PRIMENG_NO_DATA_FOUND | translate }}</div>
+                    </div>
+                </ng-container>
+                <ng-template #showJson>
+                    <pre><code>{{ data | json }}</code></pre>
+                </ng-template>
+            </ng-template>
+        </ng-template>
+    </div>
+</div>

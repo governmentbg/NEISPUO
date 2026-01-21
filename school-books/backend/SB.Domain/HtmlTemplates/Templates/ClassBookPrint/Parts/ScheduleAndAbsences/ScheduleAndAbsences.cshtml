@@ -1,0 +1,12 @@
+@using SB.Domain
+@using System.Linq
+@model ScheduleAndAbsencesModel
+
+<div class="page">
+  @{ await IncludeAsync("ClassBookPrint.Parts.ScheduleAndAbsences.ScheduleAndAbsencesWeeks", new ScheduleAndAbsencesWeeksModel(Model.IsDPLR, Model.Weeks)); }
+  @if (Model.IFOWeeks.Any())
+    {
+      <div class="page-break"></div>
+    }
+  @{ await IncludeAsync("ClassBookPrint.Parts.ScheduleAndAbsences.ScheduleAndAbsencesWeeks", new ScheduleAndAbsencesWeeksModel(Model.IsDPLR, Model.IFOWeeks)); }
+</div>

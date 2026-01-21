@@ -1,0 +1,25 @@
+<mat-card class="section-card" color="primary">
+  <div class="wrap-card-switch-control">
+    <div class="name-container-value">
+      <label class="l-custom-span-label" *ngIf="switchLabel">{{switchLabel}}</label>
+      <span class="value-label">{{current.label}}</span>
+    </div>
+    <div class="container-action-switch" (click)="openAutocomplete()">
+      <mat-icon mat-icon-button>swap_vertical_circle</mat-icon>
+    </div>
+  </div>
+</mat-card>
+<div class="shadow-block" *ngIf="isOpen"></div>
+<div class="container-switch-autocomplete" *ngIf="isOpen">
+  <mat-form-field class="width-100">
+    <button class="close-section" (click)="(isOpen = !isOpen)"><mat-icon>clear</mat-icon></button>
+    <input type="text" [placeholder]="switchLabel" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto" #autocompleteInput/>
+    <mat-autocomplete class="custom-mat-autocomplete"  #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="optionSelected($event)">
+      <cdk-virtual-scroll-viewport class="autocomplete-switch-viewport" [ngStyle]="{'height': height}" itemSize="38" >
+        <mat-option *cdkVirtualFor="let option of filteredOptions" [value]="option" [ngClass]="{'current-option': option.code === current.code }">
+          {{ option.label }}
+        </mat-option>
+      </cdk-virtual-scroll-viewport>
+    </mat-autocomplete>
+  </mat-form-field>
+</div>

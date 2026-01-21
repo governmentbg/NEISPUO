@@ -1,0 +1,60 @@
+    {
+      "arrayName": "reportSOB",
+      "template": "SELECT /**select**/ FROM [inst_basic].[institutionSOBreport] ISOBR /**where**/ /**orderby**/",
+      "columns": [
+	      {
+          "column": "ISOBR.SubmissionDataID AS id"
+        },
+        {
+          "column": "ISOBR.InstitutionID AS institutionID"
+        },
+		    {
+          "column": "ISOBR.InstitutionName AS institutionName"
+        },
+		    {
+          "column": "ISOBR.MunicipalityName AS municipalityName"
+        },
+		    {
+          "column": "ISOBR.RegionName AS regionName"
+        },
+		    {
+          "column": "ISOBR.TownName AS townName"
+        },
+		    {
+          "column": "ISOBR.SubmissionStatusName AS submissionStatusName"
+        },
+		    {
+          "column": "ISOBR.CreatedOn AS createdOn"
+        },
+		    {
+          "column": "ISOBR.ModifiedOn AS modifiedOn"
+        }
+      ],
+      "params": [
+         {
+          "param": "@sysuserid",
+          "column": "ISOBR.SysUserID",
+          "operator": "=",
+          "value": "sysuserid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        },
+	      {
+          "param": "@sysroleid",
+          "column": "ISOBR.SysRoleID",
+          "operator": "=",
+          "value": "sysroleid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        }
+      ],
+      "order": [
+        {
+          "column": "ISOBR.InstitutionID",
+          "type": "ASC"
+        }
+      ],
+  "inSelects": []
+    }

@@ -1,0 +1,8 @@
+<div class="container-control">
+    <div class="back-container">
+        <button class="back-button" type="button" mat-raised-button color="secondary" (click)="goBack()"><span>Назад</span></button>
+    </div>
+    <button mat-raised-button class="btn-history" color="primary" (click)="historyChanged()" [ngClass]="{'active': historyMode}">
+        <mat-icon>history</mat-icon><span>История</span>
+    </button>
+</div>

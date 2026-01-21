@@ -1,0 +1,604 @@
+{
+  "label": "Обща зона",
+  "sections": [
+    {
+      "name": "detailedSchoolTypeID",
+      "rendered": false,
+      "order": 1,
+      "influence": [
+        {
+          "type": "render",
+          "sectionName": "TableBuildingAreaTypePlay",
+          "condition": [
+            121,
+            122,
+            123,
+            124,
+            151,
+            112,
+            113
+          ]
+        },
+        {
+          "type": "render",
+          "sectionName": "TableBuildingAreaTypeSport",
+          "condition": [
+            121,
+            122,
+            123,
+            124,
+            151,
+            125,
+            126,
+            111,
+            112,
+            113,
+            114
+          ]
+        },
+        {
+          "type": "render",
+          "sectionName": "TableBuildingAreaTypeFood",
+          "condition": [
+            114,
+            113,
+            111,
+            112,
+            126,
+            125,
+            124,
+            123,
+            122,
+            121
+          ]
+        },
+        {
+          "type": "render",
+          "sectionName": "TableBuildingAreaTypeAdmKindergarden",
+          "condition": [
+            151
+          ]
+        }, 
+        {
+          "type": "render",
+          "sectionName": "TableBuildingAreaTypeAdmSchool",
+          "condition": [
+            121,
+            122,
+            123,
+            124,
+            125,
+            126,
+            111,
+            112,
+            113,
+            114
+          ]
+        }, 
+        {
+          "type": "render",
+          "sectionName": "TableBuildingAreaTypeHealth",
+          "condition": [
+            111,
+            112,
+            113,
+            114,
+            121,
+            122,
+            123,
+            124,
+            125,
+            126
+          ]
+        }, 
+        {
+          "type": "render",
+          "sectionName": "TableBuildingAreaTypeInter",
+          "condition": [
+            111,
+            112,
+            113,
+            114,
+            121,
+            122,
+            123,
+            124,
+            125,
+            126
+          ]
+        }, 
+        {
+          "type": "render",
+          "sectionName": "TableBuildingAreaTypeLibrary",
+          "condition": [
+            112,
+            113,
+            114,
+            121,
+            122,
+            123,
+            124,
+            125,
+            126
+          ]
+        },
+        {
+          "type": "render",
+          "sectionName": "TableBuildingAreaTypeSocial",
+          "condition": [
+            111,
+            112,
+            113,
+            114,
+            121,
+            122,
+            123,
+            124,
+            125,
+            126
+          ]
+        }
+      ],
+      "validations": []
+  },
+    {
+      "order": 2,
+      "label": "Зона за игра",
+      "name": "TableBuildingAreaTypePlay",
+	    "accordion": {"state":"closed"},
+      "table":
+      {
+        "name": "buildingAreaTypePlay",
+	    	"searchable": false,
+        "canDeleteRow": true,
+        "createNew": "redirect",
+        "formName":"buildingRoom",
+        "createParams":{"buildingAreaTypeID":21,"buildingTypeID":1},
+        "paramName":"buildingRoomID",
+        "procedureName": "inst_basic.buildingRoomCUD",
+        "fields": [
+          {
+            "label": "Сграда",
+            "name": "buildingName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 1
+          },
+          {
+            "label": "Наименование",
+            "name": "name",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 2
+          },
+          {
+            "label": "Вид",
+            "name": "buildingRoomTypeName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 3
+          },
+          {
+            "label": "Съответства на изискванията",
+            "name": "meetRequirementsLevelName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 4
+          }
+        ]
+      }
+    },
+    {
+      "order": 3,
+      "label": "Зона за спорт",
+      "name": "TableBuildingAreaTypeSport",
+	    "accordion": {"state":"closed"},
+      "table":
+      {
+        "name": "buildingAreaTypeSport",
+		    "searchable": false,
+        "canDeleteRow": true,
+        "createNew": "redirect",
+        "formName":"buildingRoom",
+        "createParams":{"buildingAreaTypeID":22,"buildingTypeID":1},
+        "paramName":"buildingRoomID",
+        "procedureName": "inst_basic.buildingRoomCUD",
+        "fields": [
+          {
+            "label": "Сграда",
+            "name": "buildingName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 1
+          },
+          {
+            "label": "Наименование",
+            "name": "name",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 2
+          },
+          {
+            "label": "Вид",
+            "name": "buildingRoomTypeName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 3
+          },
+          {
+            "label": "Съответства на изискванията",
+            "name": "meetRequirementsLevelName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 4
+          }
+        ]
+      }
+    },
+    {
+      "order": 4,
+      "label": "Зона за хранене",
+      "name": "TableBuildingAreaTypeFood",
+	  "accordion": {"state":"closed"},
+      "table":
+      {
+        "name": "buildingAreaTypeFood",
+		"searchable": false,
+        "canDeleteRow": true,
+        "createNew": "redirect",
+        "formName":"buildingRoom",
+        "createParams":{"buildingAreaTypeID":23,"buildingTypeID":1},
+        "paramName":"buildingRoomID",
+        "procedureName": "inst_basic.buildingRoomCUD",
+        "fields": [
+          {
+            "label": "Сграда",
+            "name": "buildingName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 1
+          },
+          {
+            "label": "Наименование",
+            "name": "name",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 2
+          },
+          {
+            "label": "Вид",
+            "name": "buildingRoomTypeName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 3
+          },
+          {
+            "label": "Съответства на изискванията",
+            "name": "meetRequirementsLevelName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 4
+          }
+        ]
+      }
+    },
+    {
+      "order": 5,
+      "label": "Сектор за административно и техническо обслужване",
+      "name": "TableBuildingAreaTypeAdmKindergarden",
+	  "accordion": {"state":"closed"},
+      "table":
+      {
+        "name": "buildingAreaAdmKindergarden",
+		"searchable": false,
+        "canDeleteRow": true,
+        "createNew": "redirect",
+        "formName":"buildingRoom",
+        "createParams":{"buildingAreaTypeID":24,"buildingTypeID":1},
+        "paramName":"buildingRoomID",
+        "procedureName": "inst_basic.buildingRoomCUD",
+        "fields": [
+          {
+            "label": "Сграда",
+            "name": "buildingName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 1
+          },
+          {
+            "label": "Наименование",
+            "name": "name",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 2
+          },
+          {
+            "label": "Вид",
+            "name": "buildingRoomTypeName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 3
+          },
+          {
+            "label": "Съответства на изискванията",
+            "name": "meetRequirementsLevelName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 4
+          }
+        ]
+      }
+    },
+    {
+      "order": 6,
+      "label": "Сектор за администрацията, за преподавателския състав и за обслужване и поддръжка на сградата",
+      "name": "TableBuildingAreaTypeAdmSchool",
+	  "accordion": {"state":"closed"},
+      "table":
+      {
+        "name": "buildingAreaAdmSchool",
+		"searchable": false,
+        "canDeleteRow": true,
+        "createNew": "redirect",
+        "formName":"buildingRoom",
+        "createParams":{"buildingAreaTypeID":25,"buildingTypeID":1},
+        "paramName":"buildingRoomID",
+        "procedureName": "inst_basic.buildingRoomCUD",
+        "fields": [
+          {
+            "label": "Сграда",
+            "name": "buildingName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 1
+          },
+          {
+            "label": "Наименование",
+            "name": "name",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 2
+          },
+          {
+            "label": "Вид",
+            "name": "buildingRoomTypeName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 3
+          },
+          {
+            "label": "Съответства на изискванията",
+            "name": "meetRequirementsLevelName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 4
+          }
+        ]
+      }
+    },
+    {
+      "order": 7,
+      "label": "Сектор за здравно обслужване",
+      "name": "TableBuildingAreaTypeHealth",
+	  "accordion": {"state":"closed"},
+      "table":
+      {
+        "name": "buildingAreaHealth",
+		"searchable": false,
+        "canDeleteRow": true,
+        "createNew": "redirect",
+        "formName":"buildingRoom",
+        "createParams":{"buildingAreaTypeID":26,"buildingTypeID":1},
+        "paramName":"buildingRoomID",
+        "procedureName": "inst_basic.buildingRoomCUD",
+        "fields": [
+          {
+            "label": "Сграда",
+            "name": "buildingName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 1
+          },
+          {
+            "label": "Наименование",
+            "name": "name",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 2
+          },
+          {
+            "label": "Вид",
+            "name": "buildingRoomTypeName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 3
+          },
+          {
+            "label": "Съответства на изискванията",
+            "name": "meetRequirementsLevelName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 4
+          }
+        ]
+      }
+    },
+    {
+      "order": 8,
+      "label": "Сектор за занимания по интереси",
+      "name": "TableBuildingAreaTypeInter",
+	  "accordion": {"state":"closed"},
+      "table":
+      {
+        "name": "buildingAreaInter",
+		"searchable": false,
+        "canDeleteRow": true,
+        "createNew": "redirect",
+        "formName":"buildingRoom",
+        "createParams":{"buildingAreaTypeID":27,"buildingTypeID":1},
+        "paramName":"buildingRoomID",
+        "procedureName": "inst_basic.buildingRoomCUD",
+        "fields": [
+          {
+            "label": "Сграда",
+            "name": "buildingName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 1
+          },
+          {
+            "label": "Наименование",
+            "name": "name",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 2
+          },
+          {
+            "label": "Вид",
+            "name": "buildingRoomTypeName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 3
+          },
+          {
+            "label": "Съответства на изискванията",
+            "name": "meetRequirementsLevelName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 4
+          }
+        ]
+      }
+    },
+    {
+      "order": 9,
+      "label": "Център за библиотечно-информационно обслужване",
+      "name": "TableBuildingAreaTypeLibrary",
+	    "accordion": {"state":"closed"},
+      "table":
+      {
+        "name": "buildingAreaLibrary",
+		    "searchable": false,
+        "canDeleteRow": true,
+        "createNew": "redirect",
+        "formName":"buildingRoom",
+        "createParams":{"buildingAreaTypeID":28,"buildingTypeID":1},
+        "paramName":"buildingRoomID",
+        "procedureName": "inst_basic.buildingRoomCUD",
+        "fields": [
+          {
+            "label": "Сграда",
+            "name": "buildingName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 1
+          },
+          {
+            "label": "Наименование",
+            "name": "name",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 2
+          },
+          {
+            "label": "Вид",
+            "name": "buildingRoomTypeName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 3
+          },
+          {
+            "label": "Съответства на изискванията",
+            "name": "meetRequirementsLevelName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 4
+          }
+        ]
+      }
+    },
+    {
+      "order": 10,
+      "label": "Зона за отдих и за социални контакти",
+      "name": "TableBuildingAreaTypeSocial",
+	  "accordion": {"state":"closed"},
+      "table":
+      {
+        "name": "buildingAreaSocial",
+		"searchable": false,
+        "canDeleteRow": true,
+        "createNew": "redirect",
+        "formName":"buildingRoom",
+        "createParams":{"buildingAreaTypeID":29,"buildingTypeID":1},
+        "paramName":"buildingRoomID",
+        "procedureName": "inst_basic.buildingRoomCUD",
+        "fields": [
+          {
+            "label": "Сграда",
+            "name": "buildingName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 1
+          },
+          {
+            "label": "Наименование",
+            "name": "name",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 2
+          },
+          {
+            "label": "Вид",
+            "name": "buildingRoomTypeName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 3
+          },
+          {
+            "label": "Съответства на изискванията",
+            "name": "meetRequirementsLevelName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 4
+          }
+        ]
+      }
+    }
+  ]
+}

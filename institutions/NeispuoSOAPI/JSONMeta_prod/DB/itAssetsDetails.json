@@ -1,0 +1,99 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_basic].[ITAssets] ITA JOIN [inst_basic].[Building] B ON ITA.BuildingID=B.BuildingID /**where**/ /**orderby**/",
+  "columns": [
+      {
+        "column": "ITA.ITAssetsID AS itAssetsID"
+      },
+      {
+        "column": "ITA.InstitutionID AS instid"
+      },
+      {
+        "column": "ITA.BuildingAreaTypeID AS buildingAreaTypeID"
+      },  
+      {
+        "column": "ITA.BuildingID AS buildingID"
+      },	 
+      {
+        "column": "ITA.BuildingTypeID AS buildingTypeID"
+      },	  
+      {
+        "column": "ITA.BuildingRoomTypeID AS buildingRoomTypeID"
+      },  
+      {
+        "column": "ITA.BuildingRoomID AS buildingRoomID"
+      },          
+      {
+        "column": "ITA.ITAssetCategoryID AS itAssetCategoryID"
+      },
+      {
+        "column": "ITA.TypeITassetID AS typeITassetID"
+      },
+      {
+        "column": "ITA.AccountingAccountID AS accountingAccountID"
+      },
+      {
+        "column": "ITA.ITAssetDescription AS itAssetDescription"
+      },
+      {
+        "column": "ITA.InstitutionInventoryNumber AS institutionInventoryNumber"
+      },
+      {
+        "column": "ITA.ManufacturerModel AS manufacturerModel"
+      },
+      {
+        "column": "ITA.ProductNumber AS productNumber"
+      },
+      {
+        "column": "ITA.SerialNumber AS serialNumber"
+      },
+      {
+        "column": "ITA.AcquisitionDate AS acquisitionDate"
+      },
+      {
+        "column": "ITA.IsCommissioned AS isCommissioned "
+      },
+      {
+        "column": "ITA.Amortization AS amortization"
+      },
+      {
+        "column": "ITA.WarrantyExpirationDate AS warrantyExpirationDate"
+      },
+      {
+        "column": "ITA.AcquisitionCost AS acquisitionCost"
+      },
+      {
+        "column": "ITA.AcquisitionMethodID AS acquisitionMethodID"
+      },
+      {
+        "column": "ITA.ProjectProgramID AS projectProgramID"
+      },
+      {
+        "column": "ITA.IsDecommissioned AS isDecommissioned"
+      },
+      {
+        "column": "ITA.ReasonDecommissioningID AS reasonDecommissioningID"
+      },
+      {
+        "column": "Null AS ITAssetsFile"
+      }
+
+  ],
+  "params": [
+	  {
+      "param": "@itAssetsID",
+      "column": "ITA.ITAssetsID",
+      "operator": "=",
+      "value": "itAssetsID",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "ITA.ITAssetsID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": []
+}

@@ -1,0 +1,64 @@
+.send-modal-wrapper {
+  .defaults-list {
+    margin-left: 1.5rem;
+    li {
+      list-style: disc;
+    }
+  }
+
+  .date-inputs {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0;
+
+    .field {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+  }
+
+  .sending-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+  }
+}
+
+.calendar-above {
+  transform: translateY(-100%) !important;
+}
+
+.response-box {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  font-size: 0.95rem;
+
+  &.success {
+    background-color: #d1e7dd;
+    color: #0f5132;
+  }
+
+  &.error {
+    background-color: #f8d7da;
+    color: #842029;
+  }
+
+  .skipped-tag {
+    font-style: italic;
+  }
+
+  i {
+    font-size: 1.2rem;
+  }
+} 

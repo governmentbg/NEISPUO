@@ -1,0 +1,140 @@
+{
+    "label": "Данни за предмет",
+    "procedureName": "inst_basic.subjectInstitution",
+    "dataName": "if(isInstitution==0 ) {form.dataName='subejctInstitutionData'} else if(isInstitution==99) {form.dataName=null} else if(isInstitution==1) {form.dataName='subejctInstitutionDataList'}",
+    "sections": [
+        {
+            "label": "Данни за предмет",
+            "order": 1,
+            "subsections": [
+                {
+                    "order": 1,
+                    "name": "subejctInstitutionData",
+                    "fields": [
+                        {
+                            "label": "Учебен предмет",
+                            "name": "subjectName",
+                            "type": "input",
+                            "inputType": "text",
+                            "order": 1,
+                            "width": 800,
+                            "disabled": true,
+                            "defaultValue": "if(operationType==1) {field.defaultValue='subjectName'} else {field.defaultValue=null}",
+                            "validations": [
+                                {
+                                    "name": "maxLength",
+                                    "validation": 255,
+                                    "message": "Максимална дължина 255 символа"
+                                },
+                                {
+                                    "name": "required",
+                                    "validator": "",
+                                    "message": "Полето е задължително"
+                                },
+                                {
+                                    "name": "pattern",
+                                    "validation": "^[ а-яА-Я,.:;()/\"'\\-]*$",
+                                    "message": "Моля, въведете текст на кирилица"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "breakpoint",
+                            "type": "breakpoint",
+                            "order": 3
+                        },
+                        {
+                            "label": "Предметна група",
+                            "name": "subjectGroupID",
+                            "type": "searchselect",
+                            "optionsPath": "/data/get/subjectGroups",
+                            "order": 4,
+                            "width": 400,
+                            "disabled": false,
+                            "validations": [
+                                {
+                                    "name": "maxLength",
+                                    "validation": 255,
+                                    "message": "Максимална дължина 255 символа"
+                                },
+                                {
+                                    "name": "required",
+                                    "validator": "",
+                                    "message": "Полето е задължително"
+                                }
+                            ]
+                        },
+                        {
+                            "label": "Отнася се към базов предмет",
+                            "name": "mainSubjectID",
+                            "type": "searchselect",
+                            "optionsPath": "/data/get/mainSubjects",
+                            "width": 400,
+                            "order": 5,
+                            "validations": [
+                                {
+                                    "name": "required",
+                                    "validator": "",
+                                    "message": "Полето е задължително"
+                                }
+                            ]
+                        },
+                        {
+                            "label": "Число за сортиране",
+                            "name": "sortNumber",
+                            "type": "input",
+                            "inputType": "number",
+                            "order": 6,
+                            "width": 150,
+                            "disabled": false,
+                            "defaultValue": 999,
+                            "validations": [
+                                {
+                                    "name": "pattern",
+                                    "validation": "^\\d+$",
+                                    "message": "Цяло положително число"
+                                },
+                                {
+                                    "name": "required",
+                                    "validator": "",
+                                    "message": "Полето е задължително"
+                                }
+                            ]
+                        },
+                        {
+                            "label": "Активирай",
+                            "name": "isActive",
+                            "type": "checkbox",
+                            "defaultValue": false,
+							"rendered": "if(isValid==0 && isInstitution==1) {field.rendered=true} else {field.rendered=false}",
+                            "width": 50,
+                            "order": 8,
+                            "influence": [
+                            ]
+                        },
+                        {
+                            "label": "customID",
+                            "name": "customVarValueID",
+                            "type": "input",
+                            "rendered": false,
+                            "inputType": "number",
+                            "width": 50,
+                            "order": 9
+                        },
+                        {
+                            "label": "Учебен предмет",
+                            "name": "subjectID",
+                            "rendered": false,
+                            "type": "input",
+                            "inputType": "number",
+                            "width": 100,
+                            "order": 12,
+                            "influence": [
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

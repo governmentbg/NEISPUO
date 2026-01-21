@@ -1,0 +1,42 @@
+{
+  "paramName": "instid",
+  "sections": [
+    {
+      "order": 1,
+      "label": "Обобщена информация за лекторските часове",
+	  "name": "TableReportCurriculumLect",
+      "table": {
+	    "order": 1,
+        "name": "reportCurriculumLect",
+		"hasEditButton": false,
+		"sortable": false,
+		"searchable": false,
+        "fields": [
+          {
+            "label": "Лекторски часове за годината",
+            "name": "lectALL",
+            "type": "input",
+            "inputType": "number",
+            "order": 1
+          },
+		  {
+            "label": "От тях: на щатни преподаватели",
+            "name": "lectShtat",
+            "type": "input",
+            "inputType": "number",
+            "order": 2
+          },
+		  {
+            "label": "От тях: на външни лектори и не възложени часове",
+            "name": "lectNonShtat",
+            "type": "input",
+            "inputType": "number",
+            "order": 3
+          }
+        ]
+      }
+    }
+  ]
+}
+
+

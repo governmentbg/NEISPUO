@@ -1,0 +1,32 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[EduForm] EF JOIN [inst_nom].[EduFormLimit] EFL ON EF.ClassEduFormID=EFL.EduFormID /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "EF.ClassEduFormID as code"
+        },
+        {
+            "column": "EF.Name as label"
+        },
+		 {
+            "column": "EF.IsValid as isValid"
+        }
+    ],
+        "params": [
+		{
+            "param": "@instType",
+            "column": "EFL.InstType",
+            "operator": "=",
+            "value": "instType",
+            "type": "int",
+            "logical_operator": "and",
+            "static": false
+        }
+    ],
+    "order": [
+        {
+            "column": "EF.SortOrd",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

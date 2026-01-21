@@ -1,0 +1,54 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <noWarn>1573;1591</noWarn>
+    <RestoreAdditionalProjectSources>
+      $(MSBuildThisFileDirectory)/../packages/
+    </RestoreAdditionalProjectSources>
+    <AnalysisMode>Recommended</AnalysisMode>
+    <AnalysisLevel>latest</AnalysisLevel>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="Markdig" Version="0.30.3" />
+    <PackageReference Include="MediatR" Version="12.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Certificate" Version="7.0.13" />
+    <PackageReference Include="NSwag.AspNetCore" Version="13.19.0" />
+    <PackageReference Include="prometheus-net.AspNetCore" Version="8.0.0" />
+    <PackageReference Include="prometheus-net.AspNetCore.HealthChecks" Version="8.0.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="7.0.0" />
+    <PackageReference Include="ZymLabs.NSwag.FluentValidation" Version="0.6.2" />
+    <PackageReference Include="ZymLabs.NSwag.FluentValidation.AspNetCore" Version="0.6.2" />
+    <PackageReference Include="Microsoft.Extensions.Localization" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SB.Common\SB.Common.csproj" />
+    <ProjectReference Include="..\SB.Domain\SB.Domain.csproj" />
+    <ProjectReference Include="..\SB.Data\SB.Data.csproj" />
+    <ProjectReference Include="..\SB.ApiAbstractions\SB.ApiAbstractions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Documentation\ReleaseNotes\RELEASE_NOTES_BG.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\ReleaseNotes\RELEASE_NOTES_EN.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\BusinessProcesses\BUSINESS_PROCESSES_BG.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Documentation\BusinessProcesses\BUSINESS_PROCESSES_EN.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

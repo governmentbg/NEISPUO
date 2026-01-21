@@ -1,0 +1,68 @@
+<form [formGroup]="form" [class.ng-submitted]="submitted" autocomplete="off" novalidate>
+  <div class="sm:flex flex-row">
+    <div class="flex-1">
+      <mat-checkbox
+        class="pb-3"
+        color="primary"
+        formControlName="isMultiday"
+        (change)="onIsMultidayChanged()"
+        (blur)="(onTouched)"
+      >
+        Различни режими
+      </mat-checkbox>
+    </div>
+  </div>
+
+  <sb-banner type="warning" class="mb-2" *ngIf="!form.disabled && usedHours.length > 0">
+    {{ usedHoursMessage }}
+  </sb-banner>
+
+  <sb-banner type="error" class="mb-2 hours-error" *ngIf="submitted && hasRequiredErrorsDays.length > 0">
+    <span *ngIf="form.value.isMultiday">
+      Имате непопълнени часове {{ postponeValidationErrors ? '' : hasRequiredErrorsDaysNames }}! Всички часове трябва да
+      се попълнят. Ако искате по-малко часове изтрийте нежеланите.
+    </span>
+    <span *ngIf="!form.value.isMultiday">
+      Имате непопълнени часове! Всички часове трябва да се попълнят. Ако искате по-малко часове изтрийте нежеланите.
+    </span>
+  </sb-banner>
+  <sb-banner type="error" class="mb-2 hours-error" *ngIf="submitted && hasPatternErrorsDays.length > 0">
+    <span *ngIf="form.value.isMultiday">
+      Имате начало/край, които не отговарят на формата ЧЧ:ММ (напр. 15:30)
+      {{ postponeValidationErrors ? '' : hasPatternErrorsDaysNames }}. Оцветени са в червено.
+    </span>
+    <span *ngIf="!form.value.isMultiday">
+      Имате начало/край, които не отговарят на формата ЧЧ:ММ (напр. 15:30). Оцветени са в червено.
+    </span>
+  </sb-banner>
+  <sb-banner type="error" class="mb-2 hours-error" *ngIf="submitted && hasNegativeHourErrorsDays.length > 0">
+    <span *ngIf="form.value.isMultiday">
+      Имате номера на часове по-малки от 0
+      {{ postponeValidationErrors ? '' : hasNegativeHourErrorsDaysNames }}. Оцветени са в червено.
+    </span>
+    <span *ngIf="!form.value.isMultiday">Имате номера на часове по-малки от 0. Оцветени са в червено.</span>
+  </sb-banner>
+  <sb-banner type="error" class="mb-2 hours-error" *ngIf="submitted && hasDuplicatedHourNumberErrorsDays.length > 0">
+    <span *ngIf="form.value.isMultiday">
+      Имате часове с повтарящите се номера
+      {{ postponeValidationErrors ? '' : hasDuplicatedHourNumberErrorsDaysNames }}.
+    </span>
+    <span *ngIf="!form.value.isMultiday">Имате часове с повтарящите се номера.</span>
+  </sb-banner>
+
+  <div
+    *ngFor="let dayControl of days.controls; index as i; trackBy: trackByIndex"
+    [formGroup]="dayControl"
+    class="pb-3"
+  >
+    <sb-card-section>{{ form.value.isMultiday ? dayNames[i + 1] : 'Часове' }}</sb-card-section>
+
+    <sb-banner type="info" class="mb-2" *ngIf="!dayHasHours(i + 1)">Няма въведени часове</sb-banner>
+
+    <sb-shift-hours-form
+      formControlName="hours"
+      [allowZeroHours]="!!form.value.isMultiday && shiftHasMoreThanOneHour"
+      [usedHours]="getUsedHours(i + 1)"
+    ></sb-shift-hours-form>
+  </div>
+</form>

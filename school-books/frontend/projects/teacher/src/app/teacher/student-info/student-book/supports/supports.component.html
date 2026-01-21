@@ -1,0 +1,29 @@
+<sb-tab-card [hideHeader]="true">
+  <ng-container card-body>
+    <sb-table [dataSource]="dataSource" [displayedColumns]="['action', 'difficulties', 'activities', 'endDate']">
+      <ng-container cdkColumnDef="action">
+        <th cdk-header-cell *cdkHeaderCellDef></th>
+        <td cdk-cell *cdkCellDef="let row" class="sb-table-action">
+          <a [routerLink]="['./', row.supportId]" aria-label="Детайли" class="sb-link-btn">
+            <fa-icon [icon]="fadChevronCircleRight"></fa-icon>
+          </a>
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="difficulties">
+        <th cdk-header-cell *cdkHeaderCellDef>Затруднение</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.difficulties }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="activities">
+        <th cdk-header-cell *cdkHeaderCellDef>Помощни дейности</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.activities }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="endDate">
+        <th cdk-header-cell *cdkHeaderCellDef>Крайна дата</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.endDate | sbDate }}</td>
+      </ng-container>
+    </sb-table>
+  </ng-container>
+</sb-tab-card>

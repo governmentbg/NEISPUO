@@ -1,0 +1,60 @@
+@import '@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/variables/variables';
+
+.content-header {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid $gray-300;
+  .report-title {
+    font-weight: $font-weight-bold;
+    color: $gray-700;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  button {
+    &:not(.dropdown-item) {
+      margin-left: 1rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.25rem;
+      height: 2.25rem;
+    }
+    &.report-action-toggle {
+      &::after {
+        content: '\F4CA';
+        font-family: 'bootstrap-icons';
+        border: none;
+      }
+      &.show {
+        background: $white;
+        color: $gray-600;
+      }
+    }
+  }
+
+  .dropdown-item {
+    padding: 0.75rem 1rem;
+    color: $gray-700;
+    i {
+      font-size: 1.125rem;
+      margin-right: 0.5rem;
+    }
+    &:hover,
+    &:focus,
+    &:active {
+      background: $gray-100;
+      color: $gray-900;
+    }
+    &.delete {
+      color: $red;
+      &:hover,
+      &:focus,
+      &:active {
+        background-color: $red-100;
+      }
+    }
+  }
+}

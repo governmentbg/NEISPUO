@@ -1,0 +1,27 @@
+@import "~@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/variables/variables";
+@import "~@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/mixins";
+
+.auth-header {
+  height: 130px;
+  &-content {
+    height: inherit;
+    align-items: center;
+    a {
+      background-size: 0;
+    }
+    .mon-logo {
+      max-height: 4.875rem;
+    }
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .auth-header {
+    height: 100px;
+    &-content {
+      .mon-logo {
+        max-height: 3.25rem;
+      }
+    }
+  }
+}

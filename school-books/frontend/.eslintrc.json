@@ -1,0 +1,53 @@
+{
+  "root": true,
+  "parserOptions": {
+    "ecmaVersion": 6
+  },
+  "ignorePatterns": ["projects/**/*", "tailwind.config.js"],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parserOptions": {
+        "createDefaultProgram": true
+      },
+      "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "prettier/prettier"
+      ],
+      "rules": {
+        "quotes": ["error", "single", { "avoidEscape": true }],
+        "eqeqeq": ["error", "always", { "null": "never" }],
+        "@typescript-eslint/no-unused-vars": ["error", { "args": "none" }],
+        "@typescript-eslint/no-non-null-assertion": ["off"],
+        "@typescript-eslint/no-explicit-any": ["off"],
+        "@typescript-eslint/ban-ts-comment": ["error", { "ts-ignore": "allow-with-description" }],
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": "sb",
+            "style": "kebab-case"
+          }
+        ],
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": "sb",
+            "style": "camelCase"
+          }
+        ]
+      }
+    },
+    {
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "rules": {
+        "@angular-eslint/template/eqeqeq": ["error", { "allowNullOrUndefined": true }]
+      }
+    }
+  ]
+}

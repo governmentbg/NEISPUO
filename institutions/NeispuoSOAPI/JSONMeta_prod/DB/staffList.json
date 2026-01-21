@@ -1,0 +1,79 @@
+{
+  "arrayName": "staff",
+  "template": "SELECT /**select**/ FROM [inst_year].[StaffList] SA  /**where**/ /**orderby**/",
+  "sotemplate": "SELECT /**select**/ FROM [sob].[StaffList] SA  /**where**/ /**orderby**/",
+  "columns": [
+    {
+      "column": "SA.RowID AS id"
+    },
+    {
+      "column": "SA.StaffOrdNo AS staffOrdNo"
+    },
+    {
+      "column": "SA.FullName AS staffFullName"
+    },
+    {
+      "column": "SA.CategoryStaffType AS categoryStaffType"
+    },
+    {
+      "column": "SA.NKPDPosition AS nkpdPosition"
+    },
+    {
+      "column": "SA.ContractType AS contractType"
+    },
+    {
+      "column": "SA.CurrentlyValid AS currentlyValid"
+    },
+    {
+      "column": "SA.PositionSubjectGroup AS positionSubjectGroup"
+    },
+    {
+      "column": "'person' AS formName"
+    },
+    {
+      "column": "SA.PersonID AS formDataId"
+    }
+  ],
+  "params": [
+    {
+      "param": "@instid",
+      "column": "SA.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+    {
+      "param": "@year",
+      "column": "SA.SchoolYear",
+      "operator": "=",
+      "value": "year",
+      "type": "int",
+      "logical_operator": "and",
+      "optional": true,
+      "static": false
+    },
+    {
+      "param": "@period",
+      "column": "SA.Period",
+      "operator": "=",
+      "value": "period",
+      "type": "int",
+      "logical_operator": "and",
+      "optional": true,
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "SA.StaffOrd",
+      "type": "ASC"
+    },
+    {
+      "column": "SA.StaffPositionNo",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": []
+}

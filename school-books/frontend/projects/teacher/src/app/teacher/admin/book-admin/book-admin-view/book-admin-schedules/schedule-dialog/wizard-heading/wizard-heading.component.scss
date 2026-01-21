@@ -1,0 +1,87 @@
+@use 'sass:math';
+
+// wizzard
+$wizard-step-size: 64px !default;
+
+.wizard {
+  display: flex;
+  padding: 0;
+
+  li {
+    display: inline-block;
+    position: relative;
+    flex: 1;
+    text-align: center;
+
+    &:after {
+      content: '';
+      background-color: theme('colors.primary');
+      display: block;
+      height: 1px;
+      position: absolute;
+      width: 100%;
+      top: math.div($wizard-step-size, 2);
+      left: 50%;
+    }
+
+    &:last-child {
+      &:after {
+        display: none;
+      }
+    }
+
+    &.active {
+      .step {
+        border-color: theme('colors.primary');
+        color: theme('colors.primary');
+        font-weight: bold;
+      }
+
+      .caption {
+        color: theme('colors.primary');
+        font-weight: bold;
+      }
+    }
+
+    &.complete {
+      &:after {
+        background-color: theme('colors.primary');
+      }
+
+      .step {
+        border-color: theme('colors.primary');
+        background-color: theme('colors.primary');
+        color: white;
+      }
+
+      .caption {
+        color: theme('colors.primary');
+      }
+    }
+  }
+
+  .step {
+    background-color: white;
+    border-radius: 50%;
+    border: 1px solid theme('colors.primary');
+    color: theme('colors.primary');
+    font-size: 24px;
+    width: $wizard-step-size;
+    height: $wizard-step-size;
+    line-height: $wizard-step-size;
+    margin: auto;
+    position: relative;
+    z-index: 1;
+    font-weight: 300;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .caption {
+    color: theme('colors.primary');
+    padding: 11px 16px;
+    font-weight: 300;
+  }
+}

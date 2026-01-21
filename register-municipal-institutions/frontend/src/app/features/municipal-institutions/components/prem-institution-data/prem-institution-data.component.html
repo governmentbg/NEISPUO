@@ -1,0 +1,25 @@
+<ng-container *ngIf="form" [formGroup]="form">
+  <div class="fluid formgrid grid row-gap-4">
+    <div class="field form-wrapper col-12">
+      <label for="PremStudents" class="form-wrapper-label">Ученици</label>
+      <textarea pInputTextarea formControlName="PremStudents"></textarea>
+      <ng-container *ngIf="form.get('PremStudents').invalid && form.get('PremStudents').dirty">
+        <small class="invalid-feedback">Задължително поле</small>
+      </ng-container>
+    </div>
+    <div class="field form-wrapper col-12">
+      <label for="PremDocs" class="form-wrapper-label">Документация</label>
+      <textarea pInputTextarea formControlName="PremDocs"></textarea>
+      <ng-container *ngIf="form.get('PremDocs').invalid && form.get('PremDocs').dirty">
+        <small class="invalid-feedback">Задължително поле</small>
+      </ng-container>
+    </div>
+    <div class="field form-wrapper col-12">
+      <label for="PremInventory" class="form-wrapper-label">Имущество</label>
+      <textarea pInputTextarea formControlName="PremInventory"></textarea>
+      <ng-container *ngIf="form.get('PremInventory').invalid && form.get('PremInventory').dirty">
+        <small class="invalid-feedback">Задължително поле</small>
+      </ng-container>
+    </div>
+  </div>
+</ng-container>

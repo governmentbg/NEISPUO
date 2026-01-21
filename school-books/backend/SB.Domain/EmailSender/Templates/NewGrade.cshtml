@@ -1,0 +1,22 @@
+@{
+    var gradeText = (string)Model["gradeText"]!;
+    var curriculumName = (string)Model["curriculumName"]!;
+    var studentName = (string)Model["studentName"]!;
+    var comment = (string)Model["comment"]!;
+}
+
+<th:block>
+  <th:block-row>
+    <th:p>
+      В НЕИСПУО има нова оценка <strong>@gradeText</strong> по <strong>@curriculumName</strong> на <strong>@studentName</strong>.
+    </th:p>
+
+    <br/>
+    @if (!string.IsNullOrEmpty(comment))
+    {
+      <th:p>
+        Коментар: <strong>@comment</strong>.
+      </th:p>
+    }
+  </th:block-row>
+</th:block>

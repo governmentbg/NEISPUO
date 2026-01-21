@@ -1,0 +1,57 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_year].[ClassStudentList] SC /**where**/ /**orderby**/",
+  "sotemplate": "SELECT /**select**/ FROM [sob].[ClassStudentList] SC /**where**/ /**orderby**/",
+  "columns": [
+    {
+      "column": "SC.ID AS id"
+    },
+    {
+      "column": "SC.ClassId AS classid"
+    },
+    {
+      "column": "SC.ClassKind AS classKind"
+    }
+  ],
+  "params": [
+    {
+      "param": "@classid",
+      "column": "SC.ClassID",
+      "operator": "=",
+      "value": "classid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+    {
+      "param": "@personid",
+      "column": "SC.PersonID",
+      "operator": "=",
+      "value": "personid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+    {
+      "param": "@year",
+      "column": "SC.SchoolYear",
+      "operator": "=",
+      "value": "year",
+      "type": "int",
+      "logical_operator": "and",
+      "optional": true,
+      "static": false
+    },
+    {
+      "param": "@period",
+      "column": "SC.Period",
+      "operator": "=",
+      "value": "period",
+      "type": "int",
+      "logical_operator": "and",
+      "optional": true,
+      "static": false
+    }
+  ],
+  "order": [],
+  "inSelects": []
+}

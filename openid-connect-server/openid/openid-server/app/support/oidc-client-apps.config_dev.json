@@ -1,0 +1,123 @@
+[
+  {
+    "client_id": "survey",
+    "response_types": ["code"],
+    "redirect_uris": [
+      "https://dev-survey.mon.bg/silent-signin-callback",
+      "https://dev-survey.mon.bg/signin-callback"
+    ],
+    "post_logout_redirect_uris": ["https://dev-survey.mon.bg/login"],
+    "token_endpoint_auth_method": "none"
+  },
+  {
+    "client_id": "reporting",
+    "response_types": ["code"],
+    "redirect_uris": [
+      "https://dev-reporting.mon.bg/silent-signin-callback",
+      "https://dev-reporting.mon.bg/signin-callback"
+    ],
+    "post_logout_redirect_uris": ["https://dev-reporting.mon.bg/login"],
+    "token_endpoint_auth_method": "none"
+  },
+  {
+    "client_id": "user-management",
+    "response_types": ["code"],
+    "redirect_uris": [
+      "https://dev-usermng.mon.bg/silent-signin-callback",
+      "https://dev-usermng.mon.bg/signin-callback"
+    ],
+    "post_logout_redirect_uris": ["https://dev-usermng.mon.bg/login"],
+    "token_endpoint_auth_method": "none"
+  },
+  {
+    "client_id": "neispuo-portal",
+    "response_types": ["code"],
+    "redirect_uris": [
+      "https://dev-portal.mon.bg/signin-callback",
+      "https://dev-portal.mon.bg/silent-signin-callback"
+    ],
+    "post_logout_redirect_uris": ["https://dev-portal.mon.bg/login"],
+    "token_endpoint_auth_method": "none"
+  },
+  {
+    "client_id": "reg_inst",
+    "response_types": ["code"],
+    "redirect_uris": [
+      "https://dev-institutions.mon.bg/silent-signin-callback",
+      "https://dev-institutions.mon.bg/signin-callback",
+      "https://dev-ri.mon.bg/signin-callback",
+      "https://dev-ri.mon.bg/silent-signin-callback"
+    ],
+    "post_logout_redirect_uris": [
+      "https://dev-institutions.mon.bg/home",
+      "https://dev-ri.mon.bg/home"
+    ],
+    "token_endpoint_auth_method": "none"
+  },
+  {
+    "client_id": "students_code_client",
+    "response_types": ["code"],
+    "redirect_uris": [
+      "https://dev-students.mon.bg",
+      "https://dev-students.mon.bg/callback.html",
+      "https://dev-students.mon.bg/silent-renew.html"
+    ],
+    "post_logout_redirect_uris": ["https://dev-students.mon.bg"],
+    "token_endpoint_auth_method": "none"
+  },
+  {
+    "client_id": "school-books-frontend",
+    "response_types": ["code"],
+    "redirect_uris": [
+      "https://dev-dnevnik.mon.bg",
+      "https://dev-dnevnik.mon.bg/t/",
+      "https://dev-dnevnik.mon.bg/s/",
+      "https://dev-dnevnik.mon.bg/silent-refresh.html",
+      "https://dev-dnevnik.mon.bg/t/silent-refresh.html",
+      "https://dev-dnevnik.mon.bg/s/silent-refresh.html"
+    ],
+    "post_logout_redirect_uris": ["https://dev-dnevnik.mon.bg/t/", "https://dev-dnevnik.mon.bg/s/"],
+    "token_endpoint_auth_method": "none"
+  },
+  {
+    "client_id": "test-rmi",
+    "response_types": ["code"],
+    "redirect_uris": [
+      "https://dev-rmi.mon.bg/signin-callback",
+      "https://dev-rmi.mon.bg/silent-signin-callback"
+    ],
+    "post_logout_redirect_uris": ["https://dev-rmi.mon.bg/login"],
+    "token_endpoint_auth_method": "none"
+  },
+  {
+    "client_id": "inst_basic",
+    "response_types": ["code"],
+    "redirect_uris": [
+      "https://dev-so.mon.bg/signin-callback",
+      "https://dev-so.mon.bg/silent-signin-callback"
+    ],
+    "post_logout_redirect_uris": ["https://dev-so.mon.bg/home"],
+    "token_endpoint_auth_method": "none"
+  },
+  {
+    "client_id": "helpdesk_code_client",
+    "response_types": ["code"],
+    "redirect_uris": [
+      "https://dev-helpdesk-neispuo.mon.bg",
+      "https://dev-helpdesk-neispuo.mon.bg/callback.html",
+      "https://dev-helpdesk-neispuo.mon.bg/silent-renew.html"
+    ],
+    "post_logout_redirect_uris": ["https://dev-helpdesk-neispuo.mon.bg"],
+    "token_endpoint_auth_method": "none"
+  },
+  {
+    "client_id": "inst_admin",
+    "response_types": ["code"],
+    "redirect_uris": [
+      "http://localhost:4201/silent-signin-callback",
+      "http://localhost:4201/signin-callback"
+    ],
+    "post_logout_redirect_uris": ["http://localhost:4201/home"],
+    "token_endpoint_auth_method": "none"
+  }
+]

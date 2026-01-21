@@ -1,0 +1,57 @@
+@mixin mat-expansion-panel-theme($theme) {
+    .nested-nav-list {
+        .mat-expansion-panel {
+            box-shadow: none;
+            & .mat-expansion-panel-header {
+                color: rgb(25, 25, 112);
+                font-size: 1em;
+                padding: 0 1em;
+                margin-left: 1em;
+            }
+            &-body {
+                padding: 0 !important;
+                .mat-list-item {
+                    margin-left: 2em !important;
+                    &:hover {
+                        background-color: transparent !important;
+                        color: $cornflower-blue;
+                    }
+                }
+            }
+            & .mat-expansion-panel-header:hover {
+                background-color: $selago;
+            }
+            &.mat-expanded {
+                .mat-expansion-panel-header.mat-expanded,
+                .mat-expansion-panel-header.mat-expanded:focus,
+                .mat-expansion-panel-header.mat-expanded:hover {
+                    background: $selago;
+                    color: $lucky-point;
+                }
+                .mat-expansion-panel-header.mat-expanded {
+                    height: 48px !important;
+                    .mat-expansion-indicator::after {
+                        vertical-align: unset;
+                        margin-bottom: 0.3em;
+                    }
+                }
+            }
+
+            &.sub-expansion-panel {
+                & .mat-expansion-panel-header {
+                    padding: 0px 1em;
+                    margin-left: 2em !important;
+                }
+                .mat-expansion-panel-body {
+                    .mat-list-item {
+                        margin-left: 4em !important;
+                    }
+                }
+            }
+        }
+        .mat-expansion-indicator::after {
+            vertical-align: unset;
+            margin-bottom: 0.2em;
+        }
+    }
+}

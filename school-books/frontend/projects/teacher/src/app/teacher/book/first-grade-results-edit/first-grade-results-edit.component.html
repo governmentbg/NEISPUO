@@ -1,0 +1,78 @@
+<form [formGroup]="form" autocomplete="off" novalidate>
+  <sb-tab-card>
+    <ng-container card-title>Въвеждане на общ годишен успех</ng-container>
+    <ng-container card-buttons>
+      <button mat-raised-button color="primary" type="submit" [disabled]="saveBtnDisabled" (click)="onSave()">
+        <fa-icon [icon]="saveBtnDisabled ? fasSpinnerThird : fasCheck" [spin]="saveBtnDisabled" size="lg"></fa-icon>
+        <span class="hidden sm:inline">Запази</span>
+      </button>
+      <a mat-raised-button class="ml-2" [routerLink]="['../']">
+        <fa-icon [icon]="fasArrowLeft" size="lg"></fa-icon>
+        <span class="hidden sm:inline">Назад</span>
+      </a>
+    </ng-container>
+    <ng-container card-body>
+      <div class="sb-table-container mt-2.5 sm:mt-4 md:mt-0">
+        <table class="sb-table">
+          <thead>
+            <tr>
+              <th>Ученик</th>
+              <th>Общ годишен успех</th>
+              <th class="hidden sm:table-cell"></th>
+            </tr>
+          </thead>
+          <tbody formArrayName="studentGrades">
+            <ng-container *ngFor="let student of students; index as i" [formGroupName]="i">
+              <tr
+                *ngIf="
+                  (localStorageService.bookTransferredHidden$ | async) !== true ||
+                  !student.isTransferred ||
+                  student.firstGradeResult?.qualitativeGrade != null ||
+                  student.firstGradeResult?.specialGrade != null ||
+                  firstGradeResultSelectedAt(i)
+                "
+              >
+                <td class="sb-names">
+                  {{ student.classNumber != null ? student.classNumber.toString() + '.' : '' }}
+
+                  {{ student.firstName }}
+                  {{ student.middleName }}
+                  {{ student.lastName }}
+
+                  <span *ngIf="student.abnormalStatus" class="sb-badge">{{ student.abnormalStatus }}</span>
+                </td>
+                <td
+                  *ngIf="
+                    (!student.hasSpecialNeedFirstGradeResult && student.firstGradeResult?.specialGrade == null) ||
+                    student.firstGradeResult?.qualitativeGrade != null
+                  "
+                  class="w-px py-0"
+                >
+                  <sb-qualitative-grade-picker
+                    [showGradeName]="true"
+                    formControlName="qualitativeGrade"
+                  ></sb-qualitative-grade-picker>
+                </td>
+                <td
+                  *ngIf="
+                    (student.hasSpecialNeedFirstGradeResult && student.firstGradeResult?.qualitativeGrade == null) ||
+                    student.firstGradeResult?.specialGrade != null
+                  "
+                  class="w-px py-0"
+                >
+                  <mat-select class="sb-form-control min-w-[205px]" formControlName="specialGrade">
+                    <mat-option (click)="form.value.specialGrade = undefined"></mat-option>
+                    <mat-option [value]="item.id" *ngFor="let item of this.data.specialNeedsGradeNoms">
+                      {{ item.name }}
+                    </mat-option>
+                  </mat-select>
+                </td>
+                <td class="hidden sm:table-cell"></td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </ng-container>
+  </sb-tab-card>
+</form>

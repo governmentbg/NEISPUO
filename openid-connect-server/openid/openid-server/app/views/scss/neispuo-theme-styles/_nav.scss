@@ -1,0 +1,16 @@
+.nav-tabs {
+  .nav-link {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    &:hover {
+      background-color: $nav-link-hover-bg-color;
+    }
+  }
+}
+
+.nav-link.active {
+  border-bottom-width: 0.188rem;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}

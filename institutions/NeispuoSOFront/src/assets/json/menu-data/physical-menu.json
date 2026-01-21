@@ -1,0 +1,40 @@
+[
+  {
+    "label": "Общи данни",
+    "path": "person",
+    "children": [
+      {
+        "label": "Сграден фонд",
+        "path": "person"
+      },
+      {
+        "label": "Учебни зони",
+        "path": "personOKSPKS",
+        "children": [
+          {
+            "label": "Съдържание",
+            "path": "personQCourses"
+          }
+        ]
+      },
+      {
+        "label": "Общи зони",
+        "path": "school"
+      },
+      {
+        "label": "Общежития",
+        "path": "kindergarden"
+      }
+    ]
+  },
+  {
+    "label": "Дистанционна форма",
+    "path": "csop",
+    "children": [
+      {
+        "label": "Дистанционна форма",
+        "path": "csop"
+      }
+    ]
+  }
+]

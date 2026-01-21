@@ -1,0 +1,15 @@
+<div class="report-builder-content" [ngClass]="{ toggled: !sidebarService?.isSidebarOpen }">
+  <div class="backdrop" *ngIf="sidebarService?.isSidebarOpen"></div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 p-0">
+        <app-report-builder-content-header></app-report-builder-content-header>
+        <ng-container [ngSwitch]="sidebarService?.visualization">
+          <app-table-type-report *ngSwitchCase="'table'"></app-table-type-report>
+          <app-pivot-table-type-report *ngSwitchCase="'pivot_table'"></app-pivot-table-type-report>
+          <app-pie-chart-type-report *ngSwitchCase="'pie_chart'"></app-pie-chart-type-report>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>

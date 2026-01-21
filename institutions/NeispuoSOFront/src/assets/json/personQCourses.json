@@ -1,0 +1,192 @@
+{
+  "label": "Квалификационни курсове",
+  "changeData": false,
+  "sections": [
+    {
+      "label": "Основни данни за лице",
+      "order": 1,
+      "subsections": [
+        {
+          "order": 1,
+          "fields": [
+            {
+              "label": "Име",
+              "name": "firstName",
+              "type": "input",
+              "inputType": "text",
+              "order": 2,
+              "width": 200,
+              "disabled": false
+            },
+            {
+              "label": "Презиме",
+              "name": "middleName",
+              "type": "input",
+              "inputType": "text",
+              "order": 3,
+              "width": 200,
+              "disabled": false
+            },
+            {
+              "label": "Фамилия",
+              "name": "lastName",
+              "type": "input",
+              "inputType": "text",
+              "order": 4,
+              "width": 200,
+              "disabled": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Курсове по реда на Наредби 12 и 15",
+      "name": "TableStaffQCourses",
+      "accordion": { "state": "closed" },
+      "order": 2,
+      "table": {
+        "name": "staffQCourses",
+        "createNew": "redirect",
+        "formName": "personQCourseData",
+        "paramName": "personQCourseDataID",
+        "procedureName": "inst_basic.personQCourseCUD",
+        "createParams": { "qCourseActTypeID": 2 },
+        "canDeleteRow": true,
+        "searchable": false,
+        "fields": [
+          {
+            "label": "Година на завършване",
+            "name": "qCourseYear",
+            "type": "input",
+            "inputType": "number",
+            "width": 10,
+            "order": 1
+          },
+          {
+            "label": "Вид на курса",
+            "name": "qCourseType",
+            "type": "input",
+            "inputType": "text",
+            "width": 50,
+            "order": 2
+          },
+          {
+            "label": "Източник на финансиране",
+            "name": "qCourseBudgetSourceType",
+            "type": "input",
+            "inputType": "text",
+            "width": 20,
+            "order": 3
+          },
+          {
+            "label": "Цена (лв.)",
+            "name": "internalCoursePrice",
+            "type": "input",
+            "inputType": "number",
+            "width": 20,
+            "order": 4
+          },
+          {
+            "label": "Продължителност",
+            "name": "qCourseDurationType",
+            "type": "input",
+            "inputType": "text",
+            "width": 20,
+            "order": 5
+          },
+          {
+            "label": "Документ",
+            "name": "documentType",
+            "type": "input",
+            "inputType": "text",
+            "width": 20,
+            "order": 6
+          },
+          {
+            "label": "Тема",
+            "name": "qCourseTopic",
+            "type": "input",
+            "inputType": "text",
+            "width": 20,
+            "order": 7
+          }
+        ]
+      }
+    },
+    {
+      "label": "Други квалификационни курсове",
+      "order": 3,
+      "name": "TableStaffQCoursesOther",
+      "accordion": { "state": "closed" },
+      "table": {
+        "name": "staffQCoursesOther",
+        "createNew": "redirect",
+        "formName": "personQCourseData",
+        "paramName": "personQCourseDataID",
+        "procedureName": "inst_basic.personQCourseCUD",
+        "createParams": { "qCourseActTypeID": 1 },
+        "canDeleteRow": true,
+        "searchable": false,
+        "fields": [
+          {
+            "label": "Година на завършване",
+            "name": "qCourseYearOther",
+            "type": "input",
+            "inputType": "number",
+            "width": 10,
+            "order": 1
+          },
+          {
+            "label": "Вид на курса",
+            "name": "qCourseTypeOther",
+            "type": "input",
+            "inputType": "text",
+            "width": 50,
+            "order": 2
+          },
+          {
+            "label": "Източник на финансиране",
+            "name": "qCourseBudgetSourceTypeOther",
+            "type": "input",
+            "inputType": "text",
+            "width": 20,
+            "order": 3
+          },
+          {
+            "label": "Цена (лв.)",
+            "name": "internalCoursePriceOther",
+            "type": "input",
+            "inputType": "number",
+            "width": 20,
+            "order": 4
+          },
+          {
+            "label": "Продължителност",
+            "name": "qCourseDurationTypeOther",
+            "type": "input",
+            "inputType": "text",
+            "width": 20,
+            "order": 5
+          },
+          {
+            "label": "Документ",
+            "name": "documentTypeOther",
+            "type": "input",
+            "inputType": "text",
+            "width": 20,
+            "order": 6
+          },
+          {
+            "label": "Тема",
+            "name": "qCourseTopicOther",
+            "type": "input",
+            "inputType": "text",
+            "width": 20,
+            "order": 7
+          }
+        ]
+      }
+    }
+  ]
+}

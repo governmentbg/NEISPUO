@@ -1,0 +1,242 @@
+{
+  "paramName": "changeYearDataID",
+  "procedureName": "inst_basic.SchoolYearChangeHeader",
+  "dataName": "if(operationType==1) {form.dataName='changeYearDataCreate'} else {form.dataName='changeYearData'}",
+  "sections": [
+    {
+      "order": 1,
+      "subsections": [
+        {
+          "order": 1,
+          "name": "changeYearData",
+          "fields": [
+            {
+              "label": "От учебна година",
+              "name": "fromSchoolYear",
+              "type": "input",
+              "inputType": "number",
+              "disabled": true,
+              "rendered": false,
+              "width": 200,
+              "order": 1
+            },
+            {
+              "label": "От учебна година",
+              "name": "fromSchoolYearText",
+              "type": "input",
+              "inputType": "text",
+              "disabled": true,
+              "rendered": true,
+              "width": 200,
+              "order": 2
+            },
+            {
+              "label": "Към учебна година",
+              "name": "toSchoolYear",
+              "type": "input",
+              "inputType": "number",
+              "disabled": true,
+              "rendered": false,
+              "width": 200,
+              "order": 3
+            },
+            {
+              "label": "Към учебна година",
+              "name": "toSchoolYearText",
+              "type": "input",
+              "inputType": "text",
+              "disabled": true,
+              "rendered": true,
+              "width": 200,
+              "order": 4
+            },
+            {
+              "label": "Статус",
+              "name": "changeYearStatus",
+              "type": "select",
+              "optionsPath": "/data/get/changeYearStatus",
+              "rendered": "if(operationType==2) {field.rendered=true} else {field.rendered=false}",
+              "disabled": true,
+              "defaultValue": 0,
+              "order": 5,
+              "validations": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "InfoMessagesSection",
+      "order": 2,
+      "rendered": "if(operationType==1 && instType==1 || operationType==1 && instType==4) {section.rendered=true} else {section.rendered=false}",
+      "subsections": [
+        {
+          "order": 0,
+          "name": "InfoMessagesSubsection",
+          "label": "Важна информация",
+          "fields": [
+            {
+              "type": "info",
+              "rendered": true,
+              "defaultValue": "<p style='color:MediumSeaGreen;'>Моля посочете учениците, които ще полагат поправителни изпити, или имат неположени ДЗИ. В случай че нямате такива, изберете бутон Запази.</p>",
+              "order": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "InfoMessagesSection",
+      "order": 2,
+      "rendered": "if(operationType==1 && instType==2) {section.rendered=true} else {section.rendered=false}",
+      "subsections": [
+        {
+          "order": 0,
+          "name": "InfoMessagesSubsection",
+          "label": "Важна информация",
+          "fields": [
+            {
+              "type": "info",
+              "rendered": true,
+              "defaultValue": "<p style='color:MediumSeaGreen;'>Моля посочете децата, които ще останат в четвърта група като непокриващи образователните стандарти, както и тези деца от яслените групи, които ще останат в яслени групи и следващата учебна година</p>",
+              "order": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Списък на учениците, които ще полагат поправителни изпити",
+      "order": 3,
+      "name": "TableStudentGroupList",
+      "rendered": "if(instType==1 || instType==4) {section.rendered=true} else {section.rendered=false}",
+      "table": {
+        "name": "studentsAmendatoryList",
+        "hasEditButton": false,
+        "searchable": true,
+        "disabled": "if(operationType==2) {table.disabled=true} else {table.disabled=false}",
+        "searchType": "column",
+        "multiAdd": "if(operationType == 2) {table.multiAdd = null} else {table.multiAdd = {'addFrom':'studentsAmendatory','listColumns': ['className','publicEduNumber','fullName'],'title': 'Включване на ученици','comparisonColumn': 'publicEduNumber','tableColumns': ['className','publicEduNumber','fullName'],'dependsOn': []}}",
+        "fields": [
+          {
+            "name": "id",
+            "type": "input",
+            "inputType": "number",
+            "rendered": false,
+            "order": 1
+          },
+          {
+            "label": "Клас/група",
+            "name": "className",
+            "type": "input",
+            "inputType": "text",
+            "order": 2
+          },
+          {
+            "label": "Образователен номер",
+            "name": "publicEduNumber",
+            "type": "input",
+            "inputType": "text",
+            "order": 3
+          },
+          {
+            "label": "Име на детето",
+            "name": "fullName",
+            "type": "input",
+            "inputType": "text",
+            "order": 4
+          }
+        ]
+      }
+    },
+    {
+      "label": "Списък на децата, които остават в същата група в ДГ",
+      "order": 3,
+      "name": "TableStudentGroupList",
+      "rendered": "if(instType==2) {section.rendered=true} else {section.rendered=false}",
+      "table": {
+        "name": "studentsAmendatoryList",
+        "hasEditButton": false,
+        "searchable": true,
+        "disabled": "if(operationType==2) {table.disabled=true} else {table.disabled=false}",
+        "searchType": "column",
+        "multiAdd": "if(operationType == 2) {table.multiAdd = null} else {table.multiAdd = {'addFrom':'studentsStayKindergarden','listColumns': ['className','publicEduNumber','fullName'],'title': 'Включване на деца','comparisonColumn': 'publicEduNumber','tableColumns': ['className','publicEduNumber','fullName'],'dependsOn': []}}",
+        "fields": [
+          {
+            "name": "id",
+            "type": "input",
+            "inputType": "number",
+            "rendered": false,
+            "order": 1
+          },
+          {
+            "label": "Група",
+            "name": "className",
+            "type": "input",
+            "inputType": "text",
+            "order": 2
+          },
+          {
+            "label": "Образователен номер",
+            "name": "publicEduNumber",
+            "type": "input",
+            "inputType": "text",
+            "order": 3
+          },
+          {
+            "label": "Име на детето",
+            "name": "fullName",
+            "type": "input",
+            "inputType": "text",
+            "order": 4
+          }
+        ]
+      }
+    },
+    {
+      "label": "Списък на класни стаи за синхронизиране с MS Teams (edu.mon.bg)",
+      "order": 4,
+      "name": "CurriculumList",
+      "rendered": "if(instType==1 && operationType==2 || instType==4 && operationType==2) {section.rendered=true} else {section.rendered=false}",
+      "table": {
+        "name": "curriculumCreated",
+        "hasEditButton": false,
+        "searchable": true,
+        "searchType": "column",
+        "fields": [
+          {
+            "name": "id",
+            "type": "input",
+            "inputType": "number",
+            "rendered": false,
+            "order": 1
+          },
+          {
+            "name": "classNames",
+            "label": "Клас",
+            "type": "input",
+            "inputType": "text",
+            "rendered": true,
+            "order": 2
+          },
+          {
+            "name": "subjectName",
+            "label": "Предмет",
+            "type": "input",
+            "inputType": "text",
+            "rendered": true,
+            "order": 3
+          },
+          {
+            "name": "subjectTypeName",
+            "label": "Начин на изучаване",
+            "type": "input",
+            "inputType": "text",
+            "rendered": true,
+            "order": 4
+          }
+        ]
+      }
+    }
+  ]
+}

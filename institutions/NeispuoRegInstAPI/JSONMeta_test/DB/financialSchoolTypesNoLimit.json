@@ -1,0 +1,34 @@
+{
+    "template": "SELECT /**select**/ FROM [noms].[FinancialSchoolType] FT /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "FT.FinancialSchoolTypeID as code"
+        },
+        {
+            "column": "FT.Name as label"
+        },
+        {
+            "column": "FT.IsValid as isValid"
+        } 
+    ],
+    "params": [
+        {
+            "param": "@IsValid",
+            "column": "FT.IsValid",
+            "operator": "=",
+            "value": 1,
+            "type": "int",
+            "logical_operator": "and",
+			"optional": false,
+  			"static": true,
+			"from_claim": false
+        }
+    ],
+    "order": [
+        {
+            "column": "FT.FinancialSchoolTypeID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

@@ -1,0 +1,79 @@
+@using SB.Domain
+@model Student_Book_I_IIIModel
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    @{ await IncludeAsync("ClassBookPrint.Parts._Styles", null); }
+  </head>
+  <body>
+    @{ await IncludeAsync("ClassBookStudentPrint.Parts.CoverPage.StudentCoverPageRegular", Model.CoverPageModel); }
+
+    @{ await IncludeAsync("ClassBookStudentPrint.Parts.Teachers.StudentTeachers", Model.TeachersModel); }
+
+    @{ await IncludeAsync("ClassBookStudentPrint.Parts.Schedules.StudentSchedules", Model.SchedulesModel); }
+
+    @if (Model.ParentMeetingsModel.ParentMeetings.Any())
+    {
+      await IncludeAsync("ClassBookStudentPrint.Parts.ParentMeetings.StudentParentMeetings", Model.ParentMeetingsModel);
+    }
+
+    @if (Model.ClassWorkExamsModel.Exams.Any())
+    {
+      await IncludeAsync("ClassBookStudentPrint.Parts.Exams.StudentExams", Model.ClassWorkExamsModel);
+    }
+
+    @if (Model.ExamsModel.Exams.Any())
+    {
+      await IncludeAsync("ClassBookStudentPrint.Parts.Exams.StudentExams", Model.ExamsModel);
+    }
+
+    @{ await IncludeAsync("ClassBookStudentPrint.Parts.Grades.StudentGrades", Model.TermOneGradesModel); }
+
+    @if (Model.TermOneRemarksModel.Remarks.Any())
+    {
+      await IncludeAsync("ClassBookStudentPrint.Parts.Remarks.StudentRemarks", Model.TermOneRemarksModel);
+    }
+
+    @{ await IncludeAsync("ClassBookStudentPrint.Parts.Grades.StudentGrades", Model.TermTwoGradesModel); }
+
+    @if (Model.TermTwoRemarksModel.Remarks.Any())
+    {
+      await IncludeAsync("ClassBookStudentPrint.Parts.Remarks.StudentRemarks", Model.TermTwoRemarksModel);
+    }
+
+    @if (Model.HasFirstGradeResults)
+    {
+      await IncludeAsync("ClassBookStudentPrint.Parts.FirstGradeResults.StudentFirstGradeResults", Model.FirstGradeResultsModel);
+    }
+    else
+    {
+      await IncludeAsync("ClassBookStudentPrint.Parts.FinalGrades.StudentFinalGrades", Model.FinalGradesModel);
+    }
+
+    @{ await IncludeAsync("ClassBookStudentPrint.Parts.Absences.StudentAbsences", Model.AbsencesModel); }
+
+    @if (Model.IndividualWorksModel.IndividualWorks.Any())
+    {
+      await IncludeAsync("ClassBookStudentPrint.Parts.IndividualWorks.StudentIndividualWorks", Model.IndividualWorksModel);
+    }
+
+    @if (Model.SanctionsModel.Sanctions.Any())
+    {
+      await IncludeAsync("ClassBookStudentPrint.Parts.Sanctions.StudentSanctions", Model.SanctionsModel);
+    }
+
+    @if (Model.SupportsModel.Supports.Any())
+    {
+      await IncludeAsync("ClassBookStudentPrint.Parts.Supports.StudentSupports", Model.SupportsModel);
+    }
+
+    @if (Model.NotesModel.Notes.Any())
+    {
+      await IncludeAsync("ClassBookStudentPrint.Parts.Notes.StudentNotes", Model.NotesModel);
+    }
+
+    @{ await IncludeAsync("ClassBookStudentPrint.Parts.FooterPage.StudentFooterPage"); }
+  </body>
+</html>

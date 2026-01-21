@@ -1,0 +1,75 @@
+{
+    "arrayName": "settings",
+    "template": "SELECT /**select**/ FROM [inst_nom].[SubjectAdditionalInstitution] SAI  /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "SAI.CustomVarValueID AS id"
+        },
+        {
+            "column": "SAI.SubjectName AS subjectName"
+        },
+        {
+            "column": "SAI.SubjectShortName AS subjectShortName"
+        },
+        {
+            "column": "SAI.SubjectGroupID AS subjectGroupID"
+        },
+        {
+            "column": "SAI.SubjectGroupName AS subjectGroupName"
+        },
+        {
+            "column": "SAI.MainSubjectID AS mainSubjectID"
+        },
+        {
+            "column": "SAI.MainSubjectName AS mainSubjectName"
+        },
+		{
+            "column": "SAI.SortOrd AS sortOrd"
+        },
+        {
+            "column": "SAI.ActiveForInstitutionRecode AS activeForInstitutionRecode"
+        },
+        {
+            "column": "'subejctInstitutionDataList' AS formName"
+        },
+        {
+            "column": "SAI.CustomVarValueID AS formDataId"
+        }
+    ],
+    "params": [
+        {
+            "param": "@isValid",
+            "column": "SAI.IsValid",
+            "operator": "=",
+            "value": 1,
+            "type": "int",
+            "logical_operator": "and",
+            "static": true
+        },
+        {
+            "param": "@instid",
+            "column": "SAI.InstitutionID",
+            "operator": "=",
+            "value": "instid",
+            "type": "int",
+            "logical_operator": "and",
+            "static": false
+        },
+        {
+            "param": "@subjectid",
+            "column": "SAI.SubjectID",
+            "operator": ">",
+            "value": 200,
+            "type": "int",
+            "logical_operator": "and",
+            "static": true
+        }
+    ],
+    "order": [
+		{
+            "column": "SAI.SubjectGroupName",
+            "type": "ASC"
+        }
+	],
+    "inSelects": []
+}

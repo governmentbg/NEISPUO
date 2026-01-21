@@ -1,0 +1,68 @@
+<ng-container *ngIf="form && displayDocument" [formGroup]="form">
+  <div class="field col-12 col-md-6 row-gap-4">
+    <label for="DocumentNo" [ngClass]="{
+    'is-invalid': form.get('DocumentNo').invalid && form.get('DocumentNo').dirty}"
+    >Номер на заповед</label>
+    <input id="DocumentNo" pInputText formControlName="DocumentNo" />
+
+    <ng-container *ngIf="form.get('DocumentNo').invalid && form.get('DocumentNo').dirty">
+      <small class="invalid-feedback">Задължително поле</small>
+    </ng-container>
+  </div>
+
+  <div class="field col-12 col-md-6" >
+    <label for="DocumentDate" [ngClass]="{
+    'is-invalid': form.get('DocumentDate').invalid && form.get('DocumentDate').dirty}"
+    >Дата на заповед</label>
+    <p-calendar
+      formControlName="DocumentDate"
+      [monthNavigator]="true"
+      [yearNavigator]="true"
+      [yearRange]="getYearRange()"
+      dateFormat="dd-mm-yy"
+      inputId="ProcedureDate"
+    ></p-calendar>
+
+    <ng-container *ngIf="form.get('DocumentDate').invalid && form.get('DocumentDate').dirty">
+      <small class="invalid-feedback">Задължително поле</small>
+    </ng-container>
+  </div>
+
+  <div class="field  col-12 col-md-6">
+    <label for="StateNewspaperData" [ngClass]="{
+    'is-invalid': form.get('StateNewspaperData').invalid && form.get('StateNewspaperData').dirty}"
+    >Номер и дата на Държавен вестник, в който е публикувана заповедта</label>
+    <input id="StateNewspaperData" pInputText formControlName="StateNewspaperData" />
+
+    <ng-container *ngIf="form.get('StateNewspaperData').invalid && form.get('StateNewspaperData').dirty">
+      <small class="invalid-feedback">Задължително поле</small>
+    </ng-container>
+  </div>
+
+  <div class="field document-notes  col-12 col-md-6">
+    <label for="DocumentNotes" [ngClass]="{
+    'is-invalid': form.get('DocumentNotes').invalid && form.get('DocumentNotes').dirty}"
+    >Бележки</label>
+    <input id="DocumentNotes" pInputText formControlName="DocumentNotes" />
+
+    <ng-container *ngIf="form.get('DocumentNotes').invalid && form.get('DocumentNotes').dirty">
+      <small class="invalid-feedback">Задължително поле</small>
+    </ng-container>
+  </div>
+
+  <div class="field  col-12 col-md-12">
+    <label for="DocumentFile" [ngClass]="{
+    'is-invalid': form.get('DocumentFile').invalid && form.get('DocumentFile').dirty}"
+    >Заповед файл</label>
+    <app-file [controlName]="'DocumentFile'" [isView]="isView"></app-file>
+
+    <ng-container *ngIf="form.get('DocumentFile').invalid && form.get('DocumentFile').dirty">
+      <small class="invalid-feedback display-only-first-error" *ngIf="form.get('DocumentFile').hasError('uploadInProgress')"
+        >Файлът е в процес на прикачване</small
+      >
+      <small class="invalid-feedback display-only-first-error" *ngIf="form.get('DocumentFile').hasError('required')"
+        >Все още не сте прикачили файла</small
+      >
+    </ng-container>
+  </div>
+</ng-container>

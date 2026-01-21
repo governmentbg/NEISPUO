@@ -1,0 +1,76 @@
+<p-dialog
+    [(visible)]="visible"
+    [modal]="true"
+    [closable]="true"
+    [dismissableMask]="true"
+    [style]="{ width: '70vw', height: '70vh' }"
+    (onHide)="onHide()"
+>
+    <ng-template pTemplate="header">
+        {{ title | translate }}
+    </ng-template>
+    <div class="mb-3 d-flex gap-3 align-items-center">
+        <div class="form-check form-check-inline">
+            <input
+                class="form-check-input"
+                type="radio"
+                id="searchByPersonId"
+                name="searchMode"
+                [checked]="searchMode === 'personId'"
+                (change)="onSearchModeChange('personId')"
+            />
+            <label class="form-check-label" for="searchByPersonId">{{
+                CONSTANTS.PRIMENG_TITLE_IDENTIFIER | translate
+            }}</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input
+                class="form-check-input"
+                type="radio"
+                id="searchByLon"
+                name="searchMode"
+                [checked]="searchMode === 'publicEduNumber'"
+                (change)="onSearchModeChange('publicEduNumber')"
+            />
+            <label class="form-check-label" for="searchByLon">{{
+                userType === LinkedUserType.STUDENT
+                    ? (CONSTANTS.PRIMENG_TITLE_EMAIL | translate)
+                    : (CONSTANTS.PRIMENG_TITLE_PUBLIC_EDU_NUMBER | translate)
+            }}</label>
+        </div>
+    </div>
+    <div class="mb-3">
+        <input
+            pInputText
+            [type]="searchMode === 'personId' ? 'number' : 'text'"
+            class="form-control no-spinner w-100"
+            style="max-width: 20rem"
+            [placeholder]="CONSTANTS.PRIMENG_INPUT_PLACEHOLDER | translate"
+            [formControl]="searchControl"
+            [min]="searchMode === 'personId' ? 0 : null"
+        />
+    </div>
+    <div *ngIf="searchError" class="alert alert-danger">{{ CONSTANTS.PRIMENG_ERROR_LOADING_DATA | translate }}</div>
+    <div class="modal-table-container">
+        <app-linked-users-table
+            [data]="searchResults"
+            [loading]="searchLoading"
+            [controlsTemplate]="addControlTemplate"
+            [noDataText]="
+                !searchControl.value ? startSearchText : searchControl.value && !searchLoading ? noDataFoundText : ''
+            "
+            (actionConfirmed)="handleTableAction($event)"
+        ></app-linked-users-table>
+    </div>
+    <ng-template #addControlTemplate let-row let-confirmAction="confirmAction">
+        <button
+            pButton
+            type="button"
+            icon="pi pi-plus"
+            class="p-button-icon-only p-button-success p-button-sm p-button-text"
+            pTooltip="{{ CONSTANTS.PRIMENG_TITLE_ADD | translate }}"
+            tooltipPosition="top"
+            (click)="confirmAction($event, row, 'linkUsers')"
+        ></button>
+    </ng-template>
+</p-dialog>

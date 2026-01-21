@@ -1,0 +1,50 @@
+<form class="dynamic-form" *ngIf="form" [formGroup]="formGroup" [ngClass]="{'view-mode': mode === modes.View, 'new-inst': isNew}">
+    <div class="wrapper-card different-view" id="wrapper-card">
+        <div class="l-container-card">
+            <ng-container *ngFor="let section of form?.sections">
+                <mat-card class="section-card" color="primary" *ngIf="!section.hidden && section.rendered !== false && !section.labelOnly" [ngClass]="{'section-closed': section.accordion && section.accordion.state === 'closed', 'custom-accordion' : section.accordion}">
+                    <app-help *ngIf="section.help" [helpText]="section.help"></app-help>
+                    <mat-card-header class="bg-cornflower-blue" *ngIf="section.label" (click)="changeSectionState(section)">
+                        <mat-card-title>{{ section.label }}
+                            <button class="l-accordion-custom-button mat-card" *ngIf="section.accordion" type="button" mat-icon-button>
+                                <mat-icon> {{ section.accordion.state === 'closed' ? "expand_more" : "expand_less" }} </mat-icon>
+                            </button>
+                        </mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content *ngIf="(section.loading === false && section.accordion) || (!section.accordion)">
+                        <div class="wrapper-body" *ngIf="section?.subsections && section?.subsections.length">
+                            <ng-container *ngFor="let subsection of section?.subsections">
+                                <app-subsection [ngClass]="{'custom-accordion' : subsection.accordion}" *ngIf="!subsection.hidden && subsection.rendered !== false && hasNonHiddenField(subsection) && !subsection.labelOnly" [subsection]="subsection" [section]="section"
+                                [wholeFormGroup]="formGroup" [formGroup]="getFormGroup(subsection)" [subsectionAdded]="subAdded" [mode]="mode" [allClosed]="allClosed" (sectionChanged)="onSectionChanged($event, section)" (influenceChanged)="onInfluenceChanged($event)"></app-subsection>
+                                <span *ngIf="subsection.labelOnly" [ngStyle]="{'font-weight': subsection.bold ? 'bold' : 'normal', 'font-size': subsection.size ? subsection.size + 'px' : '15px'}" class="subsection-span-card">{{subsection.label}}<app-info-tooltip *ngIf="subsection.info" [info]="subsection.info"></app-info-tooltip></span>
+                            </ng-container>
+                        </div>
+                        <ng-container *ngIf="section.table">
+                            <app-table [table]="section.table" [parentGroup]="formGroup" [mode]="mode" (addRecordActive)="(addRecordActive = $event)" (refresh)="refresh.next()"></app-table>
+                        </ng-container>
+                    </mat-card-content>
+                    <app-inner-loader *ngIf="section.loading"></app-inner-loader>
+                </mat-card>
+                <span *ngIf="section.labelOnly" [ngStyle]="{'font-weight': section.bold ? 'bold' : 'normal', 'font-size': section.size ? section.size + 'px' : '18px'}" class="section-top-card">{{section.label}}<app-info-tooltip *ngIf="section.info" [info]="section.info"></app-info-tooltip></span>
+            </ng-container>
+        </div>
+    </div>
+    <div class="l-footer-control-container" *ngIf="mode !== modes.View">
+        <button class="accordion-button-custom" mat-raised-button type="button" *ngIf="hasAccordions() && (allClosed || allClosed === undefined)" (click)="changeAllAccordionsState()" matTooltip="отвори всички секции"><img class="icon-accordion" src="../../../../assets/images/accordion-open.png"/></button>
+        <button class="accordion-button-custom" mat-raised-button type="button" *ngIf="hasAccordions() && !(allClosed || allClosed === undefined)" (click)="changeAllAccordionsState()" matTooltip="затвори всички секции"><img class="icon-accordion" src="../../../../assets/images/accordion-closed.png"/></button>
+        <button type="button" mat-raised-button color="secondary" class="back-button" (click)="goBack()">
+            <mat-icon>cancel</mat-icon><span>{{ form.procedureName ? 'Отказ' : 'Назад'}}</span>
+        </button>
+        <button type="button" mat-raised-button color="primary" *ngIf="form.procedureName" [disabled]="addRecordActive" (click)="onSubmit($event, false)">
+            <mat-icon>save</mat-icon><span>Запази</span>
+        </button>
+    </div>
+    <div class="l-footer-control-container" *ngIf="mode === modes.View">
+        <button class="accordion-button-custom" mat-raised-button type="button" *ngIf="hasAccordions() && (allClosed || allClosed === undefined)" (click)="changeAllAccordionsState()" matTooltip="отвори всички секции"><img class="icon-accordion" src="../../../../assets/images/accordion-open.png"/></button>
+        <button class="accordion-button-custom" mat-raised-button type="button" *ngIf="hasAccordions() && !(allClosed || allClosed === undefined)" (click)="changeAllAccordionsState()" matTooltip="затвори всички секции"><img class="icon-accordion" src="../../../../assets/images/accordion-closed.png"/></button>
+        <button type="button" mat-raised-button color="primary" (click)="edit()" *ngIf="hasEditButton && !isPreview"><span>Промени данни</span></button>
+        <button type="button" mat-raised-button color="secondary" class="back-button" *ngIf="path === menu.Preview" (click)="goBack()">
+            <mat-icon>cancel</mat-icon><span>Назад</span>
+        </button>
+    </div>
+</form>

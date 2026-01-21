@@ -1,0 +1,159 @@
+<header class="fixed top-0 w-full h-14 text-white bg-blue-900 z-50">
+  <div class="flex px-4 items-center mx-auto h-full max-w-screen-max">
+    <button class="block lg:hidden w-9 h-9" type="button" (click)="toggleLeftIsSideOpen()">
+      <img class="sb-mat-icon w-9 h-9" src="assets/images/material-icons-menu-baseline.svg" />
+    </button>
+
+    <a class="hidden lg:flex items-center w-52" [href]="baseUri">
+      <img class="mr-4 h-8" src="assets/images/mon-logo.png" alt="logo" />
+      <span class="text-xl font-medium tracking-wider">НЕИСПУО</span>
+    </a>
+
+    <ng-container *ngIf="currentSchoolYear && schoolYears">
+      <button class="p-4 font-medium hover:bg-primary" type="button" [matMenuTriggerFor]="schoolYearMenu">
+        {{ currentSchoolYear }}
+      </button>
+
+      <mat-menu #schoolYearMenu="matMenu">
+        <a *ngFor="let sy of schoolYears" [routerLink]="sy.schoolYearRouteCommands" mat-menu-item>
+          {{ sy.schoolYear }}/{{ sy.schoolYear + 1 }}
+        </a>
+      </mat-menu>
+    </ng-container>
+
+    <div class="flex-1 min-w-0 overflow-hidden text-ellipsis text-center">
+      <a
+        *ngIf="institutionName && institutionRouteCommands"
+        class="mx-4 whitespace-nowrap overflow-hidden text-ellipsis"
+        [routerLink]="institutionRouteCommands"
+      >
+        <fa-icon [icon]="fasUniversity" size="lg"></fa-icon>
+        <span class="ml-2 text-md font-medium tracking-wider">{{ institutionName }}</span>
+      </a>
+
+      <span
+        *ngIf="institutionName && !institutionRouteCommands"
+        class="mx-4 whitespace-nowrap overflow-hidden text-ellipsis"
+      >
+        <fa-icon [icon]="fasUniversity" size="lg"></fa-icon>
+        <span class="ml-2 text-md font-medium tracking-wider">{{ institutionName }}</span>
+      </span>
+    </div>
+
+    <button
+      *ngIf="showConversationsIcon"
+      class="p-4 hover:bg-primary"
+      type="button"
+      [matMenuTriggerFor]="messagesMenu"
+      aria-label="Комуникации"
+      [matBadgeHidden]="!unreadConversations || unreadConversations.length === 0"
+      [matBadge]="unreadConversations?.length"
+      matBadgeSize="medium"
+    >
+      <fa-icon size="lg" class="relative top-0.5" [icon]="fadEnvelop"></fa-icon>
+    </button>
+
+    <mat-menu #messagesMenu="matMenu" xPosition="before">
+      <div class="p-4 bg-gray-100 rounded-lg">
+        <div class="text-center font-bold pb-2 border-b border-gray-300">
+          <span>Съобщения</span>
+        </div>
+        <ng-container *ngIf="unreadConversations && unreadConversations.length > 0; else noMessages">
+          <a
+            *ngFor="let m of unreadConversations"
+            [routerLink]="m.conversationRouteCommands"
+            (click)="markConversationAsRead(m.conversationId)"
+            class="flex items-center p-2 border-b border-gray-300 text-gray-800 hover:bg-gray-200"
+          >
+            <div class="flex flex-col justify-between w-full">
+              <p class="truncate max-w-full line-clamp-2">
+                {{ m.title }}
+              </p>
+              <span class="text-sm text-gray-500">
+                {{ m.messageDate | timeAgo }}
+              </span>
+            </div>
+          </a>
+        </ng-container>
+        <ng-template #noMessages>
+          <span class="block p-4 text-center text-gray-500 border-b border-gray-300">Няма нови съобщения</span>
+        </ng-template>
+        <div class="pt-4 text-center">
+          <a class="text-blue-500 hover:underline" [routerLink]="['./', 'conversations']">Към всички съобщения</a>
+        </div>
+      </div>
+    </mat-menu>
+
+    <button
+      class="block w-7 h-7 rounded-full hover:bg-primary"
+      type="button"
+      [matMenuTriggerFor]="helpMenu"
+      aria-label="Меню за ръководство и новости в системата"
+    >
+      <img class="sb-mat-icon w-7 h-7" src="assets/images/material-icons-help-outline-baseline.svg" />
+    </button>
+    <mat-menu #helpMenu="matMenu" xPosition="before">
+      <a [href]="releaseNotesUrl" target="_blank" mat-menu-item>
+        <fa-icon [icon]="fadSparkles" size="lg"></fa-icon>
+        <span>Какво ново</span>
+      </a>
+      <a [href]="docsUrl" target="_blank" mat-menu-item>
+        <fa-icon [icon]="fadQuestion" size="lg"></fa-icon>
+        <span>Ръководство</span>
+      </a>
+    </mat-menu>
+
+    <button
+      class="block ml-4 w-7 h-7 rounded-full bg-primary border border-white text-xs tracking-wider"
+      type="button"
+      [matMenuTriggerFor]="userMenu"
+      aria-label="Меню за изход от системата"
+    >
+      {{ userInitials }}
+    </button>
+
+    <mat-menu #userMenu="matMenu" xPosition="before">
+      <div class="p-4">
+        <div class="flex items-center">
+          <div
+            class="flex items-center justify-center w-9 h-9 rounded-full bg-primary text-white text-xs tracking-wider"
+          >
+            {{ userInitials }}
+          </div>
+          <div class="ml-4 text-sm font-light">{{ userEmail }}</div>
+        </div>
+        <div class="mt-4 text-center">
+          <button class="text-primary text-sm font-light hover:underline" (click)="logout()">Изход ></button>
+        </div>
+      </div>
+    </mat-menu>
+  </div>
+</header>
+
+<div class="mx-auto max-w-screen-max">
+  <nav
+    class="sb-left-side lg:transform-none fixed block top-14 pb-14 w-64 lg:w-56 border-r border-gray-300 bg-gray-50 h-full overflow-y-overlay z-30"
+    [class.sb-left-side-open]="leftSideIsOpen"
+    aria-label="Ляво меню"
+  >
+    <ng-content select="[left-side]"></ng-content>
+  </nav>
+
+  <div class="flex flex-col relative pt-14 min-h-screen">
+    <main class="flex-1 w-full lg:pl-60 py-4 sm:p-4">
+      <ng-content select="[main-content]"></ng-content>
+    </main>
+
+    <footer class="lg:pl-56 p-2 text-sm text-center">
+      <div>© Министерство на образованието и науката</div>
+      <div *ngIf="showHelpdeskLink" class="font-bold">
+        За въпроси, моля да използвате
+        <a class="text-primary underline" href="https://helpdesk-neispuo.mon.bg/" target="_blank">
+          системата за поддръжка
+        </a>
+      </div>
+    </footer>
+  </div>
+</div>
+
+<div *ngIf="leftSideIsOpen" class="fixed lg:hidden inset-0 bg-black bg-opacity-60 z-10" (click)="hideLeftSide()"></div>

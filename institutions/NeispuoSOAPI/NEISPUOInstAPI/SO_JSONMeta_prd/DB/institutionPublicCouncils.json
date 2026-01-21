@@ -1,0 +1,81 @@
+{
+  "arrayName": "publicCouncilData",
+  "template": "SELECT /**select**/ FROM [inst_basic].[InstitutionPublicCouncilList] IPC /**where**/ /**orderby**/",
+  "sotemplate": "SELECT /**select**/ FROM [sob].[InstitutionPublicCouncilList] IPC /**where**/ /**orderby**/",
+  "columns": [
+     {
+          "column": "IPC.InstitutionPublicCouncilID AS id"
+        },
+		{
+          "column": "IPC.FirstName AS firstName"
+        },
+		{
+          "column": "IPC.MiddleName AS middleName"
+        },
+		{
+          "column": "IPC.FamilyName AS familyName"
+        },
+		{
+          "column": "IPC.PublicCouncilType AS publicCouncilTypeID"
+        },
+		{
+          "column": "IPC.PublicCouncilRole AS publicCouncilRoleID"
+        },
+		{
+          "column": "IPC.Email AS email"
+        },
+		{
+          "column": "IPC.PhoneNumber AS phone"
+        },
+		{
+          "column": "'institutionPublicCouncilData' AS formName"
+        },
+		{
+          "column": "IPC.InstitutionPublicCouncilID AS formDataId"
+        }
+  ],
+  "params": [
+    {
+      "param": "@instid",
+      "column": "IPC.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+	{
+      "param": "@year",
+      "column": "IPC.SchoolYear",
+      "operator": "=",
+      "value": "year",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    },
+	{
+      "param": "@period",
+      "column": "IPC.Period",
+      "operator": "=",
+      "value": "period",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "IPC.PublicCouncilRoleID",
+      "type": "ASC"
+    },
+	{
+      "column": "IPC.FirstName",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+ 
+  ]
+}

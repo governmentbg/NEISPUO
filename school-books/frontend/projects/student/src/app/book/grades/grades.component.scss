@@ -1,0 +1,29 @@
+.table-grades thead {
+  @apply divide-y;
+}
+
+.table-grades thead tr,
+.table-grades tbody tr {
+  @apply divide-x;
+}
+
+.table-grades td {
+  @apply text-sm align-top p-2;
+}
+
+.table-grades .grade-cell {
+  padding: 2px 1px;
+  min-width: 29px;
+}
+
+@media (max-width: 767px) {
+  .second-term-exp .first-term-only,
+  .first-term-exp .second-term-only {
+    display: none;
+  }
+}
+
+sb-grade-link {
+  display: inline-block;
+  margin: 2px 1px 0 1px;
+}

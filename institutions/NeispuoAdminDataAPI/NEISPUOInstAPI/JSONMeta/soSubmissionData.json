@@ -1,0 +1,133 @@
+{
+  "label": "Подаване на данни за списък образец",
+  "sections": [
+    {
+      "label": "Текущи данни за подписване (За ново подаване изберете бутон +)",
+      "order": 1,
+      "name": "TableSubmissionDataFinal",
+      "table":
+      {
+        "name": "submissionDataFinal",
+        "createNew": "redirect",
+        "formName": "soSubmissionDataCreate",
+        "paramName": "submissionDataID",
+		"additionalParams": ["schoolYear","period"],
+        "canDeleteRow": false,
+		"searchable":false,
+		"editableByMonRuo": true,
+        "fields": [
+          {
+            "label": "Година",
+            "name": "schoolYear",
+            "type": "input",
+            "inputType": "number",
+			"width":20,
+            "order": 1
+          },
+          {
+            "label": "Период",
+            "name": "period",
+            "type": "input",
+            "inputType": "number",
+			"width":10,
+            "order": 2
+          },
+		  {
+            "label": "Статус",
+            "name": "submissionStatus",
+            "type": "input",
+            "inputType": "text",
+			"width":50,
+            "order": 3
+          },
+          {
+            "label": "Създаден на",
+            "name": "createdOn",
+            "type": "date",
+			"width":20,
+            "order": 4
+          },
+		  {
+            "label": "Променен на",
+            "name": "modifiedOn",
+            "type": "date",
+			"width":20,
+            "order": 5
+          },
+		   {
+            "label": "Коментар",
+            "name": "comment",
+            "type": "input",
+            "inputType": "text",
+			"width":20,
+            "order": 6
+          }
+        ]
+      }
+    },
+    {
+      "label": "История на подаване на данните",
+      "order": 2,
+      "name": "TableSubmissionDataOld",
+	  "accordion": {"state":"closed"},
+      "table":
+      {
+        "order": 1,
+        "name": "submissionDataOld",
+		"action":"edit",
+        "formName": "soSubmissionDataCreate",
+        "paramName": "submissionDataID",
+		"additionalParams": ["schoolYear","period"],
+		"searchable":false,
+        "fields": [
+           {
+            "label": "Година",
+            "name": "schoolYear",
+            "type": "input",
+            "inputType": "number",
+			"width":20,
+            "order": 1
+          },
+          {
+            "label": "Период",
+            "name": "period",
+            "type": "input",
+            "inputType": "number",
+			"width":10,
+            "order": 2
+          },
+		  {
+            "label": "Статус",
+            "name": "submissionStatus",
+            "type": "input",
+            "inputType": "text",
+			"width":50,
+            "order": 3
+          },
+          {
+            "label": "Създаден на",
+            "name": "createdOn",
+            "type": "date",
+			"width":20,
+            "order": 4
+          },
+		  {
+            "label": "Променен на",
+            "name": "modifiedOn",
+            "type": "date",
+			"width":20,
+            "order": 5
+          },
+		   {
+            "label": "Коментар",
+            "name": "comment",
+            "type": "input",
+            "inputType": "text",
+			"width":20,
+            "order": 6
+          }
+        ]
+      }
+    }
+  ]
+}

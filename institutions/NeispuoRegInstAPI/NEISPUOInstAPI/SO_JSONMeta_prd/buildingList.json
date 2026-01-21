@@ -1,0 +1,62 @@
+{
+  "label": "Сгради",
+  "sections": [
+    {
+      "order": 1,
+      "name": "TableBuildingList",
+      "table":
+      {
+        "name": "buildingList",
+		    "searchable": false,
+        "procedureName": "inst_basic.buildingCUD", 
+        "canDeleteRow": true,
+        "createNew": "redirect",
+        "formName":"building",
+        "paramName":"buildingID",
+        "fields": [
+          {
+            "label": "Наименование на сградата",
+            "name": "name",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 1
+          },
+		      {
+            "label": "Тип на сградата",
+            "name": "buildingTypeName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 2
+          },
+          {
+            "label": "Капацитет (брой деца/ученици)",
+            "name": "expectedStudentCount",
+            "type": "input",
+            "inputType": "number",
+            "width": 5,
+            "order": 3
+          },
+          {
+            "label": "Брой структурни единици",
+            "name": "structureCount",
+            "type": "input",
+            "inputType": "number",
+            "width": 5,
+            "order": 4
+          },
+          {
+            "label": "Сменност на обучение",
+            "name": "schoolShiftTypeName",
+            "type": "input",
+            "inputType": "text",
+			"rendered": "if(instType==1 || instType==4) {field.rendered=true} else {field.rendered=false}",
+            "width": 5,
+            "order": 5
+          }
+        ]
+      }
+    }
+  ]
+}

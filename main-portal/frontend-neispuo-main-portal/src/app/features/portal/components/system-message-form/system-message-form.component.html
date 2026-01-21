@@ -1,0 +1,55 @@
+<form (ngSubmit)="save()" class="form-layout">
+  <div class="field">
+    <label>Заглавие</label>
+    <input pInputText [(ngModel)]="form.title" name="title" />
+    <small *ngIf="formSubmitted && !form.title.trim()" class="p-error"> Заглавието е задължително </small>
+  </div>
+
+  <div class="field">
+    <label>Съдържание</label>
+    <editor [(ngModel)]="form.content" name="content" [init]="editorConfig"></editor>
+    <small *ngIf="formSubmitted && !form.content.trim()" class="p-error"> Съдържанието е задължително </small>
+  </div>
+
+  <div class="three-column-row">
+    <div class="field">
+      <label>Сподели с</label>
+      <p-multiSelect
+        [(ngModel)]="form.roles"
+        name="roles"
+        [options]="rolesList"
+        optionLabel="name"
+        optionValue="id"
+        [filter]="true"
+        placeholder="Избери роли"
+        [selectedItemsLabel]="'{0} Избрани роли'"
+        panelStyleClass="force-panel-up"
+      ></p-multiSelect>
+      <small *ngIf="formSubmitted && !hasSelectedRoles()" class="p-error"> Изберете поне една роля </small>
+      <small *ngIf="rolesError" class="p-error"> Грешка при зареждане на ролите </small>
+    </div>
+
+    <div class="field">
+      <label>Начална дата</label>
+      <p-calendar
+        [(ngModel)]="form.startDate"
+        [minDate]="today"
+        name="startDate"
+        [dateFormat]="dateFormat"
+        (onSelect)="onStartDateChange()"
+      ></p-calendar>
+      <small *ngIf="formSubmitted && !form.startDate" class="p-error"> Въведете начална дата </small>
+    </div>
+
+    <div class="field">
+      <label>Крайна дата</label>
+      <p-calendar [(ngModel)]="form.endDate" [minDate]="minEndDate" name="endDate" [dateFormat]="dateFormat"></p-calendar>
+      <small *ngIf="formSubmitted && !form.endDate" class="p-error"> Въведете крайна дата </small>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button pButton type="button" label="Отказ" icon="pi pi-times" (click)="close()" class="p-button-text"></button>
+    <button pButton type="submit" label="Запази" icon="pi pi-check"></button>
+  </div>
+</form>

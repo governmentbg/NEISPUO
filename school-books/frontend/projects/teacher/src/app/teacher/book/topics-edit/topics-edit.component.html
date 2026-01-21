@@ -1,0 +1,295 @@
+<ng-template #topicsEdit>
+  <div class="sm:flex justify-between items-end mb-2.5">
+    <sb-paginator [items]="weekPaginatorItems"></sb-paginator>
+
+    <ng-container *ngIf="data.individualCurriculumStudents.length">
+      <div class="hidden md:block w-[400px]">
+        <mat-select
+          placeholder="Разписание"
+          class="sb-form-control mb-2.5 max-w-full truncate"
+          [formControl]="individualCurriculumStudentControl"
+        >
+          <mat-option [value]="''">Разписание на паралелката</mat-option>
+          <mat-option *ngFor="let student of data.individualCurriculumStudents" [value]="student.id">
+            Разписание ИУП {{ student.name }}
+            <span *ngIf="student.badge" class="sb-badge text-sm">{{ student.badge }}</span>
+          </mat-option>
+        </mat-select>
+      </div>
+
+      <div class="block md:hidden mt-2.5">
+        <mat-form-field appearance="fill" class="w-full">
+          <mat-label>Разписание</mat-label>
+          <mat-select [formControl]="individualCurriculumStudentControl">
+            <mat-option value="class">Разписание на паралелката</mat-option>
+            <mat-option *ngFor="let student of data.individualCurriculumStudents" [value]="student.id">
+              Разп. ИУП {{ student.name }} {{ student.badge }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </ng-container>
+  </div>
+
+  <sb-banner *ngIf="hasPastMonthLockMessage" class="mb-2.5" type="info">
+    {{ hasPastMonthLockMessage }}
+  </sb-banner>
+
+  <div class="sb-table-container">
+    <table class="sb-table sb-schedule-table">
+      <thead>
+        <tr>
+          <th class="p-0 w-px whitespace-nowrap text-center">Ден</th>
+          <th class="sb-schedule-subject w-px pr-0">Час/Предмет</th>
+          <th class="px-1 w-px">Взет</th>
+          <th>Тема</th>
+          <th *ngIf="data.mode === TOPICS_EDIT_MODE_REMOVE" class="px-1 w-px"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let day of scheduleByDay; index as j">
+          <ng-container *ngIf="day.hours.length && !day.isOffDay">
+            <tr *ngFor="let hour of day.hours; index as i">
+              <td class="sb-schedule-day w-px whitespace-nowrap" *ngIf="i === 0" [attr.rowspan]="day.hours.length + 1">
+                <div>
+                  <div>{{ day.dayString }}</div>
+                  <div class="text-sm">{{ day.dateString }}</div>
+                </div>
+              </td>
+              <td class="sb-schedule-subject w-px pr-0">
+                <div>
+                  <span>{{ hour.hourNumber }}.</span>
+                  <ng-container *ngIf="hour.curriculumId">
+                    <span class="inline sm:hidden">
+                      {{ hour.subjectShort }}
+                      {{
+                        hour.extTeacherName ?? hour.topicTeacherShort ?? hour.teacherShort
+                          ? ' - ' + ((hour.extTeacherName ? hour.teacherShort : null) ?? hour.teacherShort)
+                          : ''
+                      }}
+                    </span>
+                    <span class="hidden sm:inline">
+                      {{ hour.subject }}
+                      {{
+                        hour.extTeacherName ?? hour.topicTeacher ?? hour.teacher
+                          ? ' - ' + ((hour.extTeacherName ? hour.teacher : null) ?? hour.topicTeacher ?? hour.teacher)
+                          : ''
+                      }}
+                    </span>
+                  </ng-container>
+                </div>
+              </td>
+              <td class="w-px p-0.5 align-middle text-center">
+                <mat-checkbox
+                  color="primary"
+                  *ngIf="!hour.isEmptyHour"
+                  [checked]="hour.isTaken"
+                  [disabled]="data.mode !== TOPICS_EDIT_MODE_NEW || !hour.canCreate"
+                  (change)="isTakenChange($event, hour)"
+                ></mat-checkbox>
+              </td>
+              <td class="py-0.5 pr-0.5 align-middle">
+                <div
+                  class="flex items-center"
+                  *ngIf="data.mode === TOPICS_EDIT_MODE_NEW && hour.canCreate && hour.isTaken"
+                >
+                  <textarea
+                    *ngIf="(!hour.hasTopicPlan || !hour.useTopicPlan) && hour.topicFormControl"
+                    class="sb-form-control w-full grow"
+                    [formControl]="hour.topicFormControl"
+                    cdkTextareaAutosize
+                    cdkAutosizeMinRows="1"
+                  ></textarea>
+
+                  <div class="ng-select-default grow">
+                    <ng-select
+                      class="w-full"
+                      *ngIf="hour.hasTopicPlan && hour.useTopicPlan && hour.topicPlanItemFormControl"
+                      [items]="hour.topicPlanItems$ && (hour.topicPlanItems$ | async)"
+                      bindValue="classBookTopicPlanItemId"
+                      bindLabel="title"
+                      [multiple]="true"
+                      [searchable]="true"
+                      [closeOnSelect]="true"
+                      [loading]="hour.topicPlanItemsLoading === true"
+                      (open)="onTopicPlanSelectOpened()"
+                      [formControl]="hour.topicPlanItemFormControl"
+                      [appendTo]="'#ng-select-dropdown-default'"
+                      notFoundText="Няма намерени теми"
+                      loadingText="Зареждане..."
+                      clearAllText="Изчисти"
+                      typeToSearchText="Напишете нещо за търсене"
+                    >
+                      <ng-template ng-label-tmp let-item="item">
+                        <span class="px-1 whitespace-normal box-decoration-clone">{{ item.title }}</span>
+                      </ng-template>
+                      <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+                        <fa-icon *ngIf="item.taken" [icon]="fasCheck" class="icon-taken"></fa-icon>
+                        <span class="ng-option-label whitespace-normal box-decoration-clone" [title]="item.title">
+                          {{ item.title }}
+                        </span>
+                      </ng-template>
+                    </ng-select>
+                  </div>
+
+                  <button
+                    *ngIf="hour.hasTopicPlan"
+                    class="flex-none min-w-0 leading-8 h-8 px-1.5 ml-0.5"
+                    mat-raised-button
+                    type="button"
+                    (click)="toggleUseTopicPlan(hour)"
+                  >
+                    <fa-icon [icon]="hour.useTopicPlan ? fasAlignJustify : fasAlignSlash"></fa-icon>
+                  </button>
+                </div>
+
+                <ng-container *ngIf="(data.mode !== TOPICS_EDIT_MODE_NEW || !hour.canCreate) && hour.topicTitles">
+                  <span
+                    *ngIf="hour.topicTitles.length === 1"
+                    class="whitespace-pre-line"
+                    [class.line-through]="hour.isRemoved"
+                  >
+                    {{ hour.topicTitles[0] }}
+                  </span>
+                  <ul *ngIf="hour.topicTitles.length > 1" class="list-disc">
+                    <li
+                      *ngFor="let title of hour.topicTitles"
+                      class="whitespace-pre-line"
+                      [class.line-through]="hour.isRemoved"
+                    >
+                      {{ title }}
+                    </li>
+                  </ul>
+                </ng-container>
+              </td>
+              <td *ngIf="data.mode === TOPICS_EDIT_MODE_REMOVE" class="p-1 w-px">
+                <button
+                  *ngIf="!hour.isRemoved && (hour.canRemove || (hour.canUndo && (hour.undoExpired$ | async) === false))"
+                  (click)="remove(hour)"
+                  class="sb-link-btn"
+                  type="button"
+                >
+                  <fa-icon [icon]="fasTrashAlt"></fa-icon>
+                </button>
+                <button *ngIf="hour.isRemoved" (click)="undoRemove(hour)" class="sb-link-btn" type="button">
+                  <fa-icon [icon]="fasUndo"></fa-icon>
+                </button>
+              </td>
+            </tr>
+            <tr class="bg-gray-100 h-2">
+              <td class="p-1" [attr.colspan]="data.mode !== TOPICS_EDIT_MODE_REMOVE ? 3 : 4"></td>
+            </tr>
+          </ng-container>
+          <tr *ngIf="!day.hours.length || day.isOffDay">
+            <td class="sb-schedule-day w-px p-2 whitespace-nowrap">
+              <div>
+                <div>{{ day.dayString }}</div>
+                <div class="text-sm">{{ day.dateString }}</div>
+              </div>
+            </td>
+            <td
+              [attr.colspan]="data.mode !== TOPICS_EDIT_MODE_REMOVE ? 3 : 4"
+              class="text-center align-middle bg-gray-100 text-xs font-medium text-gray-500 uppercase tracking-wider"
+            >
+              {{ !day.isOffDay ? 'Няма въведена програма за деня' : 'Неучебен ден' }}
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+</ng-template>
+
+<ng-container *ngIf="data.mode === TOPICS_EDIT_MODE_VIEW">
+  <div *ngIf="canCreate || (isPG && canCreateAdditionalActivities) || canRemove" class="sb-btn-wrapper">
+    <a *ngIf="canCreate" [routerLink]="['../../new', data.year, data.weekNumber]" mat-raised-button color="primary">
+      <fa-icon [icon]="farCalendarCheck" size="lg"></fa-icon>
+      <span>Отбележи взет</span>
+    </a>
+
+    <button
+      *ngIf="isPG && canCreateAdditionalActivities"
+      type="button"
+      mat-raised-button
+      color="accent"
+      (click)="openAddOrUpdateActivityDialog(null)"
+    >
+      <fa-icon [icon]="fasPlus" size="lg"></fa-icon>
+      <span class="inline sm:hidden">Доп. дейност</span>
+      <span class="hidden sm:inline">Допълнителна дейност</span>
+    </button>
+
+    <a *ngIf="canRemove" [routerLink]="['../../remove', data.year, data.weekNumber]" mat-raised-button color="warn">
+      <fa-icon [icon]="fasTrashAlt" size="lg"></fa-icon>
+      <span>Премахни</span>
+    </a>
+  </div>
+
+  <ng-container *ngTemplateOutlet="topicsEdit"></ng-container>
+
+  <div *ngIf="additionalActivities != null" class="sb-table-container mt-2.5 sm:mt-4">
+    <table class="sb-table">
+      <thead>
+        <tr>
+          <th
+            *ngIf="canEditAdditionalActivities || canRemoveAdditionalActivities || hasAdditionalActivitiesCreatorAccess"
+          ></th>
+          <th>Допълнителни дейности и индивидуална работа</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="additionalActivities.length === 0">
+          <td colspan="2">Няма въведени допълнителни дейности и индивидуална работа</td>
+        </tr>
+        <tr *ngFor="let additionalActivity of additionalActivities">
+          <td
+            *ngIf="canEditAdditionalActivities || canRemoveAdditionalActivities || hasAdditionalActivitiesCreatorAccess"
+            class="sb-table-action"
+          >
+            <button
+              *ngIf="canEditAdditionalActivities || additionalActivity.hasCreatorAccess"
+              type="button"
+              aria-label="Детайли"
+              class="sb-link-btn"
+              (click)="openAddOrUpdateActivityDialog(additionalActivity.additionalActivityId)"
+            >
+              <fa-icon [icon]="fadChevronCircleRight"></fa-icon>
+            </button>
+            <button
+              *ngIf="canRemoveAdditionalActivities || additionalActivity.hasCreatorAccess"
+              type="button"
+              aria-label="Изтрий"
+              class="sb-link-btn"
+              (click)="removeActivity(additionalActivity.additionalActivityId)"
+            >
+              <fa-icon
+                [icon]="removingAct[additionalActivity.additionalActivityId] ? fadSpinnerThird : fadTrashAlt"
+                [spin]="removingAct[additionalActivity.additionalActivityId]"
+              ></fa-icon>
+            </button>
+          </td>
+          <td>
+            {{ additionalActivity.activity }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ng-container>
+
+<form *ngIf="data.mode !== TOPICS_EDIT_MODE_VIEW" [formGroup]="form" #ngForm="ngForm" autocomplete="off" novalidate>
+  <sb-tab-card>
+    <ng-container card-title>
+      {{ modeTitle }}
+    </ng-container>
+    <sb-editor-panel
+      card-buttons
+      [isNew]="true"
+      (save)="onSave($event)"
+      [backBtnRouteCommands]="['../../../', data.year, data.weekNumber]"
+    ></sb-editor-panel>
+    <ng-container card-body>
+      <ng-container *ngTemplateOutlet="topicsEdit"></ng-container>
+    </ng-container>
+  </sb-tab-card>
+</form>

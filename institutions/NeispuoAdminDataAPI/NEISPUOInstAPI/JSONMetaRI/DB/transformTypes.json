@@ -1,0 +1,59 @@
+{
+    "template": "SELECT /**select**/ FROM [reginst_nom].[TransformType] TT JOIN [reginst_nom].[TransformTypeLimit] TTL ON TT.TransformTypeID=TTL.TransformTypeID  /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "TT.TransformTypeID as code"
+        },
+        {
+            "column": "TT.Name as label"
+        },
+        {
+            "column": "TT.IsValid as isValid"
+        },
+		{
+            "column": "TT.IsAnullment as isAnullment"
+        }
+    ],
+    "params": [
+        {
+            "param": "@IsValid",
+            "column": "IsValid",
+            "operator": "=",
+            "value": 1,
+            "type": "int",
+            "logical_operator": "and",
+			"optional": true,
+  			"static": true,
+			"from_claim": false
+        },
+		{
+            "param": "@instKind",
+            "column": "TTL.InstKind",
+            "operator": "=",
+            "value": "instKind",
+            "type": "int",
+            "logical_operator": "and",
+			"optional": true,
+			"static": false,
+			"from_claim": false
+        },
+		{
+            "param": "@filterValue",
+            "column": "TTL.ProcTypeID",
+            "operator": "=",
+            "value": "filterValue",
+            "type": "int",
+            "logical_operator": "and",
+			"optional": true,
+			"static": false,
+			"from_claim": false
+        }
+    ],
+    "order": [
+        {
+            "column": "TT.TransformTypeID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

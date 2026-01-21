@@ -1,0 +1,128 @@
+{
+  "template": "SELECT /**select**/ FROM [core].[Person] SA /**where**/ /**orderby**/",
+  "columns": [
+        {
+          "column": "SA.PersonID AS id"
+        },
+		{
+          "column": "SA.FirstName AS firstName"
+        },
+		{
+          "column": "SA.MiddleName AS middleName"
+        },
+		{
+          "column": "SA.LastName AS lastName"
+        }
+  ],
+  "params": [
+	{
+          "param": "@personid",
+          "column": "SA.PersonID",
+          "operator": "=",
+          "value": "personid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "SA.PersonID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+    {
+      "arrayName": "staffComputerSkills",
+      "template": "SELECT /**select**/ FROM [inst_basic].[PersonCompSkillList] PCS /**where**/ /**orderby**/",
+      "sotemplate": "SELECT /**select**/ FROM [so].[PersonCompSkillList] PCS /**where**/ /**orderby**/",
+	  "columns": [
+        {
+          "column": "PCS.PersonCompSkillID AS id"
+        },
+		{
+          "column": "PCS.CompSkill AS computerSkill"
+        },
+		{
+          "column": "PCS.CompSkillLevel AS computerSkillLevel"
+        },	
+		{
+          "column": "PCS.Notes AS computerSkillNotes"
+        },
+		{
+          "column": "'personComputerSkillData' AS formName"
+        },
+		{
+          "column": "PCS.PersonCompSkillID AS formDataId"
+        }
+      ],
+      "params": [
+	{
+          "param": "@personid",
+          "column": "PCS.PersonID",
+          "operator": "=",
+          "value": "personid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+    }
+      ],
+      "order": [
+		{
+          "column": "PCS.CompSkill",
+          "type": "ASC"
+        },
+		{
+          "column": "PCS.CompSkillLevel",
+          "type": "ASC"
+        }
+      ]
+    },
+	{
+      "arrayName": "staffLanguageSkills",
+      "template": "SELECT /**select**/ FROM [inst_basic].[PersonFLSkillList] PFLS /**where**/ /**orderby**/",
+      "sotemplate": "SELECT /**select**/ FROM [so].[PersonFLSkillList] PFLS /**where**/ /**orderby**/",
+	  "columns": [
+        {
+          "column": "PFLS.PersonFLSkillID AS id"
+        },
+		{
+          "column": "PFLS.FL AS languageSkill"
+        },
+		{
+          "column": "PFLS.FLLevel AS languageSkillLevel"
+        },	
+		{
+          "column": "PFLS.Notes AS languageSkillNotes"
+        },
+		{
+          "column": "'personLanguageSkillData' AS formName"
+        },
+		{
+          "column": "PFLS.PersonFLSkillID AS formDataId"
+        }		
+      ],
+      "params": [
+	{
+          "param": "@personid",
+          "column": "PFLS.PersonID",
+          "operator": "=",
+          "value": "personid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+    }
+      ],
+      "order": [
+		{
+          "column": "PFLS.FL",
+          "type": "ASC"
+        },
+		{
+          "column": "PFLS.FLLevel",
+          "type": "ASC"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+<header class="fixed-top">
+  <nav class="navbar bg-color-blue-500">
+    <div class="container-fluid navbar-container">
+      <div class="logo">
+        <!-- <i class="bi bi-list" (click)="sideMenService.changeSideMenuVisibility(!displaySidemenu)"></i> -->
+        <a href=""><img class="mon-logo" src="assets/images/mon-logo.png" alt="" /></a>
+        <h3 class="mon-title">НЕИСПУО</h3>
+      </div>
+      <div class="d-flex justify-content-center align-items-center">
+        <div class="me-3">
+          <app-dashboard-menu></app-dashboard-menu>
+        </div>
+        <div class="me-3"><app-downloads-nav></app-downloads-nav></div>
+        <app-user-menu></app-user-menu>
+      </div>
+    </div>
+  </nav>
+</header>

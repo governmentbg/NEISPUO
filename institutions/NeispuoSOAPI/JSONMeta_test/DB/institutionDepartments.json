@@ -1,0 +1,32 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_basic].[Departments] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "InstitutionDepartmentID as code"
+        },
+        {
+            "column": "Name as label"
+        },
+		{
+            "column": "IsValid as isValid"
+        }
+    ],
+    "params": [
+    {
+      "param": "@instid",
+      "column": "InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+    ],
+    "order": [
+        {
+            "column": "InstitutionDepartmentID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

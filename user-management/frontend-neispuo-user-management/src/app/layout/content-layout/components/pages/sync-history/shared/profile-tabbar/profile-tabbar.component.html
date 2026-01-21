@@ -1,0 +1,98 @@
+<div class="profile-tabbar-wrapper">
+    <div class="profile-tabbar-card azure-sync-organization-table">
+        <div class="d-flex justify-content-between align-items-center mb-2 gap-2">
+            <div class="d-flex gap-2 align-items-center">
+                <h5 class="mb-0">{{ CONSTANTS.PRIMENG_TITLE_AZURE_DATA | translate }}</h5>
+                <button
+                    pButton
+                    icon="pi pi-refresh"
+                    class="p-button-icon-only p-button-sm p-button-primary"
+                    [disabled]="loading"
+                    pTooltip="{{ 'PRIMENG.TITLE.REFRESH' | translate }}"
+                    (click)="onRefresh()"
+                ></button>
+            </div>
+            <div class="load-method-selector" *ngIf="userLoadMethodState">
+                <label>{{ CONSTANTS.PRIMENG_TITLE_LOAD_WITH | translate }}</label>
+                <p-radioButton
+                    name="loadMethod"
+                    value="publicEduNumber"
+                    [(ngModel)]="userLoadMethodState.loadMethod"
+                    [disabled]="!userLoadMethodState.publicEduNumber || noIdentifiersAvailable"
+                    (onClick)="onLoadMethodChange('publicEduNumber')"
+                    [label]="CONSTANTS.PRIMENG_TITLE_PUBLIC_EDU_NUMBER | translate"
+                ></p-radioButton>
+                <p-radioButton
+                    name="loadMethod"
+                    value="azureID"
+                    [(ngModel)]="userLoadMethodState.loadMethod"
+                    [disabled]="!userLoadMethodState.azureID || noIdentifiersAvailable"
+                    (onClick)="onLoadMethodChange('azureID')"
+                    [label]="CONSTANTS.PRIMENG_TITLE_AZURE_ID | translate"
+                ></p-radioButton>
+            </div>
+        </div>
+        <p-tabView *ngIf="entityType === SyncHistoryEntityEnum.INSTITUTION">
+            <p-tabPanel [header]="CONSTANTS.PROFILE_TAB_PROFILE | translate">
+                <app-json-view-card
+                    class="profile-json-view-card"
+                    [data]="entityInfo?.profileInfo"
+                    [loading]="loading"
+                    [error]="error"
+                    [empty]="empty"
+                ></app-json-view-card>
+            </p-tabPanel>
+            <p-tabPanel [header]="CONSTANTS.PRIMENG_TITLE_SCHOOL_PROFILE | translate">
+                <app-json-view-card
+                    class="profile-json-view-card"
+                    [data]="entityInfo?.schoolInfo"
+                    [loading]="loading"
+                    [error]="error"
+                    [empty]="empty"
+                ></app-json-view-card>
+            </p-tabPanel>
+        </p-tabView>
+        <div *ngIf="isUserEntity()">
+            <p-tabView>
+                <p-tabPanel [header]="CONSTANTS.PROFILE_TAB_PROFILE | translate">
+                    <app-json-view-card
+                        class="profile-json-view-card"
+                        [data]="entityInfo?.profileInfo"
+                        [loading]="loading"
+                        [error]="error"
+                        [empty]="empty"
+                    ></app-json-view-card>
+                </p-tabPanel>
+                <p-tabPanel [header]="CONSTANTS.PROFILE_TAB_SCHOOL_ENROLLMENTS | translate">
+                    <app-json-view-card
+                        class="profile-json-view-card"
+                        [data]="entityInfo?.userSchoolEnrollmentsInfo"
+                        [loading]="loading"
+                        [error]="error"
+                        [empty]="empty"
+                    ></app-json-view-card>
+                </p-tabPanel>
+                <p-tabPanel [header]="CONSTANTS.PROFILE_TAB_CLASS_ENROLLMENTS | translate">
+                    <app-json-view-card
+                        class="profile-json-view-card"
+                        [data]="entityInfo?.userClassEnrollmentsInfo"
+                        [loading]="loading"
+                        [error]="error"
+                        [empty]="empty"
+                    ></app-json-view-card>
+                </p-tabPanel>
+            </p-tabView>
+        </div>
+        <p-tabView *ngIf="entityType === SyncHistoryEntityEnum.PARENT">
+            <p-tabPanel [header]="CONSTANTS.PROFILE_TAB_PROFILE | translate">
+                <app-json-view-card
+                    class="profile-json-view-card"
+                    [data]="entityInfo?.profileInfo"
+                    [loading]="loading"
+                    [error]="error"
+                    [empty]="empty"
+                ></app-json-view-card>
+            </p-tabPanel>
+        </p-tabView>
+    </div>
+</div>

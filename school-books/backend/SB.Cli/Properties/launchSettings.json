@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "SB.Cli": {
+      "commandName": "Project"
+    },
+    "SB.Cli html-template Book_PG": {
+      "commandName": "Project",
+      "commandLineArgs": "html-template Book_PG"
+    }
+  }
+}

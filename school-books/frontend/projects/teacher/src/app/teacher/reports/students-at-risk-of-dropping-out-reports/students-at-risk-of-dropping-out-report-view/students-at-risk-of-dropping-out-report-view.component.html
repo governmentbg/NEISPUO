@@ -1,0 +1,116 @@
+<sb-breadcrumb
+  class="block mb-3"
+  [icon]="fadCalendarMinus"
+  [text]="
+    data.studentsAtRiskOfDroppingOutReport == null
+      ? 'Създаване на справка ученици/деца с риск от отпадане'
+      : 'Преглед на справка ученици/деца с риск от отпадане'
+  "
+  [parentItems]="[{ text: 'Ученици/деца с риск от отпадане', routeCommands: ['../'] }]"
+></sb-breadcrumb>
+
+<form [formGroup]="form" autocomplete="off" novalidate>
+  <sb-card>
+    <ng-container card-title>
+      {{
+        data.studentsAtRiskOfDroppingOutReport == null
+          ? 'Създаване на справка ученици/деца с риск от отпадане'
+          : 'Преглед на справка ученици/деца с риск от отпадане'
+      }}
+    </ng-container>
+    <sb-editor-panel
+      card-buttons
+      [isNew]="data.studentsAtRiskOfDroppingOutReport == null"
+      [editBtnHidden]="true"
+      (save)="onSave($event)"
+    >
+      <a
+        *ngIf="data.studentsAtRiskOfDroppingOutReport != null"
+        [href]="downloadUrl"
+        class="mr-3"
+        disabled-mode-buttons
+        target="_blank"
+        download
+        color="primary"
+        mat-raised-button
+        [disabled]="!downloadUrl"
+      >
+        <fa-icon [icon]="fasFileExcel" size="lg"></fa-icon>
+        <span>Свали</span>
+      </a>
+      <button
+        disabled-mode-buttons
+        mat-raised-button
+        color="warn"
+        type="button"
+        (click)="onRemove()"
+        [disabled]="removing"
+      >
+        <fa-icon [icon]="removing ? fasSpinnerThird : fasTrashAlt" [spin]="removing" size="lg"></fa-icon>
+        <span class="hidden sm:inline">Премахни</span>
+      </button>
+    </sb-editor-panel>
+    <ng-container card-body>
+      <div class="sm:grid grid-cols-4 gap-x-4 mb-2">
+        <sb-date-field class="col-start-1" label="До дата" formControlName="reportDate"></sb-date-field>
+      </div>
+      <sb-card-section *ngIf="data.studentsAtRiskOfDroppingOutReport != null" class="col-span-full">
+        Ученици/деца с риск от отпадане до {{ data.studentsAtRiskOfDroppingOutReport.reportDate | sbDate }} към
+        {{ data.studentsAtRiskOfDroppingOutReport.createDate | sbDateTime }}
+      </sb-card-section>
+      <ng-container *ngIf="data.studentsAtRiskOfDroppingOutReport != null && dataSource != null">
+        <sb-table
+          [dataSource]="dataSource"
+          [displayedColumns]="[
+            'personalId',
+            'firstName',
+            'middleName',
+            'lastName',
+            'classBookName',
+            'unexcusedAbsenceHoursCount',
+            'unexcusedAbsenceDaysCount'
+          ]"
+        >
+          <ng-container cdkColumnDef="personalId">
+            <th cdk-header-cell *cdkHeaderCellDef>ЕГН/ЛНЧ</th>
+            <td cdk-cell *cdkCellDef="let row">{{ row.personalId }}</td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="firstName">
+            <th cdk-header-cell *cdkHeaderCellDef>Име</th>
+            <td cdk-cell *cdkCellDef="let row">{{ row.firstName }}</td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="middleName">
+            <th cdk-header-cell *cdkHeaderCellDef>Презиме</th>
+            <td cdk-cell *cdkCellDef="let row">{{ row.middleName }}</td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="lastName">
+            <th cdk-header-cell *cdkHeaderCellDef>Фамилия</th>
+            <td cdk-cell *cdkCellDef="let row">{{ row.lastName }}</td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="classBookName">
+            <th cdk-header-cell *cdkHeaderCellDef>Паралелка</th>
+            <td cdk-cell *cdkCellDef="let row">{{ row.classBookName }}</td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="unexcusedAbsenceHoursCount">
+            <th cdk-header-cell *cdkHeaderCellDef>Отсъствия - часове</th>
+            <td cdk-cell *cdkCellDef="let row">{{ row.unexcusedAbsenceHoursCount }}</td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="unexcusedAbsenceDaysCount">
+            <th cdk-header-cell *cdkHeaderCellDef>Отсъствия - дни</th>
+            <td cdk-cell *cdkCellDef="let row">{{ row.unexcusedAbsenceDaysCount }}</td>
+          </ng-container>
+
+          <ng-container no-data-row>
+            <td colspan="6" class="text-center">Няма ученици/деца с риск от отпадане за периода</td>
+          </ng-container>
+        </sb-table>
+      </ng-container>
+    </ng-container>
+  </sb-card>
+</form>

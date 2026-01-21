@@ -1,0 +1,150 @@
+<sb-breadcrumb
+  class="block mb-3"
+  [icon]="fadCalendarMinus"
+  [text]="
+    data.scheduleAndAbsencesByMonthReport == null
+      ? 'Създаване на справка отсъствия/теми за месец'
+      : 'Преглед на справка отсъствия/теми за месец'
+  "
+  [parentItems]="[{ text: 'Отсъствия/теми за месец', routeCommands: ['../'] }]"
+></sb-breadcrumb>
+
+<form [formGroup]="form" autocomplete="off" novalidate>
+  <sb-card>
+    <ng-container card-title>
+      {{
+        data.scheduleAndAbsencesByMonthReport == null
+          ? 'Създаване на справка отсъствия/теми за месец'
+          : 'Преглед на справка отсъствия/теми за месец'
+      }}
+    </ng-container>
+    <sb-editor-panel
+      card-buttons
+      [isNew]="data.scheduleAndAbsencesByMonthReport == null"
+      [editBtnHidden]="true"
+      (save)="onSave($event)"
+    >
+      <a
+        *ngIf="data.scheduleAndAbsencesByMonthReport != null"
+        [href]="downloadUrl"
+        class="mr-3"
+        disabled-mode-buttons
+        target="_blank"
+        download
+        color="primary"
+        mat-raised-button
+        [disabled]="!downloadUrl"
+      >
+        <fa-icon [icon]="fasFileExcel" size="lg"></fa-icon>
+        <span>Свали</span>
+      </a>
+      <button
+        disabled-mode-buttons
+        mat-raised-button
+        color="warn"
+        type="button"
+        (click)="onRemove()"
+        [disabled]="removing"
+      >
+        <fa-icon [icon]="removing ? fasSpinnerThird : fasTrashAlt" [spin]="removing" size="lg"></fa-icon>
+        <span class="hidden sm:inline">Премахни</span>
+      </button>
+    </sb-editor-panel>
+    <ng-container card-body>
+      <div class="sm:grid grid-cols-4 gap-x-4 mb-2">
+        <sb-select-field
+          class="col-start-1"
+          label="Месец"
+          formControlName="month"
+          [items]="monthsSelect"
+        ></sb-select-field>
+        <sb-nom-select
+          class="col-start-1"
+          *ngIf="data.scheduleAndAbsencesByMonthReport == null"
+          label="Паралелка/Група"
+          formControlName="classBookId"
+          [nomService]="classBookNomsService"
+        ></sb-nom-select>
+        <sb-text-field
+          class="col-start-1"
+          *ngIf="data.scheduleAndAbsencesByMonthReport != null"
+          label="Паралелка/Група"
+          formControlName="classBookName"
+        ></sb-text-field>
+      </div>
+      <sb-card-section *ngIf="data.scheduleAndAbsencesByMonthReport != null" class="col-span-full">
+        {{ reportName }}
+      </sb-card-section>
+      <ng-container *ngIf="data.scheduleAndAbsencesByMonthReport != null">
+        <div *ngFor="let week of data.scheduleAndAbsencesByMonthReportWeeks" class="sb-table-container mb-4">
+          <table class="sb-table">
+            <thead>
+              <tr>
+                <th [attr.colspan]="!isDPLR ? 6 : 5" class="text-center">{{ week.weekName }}</th>
+              </tr>
+              <tr>
+                <th rowspan="2"><div class="vertical-text">Ден</div></th>
+                <th rowspan="2">Предмет/Учител</th>
+                <th colspan="3" *ngIf="!isDPLR">Отсъстващи ученици</th>
+                <th colspan="2" *ngIf="isDPLR">Отсъстващи/присъстващи ученици</th>
+                <th rowspan="2">Тема на урока</th>
+              </tr>
+              <tr *ngIf="!isDPLR">
+                <th>уваж.</th>
+                <th>неуваж.</th>
+                <th>закъснели</th>
+              </tr>
+              <tr *ngIf="isDPLR">
+                <th>остъствия</th>
+                <th>присъствия</th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngFor="let day of week.days">
+                <ng-container *ngIf="day.hours.length > 0 && !day.isOffDay">
+                  <tr *ngFor="let hour of day.hours; index as i">
+                    <td *ngIf="i === 0" [attr.rowspan]="day.hours.length" class="align-bottom" style="height: 140px">
+                      <div class="vertical-text">
+                        <span>{{ day.dayName }} {{ day.date | date: 'dd.MM' }}</span>
+                      </div>
+                    </td>
+                    <td *ngIf="hour.isEmptyHour">{{ hour.hourNumber }}. Свободен час</td>
+                    <td *ngIf="!hour.isEmptyHour">
+                      {{ hour.hourNumber }}. {{ hour.curriculumName }}
+                      {{ hour.curriculumTeacherNames ? '- ' + hour.curriculumTeacherNames : '' }}
+                    </td>
+                    <td *ngIf="!isDPLR">{{ hour.excusedStudentClassNumbers }}</td>
+                    <td *ngIf="!isDPLR">{{ hour.unexcusedStudentClassNumbers }}</td>
+                    <td *ngIf="!isDPLR">{{ hour.lateStudentClassNumbers }}</td>
+                    <td *ngIf="isDPLR">{{ hour.dplrAbsenceStudentClassNumbers }}</td>
+                    <td *ngIf="isDPLR">{{ hour.dplrAttendanceStudentClassNumbers }}</td>
+                    <td>{{ hour.topics }}</td>
+                  </tr>
+                </ng-container>
+                <tr *ngIf="day.hours.length === 0 || day.isOffDay">
+                  <td class="align-bottom" style="height: 140px">
+                    <div class="vertical-text">
+                      <span>{{ day.dayName }} {{ day.date | date: 'dd.MM' }}</span>
+                    </div>
+                  </td>
+                  <td class="text-center" [attr.colspan]="!isDPLR ? 5 : 4">
+                    {{
+                      day.hours.length === 0
+                        ? 'Няма въведена програма за деня или е извън периода на справката'
+                        : 'Неучебен ден'
+                    }}
+                  </td>
+                </tr>
+              </ng-container>
+            </tbody>
+            <tfoot *ngIf="week.additionalActivities">
+              <tr>
+                <td [attr.colspan]="!isDPLR ? 6 : 5">Допълнителни дейности: {{ week.additionalActivities }}</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </ng-container>
+    </ng-container>
+  </sb-card>
+</form>

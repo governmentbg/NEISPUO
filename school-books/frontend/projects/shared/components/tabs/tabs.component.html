@@ -1,0 +1,40 @@
+<div class="bg-white sm:shadow sm:border-t sm:rounded">
+  <nav mat-tab-nav-bar [attr.aria-label]="ariaLabel">
+    <a
+      *ngFor="let tab of tabs"
+      mat-tab-link
+      class="px-2.5 text-base font-normal opacity-100"
+      [ngClass]="!rla.isActive ? 'text-gray-500 hover:text-blue-900' : 'text-primary font-medium'"
+      [active]="rla.isActive"
+      [routerLink]="tab.routeCommands"
+      [relativeTo]="tab.routeExtras ? tab.routeExtras.relativeTo : undefined"
+      [queryParams]="tab.routeExtras?.queryParams"
+      [fragment]="tab.routeExtras?.fragment"
+      [queryParamsHandling]="tab.routeExtras?.queryParamsHandling"
+      [preserveFragment]="tab.routeExtras?.preserveFragment || false"
+      [skipLocationChange]="tab.routeExtras?.skipLocationChange || false"
+      [replaceUrl]="tab.routeExtras?.replaceUrl || false"
+      [state]="tab.routeExtras?.state"
+      routerLinkActive
+      [routerLinkActiveOptions]="{
+        paths: 'subset',
+        matrixParams: 'subset',
+        queryParams: 'subset',
+        fragment: 'ignored'
+      }"
+      #rla="routerLinkActive"
+    >
+      <fa-icon *ngIf="tab.icon" [icon]="tab.icon" class="mr-1" size="lg"></fa-icon>
+
+      {{ tab.text }}
+
+      <span *ngIf="tab.badge" class="sb-badge">
+        {{ tab.badge }}
+      </span>
+    </a>
+  </nav>
+
+  <div class="p-2.5 sm:p-4">
+    <ng-content></ng-content>
+  </div>
+</div>

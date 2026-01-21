@@ -1,0 +1,99 @@
+{
+    "label": "Данни за предмет",
+    "procedureName": "inst_basic.subjectInstitution",
+    "sections": [
+        {
+            "label": "Данни за предмет",
+            "order": 1,
+            "subsections": [
+                {
+                    "order": 1,
+                    "name": "basicSubjectInstitutionData",
+                    "fields": [
+                        {
+                            "label": "Моля, изберете учебен предмет",
+                            "name": "subjectID",
+                            "type": "searchselect",
+                            "optionsPath": "/data/get/subjectsReq",
+                            "order": 1,
+                            "width": 800,
+                            "disabled": false,
+                            "validations": [
+                                {
+                                    "name": "required",
+                                    "validator": "",
+                                    "message": "Полето е задължително"
+                                }
+                            ],
+                            "influence": [
+                                {
+                                    "fieldName": "subjectName",
+                                    "url": "/data/get/subjectNamebySubjectID",
+                                    "type": "setValue"
+                                },
+                                {
+                                    "fieldName": "isMandatory",
+                                    "url": "/data/get/subjectMandatorybySubjectID",
+                                    "type": "setValue"
+                                }
+                            ]
+                        },
+                        {
+                            "label": "Моля, изберете група на учебен предмет",
+                            "name": "subjectGroupID",
+                            "type": "searchselect",
+                            "optionsPath": "/data/get/subjectGroups",
+                            "order": 4,
+                            "width": 400,
+                            "disabled": false,
+                            "validations": [
+                                {
+                                    "name": "required",
+                                    "validator": "",
+                                    "message": "Полето е задължително"
+                                }
+                            ]
+                        },
+                        {
+                            "label": "учебен предмет",
+                            "name": "subjectName",
+                            "type": "input",
+                            "inputType": "text",
+                            "rendered": false,
+                            "order": 4,
+                            "width": 400,
+                            "disabled": false,
+                            "validations": [
+                            ]
+                        },
+                        {
+                            "label": "учебен предмет - зад",
+                            "name": "isMandatory",
+                            "type": "input",
+                            "inputType": "number",
+                            "rendered": false,
+                            "order": 4,
+                            "width": 400,
+                            "disabled": false,
+                            "validations": [
+                            ]
+                        },
+                        {
+                            "label": "Сортиране",
+                            "name": "sortNumber",
+                            "type": "input",
+                            "inputType": "number",
+                            "rendered": false,
+                            "defaultValue": 999,
+                            "order": 4,
+                            "width": 400,
+                            "disabled": false,
+                            "validations": [
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

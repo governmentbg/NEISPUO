@@ -1,0 +1,12 @@
+{
+  "production": false,
+  "APP_URL": "http://localhost:4200",
+  "BACKEND_URL": "http://localhost:3001",
+  "OIDC_BASE_URL": "http://localhost:3000",
+  "OIDC_CLIENT_ID": "test-rmi",
+  "BLOB_SERVER_URL": "https://dev-blobs.mon.bg",
+  "ALLOWED_DOMAINS": "localhost:3001,dev-blobs.mon.bg",
+  "DISALLOWED_ROUTES": "http://localhost:3000",
+  "MAIN_PORTAL_URL": "http://localhost:3002",
+  "HELPDESK_URL": "https://helpdesk-neispuo.mon.bg/"
+}

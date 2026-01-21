@@ -1,0 +1,10 @@
+@using SB.Domain
+@model CoverPageModel
+
+<div class="page cover-page" style="text-align: center">
+  <h1>Дневник</h1>
+  <h3>за дейности за подкрепа за личностно развитие</h3>
+  <p>за @Model.SupportTypeName @Model.SchoolYear / @(Model.SchoolYear + 1) учебна година</p>
+  <p>на @Model.ClassName група/организационна педагогическа форма</p>
+  @{ await IncludeAsync("ClassBookPrint.Parts.CoverPage.InstitutionInfo", Model); }
+</div>

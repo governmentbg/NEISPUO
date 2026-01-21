@@ -1,0 +1,31 @@
+{
+  "label": "Други",
+  "sections": [
+    {
+      "order": 1,
+      "label": "Други",
+      "subsections": [
+        {
+          "order": 1,
+          "fields": [
+            {
+              "label": "Друга информация",
+              "name": "other",
+              "type": "input",
+              "inputType": "text",
+              "order": 1,
+              "width": 400,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 255,
+                  "message": "Максимална дължина 255 символа"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

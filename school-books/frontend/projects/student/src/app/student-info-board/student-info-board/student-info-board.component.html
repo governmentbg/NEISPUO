@@ -1,0 +1,56 @@
+<sb-card>
+  <ng-container card-title>Информационно табло на {{ data.metadata.instName }}</ng-container>
+  <ng-container card-body>
+    <sb-table
+      *ngIf="
+        (data.metadata.count && data.status === 'published') ||
+        (data.metadata.archivedCount && data.status === 'archived')
+      "
+      [dataSource]="dataSource"
+      [displayedColumns]="['publication']"
+      [hideHeader]="true"
+    >
+      <ng-container cdkColumnDef="publication">
+        <th cdk-header-cell *cdkHeaderCellDef>Публикация</th>
+        <td cdk-cell *cdkCellDef="let publication">
+          <a [routerLink]="['./', publication.publicationId]">
+            <div class="flex">
+              <div>
+                <fa-icon class="text-primary" [icon]="fasUsers" size="2x"></fa-icon>
+                <fa-icon
+                  *ngIf="publication.hasAttachedFiles"
+                  class="text-primary"
+                  [icon]="farPaperclip"
+                  title="публикацията има прикачени файлове"
+                  size="2x"
+                ></fa-icon>
+              </div>
+              <div class="ml-4">
+                <div class="font-bold">{{ publication.title }}</div>
+                <div class="text-sm mb-4">{{ publication.date | sbDate }}</div>
+                <div [innerHtml]="publication.contentHtml"></div>
+              </div>
+            </div>
+          </a>
+        </td>
+      </ng-container>
+    </sb-table>
+
+    <sb-banner *ngIf="!data.metadata.count && data.status === 'published'" type="info">
+      {{ data.metadata.instName }} няма публикации
+    </sb-banner>
+    <sb-banner *ngIf="!data.metadata.archivedCount && data.status === 'archived'" type="info">
+      {{ data.metadata.instName }} няма архивирани публикации
+    </sb-banner>
+
+    <div class="col-xs-12 col-sm-6 text-primary">
+      <a
+        *ngIf="data.metadata.archivedCount && data.status === 'published'"
+        [routerLink]="['./', { status: 'archived' }]"
+      >
+        ({{ data.metadata.archivedCount }} в архив)
+      </a>
+      <a *ngIf="data.status === 'archived'" [routerLink]="['./', { status: 'published' }]">(към публикувани)</a>
+    </div>
+  </ng-container>
+</sb-card>

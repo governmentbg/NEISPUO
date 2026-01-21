@@ -1,0 +1,5 @@
+<div class="form">
+    <app-create-edit-form *ngIf="dataInit" #f [form]="formData" [path]="path" [validate]="validate" [isNew]="canEdit" [mode]="mode" (submit)="submit($event)" (refresh)="getFormDataFromServer()">
+    </app-create-edit-form>
+    <app-loader *ngIf="isLoading"></app-loader>
+</div>

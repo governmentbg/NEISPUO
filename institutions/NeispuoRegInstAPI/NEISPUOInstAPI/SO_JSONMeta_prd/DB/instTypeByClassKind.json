@@ -1,0 +1,26 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[InstType] IT JOIN [inst_nom].[BasicClassLimit] BCL ON IT.InstTypeID=BCL.InstType /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "IT.InstTypeID as code"
+        },
+		  {
+            "column": "IT.Name as label"
+        }
+    ],
+    "params": [
+       {
+      "param": "@filterValue",
+      "column": "BCL.ClassKind",
+      "operator": "=",
+      "value": "filterValue",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+    ],
+    "order": [
+       
+    ],
+    "inSelects": []
+}

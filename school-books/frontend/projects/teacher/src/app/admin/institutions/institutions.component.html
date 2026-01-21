@@ -1,0 +1,37 @@
+<sb-card>
+  <ng-container card-title>Избор на институция</ng-container>
+  <ng-container card-body>
+    <div [formGroup]="searchForm" novalidate class="sm:grid grid-cols-5 gap-x-4">
+      <p class="col-start-1 col-span-full">Филтри</p>
+      <sb-text-field label="Код по НЕИСПУО" formControlName="institutionId"></sb-text-field>
+      <sb-text-field class="col-span-2" label="Институция" formControlName="institutionName"></sb-text-field>
+      <sb-text-field class="col-span-2" label="Населено място" formControlName="townName"></sb-text-field>
+    </div>
+
+    <sb-table [dataSource]="dataSource" [displayedColumns]="['action', 'institutionId', 'institutionName', 'townName']">
+      <ng-container cdkColumnDef="action">
+        <th cdk-header-cell *cdkHeaderCellDef></th>
+        <td cdk-cell *cdkCellDef="let row" class="sb-table-action">
+          <a [routerLink]="['/', row.institutionSchoolYear, row.institutionId]" aria-label="Избери" class="sb-link-btn">
+            <fa-icon [icon]="fadChevronCircleRight"></fa-icon>
+          </a>
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="institutionId">
+        <th cdk-header-cell *cdkHeaderCellDef>Код по НЕИСПУО</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.institutionId }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="institutionName">
+        <th cdk-header-cell *cdkHeaderCellDef>Институция</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.institutionName }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="townName">
+        <th cdk-header-cell *cdkHeaderCellDef>Населено място</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.townName }}</td>
+      </ng-container>
+    </sb-table>
+  </ng-container>
+</sb-card>

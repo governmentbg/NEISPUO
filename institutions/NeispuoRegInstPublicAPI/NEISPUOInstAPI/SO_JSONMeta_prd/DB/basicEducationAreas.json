@@ -1,0 +1,33 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[BasicEducationArea] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "BasicEducationAreaID as code"
+        },
+        {
+            "column": "Name as label"
+        },
+		{
+            "column": "IsValid as isValid"
+        }
+    ],
+    "params": [
+{
+              "param": "@canChoose",
+              "column": "CanChoose",
+              "operator": "=",
+              "value": 1,
+              "type": "int",
+              "logical_operator": "and",
+              "optional": false,
+              "static": true
+            }
+    ],
+    "order": [
+        {
+            "column": "BasicEducationAreaID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

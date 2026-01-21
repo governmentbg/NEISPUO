@@ -1,0 +1,24 @@
+{
+    "template": "SELECT /**select**/ FROM [student].[ResourceSupportType] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "Id as code"
+        },
+        {
+            "column": "Name as label"
+        },
+		 {
+            "column": "IsValid as isValid"
+        }
+    ],
+        "params": [
+
+    ],
+    "order": [
+        {
+            "column": "Id",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

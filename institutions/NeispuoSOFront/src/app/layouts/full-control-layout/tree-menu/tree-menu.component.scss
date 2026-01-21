@@ -1,0 +1,53 @@
+.search-container {
+    padding: 10px 13px;
+    padding-top: 0;
+    background-color: #002966;
+    transition: 0.3s all;
+    height: 30px;
+    mat-icon {
+        position: absolute;
+        color: #2f73da;
+        margin-top: 3px;
+        margin-left: 3px;
+    }
+    input {
+        &:focus {
+            outline: none;
+        }
+        font-size: 15px;
+        padding-left: 30px !important;
+        border-radius: 0.25rem;
+        border: 0;
+        outline: none;
+        padding: 5px;
+        height: fit-content;
+        line-height: 15px;
+        box-sizing: border-box;
+        background-color: white;
+        transition: 0.3s all;
+        width: 100%;
+    }
+}
+
+.example-tree-invisible {
+    display: none;
+}
+
+.example-tree ul,
+.example-tree li {
+    margin-top: 0;
+    margin-bottom: 0;
+    list-style-type: none;
+}
+
+.span-name {
+    cursor: pointer !important;
+}
+
+.l-custom-tree {
+    border-right: 1px solid #070044;
+    overflow: auto;
+    height: calc(100% - 40px);
+    transition: 0.3s all;
+    width: 274px;
+}

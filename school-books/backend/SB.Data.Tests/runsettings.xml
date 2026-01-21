@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<RunSettings>
+  <LoggerRunSettings>
+    <Loggers>
+      <Logger friendlyName="xunit" enabled="True">
+      </Logger>
+    </Loggers>
+  </LoggerRunSettings>
+</RunSettings>

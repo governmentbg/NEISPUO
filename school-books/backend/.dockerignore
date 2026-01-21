@@ -1,0 +1,17 @@
+# from .gitignore
+/build/
+**/bin/
+**/obj/
+**/TestResults/
+/SB.Api/Logs/
+*.vs
+*.csproj.user
+*.suo
+.DS_Store
+Thumbs.db
+
+# docker specific
+.git/
+.vscode/
+Dockerfile*
+README.md

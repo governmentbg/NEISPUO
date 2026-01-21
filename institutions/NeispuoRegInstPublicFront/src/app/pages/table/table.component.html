@@ -1,0 +1,75 @@
+<span *ngIf="length && path !== menu.Preview" class="no-results">Намерени са {{length}} институции, отговарящи на посочените критерии</span>
+<div class="wrapper-table">
+  <form [formGroup]="parentGroup">
+    <mat-card class="section-card card-table">
+      <mat-card-header>
+        <mat-card-title *ngIf="table.label"><span>{{ table.label }}</span></mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="mat-elevation-z8">
+          <mat-multi-sort-table-settings *ngIf="table.sortable !== false" [tableData]="tableData" sortToolTip="Промяна на реда на сортиране">
+          </mat-multi-sort-table-settings>
+          <div class="table-container">
+            <table mat-table [dataSource]="tableData.dataSource" matMultiSort [formArrayName]="table.name" class="l-custom-table"
+              [trackBy]="trackByCellId">
+              <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" class="custom-tr-for-th"></tr>
+              <ng-container *ngIf="table.searchable !== false">
+                <tr mat-header-row *matHeaderRowDef="displayedFilterColumns; sticky: true" class="custom-tr-for-filter"></tr>
+              </ng-container>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+              <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">Няма намерени съвпадения</td>
+              </tr>
+              <ng-container *ngFor="let field of table.fields" [matColumnDef]="field.name" sticky>
+                <th mat-header-cell *matHeaderCellDef (click)="onSort(field.name)">
+                  <div class="th-container-header" [ngClass]="{'sortable': table.sortable !== false}">
+                    <span class="name-th-span">{{ field.label }}</span>
+                    <mat-icon class="sort-custom-icon" title="сортиране" *ngIf="table.sortable !== false">import_export</mat-icon>
+                  </div>
+                </th>
+                <td mat-cell *matCellDef="let row">
+                  <ng-container dynamicField [field]="getField(row, field.name)" [group]="getFormGroup(row)" [mode]="modes.View" [showLabel]="false">
+                  </ng-container>
+                </td>
+              </ng-container>
+              <ng-container *ngIf="table.searchable !== false">
+                <ng-container *ngFor="let field of table.fields" [matColumnDef]="field.name + 'filter'" sticky>
+                  <th mat-header-cell *matHeaderCellDef>
+                    <div class="search-field-th">
+                      <mat-icon class="search-custom-icon">search</mat-icon>
+                      <mat-form-field [formGroup]="filterGroup" class="block-field default-field padding-0  pb-0 mat-form-field-search-container"
+                        floatLabel="never">
+                        <input matInput (keyup)="getData(true)" [formControlName]="field.name" type="text" />
+                      </mat-form-field>
+                    </div>
+                  </th>
+                </ng-container>
+              </ng-container>
+              <ng-container matColumnDef="actions" *ngIf="table.hasEditButton !== false">
+                <th mat-header-cell *matHeaderCellDef class="w-100px"><span class="name-th-span center-span">Действия</span></th>
+                <td mat-cell *matCellDef="let row; let i = index" class="w-100px">
+                  <div class="button-container">
+                    <button mat-raised-button color="primary" (click)="navigate(tableData.dataSource.data[i])" title="детайли" class="btn-details">
+                      <mat-icon>text_snippet</mat-icon><span>детайли</span>
+                    </button>
+                  </div>
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="actions-filter">
+                <th mat-header-cell *matHeaderCellDef class="w-100px"></th>
+              </ng-container>
+            </table>
+          </div>
+        </div>
+        <span *ngIf="!length" class="no-results">Няма намерени резултати</span>
+        <div class="footer-container-custom-table">
+          <div class="l-pagination-container">
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [length]="length" [pageIndex]="tableData.pageIndex" [pageSize]="10"
+              (page)="tableData.onPaginationEvent($event)" showFirstLastButtons></mat-paginator>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </form>
+</div>
+<app-loader *ngIf="isLoading"></app-loader>

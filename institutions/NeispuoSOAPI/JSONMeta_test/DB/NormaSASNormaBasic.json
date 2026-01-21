@@ -1,0 +1,21 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[SubjectGroup] SG JOIN [inst_nom].[SubjectAdditionalInstitution] SAI ON SG.SubjectGroupID = SAI.SubjectGroupID /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "SG.NormaBasic AS normaS"
+        }
+    ],
+    "params": [
+        {
+            "param": "@subjectGroupID",
+            "column": "SAI.SubjectGroupID",
+            "operator": "=",
+            "value": "subjectGroupID",
+            "type": "int",
+            "logical_operator": "and",
+            "static": false
+        }
+    ],
+    "order": [],
+    "inSelects": []
+}

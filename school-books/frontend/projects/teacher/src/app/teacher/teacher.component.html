@@ -1,0 +1,86 @@
+<sb-app-chrome
+  [institutionName]="data.institutionInfo.name"
+  [institutionRouteCommands]="isMultiInstitutionUser ? ['/admin/institutions'] : null"
+  [currentSchoolYear]="data.schoolYear"
+  [schoolYears]="schoolYears"
+  [unreadConversations]="unreadConversations"
+>
+  <sb-app-menu left-side [menuItems]="menuItems"></sb-app-menu>
+  <div main-content>
+    <sb-banner type="error" *ngIf="shouldShowEnvError" class="mb-3">
+      <div class="flex justify-between">
+        <span>
+          Това приложение е само за тестови цели и данните в него не са актуални. Ако желаете да работите с актуални
+          данни, моля деинсталирайте това приложение и го инсталирайте наново, следвайки инструкциите
+          <a [href]="docsUrl" target="_blank">
+            <span class="font-bold italic underline">тук</span>
+            .
+          </a>
+        </span>
+      </div>
+    </sb-banner>
+    <div [ngSwitch]="getBannerToShow()">
+      <sb-banner *ngSwitchCase="'defaultSettings'" class="mb-3" type="warning">
+        Създаването на дневници ще е възможно след издаване на "Заповед за определяне на графика на учебното време за
+        учебната {{ data.schoolYear }} - {{ data.schoolYear + 1 }} година" от МОН
+      </sb-banner>
+
+      <sb-banner *ngSwitchCase="'schoolYearSettings'" class="mb-3" type="warning">
+        Не са въведени начало/край на учебната година и втория срок. Може да направите това
+        <a [routerLink]="['./school-year-settings']" class="text-primary underline">тук</a>
+      </sb-banner>
+
+      <sb-banner *ngSwitchCase="'classBooks'" class="mb-3" type="warning">
+        Не са създадени дневниците. Може да направите това
+        <a [routerLink]="bookAdminRouteCommands" class="text-primary underline">тук</a>
+      </sb-banner>
+    </div>
+    <sb-banner
+      *ngIf="data.institutionInfo.hasCBExtProvider || data.institutionInfo.schoolYearIsFinalized"
+      class="mb-3"
+      type="warning"
+    >
+      <!-- the schoolYearIsFinalized message hides the hasCBExtProvider one -->
+      <ng-container
+        *ngIf="
+          data.institutionInfo.schoolYearIsFinalized;
+          then schoolYearIsFinalizedMessage;
+          else hasCBExtProviderMessage
+        "
+      ></ng-container>
+
+      <ng-template #schoolYearIsFinalizedMessage>
+        Учебната година е приключена и потребителският интерфейс е в режим само за преглед
+      </ng-template>
+
+      <ng-template #hasCBExtProviderMessage>
+        Институцията използва външен доставчик на електронен дневник за учебната {{ data.schoolYear }}/{{
+          data.schoolYear + 1
+        }}
+        и потребителският интерфейс на НЕИСПУО е в режим само за преглед за всички подмодули, с изключение на
+        {{ showProtocols ? '"Протоколи",' : '' }} "Справки" и "Приключване"
+      </ng-template>
+    </sb-banner>
+
+    <sb-banner type="info" *ngIf="!mobileAppBannerHidden" class="mb-3">
+      <div class="flex justify-between">
+        <span>
+          Уважаеми потребители, уведомяваме Ви, че поддръжката на мобилното приложение на НЕИСПУО „Ученически бележник“,
+          което е публикувано в Play store и App store, ще бъде прекратена на 01.03.2025 г. След спиране на поддръжката,
+          е възможно данните в приложението да не съответстват на тези от електронния дневник на НЕИСПУО. Мобилното
+          приложение ще бъде заменено с ново уеб приложение, поради което Ви молим да използвате него. Указания за
+          инсталиране на новото приложение можете да намерите
+          <a [href]="docsUrl" target="_blank">
+            <span class="font-bold italic underline">тук</span>
+            .
+          </a>
+        </span>
+
+        <button class="sb-link-btn -mt-px -mb-[3px]" (click)="hideMobileAppBanner()">
+          <fa-icon [icon]="fasTimes"></fa-icon>
+        </button>
+      </div>
+    </sb-banner>
+    <router-outlet></router-outlet>
+  </div>
+</sb-app-chrome>

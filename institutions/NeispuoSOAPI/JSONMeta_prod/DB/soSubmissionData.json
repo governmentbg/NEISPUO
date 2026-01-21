@@ -1,0 +1,193 @@
+{
+  "template": "SELECT /**select**/ FROM [core].[Institution] I /**where**/ /**orderby**/",
+  "columns": [
+        {
+          "column": "I.InstitutionID AS id"
+        }
+  ],
+  "params": [
+	{
+          "param": "@instid",
+          "column": "I.InstitutionID",
+          "operator": "=",
+          "value": "instid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "I.InstitutionID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+    {
+      "arrayName": "submissionDataFinal",
+      "template": "SELECT /**select**/ FROM [sob].[SubmissionDataView] SDV /**where**/ /**orderby**/",
+	  "columns": [
+        {
+          "column": "SDV.SubmissionDataID AS id"
+        },
+		    {
+          "column": "SDV.SchoolYear AS schoolYear"
+        },
+		    {
+          "column": "SDV.Period AS period"
+        },
+		    {
+          "column": "SDV.Comment AS comment"
+        },
+		    {
+          "column": "SDV.CreatedOn AS createdOn"
+        },
+		    {
+          "column": "SDV.ModifiedOn AS modifiedOn"
+        },
+		    {
+          "column": "SDV.SubmissionStatus AS submissionStatus"
+        },
+		    {
+          "column": "'soSubmissionDataCreate' AS formName"
+        },
+		    {
+          "column": "SDV.SubmissionDataID AS formDataId"
+        }		
+      ],
+      "params": [
+		    {
+          "param": "@instid",
+          "column": "SDV.InstitutionID",
+          "operator": "=",
+          "value": "instid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+		    },
+		    {
+          "param": "@isLast",
+          "column": "SDV.IsLast",
+          "operator": "=",
+          "value": 1,
+          "type": "int",
+          "logical_operator": "and",
+          "static": true
+		    }
+      ],
+      "order": [
+		    {
+          "column": "SDV.SchoolYear",
+          "type": "DESC"
+        },
+		    {
+          "column": "SDV.Period",
+          "type": "DESC"
+        }
+      ]
+    },
+	  {
+      "arrayName": "submissionDataOld",
+      "template": "SELECT /**select**/ FROM [sob].[SubmissionDataView] SDV /**where**/ /**orderby**/",
+	    "columns": [
+        {
+          "column": "SDV.SubmissionDataID AS id"
+        },
+		    {
+          "column": "SDV.SchoolYear AS schoolYear"
+        },
+		    {
+          "column": "SDV.Period AS period"
+        },
+		    {
+          "column": "SDV.Comment AS comment"
+        },
+		    {
+          "column": "SDV.CreatedOn AS createdOn"
+        },
+		    {
+          "column": "SDV.ModifiedOn AS modifiedOn"
+        },
+		    {
+          "column": "SDV.SubmissionStatus AS submissionStatus"
+        },
+		    {
+          "column": "'soSubmissionDataHistory' AS formName"
+        },
+		    {
+          "column": "SDV.SubmissionDataID AS formDataId"
+        },
+		    {
+          "column": "SDV.IsEditable AS isEditable"
+        }		
+      ],
+      "params": [
+		    {
+          "param": "@instid",
+          "column": "SDV.InstitutionID",
+          "operator": "=",
+          "value": "instid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+		    },
+		    {
+          "param": "@isLast",
+          "column": "SDV.IsLast",
+          "operator": "=",
+          "value": 0,
+          "type": "int",
+          "logical_operator": "and",
+          "static": true
+		    }
+      ],
+      "order": [
+		    {
+          "column": "SDV.ModifiedOn",
+          "type": "DESC"
+        }
+      ]
+    },
+    {
+      "arrayName": "sobDataFinal",
+      "template": "SELECT /**select**/ FROM [inst_basic].[SOBData] I /**where**/ /**orderby**/",
+	    "columns": [
+        {
+          "column": "I.InstitutionID AS id"
+        },
+        {
+          "column": "I.SchoolYear AS schoolYear"
+        },
+        {
+          "column": "I.Period AS period"
+        }
+      ],
+      "params": [
+	      {
+          "param": "@instid",
+          "column": "I.InstitutionID",
+          "operator": "=",
+          "value": "instid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        },
+        {
+          "param": "@schoolYear",
+          "column": "I.SchoolYear",
+          "operator": "=",
+          "value": "schoolYear",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        }
+      ],
+      "order": [
+        {
+          "column": "I.InstitutionID",
+          "type": "ASC"
+        }
+     ]
+    }   
+  ]
+}

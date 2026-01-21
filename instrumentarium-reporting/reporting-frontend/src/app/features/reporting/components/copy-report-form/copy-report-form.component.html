@@ -1,0 +1,26 @@
+<form *ngIf="form" class="form-group" [formGroup]="form">
+  <div class="col-12">
+    <div class="field form-wrapper">
+      <label class="form-wrapper-label">Име на справка</label>
+      <input class="form-control" type="text" pInputText formControlName="Name" />
+    </div>
+  </div>
+  <div class="col-12">
+    <div class="field form-wrapper">
+      <label class="form-wrapper-label">Описание</label>
+      <textarea class="form-control" [rows]="5" [cols]="30" pInputTextarea formControlName="Description"></textarea>
+    </div>
+  </div>
+  <div class="col-12">
+    <div class="form-actions">
+      <button pButton type="button" label="Копирай" class="p-button-success" (click)="onSubmit()"></button>
+      <button
+        pButton
+        type="button"
+        label="Откажи"
+        class="p-button-outlined p-button-secondary ms-2"
+        (click)="onReject()"
+      ></button>
+    </div>
+  </div>
+</form>

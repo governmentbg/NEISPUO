@@ -1,0 +1,9 @@
+{
+  "production": false,
+  "APP_URL": "http://localhost:4203",
+  "BACKEND_URL": "http://localhost:3003",
+  "OIDC_BASE_URL": "http://localhost:3000",
+  "OIDC_CLIENT_ID": "survey",
+  "ALLOWED_DOMAINS": "localhost:3003",
+  "DISALLOWED_ROUTES": "http://localhost:3000"
+}

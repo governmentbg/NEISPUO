@@ -1,0 +1,33 @@
+<sb-breadcrumb class="block mb-3" [icon]="fadBellSchool" text="Смени"></sb-breadcrumb>
+
+<sb-card>
+  <ng-container card-title>Смени</ng-container>
+  <ng-container *ngIf="canCreate" card-buttons>
+    <a [routerLink]="['./', 'new']" mat-raised-button color="primary" aria-label="Нова смяна">
+      <fa-icon [icon]="fasPlus" size="lg"></fa-icon>
+      <span>Нова смяна</span>
+    </a>
+  </ng-container>
+  <ng-container card-body>
+    <sb-table [dataSource]="dataSource" [displayedColumns]="['action', 'name', 'hoursCount']">
+      <ng-container cdkColumnDef="action">
+        <th cdk-header-cell *cdkHeaderCellDef></th>
+        <td cdk-cell *cdkCellDef="let row" class="sb-table-action">
+          <a [routerLink]="['./', row.shiftId]" aria-label="Редактирай" class="sb-link-btn">
+            <fa-icon [icon]="fadChevronCircleRight"></fa-icon>
+          </a>
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="name">
+        <th cdk-header-cell *cdkHeaderCellDef>Смяна</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.name }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="hoursCount">
+        <th cdk-header-cell *cdkHeaderCellDef>Часове</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.hoursCount }}</td>
+      </ng-container>
+    </sb-table>
+  </ng-container>
+</sb-card>

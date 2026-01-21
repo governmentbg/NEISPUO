@@ -1,0 +1,6 @@
+export default Object.freeze({
+  DATEPICKER_FORMAT: 'DD/MM/YYYY',
+  DATEPICKER_FORMAT_DOTS: 'DD.MM.YYYY',
+  DISPLAY_TIME_FORMAT : 'HH:mm:ss',
+  DISPLAY_DATETIME_FORMAT: 'DD/MM/YYYY HH:mm:ss'
+});

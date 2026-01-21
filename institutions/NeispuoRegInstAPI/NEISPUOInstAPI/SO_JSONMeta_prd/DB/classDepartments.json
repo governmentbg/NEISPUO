@@ -1,0 +1,21 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_year].[ClassDepartments] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "InstitutionDepartmentID as code"
+        },
+        {
+            "column": "Address as label"
+        }
+    ],
+    "params": [
+
+    ],
+    "order": [
+        {
+            "column": "InstitutionDepartmentID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

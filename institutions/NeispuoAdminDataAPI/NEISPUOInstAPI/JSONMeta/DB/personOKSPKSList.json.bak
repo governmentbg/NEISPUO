@@ -1,0 +1,202 @@
+{
+  "template": "SELECT /**select**/ FROM [core].[Person] SA /**where**/ /**orderby**/",
+  "columns": [
+        {
+          "column": "SA.PersonID AS id"
+        },
+		{
+          "column": "SA.FirstName AS firstName"
+        },
+		{
+          "column": "SA.MiddleName AS middleName"
+        },
+		{
+          "column": "SA.LastName AS lastName"
+        }
+  ],
+  "params": [
+	{
+          "param": "@personid",
+          "column": "SA.PersonID",
+          "operator": "=",
+          "value": "personid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "SA.PersonID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+    {
+      "arrayName": "staffOKS",
+      "template": "SELECT /**select**/ FROM [inst_basic].[PersonOKSList] POKS /**where**/ /**orderby**/",
+      "sotemplate": "SELECT /**select**/ FROM [so].[PersonOKSList] POKS /**where**/ /**orderby**/",
+	  "columns": [
+        {
+          "column": "POKS.PersonOKSID AS id"
+        },
+		{
+          "column": "POKS.EducationGrade AS educationGrade"
+        },
+		{
+          "column": "POKS.Description AS specialityOrdType"
+        },
+		{
+          "column": "POKS.CertifcateNo AS certifcateNo"
+        },
+		{
+          "column": "POKS.YearOfGraduation AS yearOfGraduation"
+        },
+		{
+          "column": "POKS.Speciality AS speciality"
+        },
+		{
+          "column": "POKS.AcquiredPK AS acquiredPK"
+        },
+		{
+          "column": "POKS.University AS university"
+        },
+		{
+          "column": "POKS.UniversityNotes AS universityNotes"
+        },
+		{
+          "column": "'personOKSData' AS formName"
+        },
+		{
+          "column": "POKS.PersonOKSID AS formDataId"
+        }		
+      ],
+      "params": [
+		{
+          "param": "@personid",
+          "column": "POKS.PersonID",
+          "operator": "=",
+          "value": "personid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+		},
+		{
+          "param": "@instid",
+          "column": "POKS.InstitutionID",
+          "operator": "=",
+          "value": "instid",
+          "type": "int",
+          "logical_operator": "and",
+		  "optional": true,
+          "static": false
+		},
+		{
+      "param": "@year",
+      "column": "POKS.SchoolYear",
+      "operator": "=",
+      "value": "year",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+		},
+		{
+      "param": "@period",
+      "column": "POKS.Period",
+      "operator": "=",
+      "value": "period",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+		}
+      ],
+      "order": [
+		{
+          "column": "POKS.SpecialityOrdTypeID",
+          "type": "ASC"
+        },
+		{
+          "column": "POKS.SortOrd",
+          "type": "ASC"
+        },
+		{
+          "column": "POKS.UniversityID",
+          "type": "ASC"
+        }
+      ]
+    },
+	   {
+      "arrayName": "staffPKS",
+      "template": "SELECT /**select**/ FROM [inst_basic].[PersonPKSList] PPKS /**where**/ /**orderby**/",
+      "sotemplate": "SELECT /**select**/ FROM [so].[PersonPKSList] PPKS /**where**/ /**orderby**/",
+	  "columns": [
+        {
+          "column": "PPKS.PersonPKSID AS id"
+        },
+		{
+          "column": "PPKS.PKS AS pksType"
+        },
+		{
+          "column": "PPKS.CertifcateNo AS pksCertifcateNo"
+        },
+		{
+          "column": "PPKS.YearOfGraduation AS pksYearOfGraduation"
+        },
+		{
+          "column": "PPKS.Speciality AS pksSpeciality"
+        },
+		{
+          "column": "PPKS.University AS pksUniversity"
+        },
+		{
+          "column": "PPKS.UniversityNotes AS pksUniversityNotes"
+        },
+		{
+          "column": "'personPKSData' AS formName"
+        },
+		{
+          "column": "PPKS.PersonPKSID AS formDataId"
+        }		
+      ],
+      "params": [
+	{
+          "param": "@personid",
+          "column": "PPKS.PersonID",
+          "operator": "=",
+          "value": "personid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+    },
+	{
+      "param": "@year",
+      "column": "PPKS.SchoolYear",
+      "operator": "=",
+      "value": "year",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    },
+	{
+      "param": "@period",
+      "column": "PPKS.Period",
+      "operator": "=",
+      "value": "period",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    }
+      ],
+      "order": [
+		{
+          "column": "PPKS.PersonID",
+          "type": "ASC"
+        }
+      ]
+    }
+  ]
+}

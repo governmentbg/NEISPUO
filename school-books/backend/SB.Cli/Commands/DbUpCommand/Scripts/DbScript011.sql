@@ -1,0 +1,180 @@
+ALTER TABLE [school_books].[ClassBookSchoolYearDateInfo]
+ALTER COLUMN [SchoolYearDateInfoId] INT NULL;
+GO
+
+CREATE TABLE [school_books].[SchoolYearDateInfoDefault] (
+    [SchoolYear]                SMALLINT         NOT NULL,
+    [SchoolYearStartDateLimit]  DATE             NOT NULL,
+    [SchoolYearStartDate]       DATE             NOT NULL,
+    [FirstTermEndDate]          DATE             NOT NULL,
+    [SecondTermStartDate]       DATE             NOT NULL,
+    [SchoolYearEndDate]         DATE             NOT NULL,
+    [SchoolYearEndDateLimit]    DATE             NOT NULL,
+
+    CONSTRAINT [PK_SchoolYearDateInfoDefault] PRIMARY KEY ([SchoolYear])
+);
+GO
+
+INSERT INTO [school_books].[SchoolYearDateInfoDefault] (
+    [SchoolYear],
+    [SchoolYearStartDateLimit],
+    [SchoolYearStartDate],
+    [FirstTermEndDate],
+    [SecondTermStartDate],
+    [SchoolYearEndDate],
+    [SchoolYearEndDateLimit]
+)
+VALUES (
+    2021,
+    CONVERT(DATE, '2021-09-01'),
+    CONVERT(DATE, '2021-09-15'),
+    CONVERT(DATE, '2022-01-31'),
+    CONVERT(DATE, '2022-02-02'),
+    CONVERT(DATE, '2022-06-30'),
+    CONVERT(DATE, '2022-08-31')
+), (
+    2022,
+    CONVERT(DATE, '2022-09-01'),
+    CONVERT(DATE, '2022-09-15'),
+    CONVERT(DATE, '2023-01-31'),
+    CONVERT(DATE, '2023-02-06'),
+    CONVERT(DATE, '2023-06-30'),
+    CONVERT(DATE, '2023-08-31')
+), (
+    2023,
+    CONVERT(DATE, '2023-09-01'),
+    CONVERT(DATE, '2023-09-15'),
+    CONVERT(DATE, '2024-01-31'),
+    CONVERT(DATE, '2024-02-01'),
+    CONVERT(DATE, '2024-06-30'),
+    CONVERT(DATE, '2024-08-31')
+), (
+    2024,
+    CONVERT(DATE, '2024-09-01'),
+    CONVERT(DATE, '2024-09-15'),
+    CONVERT(DATE, '2025-01-31'),
+    CONVERT(DATE, '2025-02-01'),
+    CONVERT(DATE, '2025-06-30'),
+    CONVERT(DATE, '2025-08-31')
+), (
+    2025,
+    CONVERT(DATE, '2025-09-01'),
+    CONVERT(DATE, '2025-09-15'),
+    CONVERT(DATE, '2026-01-31'),
+    CONVERT(DATE, '2026-02-01'),
+    CONVERT(DATE, '2026-06-30'),
+    CONVERT(DATE, '2026-08-31')
+), (
+    2026,
+    CONVERT(DATE, '2026-09-01'),
+    CONVERT(DATE, '2026-09-15'),
+    CONVERT(DATE, '2027-01-31'),
+    CONVERT(DATE, '2027-02-01'),
+    CONVERT(DATE, '2027-06-30'),
+    CONVERT(DATE, '2027-08-31')
+), (
+    2027,
+    CONVERT(DATE, '2027-09-01'),
+    CONVERT(DATE, '2027-09-15'),
+    CONVERT(DATE, '2028-01-31'),
+    CONVERT(DATE, '2028-02-01'),
+    CONVERT(DATE, '2028-06-30'),
+    CONVERT(DATE, '2028-08-31')
+), (
+    2028,
+    CONVERT(DATE, '2028-09-01'),
+    CONVERT(DATE, '2028-09-15'),
+    CONVERT(DATE, '2029-01-31'),
+    CONVERT(DATE, '2029-02-01'),
+    CONVERT(DATE, '2029-06-30'),
+    CONVERT(DATE, '2029-08-31')
+), (
+    2029,
+    CONVERT(DATE, '2029-09-01'),
+    CONVERT(DATE, '2029-09-15'),
+    CONVERT(DATE, '2030-01-31'),
+    CONVERT(DATE, '2030-02-01'),
+    CONVERT(DATE, '2030-06-30'),
+    CONVERT(DATE, '2030-08-31')
+), (
+    2030,
+    CONVERT(DATE, '2030-09-01'),
+    CONVERT(DATE, '2030-09-15'),
+    CONVERT(DATE, '2031-01-31'),
+    CONVERT(DATE, '2031-02-01'),
+    CONVERT(DATE, '2031-06-30'),
+    CONVERT(DATE, '2031-08-31')
+), (
+    2031,
+    CONVERT(DATE, '2031-09-01'),
+    CONVERT(DATE, '2031-09-15'),
+    CONVERT(DATE, '2032-01-31'),
+    CONVERT(DATE, '2032-02-01'),
+    CONVERT(DATE, '2032-06-30'),
+    CONVERT(DATE, '2032-08-31')
+), (
+    2032,
+    CONVERT(DATE, '2032-09-01'),
+    CONVERT(DATE, '2032-09-15'),
+    CONVERT(DATE, '2033-01-31'),
+    CONVERT(DATE, '2033-02-01'),
+    CONVERT(DATE, '2033-06-30'),
+    CONVERT(DATE, '2033-08-31')
+), (
+    2033,
+    CONVERT(DATE, '2033-09-01'),
+    CONVERT(DATE, '2033-09-15'),
+    CONVERT(DATE, '2034-01-31'),
+    CONVERT(DATE, '2034-02-01'),
+    CONVERT(DATE, '2034-06-30'),
+    CONVERT(DATE, '2034-08-31')
+), (
+    2034,
+    CONVERT(DATE, '2034-09-01'),
+    CONVERT(DATE, '2034-09-15'),
+    CONVERT(DATE, '2035-01-31'),
+    CONVERT(DATE, '2035-02-01'),
+    CONVERT(DATE, '2035-06-30'),
+    CONVERT(DATE, '2035-08-31')
+), (
+    2035,
+    CONVERT(DATE, '2035-09-01'),
+    CONVERT(DATE, '2035-09-15'),
+    CONVERT(DATE, '2036-01-31'),
+    CONVERT(DATE, '2036-02-01'),
+    CONVERT(DATE, '2036-06-30'),
+    CONVERT(DATE, '2036-08-31')
+), (
+    2036,
+    CONVERT(DATE, '2036-09-01'),
+    CONVERT(DATE, '2036-09-15'),
+    CONVERT(DATE, '2037-01-31'),
+    CONVERT(DATE, '2037-02-01'),
+    CONVERT(DATE, '2037-06-30'),
+    CONVERT(DATE, '2037-08-31')
+), (
+    2037,
+    CONVERT(DATE, '2037-09-01'),
+    CONVERT(DATE, '2037-09-15'),
+    CONVERT(DATE, '2038-01-31'),
+    CONVERT(DATE, '2038-02-01'),
+    CONVERT(DATE, '2038-06-30'),
+    CONVERT(DATE, '2038-08-31')
+), (
+    2038,
+    CONVERT(DATE, '2038-09-01'),
+    CONVERT(DATE, '2038-09-15'),
+    CONVERT(DATE, '2039-01-31'),
+    CONVERT(DATE, '2039-02-01'),
+    CONVERT(DATE, '2039-06-30'),
+    CONVERT(DATE, '2039-08-31')
+), (
+    2039,
+    CONVERT(DATE, '2039-09-01'),
+    CONVERT(DATE, '2039-09-15'),
+    CONVERT(DATE, '2040-01-31'),
+    CONVERT(DATE, '2040-02-01'),
+    CONVERT(DATE, '2040-06-30'),
+    CONVERT(DATE, '2040-08-31')
+);
+GO

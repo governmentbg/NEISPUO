@@ -1,0 +1,23 @@
+<mat-form-field class="relative w-full" appearance="fill">
+  <mat-label>{{ label }}</mat-label>
+  <input
+    matInput
+    [matDatepicker]="picker"
+    [formControl]="control"
+    sbClearInvalidDate
+    [readonly]="readonly"
+    [placeholder]="placeholder"
+  />
+  <button
+    type="button"
+    class="sb-datepicker-button"
+    (click)="picker.open()"
+    aria-label="Избери дата"
+    [disabled]="readonly"
+  >
+    <fa-icon [icon]="fadCalendarDay" size="lg"></fa-icon>
+  </button>
+  <mat-datepicker #picker></mat-datepicker>
+  <mat-error *ngIf="errorMessage">{{ errorMessage }}</mat-error>
+  <mat-hint *ngIf="!control.disabled && !readonly && hint" align="start">{{ hint }}</mat-hint>
+</mat-form-field>

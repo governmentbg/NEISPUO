@@ -1,0 +1,140 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_basic].[Building] B JOIN [inst_basic].[InstitutionAll] I ON B.InstitutionID=I.InstitutionID /**where**/ /**orderby**/",
+  "columns": [
+      {
+        "column": "B.BuildingID AS id"
+      },
+	  {
+      "column": "B.InstitutionID AS instid"
+	  },
+      {
+        "column": "B.InstitutionDepartmentID AS institutionDepartmentID"
+      },      
+      {
+        "column": "B.Name AS name"
+      },
+      {
+        "column": "B.BuildingTypeID AS buildingTypeID"
+      },           
+      {
+        "column": "B.ExpectedStudentCount AS expectedStudentCount"
+      },
+      {
+        "column": "B.StructureCount AS structureCount"
+      },
+      {
+        "column": "B.SchoolShiftTypeID AS schoolShiftTypeID"
+      },
+      {
+        "column": "B.CadastralCode AS cadastralCode"
+      },
+      {
+        "column": "B.InitialOwnershipDoc AS initialOwnershipDoc"
+      },
+      {
+        "column": "B.LatestOwnershipDoc AS latestOwnershipDoc"
+      },
+      {
+        "column": "B.LatestRepairYear AS latestRepairYear"
+      },
+      {
+        "column": "B.Latitude AS latitude"
+      },
+      {
+        "column": "B.Longitude AS longitude"
+      },
+      {
+        "column": "B.Note AS note"
+      }
+  ],
+  "params": [
+    {
+      "param": "@buildingID",
+      "column": "B.BuildingID",
+      "operator": "=",
+      "value": "buildingID",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+    {
+      "param": "@address",
+      "column": "B.InstitutionDepartmentID",
+      "operator": "=",
+      "value": "address",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },    
+	{
+      "param": "@instid",
+      "column": "B.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+	{
+      "param": "@instType",
+      "column": "I.InstType",
+      "operator": "=",
+      "value": "instType",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "B.BuildingID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+    {
+      "arrayName": "buildingModernizationDegree",
+      "template": "SELECT /**select**/ FROM [inst_basic].[BuildingModernizationDegree] BMD JOIN [inst_basic].[Building] B ON BMD.BuildingID = B.BuildingID JOIN [inst_nom].[ModernizationDegree] MD ON BMD.ModernizationDegreeID=MD.ModernizationDegreeID /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "BMD.BuildingModernizationDegreeID AS id"
+        },
+		    {
+          "column": "BMD.ModernizationDegreeID AS modernizationDegreeID"
+        },
+		{
+          "column": "BMD.Count AS countModernizationDegree"
+        },
+		{
+          "column": "MD.Name AS modernizationDegreeName"
+        }
+      ],
+      "params": [
+        {
+          "param": "@buildingID",
+          "column": "BMD.BuildingID",
+          "operator": "=",
+          "value": "buildingID",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        },
+			{
+      "param": "@instid",
+      "column": "B.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+      ],
+      "order": [
+        {
+          "column": "BMD.ModernizationDegreeID",
+          "type": "ASC"
+        }
+      ]
+    }
+  ]
+}

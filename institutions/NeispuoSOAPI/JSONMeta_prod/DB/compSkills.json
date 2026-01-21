@@ -1,0 +1,24 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[CompSkill] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "CompSkillID as code"
+        },
+        {
+            "column": "Name as label"
+        },
+		{
+            "column": "IsValid as isValid"
+        }
+    ],
+    "params": [
+    
+    ],
+    "order": [
+        {
+            "column": "CompSkillID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

@@ -1,0 +1,100 @@
+{
+  "status": 1,
+  "sql": "SELECT IDF.InstitutionDepartmentID AS departmentAddrID , IDF.InstitutionID AS instid , IDF.Name AS departmentName , IDF.CountryID AS country , IDF.RegionID AS region , IDF.MunicipalityID AS municipality , IDF.TownID AS town , IDF.LocalAreaID AS localArea , IDF.Address AS departmentAddress , IDF.PostCode AS departmentPostalCode , IDF.IsCentral AS isCentral , IDF.IsProtected AS isProtected , IDF.IsValid AS isValid\n FROM [inst_basic].[InstitutionDepartmentList] IDF WHERE IDF.InstitutionDepartmentID = @instdepid\n ORDER BY IDF.InstitutionDepartmentID ASC\n",
+  "data": [
+    {
+      "departmentAddrID": 21,
+      "instid": 2999994,
+      "departmentName": "\u0411\u0430\u0437\u0430 2",
+      "country": 34,
+      "region": 16,
+      "municipality": 155,
+      "town": 56784,
+      "localArea": 14,
+      "departmentAddress": "\u0431\u0443\u043B. \u0022\u0412\u0442\u043E\u0440\u0438 \u044E\u043D\u0438\u0022 60",
+      "departmentPostalCode": 4000,
+      "isCentral": false,
+      "isProtected": false,
+      "isValid": true,
+      "departmentPhones": [
+        {
+          "id": 123,
+          "departmentPhoneType": "a",
+          "departmentPhoneCode": "asdf",
+          "departmentPhone": "asdf",
+          "departmentContactKind": "asdf"
+        },
+        {
+          "id": 124,
+          "departmentPhoneType": "b",
+          "departmentPhoneCode": "asdf",
+          "departmentPhone": "asdf",
+          "departmentContactKind": "asdf"
+        },
+        {
+          "id": 125,
+          "departmentPhoneType": "c",
+          "departmentPhoneCode": "asdf",
+          "departmentPhone": "asdf",
+          "departmentContactKind": "asdf"
+        },
+        {
+          "id": 126,
+          "departmentPhoneType": "d",
+          "departmentPhoneCode": "asdf",
+          "departmentPhone": "asdf",
+          "departmentContactKind": "asdf"
+        },
+        {
+          "id": 127,
+          "departmentPhoneType": "e",
+          "departmentPhoneCode": "asdf",
+          "departmentPhone": "asdf",
+          "departmentContactKind": "asdf"
+        },
+        {
+          "id": 128,
+          "departmentPhoneType": "f",
+          "departmentPhoneCode": "asdf",
+          "departmentPhone": "asdf",
+          "departmentContactKind": "asdf"
+        },
+        {
+          "id": 129,
+          "departmentPhoneType": "g",
+          "departmentPhoneCode": "asdf",
+          "departmentPhone": "asdf",
+          "departmentContactKind": "asdf"
+        },
+        {
+          "id": 121,
+          "departmentPhoneType": "h",
+          "departmentPhoneCode": "asdf",
+          "departmentPhone": "asdf",
+          "departmentContactKind": "asdf"
+        },
+        {
+          "id": 122,
+          "departmentPhoneType": "l",
+          "departmentPhoneCode": "asdf",
+          "departmentPhone": "asdf",
+          "departmentContactKind": "asdf"
+        },
+        {
+          "id": 120,
+          "departmentPhoneType": "k",
+          "departmentPhoneCode": "asdf",
+          "departmentPhone": "asdf",
+          "departmentContactKind": "asdf"
+        },
+        {
+          "id": 130,
+          "departmentPhoneType": "x",
+          "departmentPhoneCode": "asdf",
+          "departmentPhone": "asdf",
+          "departmentContactKind": "asdf"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "template": "SELECT DISTINCT /**select**/ FROM [inst_year].[ClassGroupList] CL LEFT JOIN [inst_year].[CurriculumClass] CC ON CL.ClassID = CC.ClassID /**where**/ /**orderby**/",
+  "columns": [
+    {
+      "column": "CL.ClassID AS code"
+    },
+    {
+      "column": "CL.ClassName AS label"
+    }
+  ],
+  "params": [
+    {
+      "param": "@filterValue",
+      "column": "CC.CurriculumID",
+      "operator": "=",
+      "value": "filterValue",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false,
+      "optional": true
+    },
+    {
+      "param": "@instid",
+      "column": "CL.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+    {
+      "param": "@basicClassID",
+      "column": "CL.BasicClassID",
+      "operator": "IN",
+      "value": "[ 11, 12 ]",
+      "type": "array",
+      "logical_operator": "and",
+      "static": true,
+      "optional": false
+    },
+    {
+      "param": "@classTypeID",
+      "column": "CL.ClassTypeID",
+      "operator": "IN",
+      "value": "[ 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33 ]",
+      "type": "array",
+      "logical_operator": "and",
+      "static": true,
+      "optional": false
+    }
+  ],
+  "order": [
+    {
+      "column": "CL.ClassName",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": []
+}

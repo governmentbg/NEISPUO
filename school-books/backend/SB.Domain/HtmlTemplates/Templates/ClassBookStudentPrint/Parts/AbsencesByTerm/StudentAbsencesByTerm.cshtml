@@ -1,0 +1,23 @@
+@using SB.Domain
+@model StudentAbsencesByTermModel
+
+<div class="page">
+  <h3 class="page-header">@($"Отсъствия от учебни часове за {(Model.Term == SchoolTerm.TermOne ? "първия" : "втория")} учебен срок")</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>За времето "от - до"</th>
+        <th>По уважителни причини</th>
+        <th>По неуважителни причини</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>@Model.ExcusedCount</td>
+        <td>@Model.ExcusedCount</td>
+        <td>@Model.UnexcusedCount</td>
+        </tr>
+    </tbody>
+  </table>
+</div>

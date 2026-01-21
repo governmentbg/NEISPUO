@@ -1,0 +1,128 @@
+<header class="fixed-top">
+  <nav class="navbar bg-color-blue-500">
+    <div class="container-fluid navbar-container">
+      <div class="logo">
+        <i class="bi bi-list" (click)="sideMenuData.changeSideMenuVisibility(!displaySidemenu)"></i>
+        <a href=""><img class="mon-logo" src="assets/images/mon-logo.png" alt="" /></a>
+        <h3 class="mon-title">НЕИСПУО</h3>
+      </div>
+      <div class="d-flex justify-content-center align-items-center">
+        <button type="button" class="btn btn-icon btn-tour-icon me-3" (click)="userTourQuery.updateValue(false)">
+          <i class="bi bi-menu-up"></i>
+        </button>
+        <div *ngIf="!(isParent$ | async)" class="me-3 icon-btn">
+          <app-user-guides-menu></app-user-guides-menu>
+        </div>
+        <div class="me-3 icon-btn">
+          <app-dashboard-menu></app-dashboard-menu>
+        </div>
+        <app-user-menu></app-user-menu>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<app-user-profile></app-user-profile>
+
+<div class="sidebar px-0 flex-shrink-0 bg-white sidebar-step" [ngClass]="{'show-sidemenu': displaySidemenu}">
+  <ul class="list-unstyled ps-0 scrollable-list">
+    <li>
+      <button
+        class="btn btn-toggle rounded icon"
+        *ngIf="isParent$ | async"
+        routerLink="/portal/children-codes"
+        routerLinkActive="active-link"
+        (click)="sideMenuData.changeSideMenuVisibility(!displaySidemenu)"
+      >
+        Добави код
+      </button>
+    </li>
+    <li>
+      <button
+        class="btn btn-toggle rounded icon"
+        role="button"
+        routerLink="/portal"
+        routerLinkActive="active-link"
+        (click)="sideMenuData.changeSideMenuVisibility(!displaySidemenu)"
+      >
+        Всички
+      </button>
+    </li>
+    <ng-container *ngFor="let category of categories$ | async">
+      <li>
+        <button
+          class="btn btn-toggle rounded icon"
+          role="button"
+          [routerLink]="[category.id]"
+          routerLinkActive="active"
+          (click)="sideMenuData.changeSideMenuVisibility(!displaySidemenu)"
+        >
+          {{category.name}}
+        </button>
+      </li>
+      <hr />
+    </ng-container>
+    <li *ngIf="showAdminPanel$ | async">
+      <button
+        class="btn btn-toggle rounded icon admin-panel-toggle"
+        role="button"
+        (click)="toggleAdminPanel()"
+        [class.expanded]="isAdminPanelExpanded"
+      >
+        Админ панел
+      </button>
+      <div class="admin-panel-items" [class.show]="isAdminPanelExpanded">
+        <button
+          *ngIf="hasUserGuideManagementAccess$ | async"
+          class="btn btn-toggle rounded icon admin-panel-item"
+          role="button"
+          routerLink="/portal/user-guide-management"
+          routerLinkActive="active-link"
+          (click)="sideMenuData.changeSideMenuVisibility(!displaySidemenu)"
+        >
+          Управление на ръководства
+        </button>
+        <button
+          *ngIf="isMon$ | async"
+          class="btn btn-toggle rounded icon admin-panel-item"
+          role="button"
+          routerLink="/portal/system-user-messages"
+          routerLinkActive="active-link"
+          (click)="sideMenuData.changeSideMenuVisibility(!displaySidemenu)"
+        >
+          Системни съобщения
+        </button>
+        <button
+          *ngIf="isMon$ | async"
+          class="btn btn-toggle rounded icon admin-panel-item"
+          role="button"
+          routerLink="/portal/sync-messages"
+          routerLinkActive="active-link"
+          (click)="sideMenuData.changeSideMenuVisibility(!displaySidemenu)"
+        >
+          Съобщения за синхронизация
+        </button>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div class="content-container">
+  <div class="backdrop" *ngIf="displaySidemenu"></div>
+  <app-breadcrumb></app-breadcrumb>
+  <div class="content pt-4">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<app-refresh [showRefreshModal]="showRefreshModal"></app-refresh>
+
+<footer>
+  <div class="footer d-flex align-items-center flex-column p-3">
+    <div class="flex-grow-1 p-small">&copy; Министерство на образованието и науката</div>
+    <div *ngIf="!(isParent$ | async)" class="flex-grow-1 p-small">
+      За въпроси, моля да използвате <a href="{{environment.HELP_DESK_URL}}">системата за поддръжка</a>
+    </div>
+    <div class="flex-grow-1 tiny">{{ appVersion }}</div>
+  </div>
+</footer>

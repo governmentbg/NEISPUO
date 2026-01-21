@@ -1,0 +1,96 @@
+<form [formGroup]="form" autocomplete="off" novalidate>
+  <sb-card>
+    <ng-container card-title>Преглед на медицинска бележка</ng-container>
+    <ng-container card-buttons>
+      <a [routerLink]="['../']" mat-raised-button>
+        <fa-icon [icon]="fasArrowLeft" size="lg"></fa-icon>
+        <span class="hidden sm:inline">Назад</span>
+      </a>
+    </ng-container>
+    <ng-container card-body>
+      <div class="sm:grid grid-cols-3 gap-x-4 mb-2">
+        <sb-text-field label="учебна година" formControlName="schoolYears" [readonly]="true"></sb-text-field>
+
+        <sb-card-section class="col-start-1 col-span-full">Данни от НЗИС</sb-card-section>
+        <sb-text-field
+          label="Уникален идентификатор на медицинската бележка (НРН)"
+          formControlName="nrnMedicalNotice"
+          [readonly]="true"
+        ></sb-text-field>
+        <sb-text-field
+          label="НРН на е-преглед или е-хоспитализация"
+          formControlName="nrnExamination"
+          [readonly]="true"
+        ></sb-text-field>
+        <sb-text-field label="УИН на лекаря" formControlName="pmi" [readonly]="true"></sb-text-field>
+        <sb-text-field
+          label="ЕГН/ЛНЧ/Друг идентификатор"
+          formControlName="identifier"
+          [readonly]="true"
+        ></sb-text-field>
+        <sb-text-field label="Име" formControlName="givenName" [readonly]="true"></sb-text-field>
+        <sb-text-field label="Фамилия" formControlName="familyName" [readonly]="true"></sb-text-field>
+
+        <sb-date-field
+          label="Дата на издаване на медицинската бележка"
+          formControlName="authoredOn"
+          [readonly]="true"
+        ></sb-date-field>
+        <sb-date-field
+          label="Начална дата на валидност на медицинската бележка"
+          formControlName="fromDate"
+          [readonly]="true"
+        ></sb-date-field>
+        <sb-date-field
+          label="Крайна дата на валидност на медицинската бележка"
+          formControlName="toDate"
+          [readonly]="true"
+        ></sb-date-field>
+      </div>
+      <div class="sm:grid grid-cols-3 gap-x-4 mb-2">
+        <sb-card-section class="col-start-1 col-span-full">Съвпадение на ученик от НЕИСПУО</sb-card-section>
+        <sb-text-field label="Име" formControlName="matchedStudentNames" [readonly]="true"></sb-text-field>
+        <sb-text-field
+          label="ЕГН/ЛНЧ/Друг идентификатор"
+          formControlName="matchedStudentIdentifier"
+          [readonly]="true"
+        ></sb-text-field>
+      </div>
+
+      <ng-container>
+        <sb-card-section class="col-span-full">Получена от</sb-card-section>
+
+        <div class="sb-table-container mb-4">
+          <table class="sb-table">
+            <thead>
+              <tr>
+                <th class="text-center">Доставчик</th>
+                <th class="text-center">Дата на получаване</th>
+                <th class="text-center">Дата на потвърдено получаване</th>
+                <th class="text-center">Получено за институции (код/година)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngFor="let receipt of data.hisMedicalNotice.receipts">
+                <tr>
+                  <td class="text-center">
+                    {{ receipt.extSystemName }}
+                  </td>
+                  <td class="text-center">
+                    {{ receipt.createDate | sbDateTime }}
+                  </td>
+                  <td class="text-center">
+                    {{ receipt.acknowledgedDate | sbDateTime }}
+                  </td>
+                  <td class="text-center">
+                    {{ receipt.accesses.join(', ') }}
+                  </td>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+        </div>
+      </ng-container>
+    </ng-container>
+  </sb-card>
+</form>

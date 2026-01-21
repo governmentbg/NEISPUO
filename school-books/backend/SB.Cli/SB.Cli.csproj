@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
+    <PreserveCompilationContext>true</PreserveCompilationContext>
+    <RestoreAdditionalProjectSources>
+      $(MSBuildThisFileDirectory)/../packages/
+    </RestoreAdditionalProjectSources>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="7.0.1" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="CliWrap" Version="3.4.4" />
+    <PackageReference Include="dbup-sqlserver" Version="5.0.8" />
+    <PackageReference Include="Microsoft.Extensions.CommandLineUtils" Version="1.1.1" />
+    <PackageReference Include="NSwag.CodeGeneration.CSharp" Version="13.19.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SB.Data\SB.Data.csproj" />
+    <ProjectReference Include="..\SB.Domain\SB.Domain.csproj" />
+    <ProjectReference Include="..\SB.ExtApi.IntegrationTests\SB.ExtApi.IntegrationTests.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Commands/DbUpCommand/Scripts/*.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <PropertyGroup>
+    <ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
+  </PropertyGroup>
+
+</Project>

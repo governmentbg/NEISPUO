@@ -1,0 +1,19 @@
+<mat-form-field class="w-full" appearance="fill">
+  <mat-label>{{ label }}</mat-label>
+  <textarea
+    matInput
+    #textarea
+    cdkTextareaAutosize
+    [cdkAutosizeMinRows]="minRows"
+    [cdkAutosizeMaxRows]="maxRows"
+    [maxlength]="textareaMaxSize"
+    [formControl]="control"
+    [readonly]="readonly"
+    [placeholder]="placeholder"
+  ></textarea>
+  <mat-error *ngIf="errorMessage">{{ errorMessage }}</mat-error>
+  <mat-hint *ngIf="!control.disabled && !readonly && hint" align="start">{{ hint }}</mat-hint>
+  <mat-hint *ngIf="!control.disabled && !readonly" align="end">
+    {{ textarea?.value?.length || 0 }} / {{ textareaMaxSize }}
+  </mat-hint>
+</mat-form-field>

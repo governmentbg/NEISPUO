@@ -1,0 +1,74 @@
+namespace SB.Domain;
+
+public static class CoverPageModelSample
+{
+    public static readonly CoverPageModel SampleRegular =
+        new(
+            2021,
+            "СУ \"Вела Благоева\"",
+            "град",
+            "Велико Търново",
+            "Велико Търново",
+            null,
+            "Велико Търново",
+            "8 a",
+            null,
+            null
+        );
+
+    public static readonly CoverPageModel SampleRegularWithSpeciality =
+        new(
+            2021,
+            "СУ \"Вела Благоева\"",
+            "град",
+            "Велико Търново",
+            "Велико Търново",
+            null,
+            "Велико Търново",
+            "8 a",
+            null,
+            "Топлотехника"
+        );
+
+    public static readonly CoverPageModel SamplePG =
+        new(
+            2021,
+            "СУ \"Вела Благоева\"",
+            "град",
+            "Велико Търново",
+            "Велико Търново",
+            null,
+            "Велико Търново",
+            "четвърта ПГ 5 и 6 г",
+            null,
+            null
+        );
+
+    public static readonly CoverPageModel SampleCDO =
+        new(
+            2021,
+            "СУ \"Вела Благоева\"",
+            "град",
+            "Велико Търново",
+            "Велико Търново",
+            null,
+            "Велико Търново",
+            "2 в-ЦДО",
+            null,
+            null
+        );
+
+    public static readonly CoverPageModel SampleDPLR =
+        new(
+            2021,
+            "СУ \"Вела Благоева\"",
+            "град",
+            "Велико Търново",
+            "Велико Търново",
+            null,
+            "Велико Търново",
+            "сборна заекв.",
+            "Логопедична работа",
+            null
+        );
+}

@@ -1,0 +1,83 @@
+{
+  "label": "Списък на учениците",
+  "sections": [
+    {
+      "label": "Списък ученици в неприсъствена форма",
+      "order": 1,
+	  "name": "TableStudentGroupList",
+      "table": 
+	  {
+          "name": "studentListNotPresent",
+		  "action":"preview",
+		  "paramName": "personid",
+		  "searchable":true,
+		 "searchType":"column",
+		  "fields": [
+			{
+				"label": "Личен образователен номер",
+				"name": "publicEduNumber",
+				"type": "input",
+				"inputType": "number",
+				"rendered": true,
+				"width":10,
+				"order": 1
+			},
+			{
+				"label": "Имена на ученика/детето",
+				"name": "fullName",
+				"type": "input",
+				"inputType": "text",
+				"rendered": true,
+				"width":20,
+				"order": 2
+			},
+			{
+				"label": "Дата на раждане",
+				"name": "birthDate",
+				"type": "input",
+				"inputType": "date",
+				"rendered": true,
+				"width":10,
+				"order": 3
+			},
+			{
+				"label": "Клас/Група",
+				"name": "basicClassName",
+				"type": "input",
+				"inputType": "text",
+				"rendered": true,
+				"width":8,
+				"order": 4
+			},
+			{
+				"label": "Вид обучение",
+				"name": "name",
+				"type": "input",
+				"inputType": "text",
+				"rendered": "if(instType==2) {field.rendered=false} else {field.rendered=true}",
+				"width":15,
+				"order": 5
+			},
+			{
+				"label": "Форма на обучение",
+				"name": "studentEdFormName",
+				"type": "input",
+				"inputType": "text",
+				"rendered": "if(instType==2) {field.rendered=false} else {field.rendered=true}",
+				"width":15,
+				"order": 6
+			},
+			{
+				"label": "Профил/Професия/Специалност",
+				"name": "classSpecialityName",
+				"type": "input",
+				"inputType": "text",
+				"rendered": "if(instType==2) {field.rendered=false} else {field.rendered=true}",
+				"width":30,
+				"order": 7
+			}	
+		]
+      }
+    }
+  ]
+}

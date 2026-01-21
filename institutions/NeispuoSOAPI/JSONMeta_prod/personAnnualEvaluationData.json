@@ -1,0 +1,148 @@
+{
+  "label": "Атестиране/Ежегодно оценяване на персонала",
+  "procedureName": "inst_basic.annualStaffEvaluationCUD",
+  "dataName": "if(operationType==1) {form.dataName=null} else {form.dataName='personAnnualEvaluationData'}",  
+  "sections": [
+    {
+      "order": 1,
+	  "label": "Атестиране/Ежегодно оценяване",
+	  "name": "staffEvaluation",
+      "subsections": [
+        {
+          "order": 1,
+          "name": "annualStaffEvaluation",
+          "label": "Резултати от атестиране/ежегодно оценяване",
+          "fields": [
+            {
+              "label": "Период на оценяване - от дата",
+              "name": "fromDate",
+              "type": "date",
+			        "width": 50,
+              "disabled": false,
+			        "validations": [
+                    {
+                      "name": "required",
+                      "validator": "",
+                      "message": "Полето е задължително"
+                    }
+                  ],
+              "order": 1
+            },
+            {
+              "label": "Период на оценяване - до дата",
+              "name": "toDate",
+              "type": "date",
+			        "width": 50,
+              "disabled": false,
+			        "validations": [
+                    {
+                      "name": "required",
+                      "validator": "",
+                      "message": "Полето е задължително"
+                    }
+                  ],
+              "order": 2
+            },
+            {
+              "label": "Комисия",
+              "name": "commission",
+              "type": "textarea",
+              "width": 1000,
+              "height": 2,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 1024,
+                  "message": "Максимална дължина 1024 символа"
+                }
+              ],
+              "order": 3
+            },
+            {
+              "label": "Резултат от самооценка",
+              "name": "selfAssessmentResult",
+              "type": "textarea",
+              "order": 3,
+              "width": 1000,
+              "height": 4,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 1024,
+                  "message": "Максимална дължина 1024 символа"
+                }
+              ]
+            },
+            {
+              "label": "Резултат от оценка на комисия",
+              "name": "commissionEvaluationResult",
+              "type": "textarea",
+              "order": 4,
+              "width": 1000,
+              "height": 2,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 1024,
+                  "message": "Максимална дължина 1024 символа"
+                }
+              ]
+            },
+            {
+              "label": "Окончателен резултат като показател",
+              "name": "finalResultIndicator",
+              "type": "input",
+              "inputType": "text",
+              "disabled": false,
+              "width": 200,
+              "order": 5,
+              "influence": [],
+              "validations": [
+		            {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                },
+		            {
+                  "name": "pattern",
+                  "validation": "^\\d+(\\.\\d{1,2})?$",
+		              "message": "Въведете цяло или дробно число"
+                }
+	            ]
+            },
+            {
+              "label": "Окончателен резултат като резюме",
+              "name": "finalResultSummary",
+              "type": "textarea",
+              "order": 6,
+              "width": 1000,
+              "height": 2,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 1024,
+                  "message": "Максимална дължина 1024 символа"
+                }
+              ]
+            },
+            {
+              "label": "Насоки за бъдещи квалификации по различните области на оценяване и тематични направления",
+              "name": "guidelinesForQualifications",
+              "type": "textarea",
+              "order": 7,
+              "width": 1000,
+              "height": 2,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 1024,
+                  "message": "Максимална дължина 1024 символа"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

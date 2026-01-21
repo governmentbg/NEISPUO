@@ -1,0 +1,32 @@
+<div>
+  <p *ngIf="!data.subjectTypeIsProfilingSubject" class="text-justify text-sm sm:w-52 mb-2.5">
+    Това е само прогнозна {{data.type === GRADE_TYPE_TERM ? 'срочна' : 'годишна'}} оценка. Изберете актуалната оценка,
+    за да я създадете.
+  </p>
+  <p *ngIf="data.subjectTypeIsProfilingSubject" class="text-justify text-sm sm:w-[260px] mb-2.5">
+    Това е средноаритметична годишна оценка изчислена от годишните оценки по модули на профилиращия предмет. Имате
+    възможност да я редактирате преди да я създадете.
+  </p>
+  <div class="text-center py-2">
+    <sb-qualitative-grade-picker
+      *ngIf="data.category === GRADE_CATEGORY_QUALITATIVE"
+      [allowEmpty]="false"
+      [formControl]="qualitativeGrade"
+    ></sb-qualitative-grade-picker>
+    <sb-decimal-grade-picker
+      *ngIf="data.category === GRADE_CATEGORY_DECIMAL"
+      [allowEmpty]="false"
+      [allowFractional]="data.subjectTypeIsProfilingSubject"
+      [showNumberInput]="data.subjectTypeIsProfilingSubject"
+      [formControl]="decimalGrade"
+    ></sb-decimal-grade-picker>
+  </div>
+
+  <div class="sb-btn-wrapper sb-btn-wrapper-right sb-btn-wrapper-bottom">
+    <button mat-raised-button color="primary" type="button" (click)="createForecastGrade()" [disabled]="loading">
+      <fa-icon [icon]="loading ? fasSpinnerThird : fasCheck" [spin]="loading" size="lg"></fa-icon>
+      <span>Запази</span>
+    </button>
+    <button mat-raised-button mat-dialog-close>Затвори</button>
+  </div>
+</div>

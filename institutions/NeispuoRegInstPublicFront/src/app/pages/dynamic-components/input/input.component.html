@@ -1,0 +1,28 @@
+<div class="l-container-component" [style.width.px]="field.width" *ngIf="mode===modes.Edit">
+    <span class="l-custom-span-label" *ngIf="showLabel">{{field.label}} 
+        <span class="required-span" *ngIf="required">*</span>
+    </span>
+    <mat-form-field [formGroup]="group" appearance="outline" floatLabel="never" [title]="field.disabled?field.value:''">
+        <input matInput [formControlName]="field.name" [type]="field.inputType">
+        <ng-container *ngFor="let validation of field.validations;" ngProjectAs="mat-error">
+            <mat-error *ngIf="group.get(field.name).hasError(validation.name.toLowerCase())" class="l-custom-error">{{validation.message}}</mat-error>
+        </ng-container>
+    </mat-form-field>
+</div>
+<div class="l-container-component preview-mode" *ngIf="mode===modes.View">
+    <span class="l-custom-span-label" *ngIf="showLabel">{{field.label}}</span>
+    <label class="value-label">{{field.value}}</label>
+</div>
+<!-- <div class="l-container-component" [style.width.px]="field.width" *ngIf="mode===modes.Edit">
+    <mat-form-field [formGroup]="group" appearance="outline" floatLabel="never" [title]="field.disabled?field.value:''">
+        <mat-label title="{{field.label}}">{{field.label}}</mat-label>
+        <input title="{{field.value}}" matInput [formControlName]="field.name" [type]="field.inputType">
+        <ng-container *ngFor="let validation of field.validations;" ngProjectAs="mat-error">
+            <mat-error *ngIf="group.get(field.name).hasError(validation.name.toLowerCase())" class="l-custom-error">{{validation.message}}</mat-error>
+        </ng-container>
+    </mat-form-field>
+</div>
+<div class="l-container-component preview-mode" *ngIf="mode===modes.View">
+    <span class="l-custom-span-label" *ngIf="showLabel">{{field.label}}</span>
+    <label class="value-label">{{field.value}}</label>
+</div> -->

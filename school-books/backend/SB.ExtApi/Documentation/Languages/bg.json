@@ -1,0 +1,705 @@
+{
+  // === ОБЩИ ЕЛЕМЕНТИ ===
+  "Common.NoResponse": "Без отговор",
+  "Common.CreationReturns": "Връща идентификатора на новосъздадения обект",
+  "Common.Obsolete": "Да не се използва, ще бъде премахнато в бъдеще",
+  "Common.SchoolYear": "Идентификатор за учебна година",
+  "Common.InstitutionId": "Идентификатор на институцията",
+  "Common.ClassBookId": "Идентификатор на дневника",
+  "Common.PersonId": "Идентификатор на лицето",
+  "Common.AbsenceId": "Идентификатор на отсъствието",
+  "Common.AdditionalActivityId": "Идентификатор на допълнителната дейност",
+  "Common.AttendanceId": "Идентификатор на присъствието",
+  "Common.ExamId": "Идентификатор на изпита",
+  "Common.FirstGradeResultId": "Идентификатор на резултата за първи клас",
+  "Common.GradeId": "Идентификатор на оценката",
+  "Common.GradeResultId": "Идентификатор на резултата от оценки",
+  "Common.IndividualWorkId": "Идентификатор на индивидуалната работа",
+  "Common.NoteId": "Идентификатор на бележката",
+  "Common.OffDayId": "Идентификатор на неучебния период",
+  "Common.ParentMeetingId": "Идентификатор на родителската среща",
+  "Common.PerformanceId": "Идентификатор на представлението",
+  "Common.PgResultId": "Идентификатор на резултата за предучилищна група",
+  "Common.RemarkId": "Идентификатор на забележката",
+  "Common.ReplrParticipationId": "Идентификатор на участието в РЕЦЛР",
+  "Common.SanctionId": "Идентификатор на санкцията",
+  "Common.ScheduleId": "Идентификатор на разписанието",
+  "Common.SchoolYearDateInfoId": "Идентификатор на настройките на учебната година",
+  "Common.ShiftId": "Идентификатор на смяната",
+  "Common.StudentActivityId": "Идентификатор на ученическата дейност",
+  "Common.StudentClassNumberId": "Идентификатор на номера в клас на ученика",
+  "Common.StudentGradelessCurriculumId": "Идентификатор на предмета без оценки на ученика",
+  "Common.StudentSpecialNeedCurriculumId": "Идентификатор на предмета СОП на ученика",
+  "Common.SupportId": "Идентификатор на подкрепата",
+  "Common.TeacherAbsenceId": "Идентификатор на учителското отсъствие",
+  "Common.TopicId": "Идентификатор на темата",
+  "Common.HisMedicalNoticesForCreation": "Медицински бележки за създаване",
+
+  // === СЕКЦИЯ ОТСЪСТВИЯ ===
+  "Absences.GetAll.Summary": "Връща всички отсъствия за даден дневник",
+  "Absences.GetAll.Returns": "Масив от AbsenceDO обекти за указания дневник",
+  "Absences.Create.Summary": "Създава ново отсъствие",
+  "Absences.Delete.Summary": "Изтрива отсъствие",
+  "Absences.Excuse.Summary": "Извинява отсъствие",
+
+  // === СЕКЦИЯ ДОПЪЛНИТЕЛНИ ДЕЙНОСТИ ===
+  "AdditionalActivities.GetAll.Summary": "Връща всички допълнителни дейности за даден дневник",
+  "AdditionalActivities.GetAll.Returns": "Масив от AdditionalActivityDO обекти за указания дневник",
+  "AdditionalActivities.Create.Summary": "Създава нова допълнителна дейност",
+  "AdditionalActivities.Update.Summary": "Обновява допълнителна дейност",
+  "AdditionalActivities.Delete.Summary": "Изтрива допълнителна дейност",
+
+  // === СЕКЦИЯ ПРИСЪСТВИЯ ===
+  "Attendances.GetAll.Summary": "Връща всички присъствия за даден дневник",
+  "Attendances.GetAll.Returns": "Масив от AttendanceDO обекти за указания дневник",
+  "Attendances.Create.Summary": "Създава ново присъствие",
+  "Attendances.Delete.Summary": "Изтрива присъствие",
+  "Attendances.Excuse.Summary": "Извинява присъствие от вид неизвинено отсъствие",
+
+  // === СЕКЦИЯ ДНЕВНИЦИ ===
+  "ClassBooks.GetAll.Summary": "Връща всички дневници за дадена институция",
+  "ClassBooks.GetAll.Returns": "Масив от ClassBookDO обекти за дадена институция",
+  "ClassBooks.Create.Summary": "Създава нов дневник",
+  "ClassBooks.Create.Param.ClassId": "Идентификатор на паралелката/групата за която се създава дневника.\n\nНивото на ClassGroup, за което се създава дневника е:\n - Parent ниво (ParentClassId == null), ако паралелката не е слята (IsCombined == false)\n - Child ниво (ParentClassId != null), ако паралелката е слята (IsCombined == true)",
+  "ClassBooks.Create.Returns": "Връща идентификатора на новосъздадения дневник",
+  "ClassBooks.CreateMultiple.Summary": "Създава нови дневници",
+  "ClassBooks.CreateMultiple.Returns": "Връща идентификаторите на новосъздадените дневници, в реда на подадените classIds",
+  "ClassBooks.CreateMultiple.Param.ClassIds": "Идентификатори на паралелките/групите (ClassGroup.ClassID), за които се създават дневниците.\nГрупите (ClassGroup) трябва да са създадени предварително в списък образец 1/2/3 и техните ClassID-та се взимат от апито за данни за списък образец за ел. дневници (getcbdata).\n\nНивото на ClassGroup, за което се създава дневник е:\n - Parent ниво (ParentClassId == null), ако паралелката/групата не е слята (IsCombined == false)\n - По избор (parent или child), ако паралелката/групата е слята (IsCombined == true). По-често срещано е да се създаде дневника на parent ниво, т.е. да е един общ за всички подгрупи.",
+  "ClassBooks.Delete.Summary": "Изтрива дневник",
+  "ClassBooks.Finalize.Summary": "Приключва дневник",
+  "ClassBooks.Finalize.Remarks": "трябва да е PDF подписан с КЕП на директора.\n\nСъдържанието на PDF-a се проверява единствено за наличието на валиден подпис.",
+  "ClassBooks.Unfinalize.Summary": "Премахва приключването на дневник",
+  "ClassBooks.Combine.Summary": "Създава нов дневник на Parent ниво и маркира дневниците на подгрупите му от Child ниво като невалидни (IsValid=0)",
+  "ClassBooks.Combine.Returns": "Връща идентификатора (classBookId) на новосъздадения дневник",
+  "ClassBooks.Separate.Summary": "Маркира дневник на Parent ниво като невалиден (IsValid=0) и създава нови дневници на подгрупите му на Child ниво",
+  "ClassBooks.Separate.Returns": "Връща идентификаторите (classBookIds) на новосъздадените дневници",
+
+  // === СЕКЦИЯ ИЗПИТИ ===
+  "Exams.GetAll.Summary": "Връща всички изпити за даден дневник",
+  "Exams.GetAll.Returns": "Масив от ExamDO обекти за указания дневник",
+  "Exams.Create.Summary": "Създава нов изпит",
+  "Exams.Update.Summary": "Обновява изпит",
+  "Exams.Delete.Summary": "Изтрива изпит",
+
+  // === СЕКЦИЯ РЕЗУЛТАТИ ПЪРВИ КЛАС ===
+  "FirstGradeResults.GetAll.Summary": "Връща всички резултати за първи клас за даден дневник",
+  "FirstGradeResults.GetAll.Returns": "Масив от FirstGradeResultDO обекти за указания дневник",
+  "FirstGradeResults.Create.Summary": "Създава нов резултат за първи клас",
+  "FirstGradeResults.Update.Summary": "Обновява резултат за първи клас",
+  "FirstGradeResults.Delete.Summary": "Изтрива резултат за първи клас",
+
+  // === СЕКЦИЯ ОЦЕНКИ ===
+  "Grades.GetAll.Summary": "Връща всички оценки за даден дневник",
+  "Grades.GetAll.Returns": "Масив от GradeDO обекти за указания дневник",
+  "Grades.Create.Summary": "Създава нова оценка",
+  "Grades.Update.Summary": "Обновява оценка",
+  "Grades.Delete.Summary": "Изтрива оценка",
+
+  // === СЕКЦИЯ РЕЗУЛТАТИ ОТ ОЦЕНКИ ===
+  "GradeResults.GetAll.Summary": "Връща всички резултати от оценки за даден дневник",
+  "GradeResults.GetAll.Returns": "Масив от GradeResultDO обекти за указания дневник",
+  "GradeResults.Create.Summary": "Създава нов резултат от оценки",
+  "GradeResults.Update.Summary": "Обновява резултат от оценки",
+  "GradeResults.Delete.Summary": "Изтрива резултат от оценки",
+
+  // === СЕКЦИЯ ИНДИВИДУАЛНИ РАБОТИ ===
+  "IndividualWorks.GetAll.Summary": "Връща всички индивидуални работи за даден дневник",
+  "IndividualWorks.GetAll.Returns": "Масив от IndividualWorkDO обекти за указания дневник",
+  "IndividualWorks.Create.Summary": "Създава нова индивидуална работа",
+  "IndividualWorks.Update.Summary": "Обновява индивидуална работа",
+  "IndividualWorks.Delete.Summary": "Изтрива индивидуална работа",
+
+  // === СЕКЦИЯ БЕЛЕЖКИ ===
+  "Notes.GetAll.Summary": "Връща всички бележки за даден дневник",
+  "Notes.GetAll.Returns": "Масив от NoteDO обекти за указания дневник",
+  "Notes.Create.Summary": "Създава нова бележка",
+  "Notes.Update.Summary": "Обновява бележка",
+  "Notes.Delete.Summary": "Изтрива бележка",
+
+  // === СЕКЦИЯ НЕУЧЕБНИ ПЕРИОДИ ===
+  "OffDays.GetAll.Summary": "Връща всички неучебни периоди за дадена институция",
+  "OffDays.GetAll.Returns": "Масив от OffDayDO обекти за указаната институция",
+  "OffDays.Create.Summary": "Създава нов неучебен период",
+  "OffDays.Update.Summary": "Обновява неучебен период",
+  "OffDays.Delete.Summary": "Изтрива неучебен период",
+
+  // === СЕКЦИЯ РОДИТЕЛСКИ СРЕЩИ ===
+  "ParentMeetings.GetAll.Summary": "Връща всички родителски срещи за даден дневник",
+  "ParentMeetings.GetAll.Returns": "Масив от ParentMeetingDO обекти за указания дневник",
+  "ParentMeetings.Create.Summary": "Създава нова родителска среща",
+  "ParentMeetings.Update.Summary": "Обновява родителска среща",
+  "ParentMeetings.Delete.Summary": "Изтрива родителска среща",
+
+  // === СЕКЦИЯ ПРЕДСТАВЛЕНИЯ ===
+  "Performances.GetAll.Summary": "Връща всички представления за даден дневник",
+  "Performances.GetAll.Returns": "Масив от PerformanceDO обекти за указания дневник",
+  "Performances.Create.Summary": "Създава ново представление",
+  "Performances.Update.Summary": "Обновява представление",
+  "Performances.Delete.Summary": "Изтрива представление",
+
+  // === СЕКЦИЯ РЕЗУЛТАТИ ЗА ПГ ===
+  "PgResults.GetAll.Summary": "Връща всички резултати за предучилищна група за даден дневник",
+  "PgResults.GetAll.Returns": "Масив от PgResultDO обекти за указания дневник",
+  "PgResults.Create.Summary": "Създава нов резултат за предучилищна група",
+  "PgResults.Update.Summary": "Обновява резултат за предучилищна група",
+  "PgResults.Delete.Summary": "Изтрива резултат за предучилищна група",
+
+  // === СЕКЦИЯ ЗАБЕЛЕЖКИ ===
+  "Remarks.GetAll.Summary": "Връща всички забележки за даден дневник",
+  "Remarks.GetAll.Returns": "Масив от RemarkDO обекти за указания дневник",
+  "Remarks.Create.Summary": "Създава нова забележка",
+  "Remarks.Update.Summary": "Обновява забележка",
+  "Remarks.Delete.Summary": "Изтрива забележка",
+
+  // === СЕКЦИЯ УЧАСТИЯ В РЕЦЛР ===
+  "ReplrParticipations.GetAll.Summary": "Връща всички участия в РЕЦЛР за даден дневник",
+  "ReplrParticipations.GetAll.Returns": "Масив от ReplrParticipationDO обекти за указания дневник",
+  "ReplrParticipations.Create.Summary": "Създава ново участие в РЕЦЛР",
+  "ReplrParticipations.Update.Summary": "Обновява участие в РЕЦЛР",
+  "ReplrParticipations.Delete.Summary": "Изтрива участие в РЕЦЛР",
+
+  // === СЕКЦИЯ САНКЦИИ ===
+  "Sanctions.GetAll.Summary": "Връща всички санкции за даден дневник",
+  "Sanctions.GetAll.Returns": "Масив от SanctionDO обекти за указания дневник",
+  "Sanctions.Create.Summary": "Създава нова санкция",
+  "Sanctions.Update.Summary": "Обновява санкция",
+  "Sanctions.Delete.Summary": "Изтрива санкция",
+
+  // === СЕКЦИЯ РАЗПИСАНИЯ ===
+  "Schedules.GetAll.Summary": "Връща всички разписания за даден дневник",
+  "Schedules.GetAll.Returns": "Масив от ScheduleDO обекти за указания дневник",
+  "Schedules.Create.Summary": "Създава ново разписание",
+  "Schedules.Create.Returns": "Връща идентификатора на разписанието и всички занятия с техните идентификатори",
+  "Schedules.Update.Summary": "Обновява разписание",
+  "Schedules.Update.Returns": "Връща идентификатора на разписанието и всички занятия с техните идентификатори",
+  "Schedules.Delete.Summary": "Изтрива разписание",
+  "Schedules.Split.Summary": "Отделя избрани седмици в ново разписание",
+  "Schedules.Split.Remarks": "Подават се само седмиците, които трябва да се отделят в ново разписание",
+  "Schedules.Split.Returns": "Връща идентификатора на новото разписание",
+
+  // === СЕКЦИЯ НАСТРОЙКИ НА УЧЕБНАТА ГОДИНА ===
+  "SchoolYearDateInfos.GetAll.Summary": "Връща всички настройки на учебната година за дадена институция",
+  "SchoolYearDateInfos.GetAll.Returns": "Масив от SchoolYearDateInfoDO обекти за указания дневник",
+  "SchoolYearDateInfos.Create.Summary": "Създава нови настройки на учебната година",
+  "SchoolYearDateInfos.Update.Summary": "Обновява настройки на учебната година",
+  "SchoolYearDateInfos.Delete.Summary": "Изтрива настройки на учебната година",
+
+  // === СЕКЦИЯ УЧЕНИЧЕСКИ ДЕЙНОСТИ ===
+  "StudentActivities.GetAll.Summary": "Връща всички ученически дейности за даден дневник",
+  "StudentActivities.GetAll.Returns": "Масив от StudentActivitiesDO обекти за указания дневник",
+  "StudentActivities.Create.Summary": "Създава нова ученическа дейност",
+  "StudentActivities.Update.Summary": "Обновява ученическа дейност",
+  "StudentActivities.Delete.Summary": "Изтрива ученическа дейност",
+
+  // === СЕКЦИЯ ПРЕНЕСЕНИ ОТСЪСТВИЯ НА УЧЕНИЦИ ===
+  "StudentCarriedAbsences.GetAll.Summary": "Връща всички пренесени отсъствия на ученици за даден дневник",
+  "StudentCarriedAbsences.GetAll.Returns": "Масив от StudentCarriedAbsencesDO обекти за указания дневник",
+  "StudentCarriedAbsences.Update.Summary": "Обновява пренесените отсъствия на ученика в дневника",
+
+  // === СЕКЦИЯ НОМЕРА В КЛАС НА УЧЕНИЦИ ===
+  "StudentClassNumbers.GetAll.Summary": "Връща всички номера в клас на ученици за даден дневник",
+  "StudentClassNumbers.GetAll.Returns": "Масив от StudentClassNumberDO обекти за указания дневник",
+  "StudentClassNumbers.Update.Summary": "Обновява номерата в клас на учениците",
+
+  // === СЕКЦИЯ ПРЕДМЕТИ БЕЗ ОЦЕНКИ НА УЧЕНИЦИ ===
+  "StudentGradelessCurriculums.GetAll.Summary": "Връща всички предмети без оценки за ученици в даден дневник",
+  "StudentGradelessCurriculums.GetAll.Returns": "Масив от StudentGradelessCurriculumsDO обекти за указания дневник",
+  "StudentGradelessCurriculums.Update.Summary": "Обновява предметите без оценки за ученик",
+
+  // === СЕКЦИЯ ПРЕДМЕТИ СОП НА УЧЕНИЦИ ===
+  "StudentSpecialNeedCurriculums.GetAll.Summary": "Връща всички предмети СОП за ученици в даден дневник",
+  "StudentSpecialNeedCurriculums.GetAll.Returns": "Масив от StudentSpecialNeedCurriculumsDO обекти за указания дневник",
+  "StudentSpecialNeedCurriculums.Update.Summary": "Обновява предметите СОП за ученик",
+
+  // === СЕКЦИЯ ПОДКРЕПИ ===
+  "Supports.GetAll.Summary": "Връща всички подкрепи за даден дневник",
+  "Supports.GetAll.Returns": "Масив от SupportDO обекти за указания дневник",
+  "Supports.Create.Summary": "Създава нова подкрепа",
+  "Supports.Update.Summary": "Обновява подкрепа",
+  "Supports.Delete.Summary": "Изтрива подкрепа",
+
+  // === СЕКЦИЯ УЧИТЕЛСКИ ОТСЪСТВИЯ ===
+  "TeacherAbsences.GetAll.Summary": "Връща всички учителски отсъствия за дадена институция",
+  "TeacherAbsences.GetAll.Returns": "Масив от TeacherAbsenceDO обекти за указаната институция",
+  "TeacherAbsences.Create.Summary": "Създава ново учителско отсъствие",
+  "TeacherAbsences.Update.Summary": "Обновява учителско отсъствие",
+  "TeacherAbsences.Delete.Summary": "Изтрива учителско отсъствие",
+
+  // === СЕКЦИЯ ТЕМИ НА ЧАСА ===
+  "Topics.GetAll.Summary": "Връща всички теми на часа за даден дневник",
+  "Topics.GetAll.Returns": "Масив от TopicDO обекти за указания дневник",
+  "Topics.Create.Summary": "Създава нова тема на часа",
+  "Topics.Delete.Summary": "Изтрива тема на часа",
+
+  // === СЕКЦИЯ СМЕНИ ===
+  "Shifts.GetAll.Summary": "Връща всички смени за дадена институция",
+  "Shifts.GetAll.Returns": "Масив от ShiftDO обекти за указаната институция",
+  "Shifts.Create.Summary": "Създава нова смяна",
+  "Shifts.Update.Summary": "Обновява смяна",
+  "Shifts.Delete.Summary": "Изтрива смяна",
+
+  // === СЕКЦИЯ МЕДИЦИНСКИ БЕЛЕЖКИ ===
+  "HisMedicalNotices.Post.Summary": "Добавя медицински бележки от Националната здравно информационна система (НЗИС/HIS)",
+  "MedicalNotices.GetNext.Summary": "Взима следващите \"next\" непрочетени медицински бележки. Параметъра \"next\" трябва да е в интервала [100, 10000].",
+  "MedicalNotices.GetNext.Returns": "Обект MedicalNoticeBatchDO съдържащ необработени медицински бележки, последната синхронизация с НЗИС и дали има още необработени бележки",
+  "MedicalNotices.GetNext.NextParam": "Брой непрочетени медицински бележки, които да се върнат",
+  "MedicalNotices.Acknowledge.Summary": "Потвърждава, че са прочетени медицинските бележки с идентификатори medicalNoticeIds",
+  "MedicalNotices.Acknowledge.MedicalNoticeIdsParam": "Идентификатори на медицинските бележки, които са прочетени",
+
+  // === ABSENCETYPE ENUM ===
+  "AbsenceType.Late": "1 = Закъснение",
+  "AbsenceType.Unexcused": "2 = Отсъствие по неуважителни причини",
+  "AbsenceType.Excused": "3 = Отсъствие по уважителни причини",
+  "AbsenceType.DplrAbsence": "4 = Отсъствие само за ДПЛР групи",
+  "AbsenceType.DplrAttendance": "5 = Присъствие само за ДПЛР групи",
+
+  // === ABSENCEDO МОДЕЛ ===
+  "AbsenceDO.Summary": "Отсъствие за всички видове класове/групи без ClassBookType.Book_PG",
+  "AbsenceDO.AbsenceId": "Уникален идентификатор на записа. Не се попълва. Само се връща от системата.",
+  "AbsenceDO.PersonId": "Уникален идентификатор на лицето за системата",
+  "AbsenceDO.Date": "Дата на отсъствието ",
+  "AbsenceDO.Type": "Вид на отсъствието - избира се от AbsenceType енумерацията",
+  "AbsenceDO.ExcusedReason": "Причина за отсъствието. Може да остане празно (желателно е да се попълва) или да се избере една от следните: 1 - Здравословни, 2 - Семейни, 3 - Други",
+  "AbsenceDO.ExcusedReasonComment": "Причини за отсъствието - коментар към извиняването на отсъствието",
+  "AbsenceDO.ScheduleLessonId": "Идентификатор на часа от учебното разписание",
+
+  // === EXCUSEDREASONDO MODEL ===
+  "ExcusedReasonDO.Summary": "Причина за извиняване на отсъствието",
+  "ExcusedReasonDO.ExcusedReason": "Причина за отсъствието. Може да остане празно (желателно е да се попълва) или да се избере една от следните: 1 - Здравословни, 2 - Семейни, 3 - Други",
+  "ExcusedReasonDO.ExcusedReasonComment": "Причини за отсъствието - коментар към извиняването на отсъствието",
+
+  // === ADDITIONALACTIVITYDO МОДЕЛ ===
+  "AdditionalActivityDO.Summary": "Допълнителна дейност",
+  "AdditionalActivityDO.AdditionalActivityId": "Уникален идентификатор на записа. Не се попълва. Само се връща от системата.",
+  "AdditionalActivityDO.Year": "Година на седмицата по ISO 8601",
+  "AdditionalActivityDO.WeekNumber": "Номер на седмицата по ISO 8601. Число от 1 до 53.",
+  "AdditionalActivityDO.Activity": "Тема на дейността",
+
+  // === ATTENDANCEDO МОДЕЛ ===
+  "AttendanceDO.Summary": "Присъствие или отсъствие на деца от предучилищни групи - само за групи от тип ClassBookType.Book_PG",
+  "AttendanceDO.AttendanceId": "Уникален идентификатор на записа. Не се попълва. Само се връща от системата.",
+  "AttendanceDO.PersonId": "Уникален идентификатор на лицето за системата, за което се въвежда присъствието или отсъствието",
+  "AttendanceDO.Date": "Дата на отсъствието или присъствието. Форматът е yyyy-MM-dd, например 2023-10-01",
+  "AttendanceDO.Type": "Вид на отсъствието или присъствието - избира се от AttendanceType енумерацията",
+  "AttendanceDO.ExcusedReason": "Причина за отсъствието. Може да остане празно (желателно е да се попълва) или да се избере една от следните: 1 - Здравословни, 2 - Семейни, 3 - Други",
+  "AttendanceDO.ExcusedReasonComment": "Причини за отсъствието - коментар към извиняването на отсъствието",
+
+  // === ATTENDANCETYPE ENUM ===
+  "AttendanceType.Presence": "1 = Присъствие",
+  "AttendanceType.UnexcusedAbsence": "2 = Отсъствие по неуважителни причини",
+  "AttendanceType.ExcusedAbsence": "3 = Отсъствие по уважителни причини",
+
+  // === CLASSBOOKCOMBINEDO МОДЕЛ ===
+  "ClassBookCombineDO.Summary": "Обединяване на няколко класове от долно ниво към един клас от горно ниво",
+  "ClassBookCombineDO.ParentClassId": "Идентификатор (classId) на паралелката/групата, която ще бъде създадена от Parent ниво",
+  "ClassBookCombineDO.ChildClassIdForDataTransfer": "Идентификатор (classId) на паралелката/групата, от която ще се копират \"Неучебни дни\", \"Настройки на учебната година\" и \"Разписания\" в новосъздадения дневник",
+
+  // === CLASSBOOKTYPE ENUM ===
+  "ClassBookType.Book_PG": "1 = 3-5 Дневник на група/подготвителна група",
+  "ClassBookType.Book_I_III": "2 = 3-14 Дневник I - III клас",
+  "ClassBookType.Book_IV": "3 = 3-16 Дневник IV клас",
+  "ClassBookType.Book_V_XII": "4 = 3-87 Дневник V - XII клас",
+  "ClassBookType.Book_CDO": "5 = 3-63 Дневник на група",
+  "ClassBookType.Book_DPLR": "6 = 3-63.1 Дневник за дейности за подкрепа за личностно развитие",
+  "ClassBookType.Book_CSOP": "7 = 3-62 Дневник за група/паралелка в център за специална образователна подкрепа",
+
+  // === EXAMDO МОДЕЛ ===
+  "ExamDO.Summary": "Класна/контролна работа",
+  "ExamDO.ExamId": "Уникален идентификатор на записа. Не се попълва. Само се връща от системата.",
+  "ExamDO.Type": "Вид на класната/контролната работа - избира се от BookExamType енумерацията",
+  "ExamDO.CurriculumId": "Идентификатор на предмет от учебния план",
+  "ExamDO.Date": "Дата на класната/контролната работа",
+  "ExamDO.Description": "Описание",
+
+  // === BOOKEXAMTYPE ENUM ===
+  "BookExamType.ControlExam": "1 = Контролна работа",
+  "BookExamType.ClassExam": "2 = Класна работа",
+
+  // === FIRSTGRADERESULTDO МОДЕЛ ===
+  "FirstGradeResultDO.Summary": "Общ годишен успех за първи клас",
+  "FirstGradeResultDO.FirstGradeResultId": "Уникален идентификатор на записа. Не се попълва. Само се връща от системата.",
+  "FirstGradeResultDO.PersonId": "Уникален идентификатор на лицето за системата. Не се използва при update.",
+  "FirstGradeResultDO.QualitativeGrade": "Качествена оценка. Попълва се само един вид оценка качествена или количествена - избира се от QualitativeGrade енумерацията",
+  "FirstGradeResultDO.SpecialGrade": "СОП (количествена) оценка. Попълва се само един вид оценка качествена или количествена - избира се от SpecialNeedsGrade енумерацията",
+
+  // === CLASSBOOKDO МОДЕЛ ===
+  "ClassBookDO.Summary": "Дневник",
+  "ClassBookDO.ClassBookId": "Уникален идентификатор на дневника",
+  "ClassBookDO.ClassId": "Идентификатор на паралелката/групата създадена в модул Списък Образец",
+  "ClassBookDO.BookType": "Вид на дневника - избира се от ClassBookType енумерацията",
+  "ClassBookDO.BasicClassId": "Идентификатор на випуска",
+  "ClassBookDO.BookName": "Наименование на паралелката/дневника",
+  "ClassBookDO.IsFinalized": "Флаг за приключен дневник",
+  "ClassBookDO.IsValid": "Флаг дали дневникът е валиден или е архивиран",
+  "ClassBookDO.InvalidationDate": "Дата на архивиране, ако дневникът е архивиран",
+
+  // === CLASSBOOKSEPARATEDO МОДЕЛ ===
+  "ClassBookSeparateDO.Summary": "Разделяне на един клас от горно ниво на няколко паралелки/групи от долно ниво",
+  "ClassBookSeparateDO.ParentClassId": "Идентификатор (classId) на паралелката/групата, която ще бъде маркирана като невалидна (IsValid=0)",
+  "ClassBookSeparateDO.ChildClassIds": "Идентификатори (classIds) на паралелките/групите, които ще бъдат създадени",
+
+  // === GRADEDO МОДЕЛ ===
+  "GradeDO.Summary": "Оценка",
+  "GradeDO.GradeId": "Уникален идентификатор на записа. Не се попълва. Само се връща от системата.",
+  "GradeDO.PersonId": "Уникален идентификатор на лицето за системата",
+  "GradeDO.CurriculumId": "Идентификатор на предмет от учебния план. При попълнено поле ScheduleLessonId, CurriculumId не е задължително.",
+  "GradeDO.Date": "Дата на оценката",
+  "GradeDO.Category": "Категория на оценката - избира се от GradeCategory енумерацията",
+  "GradeDO.Type": "Вид на оценката - избира се от GradeType енумерацията",
+  "GradeDO.DecimalGrade": "Количествена оценка с точно два знака след десетичната запетая. Задължително за категория на оценката \"Количествена\"",
+  "GradeDO.QualitativeGrade": "Качествена оценка. Задължително за категория на оценката \"Качествена\"",
+  "GradeDO.SpecialGrade": "СОП оценка. Задължително за категория на оценката \"СОП\"",
+  "GradeDO.Comment": "Коментар за оценката. Коментарът е видим и за родителите/учениците!",
+  "GradeDO.ScheduleLessonId": "Идентификатор на часа от учебното разписание. Задължителен за всички оценки освен тези с вид на оценката - Term(21)/Final(22)/OtherClass(98)/OtherSchool(99), за които това поле се игнорира",
+  "GradeDO.Term": "Учебен срок. При създаване опционално може да се посочи за кой учебен срок е оценката. Използва се само за вид на оценката - Term(21)/OtherClass(98)/OtherSchool(99), за останалите видове оценки това поле се игнорира. Ако не е попълнено, се взима учебният срок на датата на оценката",
+
+  // === GRADETYPE ENUM ===
+  "GradeType.General": "1 = Текуща оценка",
+  "GradeType.ControlExam": "2 = Контролна работа",
+  "GradeType.ClassExam": "3 = Класна работа",
+  "GradeType.Test": "4 = Тест",
+  "GradeType.Homework": "5 = Домашна работа",
+  "GradeType.Project": "6 = Проект",
+  "GradeType.EntryLevel": "11 = Входно ниво",
+  "GradeType.ExitLevel": "12 = Изходно ниво",
+  "GradeType.Term": "21 = Срочна",
+  "GradeType.Final": "22 = Годишна",
+  "GradeType.OtherClass": "98 = От друг клас",
+  "GradeType.OtherSchool": "99 = От друго училище",
+  "GradeType.OtherClassTerm": "100 = Срочна от друг клас. Да не се използва. Пренесена от друг клас информативна оценка. Не се взима под внимание",
+  "GradeType.OtherSchoolTerm": "101 = Срочна от друго училище. Да не се използва. Пренесена от друго училище информативна оценка. Не се взима под внимание",
+
+  // === GRADERESULTDO МОДЕЛ ===
+  "GradeResultDO.Summary": "Годишен резултат",
+  "GradeResultDO.GradeResultId": "Уникален идентификатор на записа. Не се попълва. Само се връща от системата.",
+  "GradeResultDO.PersonId": "Уникален идентификатор на лицето за системата. Не се попълва при update.",
+  "GradeResultDO.InitialResultType": "Годишен резултат - използват се стойностите от GradeResultType енумерацията",
+  "GradeResultDO.RetakeExamCurriculums": "Поправителни сесии по предмети. Попълва се само ако годишният резултат е \"Полага изпити\"",
+  "GradeResultDO.FinalResultType": "Годишен резултат след сесиите. Попълва се само ако годишният резултат е \"Полага изпити\"",
+
+  // === GRADERESULTCURRICULUMDO МОДЕЛ ===
+  "GradeResultCurriculumDO.Summary": "Поправителни сесии по предмет",
+  "GradeResultCurriculumDO.CurriculumId": "Идентификатор на предмет от учебния план",
+  "GradeResultCurriculumDO.Session1Grade": "Оценка от 1ва сесия. Цяло число от 2 до 6.",
+  "GradeResultCurriculumDO.Session1NoShow": "Неявил се на 1ва сесия",
+  "GradeResultCurriculumDO.Session2Grade": "Оценка от 2ра сесия. Цяло число от 2 до 6.",
+  "GradeResultCurriculumDO.Session2NoShow": "Неявил се на 2ра сесия",
+  "GradeResultCurriculumDO.Session3Grade": "Оценка от допълнителна сесия. Цяло число от 2 до 6.",
+  "GradeResultCurriculumDO.Session3NoShow": "Неявил се на допълнителна сесия",
+
+  // === GRADERESULTTYPE ENUM ===
+  "GradeResultType.CompletesGrade": "1 = Завършва",
+  "GradeResultType.MustRetakeExams": "2 = Полага изпити",
+  "GradeResultType.RepeatsGrade": "3 = Повтаря",
+
+  // === HISMEDICALNOTICEDO МОДЕЛ ===
+  "HisMedicalNoticeDO.Summary": "Медицинска бележка получена от НЗИС",
+  "HisMedicalNoticeDO.NrnMedicalNotice": "Уникален идентификатор на електронния документ - НРН на медицинската бележка",
+  "HisMedicalNoticeDO.NrnExamination": "НРН на е-преглед или е-хоспитализация, спрямо който се издава медицинската бележка",
+  "HisMedicalNoticeDO.Patient": "Данни за пациента",
+  "HisMedicalNoticeDO.Practitioner": "Данни за лекаря",
+  "HisMedicalNoticeDO.MedicalNotice": "Информация за медицинската бележка",
+
+  // === HISMEDICALNOTICEPATIENTDO МОДЕЛ ===
+  "HisMedicalNoticePatientDO.Summary": "Данни за пациента",
+  "HisMedicalNoticePatientDO.IdentifierType": "Типът на идентификатора на лицето. 1 - ЕГН, 2 - ЛНЧ, 3 - Социален номер - за чужди граждани, 4 - Номер на паспорт, 5 - Друг идентификатор",
+  "HisMedicalNoticePatientDO.Identifier": "Идентификатор на лицето, пряко свързан с типа. Тоест самото ЕГН или ЛНЧ на ученика",
+  "HisMedicalNoticePatientDO.GivenName": "Първо име на лицето",
+  "HisMedicalNoticePatientDO.FamilyName": "Фамилия на лицето",
+
+  // === HISMEDICALNOTICEPRACTITIONERDO МОДЕЛ ===
+  "HisMedicalNoticePractitionerDO.Summary": "Данни за лекаря",
+  "HisMedicalNoticePractitionerDO.Pmi": "УИН на лекаря",
+
+  // === HISMEDICALNOTICEINFODO МОДЕЛ ===
+  "HisMedicalNoticeInfoDO.Summary": "Информация за медицинската бележка",
+  "HisMedicalNoticeInfoDO.FromDate": "Начална дата на валидност на медицинската бележка (включително)",
+  "HisMedicalNoticeInfoDO.ToDate": "Крайна дата на валидност на медицинската бележка (включително)",
+  "HisMedicalNoticeInfoDO.AuthoredOn": "Дата на издаване на медицинската бележка",
+
+  // === INDIVIDUALWORKDO МОДЕЛ ===
+  "IndividualWorkDO.Summary": "Индивидуална работа",
+  "IndividualWorkDO.IndividualWorkId": "Уникален идентификатор на записа. Не се попълва. Само се връща от системата.",
+  "IndividualWorkDO.PersonId": "Уникален идентификатор на лицето за системата. Не се използва при update.",
+  "IndividualWorkDO.Date": "Дата",
+  "IndividualWorkDO.IndividualWorkActivity": "Проведена индивидуална работа с ученика",
+
+  // === MEDICALNOTICEBATCHDO МОДЕЛ ===
+  "MedicalNoticeBatchDO.Summary": "Пакет от медицински бележки",
+  "MedicalNoticeBatchDO.MedicalNotices": "Медицински бележки",
+  "MedicalNoticeBatchDO.LastHisSyncTime": "Време на последната синхронизация с НЗИС",
+  "MedicalNoticeBatchDO.HasMore": "Индикатор дали има още медицински бележки за извличане за текущия доставчик. В редки случаи могат да бъдат получени по-малко бележки от поисканите с параметъра next, но всъщност да има още за извличане. Затова е желателно да се провери това поле и ако е true да се извика отново методът MedicalNotices_GetNext",
+
+  // === MEDICALNOTICEDO МОДЕЛ ===
+  "MedicalNoticeDO.Summary": "Медицинска бележка получена от Националната здравно информационна система (НЗИС)",
+  "MedicalNoticeDO.MedicalNoticeId": "Уникален идентификатор на записа",
+  "MedicalNoticeDO.PersonId": "Идентификатор на ученика",
+  "MedicalNoticeDO.HisMedicalNotice": "Медицинска бележка от НЗИС",
+
+  // === NOTEDO МОДЕЛ ===
+  "NoteDO.Summary": "Бележка",
+  "NoteDO.NoteId": "Уникален идентификатор на записа. Не се попълва. Само се връща от системата.",
+  "NoteDO.Description": "Описание",
+  "NoteDO.IsForAllStudents": "Бележката важи за всички ученици от групата",
+  "NoteDO.StudentIds": "Ученици, за които е бележката (PersonId-та на ученици). Попълва се ако \"IsForAllStudents = false\"",
+  "NoteDO.Students": "Ученици, за които е бележката. Попълва се ако \"IsForAllStudents = false\"",
+
+  // === NOTESTUDENTDO МОДЕЛ ===
+  "NoteStudentDO.PersonId": "Уникален идентификатор на лицето за системата",
+
+  // === OFFDAYDO МОДЕЛ ===
+  "OffDayDO.Summary": "Неучебен период",
+  "OffDayDO.OffDayId": "Уникален идентификатор на записа. Не се попълва. Само се връща от системата.",
+  "OffDayDO.From": "Начална дата на периода",
+  "OffDayDO.To": "Крайна дата на периода",
+  "OffDayDO.Description": "Описание",
+  "OffDayDO.IsForAllClasses": "Неучебните дни важат за всички класове",
+  "OffDayDO.BasicClassIds": "Идентификатори на випуски, за които важат неучебните дни. Попълва се ако \"IsForAllClasses = false\". Не може да е попълнено едновременно с \"ClassBookIds\"",
+  "OffDayDO.ClassBookIds": "Идентификатори на паралелки/групи, за които важат неучебните дни. Попълва се ако \"IsForAllClasses = false\". Не може да е попълнено едновременно с \"BasicClassIds\"",
+  "OffDayDO.IsPgOffProgramDay": "Маркира позволено ли е въвеждане на присъствия в ПГ за дните от понеделник до петък. Флагът по никакъв начин не ограничава API-тата за Attendances, но променя поведението на потребителския интерфейс на дневниците за ПГ в НЕИСПУО. true: част от неучебното време, възможно е въвеждане на присъствия и изкарва предупреждения в червено при въвеждане на отсъствия по неуважителни причини; false: неучебен и неприсъствен ден, не е възможно въвеждане на присъствия и отсъствия; null: неподаването на стойност се третира като 'true'",
+
+  // === PARENTMEETINGDO МОДЕЛ ===
+  "ParentMeetingDO.Summary": "Родителска среща",
+  "ParentMeetingDO.ParentMeetingId": "Уникален идентификатор на записа. Не се попълва. Само се връща от системата.",
+  "ParentMeetingDO.Date": "Дата на родителската среща",
+  "ParentMeetingDO.StartTime": "Начален час във формат \"ЧЧ:ММ\". Пример: \"19:30\"",
+  "ParentMeetingDO.Location": "Място",
+  "ParentMeetingDO.Title": "Тема",
+  "ParentMeetingDO.Description": "Описание",
+
+  // === PERFORMANCEDO МОДЕЛ ===
+  "PerformanceDO.Summary": "Изява",
+  "PerformanceDO.PerformanceId": "Уникален идентификатор на записа. Не се попълва. Само се връща от системата.",
+  "PerformanceDO.PerformanceTypeId": "Вид на изявата",
+  "PerformanceDO.Name": "Наименование",
+  "PerformanceDO.StartDate": "Период на провеждане от",
+  "PerformanceDO.EndDate": "Период на провеждане до",
+  "PerformanceDO.Description": "Описание",
+  "PerformanceDO.Location": "Място на провеждане",
+  "PerformanceDO.StudentAwards": "Получени награди от учениците",
+
+  // === PGRESULTDO МОДЕЛ ===
+  "PgResultDO.Summary": "Резултат от предучилищната подготовка по направления",
+  "PgResultDO.PgResultId": "Уникален идентификатор на записа. Не се попълва. Само се връща от системата.",
+  "PgResultDO.PersonId": "Уникален идентификатор на лицето за системата. Не се използва при update.",
+  "PgResultDO.SubjectId": "Идентификатор на образователно направление(предмет) от номенклатурата Subject. Не се използва при update.",
+  "PgResultDO.StartSchoolYearResult": "Секция \"В началото на учебната година\". Максимален размер - 10000 символа.",
+  "PgResultDO.EndSchoolYearResult": "Секция \"В края на учебната година\". Максимален размер - 10000 символа.",
+
+  // === REMARKDO МОДЕЛ ===
+  "RemarkDO.Summary": "Отзив",
+  "RemarkDO.RemarkId": "Уникален идентификатор на записа. Не се попълва. Само се връща от системата.",
+  "RemarkDO.PersonId": "Уникален идентификатор на лицето за системата. Не се използва при update.",
+  "RemarkDO.CurriculumId": "Идентификатор на предмет от учебния план. Не се използва при update.",
+  "RemarkDO.Type": "Вид на отзива. Не се използва при update - използват се стойностите от RemarkType енумерацията",
+  "RemarkDO.Date": "Дата на отзива",
+  "RemarkDO.Description": "Описание",
+
+  // === REMARKTYPE ENUM ===
+  "RemarkType.Good": "1 = Похвала",
+  "RemarkType.Bad": "2 = Забележка",
+
+  // === REPLRPARTICIPATIONDO МОДЕЛ ===
+  "ReplrParticipationDO.Summary": "Участие в РЕПЛР - Регионален екип за подкрепа за личностно развитие",
+  "ReplrParticipationDO.ReplrParticipationId": "Уникален идентификатор на записа. Не се попълва. Само се връща от системата.",
+  "ReplrParticipationDO.ReplrParticipationTypeId": "Вид на участието в РЕПЛР. Може да не се попълва или се избира едно от следните: 1 - Оценка от екип за подкрепа на личностното развитие (ЕПЛР) в детската градина/училището, 2 - Оценка на деца и ученици със специални образователни потребности при невъзможност за формиране на ЕПЛР в детската градина/училището, 3 - Повторна оценка при несъгласие на родителя с оценката от ЕПЛР, 4 - Оценка за насочване за обучение в специалните училища, 5 - Оценка за насочване за обучение в училища с подкрепа на ЦСОП, 6 - Методическа подкрепа, 7 - Преценка за обучението на ученик, настанен в болница, 8 - Оценка на деца със специални образователни потребности във връзка с чл.14 от Наредба за прием на деца в общинските детски градини на територията на Столична община, 9 - Други дейности, 10 - Оценка за насочване за обучение в детска градина със специални групи, 11 - Оценка на ученици със СОП, промяна формата на обучение, 12 - Оценка за отлагане от задължително обучение в първи клас, 13 - Оценка за насочване на ученици със СОП, след завършен VII или X клас",
+  "ReplrParticipationDO.Date": "Дата на събитието",
+  "ReplrParticipationDO.Topic": "Тема на събитието",
+  "ReplrParticipationDO.Attendees": "Присъстващи участници. Свободен текст.",
+  "ReplrParticipationDO.InstId": "Институция за която се отнася участието в РЕПЛР",
+
+  // === SANCTIONDO МОДЕЛ ===
+  "SanctionDO.Summary": "Санкция",
+  "SanctionDO.SanctionId": "Уникален идентификатор на записа. Не се попълва. Само се връща от системата.",
+  "SanctionDO.PersonId": "Уникален идентификатор на лицето за системата. Не се използва при update.",
+  "SanctionDO.Type": "Вид на санкцията. Избира се една от следните стойности: 1 - Забележка, 2 - Преместване в друга паралелка в същото училище, 3 - Предупреждение за преместване в друго училище, 4 - Преместване в друго училище, 5 - Преместване от дневна форма в самостоятелна форма на обучение",
+  "SanctionDO.OrderNumber": "Номер на заповед",
+  "SanctionDO.OrderDate": "Дата на заповед",
+  "SanctionDO.StartDate": "Начална дата",
+  "SanctionDO.EndDate": "Крайна дата",
+  "SanctionDO.Description": "Описание",
+  "SanctionDO.CancelOrderNumber": "Номер на заповед за отмяна",
+  "SanctionDO.CancelOrderDate": "Дата на заповед за отмяна",
+  "SanctionDO.CancelReason": "Причина за заповедта за отмяна",
+  "SanctionDO.RuoOrderNumber": "Номер на заповед на началника на РУО",
+  "SanctionDO.RuoOrderDate": "Дата на заповед на началника на РУО",
+  // === SCHEDULEDO МОДЕЛ ===
+  "ScheduleDO.Summary": "Учебно разписание",
+  "ScheduleDO.ScheduleId": "Уникален идентификатор на записа. Не се попълва. Само се връща от системата.",
+  "ScheduleDO.IsIndividualCurriculum": "Разписанието е за ученик в индивидуална форма на обучение",
+  "ScheduleDO.PersonId": "Уникален идентификатор на лицето за системата. Попълва се само когато разписанието е за ученик в ИУП.",
+  "ScheduleDO.Term": "Учебен срок. Ако полето е null разписанието е за цялата учебна година - избира се от стойностите на SchoolTerm енумерацията",
+  "ScheduleDO.StartDate": "Начална дата",
+  "ScheduleDO.EndDate": "Крайна дата",
+  "ScheduleDO.IncludesWeekend": "Разписанието включва събота и неделя. true - включва събота и неделя; false | null - не включва събота и неделя",
+  "ScheduleDO.HasAdhocShift": "Разписанието има собствена смяна и не използва предварително дефинираните смени. true - полетата AdhocShiftIsMultiday и AdhocShiftHours стават задължителни, а полето ShiftId се игнорира; false | null - полето ShiftId е задължително, а полетата AdhocShiftIsMultiday и AdhocShiftHours се игнорират",
+  "ScheduleDO.AdhocShiftIsMultiday": "Собствената смяна е с различни режими за отделните дни. Задължително поле, когато HasAdhocShift=true.",
+  "ScheduleDO.AdhocShiftHours": "Часове на собствената смяна, която трябва да се дефинира на момента. Задължително поле, когато HasAdhocShift=true.",
+  "ScheduleDO.ShiftId": "Учебна смяна. Задължително поле, когато HasAdhocShift=false. Трябва да се създаде Shift и да се попълни неговия идентификатор.",
+  "ScheduleDO.Weeks": "Седмиците, които разписанието обхваща",
+  "ScheduleDO.Days": "Учебно разписание по дни",
+  "ScheduleDO.Lessons": "Всички занятия от разписанието. Не се попълва. Само се връща от системата.",
+
+  // === SCHEDULEWEEKDO МОДЕЛ ===
+  "ScheduleWeekDO.Summary": "Седмица от учебното разписание по ISO 8601 (виж https://en.wikipedia.org/wiki/ISO_week_date)",
+  "ScheduleWeekDO.Year": "Година на седмицата по ISO 8601",
+  "ScheduleWeekDO.WeekNumber": "Номер на седмицата по ISO 8601. Число от 1 до 53.",
+
+  // === SCHEDULEDAYDO МОДЕЛ ===
+  "ScheduleDayDO.Summary": "Ден от учебното разписание",
+  "ScheduleDayDO.Day": "Ден от седмицата. Число от 1 (Понеделник) до 7 (Неделя).",
+  "ScheduleDayDO.Hours": "Дневно разписание по часове",
+
+  // === SCHEDULEHOURDO МОДЕЛ ===
+  "ScheduleHourDO.Summary": "Час от учебното разписание",
+  "ScheduleHourDO.HourNumber": "Номер на часа отговарящ на смяната на разписанието",
+  "ScheduleHourDO.GroupCurriculumIds": "Идентификатори на предмети от учебния план за всяка група от часа",
+  "ScheduleHourDO.Groups": "Идентификатори на предмети от учебния план за всяка група от часа",
+
+  // === SCHEDULEHOURGROUPDO МОДЕЛ ===
+  "ScheduleHourGroupDO.Summary": "Групи от предмети и място на провеждане от учебния план за всяка група от часа",
+  "ScheduleHourGroupDO.CurriculumId": "Идентификатор на предмет от учебния план",
+  "ScheduleHourGroupDO.Location": "Място на провеждане на часа",
+
+  // === SCHEDULELESSONDO МОДЕЛ ===
+  "ScheduleLessonDO.Summary": "Занятие от учебното разписание",
+  "ScheduleLessonDO.ScheduleLessonId": "Уникален идентификатор на записа. Не се попълва. Само се връща от системата.",
+  "ScheduleLessonDO.Date": "Дата на занятието",
+  "ScheduleLessonDO.Day": "Ден от седмицата. Число от 1 (Понеделник) до 5 (Петък).",
+  "ScheduleLessonDO.HourNumber": "Номер на часа",
+  "ScheduleLessonDO.CurriculumId": "Идентификатор на предмет от учебния план",
+
+  // === SCHEDULERESULTDO МОДЕЛ ===
+  "ScheduleResultDO.Summary": "Резултат от създаване/обновяване на учебно разписание",
+  "ScheduleResultDO.ScheduleId": "Уникален идентификатор на учебното разписание",
+  "ScheduleResultDO.Lessons": "Всички занятия от разписанието",
+
+  // === SCHEDULEADHOCSHIFTHOURDO МОДЕЛ ===
+  "ScheduleAdhocShiftHourDO.Summary": "Час от собствена смяна, която трябва да се дефинира на момента. Използва се когато HasAdhocShift=true.",
+  "ScheduleAdhocShiftHourDO.Day": "Ден от седмицата",
+  "ScheduleAdhocShiftHourDO.HourNumber": "Номер на часа",
+  "ScheduleAdhocShiftHourDO.StartTime": "Начален час",
+  "ScheduleAdhocShiftHourDO.EndTime": "Краен час",
+
+  // === SCHOOLTERM ENUM ===
+  "SchoolTerm.TermOne": "1 = Първи срок",
+  "SchoolTerm.TermTwo": "2 = Втори срок",
+
+  // === SCHOOLYEARDATEINFODO МОДЕЛ ===
+  "SchoolYearDateInfoDO.Summary": "Настройки на учебната година. Въведените дати трябва да са в интервала [SchoolYearStartDateLimit, SchoolYearEndDateLimit], където ако институцията е спортно училище - SchoolYearStartDateLimit - 1 септември (в случай че 1 септември е почивен ден, започва на първия следващ работен ден), SchoolYearEndDateLimit - 31 август на следващата година; е детска градина или друго - SchoolYearStartDateLimit - 15 септември (в случай че 15 септември е почивен ден, започва на първия следващ работен ден), SchoolYearEndDateLimit - 14 септември на следващата година",
+  "SchoolYearDateInfoDO.SchoolYearDateInfoId": "Уникален идентификатор на записа. Не се попълва. Само се връща от системата.",
+  "SchoolYearDateInfoDO.SchoolYearStartDate": "Начало на учебната година. Задължително е да е >= SchoolYearStartDateLimit.",
+  "SchoolYearDateInfoDO.FirstTermEndDate": "Край на първи срок. Задължително е да е > SchoolYearStartDate.",
+  "SchoolYearDateInfoDO.SecondTermStartDate": "Начало на втори срок. Задължително е да е > FirstTermEndDate.",
+  "SchoolYearDateInfoDO.SchoolYearEndDate": "Край на учебната година. Задължително е да е (> SecondTermStartDate OR <= SchoolYearEndDateLimit).",
+  "SchoolYearDateInfoDO.Description": "Описание",
+  "SchoolYearDateInfoDO.IsForAllClasses": "Настройките важат за всички класове",
+  "SchoolYearDateInfoDO.BasicClassIds": "Идентификатори на випуски за които важат настройките. Попълва се ако \"IsForAllClasses = false\". Не може да е попълнено едновременно с \"ClassBookIds\".",
+  "SchoolYearDateInfoDO.ClassBookIds": "Идентификатори на паралелки/групи, за които важат настройките. Попълва се ако \"IsForAllClasses = false\". Не може да е попълнено едновременно с \"BasicClassIds\".",
+
+  // === SHIFTDO МОДЕЛ ===
+  "ShiftDO.Summary": "Учебна смяна",
+  "ShiftDO.ShiftId": "Уникален идентификатор на записа. Не се попълва. Само се връща от системата.",
+  "ShiftDO.Name": "Наименование",
+  "ShiftDO.IsMultiday": "Смяна с различни режими за отделните дни",
+  "ShiftDO.Hours": "Часове",
+
+  // === SHIFTHOURDO МОДЕЛ ===
+  "ShiftHourDO.Summary": "Час от учебната смяна",
+  "ShiftHourDO.Day": "Ден за който е часът. Число от 1 (Понеделник) до 7 (Неделя). За смени без различни режими (IsMultiday=False) се подава винаги 1.",
+  "ShiftHourDO.HourNumber": "Номер на часа. Число >= 0 (нулев час). Обикновено номерацията на часовете е от 1, но е оставена възможността за нулев час, който се използва понякога от училищата. Разрешено е часовете да не са поредни (напр. 1, 3, 5), но не се допускат повторения на часовете в рамките на един ден (напр. 2 пъти 1-ви час).",
+  "ShiftHourDO.StartTime": "Начален час във формат \"ЧЧ:ММ\". Пример: \"08:00\".",
+  "ShiftHourDO.EndTime": "Краен час във формат \"ЧЧ:ММ\". Пример: \"08:40\".",
+
+  // === STUDENTACTIVITIESDO МОДЕЛ ===
+  "StudentActivitiesDO.Summary": "Дейности по интереси. Може да се добавя само за дневници: 3-5 Дневник на група/подготвителна група, 3-14 Дневник I - III клас, 3-16 Дневник IV клас",
+  "StudentActivitiesDO.PersonId": "Уникален идентификатор на ученика. Не се попълва. Само се връща от системата.",
+  "StudentActivitiesDO.Activities": "Дейности по интереси за ученика",
+
+  // === STUDENTCARRIEDABSENCESDO МОДЕЛ ===
+  "StudentCarriedAbsencesDO.Summary": "Пренесени отсъствия",
+  "StudentCarriedAbsencesDO.PersonId": "Уникален идентификатор на ученика. Не се попълва. Само се връща от системата.",
+  "StudentCarriedAbsencesDO.FirstTermExcusedCount": "Пренесени уважителни отсъствия за I срок",
+  "StudentCarriedAbsencesDO.FirstTermUnexcusedCount": "Пренесени неуважителни отсъствия за I срок",
+  "StudentCarriedAbsencesDO.FirstTermLateCount": "Пренесени закъснения за I срок",
+  "StudentCarriedAbsencesDO.SecondTermExcusedCount": "Пренесени уважителни отсъствия за II срок",
+  "StudentCarriedAbsencesDO.SecondTermUnexcusedCount": "Пренесени неуважителни отсъствия за II срок",
+  "StudentCarriedAbsencesDO.SecondTermLateCount": "Пренесени закъснения за II срок",
+
+  // === STUDENTCLASSNUMBERDO МОДЕЛ ===
+  "StudentClassNumberDO.Summary": "Номер на ученика",
+  "StudentClassNumberDO.PersonId": "Уникален идентификатор на ученика. Не се попълва. Само се връща от системата.",
+  "StudentClassNumberDO.ClassNumber": "Номер на ученика в дневника. Може да е null(без номер). Няма ограничение да не се повтаря с номерата на други ученици.",
+
+  // === STUDENTGRADELESSCURRICULUMSDO МОДЕЛ ===
+  "StudentGradelessCurriculumsDO.Summary": "Освободен по предмети",
+  "StudentGradelessCurriculumsDO.PersonId": "Уникален идентификатор на ученика. Не се попълва. Само се връща от системата.",
+  "StudentGradelessCurriculumsDO.GradelessCurriculums": "Предмети, по които е освободен ученикът",
+
+  // === STUDENTGRADELESSCURRICULUMDO МОДЕЛ ===
+  "StudentGradelessCurriculumDO.Summary": "Освободен по предмет. Обектът ще бъде записан само ако поне едно от трите Without* полета е true",
+  "StudentGradelessCurriculumDO.CurriculumId": "Идентификатор на предмет от учебния план, по който е освободен ученикът",
+  "StudentGradelessCurriculumDO.WithoutFirstTermGrade": "Освободен от оценка за 1ви срок",
+  "StudentGradelessCurriculumDO.WithoutSecondTermGrade": "Освободен от оценка за 2ри срок",
+  "StudentGradelessCurriculumDO.WithoutFinalGrade": "Освободен от годишна оценка",
+
+  // === STUDENTSPECIALNEEDCURRICULUMSDO МОДЕЛ ===
+  "StudentSpecialNeedCurriculumsDO.Summary": "СОП оценки по предмети",
+  "StudentSpecialNeedCurriculumsDO.PersonId": "Уникален идентификатор на ученика. Не се попълва. Само се връща от системата.",
+  "StudentSpecialNeedCurriculumsDO.StudentSpecialNeedCurriculumIds": "Идентификатори на предмети от учебния план, по които ученикът се оценява със СОП оценки",
+  "StudentSpecialNeedCurriculumsDO.HasSpecialNeedFirstGradeResult": "Ученик от първи клас се оценява със СОП оценки в раздел \"Общ годишен успех\". Важи само за ученици от първи клас.",
+
+  // === SUPPORTDO МОДЕЛ ===
+  "SupportDO.Summary": "Подкрепа",
+  "SupportDO.SupportId": "Уникален идентификатор на записа. Не се попълва. Само се връща от системата.",
+  "SupportDO.Description": "Цел",
+  "SupportDO.ExpectedResult": "Очакван резултат",
+  "SupportDO.EndDate": "Краен срок",
+  "SupportDO.SupportDifficultyTypeIds": "Вид подкрепа",
+  "SupportDO.TeacherIds": "Екип. PersonId-та на учители.",
+  "SupportDO.IsForAllStudents": "Подкрепата важи за всички ученици от групата",
+  "SupportDO.StudentIds": "Ученици, за които е подкрепата (PersonId-та на ученици). Попълва се ако \"IsForAllStudents = false\"",
+  "SupportDO.Activities": "Дейности",
+  "SupportDO.Students": "Ученици, за които е подкрепата. Попълва се ако \"IsForAllStudents = false\"",
+
+  // === SUPPORTACTIVITYDO МОДЕЛ ===
+  "SupportActivityDO.Summary": "Дейност",
+  "SupportActivityDO.SupportActivityTypeId": "Вид дейност",
+  "SupportActivityDO.Target": "Цел",
+  "SupportActivityDO.Result": "Резултат",
+  "SupportActivityDO.Date": "Дата",
+
+  // === SUPPORTSTUDENTDO МОДЕЛ ===
+  "SupportStudentDO.Summary": "Ученик",
+  "SupportStudentDO.PersonId": "Уникален идентификатор на лицето за системата",
+
+  // === TEACHERABSENCEDO МОДЕЛ ===
+  "TeacherAbsenceDO.Summary": "Учителско отсъствие",
+  "TeacherAbsenceDO.TeacherAbsenceId": "Уникален идентификатор на записа. Не се попълва. Само се връща от системата.",
+  "TeacherAbsenceDO.TeacherPersonId": "Уникален идентификатор на учителя, който отсъства. Не може да се променя при update. Трябва да се подаде оригиналната стойност, както при създаването му.",
+  "TeacherAbsenceDO.StartDate": "Начална дата на отсъствието. Не може да се променя при update. Трябва да се подаде оригиналната стойност, както при създаването му.",
+  "TeacherAbsenceDO.EndDate": "Крайна дата на отсъствието. Не може да се променя при update. Трябва да се подаде оригиналната стойност, както при създаването му.",
+  "TeacherAbsenceDO.Reason": "Причини за отсъствието",
+  "TeacherAbsenceDO.Hours": "Часове, за които се създават промени в разписанието/замествания",
+
+  // === TEACHERABSENCEHOURDO МОДЕЛ ===
+  "TeacherAbsenceHourDO.Summary": "Час, за който се създава промяна в разписанието/заместване",
+  "TeacherAbsenceHourDO.ScheduleLessonId": "Уникален идентификатор на занятие от учебното разписание",
+  "TeacherAbsenceHourDO.Type": "Вид на заместването - избира се от TeacherAbsenceHourType енумерацията",
+  "TeacherAbsenceHourDO.ReplTeacherPersonId": "Уникален идентификатор на заместника. Задължително за вид на заместването \"Заместник неспециалист - Час по ГО\" и \"Заместник по предмета\"",
+
+  // === TEACHERABSENCEHOURTTYPE ENUM ===
+  "TeacherAbsenceHourType.EmptyHour": "1 = Без заместник - Свободен час",
+  "TeacherAbsenceHourType.NonSpecialist": "2 = Заместник неспециалист - Час по ГО",
+  "TeacherAbsenceHourType.Specialist": "3 = Заместник по предмета",
+  "TeacherAbsenceHourType.ExtTeacher": "4 = Външен лектор",
+
+  "TeacherAbsenceHourType.Summary": "Вид на заместването",
+
+  // === TOPICDO МОДЕЛ ===
+  "TopicDO.Summary": "Тема на часа",
+  "TopicDO.TopicId": "Уникален идентификатор на записа. Не се попълва. Само се връща от системата",
+  "TopicDO.Date": "Дата на темата на часа",
+  "TopicDO.Titles": "Теми. Може да бъдат няколко за определен час",
+  "TopicDO.ScheduleLessonId": "Идентификатор на часа от учебното разписание"
+}

@@ -1,0 +1,98 @@
+<ng-container *ngIf="form" [formGroup]="form">
+  <div class="fluid formgrid grid row-gap-4">
+    <div class="field col-12 col-md-3">
+      <label for="Country" class="form-wrapper-label">Държава</label>
+      <input id="Country" disabled type="text" pInputText value="България" />
+    </div>
+    <div class="field  col-12 col-md-3">
+      <label for="Region" [ngClass]="{
+      'is-invalid': form.get('Region').invalid && form.get('Region').dirty}"
+      >Област</label>
+      <p-dropdown
+        [options]="Regions$ | async"
+        formControlName="Region"
+        [optionLabel]="'Name'"
+        [virtualScroll]="true"
+        [filter]="true"
+        inputId="Region"
+        [autoDisplayFirst]="false"
+        emptyFilterMessage="Няма намерени записи"
+      ></p-dropdown>
+      <ng-container *ngIf="form.get('Region').invalid && form.get('Region').dirty">
+        <small class="invalid-feedback">Задължително поле</small>
+      </ng-container>
+    </div>
+    <div class="field col-12 col-md-3">
+      <label for="Municipality" [ngClass]="{
+      'is-invalid': form.get('Municipality').invalid && form.get('Municipality').dirty}"
+      >Община</label>
+      <p-dropdown
+        [options]="Municipalities$ | async"
+        formControlName="Municipality"
+        [optionLabel]="'Name'"
+        [virtualScroll]="true"
+        [filter]="true"
+        inputId="Municipality"
+        [autoDisplayFirst]="false"
+        emptyFilterMessage="Няма намерени записи"
+      ></p-dropdown>
+      <ng-container *ngIf="form.get('Municipality').invalid && form.get('Municipality').dirty">
+        <small class="invalid-feedback">Задължително поле</small>
+      </ng-container>
+    </div>
+    <div class="field  col-12 col-md-3">
+      <label for="Town" [ngClass]="{
+      'is-invalid': form.get('Town').invalid && form.get('Town').dirty}"
+      >Населено място</label>
+      <p-dropdown
+        [options]="Towns"
+        formControlName="Town"
+        [optionLabel]="'Name'"
+        [filter]="true"
+        [virtualScroll]="true"
+        inputId="Town"
+        [autoDisplayFirst]="false"
+        emptyFilterMessage="Няма намерени записи"
+      ></p-dropdown>
+      <ng-container *ngIf="form.get('Town').invalid && form.get('Town').dirty">
+        <small class="invalid-feedback">Задължително поле</small>
+      </ng-container>
+    </div>
+
+    <div class="field form-wrapper col-12 col-md-3">
+      <label for="LocalArea" [ngClass]="{
+      'is-invalid': form.get('Region').invalid && form.get('Region').dirty}"
+      >Район</label>
+      <p-dropdown
+        [options]="LocalAreas"
+        formControlName="LocalArea"
+        [optionLabel]="'Name'"
+        [filter]="true"
+        [virtualScroll]="true"
+        inputId="LocalArea"
+        [autoDisplayFirst]="false"
+        emptyFilterMessage="Няма намерени записи"
+      ></p-dropdown>
+    </div>
+    <div class="field form-wrapper col-12 col-md-6">
+      <label for="TRAddress"[ngClass]="{
+      'is-invalid': form.get('TRAddress').invalid && form.get('TRAddress').dirty}"
+      >Адрес</label>
+      <input id="TRAddress" type="text" pInputText pInputText formControlName="TRAddress" />
+      <ng-container *ngIf="form.get('TRAddress').invalid && form.get('TRAddress').dirty">
+        <small class="invalid-feedback">Задължително поле</small>
+      </ng-container>
+    </div>
+
+    <div class="field form-wrapper col-12 col-md-3">
+      <label for="TRPostCode" [ngClass]="{
+      'is-invalid': form.get('TRPostCode').invalid && form.get('TRPostCode').dirty}"
+      >Пощенски код</label>
+      <p-inputNumber formControlName="TRPostCode" mode="decimal" inputId="TRPostCode" [useGrouping]="false" [maxlength]="4" styleClass="w-12">
+      </p-inputNumber>
+      <ng-container *ngIf="form.get('TRPostCode').invalid && form.get('TRPostCode').dirty">
+        <small class="invalid-feedback">Задължително поле</small>
+      </ng-container>
+    </div>
+  </div>
+</ng-container>

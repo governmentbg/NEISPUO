@@ -1,0 +1,730 @@
+	{
+  "template": "SELECT /**select**/ FROM [inst_year].[StudentListIndividual] CD JOIN [inst_basic].[InstitutionAll] I ON I.InstitutionID=CD.InstitutionID /**where**/ /**orderby**/",
+  "columns": [
+    {
+      "column": "CD.ID AS id"
+    },
+	{
+      "column": "CD.PersonID AS personid"
+    },
+	{
+      "column": "CD.FullName AS fullName"
+    },
+	{
+      "column": "I.DetailedSchoolTypeID as detailedSchoolTypeID"
+    }
+  ],
+  "params": [
+        {
+          "param": "@studentid",
+          "column": "CD.ID",
+          "operator": "=",
+          "value": "studentid",
+          "type": "int",
+          "logical_operator": "and",
+		  "optional":true,
+          "static": false
+        }
+  ],
+  "order": [
+    {
+      "column": "CD.ID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+   {
+      "arrayName": "curriculumListA",
+      "template": "SELECT /**select**/ FROM [inst_year].[CurriculumList] CL JOIN [inst_year].[CurriculumStudent] CST ON CL.CurriculumID=CST.CurriculumID /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "CL.CurriculumID as id"
+        },
+        {
+          "column": "CL.SubjectName as subjectName"
+        },
+        {
+          "column": "CL.SubjectTypeName as subjectTypeName"
+        },
+        {
+          "column": "CL.ClassNames as classNames"
+        },
+        {
+          "column": "CL.CurriculumGroupNum as curriculumGroupID"
+        },
+        {
+          "column": "CL.StudentsCount as stdsCount"
+        },
+        {
+          "column": "CL.WeeksFirstTerm as weeksFirstTerm"
+        },
+        {
+          "column": "CL.HoursWeeklyFirstTerm as hoursWeeklyFirstTerm"
+        },
+        {
+          "column": "CL.WeeksSecondTerm as weeksSecondTerm"
+        },
+        {
+          "column": "CL.HoursWeeklySecondTerm as hoursWeeklySecondTerm"
+        },
+        {
+          "column": "CL.TotalHours as totalHours"
+        },
+        {
+          "column": "CL.TeacherNames as teacherNames"
+        },
+        {
+          "column": "CL.DepartmentName as departmentName"
+        },
+        {
+          "column": "'curriculumSubject' AS formName"
+        },
+        {
+          "column": "CL.CurriculumID AS formDataId"
+        }
+      ],
+      "params": [
+        {
+          "param": "@isValid",
+          "column": "CL.IsValid",
+          "operator": "=",
+          "value": 1,
+          "type": "int",
+          "logical_operator": "and",
+          "static": true
+        },
+        {
+          "param": "@instid",
+          "column": "CL.InstitutionID",
+          "operator": "=",
+          "value": "instid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        },
+        {
+          "param": "@studentid",
+          "column": "CST.StudentID",
+          "operator": "=",
+          "value": "studentid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        },
+        {
+          "param": "@partid",
+          "column": "CL.CurriculumPartID",
+          "operator": "=",
+          "value": 1,
+          "type": "int",
+          "logical_operator": "and",
+          "static": true
+        }
+      ],
+      "order": [
+        {
+          "column": "CL.SubjectID",
+          "type": "ASC"
+        },
+		{
+          "column": "CL.SubjectTypeID",
+          "type": "ASC"
+        }
+      ]
+    },
+    {
+      "arrayName": "curriculumListB",
+      "template": "SELECT /**select**/ FROM [inst_year].[CurriculumList] CL JOIN [inst_year].[CurriculumStudent] CST ON CL.CurriculumID=CST.CurriculumID /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "CL.CurriculumID as id"
+        },
+        {
+          "column": "CL.SubjectName as subjectName"
+        },
+        {
+          "column": "CL.SubjectTypeName as subjectTypeName"
+        },
+        {
+          "column": "CL.ClassNames as classNames"
+        },
+        {
+          "column": "CL.CurriculumGroupNum as curriculumGroupID"
+        },
+        {
+          "column": "CL.StudentsCount as stdsCount"
+        },
+        {
+          "column": "CL.WeeksFirstTerm as weeksFirstTerm"
+        },
+        {
+          "column": "CL.HoursWeeklyFirstTerm as hoursWeeklyFirstTerm"
+        },
+        {
+          "column": "CL.WeeksSecondTerm as weeksSecondTerm"
+        },
+        {
+          "column": "CL.HoursWeeklySecondTerm as hoursWeeklySecondTerm"
+        },
+        {
+          "column": "CL.TotalHours as totalHours"
+        },
+        {
+          "column": "CL.TeacherNames as teacherNames"
+        },
+        {
+          "column": "CL.DepartmentName as departmentName"
+        },
+        {
+          "column": "'curriculumSubject' AS formName"
+        },
+        {
+          "column": "CL.CurriculumID AS formDataId"
+        }
+      ],
+      "params": [
+        {
+          "param": "@isValid",
+          "column": "CL.IsValid",
+          "operator": "=",
+          "value": 1,
+          "type": "int",
+          "logical_operator": "and",
+          "static": true
+        },
+        {
+          "param": "@instid",
+          "column": "CL.InstitutionID",
+          "operator": "=",
+          "value": "instid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        },
+       {
+          "param": "@studentid",
+          "column": "CST.StudentID",
+          "operator": "=",
+          "value": "studentid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        },
+        {
+          "param": "@partid",
+          "column": "CL.CurriculumPartID",
+          "operator": "=",
+          "value": 2,
+          "type": "int",
+          "logical_operator": "and",
+          "static": true
+        }
+      ],
+      "order": [
+         {
+          "column": "CL.SubjectID",
+          "type": "ASC"
+        },
+		{
+          "column": "CL.SubjectTypeID",
+          "type": "ASC"
+        }
+      ]
+    },
+    {
+      "arrayName": "curriculumListV",
+      "template": "SELECT /**select**/ FROM [inst_year].[CurriculumList] CL JOIN [inst_year].[CurriculumStudent] CST ON CL.CurriculumID=CST.CurriculumID /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "CL.CurriculumID as id"
+        },
+        {
+          "column": "CL.SubjectName as subjectName"
+        },
+        {
+          "column": "CL.SubjectTypeName as subjectTypeName"
+        },
+        {
+          "column": "CL.ClassNames as classNames"
+        },
+        {
+          "column": "CL.CurriculumGroupNum as curriculumGroupID"
+        },
+        {
+          "column": "CL.StudentsCount as stdsCount"
+        },
+        {
+          "column": "CL.WeeksFirstTerm as weeksFirstTerm"
+        },
+        {
+          "column": "CL.HoursWeeklyFirstTerm as hoursWeeklyFirstTerm"
+        },
+        {
+          "column": "CL.WeeksSecondTerm as weeksSecondTerm"
+        },
+        {
+          "column": "CL.HoursWeeklySecondTerm as hoursWeeklySecondTerm"
+        },
+        {
+          "column": "CL.TotalHours as totalHours"
+        },
+        {
+          "column": "CL.TeacherNames as teacherNames"
+        },
+        {
+          "column": "CL.DepartmentName as departmentName"
+        },
+        {
+          "column": "'curriculumSubject' AS formName"
+        },
+        {
+          "column": "CL.CurriculumID AS formDataId"
+        }
+      ],
+      "params": [
+        {
+          "param": "@isValid",
+          "column": "CL.IsValid",
+          "operator": "=",
+          "value": 1,
+          "type": "int",
+          "logical_operator": "and",
+          "static": true
+        },
+        {
+          "param": "@instid",
+          "column": "CL.InstitutionID",
+          "operator": "=",
+          "value": "instid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        },
+       {
+          "param": "@studentid",
+          "column": "CST.StudentID",
+          "operator": "=",
+          "value": "studentid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        },
+        {
+          "param": "@partid",
+          "column": "CL.CurriculumPartID",
+          "operator": "=",
+          "value": 3,
+          "type": "int",
+          "logical_operator": "and",
+          "static": true
+        }
+      ],
+      "order": [
+          {
+          "column": "CL.SubjectID",
+          "type": "ASC"
+        },
+		{
+          "column": "CL.SubjectTypeID",
+          "type": "ASC"
+        }
+      ]
+    },
+	{
+      "arrayName": "curriculumListG",
+      "template": "SELECT /**select**/ FROM [inst_year].[CurriculumList] CL JOIN [inst_year].[CurriculumStudent] CST ON CL.CurriculumID=CST.CurriculumID /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "CL.CurriculumID as id"
+        },
+        {
+          "column": "CL.SubjectName as subjectName"
+        },
+        {
+          "column": "CL.SubjectTypeName as subjectTypeName"
+        },
+        {
+          "column": "CL.ClassNames as classNames"
+        },
+        {
+          "column": "CL.CurriculumGroupNum as curriculumGroupID"
+        },
+        {
+          "column": "CL.StudentsCount as stdsCount"
+        },
+        {
+          "column": "CL.WeeksFirstTerm as weeksFirstTerm"
+        },
+        {
+          "column": "CL.HoursWeeklyFirstTerm as hoursWeeklyFirstTerm"
+        },
+        {
+          "column": "CL.WeeksSecondTerm as weeksSecondTerm"
+        },
+        {
+          "column": "CL.HoursWeeklySecondTerm as hoursWeeklySecondTerm"
+        },
+        {
+          "column": "CL.TotalHours as totalHours"
+        },
+        {
+          "column": "CL.TeacherNames as teacherNames"
+        },
+        {
+          "column": "CL.DepartmentName as departmentName"
+        },
+        {
+          "column": "'curriculumSubject' AS formName"
+        },
+        {
+          "column": "CL.CurriculumID AS formDataId"
+        }
+      ],
+      "params": [
+        {
+          "param": "@isValid",
+          "column": "CL.IsValid",
+          "operator": "=",
+          "value": 1,
+          "type": "int",
+          "logical_operator": "and",
+          "static": true
+        },
+        {
+          "param": "@instid",
+          "column": "CL.InstitutionID",
+          "operator": "=",
+          "value": "instid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        },
+       {
+          "param": "@studentid",
+          "column": "CST.StudentID",
+          "operator": "=",
+          "value": "studentid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        },
+        {
+          "param": "@partid",
+          "column": "CL.CurriculumPartID",
+          "operator": "=",
+          "value": 4,
+          "type": "int",
+          "logical_operator": "and",
+          "static": true
+        }
+      ],
+      "order": [
+        {
+          "column": "CL.SubjectID",
+          "type": "ASC"
+        },
+		{
+          "column": "CL.SubjectTypeID",
+          "type": "ASC"
+        }
+      ]
+    },
+	{
+      "arrayName": "curriculumListD",
+      "template": "SELECT /**select**/ FROM [inst_year].[CurriculumList] CL JOIN [inst_year].[CurriculumStudent] CST ON CL.CurriculumID=CST.CurriculumID /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "CL.CurriculumID as id"
+        },
+        {
+          "column": "CL.SubjectName as subjectName"
+        },
+        {
+          "column": "CL.SubjectTypeName as subjectTypeName"
+        },
+        {
+          "column": "CL.ClassNames as classNames"
+        },
+        {
+          "column": "CL.CurriculumGroupNum as curriculumGroupID"
+        },
+        {
+          "column": "CL.StudentsCount as stdsCount"
+        },
+        {
+          "column": "CL.WeeksFirstTerm as weeksFirstTerm"
+        },
+        {
+          "column": "CL.HoursWeeklyFirstTerm as hoursWeeklyFirstTerm"
+        },
+        {
+          "column": "CL.WeeksSecondTerm as weeksSecondTerm"
+        },
+        {
+          "column": "CL.HoursWeeklySecondTerm as hoursWeeklySecondTerm"
+        },
+        {
+          "column": "CL.TotalHours as totalHours"
+        },
+        {
+          "column": "CL.TeacherNames as teacherNames"
+        },
+        {
+          "column": "CL.DepartmentName as departmentName"
+        },
+        {
+          "column": "'curriculumSubject' AS formName"
+        },
+        {
+          "column": "CL.CurriculumID AS formDataId"
+        }
+      ],
+      "params": [
+        {
+          "param": "@isValid",
+          "column": "CL.IsValid",
+          "operator": "=",
+          "value": 1,
+          "type": "int",
+          "logical_operator": "and",
+          "static": true
+        },
+        {
+          "param": "@instid",
+          "column": "CL.InstitutionID",
+          "operator": "=",
+          "value": "instid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        },
+       {
+          "param": "@studentid",
+          "column": "CST.StudentID",
+          "operator": "=",
+          "value": "studentid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        },
+        {
+          "param": "@partid",
+          "column": "CL.CurriculumPartID",
+          "operator": "=",
+          "value": 5,
+          "type": "int",
+          "logical_operator": "and",
+          "static": true
+        }
+      ],
+      "order": [
+        {
+          "column": "CL.SubjectID",
+          "type": "ASC"
+        },
+		{
+          "column": "CL.SubjectTypeID",
+          "type": "ASC"
+        }
+      ]
+    },
+	{
+      "arrayName": "curriculumListE",
+      "template": "SELECT /**select**/ FROM [inst_year].[CurriculumList] CL JOIN [inst_year].[CurriculumStudent] CST ON CL.CurriculumID=CST.CurriculumID /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "CL.CurriculumID as id"
+        },
+        {
+          "column": "CL.SubjectName as subjectName"
+        },
+        {
+          "column": "CL.SubjectTypeName as subjectTypeName"
+        },
+        {
+          "column": "CL.ClassNames as classNames"
+        },
+        {
+          "column": "CL.CurriculumGroupNum as curriculumGroupID"
+        },
+        {
+          "column": "CL.StudentsCount as stdsCount"
+        },
+        {
+          "column": "CL.WeeksFirstTerm as weeksFirstTerm"
+        },
+        {
+          "column": "CL.HoursWeeklyFirstTerm as hoursWeeklyFirstTerm"
+        },
+        {
+          "column": "CL.WeeksSecondTerm as weeksSecondTerm"
+        },
+        {
+          "column": "CL.HoursWeeklySecondTerm as hoursWeeklySecondTerm"
+        },
+        {
+          "column": "CL.TotalHours as totalHours"
+        },
+        {
+          "column": "CL.TeacherNames as teacherNames"
+        },
+        {
+          "column": "CL.DepartmentName as departmentName"
+        },
+        {
+          "column": "'curriculumSubject' AS formName"
+        },
+        {
+          "column": "CL.CurriculumID AS formDataId"
+        }
+      ],
+      "params": [
+        {
+          "param": "@isValid",
+          "column": "CL.IsValid",
+          "operator": "=",
+          "value": 1,
+          "type": "int",
+          "logical_operator": "and",
+          "static": true
+        },
+        {
+          "param": "@instid",
+          "column": "CL.InstitutionID",
+          "operator": "=",
+          "value": "instid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        },
+       {
+          "param": "@studentid",
+          "column": "CST.StudentID",
+          "operator": "=",
+          "value": "studentid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        },
+        {
+          "param": "@partid",
+          "column": "CL.CurriculumPartID",
+          "operator": "=",
+          "value": 6,
+          "type": "int",
+          "logical_operator": "and",
+          "static": true
+        }
+      ],
+      "order": [
+         {
+          "column": "CL.SubjectID",
+          "type": "ASC"
+        },
+		{
+          "column": "CL.SubjectTypeID",
+          "type": "ASC"
+        }
+      ]
+    },
+	{
+      "arrayName": "curriculumListF",
+      "template": "SELECT /**select**/ FROM [inst_year].[CurriculumList] CL JOIN [inst_year].[CurriculumStudent] CST ON CL.CurriculumID=CST.CurriculumID /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "CL.CurriculumID as id"
+        },
+        {
+          "column": "CL.SubjectName as subjectName"
+        },
+        {
+          "column": "CL.SubjectTypeName as subjectTypeName"
+        },
+        {
+          "column": "CL.ClassNames as classNames"
+        },
+        {
+          "column": "CL.CurriculumGroupNum as curriculumGroupID"
+        },
+        {
+          "column": "CL.StudentsCount as stdsCount"
+        },
+        {
+          "column": "CL.WeeksFirstTerm as weeksFirstTerm"
+        },
+        {
+          "column": "CL.HoursWeeklyFirstTerm as hoursWeeklyFirstTerm"
+        },
+        {
+          "column": "CL.WeeksSecondTerm as weeksSecondTerm"
+        },
+        {
+          "column": "CL.HoursWeeklySecondTerm as hoursWeeklySecondTerm"
+        },
+        {
+          "column": "CL.TotalHours as totalHours"
+        },
+        {
+          "column": "CL.TeacherNames as teacherNames"
+        },
+        {
+          "column": "CL.DepartmentName as departmentName"
+        },
+        {
+          "column": "'curriculumSubject' AS formName"
+        },
+        {
+          "column": "CL.CurriculumID AS formDataId"
+        }
+      ],
+      "params": [
+        {
+          "param": "@isValid",
+          "column": "CL.IsValid",
+          "operator": "=",
+          "value": 1,
+          "type": "int",
+          "logical_operator": "and",
+          "static": true
+        },
+        {
+          "param": "@instid",
+          "column": "CL.InstitutionID",
+          "operator": "=",
+          "value": "instid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        },
+       {
+          "param": "@studentid",
+          "column": "CST.StudentID",
+          "operator": "=",
+          "value": "studentid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        },
+        {
+          "param": "@partid",
+          "column": "CL.CurriculumPartID",
+          "operator": "=",
+          "value": 7,
+          "type": "int",
+          "logical_operator": "and",
+          "static": true
+        }
+      ],
+      "order": [
+         {
+          "column": "CL.SubjectID",
+          "type": "ASC"
+        },
+		{
+          "column": "CL.SubjectTypeID",
+          "type": "ASC"
+        }
+      ]
+    }
+]
+}

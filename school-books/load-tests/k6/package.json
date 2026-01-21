@@ -1,0 +1,38 @@
+{
+  "name": "typescript",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "webpack",
+    "start": "npm run build && k6 run dist/api-main.js",
+    "start-extapi": "npm run build && k6 run dist/extapi-main.js",
+    "grades-view": "npm run build && k6 run dist/api-grades-view.js",
+    "absences-view": "npm run build && k6 run dist/api-absences-view.js",
+    "topics-view": "npm run build && k6 run dist/api-topics-view.js",
+    "openapi-generator-docker": "cross-var docker run --rm -v $INIT_CWD:/local openapitools/openapi-generator-cli:v6.0.1",
+    "openapi-generator-generate-api": "npm run openapi-generator-docker -- generate -i http://host.docker.internal:5001/swagger/v1/swagger.json -g k6 -o /local/openapi-generator-k6/api",
+    "openapi-generator-generate-extapi": "npm run openapi-generator-docker -- generate -i http://host.docker.internal:5200/swagger/v1/swagger.json -g k6 -o /local/openapi-generator-k6/extapi",
+    "generate-api": "rimraf ./openapi-generator-k6/api && npm run openapi-generator-generate-api",
+    "generate-extapi": "rimraf ./openapi-generator-k6/extapi && npm run openapi-generator-generate-extapi"
+  },
+  "dependencies": {
+    "@babel/core": "7.13.16",
+    "@babel/plugin-proposal-class-properties": "7.13.0",
+    "@babel/plugin-proposal-object-rest-spread": "7.13.8",
+    "@babel/preset-env": "7.13.15",
+    "@babel/preset-typescript": "7.13.0",
+    "@types/k6": "~0.32.0",
+    "@types/webpack": "5.28.0",
+    "babel-loader": "8.2.2",
+    "date-fns": "^2.29.2",
+    "typescript": "4.2.4",
+    "webpack": "5.35.1"
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "4.0.0-alpha.0",
+    "copy-webpack-plugin": "^11.0.0",
+    "cross-var": "^1.1.0",
+    "prettier": "2.7.1",
+    "rimraf": "^3.0.2",
+    "webpack-cli": "4.10.0"
+  }
+}

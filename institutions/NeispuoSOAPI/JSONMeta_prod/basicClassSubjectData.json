@@ -1,0 +1,94 @@
+{
+  "label": "Учебници",
+  "procedureName": "inst_basic.textbooksInstUpdate",
+  "dataName": "basicClassSubjectData",
+  "sections": [
+    {
+      "order": 1,
+      "label": "Учебници",
+      "subsections": [
+        {
+          "order": 1,
+          "name": "basicClassSubjectData",
+          "fields": [
+            {
+              "label": "Код",
+              "name": "id",
+              "type": "input",
+              "inputType": "text",
+              "order": 1,
+              "width": 100,
+              "disabled": true,
+              "rendered": false,
+              "validations": [],
+              "influence": [
+                {
+                  "fieldName": "textBookID",
+                  "url": "/data/get/textBook",
+                  "type": "options"
+                }
+              ]
+            },
+            {
+              "label": "Випуск",
+              "name": "basicClassName",
+              "type": "input",
+              "inputType": "text",
+              "order": 2,
+              "width": 100,
+              "disabled": true,
+              "validations": []
+            },
+            {
+              "label": "Учебен предмет",
+              "name": "subjectName",
+              "type": "input",
+              "inputType": "text",
+              "order": 3,
+              "width": 400,
+              "disabled": true,
+              "validations": []
+            },
+		        {
+              "label": "Учебник",
+              "name": "textBookID",
+              "type": "searchselect",
+              "width": 1000,
+              "disabled": false,
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ],
+              "order": 4
+            },
+            {
+              "label": "Випуск",
+              "name": "basicClassID",
+              "type": "input",
+              "inputType": "text",
+              "order": 5,
+              "width": 50,
+              "disabled": true,
+              "rendered": false,
+              "validations": []
+            },
+            {
+              "label": "Код на учебен предмет",
+              "name": "subjectID",
+              "type": "input",
+              "inputType": "text",
+              "order": 6,
+              "width": 50,
+              "disabled": true,
+              "rendered": false,
+              "validations": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

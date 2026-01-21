@@ -1,0 +1,80 @@
+{
+    "template": "SELECT /**select**/ FROM [reginst_basic].[RITRDataAll] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "EIK as eik"
+        },
+        {
+            "column": "Name as name"
+        },
+		{
+            "column": "LegalForm as legalForm"
+        },
+		{
+            "column": "SubjectOfActivity as subjectOfActivity"
+        },
+		{
+            "column": "StatusCode as status"
+        },
+		{
+            "column": "StatusDate as statusDate"
+        },
+		{
+            "column": "SeatAddressCountry as seatAddressCountry"
+        },
+		{
+            "column": "SeatAddressRegion as seatAddressRegion"
+        },
+		{
+            "column": "SeatAddressMunicipality as seatAddressMunicipality"
+        },
+		{
+            "column": "SeatAddressTown as seatAddressTown"
+        },
+		{
+            "column": "SeatAddress as seatAddress"
+        },
+		{
+            "column": "SeatAddressPostalCode as seatAddressPostalCode"
+        },
+		{
+            "column": "CorrespondenceCountry as correspondenceAddressCountry"
+        },
+		{
+            "column": "CorrespondenceAddressRegion as correspondenceAddressRegion"
+        },
+		{
+            "column": "CorrespondenceAddressMunicipality as correspondenceAddressMunicipality"
+        },
+				{
+            "column": "CorrespondenceAddressTown as correspondenceAddressTown"
+        },
+		{
+            "column": "CorrespondenceAddress as correspondenceAddress"
+        },
+				{
+            "column": "CorrespondenceAddressPostalCode as correspondenceAddressPostalCode"
+        }
+    ],
+    "params": [
+    {
+      "param": "@eik",
+      "column": "EIK",
+      "operator": "=",
+      "value": "eik",
+      "type": "int",
+      "logical_operator": "and",
+	  "from_claim": "false",
+	  "optional": false,
+      "static": false,
+	  "from_claim": false
+    } 
+    ],
+    "order": [
+        {
+            "column": "RITRDataID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

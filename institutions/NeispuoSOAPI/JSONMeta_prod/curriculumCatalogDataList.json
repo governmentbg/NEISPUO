@@ -1,0 +1,100 @@
+{
+  "paramName": "instid",
+  "changeData": false,
+  "sections": [
+  {
+      "label": "Наименование",
+      "order": 1,
+      "subsections": [
+		{
+		  "order": 1,
+		  "label": "fullName",
+		  "type": "input",
+		  "name": "curriculumCatalogName",
+		  "bold": true,
+		  "width": 200,
+		  "disabled": false,
+		  "flexible": false
+		}
+	]
+	},
+    {
+      "label": "Съдържание",
+      "order": 2,
+	  "name": "TableCurriculumCatalogDataList",
+      "table": 
+	  {
+          "name": "curriculumCatalogDataList",
+		  "hasEditButton":false,
+		  "searchable":true,
+		  "searchType":"column",
+		  "fields": [
+			{
+				"label": "Учебен предмет",
+				"name": "subjectName",
+				"type": "input",
+				"inputType": "text",
+				"width":30,
+				"order": 1
+			},
+			{
+				"label": "Начин на изучаване",
+				"name": "subjectTypeName",
+				"type": "input",
+				"inputType": "text",
+				"width":10,
+				"order": 2
+			},
+			{
+				"label": "Клас",
+				"name": "basicClassName",
+				"type": "input",
+				"inputType": "text",
+				"width":10,
+				"order": 3
+			},
+			{
+				"label": "Брой часове годишно",
+				"name": "hoursYear",
+				"type": "input",
+				"inputType": "text",
+				"width":10,
+				"order": 4
+			},
+			{
+				"label": "Брой уч.седмици I срок",
+				"name": "weeksFirstTerm",
+				"type": "input",
+				"inputType": "text",
+				"width":10,
+				"order": 5
+			},
+			{
+				"label": "Брой часове I срок",
+				"name": "hoursWeeklyFirstTerm",
+				"type": "input",
+				"inputType": "text",
+				"width":10,
+				"order": 6
+			},
+			{
+				"label": "Брой уч.седмици II срок",
+				"name": "weeksSecondTerm",
+				"type": "input",
+				"inputType": "text",
+				"width":10,
+				"order": 7
+			},
+			{
+				"label": "Брой часове II срок",
+				"name": "hoursWeeklySecondTerm",
+				"type": "input",
+				"inputType": "text",
+				"width":10,
+				"order": 8
+			}
+			]
+      }
+    }
+  ]
+}

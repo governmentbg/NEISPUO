@@ -1,0 +1,21 @@
+<span class="title-form">{{table.multiAdd.title}}</span>
+<div class="wrap-modal-form">
+    <div class="table-container-modal">
+        <app-table *ngIf="!isLoading || checkActive" [table]="table" [mode]="mode" [multiAddMode]="true" [parentGroup]="parentGroup" [checkedList]="checkedList" (check)="onCheck($event)" (checkAll)="onAllChecked($event)"></app-table>
+    </div>
+    <div class="result-add-container" [ngClass]="{'no-result' : !labelList.length}">
+        <!-- <span class="title-list">списък за добавяне</span> -->
+        <div class="container-add-result" *ngIf="labelList && labelList.length">
+            <div class="container-data" *ngFor="let label of labelList; let i = index">
+                <span class="data-span">{{label}}</span>
+                <mat-icon (click)="remove(i)"></mat-icon>
+            </div>
+            <button mat-raised-button (click)="onAllChecked({ idList: [], labelList: [] })" class="delete-btn-multiadd">изтрий всички</button>
+        </div>
+    </div>
+</div>
+<div class="footer-modal">
+    <button mat-raised-button color="primary" (click)="closeDialog(true)">Приложи</button>
+    <button mat-raised-button color="secondary" (click)="closeDialog(false)" class="back-button"><span>Отказ</span></button>
+</div>
+<app-loader *ngIf="isLoading"></app-loader>

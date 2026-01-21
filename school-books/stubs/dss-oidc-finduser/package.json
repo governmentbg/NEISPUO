@@ -1,0 +1,12 @@
+{
+  "name": "dss-oidc-finduser",
+  "main": "findUser.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "enquirer": "^2.3.6",
+    "knex": "^0.21.12",
+    "mssql": "^6.4.1"
+  }
+}

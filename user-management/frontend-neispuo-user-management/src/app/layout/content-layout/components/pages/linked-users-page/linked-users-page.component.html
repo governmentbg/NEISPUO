@@ -1,0 +1,71 @@
+<div class="d-flex flex-column gap-4 p-4 w">
+    <div class="bg-light rounded p-3 mb-2">
+        <div class="fw-bold fs-5">{{ selectedPersonFullName }}</div>
+        <div class="text-muted">{{ emailLabel | translate }}: {{ selectedPersonEmail }}</div>
+    </div>
+    <div class="fw-bold fs-5 mb-0">
+        {{
+            userType === LinkedUserType.PARENT
+                ? (CONSTANTS.SIDEMENU_TAB_TITLE_STUDENTS | translate)
+                : (CONSTANTS.SIDEMENU_TAB_TITLE_PARENTS | translate)
+        }}
+    </div>
+
+    <p *ngIf="error" class="alert alert-danger">{{ CONSTANTS.PRIMENG_ERROR_LOADING_DATA | translate }}</p>
+
+    <app-linked-users-table
+        [data]="tableData"
+        [loading]="loading"
+        [controlsTemplate]="controlsTemplate"
+        (actionConfirmed)="handleTableAction($event)"
+    ></app-linked-users-table>
+
+    <ng-template #controlsTemplate let-row let-confirmAction="confirmAction">
+        <span class="d-flex gap-2 align-items-center">
+            <button
+                pButton
+                type="button"
+                icon="pi pi-times"
+                class="p-button-icon-only p-button-danger p-button-sm p-button-text"
+                pTooltip="{{ CONSTANTS.PRIMENG_TITLE_REMOVE | translate }}"
+                tooltipPosition="top"
+                (click)="confirmAction($event, row, 'unlink')"
+            ></button>
+            <button
+                pButton
+                type="button"
+                [icon]="row.hasAccess ? 'pi pi-unlock' : 'pi pi-lock-open'"
+                class="p-button-icon-only p-button-primary p-button-sm p-button-text"
+                [pTooltip]="
+                    row.hasAccess
+                        ? (CONSTANTS.PRIMENG_TITLE_SCHOOL_BOOKS_ACCESS_REMOVE | translate)
+                        : (CONSTANTS.PRIMENG_TITLE_GIVE_SCHOOL_BOOKS_ACCESS | translate)
+                "
+                tooltipPosition="top"
+                (click)="confirmAction($event, row, 'updateAccess')"
+            ></button>
+        </span>
+    </ng-template>
+
+    <div class="d-flex justify-content-center mt-3">
+        <button
+            pButton
+            type="button"
+            [label]="
+                userType === LinkedUserType.STUDENT
+                    ? (CONSTANTS.PRIMENG_TITLE_ADD_PARENT | translate)
+                    : (CONSTANTS.PRIMENG_TITLE_ADD_STUDENT | translate)
+            "
+            class="p-button-primary"
+            (click)="openAddModal()"
+        ></button>
+    </div>
+</div>
+
+<app-linked-users-add-dialog
+    [(visible)]="showAddModal"
+    [userType]="userType"
+    [title]="addModalTitle"
+    [personID]="personID"
+    (addUser)="onAddUser($event)"
+></app-linked-users-add-dialog>

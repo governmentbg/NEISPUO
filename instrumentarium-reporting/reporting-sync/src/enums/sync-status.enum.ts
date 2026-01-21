@@ -1,0 +1,5 @@
+export enum SyncStatusEnum {
+  SYNCHRONIZED = 'SYNCHRONIZED',
+  IN_PROGRESS = 'IN_PROGRESS',
+  FAILED = 'FAILED',
+} 

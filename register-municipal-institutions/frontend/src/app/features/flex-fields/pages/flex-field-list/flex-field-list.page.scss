@@ -1,0 +1,9 @@
+.avatar {
+    background: transparent;
+}
+
+:host ::ng-deep {
+    p-table th:nth-child(2) {
+        width: 80%;
+    }
+}

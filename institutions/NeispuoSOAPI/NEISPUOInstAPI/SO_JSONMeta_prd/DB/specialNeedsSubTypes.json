@@ -1,0 +1,31 @@
+{
+  "template": "SELECT /**select**/ FROM [student].[SpecialNeedsSubType] SNT /**where**/ /**orderby**/",
+  "columns": [
+	{
+      "column": "SNT.Id AS code"
+    },
+	{
+      "column": "SNT.Name AS label"
+    }
+   ],
+  "params": [
+		{
+          "param": "@filterValue",
+		  "column": "SNT.SpecialNeedsTypeId",
+          "operator": "=",
+          "value": "filterValue",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        }
+  ],
+  "order": [
+    {
+      "column": "SNT.Name",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+
+  ]
+}

@@ -1,0 +1,13 @@
+@import '@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/variables/variables';
+
+:host ::ng-deep {
+  .p-multiselect-item {
+    white-space: inherit;
+  }
+}
+
+.load-data-btn-wrapper {
+  position: absolute;
+  bottom: 1rem;
+  text-align: center;
+}

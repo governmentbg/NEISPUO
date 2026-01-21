@@ -1,0 +1,21 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[SubjectAdditionalInstitution] SAI /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "SAI.SubjectGroupID AS subjectGroupID"
+        }
+    ],
+    "params": [
+        {
+            "param": "@subjectID",
+            "column": "SAI.SubjectID",
+            "operator": "=",
+            "value": "subjectID",
+            "type": "int",
+            "logical_operator": "and",
+            "static": false
+        }
+    ],
+    "order": [],
+    "inSelects": []
+}

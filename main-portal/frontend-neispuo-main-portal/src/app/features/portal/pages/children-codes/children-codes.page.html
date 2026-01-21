@@ -1,0 +1,94 @@
+<div class="children-codes-page container-fluid mt-4">
+  <div class="row mb-4">
+    <div class="col-lg-10 offset-lg-1 col-xs-12 mb-3">
+      <h2>Текущи кодове</h2>
+    </div>
+    <div class="col-lg-10 offset-lg-1 col-xs-12">
+      <div class="card" *ngIf="children.length > 0">
+        <div *ngFor="let child of children; let i = index;">
+          <div class="row child-code">
+            <div class="form-field col-md-5 col-sm-12">
+              <label class="form-label">{{'Дете/ученик ' + (i + 1) + '*'}}</label>
+              <input
+                type="text"
+                class="form-control"
+                disabled
+                [value]="child.firstName + ' ' + child.middleName + ' ' + child.lastName"
+              />
+            </div>
+            <div class="form-field col-md-5 col-sm-12">
+              <label class="form-label">{{'Код за достъп на ученик ' + (i + 1) + '*'}}</label>
+              <input type="text" class="form-control" disabled [value]="child.schoolBooksCodes" />
+            </div>
+            <div class="col-2">
+              <button class="btn card-btn" type="button" (click)="onDelistChild(child)">
+                <i class="bi bi-x-lg"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-4">
+    <div class="col-lg-10 offset-lg-1 col-xs-12 mb-3">
+      <h2>Добавяне на кодове</h2>
+    </div>
+    <div class="col-lg-10 offset-lg-1 col-xs-12">
+      <form class="form" [formGroup]="childrenCodesForm" (ngSubmit)="onSubmit(form)" #form="ngForm">
+        <div class="card">
+          <div class="row child-code">
+            <div class="form-field col-md-5 col-sm-12">
+              <input
+                type="text"
+                class="form-control"
+                formControlName="personalID"
+                [placeholder]="'ЕГН/ЛНЧ на ученик*'"
+                [ngClass]="{'submit-form': submitForm}"
+              />
+            </div>
+            <div class="form-field col-md-5 col-sm-12">
+              <input
+                type="text"
+                class="form-control"
+                formControlName="schoolBookCode"
+                [placeholder]="'Код за достъп на ученик*'"
+                [ngClass]="{'submit-form': submitForm}"
+              />
+            </div>
+            <div class="col-md-1">
+              <button class="btn card-btn" type="submit">
+                <i class="bi bi-plus-lg"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="fixed-top top-0 end-0 p-3">
+  <div
+    id="successToast"
+    class="toast success-toast"
+    role="alert"
+    aria-live="assertive"
+    aria-atomic="true"
+    data-bs-autohide="false"
+  >
+    <div class="toast-body">{{ toastText }}</div>
+    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+  </div>
+  <div
+    id="warningToast"
+    class="toast warning-toast"
+    role="alert"
+    aria-live="assertive"
+    aria-atomic="true"
+    data-bs-autohide="false"
+  >
+    <div class="toast-body">{{ toastText }}</div>
+    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+  </div>
+</div>

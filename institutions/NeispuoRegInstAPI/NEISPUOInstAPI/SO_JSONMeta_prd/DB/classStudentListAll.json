@@ -1,0 +1,95 @@
+{"arrayName": "classStudentList",
+  "template": "SELECT /**select**/ FROM [inst_year].[ClassStudentList] CD /**where**/ /**orderby**/",
+  "sotemplate": "SELECT /**select**/ FROM [sob].[ClassStudentList] CD /**where**/ /**orderby**/",
+  "columns": [
+	{
+      "column": "CD.ID AS id"
+    },
+	{
+      "column": "CD.PublicEduNumber AS publicEduNumber"
+    },
+	{
+      "column": "CD.FullName AS fullName"
+    },
+	{
+      "column": "CD.BirthDate AS birthDate"
+    },
+	{
+      "column": "CD.StudentEdFormName AS studentEdFormName"
+    },
+	{
+      "column": "CD.ClassSpecialityName AS classSpecialityName"
+    },
+	{
+      "column": "CD.RepeaterName AS repeaterName"
+    },
+	{
+      "column": "CD.ClassNumber AS classNumber"
+    },
+	{
+      "column": "CD.ClassName AS className"
+    },
+	{
+      "column": "CD.ClassKind AS classKind"
+    },
+	{
+      "column": "CD.PersonID AS personid"
+    },
+	{
+      "column": "CD.SOPDecode AS sopDecode"
+    },
+	{
+      "column": "CD.RPDecode AS rpDecode"
+    },
+	{
+      "column": "'student' AS formName"
+    },
+    {
+      "column": "CD.PersonID AS formDataId"
+    }
+   ],
+  "params": [
+    {
+      "param": "@instid",
+      "column": "CD.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+	{
+      "param": "@year",
+      "column": "CD.SchoolYear",
+      "operator": "=",
+      "value": "year",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    },
+	{
+      "param": "@period",
+      "column": "CD.Period",
+      "operator": "=",
+      "value": "period",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    }
+  ],
+  "order": [
+	{
+      "column": "CD.ClassName",
+      "type": "ASC"
+    },
+	{
+      "column": "CD.FullName",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+  
+  ]
+}

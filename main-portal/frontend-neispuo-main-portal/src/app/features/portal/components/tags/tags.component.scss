@@ -1,0 +1,39 @@
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 6px;
+  max-height: 90px;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  position: relative;
+}
+
+.tags-container.expanded {
+  max-height: none;
+  overflow: visible;
+}
+
+.tags-container.column {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.faded-tag {
+  background: #f0f0f0;
+  color: #444;
+  font-style: italic;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-left: auto;
+  background-clip: padding-box;
+}
+
+.truncated-tag {
+  display: inline-block;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: middle;
+} 

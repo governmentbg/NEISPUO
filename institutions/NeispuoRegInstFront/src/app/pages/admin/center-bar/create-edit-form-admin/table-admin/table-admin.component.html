@@ -1,0 +1,22 @@
+<div class="l-focused-element fake-table-element display-none-element" (click)="focus()" [ngClass]="{'focused': updateJsonService.focusedElement.index === table.idntfr}">
+    <span class="l-custom-info-span">таблица</span>
+    <div>
+      <mat-card-header class="flex-column color-label-table">
+        <mat-card-title *ngIf="table.label"><span>{{ table.pseudoLabel }}</span></mat-card-title>
+      </mat-card-header>
+      <div class="table-fake-grid opacity-error">
+        <div class="l-focused-element fake-row-focused-element display-none-element" [style.width.%]="calcColumnWidth(field.width)" *ngFor="let field of table.fields" [ngClass]="{'focused': updateJsonService.focusedElement.index === field.idntfr}" (click)="focusField(field)">
+          <span class="l-custom-info-span">колона</span>
+          <div class="fake-row">
+            <span class="fake-row-header">
+              <span class="flex-100">
+                <span class="span-100">{{ field.pseudoLabel }}</span>
+              </span>
+            </span>
+            <span class="fake-row-body"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+  

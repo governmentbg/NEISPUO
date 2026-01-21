@@ -1,0 +1,79 @@
+{
+  "extends": [
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "airbnb-typescript",
+    "prettier"
+  ],
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 12,
+    "project": ["./tsconfig.json"],
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint", "prettier", "unused-imports"],
+  "rules": {
+    "no-unused-vars": "off",
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": "off",
+    "sort-imports": [
+      "error",
+      {
+        "ignoreDeclarationSort": true
+      }
+    ],
+    "@typescript-eslint/no-shadow": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "no-tabs": "off",
+    "prefer-destructuring": "off",
+    "@typescript-eslint/no-empty-interface": "off",
+    "import/no-cycle": "off",
+    "no-fallthrough": "off",
+    "no-empty": "off",
+    "@typescript-eslint/no-empty-function": "off",
+    "@typescript-eslint/no-useless-constructor": "off",
+    "no-continue": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "consistent-return": "off",
+    "operator-linebreak": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "implicit-arrow-linebreak": "off",
+    "no-restricted-syntax": "off",
+    "no-console": "off",
+    "no-await-in-loop": "off",
+    "max-len": "off",
+    "object-curly-newline": "off",
+    "@typescript-eslint/dot-notation": "off",
+    "import/prefer-default-export": "off",
+    "no-useless-constructor": "off",
+    "class-methods-use-this": "off",
+    "indent": "off",
+    "@typescript-eslint/indent": "off",
+    "react/jsx-filename-extension": "off",
+    "import/no-extraneous-dependencies": "off",
+    "no-empty-function": [
+      "error",
+      {
+        "allow": ["constructors"]
+      }
+    ],
+    "@typescript-eslint/ban-types": "off",
+    "no-underscore-dangle": "off",
+    "import/extensions": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
+  }
+  // "settings": {
+  //     "import/resolver": {
+  //         "typescript": {} // this loads <rootdir>/tsconfig.json to eslint
+  //     }
+  // }
+}

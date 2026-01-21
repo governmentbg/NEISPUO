@@ -1,0 +1,112 @@
+{
+  "paramName":"classid",
+  "changeData":false,
+  "sections":[
+    {
+      "name":"classGroups",
+      "order":1,
+      "subsections":[
+        {
+          "order":1,
+          "name":"classBasicData",
+          "fields":[
+            {
+              "label":"if(instType==2 || instType==3) {field.label='Група'} else {field.label='Група/клас'}",
+              "name":"className",
+              "type":"input",
+              "inputType":"text",
+              "order":1,
+              "width":400,
+              "disabled":true,
+              "influence":[
+
+              ],
+              "validations":[
+
+              ],
+              "info":""
+            },
+            {
+              "label":"Вид група",
+              "name":"classKind",
+              "type":"select",
+              "disabled":true,
+              "rendered":false,
+              "optionsPath":"/data/get/classKinds",
+              "order":2,
+              "influence":[
+
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Списък на децата",
+      "order": 2,
+      "name": "TableClassStudentGroupList",
+      "table": {
+        "name": "classStudentList",
+        "hasEditButton": true,
+        "procedureName": "inst_basic.studentClassCUD", 
+        "additionalParams": ["personid"],
+        "searchable": true,
+        "searchType": "column",
+        "createNew": "samePage",
+        "paramName": "studentid",
+        "formName": "studentCDO",
+        "fields": [
+          {
+            "label": "Личен образователен номер",
+            "name": "publicEduNumber",
+            "type": "input",
+            "inputType": "number",
+            "width": 10,
+            "order": 1
+          },
+          {
+            "label": "Номер в класа",
+            "name": "classNumber",
+            "type": "input",
+            "inputType": "number",
+            "rendered": "if(instType==2) {field.rendered=false} else {field.rendered=true}",
+            "width": 10,
+            "order": 2
+          },
+          {
+            "label": "Име",
+            "name": "fullName",
+            "type": "input",
+            "inputType": "text",
+            "width": 20,
+            "order": 4
+          },
+          {
+            "label": "Дата на раждане",
+            "name": "birthDate",
+            "type": "input",
+            "inputType": "text",
+            "width": 10,
+            "order": 5
+          },
+          {
+            "label": "if(instType==2) {field.label='Вид организация'} else {field.label='Форма на обучение'}",
+            "name": "studentEdFormName",
+            "type": "input",
+            "inputType": "text",
+            "width": 10,
+            "order": 6
+          },
+          {
+            "label": "Дата на записване",
+            "name": "enrollmentDate",
+            "type": "date",
+            "width": 10,
+            "order": 7
+          }
+        ]
+      }
+    } 
+  ]
+}

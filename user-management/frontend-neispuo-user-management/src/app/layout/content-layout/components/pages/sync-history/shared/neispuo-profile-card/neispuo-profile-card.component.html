@@ -1,0 +1,43 @@
+<div class="neispuo-profile-card">
+    <div class="d-flex justify-content-left align-items-center mb-2 header-row gap-2">
+        <h5 class="mb-0">{{ 'PROFILE.NEISPUO' | translate }}</h5>
+        <button
+            pButton
+            icon="pi pi-refresh"
+            class="p-button-icon-only p-button-sm p-button-primary"
+            [disabled]="loading"
+            pTooltip="{{ 'PRIMENG.TITLE.REFRESH' | translate }}"
+            (click)="onRefreshClick()"
+        ></button>
+    </div>
+
+    <div class="profile-content">
+        <ng-container *ngIf="error && !loading">
+            <div class="w-100 text-center text-danger">
+                <i class="pi pi-info-circle" style="font-size: 1.5rem"></i>
+                <div>{{ error }}</div>
+            </div>
+        </ng-container>
+
+        <ng-container *ngIf="!error">
+            <ng-container *ngIf="empty && !loading; else showProfile">
+                <div class="w-100 text-center text-muted">
+                    <i class="pi pi-info-circle" style="font-size: 1.5rem"></i>
+                    <div>{{ 'PRIMENG.NO_DATA_FOUND' | translate }}</div>
+                </div>
+            </ng-container>
+            <ng-template #showProfile>
+                <div class="profile-grid" *ngIf="data">
+                    <div class="profile-field" *ngFor="let field of fieldLabels">
+                        <label>{{ field.label }}</label>
+                        <input pInputText [value]="processedData[field.key] ?? ''" disabled />
+                    </div>
+                </div>
+            </ng-template>
+        </ng-container>
+
+        <div *ngIf="loading" class="loading-overlay spinner-center">
+            <i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i>
+        </div>
+    </div>
+</div>

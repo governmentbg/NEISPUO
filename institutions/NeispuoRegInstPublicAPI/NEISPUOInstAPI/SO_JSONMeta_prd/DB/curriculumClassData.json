@@ -1,0 +1,31 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_year].[CurriculumClass] CC /**where**/ /**orderby**/",
+  "columns": [
+		{
+          "column": "CC.CurriculumClassesID AS id"
+        },
+		{
+          "column": "CC.ClassID AS classIDSelect"
+        },
+		{
+          "column": "CC.ClassID AS classID"
+        }
+  ],
+  "params": [
+    {
+      "param": "@curriculumClassesID",
+      "column": "CC.CurriculumClassesID",
+      "operator": "=",
+      "value": "curriculumClassesID",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+  ],
+  "order": [
+ 
+  ],
+  "inSelects": [
+
+  ]
+}

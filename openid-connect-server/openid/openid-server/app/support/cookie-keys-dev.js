@@ -1,0 +1,1 @@
+module.exports = ['some secret key', 'and also the old rotated away some time ago', 'and one more'];

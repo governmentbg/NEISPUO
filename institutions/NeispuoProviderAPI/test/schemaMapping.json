@@ -1,0 +1,2294 @@
+{
+  "tableMapping": {
+    "Institution": {
+      "schema": "core",
+      "primaryKey": "InstitutionID",
+      "foreignKey": "",
+      "columnMapping": [
+        {
+          "fromColumn": "InstitutionID",
+          "toColumn": "InstitutionID"
+        }
+      ],
+      "children": {
+        "InstitutionDetail": {
+          "schema": "inst_basic",
+          "primaryKey": "InstitutionID",
+          "foreignKey": "",
+          "columnMapping": [
+            {
+              "fromColumn": "InstitutionID",
+              "toColumn": "InstitutionID"
+            },
+            {
+              "fromColumn": "Email",
+              "toColumn": "Email"
+            },
+            {
+              "fromColumn": "Website",
+              "toColumn": "Website"
+            },
+            {
+              "fromColumn": "EstablishedYear",
+              "toColumn": "EstablishedYear"
+            },
+            {
+              "fromColumn": "ConstitActFirst",
+              "toColumn": "ConstitActFirst"
+            },
+            {
+              "fromColumn": "ConstitActLast",
+              "toColumn": "ConstitActLast"
+            },
+            {
+              "fromColumn": "IsODZ",
+              "toColumn": "IsODZ"
+            },
+            {
+              "fromColumn": "IsProfSchool",
+              "toColumn": "IsProfSchool"
+            },
+            {
+              "fromColumn": "IsNational",
+              "toColumn": "IsNational"
+            },
+            {
+              "fromColumn": "IsProvideEduServ",
+              "toColumn": "IsProvideEduServ"
+            },
+            {
+              "fromColumn": "IsDelegateBudget",
+              "toColumn": "IsDelegateBudget"
+            },
+            {
+              "fromColumn": "IsNonIndDormitory",
+              "toColumn": "IsNonIndDormitory"
+            },
+            {
+              "fromColumn": "IsAppInnovSystem",
+              "toColumn": "IsAppInnovSystem"
+            },
+            {
+              "fromColumn": "BankIBAN",
+              "toColumn": "BankIBAN"
+            },
+            {
+              "fromColumn": "BankBIC",
+              "toColumn": "BankBIC"
+            },
+            {
+              "fromColumn": "BankName",
+              "toColumn": "BankName"
+            },
+            {
+              "fromColumn": "BankAccountHolder",
+              "toColumn": "BankAccountHolder"
+            }
+          ]
+        },
+        "InstitutionOtherData": {
+          "schema": "inst_year",
+          "primaryKey": "InstitutionOtherDataID",
+          "foreignKey": "InstitutionID",
+          "columnMapping": [
+            {
+              "fromColumn": "InstitutionOtherDataID",
+              "toColumn": "InstitutionOtherDataID"
+            },
+            {
+              "fromColumn": "SchoolShiftTypeID",
+              "toColumn": "SchoolShiftTypeID"
+            },
+            {
+              "fromColumn": "PedagogStaffCount",
+              "toColumn": "PedagogStaffCount"
+            },
+            {
+              "fromColumn": "NonpedagogStaffCount",
+              "toColumn": "NonpedagogStaffCount"
+            },
+            {
+              "fromColumn": "StaffCountAll",
+              "toColumn": "StaffCountAll"
+            },
+            {
+              "fromColumn": "PedagogStaffSalary",
+              "toColumn": "PedagogStaffSalary"
+            },
+            {
+              "fromColumn": "NonpedagogStaffSalary",
+              "toColumn": "NonpedagogStaffSalary"
+            },
+            {
+              "fromColumn": "SchoolYear",
+              "toColumn": "SchoolYear"
+            },
+            {
+              "fromColumn": "YearlyBudget",
+              "toColumn": "YearlyBudget"
+            },
+            {
+              "fromColumn": "ExternalID",
+              "toColumn": "ExternalID"
+            }
+          ]
+        },
+        "InstitutionInnovation": {
+          "schema": "inst_basic",
+          "primaryKey": "InstitutionInnovationID",
+          "foreignKey": "InstitutionID",
+          "columnMapping": [
+            {
+              "fromColumn": "InstitutionInnovationID",
+              "toColumn": "InstitutionInnovationID"
+            },
+            {
+              "fromColumn": "InnovationTypeID",
+              "toColumn": "InnovationTypeID"
+            },
+            {
+              "fromColumn": "Notes",
+              "toColumn": "Notes"
+            },
+            {
+              "fromColumn": "ExternalID",
+              "toColumn": "ExternalID"
+            }
+          ]
+        },
+        "InstitutionProject": {
+          "schema": "inst_basic",
+          "primaryKey": "InstitutionProjectID",
+          "foreignKey": "InstitutionID",
+          "columnMapping": [
+            {
+              "fromColumn": "InstitutionProjectID",
+              "toColumn": "InstitutionProjectID"
+            },
+            {
+              "fromColumn": "StartDate",
+              "toColumn": "StartDate"
+            },
+            {
+              "fromColumn": "EndDate",
+              "toColumn": "EndDate"
+            },
+            {
+              "fromColumn": "Name",
+              "toColumn": "Name"
+            },
+            {
+              "fromColumn": "ProjectTypeID",
+              "toColumn": "ProjectTypeID"
+            },
+            {
+              "fromColumn": "Website",
+              "toColumn": "Website"
+            },
+            {
+              "fromColumn": "Description",
+              "toColumn": "Description"
+            },
+            {
+              "fromColumn": "ProjectProgramTypeID",
+              "toColumn": "ProjectProgramTypeID"
+            },
+            {
+              "fromColumn": "Goals",
+              "toColumn": "Goals"
+            },
+            {
+              "fromColumn": "IsArchive",
+              "toColumn": "IsArchive"
+            },
+            {
+              "fromColumn": "ActualCountAll",
+              "toColumn": "ActualCountAll"
+            },
+            {
+              "fromColumn": "ActualHighSchoolCount",
+              "toColumn": "ActualHighSchoolCount"
+            },
+            {
+              "fromColumn": "ActualPreSchoolCount",
+              "toColumn": "ActualPreSchoolCount"
+            },
+            {
+              "fromColumn": "ActualPrimarySchoolCount",
+              "toColumn": "ActualPrimarySchoolCount"
+            },
+            {
+              "fromColumn": "ActualSecondarySchoolCount",
+              "toColumn": "ActualSecondarySchoolCount"
+            },
+            {
+              "fromColumn": "InterCountAll",
+              "toColumn": "InterCountAll"
+            },
+            {
+              "fromColumn": "InterHighSchoolCount",
+              "toColumn": "InterHighSchoolCount"
+            },
+            {
+              "fromColumn": "InterPreSchoolCount",
+              "toColumn": "InterPreSchoolCount"
+            },
+            {
+              "fromColumn": "InterPrimarySchoolCount",
+              "toColumn": "InterPrimarySchoolCount"
+            },
+            {
+              "fromColumn": "InterSecondarySchoolCount",
+              "toColumn": "InterSecondarySchoolCount"
+            },
+            {
+              "fromColumn": "PlanCountAll",
+              "toColumn": "PlanCountAll"
+            },
+            {
+              "fromColumn": "PlanHighSchoolCount",
+              "toColumn": "PlanHighSchoolCount"
+            },
+            {
+              "fromColumn": "PlanPreSchoolCount",
+              "toColumn": "PlanPreSchoolCount"
+            },
+            {
+              "fromColumn": "PlanPrimarySchoolCount",
+              "toColumn": "PlanPrimarySchoolCount"
+            },
+            {
+              "fromColumn": "PlanSecondarySchoolCount",
+              "toColumn": "PlanSecondarySchoolCount"
+            },
+            {
+              "fromColumn": "ExternalID",
+              "toColumn": "ExternalID"
+            }
+          ],
+          "children": {
+            "InstitutionProjectPartner": {
+              "schema": "inst_basic",
+              "primaryKey": "InstitutionProjectPartnerID",
+              "foreignKey": "InstitutionProjectID",
+              "columnMapping": [
+                {
+                  "fromColumn": "InstitutionProjectPartnerID",
+                  "toColumn": "InstitutionProjectPartnerID"
+                },
+                {
+                  "fromColumn": "ProjectPartnerTypeID",
+                  "toColumn": "ProjectPartnerTypeID"
+                },
+                {
+                  "fromColumn": "Eik",
+                  "toColumn": "Eik"
+                },
+                {
+                  "fromColumn": "Name",
+                  "toColumn": "Name"
+                },
+                {
+                  "fromColumn": "IsCoordinator",
+                  "toColumn": "IsCoordinator"
+                },
+                {
+                  "fromColumn": "ExternalID",
+                  "toColumn": "ExternalID"
+                }
+              ]
+            },
+            "InstitutionProjectPriorityArea": {
+              "schema": "inst_basic",
+              "primaryKey": "InstitutionProjectPriorityAreaID",
+              "foreignKey": "ProjectID",
+              "columnMapping": [
+                {
+                  "fromColumn": "InstitutionProjectPriorityAreaID",
+                  "toColumn": "InstitutionProjectPriorityAreaID"
+                },
+                {
+                  "fromColumn": "ProjectPriorityAreaTypeID",
+                  "toColumn": "ProjectPriorityAreaTypeID"
+                },
+                {
+                  "fromColumn": "ExternalID",
+                  "toColumn": "ExternalID"
+                }
+              ]
+            }
+          }
+        },
+        "ClassGroup": {
+          "schema": "inst_year",
+          "primaryKey": "ClassID",
+          "foreignKey": "InstitutionID",
+          "columnMapping": [
+            {
+              "fromColumn": "ClassID",
+              "toColumn": "ClassID"
+            },
+            {
+              "fromColumn": "InstitutionDepartmentID",
+              "toColumn": "InstitutionDepartmentID"
+            },
+            {
+              "fromColumn": "SchoolYear",
+              "toColumn": "SchoolYear"
+            },
+            {
+              "fromColumn": "ClassGroupNum",
+              "toColumn": "ClassGroupNum"
+            },
+            {
+              "fromColumn": "ClassName",
+              "toColumn": "ClassName"
+            },
+            {
+              "fromColumn": "ParalellClassName",
+              "toColumn": "ParalellClassName"
+            },
+            {
+              "fromColumn": "ParentClassID",
+              "toColumn": "ParentClassID"
+            },
+            {
+              "fromColumn": "BasicClassID",
+              "toColumn": "BasicClassID"
+            },
+            {
+              "fromColumn": "ClassTypeID",
+              "toColumn": "ClassTypeID"
+            },
+            {
+              "fromColumn": "AreaID",
+              "toColumn": "AreaID"
+            },
+            {
+              "fromColumn": "ClassEduFormID",
+              "toColumn": "ClassEduFormID"
+            },
+            {
+              "fromColumn": "ClassEduDurationID",
+              "toColumn": "ClassEduDurationID"
+            },
+            {
+              "fromColumn": "ClassShiftID",
+              "toColumn": "ClassShiftID"
+            },
+            {
+              "fromColumn": "BudgetingClassTypeID",
+              "toColumn": "BudgetingClassTypeID"
+            },
+            {
+              "fromColumn": "EntranceLevelID",
+              "toColumn": "EntranceLevelID"
+            },
+            {
+              "fromColumn": "ClassSpecialityID",
+              "toColumn": "ClassSpecialityID"
+            },
+            {
+              "fromColumn": "FLTypeID",
+              "toColumn": "FLTypeID"
+            },
+            {
+              "fromColumn": "FLID",
+              "toColumn": "FLID"
+            },
+            {
+              "fromColumn": "IsProfModule",
+              "toColumn": "IsProfModule"
+            },
+            {
+              "fromColumn": "StudentCountPlaces",
+              "toColumn": "StudentCountPlaces"
+            },
+            {
+              "fromColumn": "Notes",
+              "toColumn": "Notes"
+            },
+            {
+              "fromColumn": "IsCombined",
+              "toColumn": "IsCombined"
+            },
+            {
+              "fromColumn": "IsNoList",
+              "toColumn": "IsNoList"
+            },
+            {
+              "fromColumn": "IsSpecNeed",
+              "toColumn": "IsSpecNeed"
+            },
+            {
+              "fromColumn": "IsWholeClass",
+              "toColumn": "IsWholeClass"
+            },
+            {
+              "fromColumn": "IsNotPresentForm",
+              "toColumn": "IsNotPresentForm"
+            },
+            {
+              "fromColumn": "ExternalID",
+              "toColumn": "ExternalID"
+            },
+            {
+              "fromColumn": "IsValid",
+              "toColumn": "IsValid"
+            }
+          ],
+          "children": {
+            "ClassGroup": {
+              "schema": "inst_year",
+              "primaryKey": "ClassID",
+              "foreignKey": "ParentClassID",
+              "parentForeignKey": "InstitutionID",
+              "columnMapping": [
+                {
+                  "fromColumn": "ClassID",
+                  "toColumn": "ClassID"
+                },
+                {
+                  "fromColumn": "InstitutionDepartmentID",
+                  "toColumn": "InstitutionDepartmentID"
+                },
+                {
+                  "fromColumn": "SchoolYear",
+                  "toColumn": "SchoolYear"
+                },
+                {
+                  "fromColumn": "ClassGroupNum",
+                  "toColumn": "ClassGroupNum"
+                },
+                {
+                  "fromColumn": "ClassName",
+                  "toColumn": "ClassName"
+                },
+                {
+                  "fromColumn": "ParalellClassName",
+                  "toColumn": "ParalellClassName"
+                },
+                {
+                  "fromColumn": "ParentClassID",
+                  "toColumn": "ParentClassID"
+                },
+                {
+                  "fromColumn": "BasicClassID",
+                  "toColumn": "BasicClassID"
+                },
+                {
+                  "fromColumn": "ClassTypeID",
+                  "toColumn": "ClassTypeID"
+                },
+                {
+                  "fromColumn": "AreaID",
+                  "toColumn": "AreaID"
+                },
+                {
+                  "fromColumn": "ClassEduFormID",
+                  "toColumn": "ClassEduFormID"
+                },
+                {
+                  "fromColumn": "ClassEduDurationID",
+                  "toColumn": "ClassEduDurationID"
+                },
+                {
+                  "fromColumn": "ClassShiftID",
+                  "toColumn": "ClassShiftID"
+                },
+                {
+                  "fromColumn": "BudgetingClassTypeID",
+                  "toColumn": "BudgetingClassTypeID"
+                },
+                {
+                  "fromColumn": "EntranceLevelID",
+                  "toColumn": "EntranceLevelID"
+                },
+                {
+                  "fromColumn": "ClassSpecialityID",
+                  "toColumn": "ClassSpecialityID"
+                },
+                {
+                  "fromColumn": "FLTypeID",
+                  "toColumn": "FLTypeID"
+                },
+                {
+                  "fromColumn": "FLID",
+                  "toColumn": "FLID"
+                },
+                {
+                  "fromColumn": "IsProfModule",
+                  "toColumn": "IsProfModule"
+                },
+                {
+                  "fromColumn": "StudentCountPlaces",
+                  "toColumn": "StudentCountPlaces"
+                },
+                {
+                  "fromColumn": "Notes",
+                  "toColumn": "Notes"
+                },
+                {
+                  "fromColumn": "IsCombined",
+                  "toColumn": "IsCombined"
+                },
+                {
+                  "fromColumn": "IsNoList",
+                  "toColumn": "IsNoList"
+                },
+                {
+                  "fromColumn": "IsSpecNeed",
+                  "toColumn": "IsSpecNeed"
+                },
+                {
+                  "fromColumn": "IsWholeClass",
+                  "toColumn": "IsWholeClass"
+                },
+                {
+                  "fromColumn": "IsNotPresentForm",
+                  "toColumn": "IsNotPresentForm"
+                },
+                {
+                  "fromColumn": "ExternalID",
+                  "toColumn": "ExternalID"
+                },
+                {
+                  "fromColumn": "IsValid",
+                  "toColumn": "IsValid"
+                }
+              ],
+              "children": {
+                "StudentClass": {
+                  "schema": "student",
+                  "primaryKey": "ID",
+                  "foreignKey": "ClassId",
+                  "columnMapping": [
+                    {
+                      "fromColumn": "ExternalID",
+                      "toColumn": "ExternalID"
+                    },
+                    {
+                      "fromColumn": "PersonId",
+                      "toColumn": "PersonId"
+                    },
+                    {
+                      "fromColumn": "Status",
+                      "toColumn": "Status"
+                    },
+                    {
+                      "fromColumn": "ID",
+                      "toColumn": "ID"
+                    },
+                    {
+                      "fromColumn": "SchoolYear",
+                      "toColumn": "SchoolYear"
+                    },
+                    {
+                      "fromColumn": "IsCurrent",
+                      "toColumn": "IsCurrent"
+                    },
+                    {
+                      "fromColumn": "SupportiveEnvironment",
+                      "toColumn": "SupportiveEnvironment"
+                    },
+                    {
+                      "fromColumn": "StudentSpecialityId",
+                      "toColumn": "StudentSpecialityId"
+                    },
+                    {
+                      "fromColumn": "StudentEduFormId",
+                      "toColumn": "StudentEduFormId"
+                    },
+                    {
+                      "fromColumn": "ClassNumber",
+                      "toColumn": "ClassNumber"
+                    },
+                    {
+                      "fromColumn": "IsForSubmissionToNRA",
+                      "toColumn": "IsForSubmissionToNRA"
+                    },
+                    {
+                      "fromColumn": "EnrollmentDate",
+                      "toColumn": "EnrollmentDate"
+                    },
+                    {
+                      "fromColumn": "EntryDate",
+                      "toColumn": "EntryDate"
+                    },
+                    {
+                      "fromColumn": "PositionId",
+                      "toColumn": "PositionId"
+                    },
+                    {
+                      "fromColumn": "BasicClassID",
+                      "toColumn": "BasicClassId"
+                    },
+                    {
+                      "fromColumn": "ClassTypeID",
+                      "toColumn": "ClassTypeId"
+                    },
+                    {
+                      "fromColumn": "FromStudentClassId",
+                      "toColumn": "FromStudentClassId"
+                    },
+                    {
+                      "fromColumn": "DischargeDate",
+                      "toColumn": "DischargeDate"
+                    },
+                    {
+                      "fromColumn": "DischargeReasonId",
+                      "toColumn": "DischargeReasonId"
+                    },
+                    {
+                      "fromColumn": "DischargeDocumentId",
+                      "toColumn": "DischargeDocumentId"
+                    },
+                    {
+                      "fromColumn": "RelocationDocumentId",
+                      "toColumn": "RelocationDocumentId"
+                    },
+                    {
+                      "fromColumn": "IsIndividualCurriculum",
+                      "toColumn": "IsIndividualCurriculum"
+                    },
+                    {
+                      "fromColumn": "IsHourlyOrganization",
+                      "toColumn": "IsHourlyOrganization"
+                    },
+                    {
+                      "fromColumn": "RepeaterId",
+                      "toColumn": "RepeaterId"
+                    },
+                    {
+                      "fromColumn": "CommuterTypeId",
+                      "toColumn": "CommuterTypeId"
+                    },
+                    {
+                      "fromColumn": "ORESTypeID",
+                      "toColumn": "ORESTypeId"
+                    },
+                    {
+                      "fromColumn": "InstitutionId",
+                      "toColumn": "InstitutionId"
+                    },
+                    {
+                      "fromColumn": "IsNotPresentForm",
+                      "toColumn": "IsNotPresentForm"
+                    }
+                  ],
+                  "children": {
+                    "ScholarshipStudent": {
+                      "schema": "student",
+                      "primaryKey": "Id",
+                      "foreignKey": "StudentClassID",
+                      "columnMapping": [
+                        {
+                          "fromColumn": "Id",
+                          "toColumn": "Id"
+                        },
+                        {
+                          "fromColumn": "PersonId",
+                          "toColumn": "PersonId"
+                        },
+                        {
+                          "fromColumn": "ScholarshipAmountId",
+                          "toColumn": "ScholarshipAmountID"
+                        },
+                        {
+                          "fromColumn": "Description",
+                          "toColumn": "Description"
+                        },
+                        {
+                          "fromColumn": "ScholarshipTypeId",
+                          "toColumn": "ScholarshipTypeId"
+                        },
+                        {
+                          "fromColumn": "AmountRate",
+                          "toColumn": "AmountRate"
+                        },
+                        {
+                          "fromColumn": "Periodicity",
+                          "toColumn": "Periodicity"
+                        },
+                        {
+                          "fromColumn": "OrderNumber",
+                          "toColumn": "OrderNumber"
+                        },
+                        {
+                          "fromColumn": "OrderDate",
+                          "toColumn": "OrderDate"
+                        },
+                        {
+                          "fromColumn": "SchoolYear",
+                          "toColumn": "SchoolYear"
+                        },
+                        {
+                          "fromColumn": "FinancingOrganId",
+                          "toColumn": "FinancingOrganId"
+                        },
+                        {
+                          "fromColumn": "CommissionDate",
+                          "toColumn": "CommissionDate"
+                        },
+                        {
+                          "fromColumn": "CommissionNumber",
+                          "toColumn": "CommissionNumber"
+                        },
+                        {
+                          "fromColumn": "ValidFrom",
+                          "toColumn": "ValidFrom"
+                        },
+                        {
+                          "fromColumn": "ValidTo",
+                          "toColumn": "ValidTo"
+                        },
+                        {
+                          "fromColumn": "InstitutionId",
+                          "toColumn": "InstitutionId"
+                        },
+                        {
+                          "fromColumn": "ExternalID",
+                          "toColumn": "ExternalID"
+                        }
+                      ]
+                    },
+                    "SelfGovernment": {
+                      "schema": "student",
+                      "primaryKey": "Id",
+                      "foreignKey": "StudentClassID",
+                      "columnMapping": [
+                        {
+                          "fromColumn": "Id",
+                          "toColumn": "Id"
+                        },
+                        {
+                          "fromColumn": "InstitutionId",
+                          "toColumn": "InstitutionId"
+                        },
+                        {
+                          "fromColumn": "SchoolYear",
+                          "toColumn": "SchoolYear"
+                        },
+                        {
+                          "fromColumn": "PositionId",
+                          "toColumn": "PositionId"
+                        },
+                        {
+                          "fromColumn": "ParticipationId",
+                          "toColumn": "ParticipationId"
+                        },
+                        {
+                          "fromColumn": "PersonId",
+                          "toColumn": "PersonId"
+                        },
+                        {
+                          "fromColumn": "ParticipationAdditionalInformation",
+                          "toColumn": "ParticipationAdditionalInformation"
+                        },
+                        {
+                          "fromColumn": "AdditionalInformation",
+                          "toColumn": "AdditionalInformation"
+                        },
+                        {
+                          "fromColumn": "ExternalID",
+                          "toColumn": "ExternalID"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "InstitutionPublicCouncil": {
+          "schema": "inst_basic",
+          "primaryKey": "InstitutionPublicCouncilID",
+          "foreignKey": "InstitutionID",
+          "columnMapping": [
+            {
+              "fromColumn": "InstitutionPublicCouncilID",
+              "toColumn": "InstitutionPublicCouncilID"
+            },
+            {
+              "fromColumn": "FirstName",
+              "toColumn": "FirstName"
+            },
+            {
+              "fromColumn": "MiddleName",
+              "toColumn": "MiddleName"
+            },
+            {
+              "fromColumn": "FamilyName",
+              "toColumn": "FamilyName"
+            },
+            {
+              "fromColumn": "PublicCouncilTypeID",
+              "toColumn": "PublicCouncilTypeID"
+            },
+            {
+              "fromColumn": "PublicCouncilRoleID",
+              "toColumn": "PublicCouncilRoleID"
+            },
+            {
+              "fromColumn": "Email",
+              "toColumn": "Email"
+            },
+            {
+              "fromColumn": "PhoneNumber",
+              "toColumn": "PhoneNumber"
+            },
+            {
+              "fromColumn": "ExternalID",
+              "toColumn": "ExternalID"
+            }
+          ]
+        },
+        "InstitutionVehicle": {
+          "schema": "inst_basic",
+          "primaryKey": "InstitutionVehicleID",
+          "foreignKey": "InstitutionID",
+          "columnMapping": [
+            {
+              "fromColumn": "InstitutionVehicleID",
+              "toColumn": "InstitutionVehicleID"
+            },
+            {
+              "fromColumn": "AcquisitionWayTypeID",
+              "toColumn": "AcquisitionWayTypeID"
+            },
+            {
+              "fromColumn": "DocumentTypeID",
+              "toColumn": "DocumentTypeID"
+            },
+            {
+              "fromColumn": "DocumentNum",
+              "toColumn": "DocumentNum"
+            },
+            {
+              "fromColumn": "DocumentDate",
+              "toColumn": "DocumentDate"
+            },
+            {
+              "fromColumn": "RegistrationNum",
+              "toColumn": "RegistrationNum"
+            },
+            {
+              "fromColumn": "ProducedYear",
+              "toColumn": "ProducedYear"
+            },
+            {
+              "fromColumn": "PlaceCountTypeID",
+              "toColumn": "PlaceCountTypeID"
+            },
+            {
+              "fromColumn": "ExternalID",
+              "toColumn": "ExternalID"
+            }
+          ]
+        },
+        "StaffPosition": {
+          "schema": "inst_basic",
+          "primaryKey": "StaffPositionID",
+          "foreignKey": "InstitutionID",
+          "columnMapping": [
+            {
+              "fromColumn": "StaffPositionID",
+              "toColumn": "StaffPositionID"
+            },
+            {
+              "fromColumn": "PersonID",
+              "toColumn": "PersonID"
+            },
+            {
+              "fromColumn": "StaffOrd",
+              "toColumn": "StaffOrd"
+            },
+            {
+              "fromColumn": "StaffPositionNo",
+              "toColumn": "StaffPositionNo"
+            },
+            {
+              "fromColumn": "ContractTypeID",
+              "toColumn": "ContractTypeID"
+            },
+            {
+              "fromColumn": "ContractReasonID",
+              "toColumn": "ContractReasonID"
+            },
+            {
+              "fromColumn": "ContractNo",
+              "toColumn": "ContractNo"
+            },
+            {
+              "fromColumn": "ContractYear",
+              "toColumn": "ContractYear"
+            },
+            {
+              "fromColumn": "ContractNotes",
+              "toColumn": "ContractNotes"
+            },
+            {
+              "fromColumn": "ContractWithID",
+              "toColumn": "ContractWithID"
+            },
+            {
+              "fromColumn": "IsAccountablePerson",
+              "toColumn": "IsAccountablePerson"
+            },
+            {
+              "fromColumn": "StaffTypeID",
+              "toColumn": "StaffTypeID"
+            },
+            {
+              "fromColumn": "CategoryStaffTypeID",
+              "toColumn": "CategoryStaffTypeID"
+            },
+            {
+              "fromColumn": "NKPDPositionID",
+              "toColumn": "NKPDPositionID"
+            },
+            {
+              "fromColumn": "PositionKindID",
+              "toColumn": "PositionKindID"
+            },
+            {
+              "fromColumn": "PositionNotes",
+              "toColumn": "PositionNotes"
+            },
+            {
+              "fromColumn": "PositionCount",
+              "toColumn": "PositionCount"
+            },
+            {
+              "fromColumn": "WorkStartYear",
+              "toColumn": "WorkStartYear"
+            },
+            {
+              "fromColumn": "WorkExpTotalYears",
+              "toColumn": "WorkExpTotalYears"
+            },
+            {
+              "fromColumn": "WorkExpSpecYears",
+              "toColumn": "WorkExpSpecYears"
+            },
+            {
+              "fromColumn": "WorkExpTeachYears",
+              "toColumn": "WorkExpTeachYears"
+            },
+            {
+              "fromColumn": "IsTravel",
+              "toColumn": "IsTravel"
+            },
+            {
+              "fromColumn": "TeachStageID",
+              "toColumn": "TeachStageID"
+            },
+            {
+              "fromColumn": "IsHospital",
+              "toColumn": "IsHospital"
+            },
+            {
+              "fromColumn": "IsMentor",
+              "toColumn": "IsMentor"
+            },
+            {
+              "fromColumn": "IsTrainee",
+              "toColumn": "IsTrainee"
+            },
+            {
+              "fromColumn": "IsNotMeetReq",
+              "toColumn": "IsNotMeetReq"
+            },
+            {
+              "fromColumn": "CurrentlyValid",
+              "toColumn": "CurrentlyValid"
+            },
+            {
+              "fromColumn": "MainPersonOKSID",
+              "toColumn": "MainPersonOKSID"
+            },
+            {
+              "fromColumn": "HasTELK",
+              "toColumn": "HasTELK"
+            },
+            {
+              "fromColumn": "IsValid",
+              "toColumn": "IsValid"
+            },
+            {
+              "fromColumn": "PositionSubjectGroupID",
+              "toColumn": "PositionSubjectGroupID"
+            },
+            {
+              "fromColumn": "HelpStudentGovernment",
+              "toColumn": "HelpStudentGovernment"
+            },
+            {
+              "fromColumn": "ExternalID",
+              "toColumn": "ExternalID"
+            },
+            {
+              "fromColumn": "TerminationDate",
+              "toColumn": "TerminationDate"
+            },
+            {
+              "fromColumn": "TerminationReasonID",
+              "toColumn": "TerminationReasonID"
+            }
+          ],
+          "children": {
+            "PedStaffData": {
+              "schema": "inst_year",
+              "primaryKey": "PedStaffDataID",
+              "foreignKey": "StaffPositionID",
+              "columnMapping": [
+                {
+                  "fromColumn": "PedStaffDataID",
+                  "toColumn": "PedStaffDataID"
+                },
+                {
+                  "fromColumn": "NormaS",
+                  "toColumn": "NormaS"
+                },
+                {
+                  "fromColumn": "Norma",
+                  "toColumn": "Norma"
+                },
+                {
+                  "fromColumn": "NormaT",
+                  "toColumn": "NormaT"
+                },
+                {
+                  "fromColumn": "DeficitNorma",
+                  "toColumn": "DeficitNorma"
+                },
+                {
+                  "fromColumn": "DeficitNormaT",
+                  "toColumn": "DeficitNormaT"
+                },
+                {
+                  "fromColumn": "ReductionCoef",
+                  "toColumn": "ReductionCoef"
+                },
+                {
+                  "fromColumn": "DiffNorma",
+                  "toColumn": "DiffNorma"
+                },
+                {
+                  "fromColumn": "HoursForReduction",
+                  "toColumn": "HoursForReduction"
+                },
+                {
+                  "fromColumn": "ReductionHours",
+                  "toColumn": "ReductionHours"
+                },
+                {
+                  "fromColumn": "Lect",
+                  "toColumn": "Lect"
+                },
+                {
+                  "fromColumn": "LectYear",
+                  "toColumn": "LectYear"
+                },
+                {
+                  "fromColumn": "IsValid",
+                  "toColumn": "IsValid"
+                },
+                {
+                  "fromColumn": "SchoolYear",
+                  "toColumn": "SchoolYear"
+                },
+                {
+                  "fromColumn": "ExternalID",
+                  "toColumn": "ExternalID"
+                }
+              ]
+            },
+            "SelfGovernment": {
+              "schema": "student",
+              "primaryKey": "Id",
+              "foreignKey": "StaffPositionID",
+              "parentForeignKey": "InstitutionId",
+              "columnMapping": [
+                {
+                  "fromColumn": "Id",
+                  "toColumn": "Id"
+                },
+                {
+                  "fromColumn": "SchoolYear",
+                  "toColumn": "SchoolYear"
+                },
+                {
+                  "fromColumn": "PersonId",
+                  "toColumn": "PersonId"
+                },
+                {
+                  "fromColumn": "ParticipationId",
+                  "toColumn": "ParticipationId"
+                },
+                {
+                  "fromColumn": "PositionId",
+                  "toColumn": "PositionId"
+                },
+                {
+                  "fromColumn": "ExternalID",
+                  "toColumn": "ExternalID"
+                }
+              ]
+            }
+          }
+        },
+        "Curriculum": {
+          "schema": "inst_year",
+          "primaryKey": "CurriculumID",
+          "foreignKey": "InstitutionID",
+          "columnMapping": [
+            {
+              "fromColumn": "CurriculumID",
+              "toColumn": "CurriculumID"
+            },
+            {
+              "fromColumn": "SchoolYear",
+              "toColumn": "SchoolYear"
+            },
+            {
+              "fromColumn": "CurriculumGroupNum",
+              "toColumn": "CurriculumGroupNum"
+            },
+            {
+              "fromColumn": "InstitutionDepartmentID",
+              "toColumn": "InstitutionDepartmentID"
+            },
+            {
+              "fromColumn": "SubjectID",
+              "toColumn": "SubjectID"
+            },
+            {
+              "fromColumn": "SubjectTypeID",
+              "toColumn": "SubjectTypeID"
+            },
+            {
+              "fromColumn": "WeeksFirstTerm",
+              "toColumn": "WeeksFirstTerm"
+            },
+            {
+              "fromColumn": "HoursWeeklyFirstTerm",
+              "toColumn": "HoursWeeklyFirstTerm"
+            },
+            {
+              "fromColumn": "WeeksSecondTerm",
+              "toColumn": "WeeksSecondTerm"
+            },
+            {
+              "fromColumn": "HoursWeeklySecondTerm",
+              "toColumn": "HoursWeeklySecondTerm"
+            },
+            {
+              "fromColumn": "IsFL",
+              "toColumn": "IsFL"
+            },
+            {
+              "fromColumn": "FLSubjectID",
+              "toColumn": "FLSubjectID"
+            },
+            {
+              "fromColumn": "IsIndividualLesson",
+              "toColumn": "IsIndividualLesson"
+            },
+            {
+              "fromColumn": "NormaS",
+              "toColumn": "NormaS"
+            },
+            {
+              "fromColumn": "ParentCurriculumID",
+              "toColumn": "ParentCurriculumID"
+            },
+            {
+              "fromColumn": "CurriculumPartID",
+              "toColumn": "CurriculumPartID"
+            },
+            {
+              "fromColumn": "SortOrder",
+              "toColumn": "SortOrder"
+            },
+            {
+              "fromColumn": "IsIndividualCurriculum",
+              "toColumn": "IsIndividualCurriculum"
+            },
+            {
+              "fromColumn": "tmp_CurricID_orig",
+              "toColumn": "tmp_CurricID_orig"
+            },
+            {
+              "fromColumn": "tmp_ClassID_orig",
+              "toColumn": "tmp_ClassID_orig"
+            },
+            {
+              "fromColumn": "tmp_SubjectID_orig",
+              "toColumn": "tmp_SubjectID_orig"
+            },
+            {
+              "fromColumn": "IsWholeClass",
+              "toColumn": "IsWholeClass"
+            },
+            {
+              "fromColumn": "IsAllStudents",
+              "toColumn": "IsAllStudents"
+            },
+            {
+              "fromColumn": "IsCombined",
+              "toColumn": "IsCombined"
+            },
+            {
+              "fromColumn": "IsValid",
+              "toColumn": "IsValid"
+            },
+            {
+              "fromColumn": "TotalTermHours",
+              "toColumn": "TotalTermHours"
+            },
+            {
+              "fromColumn": "StudentsCount",
+              "toColumn": "StudentsCount"
+            },
+            {
+              "fromColumn": "ExternalID",
+              "toColumn": "ExternalID"
+            }
+          ],
+          "children": {
+            "CurriculumClass": {
+              "schema": "inst_year",
+              "primaryKey": "CurriculumClassesID",
+              "foreignKey": "CurriculumID",
+              "columnMapping": [
+                {
+                  "fromColumn": "CurriculumClassesID",
+                  "toColumn": "CurriculumClassesID"
+                },
+                {
+                  "fromColumn": "SchoolYear",
+                  "toColumn": "SchoolYear"
+                },
+                {
+                  "fromColumn": "IsValid",
+                  "toColumn": "IsValid"
+                },
+                {
+                  "fromColumn": "ExternalID",
+                  "toColumn": "ExternalID"
+                }
+              ]
+            },
+            "CurriculumTeacher": {
+              "schema": "inst_year",
+              "primaryKey": "CurriculumTeacherID",
+              "foreignKey": "CurriculumID",
+              "columnMapping": [
+                {
+                  "fromColumn": "CurriculumTeacherID",
+                  "toColumn": "CurriculumTeacherID"
+                },
+                {
+                  "fromColumn": "IsNotRegularTeacher",
+                  "toColumn": "IsNotRegularTeacher"
+                },
+                {
+                  "fromColumn": "SchoolYear",
+                  "toColumn": "SchoolYear"
+                },
+                {
+                  "fromColumn": "StaffPositionStartDate",
+                  "toColumn": "StaffPositionStartDate"
+                },
+                {
+                  "fromColumn": "StaffPositionTerminationDate",
+                  "toColumn": "StaffPositionTerminationDate"
+                },
+                {
+                  "fromColumn": "IsValid",
+                  "toColumn": "IsValid"
+                },
+                {
+                  "fromColumn": "ExternalID",
+                  "toColumn": "ExternalID"
+                },
+                {
+                  "fromColumn": "NormaTS",
+                  "toColumn": "NormaTS"
+                }
+              ]
+            },
+            "CurriculumStudent": {
+              "schema": "inst_year",
+              "primaryKey": "CurriculumStudentID",
+              "foreignKey": "CurriculumID",
+              "columnMapping": [
+                {
+                  "fromColumn": "CurriculumStudentID",
+                  "toColumn": "CurriculumStudentID"
+                },
+                {
+                  "fromColumn": "PersonID",
+                  "toColumn": "PersonID"
+                },
+                {
+                  "fromColumn": "SchoolYear",
+                  "toColumn": "SchoolYear"
+                },
+                {
+                  "fromColumn": "ValidFrom",
+                  "toColumn": "ValidFrom"
+                },
+                {
+                  "fromColumn": "ValidTo",
+                  "toColumn": "ValidTo"
+                },
+                {
+                  "fromColumn": "IsValid",
+                  "toColumn": "IsValid"
+                },
+                {
+                  "fromColumn": "ExternalID",
+                  "toColumn": "ExternalID"
+                }
+              ]
+            },
+            "Curriculum": {
+              "schema": "inst_year",
+              "primaryKey": "CurriculumID",
+              "foreignKey": "ParentCurriculumID",
+              "parentForeignKey": "InstitutionID",
+              "columnMapping": [
+                {
+                  "fromColumn": "CurriculumID",
+                  "toColumn": "CurriculumID"
+                },
+                {
+                  "fromColumn": "SchoolYear",
+                  "toColumn": "SchoolYear"
+                },
+                {
+                  "fromColumn": "CurriculumGroupNum",
+                  "toColumn": "CurriculumGroupNum"
+                },
+                {
+                  "fromColumn": "InstitutionDepartmentID",
+                  "toColumn": "InstitutionDepartmentID"
+                },
+                {
+                  "fromColumn": "SubjectID",
+                  "toColumn": "SubjectID"
+                },
+                {
+                  "fromColumn": "SubjectTypeID",
+                  "toColumn": "SubjectTypeID"
+                },
+                {
+                  "fromColumn": "WeeksFirstTerm",
+                  "toColumn": "WeeksFirstTerm"
+                },
+                {
+                  "fromColumn": "HoursWeeklyFirstTerm",
+                  "toColumn": "HoursWeeklyFirstTerm"
+                },
+                {
+                  "fromColumn": "WeeksSecondTerm",
+                  "toColumn": "WeeksSecondTerm"
+                },
+                {
+                  "fromColumn": "HoursWeeklySecondTerm",
+                  "toColumn": "HoursWeeklySecondTerm"
+                },
+                {
+                  "fromColumn": "IsFL",
+                  "toColumn": "IsFL"
+                },
+                {
+                  "fromColumn": "FLSubjectID",
+                  "toColumn": "FLSubjectID"
+                },
+                {
+                  "fromColumn": "IsIndividualLesson",
+                  "toColumn": "IsIndividualLesson"
+                },
+                {
+                  "fromColumn": "NormaS",
+                  "toColumn": "NormaS"
+                },
+                {
+                  "fromColumn": "CurriculumPartID",
+                  "toColumn": "CurriculumPartID"
+                },
+                {
+                  "fromColumn": "SortOrder",
+                  "toColumn": "SortOrder"
+                },
+                {
+                  "fromColumn": "IsIndividualCurriculum",
+                  "toColumn": "IsIndividualCurriculum"
+                },
+                {
+                  "fromColumn": "tmp_CurricID_orig",
+                  "toColumn": "tmp_CurricID_orig"
+                },
+                {
+                  "fromColumn": "tmp_ClassID_orig",
+                  "toColumn": "tmp_ClassID_orig"
+                },
+                {
+                  "fromColumn": "tmp_SubjectID_orig",
+                  "toColumn": "tmp_SubjectID_orig"
+                },
+                {
+                  "fromColumn": "IsWholeClass",
+                  "toColumn": "IsWholeClass"
+                },
+                {
+                  "fromColumn": "IsAllStudents",
+                  "toColumn": "IsAllStudents"
+                },
+                {
+                  "fromColumn": "IsCombined",
+                  "toColumn": "IsCombined"
+                },
+                {
+                  "fromColumn": "IsValid",
+                  "toColumn": "IsValid"
+                },
+                {
+                  "fromColumn": "TotalTermHours",
+                  "toColumn": "TotalTermHours"
+                },
+                {
+                  "fromColumn": "StudentsCount",
+                  "toColumn": "StudentsCount"
+                },
+                {
+                  "fromColumn": "ExternalID",
+                  "toColumn": "ExternalID"
+                }
+              ],
+              "children": {
+                "CurriculumClass": {
+                  "schema": "inst_year",
+                  "primaryKey": "CurriculumClassesID",
+                  "foreignKey": "CurriculumID",
+                  "columnMapping": [
+                    {
+                      "fromColumn": "CurriculumClassesID",
+                      "toColumn": "CurriculumClassesID"
+                    },
+                    {
+                      "fromColumn": "SchoolYear",
+                      "toColumn": "SchoolYear"
+                    },
+                    {
+                      "fromColumn": "IsValid",
+                      "toColumn": "IsValid"
+                    },
+                    {
+                      "fromColumn": "ExternalID",
+                      "toColumn": "ExternalID"
+                    }
+                  ]
+                },
+                "CurriculumTeacher": {
+                  "schema": "inst_year",
+                  "primaryKey": "CurriculumTeacherID",
+                  "foreignKey": "CurriculumID",
+                  "columnMapping": [
+                    {
+                      "fromColumn": "CurriculumTeacherID",
+                      "toColumn": "CurriculumTeacherID"
+                    },
+                    {
+                      "fromColumn": "IsNotRegularTeacher",
+                      "toColumn": "IsNotRegularTeacher"
+                    },
+                    {
+                      "fromColumn": "SchoolYear",
+                      "toColumn": "SchoolYear"
+                    },
+                    {
+                      "fromColumn": "IsValid",
+                      "toColumn": "IsValid"
+                    },
+                    {
+                      "fromColumn": "ExternalID",
+                      "toColumn": "ExternalID"
+                    },
+                    {
+                      "fromColumn": "NormaTS",
+                      "toColumn": "NormaTS"
+                    }
+                  ]
+                },
+                "CurriculumStudent": {
+                  "schema": "inst_year",
+                  "primaryKey": "CurriculumStudentID",
+                  "foreignKey": "CurriculumID",
+                  "columnMapping": [
+                    {
+                      "fromColumn": "CurriculumStudentID",
+                      "toColumn": "CurriculumStudentID"
+                    },
+                    {
+                      "fromColumn": "PersonID",
+                      "toColumn": "PersonID"
+                    },
+                    {
+                      "fromColumn": "SchoolYear",
+                      "toColumn": "SchoolYear"
+                    },
+                    {
+                      "fromColumn": "IsValid",
+                      "toColumn": "IsValid"
+                    },
+                    {
+                      "fromColumn": "ExternalID",
+                      "toColumn": "ExternalID"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "InstitutionSchoolBoard": {
+          "schema": "inst_basic",
+          "primaryKey": "InstitutionSchoolBoardID",
+          "foreignKey": "InstitutionID",
+          "columnMapping": [
+            {
+              "fromColumn": "InstitutionSchoolBoardID",
+              "toColumn": "InstitutionSchoolBoardID"
+            },
+            {
+              "fromColumn": "FirstName",
+              "toColumn": "FirstName"
+            },
+            {
+              "fromColumn": "MiddleName",
+              "toColumn": "MiddleName"
+            },
+            {
+              "fromColumn": "FamilyName",
+              "toColumn": "FamilyName"
+            },
+            {
+              "fromColumn": "SchoolBoardRoleID",
+              "toColumn": "SchoolBoardRoleID"
+            },
+            {
+              "fromColumn": "Email",
+              "toColumn": "Email"
+            },
+            {
+              "fromColumn": "PhoneNumber",
+              "toColumn": "PhoneNumber"
+            },
+            {
+              "fromColumn": "HelpStudentGovernment",
+              "toColumn": "HelpStudentGovernment"
+            },
+            {
+              "fromColumn": "ExternalID",
+              "toColumn": "ExternalID"
+            }
+          ],
+          "children": {
+            "SelfGovernment": {
+              "schema": "student",
+              "primaryKey": "Id",
+              "foreignKey": "InstitutionSchoolBoardID",
+              "parentForeignKey": "InstitutionId",
+              "columnMapping": [
+                {
+                  "fromColumn": "Id",
+                  "toColumn": "Id"
+                },
+                {
+                  "fromColumn": "PersonId",
+                  "toColumn": "PersonId"
+                },
+                {
+                  "fromColumn": "ParticipationId",
+                  "toColumn": "ParticipationId"
+                },
+                {
+                  "fromColumn": "PositionId",
+                  "toColumn": "PositionId"
+                },
+                {
+                  "fromColumn": "ExternalID",
+                  "toColumn": "ExternalID"
+                }
+              ]
+            }
+          }
+        },
+        "VacantStaff": {
+          "schema": "inst_year",
+          "primaryKey": "VacantStaffID",
+          "foreignKey": "InstitutionID",
+          "columnMapping": [
+            {
+              "fromColumn": "VacantStaffID",
+              "toColumn": "VacantStaffID"
+            },
+            {
+              "fromColumn": "SchoolYear",
+              "toColumn": "SchoolYear"
+            },
+            {
+              "fromColumn": "StaffTypeID",
+              "toColumn": "StaffTypeID"
+            },
+            {
+              "fromColumn": "NKPDPositionID",
+              "toColumn": "NKPDPositionID"
+            },
+            {
+              "fromColumn": "PositionCount",
+              "toColumn": "PositionCount"
+            },
+            {
+              "fromColumn": "PositionSubjectGroupID",
+              "toColumn": "PositionSubjectGroupID"
+            },
+            {
+              "fromColumn": "ExternalID",
+              "toColumn": "ExternalID"
+            },
+            {
+              "fromColumn": "IsValid",
+              "toColumn": "IsValid"
+            }
+          ]
+        }
+      }
+    },
+    "Person": {
+      "schema": "core",
+      "primaryKey": "PersonID",
+      "foreignKey": "",
+      "columnMapping": [
+        {
+          "fromColumn": "PersonID",
+          "toColumn": "PersonID"
+        }
+      ],
+      "children": {
+        "PersonDetail": {
+          "schema": "inst_basic",
+          "primaryKey": "PersonDetailID",
+          "foreignKey": "PersonID",
+          "columnMapping": [
+            {
+              "fromColumn": "PersonDetailID",
+              "toColumn": "PersonDetailID"
+            },
+            {
+              "fromColumn": "Title",
+              "toColumn": "Title"
+            },
+            {
+              "fromColumn": "PhoneNumber",
+              "toColumn": "PhoneNumber"
+            },
+            {
+              "fromColumn": "IsExtendStudent",
+              "toColumn": "IsExtendStudent"
+            },
+            {
+              "fromColumn": "IsPensioneer",
+              "toColumn": "IsPensioneer"
+            },
+            {
+              "fromColumn": "Email",
+              "toColumn": "Email"
+            }
+          ]
+        },
+        "PersonOKS": {
+          "schema": "inst_basic",
+          "primaryKey": "PersonOKSID",
+          "foreignKey": "PersonID",
+          "columnMapping": [
+            {
+              "fromColumn": "PersonOKSID",
+              "toColumn": "PersonOKSID"
+            },
+            {
+              "fromColumn": "EducationGradeTypeID",
+              "toColumn": "EducationGradeTypeID"
+            },
+            {
+              "fromColumn": "SpecialityOrdTypeID",
+              "toColumn": "SpecialityOrdTypeID"
+            },
+            {
+              "fromColumn": "UniversityID",
+              "toColumn": "UniversityID"
+            },
+            {
+              "fromColumn": "UniversityNotes",
+              "toColumn": "UniversityNotes"
+            },
+            {
+              "fromColumn": "CertifcateNo",
+              "toColumn": "CertifcateNo"
+            },
+            {
+              "fromColumn": "YearOfGraduation",
+              "toColumn": "YearOfGraduation"
+            },
+            {
+              "fromColumn": "Speciality",
+              "toColumn": "Speciality"
+            },
+            {
+              "fromColumn": "AcquiredPK",
+              "toColumn": "AcquiredPK"
+            },
+            {
+              "fromColumn": "IsPKTeacher",
+              "toColumn": "IsPKTeacher"
+            }
+          ],
+          "children": {
+            "PersonOKSSubjectGroup": {
+              "schema": "inst_basic",
+              "primaryKey": "PersonOKSSubjectGroupID",
+              "foreignKey": "PersonOKSID",
+              "columnMapping": [
+                {
+                  "fromColumn": "PersonOKSSubjectGroupID",
+                  "toColumn": "PersonOKSSubjectGroupID"
+                },
+                {
+                  "fromColumn": "SubjectGroupID",
+                  "toColumn": "SubjectGroupID"
+                }
+              ]
+            }
+          }
+        },
+        "PersonPKS": {
+          "schema": "inst_basic",
+          "primaryKey": "PersonPKSID",
+          "foreignKey": "PersonID",
+          "columnMapping": [
+            {
+              "fromColumn": "PersonPKSID",
+              "toColumn": "PersonPKSID"
+            },
+            {
+              "fromColumn": "PKSTypeID",
+              "toColumn": "PKSTypeID"
+            },
+            {
+              "fromColumn": "UniversityID",
+              "toColumn": "UniversityID"
+            },
+            {
+              "fromColumn": "UniversityNotes",
+              "toColumn": "UniversityNotes"
+            },
+            {
+              "fromColumn": "CertifcateNo",
+              "toColumn": "CertifcateNo"
+            },
+            {
+              "fromColumn": "YearOfGraduation",
+              "toColumn": "YearOfGraduation"
+            },
+            {
+              "fromColumn": "Speciality",
+              "toColumn": "Speciality"
+            }
+          ]
+        },
+        "PersonQCourse": {
+          "schema": "inst_basic",
+          "primaryKey": "PersonQCourseID",
+          "foreignKey": "PersonID",
+          "columnMapping": [
+            {
+              "fromColumn": "PersonQCourseID",
+              "toColumn": "PersonQCourseID"
+            },
+            {
+              "fromColumn": "QCourseActTypeID",
+              "toColumn": "QCourseActTypeID"
+            },
+            {
+              "fromColumn": "QCourseYear",
+              "toColumn": "QCourseYear"
+            },
+            {
+              "fromColumn": "QCourseTypeID",
+              "toColumn": "QCourseTypeID"
+            },
+            {
+              "fromColumn": "QCourseTypeNotes",
+              "toColumn": "QCourseTypeNotes"
+            },
+            {
+              "fromColumn": "QCourseBudgetSourceTypeID",
+              "toColumn": "QCourseBudgetSourceTypeID"
+            },
+            {
+              "fromColumn": "InternalCoursePrice",
+              "toColumn": "InternalCoursePrice"
+            },
+            {
+              "fromColumn": "UniversityID",
+              "toColumn": "UniversityID"
+            },
+            {
+              "fromColumn": "UniversityNotes",
+              "toColumn": "UniversityNotes"
+            },
+            {
+              "fromColumn": "QCourseTopic",
+              "toColumn": "QCourseTopic"
+            },
+            {
+              "fromColumn": "QCourseDurationTypeID",
+              "toColumn": "QCourseDurationTypeID"
+            },
+            {
+              "fromColumn": "QCourseDurationCredits",
+              "toColumn": "QCourseDurationCredits"
+            },
+            {
+              "fromColumn": "QCourseDurationHours",
+              "toColumn": "QCourseDurationHours"
+            },
+            {
+              "fromColumn": "DocumentType",
+              "toColumn": "DocumentType"
+            }
+          ]
+        },
+        "PersonCompSkill": {
+          "schema": "inst_basic",
+          "primaryKey": "PersonCompSkillID",
+          "foreignKey": "PersonID",
+          "columnMapping": [
+            {
+              "fromColumn": "PersonCompSkillID",
+              "toColumn": "PersonCompSkillID"
+            },
+            {
+              "fromColumn": "CompSkillID",
+              "toColumn": "CompSkillID"
+            },
+            {
+              "fromColumn": "CompSkillLevelID",
+              "toColumn": "CompSkillLevelID"
+            },
+            {
+              "fromColumn": "Notes",
+              "toColumn": "Notes"
+            }
+          ]
+        },
+        "PersonFLSkill": {
+          "schema": "inst_basic",
+          "primaryKey": "PersonFLSkillID",
+          "foreignKey": "PersonID",
+          "columnMapping": [
+            {
+              "fromColumn": "PersonFLSkillID",
+              "toColumn": "PersonFLSkillID"
+            },
+            {
+              "fromColumn": "FLID",
+              "toColumn": "FLID"
+            },
+            {
+              "fromColumn": "FLLevelID",
+              "toColumn": "FLLevelID"
+            },
+            {
+              "fromColumn": "Notes",
+              "toColumn": "Notes"
+            }
+          ]
+        },
+        "ResourceSupportReport": {
+          "schema": "student",
+          "primaryKey": "Id",
+          "foreignKey": "PersonID",
+          "columnMapping": [
+            {
+              "fromColumn": "Id",
+              "toColumn": "Id"
+            },
+            {
+              "fromColumn": "SchoolYear",
+              "toColumn": "SchoolYear"
+            }
+          ],
+          "children": {
+            "ResourceSupport": {
+              "schema": "student",
+              "primaryKey": "Id",
+              "foreignKey": "ResourceSupportReportId",
+              "columnMapping": [
+                {
+                  "fromColumn": "Id",
+                  "toColumn": "Id"
+                }
+              ],
+              "children": {
+                "ResourceSupportSpecialist": {
+                  "schema": "student",
+                  "primaryKey": "Id",
+                  "foreignKey": "ResourceSupportId",
+                  "columnMapping": [
+                    {
+                      "fromColumn": "Id",
+                      "toColumn": "Id"
+                    },
+                    {
+                      "fromColumn": "Name",
+                      "toColumn": "Name"
+                    },
+                    {
+                      "fromColumn": "OrganizationType",
+                      "toColumn": "OrganizationType"
+                    },
+                    {
+                      "fromColumn": "OrganizationName",
+                      "toColumn": "OrganizationName"
+                    },
+                    {
+                      "fromColumn": "SpecialistType",
+                      "toColumn": "SpecialistType"
+                    },
+                    {
+                      "fromColumn": "ResourceSupportSpecialistTypeId",
+                      "toColumn": "ResourceSupportSpecialistTypeId"
+                    },
+                    {
+                      "fromColumn": "WorkPlaceID",
+                      "toColumn": "WorkPlaceID"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "SelfGovernment": {
+          "schema": "student",
+          "primaryKey": "Id",
+          "foreignKey": "PersonId",
+          "parentForeignKey": "InstitutionId",
+          "columnMapping": [
+            {
+              "fromColumn": "Id",
+              "toColumn": "Id"
+            },
+            {
+              "fromColumn": "SchoolYear",
+              "toColumn": "SchoolYear"
+            },
+            {
+              "fromColumn": "ParticipationId",
+              "toColumn": "ParticipationId"
+            },
+            {
+              "fromColumn": "PositionId",
+              "toColumn": "PositionId"
+            },
+            {
+              "fromColumn": "ParticipationAdditionalInformation",
+              "toColumn": "ParticipationAdditionalInformation"
+            },
+            {
+              "fromColumn": "AdditionalInformation",
+              "toColumn": "AdditionalInformation"
+            },
+            {
+              "fromColumn": "ExternalID",
+              "toColumn": "ExternalID"
+            }
+          ]
+        },
+        "SpecialNeedsYear": {
+          "schema": "student",
+          "primaryKey": "Id",
+          "foreignKey": "PersonId",
+          "columnMapping": [
+            {
+              "fromColumn": "ExternalID",
+              "toColumn": "ExternalID"
+            },
+            {
+              "fromColumn": "Id",
+              "toColumn": "Id"
+            },
+            {
+              "fromColumn": "SchoolYear",
+              "toColumn": "SchoolYear"
+            },
+            {
+              "fromColumn": "HasSuportiveEnvironment",
+              "toColumn": "HasSuportiveEnvironment"
+            },
+            {
+              "fromColumn": "SupportiveEnvironment",
+              "toColumn": "SupportiveEnvironment"
+            }
+          ],
+          "children": {
+            "SpecialNeeds": {
+              "schema": "student",
+              "primaryKey": "Id",
+              "foreignKey": "SpecialNeedsYearId",
+              "columnMapping": [
+                {
+                  "fromColumn": "ExternalID",
+                  "toColumn": "ExternalID"
+                },
+                {
+                  "fromColumn": "Id",
+                  "toColumn": "Id"
+                },
+                {
+                  "fromColumn": "SpecialNeedsTypeId",
+                  "toColumn": "SpecialNeedsTypeId"
+                },
+                {
+                  "fromColumn": "SpecialNeedsSubTypeId",
+                  "toColumn": "SpecialNeedsSubTypeId"
+                }
+              ]
+            }
+          }
+        },
+        "ScholarshipStudent": {
+          "schema": "student",
+          "primaryKey": "Id",
+          "foreignKey": "PersonId",
+          "parentForeignKey": "InstitutionId",
+          "columnMapping": [
+            {
+              "fromColumn": "Id",
+              "toColumn": "Id"
+            },
+            {
+              "fromColumn": "ScholarshipAmountId",
+              "toColumn": "ScholarshipAmountID"
+            },
+            {
+              "fromColumn": "Description",
+              "toColumn": "Description"
+            },
+            {
+              "fromColumn": "ScholarshipTypeId",
+              "toColumn": "ScholarshipTypeId"
+            },
+            {
+              "fromColumn": "AmountRate",
+              "toColumn": "AmountRate"
+            },
+            {
+              "fromColumn": "Periodicity",
+              "toColumn": "Periodicity"
+            },
+            {
+              "fromColumn": "OrderNumber",
+              "toColumn": "OrderNumber"
+            },
+            {
+              "fromColumn": "OrderDate",
+              "toColumn": "OrderDate"
+            },
+            {
+              "fromColumn": "SchoolYear",
+              "toColumn": "SchoolYear"
+            },
+            {
+              "fromColumn": "FinancingOrganId",
+              "toColumn": "FinancingOrganId"
+            },
+            {
+              "fromColumn": "CommissionDate",
+              "toColumn": "CommissionDate"
+            },
+            {
+              "fromColumn": "CommissionNumber",
+              "toColumn": "CommissionNumber"
+            },
+            {
+              "fromColumn": "ExternalID",
+              "toColumn": "ExternalID"
+            }
+          ]
+        },
+        "Student": {
+          "schema": "student",
+          "primaryKey": "PersonID",
+          "foreignKey": "",
+          "columnMapping": [
+            {
+              "fromColumn": "PersonID",
+              "toColumn": "PersonID"
+            },
+            {
+              "fromColumn": "ExternalID",
+              "toColumn": "ExternalID"
+            },
+            {
+              "fromColumn": "HomePhone",
+              "toColumn": "HomePhone"
+            },
+            {
+              "fromColumn": "WorkPhone",
+              "toColumn": "WorkPhone"
+            },
+            {
+              "fromColumn": "MobilePhone",
+              "toColumn": "MobilePhone"
+            },
+            {
+              "fromColumn": "Email",
+              "toColumn": "Email"
+            },
+            {
+              "fromColumn": "LivesWithFosterFamily",
+              "toColumn": "LivesWithFosterFamily"
+            },
+            {
+              "fromColumn": "HasParentConsent",
+              "toColumn": "HasParentConsent"
+            },
+            {
+              "fromColumn": "GPPhone",
+              "toColumn": "GPPhone"
+            },
+            {
+              "fromColumn": "GPName",
+              "toColumn": "GPName"
+            },
+            {
+              "fromColumn": "RepresentedByTheMajor",
+              "toColumn": "RepresentedByTheMajor"
+            },
+            {
+              "fromColumn": "NativeLanguageId",
+              "toColumn": "NativeLanguageId"
+            },
+            {
+              "fromColumn": "FamilyEducationWeight",
+              "toColumn": "FamilyEducationWeight"
+            },
+            {
+              "fromColumn": "FamilyWorkStatusWeight",
+              "toColumn": "FamilyWorkStatusWeight"
+            }
+          ]
+        },
+        "Relative": {
+          "schema": "family",
+          "primaryKey": "RelativeID",
+          "foreignKey": "PersonID",
+          "columnMapping": [
+            {
+              "fromColumn": "RelativeID",
+              "toColumn": "RelativeID"
+            },
+            {
+              "fromColumn": "ExternalID",
+              "toColumn": "ExternalID"
+            },
+            {
+              "fromColumn": "Notes",
+              "toColumn": "Notes"
+            },
+            {
+              "fromColumn": "WorkStatusID",
+              "toColumn": "WorkStatusID"
+            },
+            {
+              "fromColumn": "Description",
+              "toColumn": "Description"
+            },
+            {
+              "fromColumn": "Email",
+              "toColumn": "Email"
+            },
+            {
+              "fromColumn": "PhoneNumber",
+              "toColumn": "PhoneNumber"
+            },
+            {
+              "fromColumn": "EducationTypeId",
+              "toColumn": "EducationTypeId"
+            },
+            {
+              "fromColumn": "FirstName",
+              "toColumn": "FirstName"
+            },
+            {
+              "fromColumn": "MiddleName",
+              "toColumn": "MiddleName"
+            },
+            {
+              "fromColumn": "LastName",
+              "toColumn": "LastName"
+            },
+            {
+              "fromColumn": "PersonalID",
+              "toColumn": "PersonalID"
+            },
+            {
+              "fromColumn": "PersonalIDType",
+              "toColumn": "PersonalIDType"
+            },
+            {
+              "fromColumn": "RelativeTypeID",
+              "toColumn": "RelativeTypeID"
+            }
+          ]
+        }
+      }
+    },
+    "EducationalState": {
+      "schema": "core",
+      "primaryKey": "EducationalStateID",
+      "foreignKey": "",
+      "columnMapping": [
+        {
+          "fromColumn": "EducationalStateID",
+          "toColumn": "EducationalStateID"
+        },
+        {
+          "fromColumn": "InstitutionID",
+          "toColumn": "InstitutionID"
+        },
+        {
+          "fromColumn": "PersonID",
+          "toColumn": "PersonID"
+        },
+        {
+          "fromColumn": "PositionID",
+          "toColumn": "PositionID"
+        }
+      ]
+    }
+  },
+  "linkMapping": [
+    { "fromTable": "Curriculum", "fromColumn": "InstitutionDepartmentID", "toTable": "InstitutionDepartment" },
+    { "fromTable": "CurriculumClass", "fromColumn": "ClassID", "toTable": "ClassGroup" },
+    { "fromTable": "CurriculumTeacher", "fromColumn": "StaffPositionID", "toTable": "StaffPosition" },
+    { "fromTable": "CurriculumStudent", "fromColumn": "StudentID", "toTable": "StudentClass" }
+  ]
+}

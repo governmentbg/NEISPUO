@@ -1,0 +1,48 @@
+{
+  "label": "Групи/Класове",
+  "sections": [
+    {
+      "order": 1,
+	  "name": "TableClassDetailList",
+      "table": 
+	  {
+          "name": "classGroupList",
+		  "createNew": "redirect",
+		  "createParams":{"classKind":2},
+		  "formName": "classGroupData",
+		  "action": "preview",
+		  "paramName": "classid",
+		  "canDeleteRow": true,
+		  "procedureName": "inst_basic.classGroupCUD",		  
+		  "additionalParams":["basicClassID","classKind","parentclassid","classTypeID"],
+		  "searchType":"column",
+		  "fields": [
+			{
+				"label": "if(instType==1 || instType==4) {field.label='Група'} else {field.label='Група'}",	
+				"name": "className",
+				"type": "input",
+				"inputType": "text",
+				"width": 8,
+				"order": 1
+			},
+			{
+				"label": "if(instType==1 || instType==4) {field.label='Възрастов диапазон'} else {field.label='Възрастова група'}",	
+				"name": "basicClass",
+				"type": "input",
+				"inputType": "text",
+				"width": 8,
+				"order": 2
+			},
+			{
+				"label": "Адрес на обучение",
+				"name": "departmentName",
+				"type": "input",
+				"inputType": "text",
+				"width": 80,
+				"order": 3
+			}
+        ]
+      }
+    }
+  ]
+}

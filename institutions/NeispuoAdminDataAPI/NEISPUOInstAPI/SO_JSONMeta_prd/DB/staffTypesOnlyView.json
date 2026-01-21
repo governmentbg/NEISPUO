@@ -1,0 +1,27 @@
+{
+    "template": "SELECT DISTINCT /**select**/ FROM [inst_nom].[NKPDPositionInstitutionAll] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "StaffTypeID as code"
+        },
+        {
+            "column": "StaffTypeName as label"
+        }
+    ],
+    "params": [
+    {
+      "param": "@filterValue",
+      "column": "NKPDPositionID",
+      "operator": "=",
+      "value": "filterValue",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": false,
+      "static": false
+    }
+    ],
+    "order": [
+
+    ],
+    "inSelects": []
+}

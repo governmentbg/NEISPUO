@@ -1,0 +1,17 @@
+<div>
+  <h1 class="text-center text-primary mb-4">
+    {{ data.classBooks[0].firstName }}
+    {{ data.classBooks[0].middleName }}
+    {{ data.classBooks[0].lastName }}
+  </h1>
+</div>
+
+<sb-tabs [tabs]="tabs" ariaLabel="Дневници">
+  <ng-container card-buttons>
+    <button class="mb-3" mat-raised-button type="button" (click)="navigate()">
+      <fa-icon [icon]="fasArrowLeft" size="lg"></fa-icon>
+      <span class="hidden sm:inline">Назад</span>
+    </button>
+  </ng-container>
+  <router-outlet></router-outlet>
+</sb-tabs>

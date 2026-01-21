@@ -1,0 +1,2 @@
+ALTER TABLE [school_books].[ClassBook] ALTER COLUMN [BookName] NVARCHAR(300) NOT NULL
+GO

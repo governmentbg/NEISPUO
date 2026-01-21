@@ -1,0 +1,70 @@
+.btn-menu-profile {
+    background-color: #54379f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ffffffb8;
+    padding: 0;
+    line-height: normal;
+    margin-right: 25px;
+    color: white;
+}
+
+.container-profile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 280px;
+    .like-btn-item {
+        color: white;
+        background-color: #54379f;
+        font-size: 16px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        line-height: normal;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 20px;
+        margin-right: 12px;
+        min-width: 40px;
+    }
+    .name-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        .name-span {
+            color: black;
+            font-size: 20px;
+            line-height: normal;
+        }
+        .mail-span {
+            color: #484848;
+            line-height: normal;
+        }
+    }
+}
+
+.btn-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    .sign-out-btn {
+        &:focus {
+            outline: none;
+        }
+        &:hover {
+            cursor: pointer;
+        }
+        margin-top: 10px;
+        background-color: transparent;
+        border: none;
+        width: auto;
+        font-size: 14px;
+        color: #383838;
+        outline: none;
+    }
+}

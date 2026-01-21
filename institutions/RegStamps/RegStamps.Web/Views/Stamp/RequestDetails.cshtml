@@ -1,0 +1,214 @@
+﻿@model RegStamps.Models.Stamp.RequestDetails.Response.RequestDetailsResponseModel
+@using RegStamps.Infrastructure.Extensions
+@using RegStamps.Models.Constants
+@{
+    ViewBag.Title = "Подробни данни за заявка";
+    string noData = "Не е въведена информация";
+}
+
+@if (Model.SchoolData != null)
+{
+    <div class="jumbotron">
+        <h3 class="text-right">@Model.SchoolData.SchoolName</h3>
+        <h4 class="text-right">обл. @Model.SchoolData.OblastName, общ. @Model.SchoolData.MunicipalityName, град/село @Model.SchoolData.City</h4>
+        @*<h4 class="text-right">Адрес: @Model.SchoolData.Address, телефон: @Model.SchoolData.Tel, факс: @Model.SchoolData.Fax, email: @Model.SchoolData.Email</h4>*@
+    </div>
+}
+
+<div class="row page-header">
+
+    @if (Model.StampData.StampStatusId == 0)
+    {
+        if (Model.StampData.StampTypeId == 1 || Model.StampData.StampTypeId == 2)
+        {
+            <h4>Заявка за регистриране на @Model.StampData.StampTypeName с уникален номер @Model.StampData.StampId</h4>
+        }
+        else
+        {
+            <h4>Заявка за регистриране на печат с уникален номер @Model.StampData.StampId</h4>
+        }
+    }
+    else if (Model.StampData.StampStatusId == 1)
+    {
+        <h4>Заявка номер @Model.RequestStampData.RequestId за @Model.RequestStampData.RequestTypeName на @Model.StampData.StampTypeName с уникален номер @Model.StampData.StampId</h4>
+    }
+    else if (Model.StampData.StampStatusId == 2)
+    {
+        <h4>Заявка номер @Model.RequestStampData.RequestId за @Model.RequestStampData.RequestTypeName на @Model.StampData.StampTypeName с уникален номер @Model.StampData.StampId</h4>
+
+    }
+    else if (Model.StampData.StampStatusId == 3)
+    {
+        <h4>@Model.RequestStampData.RequestTypeName номер @Model.RequestStampData.RequestId на @Model.StampData.StampTypeName с уникален номер @Model.StampData.StampId</h4>
+
+    }
+    else if (Model.StampData.StampStatusId == 4)
+    {
+        <h4>@Model.RequestStampData.RequestTypeName номер @Model.RequestStampData.RequestId на @Model.StampData.StampTypeName с уникален номер @Model.StampData.StampId</h4>
+    }
+
+</div>
+
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">Данни за печата</h4>
+        </div>
+        <div class="panel-body">
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                    <p>@Html.LabelFor(model => model.StampData.FirstUseDate)</p>
+                    @Model.StampData.FirstUseDate
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                    <p>@Html.LabelFor(model => model.StampData.FirstUsePerson)</p>
+                    @Model.StampData.FirstUsePerson
+                </div>
+                @if (Model.StampData.StampTypeId == 1)
+                {
+                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                        <p>@Html.LabelFor(model => model.StampData.LetterNumberAndDate)</p>@Model.StampData.LetterNumberAndDate
+                    </div>
+                }
+            </div>
+            <hr />
+            <div class="row">
+                @if (Model.StampData.Image == null)
+                {
+                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                        <p>@Html.LabelFor(model => model.StampData.Image)</p>Няма прикачен образец на печата
+                    </div>
+                }
+                else
+                {
+                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                        <p>@Html.LabelFor(model => model.StampData.Image)</p>
+                        <a target="_blank" href="@Url.Action(ActionNameType.ShowStampFile, ControllerNameType.DocumentFiles , new { param=@Model.StampData.StampIdByte})">
+                            <img class="icon-middle-custom" src="~/img/folder-stamp.png" />
+                            @string.Format($"{@Model.StampData.ImageName}")
+                        </a>
+                    </div>
+                }
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">Данни за пазителя</h4>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                    <p>
+                        <label>
+                            Имена на пазителя
+                        </label>
+                    </p>
+                    @{
+                        string fullName = $"{Model.KeeperData.FirstName} {Model.KeeperData.SecondName} {Model.KeeperData.FamilyName}";
+                    }
+                    @(string.IsNullOrWhiteSpace(fullName) ? noData : fullName)
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                    <p><b>Вид идентификатор</b></p>
+                    @Model.KeeperData.IdType.ToIdTypeFriendlyName(): @(Model.KeeperData.IdNumber ?? noData)
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                    <p><b>Длъжност на лицето</b></p>
+                    @(Model.KeeperData.OccupationName ?? noData)
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                    <p>@Html.LabelFor(model => model.RequestStampData.OrderNumberAndDate)</p>
+                    @{
+                        string orderNumber = Model.RequestStampData.OrderNumber ?? noData;
+                        string orderDate = Model.RequestStampData.OrderDate.HasValue ? Model.RequestStampData.OrderDate.Value.ToShortDateString() : noData;
+
+                        string orderNumberAndDate = $"{orderNumber}/{orderDate}";
+                    }
+                    @orderNumberAndDate
+                </div>
+                @if (Model.StampData.StampStatusId == 3 || Model.StampData.StampStatusId == 4)
+                {
+                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                        <p>@Html.LabelFor(model => model.RequestStampData.EndDate)</p>
+                        @(Model.RequestStampData.EndDate.HasValue ? Model.RequestStampData.EndDate.Value.ToShortDateString() : noData)
+                    </div>
+                }
+                else
+                {
+                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                        <p>@Html.LabelFor(model => model.RequestStampData.StartDate)</p>
+                        @(Model.RequestStampData.StartDate.HasValue ? Model.RequestStampData.StartDate.Value.ToShortDateString() : noData)
+                    </div>
+                }
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                    <p>@Html.LabelFor(model => model.RequestStampData.KeepPlaceName)</p>
+                    @(Model.RequestStampData.KeepPlaceName ?? noData)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            @if (Model.RequestStampData.RequestTypeId == 0)
+            {
+                <h4 class="panel-title">Приложени документи за удостоверяване на пазителя</h4>
+            }
+            else if (Model.RequestStampData.RequestTypeId == 1)
+            {
+                <h4 class="panel-title">Приложени документи за удостоверяване промените</h4>
+            }
+            else if (Model.RequestStampData.RequestTypeId == 2)
+            {
+                <h4 class="panel-title">Приложени документи за унищожаване на печата</h4>
+            }
+            else if (Model.RequestStampData.RequestTypeId == 3)
+            {
+                <h4 class="panel-title">Приложени документи за загубата/кражбата на печата</h4>
+            }
+        </div>
+        @if (!Model.RequestFileDataList.Any())
+        {
+            <div class="panel-heading text-center">
+                <h4 class="text-center">Няма приложени документи.</h4>
+            </div>
+        }
+        else
+        {
+            <div class="panel-body">
+                <div class="row">
+                    @foreach (var item in Model.RequestFileDataList)
+                    {
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+                            <p>Вид: @Html.DisplayFor(model => item.FileType)</p>
+                            <p>Име: @Html.DisplayFor(model => item.FileName)</p>
+                            <a target="_blank" href="@Url.Action(ActionNameType.ShowRequestFile, ControllerNameType.DocumentFiles , new { paramFile=@item.FileIdByte, paramStamp=@Model.StampData.StampIdByte})">
+                                <img class="icon-middle-custom" src="~/img/folder.png" />
+                            </a>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        }
+
+    </div>
+
+</div>
+
+<div class="row">
+    <br>
+    @Html.ActionLink("Назад", "RequestsForStamp", new { param = Model.StampData.StampIdByte }, new { @class = "btn btn-sm btn-default" })
+</div>

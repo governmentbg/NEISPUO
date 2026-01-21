@@ -1,0 +1,201 @@
+@import "@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/variables/variables.scss";
+
+.card-title {
+  padding: 1.25rem;
+}
+.login-page {
+  height: calc(100vh - 130px);
+  margin-top: 130px;
+  background-image: linear-gradient(rgba(23, 42, 83, 0.325), rgba(23, 42, 83, 0.325)),
+    url("~src/assets/images/home.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  &-wrapper {
+    height: inherit;
+    align-items: center;
+    overflow-y: auto;
+    .page-title {
+      color: $white;
+      p {
+        font-size: 1.125rem;
+        font-weight: bold;
+        margin-top: 3.125rem;
+      }
+      h1 {
+        font-size: 3.125rem;
+      }
+    }
+    .mon-logo > img {
+      max-height: 4.875rem;
+    }
+    .card {
+      width: 100%;
+      margin: 0 auto;
+      &-body {
+        padding: 3rem 2.5rem;
+        .children-code-container::before {
+          content: "";
+          width: 100%;
+          border-bottom: 1px solid #657285;
+          display: flex;
+          margin: 1rem auto 1rem auto;
+        }
+        .childern-codes-input {
+          margin: auto;
+        }
+        .form-buttons {
+          margin-top: 0.625rem;
+          width: 100%;
+        }
+        .plus-icon::before {
+          content: "\F64D";
+          font-family: "bootstrap-icons";
+        }
+        input {
+          margin: 0.25rem 0;
+        }
+        .submit-form.ng-invalid {
+          border: 2px solid $red-300;
+        }
+        .btn-remove-container {
+          margin: auto;
+        }
+      }
+      &-title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .mon-logo {
+          margin-right: 2.5rem;
+        }
+        h2 {
+          font-size: 2.5rem;
+          font-weight: normal;
+        }
+      }
+      &-text {
+        font-size: 2rem;
+        line-height: 1.25;
+        text-align: center;
+        margin-top: 2.75rem;
+      }
+      &-footer {
+        background-color: transparent;
+        border-top-color: transparent;
+        text-align: center;
+        padding: 1.25rem 2.25rem;
+        button {
+          font-size: 1.25rem;
+          display: inline-flex;
+          align-items: center;
+          margin-top: 1rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1199.98px) {
+  .login-page {
+    &-wrapper {
+      .page-title {
+        h1 {
+          font-size: 2.5rem;
+        }
+      }
+      .mon-logo > img {
+        max-height: 3.25rem;
+      }
+      .card {
+        &-title {
+          h2 {
+            font-size: 2rem;
+          }
+        }
+        &-text {
+          font-size: 1.625rem;
+          margin-top: 2.5rem;
+        }
+        &-footer {
+          padding: 1.25rem;
+          button {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767.98px) {
+  .login-page {
+    height: calc(100vh - 100px);
+    margin-top: 100px;
+    &-wrapper {
+      .mon-logo > img {
+        max-height: 3.25rem;
+      }
+      .card {
+        &-footer {
+          padding: 1.25rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 575.98px) {
+  .login-page {
+    &-wrapper {
+      .card {
+        &-body {
+          padding: 3rem 0.5rem 3rem;
+        }
+        &-title {
+          .mon-logo {
+            margin-right: 1.5rem;
+          }
+        }
+        &-text {
+          font-size: 1.5rem;
+          margin-top: 2rem;
+        }
+        &-footer {
+          button {
+            margin-top: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 300px) {
+  .login-page {
+    &-wrapper {
+      .card {
+        &-body {
+          padding: 3rem 0.5rem 3rem;
+        }
+        &-title {
+          .mon-logo {
+            margin-right: 1rem;
+            > img {
+              max-height: 2.5rem;
+            }
+          }
+        }
+        &-text {
+          font-size: 1.125rem;
+          margin-top: 1.75rem;
+        }
+        &-footer {
+          button {
+            margin-top: 0.25rem;
+            font-size: 0.75rem;
+          }
+        }
+      }
+    }
+  }
+}

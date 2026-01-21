@@ -1,0 +1,107 @@
+{
+  "paramName":"classid",
+  "changeData":false,
+  "sections":[
+    {
+      "label": "Наименование на група",
+      "order": 1,
+      "subsections": [
+          {
+            "order": 1,
+            "label": "className",
+            "type": "input",
+            "name": "className",
+            "bold": true,
+            "width": 200,
+            "disabled": true,
+            "flexible": false
+          }
+      ]
+    },
+    {
+      "name":"classGroups",
+      "order":1,
+      "subsections":[
+        {
+          "order":1,
+          "name":"classBasicData",
+          "fields":[
+            {
+              "label":"Вид група",
+              "name":"classKind",
+              "type":"select",
+              "disabled":true,
+              "rendered":false,
+              "optionsPath":"/data/get/classKinds",
+              "order":1,
+              "influence":[
+
+              ]
+            }
+            ]
+        }
+      ]
+    },
+    {
+      "label":"Списък обучаеми",
+      "order":2,
+      "name":"TableClassStudentGroupList",
+      "table":{
+        "name":"classStudentList",
+        "hasEditButton": false,
+        "procedureName": "inst_basic.studentClassCUD",         
+        "searchable": true,
+        "searchType": "column",
+        "createNew":"if(classTypeID == 36 || classTypeID == 37 || classTypeID == 39 || classTypeID == 40 || classTypeID == 49) {table.createNew = 'samePage'} else {table.createNew = null}",
+        "paramName":"studentid",
+        "additionalParams": ["personid"],
+        "formName":"studentOther",
+        "fields":[
+          {
+            "name": "classTypeID",
+            "type": "input",
+            "inputType": "number",
+            "order": 0,
+            "width": 10,
+            "rendered": false,
+            "disabled": false,
+            "influence": [],
+            "validations": []
+          },
+          {
+            "label":"Номер в класа",
+            "name":"classNumber",
+            "type":"input",
+            "inputType":"number",
+            "rendered":"if(instType==2) {field.rendered=false} else {field.rendered=true}",
+            "width":10,
+            "order":1
+          },
+          {
+            "label":"Име",
+            "name":"fullName",
+            "type":"input",
+            "inputType":"text",
+            "width":20,
+            "order":2
+          },
+          {
+            "label":"Дата на раждане",
+            "name":"birthDate",
+             "type":"input",
+            "inputType":"text",
+            "width":10,
+            "order":3
+          },
+          {
+            "label": "Дата на записване",
+            "name": "enrollmentDate",
+            "type": "date",
+            "width": 10,
+            "order": 4
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+@using SB.Domain
+@using System.Linq
+@model SchedulesBaseModel
+
+@{
+    var groupedSchedules = Model.Schedules.GroupBy(s => new { s.StudentPersonId, StudentName = (string?)s.StudentName });
+    foreach (var schedules in groupedSchedules)
+  {
+    @if(schedules.Key.StudentPersonId == null)
+    {
+      <h3 class="page-header">Седмично разписание на учебните часове</h3>
+    }
+    else
+    {
+      <h3 class="page-header">Седмично разписание на учебните часове на @schedules.Key.StudentName</h3>
+    }
+
+    @for(int scheduleNumber = 0; scheduleNumber < schedules.Count(); scheduleNumber++)
+    {
+      var schedule = schedules.ToArray()[scheduleNumber];
+
+      // group the lessons first by hourNumber, then by day
+      var hourGroups = schedule.Lessons
+        .GroupBy(l => l.HourNumber)
+        .Select(hg =>
+          new
+          {
+            HourNumber = hg.Key,
+            hourGroupsByDay = hg
+              .DistinctBy(l => new { l.Day, l.SubjectName, l.SubjectTypeName })
+              .ToLookup(l => l.Day, h => new { h.SubjectName, h.SubjectTypeName })
+          })
+        .OrderBy(hg => hg.HourNumber)
+        .ToDictionary(hg => hg.HourNumber, hg => hg.hourGroupsByDay);
+
+      // there is a possible 0th hour, so we cant just assume that the hours start at 1
+      var minHour = Math.Min(1, hourGroups.Keys.DefaultIfEmpty(1).Min());
+      var maxHour = hourGroups.Keys.DefaultIfEmpty().Max();
+
+      <h4 style="margin-bottom: 0;">@($"В сила от {schedule.StartDate:dd.MM} до {schedule.EndDate:dd.MM}")</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Час</th>
+            <th>Понеделник</th>
+            <th>Вторник</th>
+            <th>Сряда</th>
+            <th>Четвъртък</th>
+            <th>Петък</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (int hourNumber = minHour; hourNumber <= maxHour; hourNumber++)
+          {
+            var hourGroup = hourGroups.GetValueOrDefault(hourNumber);
+
+            var days = new[] { 1, 2, 3, 4, 5, };
+
+            // find the max number of groups for this hour
+            var maxGroupCount = 1;
+            foreach (var day in days)
+            {
+              if (hourGroup != null)
+              {
+                maxGroupCount = Math.Max(maxGroupCount, hourGroup[day].Count());
+              }
+            }
+
+            for (int i = 0; i < maxGroupCount; i++)
+            {
+              <tr>
+                @if (i == 0)
+                {
+                  <td rowspan="@maxGroupCount">@hourNumber</td>
+                }
+                @foreach (var day in days)
+                {
+                  var dayHourGroup =
+                    hourGroup != null
+                      ? hourGroup[day].ToArray()
+                      : new[] { new { SubjectName = "", SubjectTypeName = "" } }.Where(l => false).ToArray(); //empty array
+                  if (i >= dayHourGroup.Length)
+                  {
+                    <td></td>
+                    continue;
+                  }
+
+                  <td>@dayHourGroup[i].SubjectName / @dayHourGroup[i].SubjectTypeName</td>
+                }
+              </tr>
+            }
+          }
+        </tbody>
+      </table>
+
+      // append a page break after every two schedules,
+      // except the last 2 (as we are wrapped in page, which will break-after as well)
+      if (scheduleNumber % 2 == 1 &&
+          scheduleNumber < schedules.Count() - 1)
+      {
+        <div class="page-break"></div>
+      }
+    }
+  }
+}
+
+

@@ -1,0 +1,31 @@
+.l-container-component {
+    min-height: 75px;
+    .fake-container-mat-form-field {
+        height: 67px;
+        display: flex;
+        padding-top: 6px;
+        .value-label {
+            font: inherit;
+            font-size: inherit;
+            font-weight: 400;
+            line-height: 1.125;
+            font-family: Lato, sans-serif;
+            letter-spacing: normal;
+            padding: 16px 0 11px 0 !important;
+            border: 0;
+            padding-left: 7px !important;
+            padding-right: 7px !important;
+        }
+    }
+}
+
+.l-container-component.preview-mode {
+    min-height: 0;
+    .fake-container-mat-form-field {
+        height: auto;
+        padding-top: 0;
+        .value-label {
+            padding: 16px 0 7px 0 !important
+        }
+    }
+}

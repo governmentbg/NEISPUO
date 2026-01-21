@@ -1,0 +1,80 @@
+[
+  {
+    "label": "Институция",
+    "path": "institution",
+    "children": [
+      {
+        "label": "Институция",
+        "path": "school"
+      },
+      {
+        "label": "Други адреси на институцията",
+        "path": "institutionDepartmentList"
+      },
+      {
+        "label": "Обществен съвет",
+        "path": "publicCouncils"
+      },
+      {
+        "label": "Проекти",
+        "path": "institutionProjects"
+      },
+      {
+        "label": "Транспорт",
+        "path": "institutionVehicles"
+      }
+    ]
+  },
+  {
+    "label": "Групи/Класове",
+    "path": "classes",
+    "children": [
+      {
+        "label": "Учебни",
+        "path": "classGroups",
+        "children": [
+          {
+            "label": "Данни за група/клас",
+            "path": "classGroupData"
+          },
+          {
+            "label": "Списък ученици",
+            "path": "classStudentList"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "label": "Персонал",
+    "path": "staff",
+    "children": [
+      {
+        "label": "Персонал",
+        "path": "staffList",
+        "children": [
+          {
+            "label": "Основни данни за лицето",
+            "path": "person"
+          },
+          {
+            "label": "Длъжности",
+            "path": "staffPositions"
+          },
+          {
+            "label": "Образователна степен, ПКС",
+            "path": "personOKSPKSList"
+          },
+          {
+            "label": "Квалификационна дейност",
+            "path": "personQCourses"
+          },
+          {
+            "label": "Ключови компетентности",
+            "path": "personCLSkillsList"
+          }
+        ]
+      }
+    ]
+  }
+]

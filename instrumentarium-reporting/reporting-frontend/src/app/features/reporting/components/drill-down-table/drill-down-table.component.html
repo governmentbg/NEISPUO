@@ -1,0 +1,79 @@
+<p-table
+  #ddTable
+  id="ddTable"
+  [lazy]="true"
+  [loading]="drillDownService.isLoading"
+  [scrollable]="true"
+  [rows]="drillDownService.drillDownRows"
+  (onLazyLoad)="drillDownService.loadDrillDownData($event, dataIndex, rowIndex)"
+  [value]="drillDownService.drillDownData"
+  responsiveLayout="scroll"
+  [reorderableColumns]="true"
+  [resizableColumns]="true"
+  [(first)]="drillDownService.drillDownFirst"
+  [columns]="drillDownService.drillDownColumns"
+  [scrollHeight]="'calc(90vh - 161px)'"
+  styleClass="p-datatable-sm"
+>
+  <ng-template pTemplate="header">
+    <tr>
+      <th
+        [pSortableColumn]="!isRequiredDrillDownQueryFilter(col.name) ? col.name : ''"
+        *ngFor="let col of drillDownService.drillDownColumns"
+        pReorderableColumn
+      >
+        {{ col.shortTitle }}
+        <p-sortIcon *ngIf="!isRequiredDrillDownQueryFilter(col.name)" [field]="col.name"></p-sortIcon>
+        <p-columnFilter
+          [type]="getColumnFilterType(col.type)"
+          [field]="col.name"
+          [matchMode]="primengConfig.getDefaultMatchMode(getColumnFilterType(col.type))"
+          *ngIf="col.type !== 'time' && !isRequiredDrillDownQueryFilter(col.name)"
+          display="menu"
+          [maxConstraints]="10"
+          [showOperator]="false"
+        >
+        </p-columnFilter>
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowData let-i="rowIndex">
+    <tr>
+      <td
+        *ngFor="let col of drillDownService.drillDownColumns"
+        [ngClass]="{ measure: reportService.columnIsMeasure(col.name) }"
+      >
+        <ng-container *ngIf="drillDownService.isLoading; else drillDownData">
+          <p-skeleton [ngStyle]="{ width: '100%' }"></p-skeleton>
+        </ng-container>
+        <ng-template #drillDownData>
+          <span [pTooltip]="rowData[col.name]" *ngIf="getColumnFilterType(col.type) !== 'date'; else dateCol">{{
+            rowData[col.name]
+          }}</span>
+          <ng-template #dateCol>
+            <span> {{ rowData[col.name] | date: 'MM/dd/yyyy' }}</span>
+          </ng-template>
+        </ng-template>
+      </td>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="summary">
+    <div class="d-flex align-items-end">
+      <div
+        *ngIf="drillDownService.drillDownRows == drillDownService.lastFetchedDrillDownRowsCount"
+        (click)="drillDownService.loadNext(dataIndex, rowIndex)"
+        class="load-next"
+      >
+        Зареди още {{ drillDownService.drillDownRows }} записа
+      </div>
+      <div
+        *ngIf="
+          !drillDownService.isLoading && drillDownService.drillDownRows > drillDownService.lastFetchedDrillDownRowsCount
+        "
+      >
+        Няма повече записи
+      </div>
+    </div>
+  </ng-template>
+</p-table>

@@ -1,0 +1,61 @@
+{
+   "template": "SELECT /**select**/ FROM [neispuo].[reginst_basic].[RIOpenProc] RIOP /**where**/ /**orderby**/",
+  "columns": [
+		{
+          "column": "InstitutionID AS codeNEISPUO"
+        }
+  ],
+  "params": [
+
+  ],
+  "order": [
+
+  ],
+  "inSelects": [
+  {
+	  "arrayName": "openProcedures",
+      "template": "SELECT /**select**/ FROM [neispuo].[reginst_basic].[RIOpenProc] RIOP /**where**/ /**orderby**/",
+      "columns": [
+		{
+          "column": "RIOP.RIprocedureID AS id"
+        },
+		{
+          "column": "RIOP.InstitutionID AS codeNEISPUO"
+        },
+		{
+          "column": "RIOP.Name AS name"
+        },
+		{
+          "column": "RIOP.ProcedureTypeID AS procedureTypeID"
+        },
+		{
+          "column": "RIOP.ProcedureDate AS procedureDate"
+        },
+		{
+          "column": "RIOP.BaseSchoolTypeID AS baseSchoolTypeID"
+        },
+		{
+          "column": "RIOP.DetailedSchoolTypeID AS detailedSchoolTypeID"
+        },
+		{
+          "column": "RIOP.StatusTypeID AS statusTypeID"
+        },
+		{
+          "column": "RIOP.InstType AS formName"
+        },
+		{
+          "column": "RIOP.RIprocedureID AS formDataId"
+        }
+      ],
+      "params": [
+
+      ],
+      "order": [
+        {
+          "column": "RIOP.RIprocedureID",
+          "type": "ASC"
+        }
+      ]
+    }
+  ]
+}

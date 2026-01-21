@@ -1,0 +1,34 @@
+{
+  "sections": [
+    {
+      "order": 1,
+      "label": "Персонал по длъжности",
+	  "name": "TableReportStaffPositionbyOccupation",
+      "table": {
+	    "order": 1,
+        "name": "reportStaffPositionbyOccupation",
+		"hasEditButton": false,
+		"sortable": false,
+		"searchable": false,
+        "fields": [
+          {
+            "label": "Длъжност",
+            "name": "NKPDPosition",
+            "type": "input",
+            "inputType": "text",
+            "order": 1
+          },
+          {
+            "label": "Брой",
+            "name": "cntStaff",
+            "type": "input",
+            "inputType": "number",
+            "order": 2
+          }
+        ]
+      }
+    }
+  ]
+}
+
+

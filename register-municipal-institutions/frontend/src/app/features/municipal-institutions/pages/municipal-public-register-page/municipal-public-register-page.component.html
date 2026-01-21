@@ -1,0 +1,84 @@
+<div class="public-register-page">
+    <div class="public-register-page-wrapper grid">
+        <div class="mon-logo col-12 col-md-6">
+            <a [routerLink]="['/login']"><img src="/assets/images/mon.png" alt=""></a>
+        </div>
+        <div class="col-12 col-md-6">
+            <button type="button" class="btn btn-light go-to-login-button" *ngIf="authQuery.isLoggedIn$ | async" [routerLink]="['/']">Обратно към НЕИСПУО</button>          
+            <button type="button" class="btn btn-light go-to-login-button" *ngIf="!(authQuery.isLoggedIn$ | async)" [routerLink]="['/login']">Вход към НЕИСПУО</button>          
+        </div>
+        <h1> Публичен списък на общински партиди </h1>
+        <div class="table-container">
+            <p-table
+                #miTable
+                [columns]="cols"
+                [value]="institutions$ | async"
+                [paginator]="true"
+                [rows]="10"
+                [lazy]="true"
+                (onLazyLoad)="navigate($event)"
+                [lazyLoadOnInit]="false"
+                [loading]="isLoading$ | async"
+                [totalRecords]="total$ | async"
+                dataKey="RIInstitutionID"
+                [responsive]="true"
+                >
+                <ng-template pTemplate="header" let-columns>
+                    <tr>
+                        <th *ngFor="let col of columns">{{col.header}}</th>
+                        <th style="width: 5rem"></th>
+                    </tr>
+                    <tr>
+                        <th *ngFor="let col of columns">
+                            <p-columnFilter #colFilter type="text" [field]="col.field" [matchModeOptions]="matchModeOptions"></p-columnFilter>
+                        </th>
+                        <th style="width: 5rem"></th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-mi let-columns="columns" let-expanded="expanded">
+                    <tr>
+                        <td *ngFor="let col of columns">{{getDisplayValue(mi,col.field)}}</td>
+                        <td>
+                            <button type="button" pButton pRipple [pRowToggler]="mi" class="p-button-text p-button-rounded p-button-plain" [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+
+                <ng-template pTemplate="rowexpansion" let-mi>
+                    <div class = "expanded-info-div">
+                        <p-table
+                        [columns]="expandedCols"
+                        [value]="[{}]"
+                        styleClass="p-datatable-gridlines">
+                            <ng-template pTemplate="header" let-columns>
+                                <tr>
+                                    <th *ngFor="let col of columns">{{col.header}}</th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-columns="columns">
+                                <tr>
+                                    <td *ngFor="let col of columns">{{getDisplayValue(mi,col.field)}}</td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                        <p-table
+                        [columns]="flexFieldsCols"
+                        [value]="[{}]"
+                        styleClass="p-datatable-gridlines">
+                            <ng-template pTemplate="header" let-columns>
+                                <tr>
+                                    <th *ngFor="let col of columns">{{col.header}}</th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body">
+                                <tr *ngFor="let value of getDisplayFlexFields(mi,'RIFlexFieldValues.RIFlexField')">
+                                 <td>{{value}}</td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</div>

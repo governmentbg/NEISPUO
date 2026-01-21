@@ -1,0 +1,39 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@core/*": ["src/app/core/*"],
+      "@authentication/*": ["src/app/core/authentication/*"],
+      "@shared/*": ["src/app/shared/*"],
+      "@portal/*": ["src/app/shared/modules/portal/*"],
+      "@municipal-institutions/*": ["src/app/features/municipal-institutions/*"],
+      "@flex-fields/*": ["src/app/features/flex-fields/*"],
+      "@procedures/*": ["src/app/features/procedures/*"],
+      "@merge-procedure/*": ["src/app/features/merge-procedure/*"],
+      "@join-procedure/*": ["src/app/features/join-procedure/*"],
+      "@divide-procedure/*": ["src/app/features/divide-procedure/*"],
+      "@detach-procedure/*": ["src/app/features/detach-procedure/*"],
+      "@assets/*": ["src/assets/*"]
+    },
+    "skipLibCheck": true,
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "module": "es2020",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es5",
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2018", "dom"]
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true
+  }
+}

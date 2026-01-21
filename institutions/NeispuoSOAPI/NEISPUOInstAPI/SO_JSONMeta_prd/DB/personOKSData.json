@@ -1,0 +1,89 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_basic].[PersonOKS] POKS /**where**/ /**orderby**/",
+  "sotemplate": "SELECT /**select**/ FROM [sob].[PersonOKS] POKS /**where**/ /**orderby**/",
+  "columns": [
+		{
+          "column": "POKS.PersonOKSID AS personOKSid"
+        },
+		{
+          "column": "POKS.PersonID AS personid"
+        },
+		{
+          "column": "POKS.EducationGradeTypeID AS educationGradeTypeID"
+        },
+		{
+          "column": "POKS.SpecialityOrdTypeID AS specialityOrdTypeID"
+        },
+		{
+          "column": "POKS.CertifcateNo AS certifcateNo"
+        },
+		{
+          "column": "POKS.YearOfGraduation AS yearOfGraduation"
+        },
+		{
+          "column": "POKS.IsPKTeacher AS isPKTeacher"
+        },
+		{
+          "column": "POKS.Speciality AS speciality"
+        },
+		{
+          "column": "POKS.AcquiredPK AS acquiredPK"
+        },
+		{
+          "column": "POKS.UniversityID AS universityID"
+        },
+		{
+          "column": "POKS.UniversityNotes AS universityNotes"
+        }	
+  ],
+  "params": [
+	{
+          "param": "@personOKSID",
+          "column": "POKS.PersonOKSID",
+          "operator": "=",
+          "value": "personOKSID",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "POKS.PersonOKSID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+ {
+      "arrayName": "personOKSSubjectGroupData",
+      "template": "SELECT /**select**/ FROM [inst_basic].[PersonOKSSubjectGroup] PG /**where**/ /**orderby**/",
+	  "sotemplate": "SELECT /**select**/ FROM [sob].[PersonOKSSubjectGroup] PG /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "PG.PersonOKSSubjectGroupID AS id"
+        },
+		{
+          "column": "PG.SubjectGroupID AS personOKSSubjectGroup"
+        }
+
+      ],
+      "params": [
+	{
+          "param": "@personOKSID",
+          "column": "PG.PersonOKSID",
+          "operator": "=",
+          "value": "personOKSID",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+    }
+      ],
+      "order": [
+        {
+          "column": "PG.PersonOKSSubjectGroupID",
+          "type": "ASC"
+        }
+      ]
+    }
+  ]
+}

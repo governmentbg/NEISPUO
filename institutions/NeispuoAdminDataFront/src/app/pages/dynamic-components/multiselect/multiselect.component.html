@@ -1,0 +1,21 @@
+<div class="l-container-component custom-ng-select-l" *ngIf="mode===modes.Edit" [style.width.px]="field.width">
+    <span class="l-custom-span-label" *ngIf="showLabel">
+        <span class="required-span" *ngIf="required">*</span>
+    <span class="label-label">{{field.label}}</span>
+    <app-info-tooltip *ngIf="field.info" [info]="field.info"></app-info-tooltip>
+    </span>
+    <div class="l-select" [formGroup]="group" appearance="outline" matTooltipClass="l-custom-tooltip" [matTooltip]="selectedItems(s.selectedItems)">
+        <ng-select #s [appendTo]="appendClass" [items]="field.options" virtualScroll="true" bindLabel="label" bindValue="code" notFoundText="Няма намерени резултати" [clearable]="false" [formControlName]="field.name" [searchable]="false" [multiple]="true" [closeOnSelect]="false" (change)="onSelectionChange($event)">
+            <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                <input id="item-{{index}}" type="checkbox" [checked]="item$.selected"/> {{item.label}}
+            </ng-template>
+        </ng-select>
+        <ng-container *ngFor="let validation of field.validations;" ngProjectAs="mat-error">
+            <div *ngIf="group.get(field.name).hasError(validation.name) && group.get(field.name).touched" class="l-custom-error-select">{{validation.message}}</div>
+        </ng-container>
+    </div>
+</div>
+<div class="l-container-component preview-mode" *ngIf="mode===modes.View">
+    <span class="l-custom-span-label" *ngIf="showLabel">{{field.label}}<app-info-tooltip *ngIf="field.info" [info]="field.info"></app-info-tooltip></span>
+    <label class="value-label">{{optionLabel}}</label>
+</div>

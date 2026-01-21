@@ -1,0 +1,107 @@
+<sb-breadcrumb
+  class="block mb-3"
+  [icon]="fadCalendarMinus"
+  [text]="
+    data.gradelessStudentsReport == null
+      ? 'Създаване на справка ученици без оценки'
+      : 'Преглед на справка ученици без оценки'
+  "
+  [parentItems]="[{ text: 'Ученици ученици без оценки', routeCommands: ['../'] }]"
+></sb-breadcrumb>
+
+<form [formGroup]="form" autocomplete="off" novalidate>
+  <sb-card>
+    <ng-container card-title>
+      {{
+        data.gradelessStudentsReport == null
+          ? 'Създаване на справка ученици без оценки'
+          : 'Преглед на справка ученици без оценки'
+      }}
+    </ng-container>
+    <sb-editor-panel
+      card-buttons
+      [isNew]="data.gradelessStudentsReport == null"
+      [editBtnHidden]="true"
+      (save)="onSave($event)"
+    >
+      <a
+        *ngIf="data.gradelessStudentsReport != null"
+        [href]="downloadUrl"
+        class="mr-3"
+        disabled-mode-buttons
+        target="_blank"
+        download
+        color="primary"
+        mat-raised-button
+        [disabled]="!downloadUrl"
+      >
+        <fa-icon [icon]="fasFileExcel" size="lg"></fa-icon>
+        <span>Свали</span>
+      </a>
+      <button
+        disabled-mode-buttons
+        mat-raised-button
+        color="warn"
+        type="button"
+        (click)="onRemove()"
+        [disabled]="removing"
+      >
+        <fa-icon [icon]="removing ? fasSpinnerThird : fasTrashAlt" [spin]="removing" size="lg"></fa-icon>
+        <span class="hidden sm:inline">Премахни</span>
+      </button>
+    </sb-editor-panel>
+    <ng-container card-body>
+      <div class="sm:grid grid-cols-4 gap-x-4 mb-2">
+        <mat-radio-group formControlName="onlyFinalGrades" class="mb-2">
+          <mat-radio-button [value]="false" (change)="onOnlyFinalGradesChanged()">Текущи оценки</mat-radio-button>
+          <mat-radio-button [value]="true" (change)="onOnlyFinalGradesChanged()">
+            Срочни/годишни оценки
+          </mat-radio-button>
+        </mat-radio-group>
+        <sb-nom-select
+          class="col-start-1"
+          [nomService]="reportPeriodNomsService"
+          label="Период"
+          formControlName="period"
+        ></sb-nom-select>
+        <sb-nom-select
+          *ngIf="data.gradelessStudentsReport == null"
+          label="Паралелки/Групи"
+          formControlName="classBookIds"
+          [multiple]="true"
+          [nomService]="classBookNomsService"
+        ></sb-nom-select>
+        <sb-text-field
+          *ngIf="data.gradelessStudentsReport != null"
+          label="Паралелки/Групи"
+          formControlName="classBookNames"
+        ></sb-text-field>
+      </div>
+      <sb-card-section *ngIf="data.gradelessStudentsReport != null" class="col-span-full">
+        {{ reoportName }}
+      </sb-card-section>
+      <ng-container *ngIf="data.gradelessStudentsReport != null && dataSource != null">
+        <sb-table [dataSource]="dataSource" [displayedColumns]="['classBookName', 'studentName', 'curriculumName']">
+          <ng-container cdkColumnDef="classBookName">
+            <th cdk-header-cell *cdkHeaderCellDef>Клас</th>
+            <td cdk-cell *cdkCellDef="let row">{{ row.classBookName }}</td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="studentName">
+            <th cdk-header-cell *cdkHeaderCellDef>Ученик</th>
+            <td cdk-cell *cdkCellDef="let row">{{ row.studentName }}</td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="curriculumName">
+            <th cdk-header-cell *cdkHeaderCellDef>Предмет</th>
+            <td cdk-cell *cdkCellDef="let row">{{ row.curriculumName }}</td>
+          </ng-container>
+
+          <ng-container no-data-row>
+            <td colspan="3" class="text-center">Няма ученици без оценки за периода</td>
+          </ng-container>
+        </sb-table>
+      </ng-container>
+    </ng-container>
+  </sb-card>
+</form>

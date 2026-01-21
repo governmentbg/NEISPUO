@@ -1,0 +1,185 @@
+{
+  "label": "История на подаване на данни за списък образец",
+  "sections": [
+    {
+      "label": "Обобщени данни за подаване",
+      "order": 1,
+      "name": "submissionDataAll"
+    },
+    {
+      "label": "Основни данни за подаването",
+      "order": 2,
+      "name": "submissionData",
+      "subsections": [
+        {
+          "order": 1,
+          "name": "submissionDataFields",
+          "fields": [
+            {
+              "label": "ЕИК",
+              "name": "eik",
+              "type": "input",
+              "inputType": "number",
+              "disabled": true,
+              "rendered": false,
+              "order": 0
+            },
+            {
+              "label": "Възможност за редакция",
+              "name": "isEditable",
+              "type": "checkbox",
+              "disabled": true,
+              "rendered": true,
+              "order": 0,
+              "influence": [
+                {
+                  "type": "hide",
+                  "subsectionName": "directorConfirmationSignData",
+                  "condition": [0]
+                },
+                {
+                  "type": "hide",
+                  "subsectionName": "directorConfirmationAfterBISignData",
+                  "condition": [0]
+                }
+              ],
+              "validations": [],
+              "info": ""
+            },
+            {
+              "label": "Период",
+              "name": "period",
+              "type": "input",
+              "inputType": "number",
+              "defaultValue": "period",
+              "disabled": true,
+              "rendered": "if(operationType==1) {field.rendered=true} else {field.rendered=false}",
+              "order": 2
+            },
+            {
+              "label": "Година",
+              "name": "schoolYear",
+              "type": "input",
+              "inputType": "number",
+              "defaultValue": "schoolYear",
+              "disabled": true,
+              "rendered": "if(operationType==1) {field.rendered=true} else {field.rendered=false}",
+              "order": 3
+            },
+            {
+              "label": "Статус",
+              "name": "submissionStatusID",
+              "optionsPath": "/data/get/submissionStatuses",
+              "type": "select",
+              "rendered": true,
+              "disabled": true,
+              "defaultValue": 0,
+              "influence": [
+                {
+                  "type": "render",
+                  "subsectionName": "directorConfirmationSignData",
+                  "condition": [11]
+                },
+                {
+                  "type": "render",
+                  "subsectionName": "directorConfirmationAfterBISignData",
+                  "condition": [11]
+                },
+                {
+                  "type": "render",
+                  "subsectionName": "generateCertificateData",
+                  "condition": [11,12]
+                }
+              ],
+              "order": 5,
+              "validations": [],
+              "info": ""
+            },
+            {
+              "label": "Специален тип институция (с подписващ финансиращ орган)",
+              "name": "specialInstType",
+              "type": "input",
+              "inputType": "number",
+              "disabled": true,
+              "rendered": true,
+              "influence": [
+                {
+                  "type": "hide",
+                  "subsectionName": "directorConfirmationSignData",
+                  "condition": [1]
+                },
+                {
+                  "type": "render",
+                  "subsectionName": "directorConfirmationAfterBISignData",
+                  "condition": [1]
+                }
+              ],
+              "order": 6
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "name": "directorConfirmationSignData",
+          "label": "Връщане за корекция (след обобщаване)",
+          "rendered": true,
+          "canDuplicate": false,
+          "fields": [
+            {
+              "label": "Върни за корекция",
+              "name": "directorReturnAfterFinalButton",
+              "procName": "sob.submissionDataCreateUpdate",
+              "procParams": {
+                "submissionStatusID": 13
+              },
+              "type": "button",
+              "rendered": "if(sysroleid==0) {field.rendered=true} else {field.rendered=false}",
+              "order": 1
+            }
+          ]
+        },
+        {
+          "order": 4,
+          "name": "directorConfirmationAfterBISignData",
+          "label": "Връщане за корекция (след обобщаване)",
+          "rendered": true,
+          "canDuplicate": false,
+          "fields": [
+            {
+              "label": "Върни за корекция",
+              "name": "directorAfterBIReturnAfterFinalButton",
+              "procName": "sob.submissionDataCreateUpdate",
+              "procParams": {
+                "submissionStatusID": 13
+              },
+              "type": "button",
+              "rendered": "if(sysroleid==0) {field.rendered=true} else {field.rendered=false}",
+              "order": 1
+            }
+          ]
+        },
+        {
+          "order": 5,
+          "name": "generateCertificateData",
+          "label": "Данни за удостоверение",
+          "rendered": "if(operationType==1) {subsection.rendered=false} else {subsection.rendered=true}",
+          "canDuplicate": false,
+          "fields": [
+            {
+              "name": "generateCertificateButton",
+              "procName": "sob.submissionDataCreateUpdate",
+              "procParams": {
+                "submissionStatusID": 12
+              },
+              "type": "button",
+              "rendered": true,
+              "generateCertificate": true,
+              "order": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+

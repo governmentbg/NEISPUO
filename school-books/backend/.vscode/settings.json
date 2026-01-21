@@ -1,0 +1,14 @@
+{
+  "files.exclude": {
+    "**/.DS_Store": true
+  },
+  "search.exclude": {
+    "**/.git": true,
+    "**/bin": true,
+    "**/obj": true,
+    "**/TestResults": true
+  },
+  "git.ignoreLimitWarning": true,
+  "omnisharp.useModernNet": true,
+  "dotnet.defaultSolution": "SB.sln"
+}

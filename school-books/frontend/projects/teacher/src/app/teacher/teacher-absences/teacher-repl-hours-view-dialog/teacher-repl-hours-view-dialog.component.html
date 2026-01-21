@@ -1,0 +1,50 @@
+<div class="sm:w-[700px]">
+  <div class="sb-btn-wrapper sb-btn-wrapper-right">
+    <button mat-raised-button mat-dialog-close>Затвори</button>
+  </div>
+
+  <div *ngIf="data.group" class="font-bold mb-2">
+    {{ data.group.dayName }}
+    <span class="whitespace-nowrap">({{ data.group.shiftHour.startTime }} - {{ data.group.shiftHour.endTime }})</span>
+    /
+    {{ data.group.classBookFullName }} -
+    <span class="inline sm:hidden">
+      {{ data.group.subjectShort }}
+    </span>
+    <span class="hidden sm:inline">
+      {{ data.group.subject }}
+    </span>
+  </div>
+
+  <div class="mb-4">
+    Учителят е посочен като заместващ в избрания час. Ако желаете да промените заместването трябва да редактирате
+    първоначалното учителско отсъствие.
+  </div>
+
+  <div class="sb-table-container">
+    <table class="sb-table">
+      <thead>
+        <tr>
+          <th class="w-3/5">Дата</th>
+          <th>Отсъствие</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let absence of data.absences">
+          <td class="w-3/5">{{ absence.dates }}</td>
+          <td>
+            <a
+              type="button"
+              target="_blank"
+              class="sb-link-btn"
+              [routerLink]="['../', absence.absenceId]"
+              [relativeTo]="this.data.route"
+            >
+              отвори отсъствието
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

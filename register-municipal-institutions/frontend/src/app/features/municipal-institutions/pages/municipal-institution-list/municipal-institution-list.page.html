@@ -1,0 +1,69 @@
+<ng-container *ngIf="institutions$ | async as institutions">
+  <div class="messageContainer" *ngIf="!isAdmin">* Институциите в списъка са от община {{institutions[0]?.Town.Municipality.Name}}
+    и област {{institutions[0]?.Town.Municipality.Region.Name}}</div>
+  <p-table
+  #miTable
+  [columns]="cols"
+  [value]="institutions"
+  [paginator]="true"
+  [rows]="20"
+  [lazy]="true"
+  (onLazyLoad)="navigate($event)"
+  [lazyLoadOnInit]="false"
+  [loading]="isLoading$ | async"
+  [totalRecords]="total$ | async"
+  [autoLayout]="true"
+  [responsive]="true"
+  [globalFilterFields]="['InstitutionID', 'Name', 'town_municipality_region.Name', 'town_municipality.Name', 'Town.Name']"
+>
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <ng-container *ngFor="let col of columns">
+         <th *ngIf="showCol(col)">{{col.header}}</th>
+      </ng-container>
+      <th class="actionsCol">
+        Действия
+      </th>
+    </tr>
+    <tr>
+      <ng-container *ngFor="let col of columns">
+        <th *ngIf="showCol(col)">
+          <p-columnFilter #colFilter type="text" [field]="col.field" [matchModeOptions]="matchModeOptions"></p-columnFilter>
+        </th>
+      </ng-container>
+      <th></th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-mi let-columns="columns">
+    <tr [pSelectableRow]="mi">
+      <ng-container *ngFor="let col of columns">
+        <td *ngIf="showCol(col)">
+          <span *ngIf="isSmallResolution"><b>{{col.header}}:</b></span> {{getDisplayValue(mi,col.field)}}
+        </td>
+      </ng-container>
+
+      <td>
+        <div class="row row-cols-1">
+          <div class="btn-group" role="group">
+            <i type="button"
+            class="bi bi-eye-fill avatar  rounded-circle me-2" 
+            aria-label="Preview"
+            [routerLink]="['/municipal-institutions/preview/', mi.RIInstitutionID]"
+            routerLinkActive="router-link-active"
+            ></i>
+            <div *ngIf="isEditButtonVisible$ | async">
+             <i type="button"
+             class="bi bi-pencil-fill avatar rounded-circle me-2"
+              aria-label="Edit"
+              [routerLink]="['edit', mi.RIInstitutionID]"
+              routerLinkActive="router-link-active"
+              ></i>
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+</ng-container>
+

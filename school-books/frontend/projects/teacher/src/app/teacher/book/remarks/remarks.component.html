@@ -1,0 +1,200 @@
+<sb-banner type="warning" *ngIf="!studentRemarks.students.length">Паралелката няма въведени ученици.</sb-banner>
+
+<ng-container *ngIf="studentRemarks.students.length">
+  <div *ngIf="canCreate" class="sb-btn-wrapper">
+    <a [routerLink]="['./', 'new', { type: 'Bad' }]" mat-raised-button color="primary" aria-label="Добави Забележка">
+      <fa-icon [icon]="fasPlus" size="lg"></fa-icon>
+      <span>Добави Забележка</span>
+    </a>
+    <a [routerLink]="['./', 'new', { type: 'Good' }]" mat-raised-button color="accent" aria-label="Добави Похвала">
+      <fa-icon [icon]="fasPlus" size="lg"></fa-icon>
+      <span>Добави Похвала</span>
+    </a>
+  </div>
+
+  <sb-transferred-students-banner class="mb-2.5" *ngIf="showTransferredStudentsBanner"></sb-transferred-students-banner>
+
+  <div class="sb-table-container">
+    <table class="sb-table">
+      <thead>
+        <tr>
+          <th>Ученик</th>
+          <th class="text-center">Забележки</th>
+          <th class="text-center">Похвали</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let student of studentRemarks.students">
+          <tr>
+            <td *ngIf="student.showInfoLink" class="sb-names">
+              <a
+                [routerLink]="[
+                  '../../../student-info',
+                  this.data.classBookId,
+                  student.personId,
+                  'student-book',
+                  this.data.classBookId
+                ]"
+                class="text-primary"
+              >
+                {{ student.classNumber != null ? student.classNumber.toString() + '.' : '' }}
+
+                {{ student.firstName }}
+                {{ student.middleName }}
+                {{ student.lastName }}
+
+                <span *ngIf="student.abnormalStatus" class="sb-badge">{{ student.abnormalStatus }}</span>
+              </a>
+            </td>
+            <td *ngIf="!student.showInfoLink" class="sb-names">
+              {{ student.classNumber != null ? student.classNumber.toString() + '.' : '' }}
+
+              {{ student.firstName }}
+              {{ student.middleName }}
+              {{ student.lastName }}
+
+              <span *ngIf="student.abnormalStatus" class="sb-badge">{{ student.abnormalStatus }}</span>
+            </td>
+
+            <td class="w-px whitespace-nowrap text-center font-medium align-middle p-1">
+              <button
+                class="book-count-button unexcused"
+                [class.disabled]="student.badRemarksCount === 0"
+                [class.active]="selectedStudentPersonId === student.personId && selectedType === REMARK_TYPE_BAD"
+                (click)="viewRemarks(student.personId, REMARK_TYPE_BAD)"
+              >
+                {{ student.badRemarksCount }}
+              </button>
+            </td>
+            <td class="w-px whitespace-nowrap text-center font-medium align-middle p-1">
+              <button
+                class="book-count-button excused"
+                [class.disabled]="student.goodRemarksCount === 0"
+                [class.active]="selectedStudentPersonId === student.personId && selectedType === REMARK_TYPE_GOOD"
+                (click)="viewRemarks(student.personId, REMARK_TYPE_GOOD)"
+              >
+                {{ student.goodRemarksCount }}
+              </button>
+            </td>
+          </tr>
+          <tr *ngIf="selectedStudentPersonId === student.personId && loadingRemarks">
+            <td
+              colspan="3"
+              class="relative book-item-cell h-16"
+              [class.unexcused]="selectedType === REMARK_TYPE_BAD"
+              [class.excused]="selectedType === REMARK_TYPE_GOOD"
+            >
+              <mat-spinner [diameter]="40" class="absolute top-1/2 left-1/2 -mt-5 -ml-5"></mat-spinner>
+            </td>
+          </tr>
+          <ng-container *ngIf="selectedStudentPersonId === student.personId && !loadingRemarks">
+            <tr *ngFor="let remark of selectedRemarks">
+              <td
+                colspan="3"
+                class="relative p-2 book-item-cell"
+                [class.unexcused]="selectedType === REMARK_TYPE_BAD"
+                [class.excused]="selectedType === REMARK_TYPE_GOOD"
+              >
+                <div class="sm:flex">
+                  <div class="sm:grow">
+                    <div class="text-sm">
+                      <span class="block sm:inline whitespace-nowrap">
+                        <fa-icon [icon]="fasStarHalfAlt"></fa-icon>
+                        <span class="font-bold">{{ remark.typeName }}</span>
+                      </span>
+                      {{ ' ' }}
+                      <span class="block sm:inline whitespace-nowrap">
+                        по
+                        <fa-icon [icon]="fasBookOpen"></fa-icon>
+                        <span class="font-bold">{{ remark.subjectName }} / {{ remark.subjectTypeName }}</span>
+                      </span>
+                      {{ ' ' }}
+                      <span class="block sm:inline whitespace-nowrap">
+                        на
+                        <fa-icon [icon]="fasCalendarAlt"></fa-icon>
+                        <span class="font-bold">{{ remark.date | sbDate }}</span>
+                      </span>
+                    </div>
+
+                    <div class="text-xs">
+                      <span class="whitespace-pre-line">{{ remark.description }}</span>
+                    </div>
+
+                    <div class="text-xs italic">
+                      <span class="inline sm:hidden">Създ. от</span>
+                      <span class="hidden sm:inline">Създадено от</span>
+                      <span class="font-bold">
+                        {{ remark.createdBySysUserFirstName }} {{ remark.createdBySysUserLastName }}
+                      </span>
+                      на
+                      <span class="font-bold">{{ remark.createDate | sbDateTime }}</span>
+                    </div>
+
+                    <div *ngIf="remark.createDate.getTime() !== remark.modifyDate.getTime()" class="text-xs italic">
+                      <span class="inline sm:hidden">Пром. от</span>
+                      <span class="hidden sm:inline">Последна промяна от</span>
+
+                      <span class="font-bold">
+                        {{ remark.modifiedBySysUserFirstName }} {{ remark.modifiedBySysUserLastName }}
+                      </span>
+                      на
+                      <span class="font-bold">{{ remark.modifyDate | sbDateTime }}</span>
+                    </div>
+                    <span class="block sm:inline whitespace-nowrap">
+                      <fa-icon [icon]="fasEye"></fa-icon>
+                      Прочетено от родител:
+                      <span class="font-bold">{{ remark.isReadFromParent ? 'да' : 'не' }}</span>
+                    </span>
+                  </div>
+
+                  <div class="sm:shrink-0">
+                    <button
+                      *ngIf="remark.canEdit"
+                      class="mt-2 sm:mt-0 mr-2"
+                      mat-raised-button
+                      color="accent"
+                      type="button"
+                      (click)="editRemark(remark)"
+                      [disabled]="remark.viewing"
+                    >
+                      <fa-icon
+                        [icon]="remark.viewing ? fasSpinnerThird : fasPencil"
+                        [spin]="remark.viewing"
+                        size="lg"
+                      ></fa-icon>
+                      <span>Редактирай</span>
+                    </button>
+
+                    <button
+                      class="mt-2 sm:mt-0"
+                      *ngIf="remark.canRemove"
+                      mat-raised-button
+                      color="warn"
+                      type="button"
+                      (click)="removeRemark(remark)"
+                      [disabled]="remark.removing"
+                    >
+                      <fa-icon
+                        [icon]="remark.removing ? fasSpinnerThird : fasTrashAlt"
+                        [spin]="remark.removing"
+                        size="lg"
+                      ></fa-icon>
+                      <span>Изтрий</span>
+                    </button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </ng-container>
+        </ng-container>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>Общо</td>
+          <td class="text-center text-sm">{{ studentRemarks.totals.badRemarksCountTotal }}</td>
+          <td class="text-center text-sm">{{ studentRemarks.totals.goodRemarksCountTotal }}</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</ng-container>

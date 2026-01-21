@@ -1,0 +1,801 @@
+{
+  "label": "Данни за длъжност на служител",
+  "dataName": "if(operationType==1) {form.dataName='staffPositionDataCreate'} else {form.dataName='staffPositionData'}",
+  "procedureName": "inst_basic.personStaffPositionCUD",
+  "sections": [
+    {
+      "label": "Данни за длъжност на служител",
+      "name": "staffPositionData",
+      "order": 1,
+      "subsections": [
+        {
+          "order": 1,
+          "name": "staffPosition",
+          "subsections": [
+            {
+              "order": 0,
+              "name": "validData",
+              "fields": [
+                {
+                  "order": 0,
+                  "label": "Валидна",
+                  "name": "isValid",
+                  "type": "checkbox",
+                  "rendered": false,
+                  "disabled": true,
+                  "influence": [
+                    {
+                      "type": "disable",
+                      "subsectionName": "numberData",
+                      "condition": [
+                        false
+                      ]
+                    },
+                    {
+                      "type": "disable",
+                      "subsectionName": "category",
+                      "condition": [
+                        false
+                      ]
+                    },
+                    {
+                      "type": "disable",
+                      "subsectionName": "position",
+                      "condition": [
+                        false
+                      ]
+                    },
+                    {
+                      "type": "disable",
+                      "fieldName": "mainClassID",
+                      "condition": [
+                        false
+                      ]
+                    },
+                    {
+                      "type": "disable",
+                      "subsectionName": "contractAndWorkExp",
+                      "condition": [
+                        false
+                      ]
+                    }
+                  ],
+                  "defaultValue": 1
+                }
+              ]
+            },
+            {
+              "order": 1,
+              "name": "archive",
+              "label": "Архивиране на длъжност",
+              "fields": [
+                {
+                  "order": 1,
+                  "label": "Архивирана",
+                  "name": "isArchived",
+                  "type": "checkbox",
+                  "rendered": "if(isValid==true) {field.rendered=false} else {field.rendered=true}",
+                  "disabled": false,
+                  "defaultValue": true,
+                  "influence": [
+                    {
+                      "type": "hideAndClear",
+                      "fieldName": "terminationDate",
+                      "condition": [
+                        false
+                      ]
+                    },
+                    {
+                      "type": "hideAndClear",
+                      "fieldName": "terminationReasonID",
+                      "condition": [
+                        false
+                      ]
+                    }
+                  ],
+                  "info": "При премахване на отметката може да активирате отново длъжността на служителя"
+                }
+              ]
+            },
+            {
+              "order": 2,
+              "name": "numberData",
+              "label": "Позиция",
+              "fields": [
+                {
+                  "label": "Вид по чл. 38 (детайлен)",
+                  "name": "detailedSchoolTypeID",
+                  "type": "select",
+                  "optionsPath": "/data/get/detailedSchoolTypes",
+                  "rendered": false,
+                  "disabled": true,
+                  "order": 0,
+                  "influence": [
+                    {
+                      "fieldName": "teachStageID",
+                      "url": "/data/get/teachStageLimit",
+                      "type": "options"
+                    },
+                    {
+                      "fieldName": "categoryStaffTypeID",
+                      "url": "/data/get/categoryStaffTypesLimit",
+                      "type": "options"
+                    }
+                  ]
+                },
+                {
+                  "label": "Номер по ред",
+                  "name": "staffOrd",
+                  "type": "input",
+                  "inputType": "number",
+                  "order": 1,
+                  "width": 95,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 4,
+                      "message": "Максимална дължина 4 символа"
+                    },
+                    {
+                      "name": "pattern",
+                      "validation": "^\\d+$",
+                      "message": "Полето трябва да съдържа цяло неотрицателно число"
+                    },
+                    {
+                      "name": "required",
+                      "validator": "",
+                      "message": "Полето е задължително"
+                    }
+                  ]
+                },
+                {
+                  "label": "Длъжност №",
+                  "name": "staffPositionNo",
+                  "type": "input",
+                  "inputType": "number",
+                  "order": 2,
+                  "width": 95,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 4,
+                      "message": "Максимална дължина 4 символа"
+                    },
+                    {
+                      "name": "pattern",
+                      "validation": "^\\d+$",
+                      "message": "Полето трябва да съдържа цяло неотрицателно число"
+                    },
+                    {
+                      "name": "required",
+                      "validator": "",
+                      "message": "Полето е задължително"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "order": 3,
+              "label": "Категория персонал",
+              "name": "category",
+              "fields": [
+                {
+                  "label": "Категория",
+                  "name": "staffTypeID",
+                  "type": "select",
+                  "optionsPath": "/data/get/staffTypes",
+                  "disabled": "if(operationType==2) {field.disabled=true} else {field.disabled=false}",
+                  "order": 1,
+                  "defaultValue": 1,
+                  "validations": [
+                    {
+                      "name": "required",
+                      "validator": "",
+                      "message": "Полето е задължително"
+                    }
+                  ],
+                  "influence": [
+                    {
+                      "fieldName": "categoryStaffTypeID",
+                      "url": "/data/get/categoryStaffTypesLimit",
+                      "type": "options"
+                    },
+                    {
+                      "type": "hide",
+                      "fieldName": "teachStageID",
+                      "condition": [
+                        2
+                      ]
+                    },
+                    {
+                      "type": "hide",
+                      "fieldName": "helpStudentGovernment",
+                      "condition": [
+                        2
+                      ]
+                    },
+                    {
+                      "type": "hide",
+                      "fieldName": "isHospital",
+                      "condition": [
+                        2
+                      ]
+                    },
+                    {
+                      "type": "hide",
+                      "fieldName": "isMentor",
+                      "condition": [
+                        2
+                      ]
+                    },
+                    {
+                      "type": "hide",
+                      "fieldName": "isTrainee",
+                      "condition": [
+                        2
+                      ]
+                    },
+                    {
+                      "type": "hide",
+                      "fieldName": "positionSubjectGroupID",
+                      "condition": [
+                        2
+                      ]
+                    },
+                    {
+                      "type": "hide",
+                      "fieldName": "isNotMeetReq",
+                      "condition": [
+                        2
+                      ]
+                    },
+                    {
+                      "type": "hide",
+                      "fieldName": "workExpTeachYears",
+                      "condition": [
+                        2
+                      ]
+                    },
+                    {
+                      "fieldName": "NKPDPositionID",
+                      "url": "/data/get/nkpdPositions",
+                      "type": "options"
+                    }
+                  ]
+                },
+                {
+                  "label": "Вид",
+                  "name": "categoryStaffTypeID",
+                  "type": "searchselect",
+                  "disabled": false,
+                  "order": 2,
+                  "width": 700,
+                  "validations": [
+                    {
+                      "name": "required",
+                      "validator": "",
+                      "message": "Полето е задължително"
+                    }
+                  ],
+                  "influence": [
+                    {
+                      "type": "render",
+                      "fieldName": "teachStageID",
+                      "condition": [
+                        116
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "order": 4,
+              "label": "Длъжност",
+              "name": "position",
+              "accordion": {
+                "state": "open"
+              },
+              "fields": [
+                {
+                  "label": "Титуляр/заместник",
+                  "name": "positionKindID",
+                  "type": "select",
+                  "optionsPath": "/data/get/positionKinds",
+                  "disabled": false,
+                  "validations": [
+                    {
+                      "name": "required",
+                      "validator": "",
+                      "message": "Полето е задължително"
+                    }
+                  ],
+                  "order": 1
+                },
+                {
+                  "label": "Щат",
+                  "name": "positionCount",
+                  "type": "input",
+                  "inputType": "number",
+                  "order": 2,
+                  "width": 95,
+                  "info": "Може да приема стойности 0 и 1",
+                  "validations": [
+                    {
+                      "name": "min",
+                      "validation": 0,
+                      "message": "Невалидно число за щат"
+                    },
+                    {
+                      "name": "max",
+                      "validation": 1,
+                      "message": "Невалидно число за щат"
+                    },
+                    {
+                      "name": "maxLength",
+                      "validation": 4,
+                      "message": "Максимална дължина 4 символа"
+                    }
+                  ]
+                },
+                {
+                  "label": "Длъжност",
+                  "name": "NKPDPositionID",
+                  "type": "searchselect",
+                  "width": 700,
+                  "disabled": false,
+                  "validations": [
+                    {
+                      "name": "required",
+                      "validator": "",
+                      "message": "Полето е задължително"
+                    }
+                  ],
+                  "influence": [
+                    {
+                      "fieldName": "mainClassID",
+                      "type": "render",
+                      "condition": [
+                        105,
+                        144,
+                        204,
+                        313,
+                        526,
+                        527,
+                        528,
+                        530,
+                        531,
+                        532,
+                        5884,
+                        5883
+                      ]
+                    }
+                  ],
+                  "order": 3
+                },
+                {
+                  "label": "Основен етап, в който преподава",
+                  "name": "teachStageID",
+                  "type": "select",
+                  "width": 300,
+                  "rendered": "if(instType==1 || instType==2 || instType==4) {field.rendered=true} else {field.rendered=false}",
+                  "disabled": false,
+                  "order": 4
+                },
+                {
+                  "label": "Назначен на щатно място по",
+                  "name": "positionSubjectGroupID",
+                  "type": "searchselect",
+                  "width": 400,
+                  "optionsPath": "/data/get/staffMainSubjectGroups",
+                  "disabled": false,
+                  "order": 5
+                },
+                {
+                  "label": "Болничен учител",
+                  "name": "isHospital",
+                  "type": "checkbox",
+                  "disabled": false,
+                  "order": 6
+                },
+                {
+                  "label": "Учител наставник",
+                  "name": "isMentor",
+                  "type": "checkbox",
+                  "disabled": false,
+                  "order": 7
+                },
+                {
+                  "label": "Учител стажант",
+                  "name": "isTrainee",
+                  "type": "checkbox",
+                  "disabled": false,
+                  "order": 8
+                },
+                {
+                  "label": "Не отговаря на изискванията",
+                  "name": "isNotMeetReq",
+                  "type": "checkbox",
+                  "disabled": false,
+                  "order": 9
+                },
+                {
+                  "label": "Прилагат се условията по чл.4, ал.12 от Наредба 4",
+                  "name": "hasTELK",
+                  "type": "checkbox",
+                  "disabled": false,
+                  "order": 10
+                },
+                {
+                  "name": "breakpoint",
+                  "type": "breakpoint",
+                  "order": 11
+                },
+                {
+                  "label": "Основна група/клас, с която работи",
+                  "name": "mainClassID",
+                  "type": "searchselect",
+                  "width": 400,
+                  "optionsPath": "/data/get/mainClasses",
+                  "disabled": false,
+                  "order": 12
+                },
+                {
+                  "name": "breakpoint",
+                  "type": "breakpoint",
+                  "order": 13
+                },
+                {
+                  "label": "Активна за текущата учебна година",
+                  "name": "currentlyValid",
+                  "type": "checkbox",
+                  "defaultValue": 1,
+                  "disabled": false,
+                  "order": 14
+                },
+                {
+                  "label": "Подпомага ученическия съвет на училището",
+                  "name": "helpStudentGovernment",
+                  "type": "checkbox",
+                  "disabled": false,
+                  "order": 15
+                },
+                {
+                  "name": "breakpoint",
+                  "type": "breakpoint",
+                  "order": 16
+                },
+                {
+                  "label": "Основна специалност, по която преподава",
+                  "name": "mainPersonOKSID",
+                  "type": "searchselect",
+                  "width": 500,
+                  "optionsPath": "/data/get/personOKSList",
+                  "disabled": false,
+                  "validations": [],
+                  "order": 17
+                },
+                {
+                  "label": "Бележки",
+                  "name": "positionNotes",
+                  "type": "input",
+                  "inputType": "textArea",
+                  "order": 18,
+                  "width": 400
+                }
+              ]
+            },
+            {
+              "order": 5,
+              "label": "Договор и трудов стаж",
+              "name": "contractAndWorkExp",
+              "accordion": {
+                "state": "closed"
+              },
+              "fields": [
+                {
+                  "label": "Година на сключване",
+                  "name": "contractYear",
+                  "type": "input",
+                  "inputType": "number",
+                  "order": 1,
+                  "width": 95,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 4,
+                      "message": "Максимална дължина 4 символа"
+                    },
+                    {
+                      "name": "minLength",
+                      "validation": 4,
+                      "message": "Минимална дължина 4 символа"
+                    },
+                    {
+                      "name": "max",
+                      "validation": 9999,
+                      "message": "Невалидна година"
+                    },
+                    {
+                      "name": "pattern",
+                      "validation": "^\\d+$",
+                      "message": "Полето трябва да съдържа цяло неотрицателно число"
+                    }
+                  ]
+                },
+                {
+                  "label": "Договор №",
+                  "name": "contractNo",
+                  "type": "input",
+                  "inputType": "text",
+                  "order": 2,
+                  "width": 150
+                },
+                {
+                  "label": "Вид на договора",
+                  "name": "contractTypeID",
+                  "type": "select",
+                  "width": 400,
+                  "optionsPath": "/data/get/contractTypes",
+                  "disabled": false,
+                  "order": 3
+                },
+                {
+                  "label": "Основание на сключване по КТ",
+                  "name": "contractReasonID",
+                  "type": "searchselect",
+                  "width": 400,
+                  "optionsPath": "/data/get/contractReasons",
+                  "disabled": false,
+                  "order": 4
+                },
+                {
+                  "name": "breakpoint",
+                  "type": "breakpoint",
+                  "order": 5
+                },
+                {
+                  "label": "Година на постъпване",
+                  "name": "workStartYear",
+                  "type": "input",
+                  "inputType": "number",
+                  "order": 6,
+                  "width": 95,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 4,
+                      "message": "Максимална дължина 4 символа"
+                    },
+                    {
+                      "name": "pattern",
+                      "validation": "^\\d+$",
+                      "message": "Полето трябва да съдържа цяло неотрицателно число"
+                    }
+                  ]
+                },
+                {
+                  "label": "Общ трудов стаж(г.)",
+                  "name": "workExpTotalYears",
+                  "type": "input",
+                  "inputType": "number",
+                  "order": 7,
+                  "width": 95,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 4,
+                      "message": "Максимална дължина 4 символа"
+                    },
+                    {
+                      "name": "pattern",
+                      "validation": "^\\d+$",
+                      "message": "Полето трябва да съдържа цяло неотрицателно число"
+                    }
+                  ]
+                },
+                {
+                  "label": "Трудов стаж по специалността(г.)",
+                  "name": "workExpSpecYears",
+                  "type": "input",
+                  "inputType": "number",
+                  "order": 8,
+                  "width": 95,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 4,
+                      "message": "Максимална дължина 4 символа"
+                    },
+                    {
+                      "name": "pattern",
+                      "validation": "^\\d+$",
+                      "message": "Полето трябва да съдържа цяло неотрицателно число"
+                    }
+                  ]
+                },
+                {
+                  "label": "Учителски стаж(г.)",
+                  "name": "workExpTeachYears",
+                  "type": "input",
+                  "inputType": "number",
+                  "order": 9,
+                  "width": 95,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 4,
+                      "message": "Максимална дължина 4 символа"
+                    },
+                    {
+                      "name": "pattern",
+                      "validation": "^\\d+$",
+                      "message": "Полето трябва да съдържа цяло неотрицателно число"
+                    }
+                  ]
+                },
+                {
+                  "name": "breakpoint",
+                  "type": "breakpoint",
+                  "order": 10
+                },
+                {
+                  "label": "Назначен към",
+                  "name": "contractWithID",
+                  "type": "select",
+                  "optionsPath": "/data/get/contractWith",
+                  "width": 400,
+                  "disabled": false,
+                  "order": 11
+                },
+                {
+                  "label": "Бележки",
+                  "name": "contractNotes",
+                  "type": "input",
+                  "inputType": "textArea",
+                  "order": 12,
+                  "width": 400
+                },
+                {
+                  "name": "breakpoint",
+                  "type": "breakpoint",
+                  "order": 13
+                },
+                {
+                  "label": "МОЛ",
+                  "name": "isAccountablePerson",
+                  "type": "checkbox",
+                  "disabled": false,
+                  "order": 14
+                },
+                {
+                  "label": "Пътуващ от друго населено място",
+                  "name": "isTravel",
+                  "type": "checkbox",
+                  "disabled": false,
+                  "order": 15
+                },
+                {
+                  "label": "Дата на прекратяване",
+                  "name": "terminationDate",
+                  "type": "date",
+                  "influence": [
+                    {
+                      "type": "require",
+                      "fields": [
+                        "terminationReasonID"
+                      ],
+                      "message": "Полето е задължително",
+                      "notNull": true
+                    },
+                    {
+                      "type": "disable",
+                      "fieldName": "contractYear",
+                      "notNull": true
+                    },
+                    {
+                      "type": "disable",
+                      "fieldName": "contractNo",
+                      "notNull": true
+                    },
+                    {
+                      "type": "disable",
+                      "fieldName": "contractTypeID",
+                      "notNull": true
+                    },
+                    {
+                      "type": "disable",
+                      "fieldName": "contractReasonID",
+                      "notNull": true
+                    },
+                    {
+                      "type": "disable",
+                      "fieldName": "workStartYear",
+                      "notNull": true
+                    },
+                    {
+                      "type": "disable",
+                      "fieldName": "workExpTotalYears",
+                      "notNull": true
+                    },
+                    {
+                      "type": "disable",
+                      "fieldName": "workExpSpecYears",
+                      "notNull": true
+                    },
+                    {
+                      "type": "disable",
+                      "fieldName": "workExpTeachYears",
+                      "notNull": true
+                    },
+                    {
+                      "type": "disable",
+                      "fieldName": "contractWithID",
+                      "notNull": true
+                    },
+                    {
+                      "type": "disable",
+                      "fieldName": "contractNotes",
+                      "notNull": true
+                    },
+                    {
+                      "type": "disable",
+                      "fieldName": "isAccountablePerson",
+                      "notNull": true
+                    },
+                    {
+                      "type": "disable",
+                      "fieldName": "isTravel",
+                      "notNull": true
+                    },
+                    {
+                      "type": "disable",
+                      "subsectionName": "numberData",
+                      "notNull": true
+                    },
+                    {
+                      "type": "disable",
+                      "subsectionName": "category",
+                      "notNull": true
+                    },
+                    {
+                      "type": "disable",
+                      "subsectionName": "position",
+                      "notNull": true
+                    },
+                    {
+                      "type": "disable",
+                      "fieldName": "mainClassID",
+                      "notNull": true
+                    }
+                  ],
+                  "order": 16
+                },
+                {
+                  "label": "Основание за прекратяване по КТ",
+                  "name": "terminationReasonID",
+                  "type": "searchselect",
+                  "optionsPath": "/data/get/terminationReasons",
+                  "width": 400,
+                  "disabled": false,
+                  "influence": [
+                    {
+                      "type": "require",
+                      "fields": [
+                        "terminationDate"
+                      ],
+                      "message": "Полето е задължително",
+                      "notNull": true
+                    }
+                  ],
+                  "order": 17
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

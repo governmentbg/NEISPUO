@@ -1,0 +1,43 @@
+<div class="grid justify-content-center">
+  <app-user-tour-guide 
+  [typeButton]="'pageGuide'"
+  [guideName]="guideName"
+  ></app-user-tour-guide>
+  <div class="col-12 col-md-6 check-institution-bulstat">
+    <p-fieldset legend="Проверка на институция">
+      <div class="fluid formgrid grid">
+        <div class="field form-wrapper col-12 col-md-8 h-3rem">
+          <label for="bulstat" class="form-wrapper-label">Булстат/ЕИК</label>
+
+          <input id="bulstat" type="text" pInputText [(ngModel)]="bulstat" />
+        </div>
+        <div *ngIf="displayWarnMessage" class="col-12 mt-6">
+          <p-message severity="warn" [text]="warnMessage"></p-message>
+        </div>
+        <div *ngIf="displaySuccessMessage" class="col-12 mt-4">
+          <p-message severity="info" [text]="successMessage"></p-message>
+        </div>
+        <div class="col-12"><br /></div>
+        <div class="field col-12 justify-content-end mt-5">
+          <button type="button" class="btn btn-primary me-2 mt-2" (click)="verifyEIK()">Провери</button>
+        </div>
+      </div>
+    </p-fieldset>
+  </div>
+  <div *ngIf="!!populatedMI && !displayWarnMessage" class="col-12">
+    <app-institution-card-details [resp]="populatedMI"></app-institution-card-details>
+  </div>
+
+  <div class="col-12">
+    <app-stepper-actions
+      [showBack]="true"
+      [backLabel]="'Назад'"
+      [backRouterLink]="['..']"
+      [showForward]="true"
+      [forwardLabel]="'Напред'"
+      [forwardRouterLink]="['..', 'mi-create']"
+      [disableForward]="!(displaySuccessMessage || displayWarnMessage)"
+      [showSubmit]="false"
+    ></app-stepper-actions>
+  </div>
+</div>

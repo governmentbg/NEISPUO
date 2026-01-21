@@ -1,0 +1,96 @@
+<form [formGroup]="form" novalidate (ngSubmit)="onSave()">
+  <div class="sb-btn-wrapper sb-btn-wrapper-right">
+    <button mat-raised-button color="primary" type="submit" [disabled]="saving">
+      <fa-icon [icon]="saving ? fasSpinnerThird : fasCheck" [spin]="saving" size="lg"></fa-icon>
+      <span>Запази</span>
+    </button>
+    <button mat-raised-button mat-dialog-close>Затвори</button>
+  </div>
+
+  <div class="sm:grid grid-cols-4 gap-x-4 mb-4">
+    <mat-select class="sb-form-control" style="max-height: 50px" formControlName="replType">
+      <mat-option [value]="replType.id" *ngFor="let replType of replTypes">
+        {{ replType.text }}
+      </mat-option>
+    </mat-select>
+    <sb-nom-select
+      *ngIf="form.value.replType === ReplTypeNonSpecialist || form.value.replType === ReplTypeSpecialist"
+      label="Заместник"
+      formControlName="replTeacherPersonId"
+      [nomService]="instTeacherNomsService"
+    ></sb-nom-select>
+    <input
+      matInput
+      *ngIf="form.value.replType === ReplTypeExtTeacher"
+      class="sb-form-control"
+      formControlName="extReplTeacherName"
+    />
+  </div>
+
+  <sb-banner class="mb-2" type="warning">
+    Тук се виждат само часовете, за които няма въведени оценки/отсъствия/теми, и часа не е маркиран като лекторски.
+    Маркираните в сиво часове вече са попълнени, но могат да бъдат избрани отново и променени.
+  </sb-banner>
+
+  <div *ngIf="data.mappedSchedule?.slotsByNumberByDay?.length" class="sb-table-container">
+    <table class="sb-table">
+      <thead>
+        <tr>
+          <th class="w-px whitespace-nowrap">Час</th>
+          <th>Понеделник</th>
+          <th>Вторник</th>
+          <th>Сряда</th>
+          <th>Четвъртък</th>
+          <th>Петък</th>
+          <ng-container *ngIf="data.mappedSchedule?.scheduleIncludesWeekend">
+            <th>Събота</th>
+            <th>Неделя</th>
+          </ng-container>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let shiftHour of data.mappedSchedule!.shiftHours; let i = index">
+          <td class="w-px">
+            <span class="whitespace-nowrap">{{ shiftHour.startTime }} -</span>
+            {{ shiftHour.endTime }}
+          </td>
+          <td *ngFor="let slot of data.mappedSchedule!.slotsByNumberByDay[i]">
+            <div *ngFor="let group of slot.curriculumGroups; let first = first">
+              <ng-container *ngIf="group.isValid">
+                <div *ngIf="checkShowColumns(group)" class="schedule-card" [class.mt-2]="!first">
+                  <div class="flex-1 mr-2">
+                    <fa-icon [icon]="fasUsersClass"></fa-icon>
+                    {{ group.classBookFullName }} -
+                    <div class="inline sm:hidden">
+                      {{ group.subjectShort }}
+                    </div>
+
+                    <div class="hidden sm:inline">
+                      {{ group.subject }}
+                    </div>
+                  </div>
+                </div>
+
+                <ng-container>
+                  <div
+                    *ngFor="let hour of group.curriculumHours"
+                    class="ml-5 mt-2"
+                    [ngClass]="{ 'used-hour': checkIsHourUsed(group, hour.scheduleLessonId) }"
+                  >
+                    <mat-checkbox
+                      *ngIf="!hour.isInUse && !group.isReplHour"
+                      color="primary"
+                      (change)="toggleScheduleLessonSelected(hour.scheduleLessonId)"
+                    >
+                      {{ hour.date | sbDate }}
+                    </mat-checkbox>
+                  </div>
+                </ng-container>
+              </ng-container>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</form>

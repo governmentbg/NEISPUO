@@ -1,0 +1,13 @@
+@import "@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/variables/variables.scss";
+
+.dashboard-btn {
+    padding: 0;
+    background: transparent;
+    border: none; 
+    i {
+      font-size: 1.5rem;
+    }
+    &:focus {
+      box-shadow: none;
+    }
+}

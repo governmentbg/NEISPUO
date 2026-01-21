@@ -1,0 +1,13 @@
+.schedule-card {
+  display: flex;
+  padding: 5px;
+  border-radius: 6px;
+
+  color: hsl(213, 57%, 44%);
+  background-color: hsl(213, 65%, 92%);
+  border: 1px solid hsl(213, 50%, 80%);
+}
+
+.schedule-card-warning {
+  @apply border-yellow-100 bg-yellow-50 text-yellow-900;
+}

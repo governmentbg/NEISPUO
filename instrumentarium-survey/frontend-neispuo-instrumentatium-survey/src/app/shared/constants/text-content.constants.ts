@@ -1,0 +1,107 @@
+export const TEXT_CONTENT_CONSTANTS = {
+  NEW_CAMPAIGN: {
+    TITLE: 'Създаване на нова кампания',
+    NAVIGATION_LABELS: {
+      DETAILS: 'Детайли',
+      QUESTIONNAIRES: 'Въпросници',
+      PARTICIPANTS: 'Потребители',
+      SETTINGS: 'Настройки'
+    }
+  },
+  CAMPAIGN_DETAILS: {
+    SELF_EVALUATE: 'Самооценка',
+    STEP: '1',
+    TITLE: 'Детайли',
+    DESCRIPTION: 'Попълнете базова информация за кампанията',
+    NAME_LABEL: 'Наименовайте вашата кампания',
+    TYPE_LABEL: 'Изберете тип на кампанията',
+    START_DATE_LABEL: 'Изберете начало на кампанията',
+    END_DATE_LABEL: 'Изберете край на кампанията',
+    BUTTON_LABEL: 'Запази'
+  },
+  CAMPAIGN_QUESTIONNAIRES: {
+      STEP: '2',
+      TITLE: 'Въпросници',
+      DESCRIPTION: 'Изберете въпросник за кампанията.',
+      BUTTON_LABEL: 'Продължи'
+  },
+  CAMPAIGN_PARTICIPANTS: {
+      STEP: '3',
+      TITLE: 'Потребители',
+      DESCRIPTION: 'Изберете до кого да бъде изпратена кампанията.',
+      SEARCH_LABEL: 'Търси по име',
+      TEACHER_POSITION: 'учител',
+      BUTTON_LABEL: 'Продължи',
+  },
+  CAMPAIGN_SETTINGS: {
+      STEP: '4',
+      TITLE: 'Настройки (по избор)',
+      DESCRIPTION: 'Задайте настройки за кампанията.',
+      HAS_NOTIFICATION_LABEL: 'Автоматично напомняне на кампания',
+      BUTTON_LABEL: 'Създай кампания',
+      SPINNER_LABEL: 'Изчaкайте няколко секунди'
+  },
+  CAMPAIGN_LIST: {
+      TITLE: 'Кампании',
+      SEARCH_LABEL: 'Търси по име на кампания',
+      CREATE_BUTTON_LABEL: 'Създай кампания',
+      ALL: 'Всички',
+      ACTIVE: 'Активна',
+      INACTIVE: 'Неактивна',
+      SUCCESSFULL_CREATE_CAMPAIGN_MESSAGE_TMP: 'Успешно създадохте "Кампания Есен 2021"',
+      SUCCESSFULL_DELETE_CAMPAIGN_MESSAGE: 'Успешно изтрихте кампания/кампании',
+      SELECTED: 'Избрани',
+      DELETE_MODAL_TITLE: 'Изтриване на кампании',
+      CONFIRM_DELETE_MESSAGE: 'Искате ли да изтриете избраните кампании?',
+      DELETE_CONFIRM: 'Да',
+      DELETE_CANCEL: 'Отказ',
+      SUCCESSFULL_CREATE_CAMPAIGN_MESSAGE: 'Успешно създадохте',
+      FILTERS: 'Филтри',
+      YEARS_TITLE: 'Година',
+      YEARS_LABEL: 'Избери',    
+      ANSWERED_QUESTIONNAIRE: 'Успешно отговорен въпросник',
+      SAVED_DRAFT: 'Успешно запазена чернова',
+      FILTER_ACTIVE: 'Активни',
+      FILTER_INACTIVE: 'Неактивни',
+  },
+  CAMPAIGN_ACTIVE_PREVIEW: {
+      ACTIVE: 'Активна',
+      INACTIVE: 'Неактивна',
+      EDIT_BUTTON_LABEL: 'Редактирай',
+      PREVIEW_TITLE: 'Детайли',
+      NAME: 'Име',
+      TYPE: 'Тип',
+      DEADLINE: 'Срок',
+      STATUS: 'Статус',
+      EVALUATE: 'Оценка',
+      SELF_EVALUATE: 'Самооценка',
+      QUESTIONNAIRES_TITLE: 'Въпросници',
+      SELECTED: 'Избрани',
+      STATISTICS_TITLE: 'Статистики',
+      EDIT_TITLE: 'Редактирай',
+      NAME_LABEL: 'Наименовайте вашата кампания',
+      START_DATE_LABEL: 'Изберете начало на кампанията',
+      END_DATE_LABEL: 'Изберете край на кампанията',
+      EDIT_SUBMIT_BUTTON_LABEL: 'Запази',
+      FILED_CAMPAIGN: 'Попълнили'
+  },
+  CAMPAIGN_INACTIVE_PREVIEW: {
+    ACTIVE: 'Активна',
+    INACTIVE: 'Неактивна',
+    SCORE: 'Оценка от кампанията',
+    FILLED: 'Попълнили',
+    AGGREGATED_RESULTS: 'Агрегирани резултати по индикатори за',
+    SCORE_BY_INDICATOR: 'Оценка по индикатор:'
+  },
+  QUESTIONNAIRE: {
+    QUESTIONS: 'Въпроса',
+    INDICATOR: 'Индикатор',
+    SUBINDICATOR: 'Подиндикатор',
+    SUBMIT_QUESTIONNAIRE: 'Попълни въпросник',
+    SAVE_DRAFT: 'Запази чернова',
+    SUBMIT_QUESTIONNAIRE_DIALOG: 'Предаване на въпросник',
+    CONFIRM_MESSAGE: 'Ако предадете въпросника, няма да можете да променяте отговорите си. Сигурни ли сте, че искате да продължите?',
+    YES: 'Да',
+    NO: 'Не'
+  },
+};

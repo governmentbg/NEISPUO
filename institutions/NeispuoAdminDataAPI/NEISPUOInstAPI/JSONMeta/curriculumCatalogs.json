@@ -1,0 +1,41 @@
+{
+  "label": "Типови рамкови/УП - библиотека",
+  "sections": [
+    {
+      "order": 1,
+	  "name": "TableCurriculumCatalogList",
+      "table": 
+	  {
+          "name": "curriculumCatalogList",
+		  "action": "preview",
+		  "paramName": "curriculumCatalogID",
+		  "fields": [
+		  	{
+				"label": "№ по ред",
+				"name": "curriculumCatalogNumber",
+				"type": "input",
+				"inputType": "text",
+				"width":10,
+				"order": 1
+			},
+			{
+				"label": "Наименование",
+				"name": "curriculumCatalogName",
+				"type": "input",
+				"inputType": "text",
+				"width":50,
+				"order": 2
+			},
+			{
+				"label": "Описание",
+				"name": "curriculumCatalogDescription",
+				"type": "input",
+				"inputType": "textArea",
+				"width":50,
+				"order": 3
+			}
+		]
+      }
+    }
+  ]
+}

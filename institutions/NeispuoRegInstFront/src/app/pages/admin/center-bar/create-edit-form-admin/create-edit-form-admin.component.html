@@ -1,0 +1,29 @@
+<div class="l-focused-element display-none-element" [ngClass]="{'focused': updateJsonService.focusedElement.index === form.idntfr}" (click)="formFocus()">
+    <span class="l-custom-info-span">форма</span>
+    <form class="dynamic-form isNew" *ngIf="form" >
+      <div class="wrapper-card different-view" id="wrapper-card">
+        <div class="l-container-card">
+          <ng-container *ngFor="let section of form?.sections">
+            <div class="l-focused-element w-100 display-none-element" [ngClass]="{'focused': updateJsonService.focusedElement.index === section.idntfr}" (click)="focus(section)" *ngIf="hasRenderedElement(section)">
+              <span class="l-custom-info-span">секция</span>
+              <mat-card class="section-card" color="primary" *ngIf="!section.hidden && section.rendered !== false">
+                <mat-card-header class="bg-cornflower-blue" *ngIf="section.label">
+                  <mat-card-title>{{ section.pseudoLabel }}
+                  </mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                  <div class="wrapper-body" *ngIf="section?.subsections && section?.subsections.length">
+                    <ng-container *ngFor="let subsection of section?.subsections">
+                      <app-subsection-admin *ngIf="!subsection.hidden && subsection.rendered !== false && hasRenderedField(subsection)" [subsection]="subsection" [section]="section"></app-subsection-admin>
+                    </ng-container>
+                  </div>
+                  <app-table-admin [table]="section.table" *ngIf="section.table"></app-table-admin>
+                </mat-card-content>
+              </mat-card>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </form>
+</div>
+  

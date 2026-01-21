@@ -1,0 +1,36 @@
+<div class="sb-table-container mt-2.5 md:mt-0">
+  <table class="sb-table">
+    <thead>
+      <tr>
+        <th class="w-1">Час</th>
+        <th class="w-1">Дата</th>
+        <th>Тема</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr [class.bg-gray-100]="topic.isOffDay" *ngFor="let topic of data.topics">
+        <td class="align-top">
+          {{ topic.hour }}
+        </td>
+        <td class="align-top">
+          {{ topic.date | sbDate }}
+        </td>
+        <td *ngIf="!topic.isOffDay">
+          <span *ngIf="topic.titles.length === 1" class="whitespace-pre-line">{{ topic.titles[0] }}</span>
+          <ul *ngIf="topic.titles.length > 1" class="list-disc">
+            <li *ngFor="let title of topic.titles" class="whitespace-pre-line">{{ title }}</li>
+          </ul>
+        </td>
+        <td
+          *ngIf="topic.isOffDay"
+          class="text-center align-middle text-xs font-medium text-gray-500 uppercase tracking-wider"
+        >
+          Неучебен ден
+        </td>
+      </tr>
+      <tr *ngIf="!data.topics.length">
+        <td colspan="3" class="text-center">Няма въведени часове за този предмет</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

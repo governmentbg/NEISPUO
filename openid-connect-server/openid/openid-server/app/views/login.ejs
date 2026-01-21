@@ -1,0 +1,49 @@
+<link rel="stylesheet" type="text/css" href="/css/login.min.css" />
+
+<% if (CHECK_RECAPTCHA) { %>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script>
+  function onSubmit(token) {
+    document.getElementById('recaptcha-form').submit();
+  }
+</script>
+<% } %>
+
+<div class="login-page container-fluid">
+  <%- include('header.ejs') %>
+
+  <div class="login-page-wrapper row">
+    <div class="col-sm-12 col-md-8 offset-md-2 col-xl-5 offset-xl-6">
+      <div class="card h-100">
+        <form autocomplete="off" action="/interaction/<%= uid %>/login-with-azure" method="post">
+          <div class="card-body">
+            <div class="card-title">
+              <div class="mon-logo">
+                <img src="/images/mon-logo.png" alt="" />
+              </div>
+              <h2 class="mb-0">НЕИСПУО</h2>
+            </div>
+            <h2 class="card-text">Влез в своя профил</h2>
+            <div class="card-footer">
+              <button type="submit" class="btn btn-primary icon-right">Вход с edu.mon.bg</button>
+            </div>
+          </div>
+        </form>
+        <!-- uncomment for parent login -->
+        <hr />
+        <form autocomplete="off" action="/interaction/<%= uid %>/login-as-parent" method="post">
+          <div class="parent-login-btn-wrapper text-center">
+            <button type="submit" class="btn btn-outline-primary icon-right">
+              Вход като родител
+            </button>
+          </div>
+        </form>
+        <a class="btn btn-link" href="<%= MAIN_PORTAL_URL %>/parent-register" target="_blank"
+          >Регистрация като родител</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/login.js"></script>

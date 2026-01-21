@@ -1,0 +1,365 @@
+{
+  "label": "Основни данни за лице",
+  "dataName": "personData",
+  "procedureName": "inst_basic.personCUD",
+  "sections": [
+    {
+      "label": "Основни данни за лице",
+      "order": 1,
+      "subsections": [
+        {
+          "order": 1,
+          "name": "personData",
+          "subsections": [
+            {
+              "order": 1,
+              "label": "Данни за лицето",
+              "fields": [
+                {
+                  "label": "Сист. ID на Person",
+                  "name": "personid",
+                  "type": "input",
+                  "inputType": "number",
+                  "rendered": false,
+                  "disabled": true,
+                  "order": 0
+                },
+                {
+                  "label": "Титла",
+                  "name": "title",
+                  "type": "input",
+                  "inputType": "text",
+                  "order": 1,
+                  "width": 100,
+                  "disabled": false,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 100,
+                      "message": "Максимална дължина 100 символа"
+                    },
+                    {
+                      "name": "pattern",
+                      "validation": "^[а-яА-Я ]*$",
+                      "message": "Моля, въведете на кирилица"
+                    }
+                  ],
+                  "influence": [],
+                  "info": ""
+                },
+                {
+                  "label": "Име",
+                  "name": "firstName",
+                  "type": "input",
+                  "inputType": "text",
+                  "order": 2,
+                  "disabled": false,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 255,
+                      "message": "Максимална дължина 255 символа"
+                    },
+                    {
+                      "name": "required",
+                      "validator": "",
+                      "message": "Полето е задължително"
+                    },
+                    {
+                      "name": "pattern",
+                      "validation": "^[а-яА-Я ]*$",
+                      "message": "Моля, въведете на кирилица"
+                    }
+                  ]
+                },
+                {
+                  "label": "Презиме",
+                  "name": "middleName",
+                  "type": "input",
+                  "inputType": "text",
+                  "order": 3,
+                  "width": 200,
+                  "disabled": false,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 255,
+                      "message": "Максимална дължина 255 символа"
+                    },
+                    {
+                      "name": "pattern",
+                      "validation": "^[а-яА-Я ]*$",
+                      "message": "Моля, въведете на кирилица"
+                    }
+                  ]
+                },
+                {
+                  "label": "Фамилия",
+                  "name": "lastName",
+                  "type": "input",
+                  "inputType": "text",
+                  "order": 4,
+                  "width": 200,
+                  "disabled": false,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 255,
+                      "message": "Максимална дължина 255 символа"
+                    },
+                    {
+                      "name": "required",
+                      "validator": "",
+                      "message": "Полето е задължително"
+                    },
+                    {
+                      "name": "pattern",
+                      "validation": "^[а-яА-Я ]*$",
+                      "message": "Моля, въведете на кирилица"
+                    }
+                  ]
+                },
+                {
+                  "label": "Тип идентификатор",
+                  "name": "personalIDType",
+                  "type": "select",
+                  "optionsPath": "/data/get/personalIDTypes",
+                  "disabled": true,
+                  "defaultValue": "personalIdType",
+                  "validations": [
+                    {
+                      "name": "required",
+                      "validator": "",
+                      "message": "Полето е задължително"
+                    }
+                  ],
+                  "order": 5
+                },
+                {
+                  "label": "ЕГН/ЛНЧ",
+                  "name": "personalID",
+                  "type": "input",
+                  "inputType": "text",
+                  "order": 6,
+                  "width": 150,
+                  "disabled": true,
+                  "defaultValue": "personalID",
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 255,
+                      "message": "Максимална дължина 255 символа"
+                    },
+                    {
+                      "name": "required",
+                      "validator": "",
+                      "message": "Полето е задължително"
+                    }
+                  ]
+                },
+                {
+                  "label": "Личен образователен номер",
+                  "name": "publicEduNumber",
+                  "type": "input",
+                  "inputType": "text",
+                  "order": 7,
+                  "width": 150,
+                  "disabled": true
+                },
+                {
+                  "label": "Пол",
+                  "name": "gender",
+                  "type": "select",
+                  "optionsPath": "/data/get/gender",
+                  "disabled": false,
+                  "validations": [
+                    {
+                      "name": "required",
+                      "validator": "",
+                      "message": "Полето е задължително"
+                    }
+                  ],
+                  "order": 7
+                },
+                {
+                  "label": "Дата на раждане",
+                  "name": "birthDate",
+                  "type": "date",
+                  "disabled": false,
+                  "order": 8,
+                  "width": 200,
+                  "validations": [
+                    {
+                      "name": "required",
+                      "validator": "",
+                      "message": "Полето е задължително"
+                    }
+                  ]
+                },
+                {
+                  "label": "Месторождение(държава)",
+                  "name": "birthPlaceCountry",
+                  "type": "searchselect",
+                  "optionsPath": "/data/get/country",
+                  "disabled": false,
+                  "validations": [],
+                  "order": 9,
+                  "influence": [],
+                  "info": ""
+                },
+                {
+                  "label": "Месторождение(град)",
+                  "name": "birthPlaceTownID",
+                  "type": "searchselect",
+                  "optionsPath": "/data/get/town",
+                  "disabled": false,
+                  "validations": [],
+                  "order": 10,
+                  "influence": [],
+                  "info": ""
+                },
+                {
+                  "label": "Националност",
+                  "name": "nationalityID",
+                  "type": "searchselect",
+                  "optionsPath": "/data/get/country",
+                  "disabled": false,
+                  "validations": [],
+                  "order": 11,
+                  "influence": [],
+                  "info": ""
+                }
+              ]
+            },
+            {
+              "order": 2,
+              "label": "Постоянен адрес",
+              "fields": [
+                {
+                  "order": 1,
+                  "label": "Област",
+                  "name": "permanentRegion",
+                  "type": "searchselect",
+                  "optionsPath": "/data/get/region",
+                  "disabled": false,
+                  "influence": [
+                    {
+                      "fieldName": "permanentMunicipality",
+                      "url": "/data/get/municipality",
+                      "type": "options"
+                    }
+                  ]
+                },
+                {
+                  "order": 2,
+                  "label": "Община",
+                  "name": "permanentMunicipality",
+                  "type": "searchselect",
+                  "disabled": false,
+                  "influence": [
+                    {
+                      "fieldName": "permanentTown",
+                      "url": "/data/get/town",
+                      "type": "options"
+                    }
+                  ]
+                },
+                {
+                  "order": 3,
+                  "label": "Населено място",
+                  "name": "permanentTown",
+                  "type": "searchselect",
+                  "disabled": false
+                },
+                {
+                  "label": "Адрес",
+                  "name": "permanentAddress",
+                  "type": "input",
+                  "inputType": "text",
+                  "order": 4,
+                  "width": 600,
+                  "disabled": false,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 255,
+                      "message": "Максимална дължина 255 символа"
+                    },
+                    {
+                      "name": "required",
+                      "validator": "",
+                      "message": "Полето е задължително"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "order": 3,
+              "label": "Настоящ адрес",
+              "fields": [
+                {
+                  "order": 1,
+                  "label": "Област",
+                  "name": "currentRegion",
+                  "type": "searchselect",
+                  "optionsPath": "/data/get/region",
+                  "disabled": false,
+                  "influence": [
+                    {
+                      "fieldName": "currentMunicipality",
+                      "url": "/data/get/municipality",
+                      "type": "options"
+                    }
+                  ]
+                },
+                {
+                  "order": 2,
+                  "label": "Община",
+                  "name": "currentMunicipality",
+                  "type": "searchselect",
+                  "disabled": false,
+                  "influence": [
+                    {
+                      "fieldName": "currentTown",
+                      "url": "/data/get/town",
+                      "type": "options"
+                    }
+                  ]
+                },
+                {
+                  "label": "Населено място",
+                  "name": "currentTown",
+                  "type": "searchselect",
+                  "disabled": false,
+                  "order": 3
+                },
+                {
+                  "label": "Адрес",
+                  "name": "currentAddress",
+                  "type": "input",
+                  "inputType": "text",
+                  "order": 4,
+                  "width": 600,
+                  "disabled": false,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 255,
+                      "message": "Максимална дължина 255 символа"
+                    },
+                    {
+                      "name": "required",
+                      "validator": "",
+                      "message": "Полето е задължително"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

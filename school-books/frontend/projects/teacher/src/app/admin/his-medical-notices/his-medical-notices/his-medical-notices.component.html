@@ -1,0 +1,62 @@
+<sb-card>
+  <ng-container card-title>Електронни медицински бележки</ng-container>
+  <ng-container card-body>
+    <div [formGroup]="searchForm" novalidate class="sm:grid grid-cols-2 gap-x-4">
+      <sb-nom-select
+        label="Учебна година"
+        formControlName="schoolYear"
+        [nomService]="schoolYearNomsService"
+      ></sb-nom-select>
+
+      <sb-text-field label="НРН бележка" formControlName="nrnMedicalNotice"></sb-text-field>
+      <sb-text-field label="НРН преглед" formControlName="nrnExamination"></sb-text-field>
+      <sb-text-field label="Идентификатор" formControlName="identifier"></sb-text-field>
+    </div>
+
+    <sb-table
+      [dataSource]="dataSource"
+      [displayedColumns]="['action', 'schoolYears', 'nrnMedicalNotice', 'nrnExamination', 'identifier']"
+    >
+      <ng-container cdkColumnDef="action">
+        <th cdk-header-cell *cdkHeaderCellDef></th>
+        <td cdk-cell *cdkCellDef="let row" class="sb-table-action">
+          <a [routerLink]="['./', row.hisMedicalNoticeId]" aria-label="Избери" class="sb-link-btn">
+            <fa-icon [icon]="fadChevronCircleRight"></fa-icon>
+          </a>
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="schoolYears">
+        <th cdk-header-cell *cdkHeaderCellDef>Учебни години</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.schoolYears }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="nrnMedicalNotice">
+        <th cdk-header-cell *cdkHeaderCellDef>НРН бележка</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.nrnMedicalNotice }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="nrnExamination">
+        <th cdk-header-cell *cdkHeaderCellDef>НРН преглед</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.nrnExamination }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="identifier">
+        <th cdk-header-cell *cdkHeaderCellDef>Идентификатор</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.identifier }}</td>
+      </ng-container>
+
+      <ng-container no-data-row>
+        <td colspan="5" class="text-center">
+          {{
+            searchForm.value.nrnMedicalNotice || searchForm.value.nrnExamination || searchForm.value.identifier
+              ? 'Няма намерени електронни медицински бележки за въведените критерии за търсене'
+              : searchForm.value.schoolYear
+              ? 'Няма подадени електронни медицински бележки за ' + searchForm.value.schoolYear
+              : 'Моля изберете учебна година'
+          }}
+        </td>
+      </ng-container>
+    </sb-table>
+  </ng-container>
+</sb-card>

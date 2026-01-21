@@ -1,0 +1,81 @@
+<div>
+  <header class="fixed-top">
+    <nav class="navbar bg-color-blue-500 px-4 py-3">
+      <div class="container-fluid navbar-container">
+        <div class="d-flex">
+          <button class="sidenav-toggle btn btn-primary" type="button" (click)="toggleSideNav()" fxShow="true"
+            fxHide.gt-sm>
+            <i class="bi bi-list"></i>
+          </button>
+          <div class="logo">
+            <a href=""><img class="mon-logo" src="assets/images/mon-logo.png" alt="" /></a>
+            <h3 class="mon-title">НЕИСПУО</h3>
+          </div>
+        </div>
+        <div class="d-flex justify-content-center me-1">
+          <app-user-tour-guide 
+          [typeButton]="'globalGuide'"
+          [guideName]="guideName"
+          ></app-user-tour-guide>
+          <div class="me-3 align-self-center">
+            <app-dashboard-menu></app-dashboard-menu>
+          </div>
+          <app-user-menu></app-user-menu>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="sidebar px-0 side-menu flex-shrink-0 bg-white" [ngClass]="{ shown: displaySidemenu }">
+    <ul class="ps-0 side-menu-scrollable">
+        <ng-container *ngFor="let menuList of sideMenuList; let i=index">
+            <li *ngIf="(hasRights(menuList.show) | async) && menuList.label !== publicRegisterLabel ">
+                <button
+                    class="btn btn-toggle align-items-center btn-menu"
+                    data-bs-toggle="collapse"
+                    [attr.data-bs-target]="'#id-' + menuList.id"
+                    aria-expanded="true"
+                    role="button"
+                    [attr.aria-controls]="'id-' + menuList.id"
+                >
+                    {{ menuList.label}}
+                </button>
+                <div class="collapse" id="{{ 'id-' + menuList.id }}" [ngClass]="{ show: true }">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal small" [id]="menuList.id">
+                        <li *ngFor="let listItem of menuList.items" class="{{listItem.class}}">
+                            <a
+                            *ngIf="hasRights(listItem.authRoles) | async"
+                                routerLink="{{ listItem.routerLink }}"
+                                routerLinkActive="active"
+                                [routerLinkActiveOptions]="{ exact: true }" 
+                                class="px-0 {{listItem.class}"
+                                (click)="toggleSideNav()"
+                            >
+                                <span class="d-sm-inline">{{ listItem.label }}</span></a
+                            >
+                        </li>
+                    </ul>
+                </div>
+                <hr />
+            </li>
+            <a *ngIf="(hasRights(menuList.show) | async) && menuList.label === publicRegisterLabel"  href="{{'/public-register-page'}}" 
+            target="_blank"><button class="btn btn-toggle align-items-center public-register"
+            > {{publicRegisterLabel}}</button></a>
+        </ng-container>
+    </ul>
+</div>
+
+  <div class="content-container">
+    <div class="backdrop" *ngIf="displaySidemenu"></div>
+    <app-breadcrumb></app-breadcrumb>
+    <router-outlet></router-outlet>
+  </div>
+
+  <footer>
+    <div class="footer d-flex align-items-center flex-column p-3">
+      <div class="flex-grow-1 p-small">&copy; Министерство на образованието и науката</div>
+      <div class="flex-grow-1 p-small">За въпроси, моля да използвате <a class="text-sm" href="{{environment.HELPDESK_URL}}">системата за поддръжка</a></div>
+      <div class="flex-grow-1 tiny app-version">{{ applicationVersions }}</div>
+    </div>
+  </footer>
+</div>

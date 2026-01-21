@@ -1,0 +1,84 @@
+@using SB.Domain
+@using System.Linq
+@model ScheduleAndAbsencesModel
+
+<div class="page">
+
+  @for(int i = 0; i < Model.Weeks.Length; i++)
+  {
+    <h3 class="page-header">Седмично планиране по образователни направления</h3>
+    <table>
+      <thead>
+        <tr>
+          <th colspan="6">@Model.Weeks[i].WeekName</th>
+        </tr>
+        <tr>
+          <th class="two-rows-height" rowspan="2"><div class="vertical-text">Ден</div></th>
+          <th class="two-rows-height" rowspan="2"><div class="vertical-text">Час</div></th>
+          <th rowspan="2">Предмет/Учител</th>
+          <th rowspan="2">Тема</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach (var day in Model.Weeks[i].Days)
+        {
+          @if(day.Hours.Any() && !day.IsOffDay)
+          {
+            int index = 0;
+            foreach (var hour in day.Hours)
+            {
+              <tr>
+                @if (index == 0)
+                {
+                  <td rowspan="@day.Hours.Length" class="align-bottom" style="height: 110px"><div class="vertical-text"><p>@day.DayString @day.Date.ToString("dd.MM")</p></div></td>
+                }
+                <td>@hour.HourNumber</td>
+                <td>@hour.SubjectName / @hour.SubjectTypeName @(!string.IsNullOrEmpty(hour.CurriculumTeachers) ? "- " + hour.CurriculumTeachers : "")</td>
+                <td>@string.Join(", ", hour.Topics)</td>
+              </tr>
+
+              index++;
+            }
+          }
+          else
+          {
+            <tr>
+              <td class="align-bottom" style="height: 110px"><div class="vertical-text"><p>@day.DayString @day.Date.ToString("dd.MM")</p></div></td>
+              <td colspan="5">@(!day.IsOffDay ? "Няма въведена програма за деня" : "Неучебен ден")</td>
+            </tr>
+          }
+        }
+      </tbody>
+    </table>
+
+    <table style="margin-top: 30px">
+      <thead>
+        <tr>
+          <th>Допълнителни дейности и индивидуална работа</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          @if (Model.Weeks[i].AdditionalActivities.Any())
+          {
+            <td>
+              @foreach (var a in Model.Weeks[i].AdditionalActivities)
+              {
+                @a<br/>
+              }
+            </td>
+          }
+          else
+          {
+            <td>Няма въведени допълнителни дейности и индивидуална работа</td>
+          }
+        </tr>
+      </tbody>
+    </table>
+
+    if (i < Model.Weeks.Length - 1)
+    {
+      <div class="page-break"></div>
+    }
+  }
+</div>

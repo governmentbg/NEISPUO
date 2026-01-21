@@ -1,0 +1,55 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[MainSubjectLimit] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "MainSubjectID as code"
+        },
+        {
+            "column": "MainSubjectName as label"
+        },
+		{
+            "column": "IsValid as isValid"
+        }
+    ],
+    "params": [
+        {
+            "param": "@firstcode",
+            "column": "MainSubjectID",
+            "operator": "=",
+            "value": 73,
+            "type": "int",
+            "logical_operator": "or",
+            "static": true
+          },
+          {
+            "param": "@secondcode",
+            "column": "MainSubjectID",
+            "operator": "=",
+            "value": 74,
+            "type": "int",
+            "logical_operator": "or",
+            "static": true
+          },
+          {
+            "param": "@thirdcode",
+            "column": "MainSubjectID",
+            "operator": "=",
+            "value": 75,
+            "type": "int",
+            "logical_operator": "or",
+            "static": true
+          },
+          {
+            "param": "@fourthcode",
+            "column": "MainSubjectID",
+            "operator": "=",
+            "value": 90,
+            "type": "int",
+            "logical_operator": "or",
+            "static": true
+          }
+    ],
+    "order": [
+    ],
+    "inSelects": []
+}

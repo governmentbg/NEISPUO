@@ -1,0 +1,11 @@
+<Documentation>
+    <CommonSchoolBookSectionParams>
+        <param name="schoolYear">{{Common.SchoolYear}}</param>
+        <param name="institutionId">{{Common.InstitutionId}}</param>
+    </CommonSchoolBookSectionParams>
+    <CommonClassBookSectionParams>
+        <param name="schoolYear">{{Common.SchoolYear}}</param>
+        <param name="institutionId">{{Common.InstitutionId}}</param>
+        <param name="classBookId">{{Common.ClassBookId}}</param>
+    </CommonClassBookSectionParams>
+</Documentation>

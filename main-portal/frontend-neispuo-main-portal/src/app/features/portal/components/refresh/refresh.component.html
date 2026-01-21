@@ -1,0 +1,13 @@
+<div class="modal fade" id="reloadPageModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" 
+aria-labelledby="reloadPageLabel" aria-hidden="true" [ngClass]="{'show' : showRefreshModal}" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        Съществува нова версия на приложението, моля натиснете бутона "Презареди", за да изтеглите последните промени.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="onClick()">Презареди</button>
+      </div>
+    </div>
+  </div>
+</div>

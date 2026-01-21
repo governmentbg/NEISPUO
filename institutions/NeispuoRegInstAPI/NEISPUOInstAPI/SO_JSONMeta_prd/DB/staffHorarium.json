@@ -1,0 +1,104 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_year].[MS_StaffHorarium_MS] MS /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "MS.CurriculumID as id"
+        },
+		{
+            "column": "MS.CurriculumID as curriculumID"
+        },
+		{
+            "column": "MS.SchoolYear as schoolYear"
+        },
+		{
+            "column": "MS.InstitutionID as institutionID"
+        },
+		{
+            "column": "MS.StaffPositionID as staffPositionID"
+        },
+		{
+            "column": "MS.PersonID as personID"
+        },
+		{
+            "column": "MS.StaffOrd as staffOrd"
+        },
+		{
+            "column": "MS.StaffPositionNo as staffPositionNo"
+        },
+		{
+            "column": "MS.SubjectID as subjectID"
+        },
+		{
+            "column": "MS.SubjectName as subjectName"
+        },
+		{
+            "column": "MS.SubjectTypeID as subjectTypeID"
+        },
+		{
+            "column": "MS.SubjectTypeName as subjectTypeName"
+        },
+		{
+            "column": "MS.ClassName as className"
+        },
+		{
+            "column": "MS.BasicClassID as basicClassID"
+        },
+		{
+          "column": "MS.WeeksFirstTerm AS weeksFirstTerm"
+        },
+		{
+          "column": "MS.HoursWeeklyFirstTerm AS hoursWeeklyFirstTerm"
+        },
+		{
+          "column": "MS.WeeksSecondTerm AS weeksSecondTerm"
+        },
+		{
+          "column": "MS.HoursWeeklySecondTerm AS hoursWeeklySecondTerm"
+        },
+		{
+          "column": "MS.HoursAll AS hoursAll"
+        },
+		{
+          "column": "MS.NormaS AS normaS"
+        }
+    ],
+    "params": [
+	{
+      "param": "@instid",
+      "column": "MS.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+	{
+      "param": "@staffPositionID",
+      "column": "MS.StaffPositionID",
+      "operator": "=",
+      "value": 0,
+      "type": "int",
+      "logical_operator": "and",
+      "static": true
+    }
+    ],
+    "order": [
+       {
+          "column": "MS.SubjectID",
+          "type": "ASC"
+        },
+		{
+          "column": "MS.SubjectTypeID",
+          "type": "ASC"
+        },
+		{
+          "column": "MS.BasicClassID",
+          "type": "ASC"
+        },
+		{
+          "column": "MS.ClassName",
+          "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

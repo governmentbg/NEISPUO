@@ -1,0 +1,9 @@
+<footer>
+    <div class="footer d-flex align-items-center flex-column p-3">
+        <div class="flex-grow-1 p-small" [innerHTML]="TEXT1 | translate"></div>
+        <div class="flex-grow-1 p-small">
+            {{ TEXT2 | translate }} <a class="text-sm" href="{{ environment.HELPDESK_URL }}">{{ TEXT3 | translate }}</a>
+        </div>
+        <div class="flex-grow-1 tiny app-version">{{ appVersion }}</div>
+    </div>
+</footer>

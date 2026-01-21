@@ -1,0 +1,78 @@
+@mixin button-variant($color-value, $color-name) {
+    &:hover {
+       background-color: get-color($color-name, $theme-colors-400);
+       border-color: get-color($color-name, $theme-colors-400);
+    }
+    &:disabled {
+        background-color: $gray-200;
+        border-color: $gray-200;
+        color: $gray-500;
+    }
+}
+
+@mixin button-outline-variant($color) {
+  border-color: #CBD3DF;
+  &:hover {
+      border-color: $color;
+      background-color: transparent;
+      color: $color;
+  }
+  &:disabled {
+      border-color: $gray-500;
+      color: $gray-500;
+      background-color: transparent;
+  }
+}
+
+@mixin button-tertitary-variant($color-value, $color-name) {
+    color: $gray-600;
+    &:hover {
+       color: $color-value;
+       background-color: get-color($color-name,  $theme-colors-100);
+    }
+    &:disabled {
+        color: $gray-500;
+        border-color: transparent;
+    }
+}
+
+@mixin small-outline-variant($color-value, $color-name) {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.75rem;
+    &:hover {
+       background-color: $gray-300;
+    }
+    &:active {
+      background-color: get-color($color-name,  $theme-colors-100);
+      color: $color-value;
+    }
+    &:disabled {
+      color: $gray-500;
+    }
+}
+
+@mixin btn-icon-variant($color-value, $color-name) {
+  padding: 0.5rem;
+  line-height: 1rem;
+  &:focus,
+  &:hover {
+    background-color: get-color($color-name,  $theme-colors-100);
+    color: $color-value;
+  }
+  &:focus {
+    border-color: $color-value;
+  }
+  &:disabled {
+      color: $gray-500;
+  }
+}
+
+@mixin btn-transparent-variant($color-value) {
+  border: none;
+  color: $color-value;
+}
+
+@mixin icon-variant($value) {
+  content: $value;
+}

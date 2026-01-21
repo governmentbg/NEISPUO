@@ -1,0 +1,21 @@
+{
+    "template": "SELECT /**select**/ FROM [noms].[PersonalIDType] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "PersonalIDTypeID as code"
+        },
+        {
+            "column": "Name as label"
+        }
+    ],
+    "params": [
+
+    ],
+    "order": [
+        {
+            "column": "PersonalIDTypeID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

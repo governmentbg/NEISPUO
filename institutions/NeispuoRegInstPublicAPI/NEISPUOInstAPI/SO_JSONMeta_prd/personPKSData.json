@@ -1,0 +1,140 @@
+{
+  "label": "Данни за професионална квалификация на персонала",
+  "procedureName": "inst_basic.personPKSCUD",
+  "dataName": "if(operationType==1) {form.dataName=null} else {form.dataName='personPKSData'}",
+  "sections": [
+    {
+      "label": "Професионална квалификация",
+      "order": 1,
+      "subsections": [
+        {
+          "order": 1,
+          "name": "staffPKS",
+          "label": "Професионална квалификация на персонала",
+          "fields": [
+            {
+              "label": "Степен ПКС",
+              "name": "pksTypeID",
+              "type": "select",
+              "optionsPath": "/data/get/pksTypes",
+              "disabled": false,
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ],
+              "order": 1
+            },
+            {
+              "label": "Документ №",
+              "name": "pksCertifcateNo",
+              "type": "input",
+              "inputType": "text",
+              "disabled": false,
+              "order": 2,
+              "width": 200,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 50,
+                  "message": "Максимална дължина 50 символа"
+                }
+              ]
+            },
+            {
+              "label": "Година",
+              "name": "pksYearOfGraduation",
+              "type": "input",
+              "inputType": "number",
+              "order": 3,
+              "width": 95,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 4,
+                  "message": "Максимална дължина 4 символа"
+                },
+                {
+                  "name": "minLength",
+                  "validation": 4,
+                  "message": "Минимална дължина 4 символа"
+                },
+                {
+                  "name": "max",
+                  "validation": 9999,
+                  "message": "Невалидна година"
+                },
+                {
+                  "name": "pattern",
+                  "validation": "^\\d+$",
+                  "message": "Полето трябва да съдържа цяло неотрицателно число"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "order": 1,
+          "label": "Специалност",
+          "name": "specialityData",
+          "fields": [
+            {
+              "label": "Наименование на специалността",
+              "name": "speciality",
+              "type": "textarea",
+              "order": 1,
+              "width": 1000,
+              "height": 5,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 1024,
+                  "message": "Максимална дължина 1024 символа"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "label": "Придобита в учебно заведение",
+          "fields": [
+            {
+              "label": "Придобита в",
+              "name": "universityID",
+              "type": "searchselect",
+              "optionsPath": "/data/get/university",
+              "disabled": false,
+              "width": 800,
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ],
+              "order": 1
+            },
+            {
+              "label": "Бележки",
+              "name": "universityNotes",
+              "type": "textarea",
+              "order": 2,
+              "width": 1000,
+              "height": 2,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 1024,
+                  "message": "Максимална дължина 1024 символа"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

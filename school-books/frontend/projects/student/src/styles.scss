@@ -1,0 +1,21 @@
+@import 'tailwindcss';
+@import 'google-fonts';
+@import 'material/material-student';
+@import 'material/material-fixes';
+@import 'base';
+@import 'ng-select-vars';
+.ng-select-default {
+  @import '@ng-select/ng-select/scss/default.theme';
+}
+.ng-select-material {
+  @import '@ng-select/ng-select/scss/material.theme';
+}
+
+@import 'components/book';
+@import 'components/badge';
+@import 'components/button';
+@import 'components/form-control';
+@import 'components/nom-select';
+@import 'components/schedule';
+@import 'components/table';
+@import 'components/snackbar';

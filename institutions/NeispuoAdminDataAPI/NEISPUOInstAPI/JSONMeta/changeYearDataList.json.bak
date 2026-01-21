@@ -1,0 +1,69 @@
+{
+  "changeData": false,
+  "sections": [
+    {
+      "name": "InfoMessagesSectionNew",
+      "order": 1,
+      "subsections": [
+        {
+          "order": 0,
+          "name": "InfoMessagesSubsectionEdit",
+          "label": "Важна информация",
+          "fields": [
+            {
+              "type": "info",
+              "rendered": true,
+              "defaultValue": "<p style='color:MediumSeaGreen;'>Преминаване в нова учебна година може да се извършва след 01.07. и в случай, че всички данни за старата учебна година са коректно въведени.</p>",
+              "order": 0
+            },
+            {
+              "type": "info",
+              "rendered": true,
+              "defaultValue": "<p style='color:MediumSeaGreen;'>За да стартирате процес по преминаване в нова учебна година, моля натиснете бутон +</p>",
+              "order": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 1,
+      "name": "TableChangeYearDataList",
+      "table":
+      {
+        "name": "changeYearDataList",
+        "searchable": false,
+        "formName":"changeYearData",
+        "createNew":"redirect",
+        "paramName":"changeYearDataID",
+        "hasEditButton":"if(isLocked == false) {table.hasEditButton = false} else {table.hasEditButton = true}",
+        "fields": [
+          {
+            "label": "От учебна година",
+            "name": "fromSchoolYearText",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 1
+          },
+          {
+            "label": "Към учебна година",
+            "name": "toSchoolYearText",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 2
+          },
+          {
+            "label": "Статус",
+            "name": "changeYearStatus",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 3
+          }
+        ]
+      }
+    }
+  ]
+}

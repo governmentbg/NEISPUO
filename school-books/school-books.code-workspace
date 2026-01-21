@@ -1,0 +1,28 @@
+{
+  "folders": [
+    {
+      "path": "frontend"
+    },
+    {
+      "path": "frontend-logger-sink"
+    },
+    {
+      "path": "backend"
+    },
+    {
+      "path": "db"
+    },
+    {
+      "path": "blobs"
+    },
+    {
+      "name": "root",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "git.ignoreLimitWarning": true,
+    "omnisharp.useModernNet": true,
+    "dotnet.defaultSolution": "backend/SB.sln"
+  }
+}

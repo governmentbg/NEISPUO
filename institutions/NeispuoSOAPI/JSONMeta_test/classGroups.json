@@ -1,0 +1,102 @@
+{
+	"label": "Групи/Класове",
+	"sections": [
+		{
+			"order": 1,
+			"name": "TableClassDetailList",
+			"table": {
+				"name": "classGroupList",
+				"createNew": "redirect",
+				"createParams": {
+					"classKind": 1
+				},
+				"formName": "classGroupData",
+				"action": "preview",
+				"paramName": "parentclassid",
+				"additionalParams": [
+					"basicClassID", "showProfilePart"
+				],
+				"canDeleteRow": true,
+				"procedureName": "inst_basic.classGroupCUD",
+				"searchType": "column",
+				"fields": [
+					{
+						"label": "if(instType==1 || instType==4) {field.label='Клас'} else {field.label='Група'}",
+						"name": "className",
+						"type": "input",
+						"inputType": "text",
+						"width": 8,
+						"order": 1
+					},
+					{
+						"label": "if(instType==1 || instType==4) {field.label='Випуск (клас)'} else {field.label='Възрастова група'}",
+						"name": "basicClass",
+						"type": "input",
+						"inputType": "text",
+						"width": 10,
+						"order": 2
+					},
+					{
+						"label": "if(instType==3) {field.label='Организационна форма'} else if(instType==2){field.label='Вид на групата'} else {field.label='Вид на паралелката'}",
+						"name": "classTypeName",
+						"type": "input",
+						"inputType": "text",
+						"width": 15,
+						"order": 3
+					},
+					{
+						"label": "if(instType==3) {field.label='Вид'} else {field.label='Форма на обучение'}",
+						"name": "eduFormName",
+						"type": "input",
+						"inputType": "text",
+						"width": 10,
+						"order": 4
+					},
+					{
+						"label": "Професия/Специалност",
+						"name": "specialityName",
+						"type": "input",
+						"inputType": "text",
+						"rendered": "if(instType==1 || instType==4) {field.rendered=true} else {field.rendered=false}",
+						"width": 25,
+						"order": 5
+					},
+					{
+						"label": "ИИЧЕ/РИЧЕ (език)",
+						"name": "flName",
+						"type": "input",
+						"inputType": "text",
+						"rendered": "if(instType==1 || instType==4) {field.rendered=true} else {field.rendered=false}",
+						"width": 15,
+						"order": 6
+					},
+					{
+						"label": "Адрес на обучение",
+						"name": "departmentName",
+						"type": "input",
+						"inputType": "text",
+						"width": 25,
+						"order": 7
+					},
+					{
+						"label": "if(instType==2) {field.label='На подгрупи'} else {field.label='На групи'}",
+						"name": "isClassGroup",
+						"type": "input",
+						"inputType": "text",
+						"rendered": "if(instType==3) {field.rendered=false} else {field.rendered=true}",
+						"width": 8,
+						"order": 8
+					},
+					{
+						"label": "Специална",
+						"name": "isSpecNeed",
+						"type": "input",
+						"inputType": "text",
+						"width": 12,
+						"order": 9
+					}
+				]
+			}
+		}
+	]
+}

@@ -1,0 +1,103 @@
+@using SB.Domain
+@model SupportsModel
+
+<div class="page">
+  <h3 class="page-header">Дейности за обща подкрепа за личностно развитие</h3>
+
+  <table>
+    <thead>
+      <tr style="height: 49.75px">
+        <th rowspan="2">Ученик</th>
+        <th rowspan="2">Вид подкрепа</th>
+        <th rowspan="2">Цел</th>
+        <th rowspan="2">Резултат</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (var support in Model.Supports)
+      {
+        <tr class="three-rows-height">
+          <td>
+            @foreach (var s in support.Students)
+            {
+              @s<br/>
+            }
+          </td>
+          <td>@support.Difficulties</td>
+          <td>@support.Description</td>
+          <td>@support.ExpectedResult</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+
+  <div class="page-break"></div>
+
+  <h3 class="page-header">Дейности за обща подкрепа за личностно развитие</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th rowspan="2">Краен срок</th>
+        <th rowspan="2">Екип</th>
+        <th colspan="4">Дейности</th>
+      </tr>
+      <tr>
+        <th>Дейност</th>
+        <th>Дата</th>
+        <th>Цел</th>
+        <th>Резултат</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (var support in Model.Supports)
+      {
+        int rowspan = support.Activities.Length;
+
+        if (support.Activities.Any())
+        {
+          @for (int i = 0; i < support.Activities.Length; i++)
+          {
+            if (i == 0)
+            {
+              <tr>
+                <td style="height: 81.125px" rowspan="@rowspan">@support.EndDate.ToString("dd.MM.yy")</td>
+                <td rowspan="@rowspan">
+                  @foreach (var s in support.Teachers)
+                  {
+                    @s<br/>
+                  }
+                </td>
+                <td>@support.Activities[i].ActivityType</td>
+                <td>@(support.Activities[i].Date?.ToString("dd.MM.yy") ?? "")</td>
+                <td>@support.Activities[i].Target</td>
+                <td>@support.Activities[i].Result</td>
+              </tr>
+            }
+            else
+            {
+              <tr>
+                <td>@support.Activities[i].ActivityType</td>
+                <td>@(support.Activities[i].Date?.ToString("dd.MM.yy") ?? "")</td>
+                <td>@support.Activities[i].Target</td>
+                <td>@support.Activities[i].Result</td>
+              </tr>
+            }
+          }
+        }
+        else
+        {
+          <tr class="three-rows-height">
+            <td rowspan="@rowspan">@support.EndDate.ToString("dd.MM.yy")</td>
+            <td rowspan="@rowspan">
+              @foreach (var s in support.Teachers)
+              {
+                @s<br/>
+              }
+            </td>
+          </tr>
+        }
+      }
+    </tbody>
+  </table>
+</div>

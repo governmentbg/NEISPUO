@@ -1,0 +1,153 @@
+<p-toolbar>
+    <div class="w-100 flex justify-content-end align-items-center">
+        <p-multiSelect
+            [dropdownIcon]="'pi pi-cog'"
+            [filter]="false"
+            [displaySelectedLabel]="false"
+            [defaultLabel]="CONSTANTS.PRIMENG_MULTISELECT_LABEL_PLACEHOLDER | translate"
+            [options]="columnService.optionallyVisibleColumns | async"
+            [emptyMessage]="CONSTANTS.PRIMENG_MULTISELECT_LABEL_EMPTY | translate"
+            [(ngModel)]="columnService.selectedOptionalColumns"
+            [options]="columnService.optionallyVisibleColumns | async"
+            (onChange)="onColumnChoiceChange($event)"
+            appendTo="body"
+        ></p-multiSelect>
+        <button
+            (click)="refreshTableData()"
+            pButton
+            type="button"
+            icon="pi pi-refresh"
+            pTooltip="{{ CONSTANTS.PRIMENG_TITLE_REFRESH | translate }}"
+            tooltipPosition="left"
+            class="w-auto ms-3 p-button p-button-primary"
+        ></button></div
+></p-toolbar>
+<p-table
+    id="parentTable"
+    #parentTable
+    [value]="paginatedEntries.data"
+    [columns]="columnService.visibleColumns | async"
+    [paginator]="true"
+    [rowHover]="true"
+    [lazy]="true"
+    (onLazyLoad)="navigate($event)"
+    [lazyLoadOnInit]="false"
+    [loading]="loading"
+    [rows]="pageSize"
+    [filterDelay]="filterDelay"
+    [totalRecords]="paginatedEntries.total"
+>
+    <ng-template pTemplate="colgroup" let-columns>
+        <colgroup>
+            <col *ngFor="let col of columns" [ngStyle]="{ width: col.width }" />
+        </colgroup>
+    </ng-template>
+
+    <ng-template pTemplate="header" let-ins let-columns>
+        <tr>
+            <th *ngFor="let col of columns" [pSortableColumn]="col?.notSortable ? '' : col.field">
+                {{ col.header }}
+                <p-sortIcon *ngIf="!col?.notSortable" [field]="col.field"></p-sortIcon>
+            </th>
+        </tr>
+        <tr>
+            <th *ngFor="let col of columns">
+                <p-dropdown
+                    *ngIf="col.filter?.type === 'select'"
+                    [ngModel]="parentTable.filters[col.field]?.value"
+                    [options]="col.filter?.selectionOptions"
+                    (onChange)="parentTable.filter($event.value, col.field, col.filter?.operator)"
+                    [placeholder]="CONSTANTS.PRIMENG_DROPDOWN_PLACEHOLDER | translate"
+                >
+                    <ng-template let-option pTemplate="selectedItem">
+                        <span [class]="'customer-badge status-' + option.value">{{ option.label | translate }}</span>
+                    </ng-template>
+                    <ng-template let-option pTemplate="item">
+                        <span [class]="'customer-badge status-' + option.value">{{ option.label | translate }}</span>
+                    </ng-template>
+                </p-dropdown>
+
+                <p-calendar
+                    *ngIf="col.filter?.type === 'date'"
+                    appendTo="body"
+                    [monthNavigator]="true"
+                    [yearNavigator]="true"
+                    yearRange="1900:2050"
+                    dateFormat="yy-mm-dd"
+                    firstDayOfWeek="1"
+                    [showButtonBar]="true"
+                    [dataType]="date"
+                    class="p-column-filter"
+                    (onSelect)="onDateSelect($event, col.field, col.filter?.operator)"
+                    (onClearClick)="onDateClear(col.field, col.filter?.operator)"
+                    [ngModel]="tempDate"
+                    [placeholder]="CONSTANTS.PRIMENG_CALENDAR_PLACEHOLDER | translate"
+                ></p-calendar>
+
+                <input
+                    *ngIf="col.filter?.type === 'text' || col.filter?.type === 'number'"
+                    class="filter-text"
+                    pInputText
+                    type="text"
+                    [placeholder]="CONSTANTS.PRIMENG_INPUT_PLACEHOLDER | translate"
+                    (input)="parentTable.filter($event.target.value, col.field, col.filter?.operator)"
+                    [readonly]="loading"
+                    [ngModel]="parentTable.filters[col.field]?.value"
+                />
+            </th>
+        </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-parent let-columns="columns">
+        <tr class="ui-selectable-row">
+            <td class="table-cell" *ngFor="let col of columns">
+                <span *ngIf="col.field === 'options'" class="row-content">
+                    <span class="d-flex align-items-center">
+                        <button
+                            [disabled]="!isSyncButtonEnabled(parent)"
+                            (click)="syncParent(parent)"
+                            pButton
+                            type="button"
+                            icon="pi pi-sync"
+                            pTooltip="{{ CONSTANTS.PRIMENG_TITLE_SYNC_USER | translate }}"
+                            tooltipPosition="left"
+                            class="p-button-sm p-button-primary me-1"
+                        ></button>
+                        <button
+                            *ngIf="isMon$ | async"
+                            pButton
+                            (click)="routeToSyncHistory(parent.personID)"
+                            type="button"
+                            icon="pi pi-history"
+                            pTooltip="{{ CONSTANTS.PRIMENG_TITLE_SYNC_HISTORY | translate }}"
+                            tooltipPosition="left"
+                            class="p-button-sm p-button-primary"
+                        ></button>
+                        <button
+                            *ngIf="isMon$ | async"
+                            pButton
+                            (click)="routeToLinkedUsersPage(parent.personID)"
+                            type="button"
+                            icon="pi pi-user-plus"
+                            pTooltip="{{ CONSTANTS.PRIMENG_TITLE_ADD_STUDENT | translate }}"
+                            tooltipPosition="left"
+                            class="p-button-sm p-button-primary"
+                        ></button>
+                    </span>
+                </span>
+                <span *ngIf="col.filter?.type === 'int'" class="row-content">
+                    {{ getToDisplayValue(parent, col.field) | translate }}
+                </span>
+                <span *ngIf="col.filter?.type === 'date'" class="row-content">
+                    {{ getToDisplayValue(parent, col.field) | date: 'yyyy-MM-dd HH:mm:ss' }}
+                </span>
+                <span *ngIf="col.filter?.type === 'text'" class="row-content">
+                    {{ getToDisplayValue(parent, col.field) | translate }}
+                </span>
+                <span *ngIf="col.filter?.type === 'select'" class="row-content">
+                    {{ getToDisplayValue(parent, col.field) | enum: col.filter?.selectionOptions | translate }}
+                </span>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>

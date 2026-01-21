@@ -1,0 +1,1 @@
+# MS SQL Server Migrations will be handled by the reporting-backend app

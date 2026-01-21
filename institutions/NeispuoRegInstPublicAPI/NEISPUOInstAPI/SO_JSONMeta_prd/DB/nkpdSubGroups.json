@@ -1,0 +1,32 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[NKPDSubGroup] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "NKPDSubGroupID as code"
+        },
+        {
+            "column": "Name as label"
+        },
+		{
+            "column": "IsValid as isValid"
+        }
+    ],
+    "params": [
+    {
+      "param": "@filterValue",
+      "column": "NKPDGroupID",
+      "operator": "=",
+      "value": "filterValue",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+    ],
+    "order": [
+        {
+            "column": "NKPDSubGroupID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

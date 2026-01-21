@@ -1,0 +1,21 @@
+//
+// Override bootstrap variables
+//
+$form-switch-color: $white;
+
+$form-check-label-disabled-opacity: 1;
+
+$form-switch-checked-bg-image:    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 100 100'><circle cx='52' cy='51' r='49' stroke='#{$gray-600}' stroke-width='6px' fill='#{$white}'/></svg>");
+$form-switch-bg-image:            url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 100 100'><circle cx='48' cy='51' r='49' stroke='#{$gray-600}' stroke-width='6px' fill='#{$white}'/></svg>");
+$form-switch-focus-bg-image:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 100 100'><circle cx='48' cy='51' r='49' stroke='#{$gray-600}' stroke-width='6px' fill='#{$white}'/></svg>");
+
+//
+// Custom variables
+//
+
+$form-switch-width-large: 2.25rem;
+$form-switch-height-large: 1.25rem;
+
+$form-switch-input-checked-bg-image-disabled: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 100 100'><circle cx='52' cy='51' r='49' stroke='#{$gray-400}' stroke-width='6px' fill='#{$gray-100}'/></svg>");
+$form-switch-input-bg-image-disabled: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 100 100'><circle cx='48' cy='51' r='49' stroke='#{$gray-400}' stroke-width='6px' fill='#{$gray-100}'/></svg>");
+$form-switch-input-bg-image-disabled-dark: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 100 100'><circle cx='48' cy='51' r='49' stroke='#{$gray-600}' stroke-width='6px' fill='#{$gray-700}'/></svg>");

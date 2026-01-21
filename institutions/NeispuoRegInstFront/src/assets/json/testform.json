@@ -1,0 +1,187 @@
+{
+  "label": "Тестова форма",
+  "sections": [
+    {
+      "label": "Зависими селекти",
+      "order": 1,
+      "subsections": [
+        {
+          "order": 1,
+          "fields": [
+            {
+              "label": "Вид по чл. 37 (общ, според вида на подготовката)",
+              "name": " ",
+              "type": "select",
+              "optionsPath": "basicschooltype.json",
+              "order": 1,
+              "influence": {
+                "field": "type38",
+                "url": "schooltype",
+                "type": "options"
+              }
+            },
+            {
+              "label": "Вид по чл. 38 (детайлен)",
+              "name": "type38",
+              "type": "select",
+              "order": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Селект зависим от чекбокс група",
+      "order": 2,
+      "subsections": [
+        {
+          "order": 1,
+          "fields": [
+            {
+              "type": "radiobutton",
+              "label": "Вид по чл. 37 (общ, според вида на подготовката)",
+              "name": "type371",
+              "optionsPath": "basicschooltype.json",
+              "influence": {
+                "field": "type381",
+                "url": "schooltype",
+                "type": "options"
+              },
+              "order": 1
+            },
+            {
+              "label": "Вид по чл. 38 (детайлен)",
+              "name": "type381",
+              "type": "select",
+              "order": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Чекбокс група зависима от селект",
+      "order": 3,
+      "subsections": [
+        {
+          "order": 1,
+          "fields": [
+            {
+              "type": "select",
+              "label": "Вид по чл. 37 (общ, според вида на подготовката)",
+              "name": "type372",
+              "optionsPath": "basicschooltype.json",
+              "influence": {
+                "field": "type382",
+                "url": "schooltype",
+                "type": "options"
+              },
+              "order": 1
+            },
+            {
+              "label": "Вид по чл. 38 (детайлен)",
+              "name": "type382",
+              "type": "radiobutton",
+              "order": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Зависими чекбокс групи",
+      "order": 4,
+      "subsections": [
+        {
+          "order": 1,
+          "fields": [
+            {
+              "type": "radiobutton",
+              "label": "Вид по чл. 37 (общ, според вида на подготовката)",
+              "name": "type373",
+              "optionsPath": "basicschooltype.json",
+              "influence": {
+                "field": "type383",
+                "url": "schooltype",
+                "type": "options"
+              },
+              "order": 1
+            },
+            {
+              "label": "Вид по чл. 38 (детайлен)",
+              "name": "type383",
+              "type": "radiobutton",
+              "order": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Валидации",
+      "order": 5,
+      "subsections": [
+        {
+          "order": 1,
+          "fields": [
+            {
+              "type": "input",
+              "inputType": "text",
+              "label": "Задължително поле",
+              "name": "reqField",
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ],
+              "order": 1
+            },
+            {
+              "type": "input",
+              "inputType": "text",
+              "label": "Максимална дължина 5",
+              "name": "maxField",
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validator": 5,
+                  "message": "Максимална дължна 5 символа"
+                }
+              ],
+              "order": 3
+            },
+            {
+              "type": "input",
+              "inputType": "number",
+              "label": "Максимална стойност 100",
+              "name": "maxValueField",
+              "validations": [
+                {
+                  "name": "max",
+                  "validator": 100,
+                  "message": "Максимална стойност 100"
+                }
+              ],
+              "order": 2
+            },
+            {
+              "type": "date",
+              "label": "Дата",
+              "name": "dateField",
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ],
+              "order": 4
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

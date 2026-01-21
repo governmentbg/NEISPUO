@@ -1,0 +1,18 @@
+<sb-banner type="info" *ngIf="!firstGradeResults">Няма въведен общ годишен успех</sb-banner>
+
+<sb-banner
+  *ngIf="firstGradeResults"
+  [type]="firstGradeResults.grade.qualitativeGrade !== 'Poor' ? 'success' : 'warning'"
+  [showIcon]="false"
+>
+  <div class="flex items-center">
+    Общият годишен успех на ученикът е:
+    <sb-grade-link [grade]="firstGradeResults.grade" class="ml-3"></sb-grade-link>
+    <div *ngIf="firstGradeResults.grade.qualitativeGrade != null" class="ml-3 font-bold">
+      {{ firstGradeResults.grade.qualitativeGrade | sbQualitativeGradeName }}
+    </div>
+    <div *ngIf="firstGradeResults.grade.specialGrade != null" class="ml-3 font-bold">
+      {{ firstGradeResults.grade.specialGrade | sbSpecialGradeName }}
+    </div>
+  </div>
+</sb-banner>

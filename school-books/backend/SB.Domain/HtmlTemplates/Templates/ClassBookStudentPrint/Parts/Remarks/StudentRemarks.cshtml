@@ -1,0 +1,25 @@
+@using SB.Domain
+@model StudentRemarksModel
+
+<div class="page">
+  <h3 class="page-header">@($"Отзиви за {(Model.Term == SchoolTerm.TermOne ? "първия" : "втория")} учебен срок")</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Дата</th>
+        <th>Учебен предмет/модул</th>
+        <th>Съдържание</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (var remark in Model.Remarks)
+      {
+        <tr>
+          <td>@remark.Date.ToString("dd.MM.yyyy")</td>
+          <td>@remark.SubjectName / @remark.SubjectTypeName</td>
+          <td>@remark.Description</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

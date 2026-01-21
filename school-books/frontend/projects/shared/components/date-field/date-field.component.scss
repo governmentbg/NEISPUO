@@ -1,0 +1,14 @@
+.sb-datepicker-button {
+  @apply absolute;
+  top: -7px;
+  right: -4px;
+}
+
+.ng-fa-icon {
+  color: theme('colors.blue.900');
+
+  .ng-submitted :host.ng-invalid &,
+  :host.ng-touched.ng-invalid & {
+    color: theme('colors.error');
+  }
+}

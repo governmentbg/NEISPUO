@@ -1,0 +1,96 @@
+<div class="sb-table-container">
+  <table class="sb-table">
+    <thead>
+      <tr>
+        <th>Ученик</th>
+        <th class="text-center">Забележки</th>
+        <th class="text-center">Похвали</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let curriculum of studentRemarks.remarks">
+        <tr>
+          <td class="sb-names">
+            {{ curriculum.curriculumName }}
+            <span *ngIf="curriculum.curriculumIsValid === false" class="sb-badge">Архивиран</span>
+          </td>
+
+          <td class="w-px whitespace-nowrap text-center font-medium align-middle p-1">
+            <button
+              class="book-count-button unexcused"
+              [class.disabled]="curriculum.badRemarksCount === 0"
+              [class.active]="selectedCurriculumId === curriculum.curriculumId && selectedType === REMARK_TYPE_BAD"
+              (click)="viewRemarks(curriculum.curriculumId, REMARK_TYPE_BAD)"
+            >
+              {{ curriculum.badRemarksCount }}
+            </button>
+          </td>
+          <td class="w-px whitespace-nowrap text-center font-medium align-middle p-1">
+            <button
+              class="book-count-button excused"
+              [class.disabled]="curriculum.goodRemarksCount === 0"
+              [class.active]="selectedCurriculumId === curriculum.curriculumId && selectedType === REMARK_TYPE_GOOD"
+              (click)="viewRemarks(curriculum.curriculumId, REMARK_TYPE_GOOD)"
+            >
+              {{ curriculum.goodRemarksCount }}
+            </button>
+          </td>
+        </tr>
+        <tr *ngIf="selectedCurriculumId === curriculum.curriculumId && loadingRemarks">
+          <td
+            colspan="3"
+            class="relative book-item-cell h-16"
+            [class.unexcused]="selectedType === REMARK_TYPE_BAD"
+            [class.excused]="selectedType === REMARK_TYPE_GOOD"
+          >
+            <mat-spinner [diameter]="40" class="absolute top-1/2 left-1/2 -mt-5 -ml-5"></mat-spinner>
+          </td>
+        </tr>
+        <ng-container *ngIf="selectedCurriculumId === curriculum.curriculumId && !loadingRemarks">
+          <tr *ngFor="let remark of selectedRemarks">
+            <td
+              colspan="3"
+              class="relative p-2 book-item-cell"
+              [class.unexcused]="selectedType === REMARK_TYPE_BAD"
+              [class.excused]="selectedType === REMARK_TYPE_GOOD"
+            >
+              <div class="sm:flex">
+                <div class="sm:grow">
+                  <div class="text-sm">
+                    <span class="block sm:inline whitespace-nowrap">
+                      <fa-icon [icon]="farCalendarTimes"></fa-icon>
+                      <span class="font-bold">{{ remark.typeName }}</span>
+                    </span>
+                    {{ ' ' }}
+                    <span class="block sm:inline whitespace-nowrap">
+                      по
+                      <fa-icon [icon]="fasBookOpen"></fa-icon>
+                      <span class="font-bold">{{ remark.subjectName }} / {{ remark.subjectTypeName }}</span>
+                    </span>
+                    {{ ' ' }}
+                    <span class="block sm:inline whitespace-nowrap">
+                      на
+                      <fa-icon [icon]="fasCalendarAlt"></fa-icon>
+                      <span class="font-bold">{{ remark.date | sbDate }}</span>
+                    </span>
+                  </div>
+
+                  <div class="text-xs">
+                    <span class="whitespace-pre-line">{{ remark.description }}</span>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </ng-container>
+      </ng-container>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>Общо</td>
+        <td class="text-center text-sm">{{ studentRemarks.totals.badRemarksCountTotal }}</td>
+        <td class="text-center text-sm">{{ studentRemarks.totals.goodRemarksCountTotal }}</td>
+      </tr>
+    </tfoot>
+  </table>
+</div>

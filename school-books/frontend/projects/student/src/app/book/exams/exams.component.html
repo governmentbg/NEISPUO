@@ -1,0 +1,29 @@
+<sb-tab-card [hideHeader]="true">
+  <ng-container card-body>
+    <sb-table [dataSource]="dataSource" [displayedColumns]="['bookExamType', 'subject', 'date', 'description']">
+      <ng-container cdkColumnDef="bookExamType">
+        <th cdk-header-cell *cdkHeaderCellDef>Вид</th>
+        <td cdk-cell *cdkCellDef="let row">
+          {{ row.bookExamType === 'ControlExam' ? 'Контролна работа' : 'Класна работа' }}
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="subject">
+        <th cdk-header-cell *cdkHeaderCellDef>Предмет</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.subject }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="date">
+        <th cdk-header-cell *cdkHeaderCellDef>Дата</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.date | sbDate }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="description">
+        <th cdk-header-cell *cdkHeaderCellDef>Описание</th>
+        <td cdk-cell *cdkCellDef="let row">
+          <span class="whitespace-pre-line">{{ row.description }}</span>
+        </td>
+      </ng-container>
+    </sb-table>
+  </ng-container>
+</sb-tab-card>

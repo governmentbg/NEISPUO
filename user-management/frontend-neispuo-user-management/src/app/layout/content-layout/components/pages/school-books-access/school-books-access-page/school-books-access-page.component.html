@@ -1,0 +1,95 @@
+<div class="school-books-access">
+    <div class="school-books-access-form container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <p class="h2 color-gray-800">{{ CONSTANTS.PRIMENG_TITLE_SCHOOL_BOOKS_ACCESS | translate }}</p>
+            </div>
+        </div>
+    </div>
+    <p-toast></p-toast>
+
+    <div class="card">
+        <p-toolbar styleClass="p-mb-4">
+            <ng-template pTemplate="left">
+                <button
+                    pButton
+                    class="p-button-success me-2 mt-2"
+                    label="{{ CONSTANTS.CONTENT_TOOLBAR_EXPORT_BUTTON_LABEL_ADD | translate }}"
+                    icon="pi pi-plus"
+                    (click)="openAddNewSchoolBookDialog()"
+                ></button>
+                <div pTooltip="{{ CONSTANTS.PRIMENG_TITLE_SCHOOL_BOOKS_ACCESS_REMOVE | translate }}">
+                    <button
+                        pButton
+                        icon="pi pi-trash"
+                        class="p-button-danger me-2 mt-2"
+                        label="{{ CONSTANTS.CONTENT_TOOLBAR_EXPORT_BUTTON_LABEL_REMOVE | translate }}"
+                        (click)="deleteSelectedAccesses()"
+                        [disabled]="!isDeleteSchoolBooksButtonEnabled"
+                    ></button>
+                </div>
+            </ng-template>
+        </p-toolbar>
+
+        <p-table
+            #dt
+            [value]="personalSchoolBooks$ | async"
+            [rows]="10"
+            [paginator]="true"
+            [globalFilterFields]="['schoolYear', 'classBook.fullBookName']"
+            [(selection)]="selectedDeletionSchoolBooks"
+            [rowHover]="true"
+            [loading]="isLoading"
+            dataKey="rowID"
+            [showCurrentPageReport]="true"
+        >
+            <ng-template pTemplate="caption">
+                <div class="p-d-flex p-ai-center p-jc-between">
+                    <span class="p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input
+                            pInputText
+                            type="text"
+                            (input)="dt.filterGlobal($event.target.value, 'contains')"
+                            placeholder="{{ CONSTANTS.PRIMENG_INPUT_PLACEHOLDER | translate }}"
+                        />
+                    </span>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="width: 3rem">
+                        <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                    </th>
+                    <th pSortableColumn="schoolYear">
+                        {{ CONSTANTS.PRIMENG_TABLE_FIELD_SCHOOL_YEAR | translate
+                        }}<p-sortIcon field="schoolYear"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="classBook.fullBookName">
+                        {{ CONSTANTS.PRIMENG_TABLE_FIELD_SCHOOL_BOOK | translate
+                        }}<p-sortIcon field="classBook.fullBookName"></p-sortIcon>
+                    </th>
+                    <th>{{ CONSTANTS.PRIMENG_TABLE_FIELD_ADMIN_ACCESS | translate }}</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-schoolBook>
+                <tr>
+                    <td>
+                        <p-tableCheckbox [value]="schoolBook"></p-tableCheckbox>
+                    </td>
+                    <td>{{ schoolBook?.schoolYear }}</td>
+                    <td>{{ schoolBook.classBook?.fullBookName }}</td>
+                    <td>
+                        <p-dropdown
+                            dataKey="rowID"
+                            [options]="hasAdminAccessOptions"
+                            [(ngModel)]="schoolBook.hasAdminAccess"
+                            (onChange)="updateAdminAccess($event, schoolBook)"
+                        ></p-dropdown>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+    <app-confirm-dialog></app-confirm-dialog>
+</div>

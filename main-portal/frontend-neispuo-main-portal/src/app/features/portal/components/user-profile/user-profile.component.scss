@@ -1,0 +1,42 @@
+@import "@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/variables/variables.scss";
+
+div {
+  justify-content: center;
+  text-align: center;
+}
+
+.modal {
+  .btn-close {
+    background-color: transparent;
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+  }
+  .title {
+    font-weight: bold;
+  }
+}
+.btn {
+  width: 100%;
+}
+.btn-primary {
+  background-color: $blue-500;
+  border-color: $blue-500;
+  border-radius: 20px;
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 500px;
+  }
+}
+@media (min-width: 720px) {
+  .modal-dialog {
+    max-width: 650px;
+  }
+}
+@media (min-width: 992px) {
+  .modal-dialog {
+    max-width: 800px;
+  }
+}

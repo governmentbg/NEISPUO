@@ -1,0 +1,7 @@
+<div class="form">
+    <app-control-component *ngIf="!hideControls && !canEdit && showControlComponent" [canBeRenewed]="form?.form?.canBeRenewed" [canBeAnnulled]="form?.form?.canBeAnnulled" [hideCertificateBtn]="form?.form?.hideCertificateBtn" [instid]="id" [procID]="procID" [permissions]="permissions" [historyMode]="isHistoryActive" [path]="path" [dataName]="dataName" [instKind]="instKind" [certificateSubsection]="certificateSubsection" [fg]="certificateSubsectionFormGroup" (isHistoryActive)="historyChanged($event)" (certificateChange)="certificateChange($event)"></app-control-component>
+    <app-history-control *ngIf="!canEdit && isHistoryActive" [history]="history" [currentOption]="currentOption" (versionChanged)="onVersionChanged($event)"></app-history-control>
+    <app-create-edit-form *ngIf="formData" #f [form]="formData" [validate]="validate" [instKind]="instKind" [instid]="id" [isNew]="canEdit" [mode]="mode" [isHistoryActive]="isHistoryActive" [historyPosition]="pos" (submit)="submit($event)">
+    </app-create-edit-form>
+    <app-loader *ngIf="isLoading"></app-loader>
+</div>

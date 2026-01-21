@@ -1,0 +1,41 @@
+{
+  "arrayName": "changeYearDataList",
+  "template": "SELECT /**select**/ FROM [inst_year].[ChangeYearData] CD JOIN [inst_nom].[ChangeYearStatus] CS ON CD.ChangeYearStatusID=CS.ChangeYearStatusID /**where**/ /**orderby**/",
+  "columns": [
+        {
+          "column": "CD.ChangeYearDataID AS id"
+        },
+		{
+          "column": "CD.FromSchoolYear AS fromSchoolYear"
+        },
+		{
+          "column": "CD.ToSchoolYear AS toSchoolYear"
+        },
+		{
+          "column": "CS.Name AS changeYearStatus"
+        },
+		{
+          "column": "'changeYearData' AS formName"
+        },
+        {
+          "column": "CD.ChangeYearDataID AS formDataId"
+        }
+  ],
+  "params": [
+	{
+     "param": "@instid",
+     "column": "CD.InstitutionID",
+     "operator": "=",
+     "value": "instid",
+     "type": "int",
+     "logical_operator": "and",
+     "static": false
+    }
+  ],
+  "order": [
+
+  ],
+  "inSelects": [
+
+  ]
+}

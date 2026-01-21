@@ -1,0 +1,5 @@
+###########################
+### Изпълнение на задачи ###
+###########################
+*/5 * * * * root /scripts/executetasks.sh
+# An empty line is required at the end of this file for a valid cron file.

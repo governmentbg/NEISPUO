@@ -1,0 +1,21 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_basic].[CurrentYear] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "CurrentYearID as code"
+        },
+        {
+            "column": "Name as label"
+        }
+    ],
+    "params": [
+
+    ],
+    "order": [
+        {
+            "column": "CurrentYearID",
+            "type": "DESC"
+        }
+    ],
+    "inSelects": []
+}

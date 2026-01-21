@@ -1,0 +1,31 @@
+.wrapper-dynamic-form-create {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  .flex-wrapper-form-create {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+  }
+  button {
+    margin-left: 10px;
+    margin-right: 10px;
+
+  }
+  .back-button {
+    border: none;
+    color: #2f73da;
+    box-shadow: none;
+    background-color: transparent !important;
+    font-weight: 400;
+    &:hover{
+      color: #212121 !important;
+    }
+  }
+}

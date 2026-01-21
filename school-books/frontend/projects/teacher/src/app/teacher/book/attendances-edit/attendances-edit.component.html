@@ -1,0 +1,207 @@
+<form [formGroup]="form" autocomplete="off" novalidate>
+  <sb-tab-card>
+    <ng-container card-title>
+      {{
+        data.mode === ATTENDANCES_EDIT_MODE_NEW
+          ? 'Въвеждане'
+          : data.mode === ATTENDANCES_EDIT_MODE_REMOVE
+          ? 'Премахване'
+          : ''
+      }}
+      на присъствия
+    </ng-container>
+    <sb-editor-panel
+      card-buttons
+      [isNew]="true"
+      (save)="onSave($event)"
+      [backBtnRouteCommands]="['../../']"
+    ></sb-editor-panel>
+    <ng-container card-body>
+      <sb-paginator class="mb-2.5" [items]="datePaginatorItems"></sb-paginator>
+
+      <sb-banner class="mb-2.5" type="warning" *ngIf="templateData.isOffProgramDay">
+        Този ден е от неучебното време на групата
+      </sb-banner>
+
+      <sb-banner class="mb-2.5" type="warning" *ngIf="templateData.isOutsideSchoolYearLimits">
+        Този ден е извън учебната година
+      </sb-banner>
+
+      <sb-banner
+        class="mb-2.5"
+        type="warning"
+        *ngIf="
+          ((data.mode === ATTENDANCES_EDIT_MODE_NEW && !templateData.canCreate) ||
+            (data.mode === ATTENDANCES_EDIT_MODE_REMOVE && !templateData.canRemove)) &&
+          !templateData.isOutsideSchoolYearLimits &&
+          !templateData.isOffDay
+        "
+      >
+        Нямате права да
+        {{
+          data.mode === ATTENDANCES_EDIT_MODE_NEW
+            ? 'въвеждате'
+            : data.mode === ATTENDANCES_EDIT_MODE_REMOVE
+            ? 'изтривате'
+            : ''
+        }}
+        присъствия за този ден
+      </sb-banner>
+
+      <div *ngIf="!templateData.isOutsideSchoolYearLimits" class="sb-table-container">
+        <table *ngIf="templateData.isOffDay" class="sb-table">
+          <thead>
+            <tr>
+              <th class="text-center">Почивен ден</th>
+            </tr>
+          </thead>
+        </table>
+
+        <table *ngIf="!templateData.isOffDay" class="sb-table">
+          <thead>
+            <tr>
+              <th>Дете</th>
+              <th></th>
+              <th *ngIf="data.mode === ATTENDANCES_EDIT_MODE_REMOVE"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let studentAttendance of templateData.studentAttendances">
+              <tr
+                *ngIf="
+                  (localStorageService.bookTransferredHidden$ | async) !== true ||
+                  !studentAttendance.isTransferred ||
+                  studentAttendance.attendanceId ||
+                  studentAttendance.type !== null
+                "
+              >
+                <td *ngIf="!studentAttendance.isTransferred" class="sb-names">
+                  <a
+                    [routerLink]="[
+                      '../../../../../student-info',
+                      this.data.classBookId,
+                      studentAttendance.personId,
+                      'student-book',
+                      this.data.classBookId
+                    ]"
+                    class="text-primary"
+                  >
+                    {{ studentAttendance.classNumber != null ? studentAttendance.classNumber.toString() + '.' : '' }}
+
+                    {{ studentAttendance.firstName }}
+                    {{ studentAttendance.lastName }}
+                  </a>
+                </td>
+                <td *ngIf="studentAttendance.isTransferred" class="sb-names">
+                  {{ studentAttendance.classNumber != null ? studentAttendance.classNumber.toString() + '.' : '' }}
+
+                  {{ studentAttendance.firstName }}
+                  {{ studentAttendance.middleName }}
+                  {{ studentAttendance.lastName }}
+
+                  <span class="sb-badge">ОТПИСАН</span>
+                </td>
+                <td class="w-px whitespace-nowrap">
+                  <div
+                    *ngIf="
+                      data.mode === ATTENDANCES_EDIT_MODE_NEW &&
+                      templateData.canCreate &&
+                      !studentAttendance.attendanceId
+                    "
+                    class="btn-group text-sm"
+                  >
+                    <button
+                      class="btn focus-visible:z-20"
+                      type="button"
+                      [ngClass]="{
+                        'bg-green-500 border-green-700 text-white z-10':
+                          studentAttendance.type === ATTENDANCE_TYPE_PRESENCE
+                      }"
+                      (click)="setPresence(studentAttendance)"
+                    >
+                      <span class="inline sm:hidden">Присъс</span>
+                      <span class="hidden sm:inline">Присъствие</span>
+                    </button>
+                    <button
+                      class="btn focus-visible:z-20"
+                      type="button"
+                      [ngClass]="{
+                        'bg-yellow-500 border-yellow-700 text-white z-10':
+                          studentAttendance.type === ATTENDANCE_TYPE_EXCUSED_ABSENCE
+                      }"
+                      (click)="setExcusedAbsence(studentAttendance)"
+                    >
+                      <span class="inline sm:hidden">Уваж</span>
+                      <span class="hidden sm:inline">Уважително</span>
+                    </button>
+                    <button
+                      class="btn focus-visible:z-20"
+                      type="button"
+                      [ngClass]="{
+                        'bg-red-500 border-red-700 text-white z-10':
+                          studentAttendance.type === ATTENDANCE_TYPE_UNEXCUSED_ABSENCE
+                      }"
+                      (click)="setUnexcusedAbsence(studentAttendance)"
+                    >
+                      <span class="inline sm:hidden">Неуваж</span>
+                      <span class="hidden sm:inline">Неуважително</span>
+                    </button>
+                  </div>
+                  <div
+                    *ngIf="
+                      data.mode === ATTENDANCES_EDIT_MODE_REMOVE ||
+                      (data.mode === ATTENDANCES_EDIT_MODE_NEW && studentAttendance.attendanceId)
+                    "
+                  >
+                    <span
+                      *ngIf="studentAttendance.type === ATTENDANCE_TYPE_PRESENCE"
+                      class="sb-pill bg-green-500 border-green-700 text-white tracking-wider"
+                      [class.line-through]="studentAttendance.isRemoved"
+                    >
+                      Присъствие
+                    </span>
+                    <span
+                      *ngIf="studentAttendance.type === ATTENDANCE_TYPE_EXCUSED_ABSENCE"
+                      class="sb-pill bg-yellow-500 border-yellow-700 text-white tracking-wider"
+                      [class.line-through]="studentAttendance.isRemoved"
+                    >
+                      Уважително
+                    </span>
+                    <span
+                      *ngIf="studentAttendance.type === ATTENDANCE_TYPE_UNEXCUSED_ABSENCE"
+                      class="sb-pill bg-red-500 border-red-700 text-white tracking-wider"
+                      [class.line-through]="studentAttendance.isRemoved"
+                    >
+                      Неуважително
+                    </span>
+                  </div>
+                </td>
+                <td
+                  *ngIf="data.mode === ATTENDANCES_EDIT_MODE_REMOVE"
+                  class="w-px whitespace-nowrap text-center align-middle"
+                >
+                  <button
+                    *ngIf="studentAttendance.attendanceId && !studentAttendance.isRemoved && templateData.canRemove"
+                    class="sb-link-btn"
+                    type="button"
+                    (click)="remove(studentAttendance)"
+                  >
+                    <fa-icon [icon]="fasTrashAlt"></fa-icon>
+                  </button>
+                  <button
+                    *ngIf="studentAttendance.isRemoved"
+                    class="sb-link-btn"
+                    type="button"
+                    (click)="undoRemove(studentAttendance)"
+                  >
+                    <fa-icon [icon]="fasUndo"></fa-icon>
+                  </button>
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </ng-container>
+  </sb-tab-card>
+</form>

@@ -1,0 +1,24 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_year].[MS_StudentObst_MS] CL /**where**/ /**orderby**/",
+  "columns": [
+	{
+      "column": "CL.InstitutionID AS institutionID"
+    },
+	{
+      "column": "CL.PersonID AS personid"
+    },
+	{
+      "column": "CL.PersonID AS otherPersonid"
+    }	
+   ],
+  "params": [
+
+	
+  ],
+  "order": [
+
+  ],
+  "inSelects": [
+
+  ]
+}

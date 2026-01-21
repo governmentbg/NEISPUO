@@ -1,0 +1,37 @@
+<div class="l-focused-element l-subsection-focused display-none-element" [ngClass]="{'focused': updateJsonService.focusedElement.index === subsection.idntfr}" (click)="focus(subsection)">
+  <span class="l-custom-info-span">подсекция</span>
+  <div *ngIf="subsection.canDuplicate === undefined || subsection.canDuplicate === null" class="subsection-container" [ngClass]="{'no-label-section': !subsection.label, 'label-section-not-duplicate': subsection.label}">
+    <span *ngIf="subsection.label" class="section-label">{{ subsection.pseudoLabel }}
+    </span>
+    <ng-container>
+      <ng-container *ngFor="let field of subsection.fields">
+        <ng-container *ngIf="!field.hidden && field.rendered !== false" dynamicFieldAdmin [field]="field"></ng-container>
+      </ng-container>
+      <ng-container *ngFor="let subsubsection of subsection.subsections">
+        <div class="wrapper-body one" *ngIf="!subsubsection.hidden && subsubsection.rendered !== false">
+          <app-subsection-admin [subsection]="subsubsection" [section]="section"></app-subsection-admin>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+  <div *ngIf="subsection.canDuplicate !== undefined && subsection.canDuplicate !== null" class="subsection-container duplicate-subsection-container" [ngClass]="{'no-label-section': !subsection.label}">
+    <span *ngIf="subsection.label" class="sub-subsection-label">{{ subsection.pseudoLabel }}
+    </span>
+    <button mat-raised-button class="add-btn-section both" *ngIf="subsection.canDuplicate" type="button" matTooltip="добави секция">
+      <mat-icon>add</mat-icon>
+    </button>
+    <button mat-raised-button class="delete-btn-section" color="warn" *ngIf="subsection.canDuplicate" type="button" matTooltip="изтрий секция">
+      <mat-icon>remove</mat-icon>
+    </button>
+    <ng-container>
+      <ng-container *ngFor="let field of subsection.fields; index as k; trackBy: trackByName">
+        <ng-container *ngIf="!field.hidden && field.rendered !== false" dynamicFieldAdmin [field]="field"></ng-container>
+      </ng-container>
+      <ng-container *ngFor="let subsubsection of subsection.subsections">
+        <div class="wrapper-body one" *ngIf="!subsubsection.hidden && subsubsection.rendered !== false" >
+          <app-subsection-admin [subsection]="subsubsection" [section]="section"></app-subsection-admin>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>

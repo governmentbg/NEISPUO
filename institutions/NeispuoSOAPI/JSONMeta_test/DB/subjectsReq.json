@@ -1,0 +1,43 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[MandatorySubjectInstitution] MS /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "MS.SubjectID as code"
+        },
+        {
+            "column": "MS.SubjectName as label"
+        }
+    ],
+    "params": [
+        {
+            "param": "@instid",
+            "column": "MS.InstitutionID",
+            "operator": "=",
+            "value": "instid",
+            "type": "int",
+            "logical_operator": "and",
+            "static": false
+        },
+        {
+            "param": "@isValid",
+            "column": "MS.IsValidMandatorySubject",
+            "operator": "=",
+            "value": 0,
+            "type": "int",
+            "logical_operator": "and",
+            "static": true
+        },
+        {
+            "param": "@isValidSubject",
+            "column": "MS.IsValidSubject",
+            "operator": "=",
+            "value": 1,
+            "type": "int",
+            "logical_operator": "and",
+            "static": true
+        }
+    ],
+    "order": [
+    ],
+    "inSelects": []
+}

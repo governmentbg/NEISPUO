@@ -1,0 +1,32 @@
+@using SB.Domain
+@model Book_DPLRModel
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    @{ await IncludeAsync("ClassBookPrint.Parts._Styles", null); }
+  </head>
+  <body>
+    @{ await IncludeAsync("ClassBookPrint.Parts.CoverPage.CoverPageDPLR", Model.CoverPageModel); }
+
+    @{ await IncludeAsync("ClassBookPrint.Parts.Students.StudentsCDO", Model.StudentsModel); }
+
+    @{ await IncludeAsync("ClassBookPrint.Parts.ScheduleAndAbsences.ScheduleAndAbsences", Model.ScheduleAndAbsencesModel); }
+
+    @if (Model.PerformancesModel.Performances.Any())
+    {
+      await IncludeAsync("ClassBookPrint.Parts.Performances.Performances", Model.PerformancesModel);
+    }
+
+    @if (Model.ReplrParticipationsModel.ReplrParticipations.Any())
+    {
+      await IncludeAsync("ClassBookPrint.Parts.ReplrParticipations.ReplrParticipations", Model.ReplrParticipationsModel);
+    }
+
+    @if (Model.NotesModel.Notes.Any())
+    {
+      await IncludeAsync("ClassBookPrint.Parts.Notes.Notes", Model.NotesModel);
+    }
+  </body>
+</html>

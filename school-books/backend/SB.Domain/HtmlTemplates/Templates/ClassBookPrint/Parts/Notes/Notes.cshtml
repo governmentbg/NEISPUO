@@ -1,0 +1,24 @@
+@using SB.Domain
+@model NotesModel
+
+<div class="page">
+  <h3 class="page-header">Бележки</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Ученици</th>
+        <th>Бележка</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (var note in Model.Notes)
+      {
+        <tr>
+          <td>@note.Students</td>
+          <td>@note.Description</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,131 @@
+export interface {{classname}}{{#allParents}}{{#-first}} extends {{/-first}}{{{.}}}{{^-last}}, {{/-last}}{{/allParents}} { {{>modelGenericAdditionalProperties}}
+{{#vars}}
+    {{#description}}
+    /**
+     * {{{description}}}
+     */
+    {{/description}}
+    {{#isReadOnly}}readonly {{/isReadOnly}}{{{name}}}{{^required}}?{{/required}}: {{#isEnum}}{{{datatypeWithEnum}}}{{/isEnum}}{{^isEnum}}{{{dataType}}}{{/isEnum}}{{#isNullable}} | null{{/isNullable}};
+{{/vars}}
+}{{>modelGenericEnums}}
+
+export function {{classname}}FromJSON(json: any): {{classname}} {
+    {{#hasVars}}
+    if (json == null) {
+        return json;
+    }
+
+    return {
+        {{#additionalPropertiesType}}
+            ...json,
+        {{/additionalPropertiesType}}
+        {{#vars}}
+        {{#isPrimitiveType}}
+        {{#isDate}}
+        '{{name}}': isoStringToLocalDate(json['{{baseName}}']),
+        {{/isDate}}
+        {{#isDateTime}}
+        '{{name}}': isoStringToLocalDateTime(json['{{baseName}}']),
+        {{/isDateTime}}
+        {{#isArray}}
+        '{{name}}': {{#items}}{{#isDate}}((a) => (a as Array<any>)?.map(d => isoStringToLocalDate(d))){{/isDate}}{{#isDateTime}}((a) => (a as Array<any>)?.map(d => isoStringToLocalDateTime(d))){{/isDateTime}}{{/items}}(json['{{baseName}}']),
+        {{/isArray}}
+        {{#isMap}}
+        '{{name}}': {{#items}}{{#isDate}}((a) => mapValues(a, d => isoStringToLocalDate(d))){{/isDate}}{{#isDateTime}}((a) => mapValues(a, d => isoStringToLocalDateTime(d))){{/isDateTime}}{{/items}}(json['{{baseName}}']),
+        {{/isMap}}
+        {{^isDate}}
+        {{^isDateTime}}
+        {{^isArray}}
+        {{^isMap}}
+        '{{name}}': json['{{baseName}}'],
+        {{/isMap}}
+        {{/isArray}}
+        {{/isDateTime}}
+        {{/isDate}}
+        {{/isPrimitiveType}}
+        {{^isPrimitiveType}}
+        {{#isArray}}
+        '{{name}}': (json['{{baseName}}'] as Array<any>)?.map({{#items}}{{datatype}}{{/items}}FromJSON),
+        {{/isArray}}
+        {{#isMap}}
+        '{{name}}': mapValues(json['{{baseName}}'], {{#items}}{{datatype}}{{/items}}FromJSON),
+        {{/isMap}}
+        {{^isArray}}
+        {{^isMap}}
+        {{^isFreeFormObject}}
+        '{{name}}': {{datatype}}FromJSON(json['{{baseName}}']),
+        {{/isFreeFormObject}}
+        {{#isFreeFormObject}}
+        '{{name}}': json['{{baseName}}'],
+        {{/isFreeFormObject}}
+        {{/isMap}}
+        {{/isArray}}
+        {{/isPrimitiveType}}
+        {{/vars}}
+    };
+    {{/hasVars}}
+    {{^hasVars}}
+    return json;
+    {{/hasVars}}
+}
+
+export function {{classname}}ToJSON(value?: {{classname}} | null): any {
+    {{#hasVars}}
+    if (value == null) {
+        return value;
+    }
+    return {
+        {{#additionalPropertiesType}}
+            ...value,
+        {{/additionalPropertiesType}}
+        {{#vars}}
+        {{^isReadOnly}}
+        {{#isPrimitiveType}}
+        {{#isDate}}
+        '{{baseName}}': dateToLocalIsoString(value.{{name}}),
+        {{/isDate}}
+        {{#isDateTime}}
+        '{{baseName}}': dateTimeToLocalIsoString(value.{{name}}),
+        {{/isDateTime}}
+        {{#isArray}}
+        '{{baseName}}': {{#items}}{{#isDate}}((a) => (a as Array<any>)?.map(d => dateToLocalIsoString(d))){{/isDate}}{{#isDateTime}}((a) => (a as Array<any>)?.map(d => dateTimeToLocalIsoString(d))){{/isDateTime}}{{/items}}(value.{{name}}),
+        {{/isArray}}
+        {{#isMap}}
+        '{{baseName}}': {{#items}}{{#isDate}}((a) => mapValues(a, d => dateToLocalIsoString(d))){{/isDate}}{{#isDateTime}}((a) => mapValues(a, d => dateTimeToLocalIsoString(d))){{/isDateTime}}{{/items}}(value.{{name}}),
+        {{/isMap}}
+        {{^isDate}}
+        {{^isDateTime}}
+        {{^isArray}}
+        {{^isMap}}
+        '{{baseName}}': value.{{name}},
+        {{/isMap}}
+        {{/isArray}}
+        {{/isDateTime}}
+        {{/isDate}}
+        {{/isPrimitiveType}}
+        {{^isPrimitiveType}}
+        {{#isArray}}
+        '{{baseName}}': (value.{{name}} as Array<any>)?.map({{#items}}{{datatype}}{{/items}}ToJSON),
+        {{/isArray}}
+        {{#isMap}}
+        '{{baseName}}': mapValues(value.{{name}}, {{#items}}{{datatype}}{{/items}}ToJSON),
+        {{/isMap}}
+        {{^isArray}}
+        {{^isMap}}
+        {{^isFreeFormObject}}
+        '{{baseName}}': {{datatype}}ToJSON(value.{{name}}),
+        {{/isFreeFormObject}}
+        {{#isFreeFormObject}}
+        '{{baseName}}': value.{{name}},
+        {{/isFreeFormObject}}
+        {{/isMap}}
+        {{/isArray}}
+        {{/isPrimitiveType}}
+        {{/isReadOnly}}
+        {{/vars}}
+    };
+    {{/hasVars}}
+    {{^hasVars}}
+    return value;
+    {{/hasVars}}
+}

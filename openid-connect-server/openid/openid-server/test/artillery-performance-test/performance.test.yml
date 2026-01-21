@@ -1,0 +1,78 @@
+config:
+  target: "http://localhost:3000"
+  payload:
+    # path is relative to the location of the test script
+    - path: "user_jwt_tokens.csv"
+      skipHeader: true
+      fields:
+        - "role"
+        - "token"
+      # path is relative to the location of the test script
+    - path: "interactions.csv"
+      skipHeader: true
+      fields:
+        - "interaction"
+        - "selectedRole"
+        - "cookie"
+      # path is relative to the location of the test script
+    - path: "tenant_settings.csv"
+      skipHeader: true
+      fields:
+        - "clientId"
+        - "redirectUri"
+        - "responseType"
+        - "scope"
+  tls:
+    rejectUnauthorized: false
+  http:
+    # you need to add large timeout 1000s in this case to wait for the responses otherwise you start getting 499 from NGINX + pm2 hangs
+    # This might be some side effect from nginx -> pm2 communication need to verify
+    timeout: 1000
+  phases:
+    - duration: 60
+      arrivalRate: 5
+      name: Warm up
+    - duration: 120
+      arrivalRate: 10
+      rampTo: 50
+      name: Ramp up load
+    - duration: 600
+      arrivalRate: 50
+      name: Sustained load
+
+scenarios:
+    
+  - name: "Get new interaction and redirect to tenant"
+    flow:
+      - get:
+          url: "/auth"
+          qs:
+            client_id: "{{ clientId }}"
+            redirect_uri: "{{ redirectUri }}"
+            response_type: "{{ responseType }}"
+            scope: "{{ scope }}"
+          capture:
+          # Location header looks like: "/interaction/{uid}"
+            - header: "location"
+              as: "newInteraction"
+          followRedirect: false
+      - get:
+          url: "{{ newInteraction }}"
+      - post:
+          url: "{{ newInteraction }}/login-with-azure"
+      
+  - name: "Select role as already logged user and load successful_login"
+    flow:
+      - post:
+          url: "/interaction/{{ interaction }}/select_role"
+          form:
+            selected_role: "{{ selectedRole }}"
+          headers:
+            Cookie: "{{ cookie }}"
+
+  - name: "Get logged in user data"
+    flow:
+      - get:
+          url: "/me"
+          headers:
+            Authorization: "Bearer {{ token }}"

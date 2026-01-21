@@ -1,0 +1,36 @@
+.l-container-component {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  margin-left: 10px;
+  margin-right: 25px;
+  margin-bottom: 10px;
+  align-items: center;
+  padding-bottom: 1.34375em;
+  .wrap {
+    border: 1px solid #00000017;
+    border-radius: 3px;
+    padding: 0 5px;
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+      0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    &:hover {
+      background-color: #ececec7a;
+    }
+  }
+  &.preview-mode {
+    margin-left: 15px;
+    margin-right: 15px;
+    padding-bottom: 0;
+   
+  }
+  
+  .icon-pdf {
+    height: 28px;
+    width: 26px;
+  }
+}

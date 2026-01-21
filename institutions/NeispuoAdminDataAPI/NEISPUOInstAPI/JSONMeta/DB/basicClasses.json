@@ -1,0 +1,24 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[BasicClass] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "BasicClassID as code"
+        },
+        {
+            "column": "Name as label"
+        },
+		{
+            "column": "IsValid as isValid"
+        }
+    ],
+    "params": [
+
+    ],
+    "order": [
+        {
+            "column": "SortOrd",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

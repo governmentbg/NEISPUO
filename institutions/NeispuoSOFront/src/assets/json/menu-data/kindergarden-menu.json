@@ -1,0 +1,24 @@
+[
+  {
+    "label": "Институция",
+    "path": "kindergarden",
+    "children": [
+      {
+        "label": "Други адреси на институцията",
+        "path": "institutionDepartments"
+      },
+      {
+        "label": "Настоятелство и Обществен съвет",
+        "path": "trustBoardPublicCouncils"
+      },
+      {
+        "label": "Проекти",
+        "path": "institutionProjects"
+      },
+      {
+        "label": "Автобуси",
+        "path": "institutionVehicles"
+      }
+    ]
+  }
+]

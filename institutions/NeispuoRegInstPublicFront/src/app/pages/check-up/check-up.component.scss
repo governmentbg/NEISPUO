@@ -1,0 +1,16 @@
+.check-up {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    margin-left: 30px;
+    li {
+        &:hover {
+            color: 333333;
+            text-decoration: underline;
+        }
+        cursor: pointer;
+        font-weight: normal;
+        transition: 0.4s all;
+        margin-bottom: 5px;
+    }
+}

@@ -1,0 +1,151 @@
+@import '@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/variables/variables';
+
+@mixin pseudo-element-icon {
+  font-family: 'bootstrap-icons';
+  margin-right: 0.5rem;
+}
+
+:host ::ng-deep {
+  .card {
+    height: 100%;
+    box-shadow: $box-shadow;
+    transition: all 0.25s ease-in-out;
+    border: 0;
+    &-header {
+      padding: 2.5rem 3rem 1.25rem;
+      .report-type {
+        font-size: $font-size-xs;
+        font-weight: bold;
+        margin-top: 0.5rem;
+        > div {
+          display: flex;
+          align-items: center;
+        }
+        &-table::before {
+          content: '\f5aa';
+          @include pseudo-element-icon();
+        }
+        &-pivot::before {
+          content: '\f463';
+          @include pseudo-element-icon();
+        }
+      }
+      &:before {
+        content: '';
+      }
+
+      &:after {
+        content: '';
+        width: 4rem;
+        height: 3px;
+        display: block;
+        background: $chart-1;
+        margin: 1rem 0 -1.5rem;
+      }
+    }
+    &-body {
+      color: $gray-600;
+      padding: 1.25rem 3rem 3.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .card-text {
+        /*
+          Cross-browser (pure CSS) solution that will clamp text to X number of lines
+          with a trailing ellipsis in Webkit browsers. The `height` property is used on
+          other browsers (along with a fading text effect) as a fallback in
+          non-Webkit browsers. The use of CSS `calc` allows for any font-size to work properly;
+        */
+        &.line-clamp {
+          display: block;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          position: relative;
+          line-height: 1.25;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          &::after {
+            content: '...';
+            color: $gray-600;
+            text-align: right;
+            bottom: 0;
+            right: 0;
+            width: 25%;
+            display: block;
+            position: absolute;
+            height: calc(1em * 1.25);
+            background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 75%);
+          }
+        }
+        @supports (-webkit-line-clamp: 1) {
+          &.line-clamp::after {
+            display: none !important;
+          }
+        }
+        &.line-clamp-3 {
+          -webkit-line-clamp: 3;
+          max-height: calc(1em * 1.25 * 3);
+        }
+      }
+    }
+    &-footer {
+      padding: 0;
+      &::before {
+        content: '';
+        width: 100%;
+        height: 1px;
+        display: block;
+        background: $gray-300;
+        margin: 1.5rem auto;
+      }
+      ul {
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+        li {
+          color: $gray-700;
+          &:not(:last-of-type) {
+            margin-bottom: 0.5rem;
+          }
+        }
+        .shared-with {
+          &::before {
+            content: '\F52E';
+            @include pseudo-element-icon();
+          }
+        }
+        .created-by {
+          &::before {
+            content: '\F4D7';
+            @include pseudo-element-icon();
+          }
+        }
+      }
+    }
+    &::after {
+      content: '\F138';
+      font-family: 'bootstrap-icons';
+      position: absolute;
+      bottom: 1.25rem;
+      right: 3rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: $blue-800;
+      opacity: 0;
+      transition: opacity 0.25s ease-in-out;
+    }
+    &:hover {
+      cursor: pointer;
+      box-shadow: $box-shadow-lg;
+      .card-header {
+        color: $blue-800;
+        .report-type {
+          color: $gray-700;
+        }
+      }
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+}

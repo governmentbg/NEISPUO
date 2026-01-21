@@ -1,0 +1,47 @@
+<p-fieldset legend="Избор на институция">
+  <div class="grid fluid">
+    <div class="col-12">{{ procedureDescriptionText }}</div>
+    <div class="field col-12 col-md-8">
+      <label for="RIInstitution"> {{ miPickerLabel }} </label>
+      <p-dropdown
+        [filter]="true"
+        [autoDisplayFirst]="false"
+        inputId="RIInstitution"
+        [options]="activeMIs$ | async"
+        [ngModel]="miToDelete$ | async"
+        optionLabel="DisplayValue"
+        [dataKey]="'RIInstitutionID'"
+        (onChange)="onMIToDeleteChange($event)"
+        [virtualScroll]="true"
+        [autoZIndex]="true"
+        itemSize="25"
+      ></p-dropdown>
+    </div>
+    <div class="col-12">
+    <ng-container *ngIf="(miToDelete$ | async) as miToDelete">
+        <app-divide-mi-preview-delete
+          *ngIf="!!miToDelete"
+          [resp]="miToDelete"
+          [displayRIPremInstitution]="false"
+          [displayRIProcedure]="true"
+          [displayProcedureFields]="true"
+          [displayDocument]="false"
+        ></app-divide-mi-preview-delete>
+      </ng-container>
+    </div>
+    <div class="col-12">
+        <app-stepper-actions
+          [showBack]="true"
+          [backLabel]="'Назад'"
+          [backRouterLink]="['/procedures']"
+          [showForward]="true"
+          [forwardLabel]="'Напред'"
+          [forwardCallback]="forwardCallback"
+          [showSubmit]="false"
+          [disableForward]="!(miToDelete$ | async)" 
+          [disableForwardButtonTooltip]="'Моля изберете институция за разделяне.'"
+        ></app-stepper-actions>
+        <!-- [disableForward]="!(selectedMIs?.length > 1)" -->
+      </div>
+  </div>
+</p-fieldset>

@@ -1,0 +1,28 @@
+<sb-breadcrumb
+  class="block mb-3"
+  [icon]="fadBook"
+  [text]="data.classBookAdminInfo.fullBookName"
+  [parentItems]="[{ text: 'Дневници', routeCommands: ['../'] }]"
+></sb-breadcrumb>
+
+<sb-tabs [tabs]="tabs" ariaLabel="Раздели на администрация на дневника">
+  <sb-banner
+    *ngIf="
+      data.classBookAdminInfo.isValid &&
+      !data.classBookAdminInfo.schoolYearIsFinalized &&
+      data.classBookAdminInfo.isFinalized
+    "
+    class="mb-3"
+    type="warning"
+  >
+    Дневникът е приключен
+    <ng-container *ngIf="!data.classBookAdminInfo.hasCBExtProvider">
+      и потребителският интерфейс е в режим само за преглед
+    </ng-container>
+  </sb-banner>
+  <sb-banner *ngIf="!data.classBookAdminInfo.isValid" class="mb-3" type="warning">
+    Дневникът е архивиран на {{ data.classBookAdminInfo.modifyDate | sbDateTime }} и потребителският интерфейс е в режим
+    само за преглед
+  </sb-banner>
+  <router-outlet></router-outlet>
+</sb-tabs>

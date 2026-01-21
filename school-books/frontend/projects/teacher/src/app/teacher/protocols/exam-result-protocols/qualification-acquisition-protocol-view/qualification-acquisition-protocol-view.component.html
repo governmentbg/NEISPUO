@@ -1,0 +1,222 @@
+<form [formGroup]="form" autocomplete="off" novalidate>
+  <sb-card>
+    <ng-container card-title>
+      {{
+        data.qualificationAcquisitionProtocol == null
+          ? 'Създаване на протокол за придобиване на професионална квалификация'
+          : 'Редакция на протокол за придобиване на професионална квалификация'
+      }}
+    </ng-container>
+    <sb-editor-panel
+      [backBtnRouteCommands]="data.qualificationAcquisitionProtocol == null ? ['../'] : ['../../']"
+      card-buttons
+      [editBtnHidden]="!canEdit"
+      [isNew]="data.qualificationAcquisitionProtocol == null"
+      (save)="onSave($event)"
+    >
+      <a
+        [href]="downloadUrl"
+        class="mr-3"
+        disabled-mode-buttons
+        target="_blank"
+        download
+        color="primary"
+        mat-raised-button
+        [disabled]="!downloadUrl || loading"
+      >
+        <fa-icon [icon]="loading ? fasSpinnerThird : fasFileWord" [spin]="loading" size="lg"></fa-icon>
+        <span>Свали</span>
+      </a>
+      <a
+        [href]="downloadTemplateUrl"
+        class="mr-3"
+        new-mode-buttons
+        target="_blank"
+        download
+        color="primary"
+        mat-raised-button
+        [disabled]="!downloadTemplateUrl || loadingTemplate"
+      >
+        <fa-icon [icon]="loadingTemplate ? fasSpinnerThird : fasFileWord" [spin]="loadingTemplate" size="lg"></fa-icon>
+        <span>Свали шаблон</span>
+      </a>
+      <a
+        [href]="downloadTemplateUrl"
+        class="mr-3"
+        disabled-mode-buttons
+        target="_blank"
+        download
+        color="primary"
+        mat-raised-button
+        [disabled]="!downloadTemplateUrl || loadingTemplate"
+      >
+        <fa-icon [icon]="loadingTemplate ? fasSpinnerThird : fasFileWord" [spin]="loadingTemplate" size="lg"></fa-icon>
+        <span>Свали шаблон</span>
+      </a>
+      <button
+        *ngIf="canRemove"
+        disabled-mode-buttons
+        mat-raised-button
+        color="warn"
+        type="button"
+        (click)="onRemove()"
+        [disabled]="removing"
+      >
+        <fa-icon [icon]="removing ? fasSpinnerThird : fasTrashAlt" [spin]="removing" size="lg"></fa-icon>
+        <span class="hidden sm:inline">Премахни</span>
+      </button>
+    </sb-editor-panel>
+    <ng-container card-body>
+      <sb-banner type="error" class="mb-5" *ngFor="let error of errors">{{ error }}</sb-banner>
+
+      <sb-text-field
+        class="col-start-1 col-span-full whitespace-pre-wrap"
+        label="Вид на протокола"
+        formControlName="protocolName"
+        [readonly]="true"
+      ></sb-text-field>
+      <div class="sm:grid grid-cols-3 gap-x-4 mb-2">
+        <sb-text-field label="Номер на протокола" formControlName="protocolNumber"></sb-text-field>
+        <sb-date-field label="Дата на протокола" formControlName="protocolDate"></sb-date-field>
+        <sb-date-field label="Дата" formControlName="date"></sb-date-field>
+
+        <sb-text-field class="col-start-1" label="Професия" formControlName="profession"></sb-text-field>
+        <sb-text-field label="Специалност" formControlName="speciality"></sb-text-field>
+        <sb-nom-select
+          label="Степен на професионална квалификация"
+          formControlName="qualificationDegreeId"
+          [nomService]="qualificationDegreeNomsService"
+        ></sb-nom-select>
+
+        <sb-text-field
+          class="col-start-1"
+          label="Номер на заповед за назначаване на комисията"
+          formControlName="commissionNominationOrderNumber"
+        ></sb-text-field>
+
+        <sb-date-field
+          label="Дата на заповед за назначаване на комисията"
+          formControlName="commissionNominationOrderDate"
+        ></sb-date-field>
+
+        <sb-nom-select
+          label="Директор"
+          formControlName="directorPersonId"
+          [nomService]="instTeacherNomsService"
+        ></sb-nom-select>
+
+        <sb-card-section class="col-span-full">Комисия</sb-card-section>
+        <sb-nom-select
+          class="col-start-1 col-span-full"
+          label="Председател на комисията"
+          formControlName="commissionChairman"
+          [nomService]="instTeacherNomsService"
+        ></sb-nom-select>
+
+        <sb-nom-select
+          class="col-start-1 col-span-full"
+          label="Членове на комисията"
+          formControlName="commissionMembers"
+          [nomService]="instTeacherNomsService"
+          [multiple]="true"
+        ></sb-nom-select>
+      </div>
+
+      <sb-card-section class="col-span-full">Ученици</sb-card-section>
+
+      <sb-banner type="info" *ngIf="data.qualificationAcquisitionProtocol == null">
+        Трябва да запишете протокола, за да може да добавите ученици
+      </sb-banner>
+
+      <ng-container *ngIf="data.qualificationAcquisitionProtocol != null">
+        <button
+          *ngIf="canEdit"
+          (click)="openAddOrUpdateStudentDialog(null)"
+          [disabled]="editable"
+          mat-raised-button
+          color="primary"
+          aria-label="Добави ученик"
+          type="button"
+          class="mb-2.5"
+        >
+          <fa-icon [icon]="fasPlus" size="lg"></fa-icon>
+          <span>Добави ученик</span>
+        </button>
+        <sb-table
+          [dataSource]="dataSource"
+          [displayedColumns]="
+            canEdit
+              ? [
+                  'action',
+                  'className',
+                  'studentName',
+                  'examsPassed',
+                  'theoryPoints',
+                  'practicePoints',
+                  'averageDecimalGrade'
+                ]
+              : ['className', 'studentName', 'examsPassed', 'theoryPoints', 'practicePoints', 'averageDecimalGrade']
+          "
+        >
+          <ng-container cdkColumnDef="action">
+            <th cdk-header-cell *cdkHeaderCellDef></th>
+            <td cdk-cell *cdkCellDef="let row" class="sb-table-action">
+              <button
+                aria-label="Детайли"
+                (click)="openAddOrUpdateStudentDialog({ classId: row.classId, personId: row.personId })"
+                [disabled]="editable"
+                class="sb-link-btn"
+                type="button"
+              >
+                <fa-icon [icon]="fasPencil"></fa-icon>
+              </button>
+              <button
+                (click)="onRemoveStudent(row.classId, row.personId)"
+                [disabled]="editable || removingAct[row.personId]"
+                aria-label="Изтрий"
+                class="sb-link-btn"
+                type="button"
+              >
+                <fa-icon
+                  [icon]="removingAct[row.personId] ? fasSpinnerThird : fasTrashAlt"
+                  [spin]="removingAct[row.personId]"
+                  size="lg"
+                ></fa-icon>
+              </button>
+            </td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="className">
+            <th cdk-header-cell *cdkHeaderCellDef>Клас</th>
+            <td cdk-cell *cdkCellDef="let row">{{ row.className }}</td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="studentName">
+            <th cdk-header-cell *cdkHeaderCellDef>Ученик</th>
+            <td cdk-cell *cdkCellDef="let row">{{ row.studentName }}</td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="examsPassed">
+            <th cdk-header-cell *cdkHeaderCellDef>Успешно положени изпити</th>
+            <td cdk-cell *cdkCellDef="let row">{{ row.examsPassed ? 'Да' : 'Не' }}</td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="theoryPoints">
+            <th cdk-header-cell *cdkHeaderCellDef>Точки от изпит по теория на професията</th>
+            <td cdk-cell *cdkCellDef="let row">{{ row.theoryPoints }}</td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="practicePoints">
+            <th cdk-header-cell *cdkHeaderCellDef>Точки от изпит по практика на професията</th>
+            <td cdk-cell *cdkCellDef="let row">{{ row.practicePoints }}</td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="averageDecimalGrade">
+            <th cdk-header-cell *cdkHeaderCellDef>Обща оценка на ДИ за ПК</th>
+            <td cdk-cell *cdkCellDef="let row">{{ row.averageDecimalGrade }}</td>
+          </ng-container>
+        </sb-table>
+      </ng-container>
+    </ng-container>
+  </sb-card>
+</form>

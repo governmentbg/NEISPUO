@@ -1,0 +1,35 @@
+{
+    "template": "SELECT /**select**/ FROM [sob].[SubmissionValidityCheckResult] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "ID as id"
+        },
+		{
+            "column": "ResultType as resultType"
+        },
+        {
+            "column": "Text as text"
+        },
+		{
+            "column": "List as list"
+        }
+    ],
+    "params": [
+	{
+          "param": "@instid",
+          "column": "InstitutionID",
+          "operator": "=",
+          "value": "instid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+    }
+    ],
+    "order": [
+        {
+            "column": "ResultType",
+            "type": "DESC"
+        }
+    ],
+    "inSelects": []
+}

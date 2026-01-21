@@ -1,0 +1,45 @@
+{
+    "label": "Задължителни предмети",
+    "sections": [
+    {
+        "order": 1,
+        "table": {
+            "name": "settingsReq",
+		    "searchable": true,
+            "formName": "basicSubjectInstitutionDataList",
+            "paramName": "customVarValueID",
+            "createNew": "redirect",
+            "canDeleteRow": true,
+            "procedureName": "inst_basic.subjectInstitution",
+		    "searchType": "column",
+			"hasEditButton":false,
+            "fields": [
+            {
+                "label": "Учебен предмет",
+                "name": "subjectName",
+                "type": "input",
+                "inputType": "text",
+                "width": 50,
+                "order": 1
+            },
+            {
+                "label": "Предметна група",
+                "name": "subjectGroupName",
+                "type": "input",
+                "inputType": "text",
+                "width": 50,
+                "order": 2
+            },
+            {
+                "label": "Начин на изучаване на ЧЕ",
+                "name": "flTypeName",
+                "type": "input",
+                "inputType": "text",
+                "width": 30,
+                "order": 3
+            }
+            ]
+        }
+    }
+    ]
+}

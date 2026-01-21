@@ -1,0 +1,209 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_basic].[StaffPosition] SP JOIN [inst_basic].[InstitutionAll] I ON SP.InstitutionID=I.InstitutionID /**where**/ /**orderby**/",
+  "sotemplate": "SELECT /**select**/ FROM [sob].[StaffPosition] SP JOIN [sob].[InstitutionAll] I ON SP.InstitutionID=I.InstitutionID /**where**/ /**orderby**/",
+  "columns": [
+	    {
+          "column": "SP.StaffOrd AS staffOrd"
+        },
+		{
+          "column": "SP.StaffPositionNo AS staffPositionNo"
+        },
+		{
+          "column": "SP.StaffTypeID AS staffTypeID"
+        },
+		{
+          "column": "SP.PositionKindID AS positionKindID"
+        },
+		{
+          "column": "SP.NKPDPositionID AS NKPDPositionID"
+        },
+		{
+          "column": "SP.PositionCount AS positionCount"
+        },	
+		{
+          "column": "SP.PositionNotes AS positionNotes"
+        },
+		{
+          "column": "SP.IsAccountablePerson AS isAccountablePerson"
+        },
+		{
+		  "column": "SP.ContractTypeID AS contractTypeID"
+		},
+		{
+			"column": "SP.ContractReasonID AS contractReasonID"
+		},
+		{
+			"column": "SP.ContractNo AS contractNo"
+		},
+		{
+			"column": "SP.ContractYear AS contractYear"
+		},
+		{
+			"column": "SP.ContractWithID AS contractWithID"
+		},
+		{
+			"column": "SP.ContractNotes AS contractNotes"
+		},
+		{
+			"column": "SP.ContractWithID AS contractWithID"
+		},
+		{
+			"column": "SP.StaffTypeID AS staffTypeID"
+		},
+		{
+			"column": "SP.CategoryStaffTypeID AS categoryStaffTypeID"
+		},	
+		{
+			"column": "SP.NKPDPositionID AS nKPDPositionID"
+		},
+		{
+			"column": "SP.PositionKindID AS positionKindID"
+		},
+		{
+			"column": "SP.PositionNotes AS positionNotes"
+		},
+		{
+			"column": "SP.PositionCount AS positionCount"
+		},
+		{
+			"column": "SP.WorkStartYear AS workStartYear"
+		},
+		{
+			"column": "SP.WorkExpTotalYears AS workExpTotalYears"
+		},
+		{
+			"column": "SP.WorkExpSpecYears AS workExpSpecYears"
+		},
+		{
+			"column": "SP.WorkExpTeachYears AS workExpTeachYears"
+		},
+		{
+			"column": "SP.IsTravel AS isTravel"
+		},
+		{		
+			"column": "SP.TeachStageID AS teachStageID"
+		},
+		{
+			"column": "SP.IsHospital AS isHospital"
+		},
+		{
+			"column": "SP.IsMentor AS isMentor"
+		},
+		{
+			"column": "SP.HelpStudentGovernment AS helpStudentGovernment"
+		},
+		{
+			"column": "SP.IsTrainee AS isTrainee"
+		},
+		{
+			"column": "SP.IsValid AS isValid"
+		},
+		{
+			"column": "SP.IsNotMeetReq AS isNotMeetReq"
+		},
+		{
+			"column": "SP.HasTELK AS hasTELK"
+		},
+		{
+			"column": "SP.MainPersonOKSID AS mainPersonOKSID"
+		},
+		{
+			"column": "SP.CurrentlyValid AS currentlyValid"
+		},
+		{
+			"column": "SP.PositionSubjectGroupID AS positionSubjectGroupID"
+		},
+		{
+			"column": "I.DetailedSchoolTypeID AS detailedSchoolTypeID"
+		}		
+  ],
+  "params": [
+	{
+          "param": "@staffPositionID",
+          "column": "SP.StaffPositionID",
+          "operator": "=",
+          "value": "staffPositionID",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+    },
+		{
+      "param": "@year",
+      "column": "SP.SchoolYear",
+      "operator": "=",
+      "value": "year",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    },
+	{
+      "param": "@period",
+      "column": "SP.Period",
+      "operator": "=",
+      "value": "period",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "SP.StaffPositionID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+	{
+      "arrayName": "staffPositionMainClasses",
+      "template": "SELECT /**select**/ FROM [inst_year].[StaffPositionMainClass] SPMC /**where**/ /**orderby**/",
+	  "sotemplate": "SELECT /**select**/ FROM [sob].[StaffPositionMainClass] SPMC /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "SPMC.StaffPositionMainClassID AS id"
+        },
+		{
+          "column": "SPMC.MainClassID AS mainClassID"
+        }	
+      ],
+      "params": [
+	{
+          "param": "@staffPositionID",
+          "column": "SPMC.StaffPositionID",
+          "operator": "=",
+          "value": "staffPositionID",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+    },
+	{
+      "param": "@year",
+      "column": "SPMC.SchoolYear",
+      "operator": "=",
+      "value": "year",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    },
+	{
+      "param": "@period",
+      "column": "SPMC.Period",
+      "operator": "=",
+      "value": "period",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    }
+      ],
+      "order": [
+        {
+          "column": "SPMC.MainClassID",
+          "type": "ASC"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "codeNEISPUO": 1234,
+  "name": "Основно училище „Христо Ботев“",
+  "shortName": "ОУ 'Христо Ботев'",
+  "eik": 1234565432,
+  "type37": "12",
+  "type38": "122",
+  "type3536": "1",
+  "financialSource": "1",
+  "hasNationalMeaning": false,
+  "isInovative": true,
+  "isProfessional": false,
+  "address": [
+    {
+      "id": "454d5as4d",
+      "place": "72624",
+      "addressLine": "Добрич, ул. „Цар Самуил“ 14"
+    },
+    {
+      "id": "45754das54",
+      "place": "68134",
+      "addressLine": "София, улица „Овче поле“ 14"
+    }
+  ],
+  "createdYear": 1925,
+  "createdDtl": "Наредба 1313 от 13.08.1926 г.",
+  "updatedDtl": "Наредба 1287 от 12.06.2020 г.",
+  "isDelegatedBudget": true,
+  "yearlyBudgetApproved": 54564.0,
+  "iban": "BG49FINV847366445904",
+  "bic": "FINVBGSF",
+  "bank": "ПИБ",
+  "accountHolder": "Георги Петров Тодоров",
+  "shifts": "4",
+  "hasHostel": false,
+  "nmbrPedagogical": 20,
+  "avrgSalaryPedagogical": 1000,
+  "nmbrNonPedagogical": 3,
+  "avrgSalaryNonPedagogical": 1500,
+  "institutionPhones": [
+    {
+      "id": 695,
+      "phoneTypeID": 1,
+      "phoneCode": null,
+      "phoneNumber": "34234254",
+      "contactKind": "канцелария",
+      "isMain": true,
+      "formName": "institutionPhoneData",
+      "formDataId": 695
+    },
+    {
+      "id": 698,
+      "phoneTypeID": 2,
+      "phoneCode": null,
+      "phoneNumber": "0835 541 52234",
+      "contactKind": "домакин",
+      "isMain": false,
+      "formName": "institutionPhoneData",
+      "formDataId": 698
+    },
+    {
+      "id": 717,
+      "phoneTypeID": 3,
+      "phoneCode": null,
+      "phoneNumber": "3ъ2387236872",
+      "contactKind": "333167836287",
+      "isMain": false,
+      "formName": "institutionPhoneData",
+      "formDataId": 717
+    },
+    {
+      "id": 693,
+      "phoneTypeID": 1,
+      "phoneCode": "02",
+      "phoneNumber": "39393939",
+      "contactKind": "директор променен",
+      "isMain": false,
+      "formName": "institutionPhoneData",
+      "formDataId": 693
+    }
+  ]
+}

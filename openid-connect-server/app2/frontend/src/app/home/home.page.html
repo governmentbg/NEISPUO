@@ -1,0 +1,16 @@
+<div class="content" role="main">
+  <div class="card highlight-card card-small demo-button" (click)="login()">
+    <span> Login</span>
+  </div>
+
+  <div class="card highlight-card card-small demo-button" (click)="logout()">
+    <span> Logout</span>
+  </div>
+</div>
+
+<h2>Auth state: <span [ngStyle]="{ color: oidcService.authState ? 'green' : 'red' }">{{oidcService.authState ? 'Logged in' : 'Logged out'}}</span></h2>
+<div class="state-container">
+  <div>
+    <pre class="auth-state">{{ oidcService.authState ? (oidcService.authState | json) : '' }}</pre>
+  </div>
+</div>

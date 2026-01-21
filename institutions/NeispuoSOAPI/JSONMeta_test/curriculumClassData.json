@@ -1,0 +1,38 @@
+{
+  "label": "Клас/група",
+  "sections": [
+    {
+      "order": 1,
+      "label": "Клас/група",
+      "subsections": [
+        {
+          "order": 1,
+          "name": "classGroup",
+          "fields": [
+            {
+            "name": "classIDSelect",
+            "type": "select",
+			"rendered": true,
+            "optionsPath": "/data/get/classGroupNom",
+            "order": 1,
+			"influence":[{
+				"type":"fill",
+				"fieldName":"classID"
+			}
+			]
+			},
+			{
+            "name": "classID",
+            "type": "select",
+			"rendered": true,
+            "optionsPath": "/data/get/classGroupNom",
+            "order": 2
+			}			
+      ]
+    }
+  ]
+}
+]
+}
+
+

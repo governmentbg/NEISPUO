@@ -1,0 +1,15 @@
+config:
+  target: "http://localhost:5001/api"
+  tls:
+    rejectUnauthorized: false
+  phases:
+    - duration: 30
+      arrivalRate: 5
+      name: Test
+  defaults:
+    headers:
+      accept: "application/json"
+      authorization: "Bearer {{ $processEnvironment.API_TOKEN }}"
+  variables:
+    schoolYear: 2020
+    instId: 300125

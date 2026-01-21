@@ -1,0 +1,40 @@
+.dropdown {
+  &::after {
+    content: "\F282";
+    font-family: "bootstrap-icons";
+    position: absolute;
+    color: #19212c;
+    right: 1rem;
+    top: 0.875rem;
+    z-index: 1;
+  }
+  .form-control {
+    &::placeholder {
+      color: $gray-900;
+      &:disabled {
+        color: $gray-500;
+      }
+    }
+  }
+  &-menu {
+    width: 100%;
+    font-size: 1rem;
+    line-height: 1.125rem;
+    li {
+      border-radius: 0.25rem;
+      // padding: 0.813rem 0.5rem;
+      &:hover {
+        background-color: $gray-100;
+        color: $gray-900;
+      }
+      .active {
+        background-color: $blue-100;
+        color: $blue-400;
+      }
+    }
+  }
+}
+
+input:-webkit-autofill {
+  -webkit-background-clip: text;
+}

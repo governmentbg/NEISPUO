@@ -1,0 +1,85 @@
+<div class="spinner-container" *ngIf="showSpinner">
+  <p-progressSpinner></p-progressSpinner>
+</div>
+<div class="top-container grid" *ngIf="!showSpinner">
+  <div class="btn-container">
+    <button pButton pRipple type="button" icon="pi pi-arrow-left" [routerLink]="['survey']" class="p-button-text btn-icon-primary"></button>
+  </div>
+  <div class="heading col">
+    <h4 class="title blue-heading">{{ questionnaireObject.questionaireId.name }}</h4>
+    <div class="questions-count">
+      <span>{{ questionnaireObject.questionaireId.questions.length }} {{ content.QUESTIONS}}</span>
+    </div>
+  </div>
+</div>
+<div class="main col-12" *ngIf="!showSpinner">
+  <div class="warning-container col-12 mt-2" *ngIf="questionnaireObject.state === 1">
+    <p-message severity="warn" text="Вече сте попълнили кампанията, не можете да променяте отговорите на въпросите." styleClass="mr-2"></p-message>
+  </div>
+
+  <div class="questionnaire-criteria-container col-12 col-md-7">
+    <div 
+      class="questionnaire-criteria-content" 
+      id="{{ 'card-' + i }}"  
+      *ngFor="let question of questionnaireObject.questionaireId.questions; let i = index"
+      [ngStyle]="{'border-color': !unansweredQuestionsIndex[i] ? '#2f73da' : '#df320c'}"
+    >
+      <div class="indicators-container grid">
+        <div class="indicator-contrainer grid col-fixed">
+          <div class="indicator">{{ content.INDICATOR }}</div>
+          <i class="pi pi-info-circle" pTooltip="{{ question.indicatorName }}"></i>
+        </div>
+        <div class="grid col-12 col-md-6">
+          <div class="sub-indicator">{{ content.SUBINDICATOR }}</div>
+          <i class="pi pi-info-circle" pTooltip="{{ question.subindicatorName }}"></i>
+        </div>
+      </div>
+      <div class="question-name">
+        <p class="text">
+          {{ i + 1 }}. {{ question.title }}
+        </p>
+      </div>
+      <div class="answers-container" *ngFor="let choice of question.choices">
+        <p-radioButton
+          [value]="choice"
+          [(ngModel)]="choices[i]"
+          [disabled]="!enableFields ? 'disabled' : null"
+        ></p-radioButton>
+        <label class="choice-container">{{ choice.title }}</label>
+      </div>
+    </div>
+
+     <button
+      pButton
+      class="btn p-button-primary col-12 mb-2"
+      type="button"
+      [label]="content.SUBMIT_QUESTIONNAIRE"
+      (click)="onSubmit()"
+      [disabled]="!enableFields  ? 'disabled' : null"
+    ></button>
+    <button
+     pButton
+     class="btn p-button-outlined p-button-primary col-12"
+     type="button"
+     [label]="content.SAVE_DRAFT"
+     iconPos="left"
+     icon="pi pi-save"
+     (click)="saveDraft()"
+     [disabled]="!enableFields  ? 'disabled' : null"
+    ></button>
+    <p-dialog
+        [header]="content.SUBMIT_QUESTIONNAIRE_DIALOG"
+        [(visible)]="isModalOpened"
+        [style]="{ width: '50vw' }"
+        [draggable]="false"
+        [resizable]="false"
+        [modal]="true"
+      >
+        <p>{{ content.CONFIRM_MESSAGE }}</p>
+        <ng-template pTemplate="footer">
+          <p-button icon="pi pi-check" (click)="submitQuestionnaire()" [label]="content.YES" styleClass="p-button-text"></p-button>
+          <p-button icon="pi pi-times" (click)="isModalOpened = false" [label]="content.NO" styleClass="p-button-text"></p-button>
+        </ng-template>
+      </p-dialog>
+  </div>
+</div>

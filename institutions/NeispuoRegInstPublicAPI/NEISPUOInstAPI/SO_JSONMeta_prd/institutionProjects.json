@@ -1,0 +1,100 @@
+{
+  "sections": [
+    {
+      "order": 1,
+      "label": "Активна проектна дейност и други дейности извън графика на редовните учебни занятия",
+      "name": "TableProjects",
+      "table": {
+        "order": 1,
+        "name": "institutionProjects",
+        "createNew": "redirect",
+        "formName": "institutionProjectData",
+        "paramName": "projectid",
+        "procedureName": "inst_basic.institutionProjectCUD",
+        "canDeleteRow": true,
+		  "searchable": true,
+		  "searchType": "column",
+        "fields": [
+          {
+            "label": "Наименование на проекта/дейността",
+            "name": "projectName",
+            "type": "input",
+            "inputType": "text",
+            "width": 60,
+            "order": 1
+          },
+          {
+            "label": "Начална дата",
+            "name": "startDate",
+            "type": "date",
+            "width": 10,
+            "order": 2
+          },
+          {
+            "label": "Крайна дата",
+            "name": "endDate",
+            "type": "date",
+            "width": 10,
+            "order": 3
+          },
+          {
+            "label": "Вид програма",
+            "name": "programType",
+            "type": "input",
+            "inputType": "text",
+            "width": 15,
+            "order": 4
+          }
+        ]
+      }
+    },
+    {
+      "order": 1,
+      "label": "Архив",
+      "name": "TableArchiveProjects",
+      "table": {
+        "order": 1,
+        "name": "institutionArchiveProjects",
+        "action": "edit",
+        "formName": "institutionProjectData",
+        "paramName": "projectid",
+        "procedureName": "inst_basic.institutionProjectCUD",
+        "canDeleteRow": true,
+		  "searchable": true,
+		  "searchType": "column",
+        "fields": [
+          {
+            "label": "Наименование на проекта/дейността",
+            "name": "projectName",
+            "type": "input",
+            "inputType": "text",
+            "width": 65,
+            "order": 1
+          },
+          {
+            "label": "Начална дата",
+            "name": "startDate",
+            "type": "date",
+            "width": 10,
+            "order": 2
+          },
+          {
+            "label": "Крайна дата",
+            "name": "endDate",
+            "type": "date",
+            "width": 10,
+            "order": 3
+          },
+          {
+            "label": "Вид програма",
+            "name": "programType",
+            "type": "input",
+            "inputType": "text",
+            "width": 15,
+            "order": 4
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_year].[ClassGroupListPT] CD /**where**/ /**orderby**/",
+  "columns": [
+     {
+      "column": "CD.ClassID AS id"
+    },
+    {
+      "column": "CD.ClassName AS className"
+    },
+    {
+      "column": "CD.ClassKind AS classKind"
+    },
+    {
+      "column": "CD.ClassTypeID AS classTypeID"
+    },
+    {
+      "column": "CD.ClassTypeName AS classTypeName"
+    },
+    {
+      "column": "CD.DepartmentName AS departmentName"
+    },
+    {
+      "column": "CD.InstitutionDepartmentID AS institutionDepartmentID"
+    },
+    {
+      "column": "CD.ClassEduFormID AS classEduFormID"
+    },
+    {
+      "column": "CD.ClassEduFormName AS classEduFormName"
+    },
+    {
+      "column": "CD.SPPOOProfessionID AS SPPOOProfession"
+    },
+    {
+      "column": "CD.SPPOOEducAreaID AS SPPOOEducArea"
+    },
+    {
+      "column": "CD.SPPOOProfAreaID AS SPPOOProfArea"
+    },
+    {
+      "column": "CD.SPPOOProfessionName AS SPPOOProfessionName"
+    },
+    {
+      "column": "CD.StartDate AS startDate"
+    },
+    {
+      "column": "CD.SpkGroupID AS spkGroupID"
+    },
+    {
+      "column": "CD.BudgetingGroupID AS budgetingGroupID"
+    },
+    {
+      "column": "CD.Notes AS notes"
+    },
+    {
+      "column": "CD.Duration AS duration"
+    },
+    {
+      "column": "CD.IsFinished AS isFinished"
+    },
+    {
+      "column": "CD.DetailedSchoolTypeID AS detailedSchoolTypeID"
+    }
+  ],
+  "params": [
+    {
+      "param": "@classid",
+      "column": "CD.ClassID",
+      "operator": "=",
+      "value": "classid",
+      "type": "int",
+      "logical_operator": "and",
+      "optional": false,
+      "static": false
+    },
+    {
+      "param": "@year",
+      "column": "CD.SchoolYear",
+      "operator": "=",
+      "value": "year",
+      "type": "int",
+      "logical_operator": "and",
+      "optional": true,
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "CD.ClassID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": []
+}

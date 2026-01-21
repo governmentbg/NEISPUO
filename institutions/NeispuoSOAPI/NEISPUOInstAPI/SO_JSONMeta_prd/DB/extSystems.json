@@ -1,0 +1,36 @@
+{
+    "template": "SELECT /**select**/ FROM [core].[ExtSystem] ES JOIN [core].[ExtSystemAccess] ESA ON ES.ExtSystemID=ESA.ExtSystemID /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "ES.ExtSystemID as code"
+        },
+        {
+            "column": "ES.Name as label"
+        }
+    ],
+    "params": [
+{
+     "param": "@isValid",
+     "column": "ES.IsValid",
+     "operator": "=",
+     "value": 1,
+     "type": "int",
+     "logical_operator": "and",
+     "static": true
+    },
+	 {
+      "param": "@filterValue",
+      "column": "ESA.ExtSystemType",
+      "operator": "=",
+      "value": "filterValue",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    }
+    ],
+    "order": [
+
+    ],
+    "inSelects": []
+}

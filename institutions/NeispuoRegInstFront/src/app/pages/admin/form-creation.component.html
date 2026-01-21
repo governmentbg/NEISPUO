@@ -1,0 +1,11 @@
+<div class="wrapper-body-json">
+    <div class="center-bar-container">
+      <app-center-bar [form]="form"></app-center-bar>
+    </div>
+    <div class="right-bar-container">
+      <app-right-bar></app-right-bar>
+      <button *ngIf="form" class="save-all-btn" (click)="saveFormChanges()">запази всички промени</button>
+    </div>
+</div>
+<app-loader *ngIf="isLoading"></app-loader>
+  

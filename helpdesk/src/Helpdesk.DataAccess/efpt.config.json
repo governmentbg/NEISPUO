@@ -1,0 +1,177 @@
+﻿{
+   "CodeGenerationMode": 2,
+   "ContextClassName": "HelpdeskContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": false,
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": null,
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "Helpdesk.DataAccess",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "Name": "[core].[Certificate]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[core].[EducationalState]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[core].[Institution]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[core].[InstitutionSchoolYear]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[core].[Person]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[core].[Position]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[core].[RelativeChild]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[core].[SysRole]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[core].[SysUser]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[core].[SysUserSysRole]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[helpdesk].[Category]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[helpdesk].[Document]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[helpdesk].[FAQuestion]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[helpdesk].[HelpdeskSettings]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[helpdesk].[Issue]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[helpdesk].[IssueAttachment]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[helpdesk].[IssueComment]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[helpdesk].[IssueCommentAttachment]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[helpdesk].[IssueReadActivity]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[helpdesk].[IssueStatusHistory]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[helpdesk].[Priority]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[helpdesk].[Status]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_basic].[CurrentYear]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_basic].[InstitutionDepartment]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_basic].[InstitutionDetail]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_year].[ClassGroup]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[location].[Country]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[location].[LocalArea]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[location].[Municipality]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[location].[Region]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[location].[Town]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[logs].[AuditModule]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[logs].[UIError]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[Message]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[helpdesk].[v_CategoryStat]",
+         "ObjectType": 3
+      }
+   ],
+   "UiHint": "TESTSQL2\\SQL2019.neispuo-prod",
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": false,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": true,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoConstructor": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UseSchemaFolders": false,
+   "UseSpatial": false,
+   "UseT4": false
+}

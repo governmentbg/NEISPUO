@@ -1,0 +1,155 @@
+{
+  "template": "SELECT TOP 1 /**select**/ FROM [inst_year].[ClassGroupAll] CD /**where**/ /**orderby**/",
+  "sotemplate": "SELECT TOP 1 /**select**/ FROM [sob].[ClassGroupAll] CD /**where**/ /**orderby**/",
+  "columns": [
+  	{
+      "column": "CD.ParentClassID AS parentclassid"
+    },
+  	{
+      "column": "CD.InstitutionID AS instid"
+    },
+    {
+      "column": "CD.DetailedSchoolTypeID AS detailedSchoolTypeID"
+    },
+	{
+      "column": "CD.InstType AS instType"
+    },
+	{
+      "column": "CD.ClassKind AS classKind"
+    },
+	{
+      "column": "CD.IsCombined AS isCombined"
+    },
+	{
+      "column": "CD.ClassName AS className"
+    },
+	{
+      "column": "CD.InstitutionDepartmentID AS institutionDepartmentID"
+    },
+	{
+      "column": "CD.BasicClassID AS basicClassID"
+    },
+    {
+      "column": "CD.HasCurriculum AS hasCurriculum"
+    }
+   ],
+  "params": [
+    {
+      "param": "@parentclassid",
+      "column": "CD.ParentClassID",
+      "operator": "=",
+      "value": "parentclassid",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    },
+	{
+      "param": "@instType",
+      "column": "CD.InstType",
+      "operator": "=",
+      "value": "instType",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+			{
+			"param": "@year",
+			"column": "CD.SchoolYear",
+			"operator": "=",
+			"value": "year",
+			"type": "int",
+			"logical_operator": "and",
+			"optional": true,
+			"static": false
+    },
+		{
+			"param": "@period",
+			"column": "CD.Period",
+			"operator": "=",
+      "value": "period",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "CD.ParentClassID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+  {
+   "arrayName": "classGroupDataList",
+  "template": "SELECT /**select**/ FROM [inst_year].[GroupList] CG /**where**/ /**orderby**/",
+  "sotemplate": "SELECT /**select**/ FROM [sob].[GroupList] CG /**where**/ /**orderby**/",
+  "columns": [
+  	{
+      "column": "CG.ClassID AS id"
+    }, 
+	{
+      "column": "CG.ClassGroupNum AS classGroupID"
+    },
+	{
+      "column": "CG.ClassKind AS classKind"
+    },
+	{
+      "column": "CG.ClassTypeName AS classTypeName"
+    },
+	{
+      "column": "CG.BasicClass AS basicClass"
+    },
+	{
+      "column": "CG.ClassSpecialityName AS classSpecialityName"
+    },
+	{
+      "column": "'classGroupData' AS formName"
+    },
+	{
+      "column": "CG.ClassID AS formDataId"
+    }
+   ],
+  "params": [
+    {
+      "param": "@parentclassid",
+      "column": "CG.ParentClassID",
+      "operator": "=",
+      "value": "parentclassid",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    },
+		{
+			"param": "@year",
+			"column": "CG.SchoolYear",
+			"operator": "=",
+			"value": "year",
+			"type": "int",
+			"logical_operator": "and",
+			"optional": true,
+			"static": false
+    },
+		{
+			"param": "@period",
+			"column": "CG.Period",
+			"operator": "=",
+      "value": "period",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "CG.ClassGroupNum",
+      "type": "ASC"
+    }
+  ]
+  }
+
+  ]
+}

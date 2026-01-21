@@ -1,0 +1,217 @@
+{
+    "label": "Други адреси за осъществяване на дейността",
+    "sections": [
+    {
+            "order": 1,
+            "label": "Данни за адрес",
+            "subsections": [
+                {
+                    "order": 1,
+                    "name": "institutionDepartment",
+                    "fields": [
+                        {
+                            "order": 1,
+                            "label": "Наименование",
+                            "name": "departmentName",
+                            "type": "input",
+                            "inputType": "text",
+                            "disabled": "if(operationType==7) {field.disabled=true} else {field.disabled=false}",
+                            "flexible": "if(operationType==10 || operationType==14 || operationType==0) {field.flexible=true} else {field.flexible=false}",
+                            "width": 1200,
+                            "validations": [
+                                {
+                                    "name": "maxLength",
+                                    "validation": 255,
+                                    "message": "Максимална дължина 255 символа"
+                                },
+                                {
+                                    "name": "required",
+                                    "validator": "",
+                                    "message": "Полето е задължително"
+                                }
+                            ],
+                            "influence": [],
+                            "info": ""
+                        },
+                        {
+                            "order": 2,
+                            "label": "Държава",
+                            "name": "departmentCountry",
+                            "type": "searchselect",
+                            "optionsPath": "/data/get/country",
+                            "flexible": "if(operationType==10 || operationType==14 || operationType==0) {field.flexible=true} else {field.flexible=false}",
+                            "disabled": "if(operationType==7) {field.disabled=true} else {field.disabled=false}",
+                            "influence": [],
+                            "validations": [
+                                {
+                                    "name": "required",
+                                    "validator": "",
+                                    "message": "Полето е задължително"
+                                }
+                            ],
+                            "info": "",
+                            "width": 400
+                        },
+                        {
+                            "type": "breakpoint",
+                            "rendered": true,
+                            "order": 3
+                        },
+                        {
+                            "order": 4,
+                            "label": "Област",
+                            "name": "departmentRegion",
+                            "type": "searchselect",
+                            "optionsPath": "/data/get/region",
+                            "flexible": "if(operationType==10 || operationType==14 || operationType==0) {field.flexible=true} else {field.flexible=false}",
+                            "disabled": "if(operationType==7) {field.disabled=true} else {field.disabled=false}",
+                            "influence": [
+                                {
+                                    "fieldName": "departmentMunicipality",
+                                    "url": "/data/get/municipality",
+                                    "type": "options"
+                                }
+                            ],
+                            "validations": [],
+                            "info": "",
+                            "width": 400
+                        },
+                        {
+                            "order": 5,
+                            "label": "Община",
+                            "name": "departmentMunicipality",
+                            "flexible": "if(operationType==10 || operationType==14 || operationType==0) {field.flexible=true} else {field.flexible=false}",
+                            "type": "searchselect",
+                            "disabled": "if(operationType==7) {field.disabled=true} else {field.disabled=false}",
+                            "influence": [
+                                {
+                                    "fieldName": "departmentTown",
+                                    "url": "/data/get/town",
+                                    "type": "options"
+                                }
+                            ],
+                            "validations": [],
+                            "info": "",
+                            "width": 400
+                        },
+                        {
+                            "order": 6,
+                            "label": "Населено място",
+                            "name": "departmentTown",
+                            "type": "searchselect",
+                            "flexible": "if(operationType==10 || operationType==14 || operationType==0) {field.flexible=true} else {field.flexible=false}",
+                            "influence": [
+                                {
+                                    "fieldName": "departmentLocalArea",
+                                    "url": "/data/get/localArea",
+                                    "type": "options"
+                                }
+                            ],
+                            "disabled": "if(operationType==7) {field.disabled=true} else {field.disabled=false}",
+                            "validations": [],
+                            "info": ""
+                        },
+                        {
+                            "order": 7,
+                            "label": "Район",
+                            "name": "departmentLocalArea",
+                            "type": "searchselect",
+                            "flexible": "if(operationType==10 || operationType==14 || operationType==0) {field.flexible=true} else {field.flexible=false}",
+                            "disabled": "if(operationType==7) {field.disabled=true} else {field.disabled=false}",
+                            "influence": [],
+                            "validations": [],
+                            "info": ""
+                        },
+                        {
+                            "type": "breakpoint",
+                            "rendered": true,
+                            "order": 8
+                        },
+                        {
+                            "order": 9,
+                            "label": "Адрес",
+                            "name": "departmentAddress",
+                            "type": "input",
+                            "inputType": "text",
+                            "disabled": "if(operationType==7) {field.disabled=true} else {field.disabled=false}",
+                            "flexible": "if(operationType==10 || operationType==14 || operationType==0) {field.flexible=true} else {field.flexible=false}",
+                            "width": 700,
+                            "validations": [
+                                {
+                                    "name": "maxLength",
+                                    "validation": 255,
+                                    "message": "Максимална дължина 255 символа"
+                                }
+                            ],
+                            "influence": [],
+                            "info": ""
+                        },
+                        {
+                            "order": 10,
+                            "label": "Пощенски код",
+                            "name": "departmentPostalCode",
+                            "type": "input",
+                            "inputType": "number",
+                            "disabled": "if(operationType==7) {field.disabled=true} else {field.disabled=false}",
+                            "flexible": "if(operationType==10 || operationType==14 || operationType==0) {field.flexible=true} else {field.flexible=false}",
+                            "width": 100,
+                            "validations": [
+                                {
+                                    "name": "maxLength",
+                                    "validation": 4,
+                                    "message": "Максимална дължина 4 символа"
+                                }
+                            ],
+                            "influence": [],
+                            "info": ""
+                        },
+                        {
+                            "order": 11,
+                            "label": "Идентификатор на недвижимия имот съгласно чл. 26 от Закона за кадастъра и имотния регистър",
+                            "name": "departmentCadasterCode",
+                            "rendered": "if(instKind==3 || instKind==7) {field.rendered=true} else {field.rendered=false}",
+                            "type": "input",
+                            "inputType": "text",
+                            "disabled": "if(operationType==7) {field.disabled=true} else {field.disabled=false}",
+                            "flexible": "if(operationType==10 || operationType==14 || operationType==0) {field.flexible=true} else {field.flexible=false}",
+                            "width": 400,
+                            "validations": [
+                                {
+                                    "name": "maxLength",
+                                    "validation": 255,
+                                    "message": "Максимална дължина 255 символа"
+                                }
+                            ],
+                            "influence": [],
+                            "info": ""
+                        },
+                        {
+                            "type": "breakpoint",
+                            "rendered": true,
+                            "order": 12
+                        },
+                        {
+                            "label": "Допълнителна информация за адреса",
+                            "name": "departmentNotes",
+                            "type": "textarea",
+                            "order": 13,
+                            "width": 1000,
+                            "height": 3,
+                            "disabled": "if(operationType==7) {field.disabled=true} else {field.disabled=false}",
+                            "flexible": "if(operationType==10 || operationType==14 || operationType==0) {field.flexible=true} else {field.flexible=false}",
+                            "validations": [
+                                {
+                                    "name": "maxLength",
+                                    "validation": 2024,
+                                    "message": "Максимална дължина 2024 символа"
+                                }
+                            ],
+                            "influence": [],
+                            "info": ""
+                        }
+                    ]
+                }
+                ]
+            }
+        ]
+        }

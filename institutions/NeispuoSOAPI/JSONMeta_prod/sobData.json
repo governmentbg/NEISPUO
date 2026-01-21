@@ -1,0 +1,2114 @@
+{
+  "sections": [
+    {
+      "order": 1,
+      "label": "Данни за институцията",
+	    "name": "schoolData",
+      "table": {
+	    "order": 1,
+        "name": "reportSchoolData",
+		    "hasEditButton": false,
+		    "sortable": false,
+		    "searchable": false,
+        "fields": [
+          {
+            "label": "Код на институцията",
+            "name": "codeNEISPUO",
+            "type": "input",
+            "inputType": "text",
+            "width":5,
+            "order": 1
+          },
+          {
+            "label": "Наименование",
+            "name": "name",
+            "type": "input",
+            "inputType": "number",
+            "width":15,
+            "order": 2
+          },
+          {
+            "label": "Кратко наименование",
+            "name": "abbreviation",
+            "type": "input",
+            "inputType": "number",
+            "order": 3
+          },
+          {
+            "label": "БУЛСТАТ",
+            "name": "bulstat",
+            "type": "input",
+            "inputType": "number",
+            "order": 4
+          },
+          {
+            "label": "Държава",
+            "name": "country",
+            "type": "input",
+            "inputType": "number",
+            "order": 5
+          },
+          {
+            "label": "Област",
+            "name": "region",
+            "type": "input",
+            "inputType": "number",
+            "order": 6
+          },
+          {
+            "label": "Населено място",
+            "name": "town",
+            "type": "input",
+            "inputType": "number",
+            "order": 7
+          },
+          {
+            "label": "Източник на финансиране",
+            "name": "budgetingSchoolTypeID",
+            "type": "input",
+            "inputType": "number",
+            "order": 8
+          },
+          {
+            "label": "Вид по чл. 38 (детайлен)",
+            "name": "detailedSchoolTypeID",
+            "type": "input",
+            "inputType": "number",
+            "order": 9
+          },
+          {
+            "label": "Вид по чл. 35-36 (според собствеността)",
+            "name": "financialSchoolTypeID",
+            "type": "input",
+            "inputType": "number",
+            "order": 10
+          },
+          {
+            "label": "Вид по чл. 37 (общ, според вида на подготовката)",
+            "name": "baseSchoolTypeID",
+            "type": "input",
+            "inputType": "number",
+            "order": 11
+          }
+        ]
+      }
+    },
+    {
+      "order": 2,
+      "label": "Допълнителни данни за институцията",
+	    "name": "SchoolDataMore",
+      "table": {
+	    "order": 1,
+        "name": "reportSchoolData",
+		    "hasEditButton": false,
+		    "sortable": false,
+		    "searchable": false,
+        "fields": [
+          {
+            "label": "Електронна поща",
+            "name": "email",
+            "type": "input",
+            "inputType": "text",
+            "width":10,
+            "order": 1
+          },
+          {
+            "label": "Интернет адрес",
+            "name": "website",
+            "type": "input",
+            "inputType": "number",
+            "width":10,
+            "order": 2
+          },
+          {
+            "label": "Година на основаване",
+            "name": "established",
+            "type": "input",
+            "inputType": "number",
+            "width":5,
+            "order": 3
+          },
+          {
+            "label": "Акт за учредяване или преобразуване",
+            "name": "incActLast",
+            "type": "input",
+            "inputType": "number",
+            "width":20,
+            "order": 4
+          },
+          {
+            "label": "Акт за учредяване или собственост на училището (първичен)",
+            "name": "incActFirst",
+            "type": "input",
+            "inputType": "number",
+            "width":20,
+            "order": 5
+          },
+          {
+            "label": "Има яслена група",
+            "name": "isODZ",
+            "type": "input",
+            "inputType": "number",
+            "width":10,
+            "order": 6
+          },
+          {
+            "label": "Осигурява професионална подготовка",
+            "name": "isProfSchool",
+            "type": "input",
+            "inputType": "number",
+            "width":10,
+            "order": 7
+          },
+          {
+            "label": "С национално значение",
+            "name": "isNational",
+            "type": "input",
+            "inputType": "number",
+            "width":10,
+            "order": 8
+          },
+          {
+            "label": "Oрганизира допълнителна услуга по отглеждане на децат",
+            "name": "isProvideEduServ",
+            "type": "input",
+            "inputType": "number",
+            "width":10,
+            "order": 9
+          },
+          {
+            "label": "На делегиран бюджет",
+            "name": "isDelegateBudget",
+            "type": "input",
+            "inputType": "number",
+            "width":10,
+            "order": 10
+          },
+          {
+            "label": "Към училището има несамостоятелно общежитие",
+            "name": "isNonIndDormitory",
+            "type": "input",
+            "inputType": "number",
+            "width":10,
+            "order": 11
+          },
+          {
+            "label": "Прилага иновативна система",
+            "name": "isAppInnovSystem",
+            "type": "input",
+            "inputType": "number",
+            "width":10,
+            "order": 12
+          },
+          {
+            "label": "Иновативно училище",
+            "name": "isInnovative",
+            "type": "input",
+            "inputType": "number",
+            "width":10,
+            "order": 13
+          },
+          {
+            "label": "На държавно финансиране",
+            "name": "isStateFunding",
+            "type": "input",
+            "inputType": "number",
+            "width":10,
+            "order": 14
+          }
+        ]
+      }
+    },
+    {
+      "order": 3,
+      "label": "Банкови данни за институцията",
+      "name": "TableInstitutionBank",
+      "table":
+      {
+         "order": 1,
+        "name": "reportSchoolData",
+        "hasEditButton": false,
+		    "sortable": false,
+		    "searchable": false,
+        "fields": [
+          {
+            "label": "Банкова сметка на институцията",
+            "name": "bankIBAN",
+            "type": "input",
+            "inputType": "number",
+            "width":20,
+            "order": 1
+          },
+          {
+            "label": "Код на банката",
+            "name": "bankBIC",
+            "type": "input",
+            "inputType": "number",
+            "width":10,
+            "order": 2
+          },
+          {
+            "label": "Наименование на банката",
+            "name": "bankName",
+            "type": "input",
+            "inputType": "number",
+            "width":15,
+            "order": 3
+          },
+          {
+            "label": "Титуляр на банковата сметка",
+            "name": "bankAccountHolder",
+            "type": "input",
+            "inputType": "number",
+            "width":15,
+            "order": 4
+          }
+        ]
+      } 
+    },
+    {
+      "order": 4,
+      "label": "Други адреси за осъществяване на дейността",
+      "name": "TableInstitutionDepartments",
+      "accordion": {
+        "state": "closed"
+      },
+      "table":
+      {
+        "order": 1,
+        "name": "institutionDepartments",
+        "hasEditButton": false,
+		    "sortable": false,
+		    "searchable": false,
+        "fields": [
+        {
+          "label": "Наименование/Предназначение",
+          "name": "departmentName",
+          "type": "input",
+          "inputType": "text",
+          "width": 35,
+          "order": 1
+        },
+        {
+          "label": "Адрес",
+          "name": "fullAddress",
+          "type": "input",
+          "inputType": "text",
+          "width": 35,
+          "order": 2
+        },
+        {
+          "label": "Пощ. код",
+          "name": "departmentPostalCode",
+          "type": "input",
+          "inputType": "number",
+          "width": 8,
+          "order": 3
+        },
+        {
+          "label": "Защитен",
+          "name": "isProtected",
+          "type": "input",
+          "inputType": "text",
+          "width": 8,
+          "order": 4
+        },
+        {
+          "label": "Средищен",
+          "name": "isCentral",
+          "type": "input",
+          "inputType": "text",
+          "width": 8,
+          "order": 5
+        }
+       ]
+      }
+    },
+    {
+      "order": 5,
+      "label": "Телефони",
+      "name": "institutionPhonesTable",
+      "accordion": {
+        "state": "closed"
+      },
+      "table": {
+        "name": "institutionPhones",
+        "hasEditButton": false,
+		    "sortable": false,
+		    "searchable": false,
+        "fields": [
+          {
+            "label": "Тип телефон",
+            "name": "phoneTypeID",
+            "type": "input",
+            "inputType": "text",
+            "width": 20,
+            "order": 1
+          },
+          {
+            "label": "Код за АТМ",
+            "name": "phoneCode",
+            "type": "input",
+            "inputType": "text",
+            "order": 2,
+            "width": 10
+          },
+          {
+            "label": "Телефон",
+            "name": "phoneNumber",
+            "type": "input",
+            "inputType": "text",
+            "order": 3,
+            "width": 50
+          },
+          {
+            "label": "Вид телефон",
+            "name": "contactKind",
+            "type": "input",
+            "inputType": "text",
+            "order": 4,
+            "width": 50
+          },
+          {
+            "label": "Основен",
+            "name": "input",
+            "type": "checkbox",
+            "order": 5,
+            "width": 10
+          }
+        ]
+      }
+    },
+    {
+      "order": 6,
+      "label": "Иновации",
+      "name": "innovation",
+      "accordion": {
+        "state": "closed"
+      },
+      "table": {
+        "name": "institutionInnovations",
+        "hasEditButton": false,
+		    "sortable": false,
+		    "searchable": false,
+        "fields": [
+            {
+              "label": "Вид на иновацията",
+              "name": "innovationType",
+              "type": "input",
+              "inputType": "text",
+              "order": 1,
+              "width":50
+            },
+            {
+              "label": "Бележки",
+              "name": "notes",
+              "type": "textarea",
+              "order": 2,
+              "width": 100
+            }
+          ]
+        }
+    },
+    {
+      "order": 7,
+      "label": "Обществен съвет",
+      "name": "TablePublicCouncilData",
+      "accordion": {
+        "state": "closed"
+      },
+      "table": 
+        {
+          "name": "publicCouncilData",
+          "hasEditButton": false,
+		      "sortable": false,
+		      "searchable": false,
+          "fields": [
+            {
+              "label": "Институция, на която е представител",
+              "name": "publicCouncilTypeID",
+              "type": "input",
+              "inputType": "text",
+              "order": 1,
+			        "width": 10
+              
+            },
+            {
+              "label": "Роля",
+              "name": "publicCouncilRoleID",
+              "type": "input",
+              "inputType": "text",
+			        "width": 10,
+              "order": 2
+            },
+            {
+              "label": "Име",
+              "name": "firstName",
+              "type": "input",
+              "inputType": "text",
+			        "width": 20,
+              "order": 3
+            },
+			      {
+              "label": "Презиме",
+              "name": "middleName",
+              "type": "input",
+              "inputType": "text",
+			        "width": 20,
+              "order": 4
+            },
+			      {
+              "label": "Фамилия",
+              "name": "familyName",
+              "type": "input",
+              "inputType": "text",
+			        "width": 20,
+              "order": 5
+            },
+            {
+              "label": "Електронна поща",
+              "name": "email",
+              "type": "input",
+              "inputType": "text",
+			        "width": 10,
+              "order": 6
+            },
+            {
+              "label": "Телефон",
+              "name": "phone",
+              "type": "input",
+              "inputType": "text",
+			        "width": 10,
+              "order": 7
+            }
+          ]
+       }
+    },
+    {
+      "order": 8,
+      "label": "Училищно настоятелство",
+      "name": "TableSchoolBoardsData",
+      "accordion": {
+        "state": "closed"
+      },
+      "table": 
+        {
+          "name": "schoolBoards",
+          "hasEditButton": false,
+		      "sortable": false,
+		      "searchable": false,
+          "fields": [
+            {
+              "label": "Роля",
+              "name": "schoolBoardRole",
+              "type": "input",
+              "inputType": "text",
+			        "width": 10,
+              "order": 1
+            },
+            {
+              "label": "Име",
+              "name": "firstName",
+              "type": "input",
+              "inputType": "text",
+			        "width": 20,
+              "order": 2
+            },
+			      {
+              "label": "Презиме",
+              "name": "middleName",
+              "type": "input",
+              "inputType": "text",
+			        "width": 20,
+              "order": 3
+            },
+			      {
+              "label": "Фамилия",
+              "name": "familyName",
+              "type": "input",
+              "inputType": "text",
+			        "width": 20,
+              "order": 4
+            },
+            {
+              "label": "Електронна поща",
+              "name": "email",
+              "type": "input",
+              "inputType": "text",
+			        "width": 10,
+              "order": 5
+            },
+            {
+              "label": "Телефон",
+              "name": "phone",
+              "type": "input",
+              "inputType": "text",
+			        "width": 10,
+              "order": 6
+            },
+            {
+              "label": "Подпомага ученическия съвет",
+              "name": "helpStudentGovernment",
+              "type": "checkbox",
+              "order": 7,
+              "width": 10
+          }
+          ]
+      }
+    },
+    {
+      "order": 9,
+      "label": "Активна проектна дейност и други дейности извън графика на редовните учебни занятия",
+      "name": "TableProjects",
+      "accordion": {
+        "state": "closed"
+      },
+      "table": {
+        "name": "institutionProjects",
+        "hasEditButton": false,
+		    "sortable": false,
+		    "searchable": false,
+        "fields": [
+          {
+            "label": "Наименование на проекта/дейността",
+            "name": "projectName",
+            "type": "input",
+            "inputType": "text",
+            "width": 40,
+            "order": 1
+          },
+          {
+            "label": "Начална дата",
+            "name": "startDate",
+            "type": "date",
+            "width": 10,
+            "order": 2
+          },
+          {
+            "label": "Крайна дата",
+            "name": "endDate",
+            "type": "date",
+            "width": 10,
+            "order": 3
+          },
+          {
+            "label": "Вид програма",
+            "name": "programType",
+            "type": "input",
+            "inputType": "text",
+            "width": 15,
+            "order": 4
+          },
+          {
+            "label": "Резюме (описание) на проекта",
+            "name": "description",
+            "type": "input",
+            "inputType": "text",
+            "width": 15,
+            "order": 5
+          },
+          {
+            "label": "Сайт на проекта",
+            "name": "projectWebsite",
+            "type": "input",
+            "inputType": "text",
+            "width": 10,
+            "order": 6
+          },
+          {
+            "label": "брой обхванати деца/ученици (планиран)",
+            "name": "planCountAll",
+            "type": "input",
+            "inputType": "text",
+            "width": 5,
+            "order": 7
+          },
+          {
+            "label": "брой обхванати деца/ученици (реализиран)",
+            "name": "actualCountAll",
+            "type": "input",
+            "inputType": "text",
+            "width": 5,
+            "order": 8
+          },
+          {
+            "label": "в т.ч. обхванати в международна мобилност",
+            "name": "interCountAll",
+            "type": "input",
+            "inputType": "text",
+            "width": 5,
+            "order": 9
+          },
+          {
+            "label": "Цели и резултати на проекта",
+            "name": "goals",
+            "type": "input",
+            "inputType": "text",
+            "width": 15,
+            "order": 10
+          }
+        ]
+      }
+    },
+    {
+      "order": 10,
+      "label": "Автобуси",
+      "name": "TableVehicles",
+      "accordion": {
+        "state": "closed"
+      },
+      "table": {
+		    "name":"institutionVehicles",
+		    "hasEditButton": false,
+		    "sortable": false,
+		    "searchable": false,
+        "fields": [
+          {
+            "label": "Начин на придобиване",
+            "name": "acquisitionWayTypeID",
+            "type": "input",
+            "inputType": "text",
+			      "width": 35,
+            "order": 1
+          },
+          {
+            "label": "Вид документ",
+            "name": "documentTypeID",
+            "type": "input",
+            "inputType": "text",
+			      "width": 10,
+            "order": 2
+          },
+          {
+            "label": "Номер на документа",
+            "name": "documentNum",
+            "type": "input",
+            "inputType": "text",
+			      "width": 10,
+            "order": 3
+          },
+          {
+            "label": "Дата на документа",
+            "name": "documentDate",
+            "type": "date",
+			      "width": 8,
+            "order": 4
+          },
+          {
+            "label": "Регистрационен номер",
+            "name": "registrationNum",
+            "type": "input",
+            "inputType": "text",
+			      "width": 10,
+            "order": 5
+          },
+          {
+            "label": "Година на производство",
+            "name": "producedYear",
+            "type": "input",
+            "inputType": "number",
+			      "width": 8,
+            "order": 6
+          },
+          {
+            "label": "Брой места",
+            "name": "placeCountTypeID",
+            "type": "input",
+            "inputType": "text",
+			      "width": 8,
+            "order": 7
+          }
+        ]
+      }
+    },
+    {
+      "order": 11,
+      "label": "Групи / Класове",
+			"name": "TableClassDetailList",
+      "accordion": {
+        "state": "closed",
+        "dataName": "sobClassGroupList"
+      },
+			"table": {
+				"name": "classGroupList",
+				"hasEditButton": false,
+		    "sortable": true,
+		    "searchable": true,
+				"searchType": "column",
+				"fields": [
+					{
+						"label": "if(instType==1 || instType==4) {field.label='Клас'} else {field.label='Група'}",
+						"name": "className",
+						"type": "input",
+						"inputType": "text",
+						"width": 8,
+						"order": 1
+					},
+					{
+						"label": "if(instType==1 || instType==4) {field.label='Випуск (клас)'} else {field.label='Възрастова група'}",
+						"name": "basicClass",
+						"type": "input",
+						"inputType": "text",
+						"width": 10,
+						"order": 2
+					},
+					{
+						"label": "if(instType==3) {field.label='Организационна форма'} else if(instType==2){field.label='Вид на групата'} else {field.label='Вид на паралелката'}",
+						"name": "classTypeName",
+						"type": "input",
+						"inputType": "text",
+						"width": 15,
+						"order": 3
+					},
+					{
+						"label": "if(instType==3) {field.label='Вид'} else {field.label='Форма на обучение'}",
+						"name": "eduFormName",
+						"type": "input",
+						"inputType": "text",
+						"width": 10,
+						"order": 4
+					},
+					{
+						"label": "Професия/Специалност",
+						"name": "specialityName",
+						"type": "input",
+						"inputType": "text",
+						"rendered": "if(instType==1 || instType==4) {field.rendered=true} else {field.rendered=false}",
+						"width": 25,
+						"order": 5
+					},
+					{
+						"label": "ИИЧЕ/РИЧЕ (език)",
+						"name": "flName",
+						"type": "input",
+						"inputType": "text",
+						"rendered": "if(instType==1 || instType==4) {field.rendered=true} else {field.rendered=false}",
+						"width": 15,
+						"order": 6
+					},
+					{
+						"label": "Адрес на обучение",
+						"name": "departmentName",
+						"type": "input",
+						"inputType": "text",
+						"width": 25,
+						"order": 7
+					},
+					{
+						"label": "if(instType==2) {field.label='На подгрупи'} else {field.label='На групи'}",
+						"name": "isClassGroup",
+						"type": "input",
+						"inputType": "text",
+						"rendered": "if(instType==3) {field.rendered=false} else {field.rendered=true}",
+						"width": 8,
+						"order": 8
+					},
+					{
+						"label": "Специална",
+						"name": "isSpecNeed",
+						"type": "input",
+						"inputType": "text",
+						"width": 8,
+						"order": 9
+					},
+					{
+						"label": "Срок на обучение",
+						"name": "classEduDurationName",
+						"type": "input",
+						"inputType": "text",
+						"width": 10,
+						"order": 10
+					},
+					{
+						"label": "Форма на организация на учебния процес",
+						"name": "classShiftnName",
+						"type": "input",
+						"inputType": "text",
+						"width": 10,
+						"order": 11
+					},
+					{
+						"label": "Прием след",
+						"name": "entranceLevelName",
+						"type": "input",
+						"inputType": "text",
+						"width": 10,
+						"order": 12
+					},
+					{
+						"label": "Брой места",
+						"name": "studentCountPlaces",
+						"type": "input",
+						"inputType": "text",
+						"width": 10,
+						"order": 13
+					},
+					{
+						"label": "Бележки",
+						"name": "notes",
+						"type": "input",
+						"inputType": "text",
+						"width": 12,
+						"order": 14
+					}
+				]
+			}
+    },
+    {
+      "order": 12,
+      "label": "Учебен план",
+			"name": "TableCurriculumList",
+      "accordion": {
+        "state": "closed",
+        "dataName": "sobCurriculumList"
+      },
+			"table": {
+				"name": "sobCurriculumList",
+				"hasEditButton": false,
+		    "sortable": true,
+		    "searchable": true,
+				"searchType": "column",
+				"fields": [
+					{
+						"label": "Клас",
+						"name": "classNames",
+						"type": "input",
+						"inputType": "text",
+						"width": 10,
+						"order": 1
+					},
+					{
+						"label": "Група",
+						"name": "curriculumGroupNum",
+						"type": "input",
+						"inputType": "text",
+						"width": 10,
+						"order": 2
+					},
+					{
+						"label": "Учебен предмет",
+						"name": "subjectName",
+						"type": "input",
+						"inputType": "text",
+						"width": 10,
+						"order": 3
+					},
+          {
+						"label": "Модул към ПП",
+						"name": "parentSubjectName",
+						"type": "input",
+						"inputType": "text",
+						"width": 12,
+						"order": 4
+					},
+					{
+						"label": "Начин на изучаване",
+						"name": "subjectTypeName",
+						"type": "input",
+						"inputType": "text",
+						"width": 10,
+						"order": 5
+					},
+					{
+						"label": "Брой ученици",
+						"name": "studentsCount",
+						"type": "input",
+						"inputType": "text",
+						"width": 8,
+						"order": 6
+					},
+					{
+						"label": "Годишен брой часове",
+						"name": "totalHours",
+						"type": "input",
+						"inputType": "text",
+						"width": 8,
+						"order": 7
+					},
+					{
+						"label": "I срок УС",
+						"name": "weeksFirstTerm",
+						"type": "input",
+						"inputType": "text",
+						"width": 8,
+						"order": 8
+					},
+					{
+						"label": "I срок бр.ч.",
+						"name": "hoursWeeklyFirstTerm",
+						"type": "input",
+						"inputType": "text",
+						"width": 8,
+						"order": 9
+					},
+					{
+						"label": "II срок УС",
+						"name": "weeksSecondTerm",
+						"type": "input",
+						"inputType": "text",
+						"width": 8,
+						"order": 10
+					},
+					{
+						"label": "II срок бр.ч.",
+						"name": "hoursWeeklySecondTerm",
+						"type": "input",
+						"inputType": "text",
+						"width": 8,
+						"order": 11
+					},
+					{
+						"label": "Раздел",
+						"name": "curriculumPart",
+						"type": "input",
+						"inputType": "text",
+						"width": 12,
+						"order": 12
+					},
+					{
+						"label": "Преподавател",
+						"name": "teacherNames",
+						"type": "input",
+						"inputType": "text",
+						"width": 12,
+						"order": 13
+					},
+					{
+						"label": "Провежда се в",
+						"name": "departmentName",
+						"type": "input",
+						"inputType": "text",
+						"width": 12,
+						"order": 14
+					}
+				]
+			}
+    },
+    {
+      "order": 13,
+      "label": "Деца/ученици, записани в класове/групи",
+			"name": "TableClassStudentGroupList",
+      "accordion": {
+        "state": "closed",
+        "dataName": "sobClassStudentList"
+      },
+			"table": {
+				"name": "sobClassStudentList",
+				"hasEditButton": false,
+		    "sortable": true,
+		    "searchable": true,
+				"searchType": "column",
+				"fields": [
+					{
+				"label": "Клас/група",
+				"name": "className",
+				"type": "input",
+				"inputType": "text",
+				"width":8,
+				"order": 1
+			},
+		  	{
+				"label": "Личен образователен номер",
+				"name": "publicEduNumber",
+				"type": "input",
+				"inputType": "number",
+				"width":8,
+				"order": 2
+			},
+			{
+				"label": "Номер в класа",
+				"name": "classNumber",
+				"type": "input",
+				"inputType": "number",
+				"rendered": "if(instType==2) {field.rendered=false} else {field.rendered=true}",
+				"width":8,
+				"order": 3
+			},
+			{
+				"label": "Име",
+				"name": "fullName",
+				"type": "input",
+				"inputType": "text",
+				"width":15,
+				"order": 4
+			},
+			{
+				"label": "Дата на раждане",
+				"name": "birthDate",
+				"type": "input",
+				"inputType": "date",
+				"width":10,
+				"order": 5
+			},
+			{
+				"label": "if(instType==2) {field.label='Вид организация'} else {field.label='Форма на обучение'}",
+				"name": "studentEdFormName",
+				"type": "input",
+				"inputType": "text",
+				"rendered": "if(instType==3 || instType==5 || instType==2) {field.rendered=false} else {field.rendered=true}",
+				"width":10,
+				"order": 6
+			},
+			{
+				"label": "Позиция",
+				"name": "positionName",
+				"type": "input",
+				"inputType": "text",
+				"width":20,
+				"order": 7
+			},
+			{
+				"label": "Профил/Професия/Специалност",
+				"name": "classSpecialityName",
+				"type": "input",
+				"inputType": "text",
+				"width":20,
+				"rendered": "if(instType==3 || instType==5 || instType==2) {field.rendered=false} else {field.rendered=true}",
+				"order": 7
+			},
+			{
+				"label": "Повторно записан",
+				"name": "repeaterName",
+				"type": "input",
+				"inputType": "text",
+				"width":10,
+				"rendered": "if(instType==3 || instType==5) {field.rendered=false} else {field.rendered=true}",
+				"order": 8
+			},
+			{
+				"label": "СОП",
+				"name": "sopDecode",
+				"type": "input",
+				"inputType": "text",
+				"width":5,
+				"rendered": "if(instType==1 || instType==2 || instType==4) {field.rendered=true} else {field.rendered=false}",
+				"order": 9
+			},
+			{
+				"label": "РП",
+				"name": "rpDecode",
+				"type": "input",
+				"inputType": "text",
+				"width":5,
+				"rendered": "if(instType==1 || instType==2 || instType==4) {field.rendered=true} else {field.rendered=false}",
+				"order": 10
+			},
+      {
+				"label": "Номер на док. за РП",
+				"name": "reportNumber",
+				"type": "input",
+				"inputType": "text",
+				"width":10,
+				"rendered": "if(instType==1 || instType==2 || instType==4) {field.rendered=true} else {field.rendered=false}",
+				"order": 11
+			},
+      {
+				"label": "Дата на док. за РП",
+				"name": "reportDate",
+				"type": "input",
+				"inputType": "date",
+				"width":10,
+				"rendered": "if(instType==1 || instType==2 || instType==4) {field.rendered=true} else {field.rendered=false}",
+				"order": 12
+			},
+      {
+				"label": "РП се извършва от",
+				"name": "resourceSupportTypeName",
+				"type": "input",
+				"inputType": "text",
+				"width":10,
+				"rendered": "if(instType==1 || instType==2 || instType==4) {field.rendered=true} else {field.rendered=false}",
+				"order": 13
+			},
+			{
+				"label": "На индивидуален учебен план",
+				"name": "isIndividualCurriculum",
+				"type": "input",
+				"inputType": "text",
+				"width":10,
+				"rendered": true,
+				"order": 14
+			},
+			{
+				"label": "На почасова организация",
+				"name": "isHourlyOrganization",
+				"type": "input",
+				"inputType": "text",
+				"width":10,
+				"rendered": true,
+				"order": 15
+			},
+			{
+				"label": "Пътуващ",
+				"name": "commuterTypeName",
+				"type": "input",
+				"inputType": "text",
+				"width":10,
+				"rendered": true,
+				"order": 16
+			},
+			{
+				"label": "Випуска",
+				"name": "basicClassName",
+				"type": "input",
+				"inputType": "text",
+				"width":10,
+				"rendered": true,
+				"order": 17
+			}
+			]
+		 }
+    },
+    {
+      "order": 14,
+      "label": "Деца/ученици в неприсъствена форма",
+			"name": "TableClassStudentNotPresent",
+      "accordion": {
+        "state": "closed",
+        "dataName": "sobStudentListNotPresent"
+      },
+			"table": {
+				"name": "sobStudentListNotPresent",
+				"hasEditButton": false,
+		    "sortable": true,
+		    "searchable": true,
+				"searchType": "column",
+				"fields": [
+					{
+				"label": "Личен образователен номер",
+				"name": "publicEduNumber",
+				"type": "input",
+				"inputType": "number",
+				"rendered": true,
+				"width":10,
+				"order": 1
+			},
+			{
+				"label": "Имена на ученика/детето",
+				"name": "fullName",
+				"type": "input",
+				"inputType": "text",
+				"rendered": true,
+				"width":20,
+				"order": 2
+			},
+			{
+				"label": "Дата на раждане",
+				"name": "birthDate",
+				"type": "input",
+				"inputType": "date",
+				"rendered": true,
+				"width":10,
+				"order": 3
+			},
+			{
+				"label": "Клас/Група",
+				"name": "basicClassName",
+				"type": "input",
+				"inputType": "text",
+				"rendered": true,
+				"width":8,
+				"order": 4
+			},
+			{
+				"label": "Вид обучение",
+				"name": "name",
+				"type": "input",
+				"inputType": "text",
+				"rendered": "if(instType==2) {field.rendered=false} else {field.rendered=true}",
+				"width":15,
+				"order": 5
+			},
+			{
+				"label": "Форма на обучение",
+				"name": "studentEdFormName",
+				"type": "input",
+				"inputType": "text",
+				"rendered": "if(instType==2) {field.rendered=false} else {field.rendered=true}",
+				"width":15,
+				"order": 6
+			},
+			{
+				"label": "Профил/Професия/Специалност",
+				"name": "classSpecialityName",
+				"type": "input",
+				"inputType": "text",
+				"rendered": "if(instType==2) {field.rendered=false} else {field.rendered=true}",
+				"width":30,
+				"order": 7
+			},	
+			{
+				"label": "На индивидуален учебен план",
+				"name": "isIndividualCurriculum",
+				"type": "input",
+				"inputType": "text",
+				"width":10,
+				"rendered": true,
+				"order": 8
+			},
+			{
+				"label": "На почасова организация",
+				"name": "isHourlyOrganization",
+				"type": "input",
+				"inputType": "text",
+				"width":10,
+				"rendered": true,
+				"order": 9
+			},
+			{
+				"label": "Пътуващ",
+				"name": "commuterTypeName",
+				"type": "input",
+				"inputType": "text",
+				"width":10,
+				"rendered": true,
+				"order": 10
+			}
+			]
+		 }
+    },
+    {
+      "order": 15,
+      "label": "Деца/ученици – данни за семейство и среда",
+			"name": "TableStudentRelative",
+      "accordion": {
+        "state": "closed",
+        "dataName": "sobStudentRelativeList"
+      },
+			"table": {
+				"name": "sobStudentRelativeList",
+				"hasEditButton": false,
+		    "sortable": true,
+		    "searchable": true,
+				"searchType": "column",
+				"fields": [
+					{
+				"label": "Имена на ученика/детето",
+				"name": "studentName",
+				"type": "input",
+				"inputType": "text",
+				"rendered": true,
+				"width":15,
+				"order": 1
+			},
+			{
+				"label": "Мобилен телефон",
+				"name": "mobilePhone",
+				"type": "input",
+				"inputType": "text",
+				"rendered": true,
+				"width":10,
+				"order": 2
+			},
+      {
+				"label": "Домашен телефон",
+				"name": "homePhone",
+				"type": "input",
+				"inputType": "text",
+				"rendered": true,
+				"width":10,
+				"order": 3
+			},{
+				"label": "Email",
+				"name": "email",
+				"type": "input",
+				"inputType": "text",
+				"rendered": true,
+				"width":10,
+				"order": 4
+			},
+			{
+				"label": "Живее с приемно семейство",
+				"name": "livesWithFosterFamily",
+				"type": "input",
+				"inputType": "text",
+				"width":8,
+				"rendered": true,
+				"order": 5
+			},
+			{
+				"label": "Съгласие за подаване на информация",
+				"name": "hasParentConsent",
+				"type": "input",
+				"inputType": "text",
+				"width":8,
+				"rendered": true,
+				"order": 6
+			},
+			{
+				"label": "Представлява се от кмета",
+				"name": "representedByTheMajor",
+				"type": "input",
+				"inputType": "text",
+				"width":8,
+				"rendered": true,
+				"order": 7
+			},
+			{
+				"label": "Майчин език",
+				"name": "nativeLanguageName",
+				"type": "input",
+				"inputType": "text",
+				"width":8,
+				"rendered": true,
+				"order": 8
+			},
+			{
+				"label": "Име на GP",
+				"name": "gpName",
+				"type": "input",
+				"inputType": "text",
+				"width":10,
+				"rendered": true,
+				"order": 9
+			},
+			{
+				"label": "Телефон на GP",
+				"name": "gpPhone",
+				"type": "input",
+				"inputType": "text",
+				"width":10,
+				"rendered": true,
+				"order": 10
+			},
+			{
+				"label": "Коефициент на образователен статус на сем.",
+				"name": "familyEducationWeight",
+				"type": "input",
+				"inputType": "text",
+				"width":10,
+				"rendered": true,
+				"order": 11
+			},
+			{
+				"label": "Коефициент на пазара на труда на сем.",
+				"name": "familyWorkStatusWeight",
+				"type": "input",
+				"inputType": "text",
+				"width":10,
+				"rendered": true,
+				"order": 12
+			},
+			{
+				"label": "Имена на член на сем.",
+				"name": "relativeName",
+				"type": "input",
+				"inputType": "text",
+				"width":20,
+				"rendered": true,
+				"order": 13
+			},
+			{
+				"label": "Вид член на сем.",
+				"name": "relativeTypeNeme",
+				"type": "input",
+				"inputType": "text",
+				"width":10,
+				"rendered": true,
+				"order": 14
+			},
+			{
+				"label": "Работен статус",
+				"name": "workStatusName",
+				"type": "input",
+				"inputType": "text",
+				"width":10,
+				"rendered": true,
+				"order": 14
+			},
+			{
+				"label": "Образование",
+				"name": "educationTypeName",
+				"type": "input",
+				"inputType": "text",
+				"width":10,
+				"rendered": true,
+				"order": 14
+			}
+			]
+		 }
+    },
+    {
+      "order": 16,
+      "label": "Данни за персонал",
+			"name": "TableStaff",
+      "accordion": {
+        "state": "closed",
+        "dataName": "sobStaffList"
+      },
+			"table": {
+				"name": "sobStaff",
+				"hasEditButton": false,
+		    "sortable": true,
+		    "searchable": true,
+				"searchType": "column",
+				"fields": [
+					 {
+            "label": "№",
+            "name": "staffOrdNo",
+            "type": "input",
+            "inputType": "text",
+            "width": 5,
+            "order": 1
+          },
+          {
+            "label": "Име",
+            "name": "staffFullName",
+            "type": "input",
+            "inputType": "text",
+            "width": 20,
+            "order": 2
+          },
+          {
+            "label": "Дата на раждане",
+            "name": "birthDate",
+            "type": "date",
+            "width": 10,
+            "order": 3
+          },
+          {
+            "label": "Постоянен адрес",
+            "name": "permanentAddress",
+            "type": "input",
+            "inputType": "text",
+            "width": 20,
+            "order": 4
+          },
+          {
+            "label": "Категория персонал",
+            "name": "categoryStaffType",
+            "type": "input",
+            "inputType": "text",
+            "width": 30,
+            "order": 5
+          },
+          {
+            "label": "Вид на договора",
+            "name": "contractType",
+            "type": "input",
+            "inputType": "text",
+            "width": 20,
+            "order": 6
+          },
+          {
+            "label": "Длъжност",
+            "name": "nkpdPosition",
+            "type": "input",
+            "inputType": "text",
+            "width": 30,
+            "order": 7
+          },
+          {
+            "label": "Назначен на щатно място по",
+            "name": "positionSubjectGroup",
+            "type": "input",
+            "inputType": "text",
+            "width": 30,
+            "order": 8
+          },
+          {
+            "label": "Активна (текуща година)",
+            "name": "currentlyValid",
+            "type": "input",
+            "inputType": "text",
+            "width": 12,
+            "order": 9
+          },
+          {
+            "label": "Продължава образоанието си",
+            "name": "isExtendStudent",
+            "type": "input",
+            "inputType": "text",
+            "width": 12,
+            "order": 10
+          },
+          {
+            "label": "Пенсионер",
+            "name": "isPensioneer",
+            "type": "input",
+            "inputType": "text",
+            "width": 12,
+            "order": 11
+          },
+          {
+            "label": "Телефонен номер",
+            "name": "phoneNumber",
+            "type": "input",
+            "inputType": "text",
+            "width": 15,
+            "order": 12
+          }
+			  ]
+		  }
+    },
+    {
+      "order": 17,
+      "label": "Персонал - Образователна квалификационна степен",
+			"name": "TablePersonOKSList",
+      "accordion": {
+        "state": "closed",
+        "dataName": "sobPersonOKSList"
+      },
+			"table": {
+				"name": "staffOKS",
+				"hasEditButton": false,
+		    "sortable": true,
+		    "searchable": true,
+				"searchType": "column",
+				"fields": [
+          {
+            "label": "Име на служител",
+            "name": "fullName",
+            "type": "input",
+            "inputType": "text",
+            "order": 1
+          },
+					{
+            "label": "Образователна степен",
+            "name": "educationGrade",
+            "type": "input",
+            "inputType": "text",
+            "order": 2
+          },
+          {
+            "label": "Поредна специалност",
+            "name": "specialityOrdType",
+            "type": "input",
+            "inputType": "text",
+            "order": 3
+          },
+          {
+            "label": "Диплома №",
+            "name": "certifcateNo",
+            "type": "input",
+            "inputType": "text",
+            "order": 4
+          },
+          {
+            "label": "Година на завършване",
+            "name": "yearOfGraduation",
+            "type": "input",
+            "inputType": "number",
+            "order": 5
+          },
+          {
+            "label": "Наименование на специалността",
+            "name": "speciality",
+            "type": "textarea",
+            "order": 6
+          },
+          {
+            "label": "Наименование на ПК",
+            "name": "acquiredPK",
+            "type": "textarea",
+            "order": 7
+          },
+          {
+            "label": "Обучаваща институция",
+            "name": "university",
+            "type": "input",
+            "inputType": "text",
+            "order": 8
+          }
+			  ]
+		  }
+    },
+    {
+      "order": 17,
+      "label": "Персонал - Професионална квалификационна степен",
+			"name": "TablePersonPKSList",
+      "accordion": {
+        "state": "closed",
+        "dataName": "sobPersonPKSList"
+      },
+			"table": {
+				"name": "staffPKS",
+				"hasEditButton": false,
+		    "sortable": true,
+		    "searchable": true,
+				"searchType": "column",
+				"fields": [
+          {
+            "label": "Име на служител",
+            "name": "fullName",
+            "type": "input",
+            "inputType": "text",
+            "order": 1
+          },
+          {
+            "label": "Степен ПКС",
+            "name": "pksType",
+            "type": "input",
+            "inputType": "text",
+            "order": 9
+          },
+          {
+            "label": "ПКС Документ №",
+            "name": "pksCertifcateNo",
+            "type": "input",
+            "inputType": "text",
+            "order": 10
+          },
+          {
+            "label": "ПКС Година",
+            "name": "pksYearOfGraduation",
+            "type": "input",
+            "inputType": "number",
+            "order": 11
+          },
+          {
+            "label": "ПКС Наименование на специалността",
+            "name": "pksSpeciality",
+            "type": "textarea",
+            "order": 12
+          },
+          {
+            "label": "ПКС Обучаваща институция",
+            "name": "pksUniversity",
+            "type": "input",
+            "inputType": "text",
+            "order": 13
+          }
+			  ]
+		  }
+    },
+    {
+      "order": 19,
+      "label": "Персонал - Преподавателска заетост",
+			"name": "TableStaffPositionDataNorma",
+      "accordion": {
+        "state": "closed",
+        "dataName": "sobTeachingNormData"
+      },
+			"table": {
+				"name": "sobStaffPositionDataNorma",
+				"hasEditButton": false,
+		    "sortable": true,
+		    "searchable": true,
+				"searchType": "column",
+				"fields": [
+          {
+            "label": "Име на служител",
+            "name": "fullName",
+            "type": "input",
+            "inputType": "text",
+            "order": 1
+          },
+					{
+            "label": "Титуляр/заместник",
+            "name": "positionKind",
+            "type": "input",
+            "inputType": "text",
+            "order": 2
+          },
+          {
+            "label": "Щат",
+            "name": "positionCount",
+            "type": "input",
+            "inputType": "text",
+            "order": 3
+          },
+          {
+            "label": "Длъжност",
+            "name": "nkpdPosition",
+            "type": "input",
+            "inputType": "text",
+            "order": 4
+          },
+          {
+            "label": "Назначен на щатно място по",
+            "name": "positionSubjectGroup",
+            "type": "input",
+            "inputType": "number",
+            "order": 5
+          },
+          {
+            "label": "Минимална ЗНПР",
+            "name": "norma",
+            "type": "textarea",
+            "order": 6
+          },
+          {
+            "label": "Индивидуална ЗНПР",
+            "name": "normaT",
+            "type": "textarea",
+            "order": 7
+          },
+          {
+            "label": "Часове по норматив на РМ",
+            "name": "normaS",
+            "type": "input",
+            "inputType": "text",
+            "order": 8
+          },
+          {
+            "label": "Недостиг до минимална ЗНПР",
+            "name": "deficitNorma",
+            "type": "input",
+            "inputType": "text",
+            "order": 9
+          },
+          {
+            "label": "Недостиг до индивидуална ЗНПР",
+            "name": "deficitNormaT",
+            "type": "input",
+            "inputType": "text",
+            "order": 10
+          },
+          {
+            "label": "Коефициент на редукция към ЗНПР на РМ",
+            "name": "reductionCoef",
+            "type": "input",
+            "inputType": "number",
+            "order": 11
+          },
+          {
+            "label": "Часове с различен норматив",
+            "name": "diffNorma",
+            "type": "textarea",
+            "order": 12
+          },
+          {
+            "label": "Часове, подлежащи на редукция до инд.ЗНПР",
+            "name": "hoursForReduction",
+            "type": "input",
+            "inputType": "text",
+            "order": 13
+          },
+          {
+            "label": "Брой часове след редукция",
+            "name": "reductionHours",
+            "type": "input",
+            "inputType": "text",
+            "order": 14
+          },
+          {
+            "label": "Лекторски / недостиг - инд.ЗНПР",
+            "name": "lect",
+            "type": "input",
+            "inputType": "text",
+            "order": 15
+          },
+          {
+            "label": "Лекторски / недостиг - инд.ЗНПР (год.)",
+            "name": "lectYear",
+            "type": "input",
+            "inputType": "text",
+            "order": 16
+          }
+			  ]
+		  }
+    },
+    {
+      "order": 20,
+      "label": "Персонал - Компютърни умения",
+			"name": "TablestaffCLSkills",
+      "accordion": {
+        "state": "closed",
+        "dataName": "sobPersonCLSkillsList"
+      },
+			"table": {
+				"name": "staffCLSkills",
+				"hasEditButton": false,
+		    "sortable": true,
+		    "searchable": true,
+				"searchType": "column",
+				"fields": [
+          {
+            "label": "Име на служител",
+            "name": "fullName",
+            "type": "input",
+            "inputType": "text",
+            "order": 1
+          },
+					{
+            "label": "Компютърно умение",
+            "name": "computerSkill",
+            "type": "input",
+            "inputType": "text",
+            "order": 2
+          },
+          {
+            "label": "Ниво",
+            "name": "computerSkillLevel",
+            "type": "input",
+            "inputType": "text",
+            "order": 3
+          },
+          {
+            "label": "Бележки - Компютърно умение",
+            "name": "computerSkillNotes",
+            "type": "input",
+            "inputType": "text",
+            "order": 4
+          }
+			  ]
+		  }
+    },
+    {
+      "order": 21,
+      "label": "Персонал - Езикови умения",
+			"name": "TablestaffFLSkills",
+      "accordion": {
+        "state": "closed",
+        "dataName": "sobPersonFLSkillsList"
+      },
+			"table": {
+				"name": "staffFLSkills",
+				"hasEditButton": false,
+		    "sortable": true,
+		    "searchable": true,
+				"searchType": "column",
+				"fields": [
+          {
+            "label": "Име на служител",
+            "name": "fullName",
+            "type": "input",
+            "inputType": "text",
+            "order": 1
+          },
+          {
+            "label": "Чужд език",
+            "name": "languageSkill",
+            "type": "input",
+            "inputType": "number",
+            "order": 5
+          },
+          {
+            "label": "Ниво на владеене",
+            "name": "languageSkillLevel",
+            "type": "textarea",
+            "order": 6
+          },
+          {
+            "label": "Бележки - Чужд език",
+            "name": "languageSkillNotes",
+            "type": "textarea",
+            "order": 7
+          }
+			  ]
+		  }
+    },
+    {
+      "order": 22,
+      "label": "Персонал - Курсове по реда на Наредби 12 и 15",
+			"name": "TablestaffQCourses",
+      "accordion": {
+        "state": "closed",
+        "dataName": "sobPersonQCourseList"
+      },
+			"table": {
+				"name": "staffQCourses",
+				"hasEditButton": false,
+		    "sortable": true,
+		    "searchable": true,
+				"searchType": "column",
+				"fields": [
+          {
+            "label": "Име на служител",
+            "name": "fullName",
+            "type": "input",
+            "inputType": "text",
+            "width": 15,
+            "order": 1
+          },
+          {
+            "label": "Година на завършване",
+            "name": "qCourseYear",
+            "type": "input",
+            "inputType": "number",
+			      "width": 10,
+            "order": 2
+          },
+          {
+            "label": "Вид на курса",
+            "name": "qCourseType",
+            "type": "input",
+            "inputType": "text",
+			      "width": 50,
+            "order": 3
+          },
+          {
+            "label": "Проведено от",
+            "name": "qCourseBudgetSourceType",
+            "type": "input",
+            "inputType": "text",
+			      "width": 20,
+            "order": 4
+          },
+          {
+            "label": "Цена",
+            "name": "internalCoursePrice",
+            "type": "input",
+            "inputType": "number",
+			      "width": 20,
+            "order": 5
+          },
+          {
+            "label": "Продължителност",
+            "name": "qCourseDurationType",
+            "type": "input",
+            "inputType": "text",
+			      "width": 20,
+            "order": 6
+          },
+          {
+            "label": "Документ",
+            "name": "documentType",
+            "type": "input",
+            "inputType": "text",
+			      "width": 20,
+            "order": 7
+          },
+          {
+            "label": "Тема",
+            "name": "qCourseTopic",
+            "type": "input",
+            "inputType": "text",
+			      "width": 20,
+            "order": 8
+          }
+			  ]
+		  }
+    },
+    {
+      "order": 23,
+      "label": "Персонал - Други квалификационни курсове",
+			"name": "TablestaffQCoursesOther",
+      "accordion": {
+        "state": "closed",
+        "dataName": "sobPersonOthersCourseList"
+      },
+			"table": {
+				"name": "staffQCoursesOther",
+				"hasEditButton": false,
+		    "sortable": true,
+		    "searchable": true,
+				"searchType": "column",
+				"fields": [
+          {
+            "label": "Име на служител",
+            "name": "fullName",
+            "type": "input",
+            "inputType": "text",
+            "width": 15,
+            "order": 1
+          },
+          {
+            "label": "Година на завършване",
+            "name": "qCourseYearOther",
+            "type": "input",
+            "inputType": "number",
+			      "width": 10,
+            "order": 2
+          },
+          {
+            "label": "Вид на курса",
+            "name": "qCourseTypeOther",
+            "type": "input",
+            "inputType": "text",
+			      "width": 50,
+            "order": 3
+          },
+          {
+            "label": "Проведено от",
+            "name": "qCourseBudgetSourceTypeOther",
+            "type": "input",
+            "inputType": "text",
+			      "width": 20,
+            "order": 4
+          },
+          {
+            "label": "Цена",
+            "name": "internalCoursePriceOther",
+            "type": "input",
+            "inputType": "number",
+			      "width": 20,
+            "order": 5
+          },
+          {
+            "label": "Продължителност",
+            "name": "qCourseDurationTypeOther",
+            "type": "input",
+            "inputType": "text",
+			      "width": 20,
+            "order": 6
+          },
+          {
+            "label": "Документ",
+            "name": "documentTypeOther",
+            "type": "input",
+            "inputType": "text",
+			      "width": 20,
+            "order": 7
+          },
+          {
+            "label": "Тема",
+            "name": "qCourseTopicOther",
+            "type": "input",
+            "inputType": "text",
+			      "width": 20,
+            "order": 8
+          }
+			  ]
+		  }
+    },
+    {
+      "order": 24,
+      "label": "Незаети щатни бройки",
+			"name": "TableVacantStaff",
+      "accordion": {
+        "state": "closed",
+        "dataName": "vacantStaff"
+      },
+			"table": {
+				"name": "vacantStaffTable",
+				"hasEditButton": false,
+		    "sortable": true,
+		    "searchable": true,
+				"searchType": "column",
+				"fields": [
+					 {
+            "label": "Вид персонал",
+            "name": "staffTypeID",
+            "type": "input",
+            "inputType": "text",
+            "width": 30,
+            "order": 1
+          },
+          {
+            "label": "Длъжност",
+            "name": "nkpdPositionID",
+            "type": "input",
+            "inputType": "text",
+            "width": 50,
+            "order": 2
+          },
+          {
+            "name": "breakpoint",
+            "type": "breakpoint",
+            "order": 3
+          },
+          {
+            "label": "Щатно място по",
+            "name": "positionSubjectGroupID",
+            "type": "input",
+            "inputType": "text",
+            "width": 30,
+            "order": 4
+          },
+          {
+            "label": "Щатни бройки",
+            "name": "positionCount",
+            "type": "input",
+            "inputType": "text",
+            "width": 10,
+            "order": 5
+          }
+			  ]
+		  }
+    }
+  ]
+}
+
+

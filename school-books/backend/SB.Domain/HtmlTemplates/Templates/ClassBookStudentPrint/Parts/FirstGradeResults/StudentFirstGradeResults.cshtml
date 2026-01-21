@@ -1,0 +1,7 @@
+@using SB.Common
+@using SB.Domain
+@model StudentFirstGradeResultsModel
+
+<div class="page">
+  <h3 class="page-header">Общ годишен успех: @(Model.QualitativeGrade != null ? EnumUtils.GetEnumDescription(Model.QualitativeGrade) : EnumUtils.GetEnumDescription(Model.SpecialGrade))</h3>
+</div>

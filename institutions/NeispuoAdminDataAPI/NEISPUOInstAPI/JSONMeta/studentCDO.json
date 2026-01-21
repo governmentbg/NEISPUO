@@ -1,0 +1,106 @@
+{
+  "label": "Включване на дете",
+  "paramName": "studentid",
+  "procedureName": "inst_basic.studentClassCUD",
+  "sections": [
+    {
+      "order": 1,
+      "label": "Включване на дете",
+      "subsections": [
+        {
+          "order": 1,
+          "name": "studentClassData",
+          "fields": [
+		  {
+              "label": "Детето/ученика е от друга институция",
+              "name": "isOtherInstitution",
+              "type": "checkbox",
+              "disabled": false,
+              "rendered": false,
+              "order": 1,
+              "influence": [
+                {
+                  "type": "hide",
+                  "fieldName": "personid",
+                  "condition": [
+                    true
+                  ]
+                },
+                {
+                  "type": "hide",
+                  "fieldName": "institutionID",
+                  "condition": [
+                    false
+                  ]
+                },
+                {
+                  "type": "hide",
+                  "fieldName": "otherPersonid",
+                  "condition": [
+                    false
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "Моля изберете дете/ученик",
+              "name": "personid",
+              "type": "searchselect",
+              "optionsPath": "/data/get/studentCDONom",
+              "disabled": false,
+              "width": 800,
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ],
+              "order": 2
+            },
+            {
+              "label": "Моля изберете институция",
+              "name": "institutionID",
+              "type": "searchselect",
+              "optionsPath": "/data/get/institutionNom",
+              "disabled": false,
+              "width": 800,
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ],
+              "influence": [
+                {
+                  "fieldName": "otherPersonid",
+                  "url": "/data/get/studentCDOOtherInstNom",
+                  "type": "options"
+                }
+              ],
+              "order": 3
+            },
+            {
+              "label": "Моля изберете дете/ученик",
+              "name": "otherPersonid",
+              "type": "searchselect",
+              "disabled": false,
+              "width": 800,
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ],
+              "order": 4
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+
+

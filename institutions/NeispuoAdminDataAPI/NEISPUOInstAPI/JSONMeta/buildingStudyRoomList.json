@@ -1,0 +1,652 @@
+{
+  "label": "Учебни зони",
+  "sections": [
+    {
+        "name": "detailedSchoolTypeID",
+        "rendered": false,
+        "order": 1,
+        "influence": [
+          {
+            "type": "render",
+            "sectionName": "TableBuildingAreaTypeKinderGarden",
+            "condition": [
+              121,
+              122,
+              123,
+              124,
+              151,
+              112,
+              113
+            ]
+          },
+          {
+            "type": "render",
+            "sectionName": "TableBuildingAreaTypeStudyOne",
+            "condition": [
+              121,
+              122,
+              123,
+              124,
+              112,
+              113
+            ]
+          },
+          {
+            "type": "render",
+            "sectionName": "TableBuildingAreaTypeStudyTwoFirst",
+            "condition": [
+              122,
+              123,
+              124,
+              125,
+              112,
+              113,
+              114
+            ]
+          },
+          {
+            "type": "render",
+            "sectionName": "TableBuildingAreaTypeStudyTwoSecond",
+            "condition": [
+              112,
+              125,
+              111,
+              124,
+              123
+            ]
+          },
+          {
+            "type": "render",
+            "sectionName": "TableBuildingAreaTypeStudyTwoThird",
+            "condition": [
+              111,
+              124,
+              123,
+              126,
+              125,
+              112,
+              113,
+              114
+            ]
+          },
+          {
+            "type": "render",
+            "sectionName": "TableBuildingAreaTypeStudyTwoFourth",
+            "condition": [
+              111,
+              124,
+              125,
+              112,
+              113
+            ]
+          },
+          {
+            "type": "render",
+            "sectionName": "TableBuildingAreaTypeStudyTwoFifth",
+            "condition": [
+              111,
+              124,
+              126,
+              125,
+              112,
+              113,
+              114
+            ]
+          },
+          {
+            "type": "render",
+            "sectionName": "TableBuildingAreaTypeStudyTrainingBase",
+            "condition": [
+              114
+            ]
+          },
+          {
+            "type": "render",
+            "sectionName": "TableBuildingAreaTypeStudySTEM",
+            "condition": [
+              111,
+              126,
+              125,
+              124,
+              112,
+              113,
+              114
+            ]
+          }
+        ],
+        "validations": []
+    },
+    {
+      "order": 2,
+      "label": "Обособена зона за децата от предучилищното образование",
+      "name": "TableBuildingAreaTypeKinderGarden",
+	  "accordion": {"state":"closed"},
+      "table":
+      {
+
+        "name": "buildingAreaTypeKinderGarden",
+        "searchable": false,
+        "canDeleteRow": true,
+        "createNew": "redirect",
+        "formName":"buildingRoom",
+        "createParams":{"buildingAreaTypeID":11,"buildingTypeID":1},
+        "paramName":"buildingRoomID",
+        "procedureName": "inst_basic.buildingRoomCUD",
+        "fields": [
+          {
+            "label": "Сграда",
+            "name": "buildingName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 1
+          },
+          {
+            "label": "Наименование на помещение",
+            "name": "name",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 2
+          },
+          {
+            "label": "Вид помещение",
+            "name": "buildingRoomTypeName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 3
+          },
+          {
+            "label": "Подкрепяща среда",
+            "name": "isSuppEnv",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 4
+          },
+          {
+            "label": "Съответства на изискванията",
+            "name": "meetRequirementsLevelName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 5
+          }
+        ]
+      }
+    },
+    {
+      "order": 3,
+      "name": "TableBuildingAreaTypeStudyOne",
+      "label": "Първа учебна зона за учениците от началния етап на основното образование",
+	  "accordion": {"state":"closed"},
+      "table":
+      {
+        "name": "buildingAreaTypeStudyOne",
+		"searchable": false,
+        "canDeleteRow": true,
+        "createNew": "redirect",
+        "formName":"buildingRoom",
+        "createParams":{"buildingAreaTypeID":13,"buildingTypeID":1},
+        "paramName":"buildingRoomID",
+        "procedureName": "inst_basic.buildingRoomCUD",
+        "fields": [
+          {
+            "label": "Сграда",
+            "name": "buildingName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 1
+          },
+          {
+            "label": "Наименование на помещение",
+            "name": "name",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 2
+          },
+          {
+            "label": "Вид помещение",
+            "name": "buildingRoomTypeName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 3
+          },
+          {
+            "label": "Подкрепяща среда",
+            "name": "isSuppEnv",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 4
+          },
+          {
+            "label": "Съответства на изискванията",
+            "name": "meetRequirementsLevelName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 5
+          }
+        ]
+      }
+    },
+    {
+      "order": 4,
+      "name": "TableBuildingAreaTypeStudyTwoFirst",
+      "label": "Втора учебна зона за прогимназиален етап на основното образование",
+	  "accordion": {"state":"closed"},
+      "table":
+      {
+        "name": "buildingAreaTypeStudyTwoFirst",
+		"searchable": false,
+        "canDeleteRow": true,
+        "createNew": "redirect",
+        "formName":"buildingRoom",
+        "createParams":{"buildingAreaTypeID":14,"buildingTypeID":1},
+        "paramName":"buildingRoomID",
+        "procedureName": "inst_basic.buildingRoomCUD",
+        "fields": [
+          {
+            "label": "Сграда",
+            "name": "buildingName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 1
+          },
+          {
+            "label": "Наименование на помещение",
+            "name": "name",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 2
+          },
+          {
+            "label": "Вид помещение",
+            "name": "buildingRoomTypeName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 3
+          },
+          {
+            "label": "Подкрепяща среда",
+            "name": "isSuppEnv",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 4
+          },
+          {
+            "label": "Съответства на изискванията",
+            "name": "meetRequirementsLevelName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 5
+          }
+        ]
+      }
+    },
+    {
+      "order": 5,
+      "name": "TableBuildingAreaTypeStudyTwoSecond",
+      "label": "Втора учебна зона за първи гимназиален етап от средното профилирано образование",
+	  "accordion": {"state":"closed"},
+      "table":
+      {
+        "name": "buildingAreaTypeStudyTwoSecond",
+		"searchable": false,
+        "canDeleteRow": true,
+        "createNew": "redirect",
+        "formName":"buildingRoom",
+        "createParams":{"buildingAreaTypeID":15,"buildingTypeID":1},
+        "paramName":"buildingRoomID",
+        "procedureName": "inst_basic.buildingRoomCUD",
+        "fields": [
+          {
+            "label": "Сграда",
+            "name": "buildingName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 1
+          },
+          {
+            "label": "Наименование на помещение",
+            "name": "name",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 2
+          },
+          {
+            "label": "Вид помещение",
+            "name": "buildingRoomTypeName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 3
+          },
+          {
+            "label": "Подкрепяща среда",
+            "name": "isSuppEnv",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 4
+          },
+          {
+            "label": "Съответства на изискванията",
+            "name": "meetRequirementsLevelName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 5
+          }
+        ]
+      }
+    },
+    {
+      "order": 6,
+      "name": "TableBuildingAreaTypeStudyTwoThird",
+      "label": "Втора учебна зона за първи гимназиален етап от професионалното образование",
+	  "accordion": {"state":"closed"},
+      "table":
+      {
+        "name": "buildingAreaTypeStudyTwoThird",
+		"searchable": false,
+        "canDeleteRow": true,
+        "createNew": "redirect",
+        "formName":"buildingRoom",
+        "createParams":{"buildingAreaTypeID":16,"buildingTypeID":1},
+        "paramName":"buildingRoomID",
+        "procedureName": "inst_basic.buildingRoomCUD",
+        "fields": [
+          {
+            "label": "Сграда",
+            "name": "buildingName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 1
+          },
+          {
+            "label": "Наименование на помещение",
+            "name": "name",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 2
+          },
+          {
+            "label": "Вид помещение",
+            "name": "buildingRoomTypeName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 3
+          },
+          {
+            "label": "Подкрепяща среда",
+            "name": "isSuppEnv",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 4
+          },
+          {
+            "label": "Съответства на изискванията",
+            "name": "meetRequirementsLevelName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 5
+          }
+        ]
+      }
+    },
+    {
+      "order": 7,
+      "name": "TableBuildingAreaTypeStudyTwoFourth",
+      "label": "Втора учебна зона за втори гимназиален етап от средното профилирано образование",
+	  "accordion": {"state":"closed"},
+      "table":
+      {
+        "name": "buildingAreaTypeStudyTwoFourth",
+		"searchable": false,
+        "canDeleteRow": true,
+        "createNew": "redirect",
+        "formName":"buildingRoom",
+        "createParams":{"buildingAreaTypeID":17,"buildingTypeID":1},
+        "paramName":"buildingRoomID",
+        "procedureName": "inst_basic.buildingRoomCUD",
+        "fields": [
+          {
+            "label": "Сграда",
+            "name": "buildingName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 1
+          },
+          {
+            "label": "Наименование на помещение",
+            "name": "name",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 2
+          },
+          {
+            "label": "Вид помещение",
+            "name": "buildingRoomTypeName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 3
+          },
+          {
+            "label": "Подкрепяща среда",
+            "name": "isSuppEnv",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 4
+          },
+          {
+            "label": "Съответства на изискванията",
+            "name": "meetRequirementsLevelName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 5
+          }
+        ]
+      }
+    },
+    {
+      "order": 8,
+      "name": "TableBuildingAreaTypeStudyTwoFifth",
+      "label": "Втора учебна зона за втори гимназиален етап от професионалното образование",
+	  "accordion": {"state":"closed"},
+      "table":
+      {
+        "name": "buildingAreaTypeStudyTwoFifth",
+		"searchable": false,
+        "canDeleteRow": true,
+        "createNew": "redirect",
+        "formName":"buildingRoom",
+        "createParams":{"buildingAreaTypeID":18,"buildingTypeID":1},
+        "paramName":"buildingRoomID",
+        "procedureName": "inst_basic.buildingRoomCUD",
+        "fields": [
+          {
+            "label": "Сграда",
+            "name": "buildingName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 1
+          },
+          {
+            "label": "Наименование на помещение",
+            "name": "name",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 2
+          },
+          {
+            "label": "Вид помещение",
+            "name": "buildingRoomTypeName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 3
+          },
+          {
+            "label": "Подкрепяща среда",
+            "name": "isSuppEnv",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 4
+          },
+          {
+            "label": "Съответства на изискванията",
+            "name": "meetRequirementsLevelName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 5
+          }
+        ]
+      }
+    },
+    {
+      "order": 9,
+      "name": "TableBuildingAreaTypeStudyTrainingBase",
+      "label": "База за практическо обучение",
+	  "accordion": {"state":"closed"},
+      "table":
+      {
+        "name": "buildingAreaTypeStudyTrainingBase",
+		"searchable": false,
+        "canDeleteRow": true,
+        "createNew": "redirect",
+        "formName":"buildingRoom",
+        "createParams":{"buildingAreaTypeID":19,"buildingTypeID":1},
+        "paramName":"buildingRoomID",
+        "procedureName": "inst_basic.buildingRoomCUD",
+        "fields": [
+          {
+            "label": "Сграда",
+            "name": "buildingName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 1
+          },
+          {
+            "label": "Наименование на помещение",
+            "name": "name",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 2
+          },
+          {
+            "label": "Вид помещение",
+            "name": "buildingRoomTypeName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 3
+          },
+          {
+            "label": "Подкрепяща среда",
+            "name": "isSuppEnv",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 4
+          },
+          {
+            "label": "Съответства на изискванията",
+            "name": "meetRequirementsLevelName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 5
+          }
+        ]
+      }
+    },
+    {
+      "order": 10,
+      "name": "TableBuildingAreaTypeStudySTEM",
+      "label": "STEM център",
+	  "accordion": {"state":"closed"},
+      "table":
+      {
+        "name": "buildingAreaTypeStudySTEM",
+		"searchable": false,
+        "canDeleteRow": true,
+        "createNew": "redirect",
+        "formName":"buildingRoom",
+        "createParams":{"buildingAreaTypeID":50,"buildingTypeID":1},
+        "paramName":"buildingRoomID",
+        "procedureName": "inst_basic.buildingRoomCUD",
+        "fields": [
+          {
+            "label": "Сграда",
+            "name": "buildingName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 1
+          },
+          {
+            "label": "Наименование на помещение",
+            "name": "name",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 2
+          },
+          {
+            "label": "Вид помещение",
+            "name": "buildingRoomTypeName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 3
+          },
+          {
+            "label": "Подкрепяща среда",
+            "name": "isSuppEnv",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 4
+          },
+          {
+            "label": "Съответства на изискванията",
+            "name": "meetRequirementsLevelName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 5
+          }
+        ]
+      }
+    }
+  ]
+}

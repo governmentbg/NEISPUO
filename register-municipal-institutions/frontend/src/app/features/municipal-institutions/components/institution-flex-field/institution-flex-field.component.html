@@ -1,0 +1,76 @@
+<p-fieldset *ngIf="parentForm && ((isViewFlexField && parentForm.controls.RIFlexFieldValues.value.length) || !isViewFlexField )" legend="Флекс полета">
+  <div class="grid">
+    <ng-container [formGroup]="parentForm">
+      <ng-container formArrayName="RIFlexFieldValues">
+        <!-- For each flexfield -->
+        <ng-container *ngFor="let flexFieldFormGroup of formArray.controls; let i = index">
+          <div class="field col-10 col-md-6 pb-4" [formGroupName]="i">
+            <!-- Flex field label -->
+            <label for="flex-field-{{ i }}" class="form-wrapper-label">{{ flexFieldFormGroup.get('_name').value }}</label>
+
+            <!-- Conditional input type. Consider splitting into different components if logic becomes complex -->
+            <input
+              *ngIf="flexFieldFormGroup.get('_type').value === 'text'"
+              id="flex-field-{{ i }}"
+              type="text"
+              pInputText
+              [formControlName]="'Value'"
+            />
+            <p-inputNumber styleClass=" w-12"
+              *ngIf="flexFieldFormGroup.get('_type').value === 'number'"
+              id="flex-field-{{ i }}"
+              [formControlName]="'Value'"
+            ></p-inputNumber>
+
+            <!-- Flex field validation -->
+            <ng-container *ngIf="flexFieldFormGroup.invalid && (flexFieldFormGroup.dirty || flexFieldFormGroup.touched)">
+              <small *ngIf="flexFieldFormGroup.get('Value').getError('required')" class="invalid-feedback">Задължително поле.</small>
+
+              <small *ngIf="flexFieldFormGroup.get('Value').getError('maxlength')" class="invalid-feedback"
+                >Максимална дължина: {{ flexFieldFormGroup.get('Value').getError('maxlength').requiredLength }} букви.</small
+              >
+
+              <small *ngIf="flexFieldFormGroup.get('Value').getError('max')" class="invalid-feedback"
+                >Максимална стойност: {{ flexFieldFormGroup.get('Value').getError('max').max }}.</small
+              >
+
+              <!-- {{ flexFieldFormGroup.get('Value').errors | json }} -->
+            </ng-container>
+          </div>
+
+          <!-- Remove flex field -->
+          <div *ngIf="!disableDeletion" class="col-2 col-md-1 align-self-center">
+            <label style="display: none">изтрии</label>
+            <div>
+              <button
+                pButton
+                pRipple
+                type="button"
+                icon="pi pi-times"
+                class="p-button-rounded p-button-danger p-button-text"
+                (click)="removeFlexField(i)"
+              ></button>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+
+    <!-- Selection for adding new flex fields -->
+    <div *ngIf="!disableAddition" class="field col-12 col-md-6">
+      <p-dropdown
+        [panelStyleClass]="'limit-flex-field-p-dropdown-size'"
+        [(ngModel)]="selection"
+        [options]="availableFlexFields"
+        (onChange)="addFlexField($event.value)"
+        placeholder="Добави"
+        [filter]="true"
+        optionLabel="Data.label"
+        [autoDisplayFirst]="false"
+        emptyFilterMessage="Няма намерени резултати"
+        dropdownIcon="pi pi-plus"
+        appendTo="body"
+      ></p-dropdown>
+    </div>
+  </div>
+</p-fieldset>

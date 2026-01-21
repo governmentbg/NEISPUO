@@ -1,0 +1,62 @@
+.form-switch {
+  .form-check-input {
+    border-color: $gray-600;
+    background-color: $gray-200;
+    margin-top: 0;
+    &:checked {
+      background-color: $green;
+      border-color: $gray-600;
+      &:disabled {
+        background-color: $gray-300;
+        background-image: escape-svg($form-switch-input-checked-bg-image-disabled);
+      }
+    }
+    &:focus {
+      box-shadow: 0 0 0 0.25rem rgb(9 165 127 / 25%);
+    }
+    &:disabled {
+      border-color: $gray-400;
+      background-color: $gray-200;
+      background-image: escape-svg($form-switch-input-bg-image-disabled);
+    }
+  }
+  .form-check-input.dark {
+    border-color: $gray-600;
+    background-color: $gray-700;
+    margin-top: 0;
+    &:checked {
+      background-color: $green;
+    }
+    &:disabled {
+      background-color: $gray-900;
+      background-image: escape-svg($form-switch-input-bg-image-disabled-dark);
+    }
+  }
+}
+
+.form-switch {
+  .large {
+    width: $form-switch-width-large;
+    height: $form-switch-height-large !important;
+    min-width: 2.25rem !important;
+  }
+}
+.label-left > input {
+  order: 3;
+}
+.form-check-input.large ~ .form-check-label {
+  font-size: 1.25rem;
+}
+
+.form-check-input.dark ~ .form-check-label {
+  color: $white;
+}
+.form-check {
+  display: flex;
+  & > input {
+    margin-right: 0.5rem;
+  }
+}
+.form-check-input {
+  margin-top: 0.1rem;
+}

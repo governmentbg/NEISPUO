@@ -1,0 +1,67 @@
+{
+  "label": "Данни за персонал",
+  "sections": [
+    {
+      "order": 1,
+      "table": {
+        "name": "staff",
+        "action": "preview",
+        "paramName": "personid",
+        "procedureName": "inst_basic.personCUD",
+        "canDeleteRow": true,
+        "searchable": true,
+        "searchType": "column",
+        "fields": [
+          {
+            "label": "№",
+            "name": "staffOrdNo",
+            "type": "input",
+            "inputType": "text",
+            "width": 5,
+            "order": 1
+          },
+          {
+            "label": "Име",
+            "name": "staffFullName",
+            "type": "input",
+            "inputType": "text",
+            "width": 20,
+            "order": 2
+          },
+          {
+            "label": "Категория персонал",
+            "name": "categoryStaffType",
+            "type": "input",
+            "inputType": "text",
+            "width": 50,
+            "order": 3
+          },
+          {
+            "label": "Вид на договора",
+            "name": "contractType",
+            "type": "input",
+            "inputType": "text",
+            "width": 20,
+            "order": 4
+          },
+          {
+            "label": "Длъжност",
+            "name": "nkpdPosition",
+            "type": "input",
+            "inputType": "text",
+            "width": 50,
+            "order": 5
+          },
+          {
+            "label": "Активна (текуща година)",
+            "name": "currentlyValid",
+            "type": "input",
+            "inputType": "text",
+            "width": 20,
+            "order": 6
+          }
+        ]
+      }
+    }
+  ]
+}

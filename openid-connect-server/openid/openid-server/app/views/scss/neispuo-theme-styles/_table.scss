@@ -1,0 +1,22 @@
+.table {
+    font-size: 0.875rem;
+    line-height: 1rem;
+    thead,
+    tfoot {
+        background-color: $gray-200;
+        color: $gray-700;
+    }
+    thead {
+        border-bottom: 2px solid transparent;
+    }
+    > :not(:first-child) {
+      border-top: 2px solid transparent;
+    }
+}
+
+.right {
+    text-align: end;
+}
+.center {
+    text-align: center;
+}

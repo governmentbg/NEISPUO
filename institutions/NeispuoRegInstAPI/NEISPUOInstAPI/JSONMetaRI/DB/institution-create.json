@@ -1,0 +1,53 @@
+{
+  "template": "SELECT /**select**/ FROM [reginst_basic].[RITRDataAll] RITR  /**where**/ /**orderby**/",
+  "columns": [
+    {
+      "column": "RITR.Name AS name"
+    },
+    {
+      "column": "RITR.EIK AS bulstat"
+    },
+	  {
+      "column": "RITR.SeatAddressCountry AS settlementCountry"
+    },
+    {
+      "column": "RITR.SeatAddressRegion AS settlementRegion"
+    },
+    {
+      "column": "RITR.SeatAddressMunicipality AS settlementMunicipality"
+    },
+    {
+      "column": "RITR.SeatAddressTown AS settlementTown"
+    },
+    {
+      "column": "RITR.SeatAddress AS settlementAddress"
+    },
+    {
+      "column": "RITR.SeatAddressPostalCode AS settlementPostCode"
+    },
+	  {
+      "column": "RITR.IsSynchronized AS isSynchronized"
+    }
+  ],
+  "params": [
+    {
+      "param": "@instid",
+      "column": "RITR.EIK",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": false,
+      "static": false,
+	  "from_claim": false
+    }
+  ],
+  "order": [
+    {
+      "column": "RITR.EIK",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+  ]
+}

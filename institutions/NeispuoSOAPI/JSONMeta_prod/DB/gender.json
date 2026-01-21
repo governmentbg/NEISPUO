@@ -1,0 +1,21 @@
+{
+    "template": "SELECT /**select**/ FROM [noms].[Gender] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "GenderID as code"
+        },
+        {
+            "column": "Name as label"
+        }
+    ],
+    "params": [
+
+    ],
+    "order": [
+        {
+            "column": "GenderID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

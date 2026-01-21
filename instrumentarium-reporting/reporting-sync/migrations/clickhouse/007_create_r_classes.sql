@@ -1,0 +1,36 @@
+-- Migration: Create R_Classes table
+-- Based on inst_basic.R_Classes view from the MS SQL server
+CREATE TABLE IF NOT EXISTS R_Classes (
+    ClassID Int32,
+    ClassName String,
+    ClassGroupNum Nullable(Int32),
+    BasicClass Nullable(String),
+    ClassTypeName Nullable(String),
+    EduFormName Nullable(String),
+    ClassEduDurationName Nullable(String),
+    ClassShiftName Nullable(String),
+    FLStudyTypeName Nullable(String),
+    FLName Nullable(String),
+    Address Nullable(String),
+    BudgetingInstitutionName Nullable(String),
+    EntranceLevel Nullable(String),
+    SPPOOProfAreaName Nullable(String),
+    SPPOOProfessionName Nullable(String),
+    SPPOOSpeciality Nullable(String),
+    VETLevel Nullable(Int32),
+    IsProtected String,
+    IsPriority String,
+    IsProfModule String,
+    StudentCountPlaces Nullable(Int32),
+    Notes Nullable(String),
+    IsCombined String,
+    IsSpecNeed String,
+    ClassWeigth Nullable(Float64),
+    SchoolYear Int16,
+    InstitutionID Int32,
+    TownID Nullable(Int32),
+    MunicipalityID Int32,
+    RegionID Int32,
+    BudgetingSchoolTypeID Int32
+) ENGINE = MergeTree()
+ORDER BY (RegionID, MunicipalityID, InstitutionID, ClassID); 

@@ -1,0 +1,61 @@
+{
+	"arrayName": "internationalProtection",
+    "template": "SELECT /**select**/ FROM [student].[InternationalProtection] IP /**where**/ /**orderby**/",
+	"sotemplate": "SELECT /**select**/ FROM [sob].[InternationalProtection] IP /**where**/ /**orderby**/",
+
+  "columns": [
+    {
+          "column": "IP.Id as id"
+        },
+		{
+          "column": "IP.DocNumber as docNumber"
+        }, 
+		{
+          "column": "IP.DocDate as docDate"
+        },
+		{
+          "column": "IP.ValidFrom as validFrom"
+        },
+		{
+          "column": "IP.ValidTo as validTo"
+        }		
+  ],
+  "params": [
+	{
+          "param": "@personid",
+          "column": "IP.PersonID",
+          "operator": "=",
+          "value": "personid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+    },
+	{
+      "param": "@year",
+      "column": "IP.SchoolYear",
+      "operator": "=",
+      "value": "year",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    },
+	{
+      "param": "@period",
+      "column": "IP.Period",
+      "operator": "=",
+      "value": "period",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    }	
+  ],
+  "order": [
+
+  ],
+  "inSelects": [
+	
+	
+  ]
+}

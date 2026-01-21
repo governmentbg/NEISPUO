@@ -1,0 +1,74 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <!-- Този параметър се използва най-долу в секцията за Publish. -->
+    <SpaRoot>..\Diplomas.Public.SPA\</SpaRoot>
+    <UserSecretsId>57e6d464-6e46-4672-8cdd-65ef28673863</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Log\**" />
+    <Content Remove="Log\**" />
+    <EmbeddedResource Remove="Log\**" />
+    <None Remove="Log\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="6.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.11">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="6.0.11" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
+    <PackageReference Include="prometheus-net" Version="8.2.1" />
+    <PackageReference Include="prometheus-net.AspNetCore" Version="8.2.1" />
+    <PackageReference Include="prometheus-net.AspNetCore.HealthChecks" Version="8.2.1" />
+    <PackageReference Include="prometheus-net.SystemMetrics" Version="2.0.0" />
+    <PackageReference Include="Serilog" Version="2.12.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="6.0.1" />
+    <PackageReference Include="Serilog.Enrichers.ClientInfo" Version="1.2.0" />
+    <PackageReference Include="Serilog.Enrichers.CorrelationId" Version="3.0.1" />
+    <PackageReference Include="Serilog.Enrichers.Process" Version="2.0.2" />
+    <PackageReference Include="Serilog.Enrichers.Thread" Version="3.1.0" />
+    <PackageReference Include="Serilog.Exceptions" Version="8.4.0" />
+    <PackageReference Include="Serilog.Settings.Configuration" Version="3.4.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+    <PackageReference Include="Serilog.Sinks.MSSqlServer" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Diplomas.Public.Models\Diplomas.Public.Models.csproj" />
+    <ProjectReference Include="..\Diplomas.Public.Services\Diplomas.Public.Services.csproj" />
+    <ProjectReference Include="..\Diplomas.Public.Shared\Diplomas.Public.Shared.csproj" />
+  </ItemGroup>
+
+    <!--
+    Тази секция се изпълнява при Publish. Копира съдържанието на dist папката от SPA проекта, т.е. компилираното Vue.js приложение,
+    в папка wwwroot на този проект, която е стандартната папка на asp.net за статично съдържание.
+    -->
+    
+    <Target Name="PublishRunWebpackTestIIS" AfterTargets="ComputeFilesToPublish" Condition="'$(EnvironmentName)' != ''">
+        <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
+        <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+        <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build -- --mode $(EnvironmentName)" />
+        
+        <ItemGroup>
+            <DistFiles Include="$(SpaRoot)dist\**" />
+            <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+                <!--
+                    %(DistFiles.Identity) има стойност например "..\MON.SPA\dist\index.html"
+                    Следният Replace заменя "..\MON.SPA\dist" с "wwwroot" и така файлът се появява тук: (publish папката)\wwwroot\index.html.
+                    Тук е описано как се ползва Replace: https://stackoverflow.com/a/27865918/1932338
+                -->
+                <RelativePath>$([System.String]::Copy("%(DistFiles.Identity)").Replace("$(SpaRoot)dist", "wwwroot"))</RelativePath>
+                <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+                <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+            </ResolvedFileToPublish>
+        </ItemGroup>
+    </Target>
+
+</Project>

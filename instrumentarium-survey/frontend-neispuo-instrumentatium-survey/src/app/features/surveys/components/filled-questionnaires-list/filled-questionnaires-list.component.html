@@ -1,0 +1,62 @@
+<div class="spinner-container" *ngIf="showSpinner">
+  <p-progressSpinner></p-progressSpinner>
+</div>
+<div class="top-container grid" *ngIf="!showSpinner">
+  <div class="btn-container">
+    <button pButton pRipple type="button" icon="pi pi-arrow-left" [routerLink]="['survey']" class="p-button-text btn-icon-primary"></button>
+  </div>
+  <div class="heading col">
+    <h4 class="title color-blue-300">
+        {{ campaignName }}
+    </h4>
+  </div>
+</div>
+<div class="users-who-filled-campaign col-12" >
+    <h4>Попълнили: </h4>
+    <span><strong>{{ totalUsersSubmitted }}</strong>/{{ totalUsersAssignedTo }}</span>
+</div>
+<div class="table-container">
+    <p-table
+        id="filledQuestionnaire"
+        #filledQuestionnaire
+        class="table"
+        [rows]="pageSize"
+        [paginator]="true"
+        [value]="paginatedEntries.data"
+        [columns]="columnService.visibleColumns | async"
+        [rowHover]="true"
+        [lazy]="true"
+        (onLazyLoad)="navigate($event)"
+        [lazyLoadOnInit]="true"
+        [totalRecords]="paginatedEntries.total"
+      >
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                    {{col.header}}
+                    <p-sortIcon [field]="col.field"></p-sortIcon>
+                </th>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-submittedQuestionnaires let-columns="columns">
+            <tr (click)="goToQuestionnaire(submittedQuestionnaires)">
+                <td *ngFor="let col of columns">
+                    <ng-container *ngIf="col.field === 'id'">
+                        <span>{{ submittedQuestionnaires.id }}</span>
+                    </ng-container>
+                    <ng-container *ngIf="col.field === 'campaignName'">
+                        <span>{{ submittedQuestionnaires.campaignsId.name }}</span>
+                    </ng-container>
+                    <ng-container *ngIf="col.field === 'questionnaireName'">
+                        <span style="color: #034ab3;">{{ submittedQuestionnaires.questionaireId.name }}</span>
+                    </ng-container>
+                    <ng-container *ngIf="col.field === 'state'">
+                        <span [ngClass]="submittedQuestionnaires.state === 1 ? 'submitted' : 'draft'">
+                            {{ submittedQuestionnaires.state === 1 ? "Попълнен" : "Чернова"}}</span>
+                    </ng-container>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

@@ -1,0 +1,76 @@
+<link rel="stylesheet" type="text/css" href="/css/login.min.css" />
+
+<% if (CHECK_RECAPTCHA) { %>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script>
+  function onSubmit(token) {
+    document.getElementById('recaptcha-form').submit();
+  }
+</script>
+<% } %>
+
+<div class="login-page container-fluid">
+  <%- include('header.ejs') %>
+
+  <div class="login-page-wrapper row">
+    <div class="col-sm-12 col-md-8 offset-md-2 col-xl-5 offset-xl-6 form-wrapper">
+      <form
+        id="recaptcha-form"
+        autocomplete="off"
+        action="/interaction/<%= uid %>/login"
+        method="post"
+      >
+        <div class="card h-100">
+          <div class="card-body">
+            <div class="card-title">
+              <div class="mon-logo">
+                <img src="/images/mon-logo.png" alt="mon-logo" />
+              </div>
+              <h2 class="mb-0">НЕИСПУО</h2>
+            </div>
+            <h2 class="card-text mb-7">Влез в своя профил</h2>
+            <div class="row">
+              <div class="col-12">
+                <div class="form-field mb-5">
+                  <label for="login" class="form-label">Имейл *</label>
+                  <input type="text" class="form-control" name="login" id="login" required />
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-field mb-3">
+                  <label for="password" class="form-label">Парола *</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    name="password"
+                    id="password"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+            <div style="width: auto; display: block; text-align: center">
+              <span id="errorMsg" class="invalid-feedback" style="display: none"> </span>
+            </div>
+            <div class="card-footer">
+              <div class="forgot-password-link mb-5">
+                <a mat-button class="btn btn-link" href="/forgot-password/request-email"
+                  >Забравена парола?</a
+                >
+              </div>
+              <button
+                data-sitekey="<%= recaptchaSiteKey %> "
+                data-callback="onSubmit"
+                type="submit"
+                class="btn btn-primary icon-right g-recaptcha"
+              >
+                Вход
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script src="/js/login.js"></script>

@@ -1,0 +1,156 @@
+{
+  "template": "SELECT /**select**/ FROM [core].[Person] SA /**where**/ /**orderby**/",
+  "columns": [
+        {
+          "column": "SA.PersonID AS id"
+        },
+		{
+          "column": "SA.FirstName AS firstName"
+        },
+		{
+          "column": "SA.MiddleName AS middleName"
+        },
+		{
+          "column": "SA.LastName AS lastName"
+        }
+  ],
+  "params": [
+	{
+          "param": "@personid",
+          "column": "SA.PersonID",
+          "operator": "=",
+          "value": "personid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "SA.PersonID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+    {
+      "arrayName": "staffQCourses",
+      "template": "SELECT /**select**/ FROM [inst_basic].[PersonQCourseList] PQC /**where**/ /**orderby**/",
+      "sotemplate": "SELECT /**select**/ FROM [so].[PersonQCourseList] PQC /**where**/ /**orderby**/",
+	  "columns": [
+        {
+          "column": "PQC.PersonQCourseID AS id"
+        },
+	    {
+          "column": "PQC.QCourse AS qCourseType"
+        },
+		{
+          "column": "PQC.QCourseYear AS qCourseYear"
+        },
+		{
+          "column": "PQC.QCourseBudgetSource AS qCourseBudgetSourceType"
+        },
+		{
+          "column": "PQC.InternalCoursePrice AS internalCoursePrice"
+        },
+		{
+          "column": "PQC.University AS university"
+        },
+		{
+          "column": "PQC.QCourseTopic AS qCourseTopic"
+        },
+		{
+          "column": "PQC.QCourseDuration AS qCourseDurationType"
+        },
+		{
+          "column": "PQC.QCourseDurationCredits AS qCourseDurationCredits"
+        },
+		{
+          "column": "PQC.QCourseDurationHours AS qCourseDurationHours"
+        },
+		{
+          "column": "PQC.DocumentType AS documentType"
+        },
+		{
+          "column": "'personQCourseData' AS formName"
+        },
+		{
+          "column": "PQC.PersonQCourseID AS formDataId"
+        }		
+      ],
+      "params": [
+		{
+          "param": "@personid",
+          "column": "PQC.PersonID",
+          "operator": "=",
+          "value": "personid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        }
+      ],
+      "order": [
+		{
+          "column": "PQC.QCourseYear",
+          "type": "DESC"
+        }
+      ]
+    },
+	  {
+      "arrayName": "staffQCoursesOther",
+      "template": "SELECT /**select**/ FROM [inst_basic].[PersonQCoursOthersList] PQCO /**where**/ /**orderby**/",
+      "sotemplate": "SELECT /**select**/ FROM [so].[PersonQCoursOthersList] PQCO /**where**/ /**orderby**/",
+	  "columns": [
+        {
+          "column": "PQCO.PersonQCourseID AS id"
+        },
+	    {
+          "column": "PQCO.QCourse AS qCourseTypeOther"
+        },
+		{
+          "column": "PQCO.QCourseYear AS qCourseYearOther"
+        },
+		{
+          "column": "PQCO.QCourseBudgetSource AS qCourseBudgetSourceTypeOther"
+        },
+		{
+          "column": "PQCO.InternalCoursePrice AS internalCoursePriceOther"
+        },
+		{
+          "column": "PQCO.University AS universityOther"
+        },
+		{
+          "column": "PQCO.QCourseTopic AS qCourseTopicOther"
+        },
+		{
+          "column": "PQCO.QCourseDuration AS qCourseDurationTypeOther"
+        },
+		{
+          "column": "PQCO.DocumentType AS documentTypeOther"
+        },
+		{
+          "column": "'personQCourseOtherData' AS formName"
+        },
+		{
+          "column": "PQCO.PersonQCourseID AS formDataId"
+        }			
+      ],
+      "params": [
+		{
+          "param": "@personid",
+          "column": "PQCO.PersonID",
+          "operator": "=",
+          "value": "personid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        }
+      ],
+      "order": [
+		{
+          "column": "PQCO.QCourseYear",
+          "type": "DESC"
+        }
+      ]
+    }
+  ]
+}

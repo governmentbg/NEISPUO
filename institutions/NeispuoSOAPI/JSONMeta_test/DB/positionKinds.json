@@ -1,0 +1,24 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[PositionKind] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "PositionKindID as code"
+        },
+        {
+            "column": "Name as label"
+        },
+		{
+            "column": "IsValid as isValid"
+        }
+    ],
+    "params": [
+ 
+    ],
+    "order": [
+        {
+            "column": "PositionKindID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

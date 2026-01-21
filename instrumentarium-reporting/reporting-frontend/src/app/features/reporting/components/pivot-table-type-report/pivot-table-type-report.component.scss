@@ -1,0 +1,191 @@
+@import '@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/variables/variables';
+@import '@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/mixins';
+
+:host ::ng-deep {
+  .p-multiselect,
+  .p-dropdown {
+    width: 100%;
+  }
+
+  .p-calendar {
+    .p-datepicker {
+      right: 0;
+      left: auto !important;
+    }
+    .p-monthpicker,
+    .p-yearpicker {
+      display: flex;
+    }
+  }
+
+  .p-datatable {
+    font-size: $font-size-sm;
+    height: calc(100vh - 268px - var(--table-height-offset));
+    transition: height 0.3s ease;
+    &.recalculate {
+      height: calc(100vh - 330px - var(--table-height-offset));
+    }
+    &-tbody {
+      > tr {
+        color: $gray-700;
+        > td {
+          white-space: nowrap;
+          overflow: hidden;
+          span {
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          &.measure {
+            background: $gray-100;
+            cursor: pointer;
+            &:hover {
+              background: $gray-200;
+            }
+          }
+        }
+      }
+    }
+
+    &-footer {
+      background: $white;
+      color: $gray-700;
+      height: 67px;
+      border-top: 1px solid $gray-200;
+      border-bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      white-space: nowrap;
+      overflow-x: auto;
+      overflow-y: hidden;
+      .load-next {
+        cursor: pointer;
+        color: $gray-600;
+        &:hover {
+          color: $gray-700;
+        }
+      }
+      .btn-export-excel {
+        padding: 0.25rem 0.75rem;
+        &::after {
+          content: ' \F367';
+          font-family: 'bootstrap-icons';
+          color: $white;
+        }
+      }
+    }
+  }
+
+  .p-datatable-resizable {
+    .p-datatable-thead > tr > th > span {
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    th,
+    td {
+      min-width: 150px;
+    }
+  }
+
+  .p-progress-spinner-circle {
+    stroke: $gray-900;
+    animation: p-progress-spinner-dash 1.5s ease-in-out infinite;
+  }
+
+  .pivot-spinner {
+    height: calc(100vh - 202px - var(--table-height-offset));
+    background-color: rgba(31, 35, 41, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 2;
+    transition: height 0.3s ease;
+    .p-progress-spinner {
+      margin-left: 355px;
+    }
+    &.toggled {
+      transition: all 0.5s ease, height 0.3s ease;
+      .p-progress-spinner {
+        margin-left: 0;
+      }
+    }
+  }
+
+  @media (max-width: 300px) {
+    .pie-spinner {
+      .p-progress-spinner {
+        margin-left: 275px;
+      }
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    .p-datatable {
+      height: calc(100vh - 309px - var(--table-height-offset));
+      &.recalculate {
+        height: calc(100vh - 370px - var(--table-height-offset));
+      }
+    }
+  }
+
+  @include media-breakpoint-down(lg) {
+    .sidebar-toggle {
+      &.mobile {
+        display: none;
+      }
+    }
+    .settings {
+      background: $gray-100;
+    }
+  }
+}
+
+.pivot-table-msg-wrapper {
+  height: calc(100vh - 268px - var(--table-height-offset));
+  padding: 2rem 8.3333%;
+  background-color: $gray-100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: $gray-700;
+  transition: height 0.3s ease;
+  .icon {
+    margin-bottom: 2rem;
+    i {
+      font-size: 4rem;
+    }
+  }
+  &.recalculate {
+    height: calc(100vh - 326px - var(--table-height-offset));
+  }
+}
+
+.settings {
+  padding: 1rem;
+  height: 67px;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid $gray-200;
+}
+
+@include media-breakpoint-down(sm) {
+  .pivot-table-msg-wrapper {
+    height: calc(100vh - 309px - var(--table-height-offset));
+    &.recalculate {
+      height: calc(100vh - 371px - var(--table-height-offset));
+    }
+  }
+
+  .settings {
+    height: 67px;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+}

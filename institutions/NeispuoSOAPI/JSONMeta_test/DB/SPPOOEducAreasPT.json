@@ -1,0 +1,43 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[SPPOOEduAreaRecode] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "SPPOOEducAreaID as code"
+        },
+        {
+            "column": "Name as label"
+        },
+		{
+            "column": "IsValid as isValid"
+        }
+    ],
+    "params": [
+            {
+              "param": "@canChoose",
+              "column": "CanChoose",
+              "operator": "=",
+              "value": 1,
+              "type": "int",
+              "logical_operator": "and",
+              "optional": false,
+              "static": true
+            },
+            {
+              "param": "@sPPOOEducAreaCode",
+              "column": "SPPOOEducAreaCodee",
+              "operator": "=",
+              "value": 21,
+              "type": "int",
+              "logical_operator": "and",
+              "optional": false,
+              "static": true
+            }
+    ],
+    "order": [
+        {
+            "column": "SPPOOEducAreaCode",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

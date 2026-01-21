@@ -1,0 +1,64 @@
+{
+  "label": "IT активи",
+  "sections": [
+    {
+      "order": 1,
+      "label": "Добавени IT активи",
+      "name": "TableITAssetsList",
+      "table":
+      {
+        "name": "itAssetsList",
+	      "searchable": true,
+	      "searchType": "column",
+        "canDeleteRow": true,
+        "createNew": "redirect",
+        "formName":"itAssetsDetails",
+        "procedureName": "inst_basic.itAssetsCUD", 
+	      "createParams":{"buildingTypeID":1}, 
+        "paramName":"itAssetsID",
+        "fields": [
+          {
+            "label": "В сграда",
+            "name": "buildingName",
+            "type": "input",
+            "inputType": "text",
+            "width": 5,
+            "order": 1
+          },
+          {
+            "label": "Категория IT актив",
+            "name": "itAssetCategoryName",
+            "type": "input",
+            "inputType": "text",
+            "width": 5,
+            "order": 2
+          },
+          {
+            "label": "Вид IT актив",
+            "name": "typeITAssetName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 3
+          },
+	        {
+            "label": "Допълнителна информация",
+            "name": "itAssetDescription",
+            "type": "input",
+            "inputType": "text",
+            "width": 5,
+            "order": 4
+          },
+	        {
+            "label": "Стойност на придобиване",
+            "name": "acquisitionCost",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 5
+          }
+        ]
+      }
+    }
+  ]
+}

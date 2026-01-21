@@ -1,0 +1,189 @@
+<sb-breadcrumb
+  class="block mb-3"
+  [icon]="fadBook"
+  text="Обединяване на дневници"
+  [parentItems]="[{ text: 'Дневници', routeCommands: ['../'] }]"
+></sb-breadcrumb>
+
+<form [formGroup]="form" autocomplete="off" novalidate>
+  <sb-card>
+    <ng-container card-title>Обединяване на дневници</ng-container>
+    <ng-container card-buttons class="sb-btn-wrapper sb-btn-wrapper-right">
+      <button mat-raised-button (click)="previous()" [disabled]="saving">
+        <fa-icon [icon]="fasAngleLeft" size="lg"></fa-icon>
+        <span>Назад</span>
+      </button>
+      <button
+        *ngIf="hasAny"
+        mat-raised-button
+        color="primary"
+        [class.hidden]="currentStep === lastStep"
+        (click)="next()"
+      >
+        <fa-icon [icon]="fasAngleRight" size="lg"></fa-icon>
+        <span>Напред</span>
+      </button>
+      <button
+        mat-raised-button
+        color="primary"
+        [class.hidden]="currentStep < lastStep"
+        (click)="next()"
+        [disabled]="saving"
+      >
+        <fa-icon [icon]="saving ? fasSpinnerThird : fasCheck" [spin]="saving" size="lg"></fa-icon>
+        <span>Запази</span>
+      </button>
+    </ng-container>
+
+    <ng-container card-body>
+      <sb-banner type="info" class="mb-4">
+        Обединяването на дневници ще създаде дневник на по-горно ниво и ще архивира дневниците на подгрупите му.
+        <b>
+          Дневниците от подгрупите ще бъдат преместени в статус "Архивиран", след което няма да се позволява
+          модифицирането им.
+        </b>
+        <br />
+        При обединяването може да изберете един от дневниците от подгрупите, от който да бъдат копирани "Неучебни дни",
+        "Настройки на учебната година" и "Разписания" в новосъздадения дневник.
+      </sb-banner>
+      <div *ngIf="currentStep === 1">
+        <sb-banner type="error" class="mb-2" *ngFor="let error of errors">{{ error }}</sb-banner>
+        <sb-card-section>Изберете клас/паралелка за обединяване</sb-card-section>
+        <div class="sb-table-container">
+          <table class="sb-table text-sm">
+            <thead>
+              <tr>
+                <th class="w-[100px] whitespace-nowrap"></th>
+                <th class="pl-1">Клас</th>
+                <th class="pl-1">Випуск (клас)</th>
+                <th class="pl-1">Вид на паралелката</th>
+                <th class="pl-1">Вид на дневника</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="let parentClassBook of sortedClassGroups; let i = index"
+                [class.border-t-0]="sortedClassGroups[i].classIsLvl2"
+                [class.bold-text]="!sortedClassGroups[i].classIsLvl2"
+              >
+                <td class="px-4">
+                  <mat-radio-button
+                    *ngIf="!sortedClassGroups[i].classIsLvl2 && sortedClassGroups[i].bookType"
+                    (change)="onRowSelect(i)"
+                  ></mat-radio-button>
+                  <fa-icon
+                    *ngIf="sortedClassGroups[i].classIsLvl2"
+                    [icon]="fasAngleRight"
+                    size="lg"
+                    class="sb-fa-rotate-135"
+                  ></fa-icon>
+                  <span class="whitespace-nowrap" *ngIf="!sortedClassGroups[i].bookType">(на групи)</span>
+                </td>
+                <td class="p-1" [class.px-6]="sortedClassGroups[i].classIsLvl2">
+                  {{ sortedClassGroups[i].className }}
+                </td>
+                <td class="p-1" [class.px-6]="sortedClassGroups[i].classIsLvl2">
+                  {{ sortedClassGroups[i].basicClassName ?? '(на групи)' }}
+                </td>
+                <td class="p-1" [class.px-6]="sortedClassGroups[i].classIsLvl2">
+                  {{ sortedClassGroups[i].classTypeName ?? '(на групи)' }}
+                </td>
+                <td class="p-1" [attr.colspan]="sortedClassGroups[i].bookType ? 1 : 2">
+                  {{ sortedClassGroups[i].bookTypeDescription }}
+                  <sb-banner
+                    type="info"
+                    [small]="true"
+                    *ngIf="!sortedClassGroups[i].classIsLvl2 && sortedClassGroups[i].bookTypeErrorDescription"
+                  >
+                    Не може да се обедини дневник, защото {{ sortedClassGroups[i].bookTypeErrorDescription }}
+                  </sb-banner>
+                </td>
+              </tr>
+              <ng-container *ngIf="sortedClassGroups.length === 0" no-data-row>
+                <td colspan="5" class="text-center">Няма намерени дневници за обединяване</td>
+              </ng-container>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div *ngIf="currentStep === 2">
+        <sb-banner type="error" class="mb-2" *ngFor="let error of errors">{{ error }}</sb-banner>
+        <sb-card-section>Данни за дневника от по-горно ниво</sb-card-section>
+        <ng-container formGroupName="parentClassBook">
+          <div class="sm:grid grid-cols-3 gap-x-4 mb-1">
+            <sb-text-field
+              class="col-start-1 col-span-1"
+              label="Клас"
+              formControlName="className"
+              readonly
+            ></sb-text-field>
+            <sb-text-field
+              class="col-start-2 col-span-1"
+              label="Випуск (клас)"
+              formControlName="basicClassName"
+              readonly
+            ></sb-text-field>
+            <sb-text-field
+              class="col-start-1 col-span-2"
+              label="Вид на паралелката"
+              formControlName="classTypeName"
+              readonly
+            ></sb-text-field>
+            <sb-text-field
+              class="col-start-1 col-span-2"
+              label="Вид на дневника"
+              formControlName="bookTypeDescription"
+              readonly
+            ></sb-text-field>
+          </div>
+
+          <div class="mt-5">
+            <sb-card-section>Изберете наименование на новия дневник за лявото меню</sb-card-section>
+            <div class="sm:grid grid-cols-2 gap-x-4 mb-1">
+              <sb-text-field
+                class="col-start-1 col-span-1"
+                label="Наименование"
+                formControlName="classBookName"
+              ></sb-text-field>
+            </div>
+          </div>
+        </ng-container>
+
+        <sb-card-section>Изберете текуща паралелка от която да се копират данни (незадължително)</sb-card-section>
+
+        <div class="sb-table-container">
+          <mat-radio-group formControlName="childClassIdToCopyData">
+            <table class="sb-table text-sm">
+              <thead>
+                <tr>
+                  <th class="w-[100px] whitespace-nowrap"></th>
+                  <th class="pl-1">Клас</th>
+                  <th class="pl-1">Випуск (клас)</th>
+                  <th class="pl-1">Вид на паралелката</th>
+                  <th class="pl-1">Вид на дневника</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let childClass of selectedClassBookChildren; let i = index" class="border-t">
+                  <td class="px-4">
+                    <mat-radio-button [value]="childClass.classId"></mat-radio-button>
+                  </td>
+                  <td class="p-1">{{ childClass.className }}</td>
+                  <td class="p-1">
+                    {{ childClass.basicClassName ?? '(на групи)' }}
+                  </td>
+                  <td class="p-1">
+                    {{ childClass.classTypeName ?? '(на групи)' }}
+                  </td>
+                  <td class="p-1" [attr.colspan]="childClass.bookType ? 1 : 2">
+                    {{ childClass.bookTypeDescription }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </mat-radio-group>
+        </div>
+      </div>
+    </ng-container>
+  </sb-card>
+</form>

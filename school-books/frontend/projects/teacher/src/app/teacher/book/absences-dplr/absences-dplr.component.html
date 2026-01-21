@@ -1,0 +1,209 @@
+<sb-banner type="warning" *ngIf="!studentAbsences.students.length">Паралелката няма въведени ученици.</sb-banner>
+
+<ng-container *ngIf="studentAbsences.students.length">
+  <div [formGroup]="searchForm" novalidate class="sm:grid grid-cols-5 gap-x-4">
+    <p class="col-start-1 col-span-full">Филтри</p>
+
+    <sb-nom-select
+      label="Предмет"
+      class="col-span-2"
+      formControlName="curriculumId"
+      [nomService]="classBookCurriculumNomsService"
+    ></sb-nom-select>
+
+    <sb-select-field
+      formControlName="period"
+      label="Период"
+      [items]="[
+        { id: PeriodValues_WholeYear, name: 'За цялата година' },
+        { id: PeriodValues_Month, name: 'За месец' },
+        { id: PeriodValues_FromDateToDate, name: 'От дата до дата' }
+      ]"
+    ></sb-select-field>
+
+    <sb-select-field
+      *ngIf="searchForm.value.period === PeriodValues_Month"
+      label="Месец"
+      formControlName="month"
+      [items]="monthsSelect"
+    ></sb-select-field>
+
+    <sb-date-field
+      *ngIf="searchForm.value.period === PeriodValues_FromDateToDate"
+      label="От дата"
+      formControlName="fromDate"
+    ></sb-date-field>
+    <sb-date-field
+      *ngIf="searchForm.value.period === PeriodValues_FromDateToDate"
+      label="До дата"
+      formControlName="toDate"
+    ></sb-date-field>
+  </div>
+
+  <div class="sb-btn-wrapper">
+    <a *ngIf="canCreate" [routerLink]="['./new']" mat-raised-button color="primary">
+      <fa-icon [icon]="fasPlus" size="lg"></fa-icon>
+      <span>Ново {{ isAbsence ? 'отсъствие' : 'присъствие' }}</span>
+    </a>
+
+    <a *ngIf="canRemove" [routerLink]="['./remove']" mat-raised-button color="warn">
+      <fa-icon [icon]="fasTrashAlt" size="lg"></fa-icon>
+      <span>Премахни</span>
+    </a>
+  </div>
+
+  <sb-transferred-students-banner class="mb-2.5" *ngIf="showTransferredStudentsBanner"></sb-transferred-students-banner>
+  <sb-banner *ngIf="isAbsence && !dplrAbsencesBannerHidden" class="mb-2.5" type="info">
+    <div class="flex justify-between">
+      <!-- prettier-ignore -->
+      <span>Данните в тази секция са само информативни, показващи дали ученикът не е присъствал в зададената му програма и отсъствията не се извиняват с медицинска бележка</span>
+
+      <button class="sb-link-btn -mt-px -mb-[3px]" (click)="hideDplrAbsencesBanner()">
+        <fa-icon [icon]="fasTimes"></fa-icon>
+      </button>
+    </div>
+  </sb-banner>
+
+  <div class="sb-table-container">
+    <table class="sb-table">
+      <thead>
+        <tr>
+          <th>Ученик</th>
+          <th class="w-px text-center">
+            <span class="inline sm:hidden">Об.</span>
+            <span class="hidden sm:inline">Общо</span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let student of studentAbsences.students">
+          <tr>
+            <td *ngIf="student.showInfoLink" class="sb-names">
+              <a
+                [routerLink]="[
+                  '../../../student-info',
+                  this.data.classBookId,
+                  student.personId,
+                  'student-book',
+                  this.data.classBookId
+                ]"
+                class="text-primary"
+              >
+                {{ student.classNumber != null ? student.classNumber.toString() + '.' : '' }}
+
+                {{ student.firstName }}
+                {{ student.middleName }}
+                {{ student.lastName }}
+
+                <span *ngIf="student.abnormalStatus" class="sb-badge">{{ student.abnormalStatus }}</span>
+              </a>
+            </td>
+            <td *ngIf="!student.showInfoLink" class="sb-names">
+              {{ student.classNumber != null ? student.classNumber.toString() + '.' : '' }}
+
+              {{ student.firstName }}
+              {{ student.middleName }}
+              {{ student.lastName }}
+
+              <span *ngIf="student.abnormalStatus" class="sb-badge">{{ student.abnormalStatus }}</span>
+            </td>
+
+            <td class="w-px whitespace-nowrap text-center font-medium align-middle p-1">
+              <button
+                class="book-count-button unexcused"
+                [class.unexcused]="isAbsence"
+                [class.excused]="!isAbsence"
+                [class.disabled]="student.count === 0"
+                [class.active]="selectedStudentPersonId === student.personId"
+                (click)="viewAbsences(student.personId)"
+              >
+                {{ student.count }}
+              </button>
+            </td>
+          </tr>
+          <tr *ngIf="selectedStudentPersonId === student.personId && loadingAbsences">
+            <td
+              colspan="5"
+              class="relative book-item-cell h-16"
+              [class.unexcused]="isAbsence"
+              [class.excused]="!isAbsence"
+            >
+              <mat-spinner [diameter]="40" class="absolute top-1/2 left-1/2 -mt-5 -ml-5"></mat-spinner>
+            </td>
+          </tr>
+          <ng-container *ngIf="selectedStudentPersonId === student.personId && !loadingAbsences">
+            <tr *ngFor="let absence of selectedAbsences">
+              <td
+                colspan="5"
+                class="relative p-2 book-item-cell"
+                [class.unexcused]="isAbsence"
+                [class.excused]="!isAbsence"
+              >
+                <div class="sm:flex">
+                  <div class="sm:grow">
+                    <div class="text-sm">
+                      <span class="block sm:inline whitespace-nowrap">
+                        <fa-icon [icon]="isAbsence ? farCalendarTimes : farCalendarCheck"></fa-icon>
+                        <span class="font-bold">{{ absence.typeName }}</span>
+                      </span>
+                      {{ ' ' }}
+                      <span class="block sm:inline whitespace-nowrap">
+                        по
+                        <fa-icon [icon]="fasBookOpen"></fa-icon>
+                        <span class="font-bold">
+                          {{ absence.subjectName }} / {{ absence.subjectTypeName }}
+                          {{ absence.replTeacherIsNonSpecialist ? '(ГО)' : '' }}
+                        </span>
+                      </span>
+                      {{ ' ' }}
+                      <span class="block sm:inline whitespace-nowrap">
+                        на
+                        <fa-icon [icon]="fasCalendarAlt"></fa-icon>
+                        <span class="font-bold">{{ absence.date | sbDate }}</span>
+                      </span>
+                    </div>
+
+                    <div class="text-xs italic">
+                      <span class="inline sm:hidden">Създ. от</span>
+                      <span class="hidden sm:inline">Създадено от</span>
+                      <span class="font-bold">
+                        {{ absence.createdBySysUserFirstName }} {{ absence.createdBySysUserLastName }}
+                      </span>
+                      на
+                      <span class="font-bold">{{ absence.createDate | sbDateTime }}</span>
+                    </div>
+                  </div>
+
+                  <div class="sm:shrink-0">
+                    <button
+                      class="mt-2 sm:mt-0"
+                      *ngIf="absence.canRemove || (absence.canUndo && (absence.undoExpired$ | async) === false)"
+                      mat-raised-button
+                      color="warn"
+                      type="button"
+                      (click)="removeAbsence(absence)"
+                      [disabled]="absence.removing"
+                    >
+                      <fa-icon
+                        [icon]="absence.removing ? fasSpinnerThird : fasTrashAlt"
+                        [spin]="absence.removing"
+                        size="lg"
+                      ></fa-icon>
+                      <span>Премахни</span>
+                    </button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </ng-container>
+        </ng-container>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>Общо</td>
+          <td class="text-center text-sm">{{ studentAbsences.total }}</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</ng-container>

@@ -1,0 +1,15 @@
+<div class="details">
+  <h4 class="col-12 mt-2">Описание на справка</h4>
+  <div *ngIf="reportService.isCubeData; else savedReportDetails">
+    <div class="col-12 fw-bold mt-2 title color-gray-800">{{ cube?.title }}</div>
+    <div class="col-12 color-gray-600">
+      {{ cube?.description }}
+    </div>
+  </div>
+  <ng-template #savedReportDetails>
+    <div class="col-12 fw-bold mt-2 title color-gray-800">{{ report?.Name }}</div>
+    <div class="col-12 color-gray-600">
+      {{ report?.Description ? report.Description : 'Няма налично описание на справката.' }}
+    </div>
+  </ng-template>
+</div>

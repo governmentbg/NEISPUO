@@ -1,0 +1,30 @@
+{
+  "label": "<<<< Институция - пълен набор данни >>>>>",
+  "procedureName": "reginst_basic.institutionCreateUpdate",
+  "dataName": "НЕ се обработва полето... :-(",
+  "statusFieldName": "procedureStatusTypeID",
+  "sections": [
+    {
+      "order": 1,
+      "label": "Данни за процедурата",
+      "name": "procedureData",
+      "subsections": [
+        {
+          "order": 1,
+          "name": "procedureBasicData",
+          "fields": [
+            {
+              "label": "Сист. ID на процедурата",
+              "name": "riProcedureID",
+              "type": "input",
+              "inputType": "number",
+              "rendered": "if(operationType==1 && (procType==2 || procType==3)) {field.rendered=false} else {field.rendered=true}",
+              "disabled": "true",
+              "order": 0
+            }
+          ]
+        }      
+      ]
+    }
+  ]
+}

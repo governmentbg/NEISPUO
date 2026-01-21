@@ -1,0 +1,6 @@
+role,token
+admin,bearer-token1
+ruo,bearer-token2
+school,bearer-token3
+municipality,bearer-token4
+teacher,bearer-token5

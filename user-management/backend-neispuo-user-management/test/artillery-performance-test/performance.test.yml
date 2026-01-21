@@ -1,0 +1,146 @@
+config:
+  target: "http://localhost:3005"
+  payload:
+    # path is relative to the location of the test script
+    path: "user_jwt_tokens.csv"
+    skipHeader: true
+    fields:
+      - "role"
+      - "token"
+  tls:
+    rejectUnauthorized: false
+  http:
+    # you need to add large timeout 1000s in this case to wait for the responses otherwise you start getting 499 from NGINX + pm2 hangs
+    # This might be some side effect from nginx -> pm2 communication need to verify
+    timeout: 1000
+  phases:
+    - duration: 60
+      arrivalRate: 5
+      name: Warm up
+    - duration: 120
+      arrivalRate: 10
+      rampTo: 50
+      name: Ramp up load
+    - duration: 600
+      arrivalRate: 50
+      name: Sustained load
+
+scenarios:
+  - name: "Get Azure classes"
+    flow:
+      - get:
+          url: "/v1/azure-classes?s=%7B%22$and%22:%5B%5D%7D&page=1&limit=25"
+          headers:
+            Authorization: "Bearer {{ token }}"
+
+  - name: "Get Azure enrolments"
+    flow:
+      - get:
+          url: "/v1/azure-enrollments?s=%7B%22$and%22:%5B%5D%7D&page=1&limit=25"
+          headers:
+            Authorization: "Bearer {{ token }}"
+
+  - name: "Get Azure organizations"
+    flow:
+      - get:
+          url: "/v1/azure-organizations?s=%7B%22$and%22:%5B%5D%7D&page=1&limit=25"
+          headers:
+            Authorization: "Bearer {{ token }}"
+
+  - name: "Get Azure users"
+    flow:
+      - get:
+          url: "/v1/azure-users?s=%7B%22$and%22:%5B%5D%7D&page=1&limit=25"
+          headers:
+            Authorization: "Bearer {{ token }}"
+
+  - name: "Get Budgeting Institutions"
+    flow:
+      - get:
+          url: "/v1/budgeting-institutions?s=%7B%22$and%22:%5B%5D%7D&page=1&limit=25"
+          headers:
+            Authorization: "Bearer {{ token }}"
+
+  - name: "Get Institutions"
+    flow:
+      - get:
+          url: "/v1/institutions?s=%7B%22$and%22:%5B%5D%7D&page=1&limit=25"
+          headers:
+            Authorization: "Bearer {{ token }}"
+
+  - name: "Get Institution by ID"
+    flow:
+      - get:
+          url: "/v1/institutions/100004"
+          headers:
+            Authorization: "Bearer {{ token }}"
+
+  - name: "Get Lead Teacher Students"
+    flow:
+      - get:
+          url: "/v1/lead-teacher-students?s=%7B%22$and%22:%5B%5D%7D&page=1&limit=25"
+          headers:
+            Authorization: "Bearer {{ token }}"
+
+  - name: "Get Login Audit"
+    flow:
+      - get:
+          url: "/v1/login-audit?s=%7B%22$and%22:%5B%5D%7D&page=1&limit=25"
+          headers:
+            Authorization: "Bearer {{ token }}"
+
+  - name: "Get Login Audit by ID"
+    flow:
+      - get:
+          url: "/v1/login-audit/1"
+          headers:
+            Authorization: "Bearer {{ token }}"
+
+  - name: "Get MON users"
+    flow:
+      - get:
+          url: "/v1/mon?s=%7B%22$and%22:%5B%5D%7D&page=1&limit=25"
+          headers:
+            Authorization: "Bearer {{ token }}"
+
+  - name: "Get Municipality users"
+    flow:
+      - get:
+          url: "/v1/municipality?s=%7B%22$and%22:%5B%5D%7D&page=1&limit=25"
+          headers:
+            Authorization: "Bearer {{ token }}"
+
+  - name: "Get Parent's Children"
+    flow:
+      - get:
+          url: "/v1/person/children"
+          headers:
+            Authorization: "Bearer {{ token }}"
+
+  - name: "Get Role Audit"
+    flow:
+      - get:
+          url: "/v1/role-assignment?s=%7B%22$and%22:%5B%7B%22ObjectName%22:%7B%22$eq%22:%22SysUserSysRole%22%7D%7D,%7B%22AuditModuleId%22:%7B%22$eq%22:403%7D%7D%5D%7D&page=1&limit=25"
+          headers:
+            Authorization: "Bearer {{ token }}"
+
+  - name: "Get RUO users"
+    flow:
+      - get:
+          url: "/v1/ruo?s=%7B%22$and%22:%5B%5D%7D&page=1&limit=25"
+          headers:
+            Authorization: "Bearer {{ token }}"
+
+  - name: "Get Student users"
+    flow:
+      - get:
+          url: "/v1/student-users?s=%7B%22$and%22:%5B%5D%7D&page=1&limit=25"
+          headers:
+            Authorization: "Bearer {{ token }}"
+
+  - name: "Get Teacher users"
+    flow:
+      - get:
+          url: "/v1/teacher-users?s=%7B%22$and%22:%5B%5D%7D&page=1&limit=25"
+          headers:
+            Authorization: "Bearer {{ token }}"

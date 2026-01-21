@@ -1,0 +1,35 @@
+{
+  "id": 48,
+  "certificateNumber": "20220000048",
+  "certificateDate": "31-01-2022 12:20:04",
+  "schoolYearInfo": "№ 1 за 2022/2023",
+  "campaignPeriod": 3,
+  "institutionName": "Средно училище \"Христо Ботев\"",
+  "bulstat": "131192756",
+  "institutionType": "неспециализирано, средно",
+  "instFinancialType": "Общинско",
+  "budgetingInstitution": "община",
+  "code": 2999952,
+  "instAddress": "гр./с.Друго, общ.чужбина, обл.чужбина",
+  "firstRow": [
+    {
+      "id": 99,
+      "signerNamePos": "JULIA VESELINOVA UZUNOVA, директор",
+      "signDate": "31-01-2022 12:19:42"
+    }
+  ],
+  "secondRow": [
+    {
+      "id": 98,
+      "signerNamePos": "Kontrax JSC, счетоводител",
+      "signDate": "31-01-2022 12:04:28"
+    }
+  ],
+  "thirdRow": [
+    {
+      "id": 101,
+      "signerNamePos": "JULIA VESELINOVA UZUNOVA, директор",
+      "signDate": "31-01-2022 12:20:02"
+    }
+  ]
+}

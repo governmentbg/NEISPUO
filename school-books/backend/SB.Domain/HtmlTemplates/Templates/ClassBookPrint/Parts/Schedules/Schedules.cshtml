@@ -1,0 +1,12 @@
+@using SB.Domain
+@using System.Linq
+@model SchedulesModel
+
+<div class="page">
+  @{ await IncludeAsync("ClassBookPrint.Parts.Schedules.SchedulesBase", new SchedulesBaseModel(Model.Schedules)); }
+  @if (Model.IFOSchedules.Any())
+    {
+      <div class="page-break"></div>
+    }
+  @{ await IncludeAsync("ClassBookPrint.Parts.Schedules.SchedulesBase", new SchedulesBaseModel(Model.IFOSchedules)); }
+</div>

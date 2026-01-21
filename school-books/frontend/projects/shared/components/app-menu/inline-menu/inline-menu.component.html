@@ -1,0 +1,33 @@
+<ul class="inline">
+  <li *ngFor="let menuItem of menuItems" class="inline">
+    <ng-template #menuItemContents>
+      <span class="lg:text-sm" [ngClass]="!menuItem.isSelected ? '' : 'font-bold text-primary'">
+        {{ menuItem.text }}&#32;
+        <span *ngIf="menuItem.badge" class="sb-badge">
+          {{ menuItem.badge }}
+        </span>
+      </span>
+    </ng-template>
+
+    <a *ngIf="!menuItem.routeCommands" class="inline py-2 pr-2 cursor-pointer">
+      <ng-container *ngTemplateOutlet="menuItemContents"></ng-container>
+    </a>
+
+    <a
+      *ngIf="menuItem.routeCommands"
+      class="inline py-2 pr-2 cursor-pointer outline-offset-[-4px]"
+      [routerLink]="menuItem.routeCommands"
+      [relativeTo]="menuItem.routeExtras ? menuItem.routeExtras.relativeTo : undefined"
+      [queryParams]="menuItem.routeExtras?.queryParams"
+      [fragment]="menuItem.routeExtras?.fragment"
+      [queryParamsHandling]="menuItem.routeExtras?.queryParamsHandling"
+      [preserveFragment]="menuItem.routeExtras?.preserveFragment || false"
+      [skipLocationChange]="menuItem.routeExtras?.skipLocationChange || false"
+      [replaceUrl]="menuItem.routeExtras?.replaceUrl || false"
+      [state]="menuItem.routeExtras?.state"
+      [attr.aria-current]="menuItem.isSelected ? 'page' : null"
+    >
+      <ng-container *ngTemplateOutlet="menuItemContents"></ng-container>
+    </a>
+  </li>
+</ul>

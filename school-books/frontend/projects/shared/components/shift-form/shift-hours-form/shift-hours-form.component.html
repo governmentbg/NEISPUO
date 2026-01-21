@@ -1,0 +1,83 @@
+<form [formGroup]="form" autocomplete="off" novalidate>
+  <div *ngIf="hours.controls.length > 0" class="sb-table-container sm:w-[500px]">
+    <table class="sb-table" formArrayName="hours">
+      <thead>
+        <tr>
+          <th class="pl-1 w-1"></th>
+          <th class="pl-1 w-1">Час</th>
+          <th class="pl-1 min-w-[78px]">Начало</th>
+          <th class="pl-1 min-w-[145px]">Продължителност</th>
+          <th class="pl-1 min-w-[78px]">Край</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let hour of hours.controls; let i = index" [formGroupName]="i">
+          <td class="sm:px-4 align-middle w-1">
+            <button
+              title="Премахни"
+              aria-label="Премахни"
+              class="sb-link-btn"
+              type="button"
+              (click)="removeHour(i)"
+              [disabled]="
+                form.disabled ||
+                (!allowZeroHours && hours.controls.length === 1) ||
+                usedHours.indexOf(hour.controls.hourNumber.value) !== -1
+              "
+              [class.text-gray-500]="
+                form.disabled ||
+                (!allowZeroHours && hours.controls.length === 1) ||
+                usedHours.indexOf(hour.controls.hourNumber.value) !== -1
+              "
+            >
+              <fa-icon [icon]="fasTrashAlt"></fa-icon>
+            </button>
+          </td>
+          <td class="p-1 w-1">
+            <input
+              class="sb-form-control sb-shift-hour-number"
+              matInput
+              sbNumber
+              [sbNumberPrecision]="0"
+              formControlName="hourNumber"
+              (blur)="onTouched()"
+              [readonly]="usedHours.indexOf(hour.controls.hourNumber.value) !== -1"
+            />
+          </td>
+          <td class="p-1">
+            <input class="sb-form-control" matInput formControlName="startTime" (blur)="onTouched()" />
+          </td>
+          <td class="p-1">
+            <mat-select class="sb-form-control" formControlName="duration" (blur)="onTouched()">
+              <mat-option [value]="duration.id" *ngFor="let duration of predefinedDurations">
+                {{ duration.text }}
+              </mat-option>
+            </mat-select>
+          </td>
+          <td class="p-1">
+            <input
+              class="sb-form-control sb-end-time"
+              matInput
+              formControlName="endTime"
+              (blur)="onTouched()"
+              [readonly]="!!form.value.hours?.length && form.value.hours![i].duration !== 0"
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <button
+    mat-raised-button
+    color="primary"
+    title="Добави час"
+    aria-label="Добави час"
+    class="sb-link-btn mt-2"
+    type="button"
+    (click)="addHour()"
+    [disabled]="form.disabled"
+  >
+    <fa-icon [icon]="fasPlus"></fa-icon>
+    Добави час
+  </button>
+</form>

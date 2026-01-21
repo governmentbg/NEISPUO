@@ -1,0 +1,94 @@
+{
+  "label": "Телефони",
+  "sections": [
+    {
+      "order": 1,
+      "label": "Данни за телефон",
+      "subsections": [
+        {
+          "order": 1,
+          "name": "institutionPhone",
+          "fields": [
+            {
+              "label": "Тип телефон",
+              "name": "phoneTypeID",
+              "type": "select",
+              "optionsPath": "/data/get/phoneTypes",
+              "disabled": false,
+              "defaultValue": 1,
+              "width": 400,
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ],
+              "influence": [
+                {
+                  "type": "render",
+                  "fieldName": "phoneCode",
+                  "condition": [
+                    1
+                  ]
+                }
+              ],
+              "order": 1
+            },
+            {
+              "label": "Код за АТМ",
+              "name": "phoneCode",
+              "type": "input",
+              "inputType": "text",
+              "disabled": false,
+              "order": 2,
+              "width": 100
+            },
+            {
+              "label": "Телефон",
+              "name": "phoneNumber",
+              "type": "input",
+              "inputType": "text",
+              "disabled": false,
+              "order": 3,
+              "width": 300,
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ]
+            },
+            {
+              "label": "Вид телефон",
+              "name": "contactKind",
+              "type": "input",
+              "inputType": "text",
+              "disabled": false,
+              "order": 4,
+              "width": 400,
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ]
+            },
+            {
+              "label": "Основен",
+              "name": "isMain",
+              "type": "checkbox",
+              "disabled": false,
+              "defaultValue": false,
+              "order": 5,
+              "influence": [],
+              "validations": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

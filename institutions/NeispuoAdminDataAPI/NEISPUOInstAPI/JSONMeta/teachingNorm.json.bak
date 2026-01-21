@@ -1,0 +1,142 @@
+{
+    "changeData": false,
+    "sections": [
+      {
+        "label": "Име на служител",
+        "order": 1,
+        "subsections": [
+            {
+              "order": 1,
+              "label": "fullName",
+              "type": "input",
+              "name": "fullName",
+              "bold": true,
+              "width": 200,
+              "disabled": false,
+              "flexible": false
+            }
+        ]
+      },
+      {
+        "order": 2,
+        "name":"staffPositionsData",
+        "label": "Текущи длъжности на служителя",
+        "table":
+        {
+          "name": "staffPositions",
+          "formName": "teachingNormData",
+          "paramName": "staffPositionID",
+          "additionalParams":["isValid"],
+          "canDeleteRow": false,
+          "searchable": false,
+          "forceOperation": 0,
+          "fields": [
+            {
+              "label": "Пореден номер",
+              "name": "staffOrd",
+              "type": "input",
+              "inputType": "number",
+              "width":10,
+              "order": 1
+            },
+            {
+              "label": "Длъжност номер",
+              "name": "staffPositionNo",
+              "type": "input",
+              "inputType": "number",
+              "width":10,
+              "order": 2
+            },
+            {
+              "label": "Категория персонал",
+              "name": "categoryStaffType",
+              "type": "input",
+              "inputType": "text",
+              "width":20,
+              "order": 3
+            },
+            {
+              "label": "Длъжност",
+              "name": "NKPDposition",
+              "type": "input",
+              "inputType": "text",
+              "width":25,
+              "order": 4
+            },
+            {
+              "label": "Активна (текуща година)",
+              "name": "currentlyValid",
+              "type": "input",
+              "inputType": "text",
+              "width": 20,
+              "order": 5
+            }
+          ]
+        }
+      },
+      {
+        "order": 2,
+        "name":"staffPositionsData",
+        "label": "Предишни длъжности на служителя",
+        "table":
+        {
+          "name": "staffArchivePositions",
+          "formName": "teachingNormData",
+          "paramName": "staffPositionID",
+          "action": "preview",
+          "searchable": false,
+          "additionalParams":["isValid"],
+          "fields": [
+            {
+              "label": "Пореден номер",
+              "name": "staffOrd",
+              "type": "input",
+              "inputType": "number",
+              "width": 10,
+              "order": 1
+            },
+            {
+              "label": "Длъжност номер",
+              "name": "staffPositionNo",
+              "type": "input",
+              "inputType": "number",
+              "width": 10,
+              "order": 2
+            },
+            {
+              "label": "Категория персонал",
+              "name": "categoryStaffType",
+              "type": "input",
+              "inputType": "text",
+              "width": 20,
+              "order": 3
+            },
+            {
+              "label": "Длъжност",
+              "name": "NKPDposition",
+              "type": "input",
+              "inputType": "text",
+              "width": 20,
+              "order": 4
+            },
+            {
+              "label": "Дата на прекратяване",
+              "name": "terminationDate",
+              "type": "date",
+              "width": 10,
+              "order": 5
+            },
+            {
+              "label": "Основание за прекратяване",
+              "name": "terminationReason",
+              "type": "input",
+              "inputType": "text",
+              "width": 10,
+              "order": 6
+            }
+          ]
+        }
+      }
+    ]
+  }
+  

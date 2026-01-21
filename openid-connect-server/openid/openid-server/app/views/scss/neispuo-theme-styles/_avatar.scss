@@ -1,0 +1,34 @@
+.avatar {
+  background-color: $gray-300;
+  color: #19212c;
+  &-44 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    &.bi {
+      font-size: 1rem;
+    }
+  }
+  &-32 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    &.bi {
+      font-size: 1rem;
+    }
+  }
+  &-24 {
+    font-size: 1rem;
+    font-weight: 700;
+    &.bi {
+      font-size: 0.75rem;
+    }
+  }
+  &-16 {
+    font-size: 0.625rem;
+    &.bi {
+      font-size: 0.5rem;
+    }
+  }
+  .bi {
+    color: $gray-600;
+  }
+}

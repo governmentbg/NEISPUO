@@ -1,0 +1,21 @@
+.l-checkbox {
+    margin: 0 10px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    padding: 5px 10px;
+    min-height: 28px;
+    height: auto;
+    justify-content: center;
+    max-width: 350px;
+    margin-bottom: 10px;
+    margin-right: 25px;
+    mat-checkbox {
+        padding-bottom: 1.34375em;
+    }
+}
+
+.mat-checkbox-label {
+    white-space: normal;
+    line-height: normal;
+}

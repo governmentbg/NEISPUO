@@ -1,0 +1,81 @@
+<link rel="stylesheet" type="text/css" href="/css/select_role.min.css" />
+
+<div class="select-role-page container-fluid">
+  <%- include('header.ejs') %>
+  <div class="select-role-page-content card">
+    <form autocomplete="off" action="/interaction/<%= uid %>/select_role" method="post">
+      <% if (!details.roles || details.roles.length === 0) { %>
+      <!-- Card content when roles ARE NOT available -->
+
+      <div class="card-body">
+        <p class="h1 mb-6">Избор на Акаунт</p>
+        <p class="h3 mb-4">
+          Вашят акаунт все още няма роли. Моля свържете се със системня администратор.
+        </p>
+        <div class="card-footer">
+          <a class="btn btn-primary" href="/interaction/<%= uid %>/select_role/cancel"> Разбрах </a>
+        </div>
+      </div>
+
+      <% } else { %>
+      <!-- Card content when roles ARE available -->
+
+      <div class="card-body">
+        <p class="h1 mb-4">Избор на Акаунт</p>
+        <p class="h3 mb-6">Моля изберете акаунт, за да продължите</p>
+        <hr />
+        <div class="radio-btns-wrapper">
+          <% details.roles.forEach((role, roleIndex) => { %>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" id="role-<%= roleIndex %>"
+            name="selected_role" value="<%= role._concatID %>" <% if (roleIndex === 0) { %>checked<%
+            }%>/>
+
+            <label for="role-<%= roleIndex %>" class="form-check-label">
+              <div class="label-row">
+                <span class="label-row-name"> Роля: </span>
+                <span class="label-row-value"> <%= role.SysRoleName %> </span>
+              </div>
+
+              <% if (role.InstitutionName) { %>
+              <div class="label-row">
+                <span class="label-row-name"> Институция: </span>
+                <span class="label-row-value"> <%= role.InstitutionName %> </span>
+              </div>
+              <% } %> <% if (role.BudgetingInstitutionName) { %>
+              <div class="label-row">
+                <span class="label-row-name"> Финансираща институция: </span>
+                <span class="label-row-value"> <%= role.BudgetingInstitutionName %> </span>
+              </div>
+              <% } %> <% if (role.MunicipalityName) { %>
+              <div class="label-row">
+                <span class="label-row-name"> Община: </span>
+                <span class="label-row-value"> <%= role.MunicipalityName %> </span>
+              </div>
+              <% } %> <% if (role.RegionName) { %>
+              <div class="label-row">
+                <span class="label-row-name"> Област: </span>
+                <span class="label-row-value"> <%= role.RegionName %> </span>
+              </div>
+              <% } %>
+            </label>
+          </div>
+          <hr />
+          <% }) %>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-primary me-3" type="submit" autofocus type="submit">
+            Продължи
+          </button>
+
+          <a class="btn btn-outline-primary" href="/interaction/<%= uid %>/select_role/cancel">
+            Отказ
+          </a>
+        </div>
+      </div>
+      <% } %>
+    </form>
+  </div>
+</div>
+
+<script src="/js/select_role.js"></script>

@@ -1,0 +1,97 @@
+<sb-tab-card [hideHeader]="true">
+  <ng-container card-body>
+    <button
+      *ngIf="canEdit"
+      type="button"
+      mat-raised-button
+      color="primary"
+      aria-label="Смени номерата"
+      class="mb-2.5"
+      (click)="openChangeNumbersDialog()"
+    >
+      <fa-icon [icon]="fasList"></fa-icon>
+      <span>Смени номерата</span>
+    </button>
+    <button
+      *ngIf="canEdit"
+      type="button"
+      mat-raised-button
+      color="primary"
+      aria-label="Преномерирай по азбучен ред"
+      class="mb-2.5 ml-2"
+      (click)="onSortAlphabetically()"
+    >
+      <fa-icon [icon]="fasSortAmountDownAlt"></fa-icon>
+      <span>Преномерирай по азбучен ред</span>
+    </button>
+    <sb-table [dataSource]="dataSource" [displayedColumns]="displayedColumns">
+      <ng-container cdkColumnDef="action">
+        <th cdk-header-cell *cdkHeaderCellDef></th>
+        <td cdk-cell *cdkCellDef="let row" class="sb-table-action">
+          <button (click)="openStudentDialog(row.personId)" aria-label="Редактирай" class="sb-link-btn">
+            <fa-icon [icon]="fadChevronCircleRight"></fa-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="classNumber">
+        <th cdk-header-cell *cdkHeaderCellDef>Номер</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.classNumber }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="studentFullName">
+        <th cdk-header-cell *cdkHeaderCellDef>Ученик</th>
+        <td cdk-cell *cdkCellDef="let row">
+          {{ row.studentFullName }}
+          <span *ngIf="row.isTransferred" class="sb-badge">ОТПИСАН</span>
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="hasSpecialNeeds">
+        <th cdk-header-cell *cdkHeaderCellDef>Има СОП оценки</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.hasSpecialNeeds ? 'да' : 'не' }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="hasGradelessSubjects">
+        <th cdk-header-cell *cdkHeaderCellDef>Освободен</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.hasGradelessSubjects ? 'да' : 'не' }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="activities">
+        <th cdk-header-cell *cdkHeaderCellDef>
+          {{ activitiesFieldName }}
+        </th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.activities }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="speciality">
+        <th cdk-header-cell *cdkHeaderCellDef>Профил, професия</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.speciality }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="parentNames">
+        <th cdk-header-cell *cdkHeaderCellDef>Родители</th>
+        <td cdk-cell *cdkCellDef="let row">
+          <div *ngFor="let parent of row.parents">
+            <strong>{{ parent.name }}</strong>
+            <div *ngFor="let email of parent.emails">
+              <span class="whitespace-nowrap">
+                <a
+                  *ngIf="email.isRegistered"
+                  aria-label="Регистрация"
+                  matTooltip="Родителят има регистрация в НЕИСПУО"
+                  [matTooltipPosition]="'left'"
+                  disabled="disabled"
+                  class="sb-link-btn"
+                >
+                  <fa-icon [icon]="fasUserCheck"></fa-icon>
+                </a>
+                {{ email.name }}
+              </span>
+            </div>
+          </div>
+        </td>
+      </ng-container>
+    </sb-table>
+  </ng-container>
+</sb-tab-card>

@@ -1,0 +1,13 @@
+<div class="list-view-btn">
+    <button mat-raised-button color="primary" (click)="onCheck()"> Проверка </button>
+    <div *ngIf="checkTriggered && infoLs !== undefined" class="list-view">
+        <span *ngIf="!infoLs.length">Всички валидационни правила са коректни. Можете да продължите с подаване на данните за списък-образеца.</span>
+        <div *ngFor="let info of infoLs" class="list-view-info-container">
+            <span *ngIf="info.resultType === resultType.info" style="color:blue"> Информация </span>
+            <span *ngIf="info.resultType === resultType.warning" style="color:orange"> Предупреждение </span>
+            <span *ngIf="info.resultType === resultType.error" style="color:red"> Грешка </span>
+            <label [innerHtml]="info.text | dompurify"></label>
+            <button mat-raised-button color="primary" (click)="openAdditionalInfo(info.list)" *ngIf="info.list"> Списък </button>
+        </div>
+    </div>
+</div>

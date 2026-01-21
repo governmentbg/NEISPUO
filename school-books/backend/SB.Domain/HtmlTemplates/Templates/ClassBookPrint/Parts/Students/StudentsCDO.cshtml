@@ -1,0 +1,73 @@
+@using SB.Domain
+@model StudentsModel
+
+<div class="page">
+  <h3 class="page-header">Общи сведения</h3>
+    <table>
+    <thead>
+      <tr>
+        <th class="three-rows-height align-bottom"><div class="vertical-text">№ по ред</div></th>
+        <th>Собствено, бащино<br/>и фамилно име<br/>на детето/ученика</th>
+        <th>Адрес<br/>ЕГН/ЛНЧ</th>
+        <th>Основание за<br/>приемане<br/>№ на документа</th>
+        <th>Дата<br/>на постъпване<br/>в групата</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (var student in Model.Students)
+      {
+        <tr class="two-rows-height">
+          <td>@student.ClassNumber</td>
+          <td>
+            @student.FullName
+            @if (student.IsTransferred)
+            {
+              <span class="sb-badge">ОТПИСАН</span>
+            }
+          </td>
+          <td>@student.AddressAndPhoneNumber<br/>@student.PersonalId</td>
+          @if (!string.IsNullOrWhiteSpace(student.AdmissionReasonType) || !string.IsNullOrWhiteSpace(student.AdmissionDocumentNoteNumber))
+          {
+            <td>@student.AdmissionReasonType @student.AdmissionDocumentNoteNumber</td>
+          }
+          else
+          {
+            <td class="text-center">-</td>
+          }
+          <td>@(student.EnrollmentDate?.ToString("dd.MM.yyyy") ?? "")</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+
+  <div class="page-break"></div>
+
+  <table>
+    <thead>
+      <tr>
+        <th class="three-rows-height align-bottom"><div class="vertical-text">№ по ред</div></th>
+        <th>Собствено и фамилно<br/>име, адрес и телефон<br/>на родителя<br/>или настойника</th>
+        <th>Училище, клас, паралелка<br/>и/или подгрупа/<br/>индивидуална работа</th>
+        <th>Име и фамилия на<br/>учителя<br/>педагогическия<br/>специалист, телефони</th>
+        <th>Дата<br/>на напуска-<br/>нето<br/>на групата</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (var student in Model.Students)
+      {
+        <tr class="two-rows-height">
+          <td>@student.ClassNumber</td>
+          <td>
+            @foreach (var p in student.ParentsContact)
+            {
+              @p<br/>
+            }
+          </td>
+          <td>@student.EnrolledClassName</td>
+          <td>@student.TeacherNames</td>
+          <td>@(student.DischargeDate?.ToString("dd.MM.yyyy") ?? "")</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

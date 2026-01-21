@@ -1,0 +1,60 @@
+import { EntityManager } from 'typeorm';
+import { DataRefreshSyncCronJob } from '../../shared/classes/data-refresh-sync-cron-job';
+import { Injectable } from '@nestjs/common';
+
+@Injectable()
+export class UpdateRStudentsService extends DataRefreshSyncCronJob {
+  constructor(protected entityManager: EntityManager) {
+    super(
+      'reporting.R_Students',
+      'reporting.R_Students_Table',
+      `ParentClassID, 
+	  ClassId,
+	InstitutionID,
+	InstitutionName,
+	InstitutionAbbreviation,
+	RegionID,
+	RegionName,
+	MunicipalityID,
+	MunicipalityName,
+	TownID,
+	TownName,
+    LocalAreaID,
+    LAreaName,
+	InstitutionDepartmentID,
+	InstitutionDepartmentName,
+	InstType,
+	BasicSchoolTypeName,
+	DetailedSchoolTypeName,
+	FinancialSchoolTypeName,
+	BudgetingSchoolTypeID,
+	IsInnovative,
+	IsCentral,
+	IsProtected,
+	IsStateFunded,
+	HasMunDecisionFor4,
+	RomeClassName,
+	ClassName,
+	EduFormName,
+	ClassKind,
+	ClassType,
+	ProfName,
+	SpecialtyName,
+	PositionId,
+	StudentsCount,
+	StudentCSOPCount,
+	StudentSOPCount,
+	CountMale,
+	CountFemale,
+	RepeaterCount,
+	CommuterCount,
+	IsCSOP,
+	IsCDO,
+	IsHourlyOrganization,
+	IsNotPresentForm,
+	IsCombined,
+	SchoolYear`,
+      entityManager,
+    );
+  }
+}

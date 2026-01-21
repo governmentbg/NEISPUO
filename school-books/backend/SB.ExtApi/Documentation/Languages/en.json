@@ -1,0 +1,706 @@
+{
+  // === COMMON ELEMENTS ===
+  "Common.NoResponse": "No response",
+  "Common.CreationReturns": "Returns the identifier of the newly created object",
+  "Common.Obsolete": "Do not use, will be removed in the future",
+  "Common.SchoolYear": "School year identifier",
+  "Common.InstitutionId": "Institution identifier",
+  "Common.ClassBookId": "Class book identifier",
+  "Common.PersonId": "Person identifier",
+  "Common.AbsenceId": "Absence identifier",
+  "Common.AdditionalActivityId": "Additional activity identifier",
+  "Common.AttendanceId": "Attendance identifier",
+  "Common.ExamId": "Exam identifier",
+  "Common.FirstGradeResultId": "First grade result identifier",
+  "Common.GradeId": "Grade identifier",
+  "Common.GradeResultId": "Grade result identifier",
+  "Common.IndividualWorkId": "Individual work identifier",
+  "Common.NoteId": "Note identifier",
+  "Common.OffDayId": "Off-day period identifier",
+  "Common.ParentMeetingId": "Parent meeting identifier",
+  "Common.PerformanceId": "Performance identifier",
+  "Common.PgResultId": "Pre-school result identifier",
+  "Common.RemarkId": "Remark identifier",
+  "Common.ReplrParticipationId": "REPLR participation identifier",
+  "Common.SanctionId": "Sanction identifier",
+  "Common.ScheduleId": "Schedule identifier",
+  "Common.SchoolYearDateInfoId": "School year settings identifier",
+  "Common.ShiftId": "Shift identifier",
+  "Common.StudentActivityId": "Student activity identifier",
+  "Common.StudentClassNumberId": "Student class number identifier",
+  "Common.StudentGradelessCurriculumId": "Student gradeless curriculum identifier",
+  "Common.StudentSpecialNeedCurriculumId": "Student special need curriculum identifier",
+  "Common.SupportId": "Support identifier",
+  "Common.TeacherAbsenceId": "Teacher absence identifier",
+  "Common.TopicId": "Topic identifier",
+  "Common.HisMedicalNoticesForCreation": "Medical notices for creation",
+
+  // === ABSENCES SECTION ===
+  "Absences.GetAll.Summary": "Returns all absences for a given class book",
+  "Absences.GetAll.Returns": "Array of AbsenceDO objects for the specified class book",
+  "Absences.Create.Summary": "Creates a new absence",
+  "Absences.Delete.Summary": "Deletes an absence",
+  "Absences.Excuse.Summary": "Excuses an absence",
+
+  // === ADDITIONAL ACTIVITIES SECTION ===
+  "AdditionalActivities.GetAll.Summary": "Returns all additional activities for a given class book",
+  "AdditionalActivities.GetAll.Returns": "Array of AdditionalActivityDO objects for the specified class book",
+  "AdditionalActivities.Create.Summary": "Creates a new additional activity",
+  "AdditionalActivities.Update.Summary": "Updates an additional activity",
+  "AdditionalActivities.Delete.Summary": "Deletes an additional activity",
+
+  // === ATTENDANCES SECTION ===
+  "Attendances.GetAll.Summary": "Returns all attendances for a given class book",
+  "Attendances.GetAll.Returns": "Array of AttendanceDO objects for the specified class book",
+  "Attendances.Create.Summary": "Creates a new attendance",
+  "Attendances.Delete.Summary": "Deletes an attendance",
+  "Attendances.Excuse.Summary": "Excuses an attendance of unexcused absence type",
+
+  // === CLASS BOOKS SECTION ===
+  "ClassBooks.GetAll.Summary": "Returns all class books for a given institution",
+  "ClassBooks.GetAll.Returns": "Array of ClassBookDO objects for a given institution",
+  "ClassBooks.Create.Summary": "Creates a new class book",
+  "ClassBooks.Create.Param.ClassId": "Identifier of the class/group for which the class book is created.\n\nThe ClassGroup level for which the class book is created is:\n - Parent level (ParentClassId == null), if the class is not combined (IsCombined == false)\n - Child level (ParentClassId != null), if the class is combined (IsCombined == true)",
+  "ClassBooks.Create.Returns": "Returns the identifier of the newly created class book",
+  "ClassBooks.CreateMultiple.Summary": "Creates new class books",
+  "ClassBooks.CreateMultiple.Returns": "Returns the identifiers of the newly created class books in the order of the provided classIds",
+  "ClassBooks.CreateMultiple.Param.ClassIds": "Identifiers of the classes/groups (ClassGroup.ClassID) for which the class books are created.\nThe groups (ClassGroup) must be created beforehand in form 1/2/3 and their ClassIDs are obtained from the API for form data for electronic class books (getcbdata).\n\nThe ClassGroup level for which the class book is created is:\n - Parent level (ParentClassId == null), if the class/group is not combined (IsCombined == false)\n - Optional (parent or child), if the class/group is combined (IsCombined == true). More commonly, the class book is created at parent level, i.e., one common for all subgroups.",
+  "ClassBooks.Delete.Summary": "Deletes a class book",
+  "ClassBooks.Finalize.Summary": "Finalizes a class book",
+  "ClassBooks.Finalize.Remarks": "must be a PDF signed with the principal's qualified electronic signature.\n\nThe PDF content is verified only for the presence of a valid signature.",
+  "ClassBooks.Unfinalize.Summary": "Removes finalization from a class book",
+  "ClassBooks.Combine.Summary": "Creates a new class book at Parent level and marks child level class books as invalid (IsValid=0)",
+  "ClassBooks.Combine.Returns": "Returns the identifier (classBookId) of the newly created class book",
+  "ClassBooks.Separate.Summary": "Marks a Parent level class book as invalid (IsValid=0) and creates new class books at Child level for its subgroups",
+  "ClassBooks.Separate.Returns": "Returns the identifiers (classBookIds) of the newly created class books",
+
+  // === EXAMS SECTION ===
+  "Exams.GetAll.Summary": "Returns all exams for a given class book",
+  "Exams.GetAll.Returns": "Array of ExamDO objects for the specified class book",
+  "Exams.Create.Summary": "Creates a new exam",
+  "Exams.Update.Summary": "Updates an exam",
+  "Exams.Delete.Summary": "Deletes an exam",
+
+  // === FIRST GRADE RESULTS SECTION ===
+  "FirstGradeResults.GetAll.Summary": "Returns all first grade results for a given class book",
+  "FirstGradeResults.GetAll.Returns": "Array of FirstGradeResultDO objects for the specified class book",
+  "FirstGradeResults.Create.Summary": "Creates a new first grade result",
+  "FirstGradeResults.Update.Summary": "Updates a first grade result",
+  "FirstGradeResults.Delete.Summary": "Deletes a first grade result",
+
+  // === GRADES SECTION ===
+  "Grades.GetAll.Summary": "Returns all grades for a given class book",
+  "Grades.GetAll.Returns": "Array of GradeDO objects for the specified class book",
+  "Grades.Create.Summary": "Creates a new grade",
+  "Grades.Update.Summary": "Updates a grade",
+  "Grades.Delete.Summary": "Deletes a grade",
+
+  // === GRADE RESULTS SECTION ===
+  "GradeResults.GetAll.Summary": "Returns all grade results for a given class book",
+  "GradeResults.GetAll.Returns": "Array of GradeResultDO objects for the specified class book",
+  "GradeResults.Create.Summary": "Creates a new grade result",
+  "GradeResults.Update.Summary": "Updates a grade result",
+  "GradeResults.Delete.Summary": "Deletes a grade result",
+
+  // === INDIVIDUAL WORKS SECTION ===
+  "IndividualWorks.GetAll.Summary": "Returns all individual works for a given class book",
+  "IndividualWorks.GetAll.Returns": "Array of IndividualWorkDO objects for the specified class book",
+  "IndividualWorks.Create.Summary": "Creates a new individual work",
+  "IndividualWorks.Update.Summary": "Updates an individual work",
+  "IndividualWorks.Delete.Summary": "Deletes an individual work",
+
+  // === NOTES SECTION ===
+  "Notes.GetAll.Summary": "Returns all notes for a given class book",
+  "Notes.GetAll.Returns": "Array of NoteDO objects for the specified class book",
+  "Notes.Create.Summary": "Creates a new note",
+  "Notes.Update.Summary": "Updates a note",
+  "Notes.Delete.Summary": "Deletes a note",
+
+  // === OFF DAYS SECTION ===
+  "OffDays.GetAll.Summary": "Returns all off-day periods for a given institution",
+  "OffDays.GetAll.Returns": "Array of OffDayDO objects for the specified institution",
+  "OffDays.Create.Summary": "Creates a new off-day period",
+  "OffDays.Update.Summary": "Updates an off-day period",
+  "OffDays.Delete.Summary": "Deletes an off-day period",
+
+  // === PARENT MEETINGS SECTION ===
+  "ParentMeetings.GetAll.Summary": "Returns all parent meetings for a given class book",
+  "ParentMeetings.GetAll.Returns": "Array of ParentMeetingDO objects for the specified class book",
+  "ParentMeetings.Create.Summary": "Creates a new parent meeting",
+  "ParentMeetings.Update.Summary": "Updates a parent meeting",
+  "ParentMeetings.Delete.Summary": "Deletes a parent meeting",
+
+  // === PERFORMANCES SECTION ===
+  "Performances.GetAll.Summary": "Returns all performances for a given class book",
+  "Performances.GetAll.Returns": "Array of PerformanceDO objects for the specified class book",
+  "Performances.Create.Summary": "Creates a new performance",
+  "Performances.Update.Summary": "Updates a performance",
+  "Performances.Delete.Summary": "Deletes a performance",
+
+  // === PG RESULTS SECTION ===
+  "PgResults.GetAll.Summary": "Returns all pre-school results for a given class book",
+  "PgResults.GetAll.Returns": "Array of PgResultDO objects for the specified class book",
+  "PgResults.Create.Summary": "Creates a new pre-school result",
+  "PgResults.Update.Summary": "Updates a pre-school result",
+  "PgResults.Delete.Summary": "Deletes a pre-school result",
+
+  // === REMARKS SECTION ===
+  "Remarks.GetAll.Summary": "Returns all remarks for a given class book",
+  "Remarks.GetAll.Returns": "Array of RemarkDO objects for the specified class book",
+  "Remarks.Create.Summary": "Creates a new remark",
+  "Remarks.Update.Summary": "Updates a remark",
+  "Remarks.Delete.Summary": "Deletes a remark",
+
+  // === REPLR PARTICIPATIONS SECTION ===
+  "ReplrParticipations.GetAll.Summary": "Returns all REPLR participations for a given class book",
+  "ReplrParticipations.GetAll.Returns": "Array of ReplrParticipationDO objects for the specified class book",
+  "ReplrParticipations.Create.Summary": "Creates a new REPLR participation",
+  "ReplrParticipations.Update.Summary": "Updates a REPLR participation",
+  "ReplrParticipations.Delete.Summary": "Deletes a REPLR participation",
+
+  // === SANCTIONS SECTION ===
+  "Sanctions.GetAll.Summary": "Returns all sanctions for a given class book",
+  "Sanctions.GetAll.Returns": "Array of SanctionDO objects for the specified class book",
+  "Sanctions.Create.Summary": "Creates a new sanction",
+  "Sanctions.Update.Summary": "Updates a sanction",
+  "Sanctions.Delete.Summary": "Deletes a sanction",
+
+  // === SCHEDULES SECTION ===
+  "Schedules.GetAll.Summary": "Returns all schedules for a given class book",
+  "Schedules.GetAll.Returns": "Array of ScheduleDO objects for the specified class book",
+  "Schedules.Create.Summary": "Creates a new schedule",
+  "Schedules.Create.Returns": "Returns the schedule identifier and all lessons with their identifiers",
+  "Schedules.Update.Summary": "Updates a schedule",
+  "Schedules.Update.Returns": "Returns the schedule identifier and all lessons with their identifiers",
+  "Schedules.Delete.Summary": "Deletes a schedule",
+  "Schedules.Split.Summary": "Splits selected weeks into a new schedule",
+  "Schedules.Split.Remarks": "Only the weeks that need to be allocated in a new schedule are submitted",
+  "Schedules.Split.Returns": "Returns the identifier of the new schedule",
+
+  // === SCHOOL YEAR DATE INFOS SECTION ===
+  "SchoolYearDateInfos.GetAll.Summary": "Returns all school year settings for a given institution",
+  "SchoolYearDateInfos.GetAll.Returns": "Array of SchoolYearDateInfosDO objects for the specified institution",
+  "SchoolYearDateInfos.Create.Summary": "Creates new school year settings",
+  "SchoolYearDateInfos.Update.Summary": "Updates school year settings",
+  "SchoolYearDateInfos.Delete.Summary": "Deletes school year settings",
+
+  // === STUDENT ACTIVITIES SECTION ===
+  "StudentActivities.GetAll.Summary": "Returns all student activities for a given class book",
+  "StudentActivities.GetAll.Returns": "Array of StudentActivitiesDO objects for the specified class book",
+  "StudentActivities.Create.Summary": "Creates a new student activity",
+  "StudentActivities.Update.Summary": "Updates a student activity",
+  "StudentActivities.Delete.Summary": "Deletes a student activity",
+
+  // === STUDENT CARRIED ABSENCES SECTION ===
+  "StudentCarriedAbsences.GetAll.Summary": "Returns all carried absences for students in a given class book",
+  "StudentCarriedAbsences.GetAll.Returns": "Array of StudentCarriedAbsencesDO objects for the specified class book",
+  "StudentCarriedAbsences.Update.Summary": "Updates the carried absences for a student in the class book",
+
+  // === STUDENT CLASS NUMBERS SECTION ===
+  "StudentClassNumbers.GetAll.Summary": "Returns all student class numbers for a given class book",
+  "StudentClassNumbers.GetAll.Returns": "Array of StudentClassNumberDO objects for the specified class book",
+  "StudentClassNumbers.Update.Summary": "Updates student class numbers",
+
+  // === STUDENT GRADELESS CURRICULUMS SECTION ===
+  "StudentGradelessCurriculums.GetAll.Summary": "Returns all gradeless curriculums for students in a given class book",
+  "StudentGradelessCurriculums.GetAll.Returns": "Array of StudentGradelessCurriculumsDO objects for the specified class book",
+  "StudentGradelessCurriculums.Update.Summary": "Updates gradeless curriculums for a student",
+
+  // === STUDENT SPECIAL NEED CURRICULUMS SECTION ===
+  "StudentSpecialNeedCurriculums.GetAll.Summary": "Returns all special need curriculums for students in a given class book",
+  "StudentSpecialNeedCurriculums.GetAll.Returns": "Array of StudentSpecialNeedCurriculumsDO objects for the specified class book",
+  "StudentSpecialNeedCurriculums.Update.Summary": "Updates special need curriculums for a student",
+
+  // === SUPPORTS SECTION ===
+  "Supports.GetAll.Summary": "Returns all supports for a given class book",
+  "Supports.GetAll.Returns": "Array of SupportDO objects for the specified class book",
+  "Supports.Create.Summary": "Creates a new support",
+  "Supports.Update.Summary": "Updates a support",
+  "Supports.Delete.Summary": "Deletes a support",
+
+  // === TEACHER ABSENCES SECTION ===
+  "TeacherAbsences.GetAll.Summary": "Returns all teacher absences for a given institution",
+  "TeacherAbsences.GetAll.Returns": "Array of TeacherAbsenceDO objects for the specified institution",
+  "TeacherAbsences.Create.Summary": "Creates a new teacher absence",
+  "TeacherAbsences.Update.Summary": "Updates a teacher absence",
+  "TeacherAbsences.Delete.Summary": "Deletes a teacher absence",
+
+  // === TOPICS SECTION ===
+  "Topics.GetAll.Summary": "Returns all lesson topics for a given class book",
+  "Topics.GetAll.Returns": "Array of TopicDO objects for the specified class book",
+  "Topics.Create.Summary": "Creates a new lesson topic",
+  "Topics.Delete.Summary": "Deletes a lesson topic",
+
+  // === SHIFTS SECTION ===
+  "Shifts.GetAll.Summary": "Returns all shifts for a given institution",
+  "Shifts.GetAll.Returns": "Array of ShiftDO objects for the specified institution",
+  "Shifts.Create.Summary": "Creates a new shift",
+  "Shifts.Update.Summary": "Updates a shift",
+  "Shifts.Delete.Summary": "Deletes a shift",
+
+  // === MEDICAL NOTICES SECTION ===
+  "HisMedicalNotices.Post.Summary": "Adds medical notices from the National Health Information System (HIS)",
+  "MedicalNotices.GetNext.Summary": "Gets the next \"next\" unread medical notices. The \"next\" parameter must be in the range [100, 10000].",
+  "MedicalNotices.GetNext.Returns": "A MedicalNoticeBatchDO object containing unprocessed medical notes, the last synchronization with the National Health Insurance System, and whether there are any more unprocessed notes",
+  "MedicalNotices.GetNext.NextParam": "Number of unread medical notices to return",
+  "MedicalNotices.Acknowledge.Summary": "Acknowledges that medical notices with identifiers medicalNoticeIds have been read",
+  "MedicalNotices.Acknowledge.MedicalNoticeIdsParam": "Identifiers of the medical notices that have been read",
+
+  // === ABSENCETYPE ENUM ===
+  "AbsenceType.Late": "1 = Late",
+  "AbsenceType.Unexcused": "2 = Unexcused absence",
+  "AbsenceType.Excused": "3 = Excused absence",
+  "AbsenceType.DplrAbsence": "4 = Absence only for DPLR groups",
+  "AbsenceType.DplrAttendance": "5 = Attendance only for DPLR groups",
+
+  // === ABSENCEDO MODEL ===
+  "AbsenceDO.Summary": "Absence for all type of classes/groups except ClassBookType.Book_PG",
+  "AbsenceDO.AbsenceId": "Unique record identifier. Not populated. Only returned by the system.",
+  "AbsenceDO.PersonId": "Unique person identifier for the system",
+  "AbsenceDO.Date": "Absence date",
+  "AbsenceDO.Type": "Absence type - selected from the AbsenceType enumeration",
+  "AbsenceDO.ExcusedReason": "Absence reason. Can be left empty (preferably should be filled) or one of the following can be selected: 1 - Health-related, 2 - Family-related, 3 - Other",
+  "AbsenceDO.ExcusedReasonComment": "Absence reasons - comment on excusing the absence",
+  "AbsenceDO.ScheduleLessonId": "Schedule lesson identifier",
+
+  // === EXCUSEDREASONDO MODEL ===
+  "ExcusedReasonDO.Summary": "Reason for excused absence",
+  "ExcusedReasonDO.ExcusedReason": "Absence reason. Can be left empty (preferably should be filled) or one of the following can be selected: 1 - Health-related, 2 - Family-related, 3 - Other",
+  "ExcusedReasonDO.ExcusedReasonComment": "Absence reasons - comment on excusing the absence",
+
+  // === ADDITIONALACTIVITYDO MODEL ===
+  "AdditionalActivityDO.Summary": "Additional activity",
+  "AdditionalActivityDO.AdditionalActivityId": "Unique record identifier. Not populated. Only returned by the system.",
+  "AdditionalActivityDO.Year": "ISO 8601 week year",
+  "AdditionalActivityDO.WeekNumber": "ISO 8601 week number. Number from 1 to 53.",
+  "AdditionalActivityDO.Activity": "Activity description",
+
+  // === ATTENDANCEDO MODEL ===
+  "AttendanceDO.Summary": "Attendance or absence of children from pre-school groups - only for groups of type ClassBookType.Book_PG",
+  "AttendanceDO.AttendanceId": "Unique record identifier. Not populated. Only returned by the system.",
+  "AttendanceDO.PersonId": "Unique person identifier for the system, for whom attendance or absence is entered",
+  "AttendanceDO.Date": "Date of absence or attendance. Format is yyyy-MM-dd, for example 2023-10-01",
+  "AttendanceDO.Type": "Type of absence or attendance - selected from the AttendanceType enumeration",
+  "AttendanceDO.ExcusedReason": "Absence reason. Can be left empty (preferably should be filled) or one of the following can be selected: 1 - Health-related, 2 - Family-related, 3 - Other",
+  "AttendanceDO.ExcusedReasonComment": "Absence reasons - comment on excusing the absence",
+
+  // === ATTENDANCETYPE ENUM ===
+  "AttendanceType.Presence": "1 = Presence",
+  "AttendanceType.UnexcusedAbsence": "2 = Unexcused absence",
+  "AttendanceType.ExcusedAbsence": "3 = Excused absence",
+
+  // === CLASSBOOKCOMBINEDO MODEL ===
+  "ClassBookCombineDO.Summary": "Combining several lower level classes into one upper level class",
+  "ClassBookCombineDO.ParentClassId": "Identifier (classId) of the class/group that will be created at Parent level",
+  "ClassBookCombineDO.ChildClassIdForDataTransfer": "Identifier (classId) of the class/group from which \"Off-day periods\", \"School year settings\" and \"Schedules\" will be copied to the newly created class book",
+
+  // === CLASSBOOKTYPE ENUM ===
+  "ClassBookType.Book_PG": "1 = 3-5 Group/preparatory group class book",
+  "ClassBookType.Book_I_III": "2 = 3-14 Class book I - III grade",
+  "ClassBookType.Book_IV": "3 = 3-16 Class book IV grade",
+  "ClassBookType.Book_V_XII": "4 = 3-87 Class book V - XII grade",
+  "ClassBookType.Book_CDO": "5 = 3-63 Group class book",
+  "ClassBookType.Book_DPLR": "6 = 3-63.1 Class book for personal development support activities",
+  "ClassBookType.Book_CSOP": "7 = 3-62 Class book for group/class in special educational support center",
+
+  // === EXAMDO MODEL ===
+  "ExamDO.Summary": "Class/control exam",
+  "ExamDO.ExamId": "Unique record identifier. Not populated. Only returned by the system.",
+  "ExamDO.Type": "Type of class/control exam - selected from the BookExamType enumeration",
+  "ExamDO.CurriculumId": "Curriculum subject identifier",
+  "ExamDO.Date": "Date of the class/control exam",
+  "ExamDO.Description": "Description",
+
+  // === BOOKEXAMTYPE ENUM ===
+  "BookExamType.ControlExam": "1 = Control exam",
+  "BookExamType.ClassExam": "2 = Class exam",
+
+  // === FIRSTGRADERESULTDO MODEL ===
+  "FirstGradeResultDO.Summary": "Overall annual achievement for first grade",
+  "FirstGradeResultDO.FirstGradeResultId": "Unique record identifier. Not populated. Only returned by the system.",
+  "FirstGradeResultDO.PersonId": "Unique person identifier for the system. Not used during update.",
+  "FirstGradeResultDO.QualitativeGrade": "Qualitative grade. Only one type of grade is filled - qualitative or quantitative - selected from the QualitativeGrade enumeration",
+  "FirstGradeResultDO.SpecialGrade": "Special needs (quantitative) grade. Only one type of grade is filled - qualitative or quantitative - selected from the SpecialNeedsGrade enumeration",
+
+  // === CLASSBOOKDO MODEL ===
+  "ClassBookDO.Summary": "Class book",
+  "ClassBookDO.ClassBookId": "Unique class book identifier",
+  "ClassBookDO.ClassId": "Identifier of the class/group created in Form Template module",
+  "ClassBookDO.BookType": "Class book type - selected from the ClassBookType enumeration",
+  "ClassBookDO.BasicClassId": "Grade identifier",
+  "ClassBookDO.BookName": "Name of the class/class book",
+  "ClassBookDO.IsFinalized": "Flag for finalized class book",
+  "ClassBookDO.IsValid": "Flag whether the class book is valid or archived",
+  "ClassBookDO.InvalidationDate": "Archiving date, if the class book is archived",
+
+  // === CLASSBOOKSEPARATEDO MODEL ===
+  "ClassBookSeparateDO.Summary": "Separating one upper level class into several lower level classes/groups",
+  "ClassBookSeparateDO.ParentClassId": "Identifier (classId) of the class/group that will be marked as invalid (IsValid=0)",
+  "ClassBookSeparateDO.ChildClassIds": "Identifiers (classIds) of the classes/groups that will be created",
+
+  // === GRADEDO MODEL ===
+  "GradeDO.Summary": "Grade",
+  "GradeDO.GradeId": "Unique record identifier. Not populated. Only returned by the system.",
+  "GradeDO.PersonId": "Unique person identifier for the system",
+  "GradeDO.CurriculumId": "Curriculum subject identifier. When ScheduleLessonId field is filled, CurriculumId is not mandatory.",
+  "GradeDO.Date": "Grade date",
+  "GradeDO.Category": "Grade category - selected from the GradeCategory enumeration",
+  "GradeDO.Type": "Grade type - selected from the GradeType enumeration",
+  "GradeDO.DecimalGrade": "Decimal grade with exactly two digits after the decimal point. Mandatory for \"Decimal\" grade category",
+  "GradeDO.QualitativeGrade": "Qualitative grade. Mandatory for \"Qualitative\" grade category",
+  "GradeDO.SpecialGrade": "Special needs grade. Mandatory for \"Special needs\" grade category",
+  "GradeDO.Comment": "Grade comment. The comment is visible to parents/students!",
+  "GradeDO.ScheduleLessonId": "Schedule lesson identifier. Mandatory for all grades except those with grade type - Term(21)/Final(22)/OtherClass(98)/OtherSchool(99), for which this field is ignored",
+  "GradeDO.Term": "School term. When creating, the school term for the grade can optionally be specified. Used only for grade type - Term(21)/OtherClass(98)/OtherSchool(99), for other grade types this field is ignored. If not filled, the school term of the grade date is taken",
+
+  // === GRADETYPE ENUM ===
+  "GradeType.General": "1 = Current grade",
+  "GradeType.ControlExam": "2 = Control exam",
+  "GradeType.ClassExam": "3 = Class exam",
+  "GradeType.Test": "4 = Test",
+  "GradeType.Homework": "5 = Homework",
+  "GradeType.Project": "6 = Project",
+  "GradeType.EntryLevel": "11 = Entry level",
+  "GradeType.ExitLevel": "12 = Exit level",
+  "GradeType.Term": "21 = Term grade",
+  "GradeType.Final": "22 = Final grade",
+  "GradeType.OtherClass": "98 = From other class",
+  "GradeType.OtherSchool": "99 = From other school",
+  "GradeType.OtherClassTerm": "100 = Term grade from other class. Do not use. Transferred from other class informational grade. Not taken into account",
+  "GradeType.OtherSchoolTerm": "101 = Term grade from other school. Do not use. Transferred from other school informational grade. Not taken into account",
+
+  // === GRADERESULTDO MODEL ===
+  "GradeResultDO.Summary": "Annual result",
+  "GradeResultDO.GradeResultId": "Unique record identifier. Not populated. Only returned by the system.",
+  "GradeResultDO.PersonId": "Unique person identifier for the system. Not populated during update.",
+  "GradeResultDO.InitialResultType": "Annual result - values from the GradeResultType enumeration are used",
+  "GradeResultDO.RetakeExamCurriculums": "Retake exam sessions by subjects. Filled only if the annual result is \"Must retake exams\"",
+  "GradeResultDO.FinalResultType": "Annual result after sessions. Filled only if the annual result is \"Must retake exams\"",
+
+  // === GRADERESULTCURRICULUMDO MODEL ===
+  "GradeResultCurriculumDO.Summary": "Retake exam sessions by subject",
+  "GradeResultCurriculumDO.CurriculumId": "Curriculum subject identifier",
+  "GradeResultCurriculumDO.Session1Grade": "Grade from 1st session. Integer from 2 to 6.",
+  "GradeResultCurriculumDO.Session1NoShow": "Did not show up for 1st session",
+  "GradeResultCurriculumDO.Session2Grade": "Grade from 2nd session. Integer from 2 to 6.",
+  "GradeResultCurriculumDO.Session2NoShow": "Did not show up for 2nd session",
+  "GradeResultCurriculumDO.Session3Grade": "Grade from additional session. Integer from 2 to 6.",
+  "GradeResultCurriculumDO.Session3NoShow": "Did not show up for additional session",
+
+  // === GRADERESULTTYPE ENUM ===
+  "GradeResultType.CompletesGrade": "1 = Completes grade",
+  "GradeResultType.MustRetakeExams": "2 = Must retake exams",
+  "GradeResultType.RepeatsGrade": "3 = Repeats grade",
+
+  // === HISMEDICALNOTICEDO MODEL ===
+  "HisMedicalNoticeDO.Summary": "Medical notice received from NHIS",
+  "HisMedicalNoticeDO.NrnMedicalNotice": "Unique identifier of the electronic document - NRN of the medical notice",
+  "HisMedicalNoticeDO.NrnExamination": "NRN of e-examination or e-hospitalization for which the medical notice is issued",
+  "HisMedicalNoticeDO.Patient": "Patient data",
+  "HisMedicalNoticeDO.Practitioner": "Practitioner data",
+  "HisMedicalNoticeDO.MedicalNotice": "Medical notice information",
+
+  // === HISMEDICALNOTICEPATIENTDO MODEL ===
+  "HisMedicalNoticePatientDO.Summary": "Patient data",
+  "HisMedicalNoticePatientDO.IdentifierType": "Type of person identifier. 1 - Personal identification number, 2 - Foreigner personal number, 3 - Social number - for foreign citizens, 4 - Passport number, 5 - Other identifier",
+  "HisMedicalNoticePatientDO.Identifier": "Person identifier directly related to the type. That is the actual personal identification number or foreigner personal number of the student",
+  "HisMedicalNoticePatientDO.GivenName": "Given name of the person",
+  "HisMedicalNoticePatientDO.FamilyName": "Family name of the person",
+
+  // === HISMEDICALNOTICEPRACTITIONERDO MODEL ===
+  "HisMedicalNoticePractitionerDO.Summary": "Practitioner data",
+  "HisMedicalNoticePractitionerDO.Pmi": "Practitioner unique identifier",
+
+  // === HISMEDICALNOTICEINFODO MODEL ===
+  "HisMedicalNoticeInfoDO.Summary": "Medical notice information",
+  "HisMedicalNoticeInfoDO.FromDate": "Start date of medical notice validity (inclusive)",
+  "HisMedicalNoticeInfoDO.ToDate": "End date of medical notice validity (inclusive)",
+  "HisMedicalNoticeInfoDO.AuthoredOn": "Medical notice issue date",
+
+  // === INDIVIDUALWORKDO MODEL ===
+  "IndividualWorkDO.Summary": "Individual work",
+  "IndividualWorkDO.IndividualWorkId": "Unique record identifier. Not populated. Only returned by the system.",
+  "IndividualWorkDO.PersonId": "Unique person identifier for the system. Not used during update.",
+  "IndividualWorkDO.Date": "Date",
+  "IndividualWorkDO.IndividualWorkActivity": "Individual work conducted with the student",
+
+  // === MEDICALNOTICEBATCHDO MODEL ===
+  "MedicalNoticeBatchDO.Summary": "Batch of medical notices",
+  "MedicalNoticeBatchDO.MedicalNotices": "Medical notices",
+  "MedicalNoticeBatchDO.LastHisSyncTime": "Time of last synchronization with NHIS",
+  "MedicalNoticeBatchDO.HasMore": "Indicator whether there are more medical notices to extract for the current provider. In rare cases, fewer notices may be received than requested with the next parameter, but there may actually be more to extract. Therefore, it is advisable to check this field and if it is true, call the MedicalNotices_GetNext method again",
+
+  // === MEDICALNOTICEDO MODEL ===
+  "MedicalNoticeDO.Summary": "Medical notice received from the National Health Information System (NHIS)",
+  "MedicalNoticeDO.MedicalNoticeId": "Unique record identifier",
+  "MedicalNoticeDO.PersonId": "Student identifier",
+  "MedicalNoticeDO.HisMedicalNotice": "Medical notice from NHIS",
+
+  // === NOTEDO MODEL ===
+  "NoteDO.Summary": "Note",
+  "NoteDO.NoteId": "Unique record identifier. Not populated. Only returned by the system.",
+  "NoteDO.Description": "Description",
+  "NoteDO.IsForAllStudents": "The note applies to all students in the group",
+  "NoteDO.StudentIds": "Students for whom the note is (PersonIds of students). Filled if \"IsForAllStudents = false\"",
+  "NoteDO.Students": "Students for whom the note is. Filled if \"IsForAllStudents = false\"",
+
+  // === NOTESTUDENTDO MODEL ===
+  "NoteStudentDO.PersonId": "Unique person identifier for the system",
+
+  // === OFFDAYDO MODEL ===
+  "OffDayDO.Summary": "Off-day period",
+  "OffDayDO.OffDayId": "Unique record identifier. Not populated. Only returned by the system.",
+  "OffDayDO.From": "Start date of the period",
+  "OffDayDO.To": "End date of the period",
+  "OffDayDO.Description": "Description",
+  "OffDayDO.IsForAllClasses": "The off-days apply to all classes",
+  "OffDayDO.BasicClassIds": "Identifiers of grades for which the off-days apply. Filled if \"IsForAllClasses = false\". Cannot be filled simultaneously with \"ClassBookIds\"",
+  "OffDayDO.ClassBookIds": "Identifiers of classes/groups for which the off-days apply. Filled if \"IsForAllClasses = false\". Cannot be filled simultaneously with \"BasicClassIds\"",
+  "OffDayDO.IsPgOffProgramDay": "Marks whether attendance entry is allowed for pre-school groups for weekdays. The flag does not restrict the Attendances APIs in any way, but changes the behavior of the pre-school class book user interface in NEISPUO. true: part of off-program time, attendance entry is possible and shows red warnings when entering unexcused absences; false: off-day and non-attendance day, attendance and absence entry is not possible; null: not providing a value is treated as 'true'",
+
+  // === PARENTMEETINGDO MODEL ===
+  "ParentMeetingDO.Summary": "Parent meeting",
+  "ParentMeetingDO.ParentMeetingId": "Unique record identifier. Not populated. Only returned by the system.",
+  "ParentMeetingDO.Date": "Parent meeting date",
+  "ParentMeetingDO.StartTime": "Start time in \"HH:MM\" format. Example: \"19:30\"",
+  "ParentMeetingDO.Location": "Location",
+  "ParentMeetingDO.Title": "Title",
+  "ParentMeetingDO.Description": "Description",
+
+  // === PERFORMANCEDO MODEL ===
+  "PerformanceDO.Summary": "Performance",
+  "PerformanceDO.PerformanceId": "Unique record identifier. Not populated. Only returned by the system.",
+  "PerformanceDO.PerformanceTypeId": "Performance type",
+  "PerformanceDO.Name": "Name",
+  "PerformanceDO.StartDate": "Event period from",
+  "PerformanceDO.EndDate": "Event period to",
+  "PerformanceDO.Description": "Description",
+  "PerformanceDO.Location": "Event location",
+  "PerformanceDO.StudentAwards": "Awards received by students",
+
+  // === PGRESULTDO MODEL ===
+  "PgResultDO.Summary": "Pre-school preparation result by educational directions",
+  "PgResultDO.PgResultId": "Unique record identifier. Not populated. Only returned by the system.",
+  "PgResultDO.PersonId": "Unique person identifier for the system. Not used during update.",
+  "PgResultDO.SubjectId": "Educational direction (subject) identifier from the Subject nomenclature. Not used during update.",
+  "PgResultDO.StartSchoolYearResult": "Section \"At the beginning of the school year\". Maximum size - 10000 characters.",
+  "PgResultDO.EndSchoolYearResult": "Section \"At the end of the school year\". Maximum size - 10000 characters.",
+
+  // === REMARKDO MODEL ===
+  "RemarkDO.Summary": "Remark",
+  "RemarkDO.RemarkId": "Unique record identifier. Not populated. Only returned by the system.",
+  "RemarkDO.PersonId": "Unique person identifier for the system. Not used during update.",
+  "RemarkDO.CurriculumId": "Curriculum subject identifier. Not used during update.",
+  "RemarkDO.Type": "Remark type. Not used during update - values from the RemarkType enumeration are used",
+  "RemarkDO.Date": "Remark date",
+  "RemarkDO.Description": "Description",
+
+  // === REMARKTYPE ENUM ===
+  "RemarkType.Good": "1 = Praise",
+  "RemarkType.Bad": "2 = Remark",
+
+  // === REPLRPARTICIPATIONDO MODEL ===
+  "ReplrParticipationDO.Summary": "REPLR participation - Regional team for personal development support",
+  "ReplrParticipationDO.ReplrParticipationId": "Unique record identifier. Not populated. Only returned by the system.",
+  "ReplrParticipationDO.ReplrParticipationTypeId": "Type of REPLR participation. Can be left empty or one of the following can be selected: 1 - Assessment by personal development support team (PDST) in kindergarten/school, 2 - Assessment of children and students with special educational needs when it is impossible to form PDST in kindergarten/school, 3 - Re-assessment in case of parent disagreement with PDST assessment, 4 - Assessment for referral to special schools, 5 - Assessment for referral to schools with SESSC support, 6 - Methodical support, 7 - Assessment for education of student hospitalized, 8 - Assessment of children with special educational needs in connection with Art.14 of the Regulation for admission of children to municipal kindergartens in Sofia, 9 - Other activities, 10 - Assessment for referral to kindergarten with special groups, 11 - Assessment of students with SEN, change of education form, 12 - Assessment for postponement of mandatory education in first grade, 13 - Assessment for referral of students with SEN after completing VII or X grade",
+  "ReplrParticipationDO.Date": "Event date",
+  "ReplrParticipationDO.Topic": "Event topic",
+  "ReplrParticipationDO.Attendees": "Attending participants. Free text.",
+  "ReplrParticipationDO.InstId": "Institution for which the REPLR participation relates",
+
+  // === SANCTIONDO MODEL ===
+  "SanctionDO.Summary": "Sanction",
+  "SanctionDO.SanctionId": "Unique record identifier. Not populated. Only returned by the system.",
+  "SanctionDO.PersonId": "Unique person identifier for the system. Not used during update.",
+  "SanctionDO.Type": "Sanction type. One of the following values is selected: 1 - Remark, 2 - Transfer to another class in the same school, 3 - Warning for transfer to another school, 4 - Transfer to another school, 5 - Transfer from daily to independent form of education",
+  "SanctionDO.OrderNumber": "Order number",
+  "SanctionDO.OrderDate": "Order date",
+  "SanctionDO.StartDate": "Start date",
+  "SanctionDO.EndDate": "End date",
+  "SanctionDO.Description": "Description",
+  "SanctionDO.CancelOrderNumber": "Cancellation order number",
+  "SanctionDO.CancelOrderDate": "Cancellation order date",
+  "SanctionDO.CancelReason": "Reason for the cancellation order",
+  "SanctionDO.RuoOrderNumber": "Regional Education Office chief order number",
+  "SanctionDO.RuoOrderDate": "Regional Education Office chief order date",
+
+  // === SCHEDULEDO MODEL ===
+  "ScheduleDO.Summary": "School schedule",
+  "ScheduleDO.ScheduleId": "Unique record identifier. Not populated. Only returned by the system.",
+  "ScheduleDO.IsIndividualCurriculum": "The schedule is for a student in individual form of education",
+  "ScheduleDO.PersonId": "Unique person identifier for the system. Filled only when the schedule is for a student in individual curriculum.",
+  "ScheduleDO.Term": "School term. If the field is null the schedule is for the entire school year - selected from the SchoolTerm enumeration values",
+  "ScheduleDO.StartDate": "Start date",
+  "ScheduleDO.EndDate": "End date",
+  "ScheduleDO.IncludesWeekend": "The schedule includes Saturday and Sunday. true - includes Saturday and Sunday; false | null - does not include Saturday and Sunday",
+  "ScheduleDO.HasAdhocShift": "The schedule has its own shift and does not use predefined shifts. true - AdhocShiftIsMultiday and AdhocShiftHours fields become mandatory, and ShiftId field is ignored; false | null - ShiftId field is mandatory, and AdhocShiftIsMultiday and AdhocShiftHours fields are ignored",
+  "ScheduleDO.AdhocShiftIsMultiday": "The custom shift has different schedules for individual days. Mandatory field when HasAdhocShift=true.",
+  "ScheduleDO.AdhocShiftHours": "Hours of the custom shift that needs to be defined at the moment. Mandatory field when HasAdhocShift=true.",
+  "ScheduleDO.ShiftId": "School shift. Mandatory field when HasAdhocShift=false. A Shift must be created and its identifier filled.",
+  "ScheduleDO.Weeks": "The weeks that the schedule covers",
+  "ScheduleDO.Days": "School schedule by days",
+  "ScheduleDO.Lessons": "All lessons from the schedule. Not populated. Only returned by the system.",
+
+  // === SCHEDULEWEEKDO MODEL ===
+  "ScheduleWeekDO.Summary": "Week from the school schedule according to ISO 8601 (see https://en.wikipedia.org/wiki/ISO_week_date)",
+  "ScheduleWeekDO.Year": "ISO 8601 week year",
+  "ScheduleWeekDO.WeekNumber": "ISO 8601 week number. Number from 1 to 53.",
+
+  // === SCHEDULEDAYDO MODEL ===
+  "ScheduleDayDO.Summary": "Day from the school schedule",
+  "ScheduleDayDO.Day": "Day of the week. Number from 1 (Monday) to 7 (Sunday).",
+  "ScheduleDayDO.Hours": "Daily schedule by hours",
+
+  // === SCHEDULEHOURDO MODEL ===
+  "ScheduleHourDO.Summary": "Hour from the school schedule",
+  "ScheduleHourDO.HourNumber": "Hour number corresponding to the schedule shift",
+  "ScheduleHourDO.GroupCurriculumIds": "Curriculum subject identifiers for each group in the hour",
+  "ScheduleHourDO.Groups": "Curriculum subject identifiers for each group in the hour",
+
+  // === SCHEDULEHOURGROUPDO MODEL ===
+  "ScheduleHourGroupDO.Summary": "Groups of subjects and location from the curriculum for each group in the hour",
+  "ScheduleHourGroupDO.CurriculumId": "Curriculum subject identifier",
+  "ScheduleHourGroupDO.Location": "Hour location",
+
+  // === SCHEDULELESSONDO MODEL ===
+  "ScheduleLessonDO.Summary": "Lesson from the school schedule",
+  "ScheduleLessonDO.ScheduleLessonId": "Unique record identifier. Not populated. Only returned by the system.",
+  "ScheduleLessonDO.Date": "Lesson date",
+  "ScheduleLessonDO.Day": "Day of the week. Number from 1 (Monday) to 5 (Friday).",
+  "ScheduleLessonDO.HourNumber": "Hour number",
+  "ScheduleLessonDO.CurriculumId": "Curriculum subject identifier",
+
+  // === SCHEDULERESULTDO MODEL ===
+  "ScheduleResultDO.Summary": "Result from creating/updating a school schedule",
+  "ScheduleResultDO.ScheduleId": "Unique school schedule identifier",
+  "ScheduleResultDO.Lessons": "All lessons from the schedule",
+
+  // === SCHEDULEADHOCSHIFTHOURDO MODEL ===
+  "ScheduleAdhocShiftHourDO.Summary": "Hour from custom shift that needs to be defined at the moment. Used when HasAdhocShift=true.",
+  "ScheduleAdhocShiftHourDO.Day": "Day of the week",
+  "ScheduleAdhocShiftHourDO.HourNumber": "Hour number",
+  "ScheduleAdhocShiftHourDO.StartTime": "Start time",
+  "ScheduleAdhocShiftHourDO.EndTime": "End time",
+
+  // === SCHOOLTERM ENUM ===
+  "SchoolTerm.TermOne": "1 = First term",
+  "SchoolTerm.TermTwo": "2 = Second term",
+
+  // === SCHOOLYEARDATEINFODO MODEL ===
+  "SchoolYearDateInfoDO.Summary": "School year settings. The entered dates must be in the interval [SchoolYearStartDateLimit, SchoolYearEndDateLimit], where if the institution is a sports school - SchoolYearStartDateLimit - September 1st (if September 1st is a holiday, it starts on the first following working day), SchoolYearEndDateLimit - August 31st of the following year; is a kindergarten or other - SchoolYearStartDateLimit - September 15th (if September 15th is a holiday, it starts on the first following working day), SchoolYearEndDateLimit - September 14th of the following year",
+  "SchoolYearDateInfoDO.SchoolYearDateInfoId": "Unique record identifier. Not populated. Only returned by the system.",
+  "SchoolYearDateInfoDO.SchoolYearStartDate": "Start of school year. Must be >= SchoolYearStartDateLimit.",
+  "SchoolYearDateInfoDO.FirstTermEndDate": "End of first term. Must be > SchoolYearStartDate.",
+  "SchoolYearDateInfoDO.SecondTermStartDate": "Start of second term. Must be > FirstTermEndDate.",
+  "SchoolYearDateInfoDO.SchoolYearEndDate": "End of school year. Must be (> SecondTermStartDate OR <= SchoolYearEndDateLimit).",
+  "SchoolYearDateInfoDO.Description": "Description",
+  "SchoolYearDateInfoDO.IsForAllClasses": "The settings apply to all classes",
+  "SchoolYearDateInfoDO.BasicClassIds": "Identifiers of grades for which the settings apply. Filled if \"IsForAllClasses = false\". Cannot be filled simultaneously with \"ClassBookIds\".",
+  "SchoolYearDateInfoDO.ClassBookIds": "Identifiers of classes/groups for which the settings apply. Filled if \"IsForAllClasses = false\". Cannot be filled simultaneously with \"BasicClassIds\".",
+
+  // === SHIFTDO MODEL ===
+  "ShiftDO.Summary": "School shift",
+  "ShiftDO.ShiftId": "Unique record identifier. Not populated. Only returned by the system.",
+  "ShiftDO.Name": "Name",
+  "ShiftDO.IsMultiday": "Shift with different schedules for individual days",
+  "ShiftDO.Hours": "Hours",
+
+  // === SHIFTHOURDO MODEL ===
+  "ShiftHourDO.Summary": "Hour from the school shift",
+  "ShiftHourDO.Day": "Day for which the hour is. Number from 1 (Monday) to 7 (Sunday). For shifts without different schedules (IsMultiday=False) always 1 is passed.",
+  "ShiftHourDO.HourNumber": "Hour number. Number >= 0 (zero hour). Usually the numbering of hours is from 1, but the possibility for zero hour is left, which is sometimes used by schools. Hours are allowed to be non-consecutive (e.g. 1, 3, 5), but repetitions of hours within one day are not allowed (e.g. 2 times 1st hour).",
+  "ShiftHourDO.StartTime": "Start time in \"HH:MM\" format. Example: \"08:00\".",
+  "ShiftHourDO.EndTime": "End time in \"HH:MM\" format. Example: \"08:40\".",
+
+  // === STUDENTACTIVITIESDO MODEL ===
+  "StudentActivitiesDO.Summary": "Interest activities. Can only be added for class books: 3-5 Group/preparatory group class book, 3-14 Class book I - III grade, 3-16 Class book IV grade",
+  "StudentActivitiesDO.PersonId": "Unique student identifier. Not populated. Only returned by the system.",
+  "StudentActivitiesDO.Activities": "Interest activities for the student",
+
+  // === STUDENTCARRIEDABSENCESDO MODEL ===
+  "StudentCarriedAbsencesDO.Summary": "Carried absences",
+  "StudentCarriedAbsencesDO.PersonId": "Unique student identifier. Not populated. Only returned by the system.",
+  "StudentCarriedAbsencesDO.FirstTermExcusedCount": "Carried excused absences for 1st term",
+  "StudentCarriedAbsencesDO.FirstTermUnexcusedCount": "Carried unexcused absences for 1st term",
+  "StudentCarriedAbsencesDO.FirstTermLateCount": "Carried late arrivals for 1st term",
+  "StudentCarriedAbsencesDO.SecondTermExcusedCount": "Carried excused absences for 2nd term",
+  "StudentCarriedAbsencesDO.SecondTermUnexcusedCount": "Carried unexcused absences for 2nd term",
+  "StudentCarriedAbsencesDO.SecondTermLateCount": "Carried late arrivals for 2nd term",
+
+  // === STUDENTCLASSNUMBERDO MODEL ===
+  "StudentClassNumberDO.Summary": "Student number",
+  "StudentClassNumberDO.PersonId": "Unique student identifier. Not populated. Only returned by the system.",
+  "StudentClassNumberDO.ClassNumber": "Student number in the class book. Can be null (no number). There is no restriction against repeating with other students' numbers.",
+
+  // === STUDENTGRADELESSCURRICULUMSDO MODEL ===
+  "StudentGradelessCurriculumsDO.Summary": "Exempted from subjects",
+  "StudentGradelessCurriculumsDO.PersonId": "Unique student identifier. Not populated. Only returned by the system.",
+  "StudentGradelessCurriculumsDO.GradelessCurriculums": "Subjects from which the student is exempted",
+
+  // === STUDENTGRADELESSCURRICULUMDO MODEL ===
+  "StudentGradelessCurriculumDO.Summary": "Exempted from subject. The object will be saved only if at least one of the three Without* fields is true",
+  "StudentGradelessCurriculumDO.CurriculumId": "Curriculum subject identifier from which the student is exempted",
+  "StudentGradelessCurriculumDO.WithoutFirstTermGrade": "Exempted from grade for 1st term",
+  "StudentGradelessCurriculumDO.WithoutSecondTermGrade": "Exempted from grade for 2nd term",
+  "StudentGradelessCurriculumDO.WithoutFinalGrade": "Exempted from annual grade",
+
+  // === STUDENTSPECIALNEEDCURRICULUMSDO MODEL ===
+  "StudentSpecialNeedCurriculumsDO.Summary": "Special educational needs grades by subjects",
+  "StudentSpecialNeedCurriculumsDO.PersonId": "Unique student identifier. Not populated. Only returned by the system.",
+  "StudentSpecialNeedCurriculumsDO.StudentSpecialNeedCurriculumIds": "Curriculum subject identifiers for which the student is assessed with special educational needs grades",
+  "StudentSpecialNeedCurriculumsDO.HasSpecialNeedFirstGradeResult": "First grade student is assessed with special educational needs grades in \"Overall annual achievement\" section. Applies only to first grade students.",
+
+  // === SUPPORTDO MODEL ===
+  "SupportDO.Summary": "Support",
+  "SupportDO.SupportId": "Unique record identifier. Not populated. Only returned by the system.",
+  "SupportDO.Description": "Goal",
+  "SupportDO.ExpectedResult": "Expected result",
+  "SupportDO.EndDate": "Deadline",
+  "SupportDO.SupportDifficultyTypeIds": "Support type",
+  "SupportDO.TeacherIds": "Team. PersonIds of teachers.",
+  "SupportDO.IsForAllStudents": "The support applies to all students in the group",
+  "SupportDO.StudentIds": "Students for whom the support is (PersonIds of students). Filled if \"IsForAllStudents = false\"",
+  "SupportDO.Activities": "Activities",
+  "SupportDO.Students": "Students for whom the support is. Filled if \"IsForAllStudents = false\"",
+
+  // === SUPPORTACTIVITYDO MODEL ===
+  "SupportActivityDO.Summary": "Activity",
+  "SupportActivityDO.SupportActivityTypeId": "Activity type",
+  "SupportActivityDO.Target": "Goal",
+  "SupportActivityDO.Result": "Result",
+  "SupportActivityDO.Date": "Date",
+
+  // === SUPPORTSTUDENTDO MODEL ===
+  "SupportStudentDO.Summary": "Student",
+  "SupportStudentDO.PersonId": "Unique person identifier for the system",
+
+  // === TEACHERABSENCEDO MODEL ===
+  "TeacherAbsenceDO.Summary": "Teacher absence",
+  "TeacherAbsenceDO.TeacherAbsenceId": "Unique record identifier. Not populated. Only returned by the system.",
+  "TeacherAbsenceDO.TeacherPersonId": "Unique identifier of the teacher who is absent. Cannot be changed during update. The original value must be provided, as when creating it.",
+  "TeacherAbsenceDO.StartDate": "Start date of absence. Cannot be changed during update. The original value must be provided, as when creating it.",
+  "TeacherAbsenceDO.EndDate": "End date of absence. Cannot be changed during update. The original value must be provided, as when creating it.",
+  "TeacherAbsenceDO.Reason": "Reasons for absence",
+  "TeacherAbsenceDO.Hours": "Hours for which schedule changes/substitutions are created",
+
+  // === TEACHERABSENCEHOURDO MODEL ===
+  "TeacherAbsenceHourDO.Summary": "Hour for which a schedule change/substitution is created",
+  "TeacherAbsenceHourDO.ScheduleLessonId": "Unique identifier of a lesson from the school schedule",
+  "TeacherAbsenceHourDO.Type": "Substitution type - selected from the TeacherAbsenceHourType enumeration",
+  "TeacherAbsenceHourDO.ReplTeacherPersonId": "Unique identifier of the substitute. Mandatory for substitution type \"Non-specialist substitute - Civic education hour\" and \"Subject specialist substitute\"",
+
+  // === TEACHERABSENCEHOURTTYPE ENUM ===
+  "TeacherAbsenceHourType.EmptyHour": "1 = No substitute - Free hour",
+  "TeacherAbsenceHourType.NonSpecialist": "2 = Non-specialist substitute - Civic education hour",
+  "TeacherAbsenceHourType.Specialist": "3 = Subject specialist substitute",
+  "TeacherAbsenceHourType.ExtTeacher": "4 = External lecturer",
+
+  "TeacherAbsenceHourType.Summary": "Substitution type",
+
+  // === TOPICDO MODEL ===
+  "TopicDO.Summary": "Lesson topic",
+  "TopicDO.TopicId": "Unique record identifier. Not populated. Only returned by the system.",
+  "TopicDO.Date": "Lesson topic date",
+  "TopicDO.Titles": "Topics. There may be several for a given lesson",
+  "TopicDO.ScheduleLessonId": "Schedule lesson identifier"
+}

@@ -1,0 +1,909 @@
+{
+  "label": "<<<< Институция - пълен набор данни >>>>>",
+  "procedureName": "reginst_basic.institutionCreateUpdate",
+  "dataName": "if(operationType==0 || operationType==2) {form.dataName='institution'} else if(operationType==1 && procType==1) {form.dataName='institution-create'} else {form.dataName='procedure-create'}",
+  "sections": [
+    {
+      "order": 1,
+      "label": "Данни за процедурата",
+      "name": "procedureData",
+      "subsections": [
+        {
+          "order": 1,
+          "name": "procedureBasicData",
+          "fields": [
+            {
+              "label": "Сист. ID на процедурата",
+              "name": "riProcedureID",
+              "type": "input",
+              "inputType": "number",
+              "rendered": false,
+              "disabled": true,
+              "order": 0
+            },
+            {
+              "label": "Вид процедура",
+              "name": "procedureTypeID",
+              "type": "select",
+              "optionsPath": "/data/get/procedureTypes",
+              "defaultValue": "if(operationType==1 && procType==1){field.defaultValue=1} else if(operationType==1 && procType==2){field.defaultValue=2} else if(operationType==1 && procType==3){field.defaultValue=3} else if(operationType==1 && procType==4){field.defaultValue=4} else {field.defaultValue=null}",
+              "disabled": "if(operationType==1) {field.disabled=true} else {field.disabled=false}",
+              "width": 300,
+              "order": 1
+            },
+            {
+              "label": "Дата на регистриране",
+              "name": "procedureDate",
+              "type": "date",
+              "disabled": false,
+              "order": 2,
+              "validations": []
+            },
+            {
+              "label": "Влиза в сила от",
+              "name": "procedureYearDue",
+              "type": "input",
+              "inputType": "number",
+              "order": 3,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 4,
+                  "message": "Максимална дължина 4 символа"
+                },
+                {
+                  "name": "max",
+                  "validation": 9999,
+                  "message": "Невалидна година"
+                },
+                {
+                  "name": "pattern",
+                  "validation": "^\\d+$",
+                  "message": "Полето трябва да съдържа цяло неотрицателно число"
+                }
+              ]
+            },
+            {
+              "label": "Статус на процедурата",
+              "name": "procedureStatusTypeID",
+              "type": "select",
+              "optionsPath": "/data/get/statusTypes",
+              "defaultValue": "if(operationType==1){field.defaultValue=1} else {field.defaultValue=null}",
+              "disabled": "if(operationType==1) {field.disabled=true} else {field.disabled=false}",
+              "width": 500,
+              "order": 4
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "name": "procedureTransformData",
+          "fields": [
+            {
+              "label": "Статус на институцията",
+              "name": "procedureTransformTypeID",
+              "type": "select",
+              "optionsPath": "/data/get/transformTypes",
+              "defaultValue": "if(operationType==1 && procType==1){field.defaultValue=5} else {field.defaultValue=null}",
+              "disabled": "if(operationType==1 && procType==1) {field.disabled=true} else {field.disabled=false}",
+              "order": 1
+            },
+            {
+              "label": "Бележки по движението в Регистъра",
+              "name": "procedureTransformDetails",
+              "type": "textarea",
+              "disabled": false,
+              "order": 2,
+              "width": 900,
+              "height": 3,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 4000,
+                  "message": "Максимална дължина 4000 символа"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "label": "Данни за институцията",
+      "name": "institutionData",
+      "subsections": [
+        {
+          "order": 1,
+          "label": "Основна информация",
+          "name": "basicInformation",
+          "fields": [
+            {
+              "label": "Сист. ID на институция",
+              "name": "riInstitutionID",
+              "type": "input",
+              "inputType": "number",
+              "rendered": false,
+              "disabled": true,
+              "order": 0
+            },
+            {
+              "label": "Код по НЕИСПУО",
+              "name": "codeNEISPUO",
+              "type": "input",
+              "inputType": "text",
+              "disabled": false,
+              "order": 1,
+              "width": 95,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 10,
+                  "message": "Максимална дължина 10 символа"
+                }
+              ]
+            },
+            {
+              "label": "Наименование",
+              "name": "name",
+              "type": "input",
+              "inputType": "text",
+              "disabled": false,
+              "order": 4,
+              "width": 1200,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 1024,
+                  "message": "Максимална дължина 1024 символа"
+                }
+              ]
+            },
+            {
+              "label": "Кратко наименование",
+              "name": "abbreviation",
+              "type": "input",
+              "inputType": "text",
+              "disabled": false,
+              "order": 3,
+              "width": 250,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 255,
+                  "message": "Максимална дължина 255 символа"
+                }
+              ]
+            },
+            {
+              "label": "ЕИК",
+              "name": "bulstat",
+              "type": "input",
+              "inputType": "text",
+              "disabled": false,
+              "order": 2,
+              "width": 120,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 13,
+                  "message": "Максимална дължина 13 символа"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "label": "Класификация",
+          "name": "classification",
+          "fields": [
+            {
+              "label": "Вид по чл. 37 (общ, според вида на подготовката)",
+              "name": "baseSchoolTypeID",
+              "type": "select",
+              "optionsPath": "/data/get/baseSchoolTypes",
+              "disabled": false,
+              "order": 5
+            },
+            {
+              "label": "Вид по чл. 38 (детайлен)",
+              "name": "detailedSchoolTypeID",
+              "type": "select",
+              "optionsPath": "/data/get/detailedSchoolTypes",
+              "disabled": false,
+              "order": 6
+            },
+            {
+              "label": "Вид по чл. 35-36 (според собствеността)",
+              "name": "budgetingSchoolTypeID",
+              "type": "select",
+              "optionsPath": "/data/get/budgetingSchoolTypes",
+              "disabled": false,
+              "order": 7
+            },
+            {
+              "label": "Източник на финансиране",
+              "name": "financialSchoolTypeID",
+              "type": "select",
+              "optionsPath": "/data/get/financialSchoolTypes",
+              "disabled": false,
+              "order": 8
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "label": "Седалище и адрес на управление",
+          "name": "settlementAddress",
+          "fields": [
+            {
+              "label": "Държава",
+              "name": "settlementCountry",
+              "type": "select",
+              "optionsPath": "/data/get/country",
+              "disabled": false,
+              "order": 1
+            },
+            {
+              "label": "Област",
+              "name": "settlementRegion",
+              "type": "select",
+              "optionsPath": "/data/get/region",
+              "disabled": false,
+              "influence": [
+                {
+                  "fieldName": "settlementMunicipality",
+                  "url": "/data/get/municipality",
+                  "type": "options"
+                }
+              ],
+              "order": 2
+            },
+            {
+              "label": "Община",
+              "name": "settlementMunicipality",
+              "type": "select",
+              "disabled": false,
+              "influence": [
+                {
+                  "fieldName": "settlementTown",
+                  "url": "/data/get/town",
+                  "type": "options"
+                }
+              ],
+              "order": 3
+            },
+            {
+              "label": "Населено място",
+              "name": "settlementTown",
+              "type": "select",
+              "influence": [
+                {
+                  "fieldName": "settlementLocalArea",
+                  "url": "/data/get/localArea",
+                  "type": "options"
+                }
+              ],
+              "disabled": false,
+              "order": 4
+            },
+            {
+              "label": "Район",
+              "name": "settlementLocalArea",
+              "type": "select",
+              "disabled": false,
+              "order": 5
+            },
+            {
+              "label": "Адрес",
+              "name": "settlementAddress",
+              "type": "input",
+              "inputType": "text",
+              "order": 6,
+              "disabled": false,
+              "width": 850,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 255,
+                  "message": "Максимална дължина 255 символа"
+                }
+              ]
+            },
+            {
+              "label": "Пощенски код",
+              "name": "settlementPostCode",
+              "type": "input",
+              "inputType": "number",
+              "order": 7,
+              "disabled": false,
+              "width": 100,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 4,
+                  "message": "Максимална дължина 4 символа"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "order": 4,
+          "label": "Данни за директорa по заявление",
+          "name": "institutionHead",
+          "fields": [
+            {
+              "label": "Име",
+              "name": "headFirstName",
+              "type": "input",
+              "inputType": "text",
+              "order": 1,
+              "disabled": false,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 255,
+                  "message": "Максимална дължина 255 символа"
+                }
+              ]
+            },
+            {
+              "label": "Презиме",
+              "name": "headMiddleName",
+              "type": "input",
+              "inputType": "text",
+              "order": 2,
+              "disabled": false,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 255,
+                  "message": "Максимална дължина 255 символа"
+                }
+              ]
+            },
+            {
+              "label": "Фамилия",
+              "name": "headLastName",
+              "type": "input",
+              "inputType": "text",
+              "order": 3,
+              "disabled": false,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 255,
+                  "message": "Максимална дължина 255 символа"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "order": 5,
+          "label": "Данни за директорa по длъжност",
+          "name": "staffDirector",
+          "fields": [
+            {
+              "label": "Име",
+              "name": "staffDirectorFirstName",
+              "type": "input",
+              "inputType": "text",
+              "order": 1,
+              "disabled": false,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 255,
+                  "message": "Максимална дължина 255 символа"
+                }
+              ]
+            },
+            {
+              "label": "Презиме",
+              "name": "staffDirectorMiddleName",
+              "type": "input",
+              "inputType": "text",
+              "order": 2,
+              "disabled": false,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 255,
+                  "message": "Максимална дължина 255 символа"
+                }
+              ]
+            },
+            {
+              "label": "Фамилия",
+              "name": "staffDirectorLastName",
+              "type": "input",
+              "inputType": "text",
+              "order": 3,
+              "disabled": false,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 255,
+                  "message": "Максимална дължина 255 символа"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "order": 6,
+          "label": "Допълнителни данни",
+          "name": "additionalData",
+          "fields": [
+            {
+              "label": "Институцията има задължение да подава информация за Списък – образец 1, 2 и 3",
+              "name": "isDataDue",
+              "type": "checkbox",
+              "flexible": false,
+              "disabled": false,
+              "order": 1
+            },
+            {
+              "label": "С национално значение",
+              "name": "isNational",
+              "type": "checkbox",
+              "flexible": false,
+              "disabled": false,
+              "order": 2
+            },
+            {
+              "label": "Обща численост на персонала",
+              "name": "personnelCount",
+              "type": "input",
+              "inputType": "number",
+              "order": 3,
+              "disabled": false,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 4,
+                  "message": "Максимална дължина 4 символа"
+                }
+              ]
+            },
+            {
+              "label": "Данни за призната религиозна институция в страната и за нейния централен орган",
+              "name": "religInstDetails",
+              "type": "textarea",
+              "order": 4,
+              "width": 1000,
+              "height": 3,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 4048,
+                  "message": "Максимална дължина 4048 символа"
+                }
+              ]
+            },
+            {
+              "label": "Авторски учебни програми за предучилищно образование, или авторски учебни програми по професионална подготовка",
+              "name": "authProgram",
+              "type": "textarea",
+              "order": 5,
+              "width": 1000,
+              "height": 3,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 4048,
+                  "message": "Максимална дължина 4048 символа"
+                }
+              ]
+            },
+            {
+              "label": "Условия и ред за разпределение на имуществото (при преобразуване или закриване)",
+              "name": "premInventory",
+              "type": "textarea",
+              "order": 6,
+              "width": 1000,
+              "height": 3,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 4048,
+                  "message": "Максимална дължина 4048 символа"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "order": 7,
+          "label": "Основен адрес на дейността",
+          "name": "primaryAddress",
+          "canDuplicate": false,
+          "fields": [
+            {
+              "label": "Наименование",
+              "name": "primaryAddrName",
+              "type": "input",
+              "inputType": "text",
+              "order": 1,
+              "disabled": true,
+              "defaultValue": "Основна сграда",
+              "width": 1200,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 255,
+                  "message": "Максимална дължина 255 символа"
+                }
+              ]
+            },
+            {
+              "label": "Държава",
+              "name": "primaryAddrCountry",
+              "type": "select",
+              "optionsPath": "/data/get/country",
+              "disabled": false,
+              "defaultValue": 34,
+              "order": 2
+            },
+            {
+              "label": "Област",
+              "name": "primaryAddrRegion",
+              "type": "select",
+              "optionsPath": "/data/get/region",
+              "disabled": false,
+              "influence": [
+                {
+                  "fieldName": "primaryAddrMunicipality",
+                  "url": "/data/get/municipality",
+                  "type": "options"
+                }
+              ],
+              "order": 3
+            },
+            {
+              "label": "Община",
+              "name": "primaryAddrMunicipality",
+              "type": "select",
+              "disabled": false,
+              "influence": [
+                {
+                  "fieldName": "primaryAddrTown",
+                  "url": "/data/get/town",
+                  "type": "options"
+                }
+              ],
+              "order": 4
+            },
+            {
+              "label": "Населено място",
+              "name": "primaryAddrTown",
+              "type": "select",
+              "influence": [
+                {
+                  "fieldName": "primaryAddrLocalArea",
+                  "url": "/data/get/localArea",
+                  "type": "options"
+                }
+              ],
+              "disabled": false,
+              "order": 5
+            },
+            {
+              "label": "Район",
+              "name": "primaryAddrLocalArea",
+              "type": "select",
+              "disabled": false,
+              "order": 6
+            },
+            {
+              "label": "Адрес",
+              "name": "primaryAddrAddress",
+              "type": "input",
+              "inputType": "text",
+              "order": 7,
+              "disabled": false,
+              "width": 850,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 255,
+                  "message": "Максимална дължина 255 символа"
+                }
+              ]
+            },
+            {
+              "label": "Пощенски код",
+              "name": "primaryAddrPostCode",
+              "type": "input",
+              "inputType": "number",
+              "order": 8,
+              "disabled": false,
+              "width": 50,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 4,
+                  "message": "Максимална дължина 4 символа"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "order": 8,
+          "label": "Други адреси за осъществяване на дейността",
+          "name": "institutionDepartments",
+          "canDuplicate": true,
+          "fields": [
+            {
+              "order": 1,
+              "label": "Наименование",
+              "name": "departmentName",
+              "type": "input",
+              "inputType": "text",
+              "disabled": false,
+              "width": 1200,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 255,
+                  "message": "Максимална дължина 255 символа"
+                }
+              ]
+            },
+            {
+              "order": 2,
+              "label": "Държава",
+              "name": "departmentCountry",
+              "type": "select",
+              "optionsPath": "/data/get/country",
+              "disabled": false,
+              "defaultValue": 34
+            },
+            {
+              "order": 3,
+              "label": "Област",
+              "name": "departmentRegion",
+              "type": "select",
+              "optionsPath": "/data/get/region",
+              "disabled": false,
+              "influence": [
+                {
+                  "fieldName": "departmentMunicipality",
+                  "url": "/data/get/municipality",
+                  "type": "options"
+                }
+              ]
+            },
+            {
+              "order": 4,
+              "label": "Община",
+              "name": "departmentMunicipality",
+              "type": "select",
+              "disabled": false,
+              "influence": [
+                {
+                  "fieldName": "departmentTown",
+                  "url": "/data/get/town",
+                  "type": "options"
+                }
+              ]
+            },
+            {
+              "order": 5,
+              "label": "Населено място",
+              "name": "departmentTown",
+              "type": "select",
+              "influence": [
+                {
+                  "fieldName": "departmentLocalArea",
+                  "url": "/data/get/localArea",
+                  "type": "options"
+                }
+              ],
+              "disabled": false
+            },
+            {
+              "order": 6,
+              "label": "Район",
+              "name": "departmentLocalArea",
+              "type": "select",
+              "disabled": false
+            },
+            {
+              "order": 7,
+              "label": "Адрес",
+              "name": "departmentAddress",
+              "type": "input",
+              "inputType": "text",
+              "disabled": false,
+              "width": 700,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 255,
+                  "message": "Максимална дължина 255 символа"
+                }
+              ]
+            },
+            {
+              "order": 8,
+              "label": "Пощенски код",
+              "name": "departmentPostalCode",
+              "type": "input",
+              "inputType": "number",
+              "disabled": false,
+              "width": 100,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 4,
+                  "message": "Максимална дължина 4 символа"
+                }
+              ]
+            },
+            {
+              "order": 9,
+              "label": "Идентификатор на недвижимия имот",
+              "name": "departmentCadasterCode",
+              "type": "input",
+              "inputType": "text",
+              "disabled": false,
+              "width": 1200,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 255,
+                  "message": "Максимална дължина 255 символа"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "order": 9,
+          "label": "Предмет на дейност на ЦСОП",
+          "name": "cplrAreas",
+          "canDuplicate": true,
+          "fields": [
+            {
+              "label": "Код на предмета на дейност",
+              "name": "cplrAreaType",
+              "type": "select",
+              "optionsPath": "/data/get/cplrAreaTypes",
+              "disabled": false,
+              "order": 1
+            }
+          ]
+        },
+        {
+          "order": 10,
+          "label": "Профили, по които се организира обучението",
+          "name": "basicProfiles",
+          "canDuplicate": true,
+          "fields": [
+            {
+              "label": "Код на предмета на дейност",
+              "name": "schoolBasicProfile",
+              "type": "select",
+              "optionsPath": "/data/get/schoolBasicProfiles",
+              "disabled": false,
+              "order": 1
+            }
+          ]
+        },
+        {
+          "order": 11,
+          "name": "SPPOOProfiles",
+          "label": "Данни за специалност",
+          "canDuplicate": true,
+          "fields": [
+            {
+              "label": "Област на образование",
+              "name": "SPPOOEducAreaID",
+              "type": "select",
+              "optionsPath": "/data/get/SPPOOEducAreas",
+              "disabled": false,
+              "influence": [
+                {
+                  "fieldName": "SPPOOProfAreaID",
+                  "url": "/data/get/SPPOOProfAreas",
+                  "type": "options"
+                }
+              ],
+              "order": 1
+            },
+            {
+              "label": "Професионално направление",
+              "name": "SPPOOProfAreaID",
+              "type": "select",
+              "disabled": false,
+              "influence": [
+                {
+                  "fieldName": "SPPOOProfessionID",
+                  "url": "/data/get/SPPOOProfessions",
+                  "type": "options"
+                }
+              ],
+              "order": 2
+            },
+            {
+              "label": "Наименование на професията",
+              "name": "SPPOOProfessionID",
+              "type": "select",
+              "disabled": false,
+              "influence": [
+                {
+                  "fieldName": "SPPOOSpecialityID",
+                  "url": "/data/get/SPPOOSpecialities",
+                  "type": "options"
+                }
+              ],
+              "order": 3
+            },
+            {
+              "label": "Наименование на специалността",
+              "name": "SPPOOSpecialityID",
+              "type": "select",
+              "disabled": false,
+              "order": 4
+            }
+          ]
+        },
+        {
+          "order": 12,
+          "label": "Документи",
+          "name": "documents",
+          "canDuplicate": true,
+          "fields": [
+            {
+              "order": 1,
+              "label": "Номер на документ",
+              "name": "documentNumber",
+              "type": "input",
+              "inputType": "text",
+              "disabled": false,
+              "width": 100,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 255,
+                  "message": "Максимална дължина 255 символа"
+                }
+              ]
+            },
+            {
+              "label": "Дата на документа",
+              "name": "documentDate",
+              "type": "date",
+              "disabled": false,
+              "order": 2,
+              "width": 200,
+              "validations": [
+              ]
+            },
+            {
+              "label": "Бележки",
+              "name": "documentNotes",
+              "type": "textarea",
+              "disabled": false,
+              "order": 3,
+              "width": 900,
+              "height": 3,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 4000,
+                  "message": "Максимална дължина 4000 символа"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,184 @@
+<form [formGroup]="form" novalidate (ngSubmit)="onSave()" class="sm:w-[900px]">
+  <div class="sb-btn-wrapper sb-btn-wrapper-right">
+    <button mat-raised-button color="primary" type="submit" [disabled]="saving">
+      <fa-icon [icon]="saving ? fasSpinnerThird : fasCheck" [spin]="saving" size="lg"></fa-icon>
+      <span>Запази</span>
+    </button>
+    <button mat-raised-button mat-dialog-close>Затвори</button>
+  </div>
+  <sb-card>
+    <ng-container card-title>
+      Въвеждане на {{ !isDplr ? 'отсъствия' : 'присъствия/отсъствия' }}
+      <span class="hidden sm:inline">за {{ hourDescriptionShort }}</span>
+    </ng-container>
+    <ng-container card-body>
+      <sb-banner type="info" *ngIf="!absencesUndoBannerHidden" class="mb-4">
+        <div class="flex justify-between">
+          <span>
+            {{ absencesKindText }}
+          </span>
+
+          <button class="sb-link-btn -mt-px -mb-[3px]" (click)="hideAbsencesUndoBanner()">
+            <fa-icon [icon]="fasTimes"></fa-icon>
+          </button>
+        </div>
+      </sb-banner>
+
+      <div class="sb-table-container mt-2.5 sm:mt-4 md:mt-0" style="height: 75vh; overflow: auto">
+        <table class="sb-table">
+          <thead>
+            <tr>
+              <th>Ученик</th>
+              <th>{{ !isDplr ? 'Отсъствие' : 'Присъствие/Отсъствие' }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let student of templateData.students">
+              <td class="sb-names">
+                {{ student.classNumber != null ? student.classNumber.toString() + '.' : '' }}
+
+                {{ student.firstName }}
+                {{ student.middleName }}
+                {{ student.lastName }}
+
+                <span class="sb-badge" *ngIf="student.abnormalStatus">{{ student.abnormalStatus }}</span>
+              </td>
+              <td class="w-px py-0">
+                <div
+                  *ngIf="
+                    !student.tooltipText &&
+                    (!student.hasCurrentAbsence ||
+                      (student.currentAbsenceCanUndo && (student.currentAbsenceUndoExpired$ | async) === false))
+                  "
+                  class="btn-group text-sm"
+                >
+                  <ng-container *ngIf="data.classBookInfo.bookType !== CLASS_BOOK_TYPE_BOOK_DPLR">
+                    <button
+                      class="btn focus-visible:z-20"
+                      [disabled]="student.convertToLateMode"
+                      type="button"
+                      [ngClass]="{
+                        'bg-sky-300 border-sky-700 text-white z-10': getAbsenceType(student.studentFormIndex) == null
+                      }"
+                      (click)="setAbsenceType(student.studentFormIndex, null)"
+                    >
+                      <span class="inline sm:hidden">Присъс</span>
+                      <span class="hidden sm:inline">Присъства</span>
+                    </button>
+
+                    <button
+                      class="btn focus-visible:z-20"
+                      type="button"
+                      [ngClass]="{
+                        'bg-red-500 border-red-700 text-white z-10':
+                          getAbsenceType(student.studentFormIndex) === ABSENCE_TYPE_UNEXCUSED
+                      }"
+                      (click)="setAbsenceType(student.studentFormIndex, ABSENCE_TYPE_UNEXCUSED)"
+                    >
+                      <span class="inline sm:hidden">Неуваж</span>
+                      <span class="hidden sm:inline">Неуважително</span>
+                    </button>
+
+                    <button
+                      class="btn focus-visible:z-20"
+                      type="button"
+                      [ngClass]="{
+                        'bg-yellow-500 border-yellow-700 text-white z-10':
+                          getAbsenceType(student.studentFormIndex) === ABSENCE_TYPE_LATE
+                      }"
+                      (click)="setAbsenceType(student.studentFormIndex, ABSENCE_TYPE_LATE)"
+                    >
+                      <span class="inline sm:hidden">Закъс</span>
+                      <span class="hidden sm:inline">Закъснение</span>
+                    </button>
+
+                    <button
+                      class="btn focus-visible:z-20"
+                      [disabled]="student.convertToLateMode"
+                      type="button"
+                      [ngClass]="{
+                        'bg-green-500 border-green-700 text-white z-10':
+                          getAbsenceType(student.studentFormIndex) === ABSENCE_TYPE_EXCUSED
+                      }"
+                      (click)="setAbsenceType(student.studentFormIndex, ABSENCE_TYPE_EXCUSED)"
+                    >
+                      <span class="inline sm:hidden">Уваж</span>
+                      <span class="hidden sm:inline">Уважително</span>
+                    </button>
+                  </ng-container>
+
+                  <ng-container *ngIf="data.classBookInfo.bookType === CLASS_BOOK_TYPE_BOOK_DPLR">
+                    <button
+                      *ngIf="!data.isDplrAbsenceMode"
+                      class="btn focus-visible:z-20"
+                      type="button"
+                      [ngClass]="{
+                        'bg-green-500 border-green-700 text-white z-10':
+                          getAbsenceType(student.studentFormIndex) === ABSENCE_TYPE_DPLR_ATTENDANCE
+                      }"
+                      (click)="setAbsenceType(student.studentFormIndex, ABSENCE_TYPE_DPLR_ATTENDANCE)"
+                    >
+                      <span class="inline sm:hidden">Присъс</span>
+                      <span class="hidden sm:inline">Присъства</span>
+                    </button>
+
+                    <button
+                      *ngIf="data.isDplrAbsenceMode"
+                      class="btn focus-visible:z-20"
+                      type="button"
+                      [ngClass]="{
+                        'bg-red-500 border-red-700 text-white z-10':
+                          getAbsenceType(student.studentFormIndex) === ABSENCE_TYPE_DPLR_ABSENCE
+                      }"
+                      (click)="setAbsenceType(student.studentFormIndex, ABSENCE_TYPE_DPLR_ABSENCE)"
+                    >
+                      <span class="inline sm:hidden">Отсъс</span>
+                      <span class="hidden sm:inline">Отсъства</span>
+                    </button>
+
+                    <button
+                      class="btn focus-visible:z-20"
+                      type="button"
+                      [ngClass]="{
+                        'bg-sky-300 border-sky-700 text-white z-10': getAbsenceType(student.studentFormIndex) == null
+                      }"
+                      (click)="setAbsenceType(student.studentFormIndex, null)"
+                    >
+                      <span class="inline sm:hidden">Неизбр</span>
+                      <span class="hidden sm:inline">Неизбрано</span>
+                    </button>
+                  </ng-container>
+                </div>
+
+                <span
+                  *ngIf="
+                    student.tooltipText ||
+                    (student.hasCurrentAbsence &&
+                      (!student.currentAbsenceCanUndo || (student.currentAbsenceUndoExpired$ | async) === true))
+                  "
+                  class="sb-pill text-white tracking-wider"
+                  [ngClass]="{
+                    'bg-yellow-500 border-yellow-700': student.currentAbsenceType === ABSENCE_TYPE_LATE,
+                    'bg-red-500 border-red-700':
+                      student.currentAbsenceType === ABSENCE_TYPE_UNEXCUSED ||
+                      student.currentAbsenceType === ABSENCE_TYPE_DPLR_ABSENCE,
+                    'bg-green-500 border-green-700':
+                      student.currentAbsenceType === ABSENCE_TYPE_EXCUSED ||
+                      student.currentAbsenceType === ABSENCE_TYPE_DPLR_ATTENDANCE
+                  }"
+                  [matTooltip]="student.tooltipText ? student.tooltipText : absencesKindText"
+                >
+                  <span *ngIf="student.currentAbsenceType === ABSENCE_TYPE_LATE">Закъснение</span>
+                  <span *ngIf="student.currentAbsenceType === ABSENCE_TYPE_UNEXCUSED">Неуважително</span>
+                  <span *ngIf="student.currentAbsenceType === ABSENCE_TYPE_EXCUSED">Уважително</span>
+                  <span *ngIf="student.currentAbsenceType === ABSENCE_TYPE_DPLR_ABSENCE">Отсъствие</span>
+                  <span *ngIf="student.currentAbsenceType === ABSENCE_TYPE_DPLR_ATTENDANCE">Присъствие</span>
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </ng-container>
+  </sb-card>
+</form>

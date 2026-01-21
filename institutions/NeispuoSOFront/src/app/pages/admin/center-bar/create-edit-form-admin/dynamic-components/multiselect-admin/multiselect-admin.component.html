@@ -1,0 +1,14 @@
+<div class="l-container-component custom-ng-select-l l-focused-element" [style.width.px]="field.width" [ngClass]="{'focused': updateJsonService.focusedElement.index === field.idntfr}" (click)="focus()">
+    <span class="l-custom-info-span">множествен избор</span>
+    <span class="l-custom-span-label">
+      <span class="required-span" *ngIf="required">*</span>
+      <span class="label-label">{{ field.pseudoLabel }}</span>
+      <app-info-tooltip *ngIf="field.info" [info]="field.info"></app-info-tooltip>
+    </span>
+    <div class="l-select" appearance="outline" matTooltipClass="l-custom-tooltip">
+      <ng-select #s [appendTo]="appendClass" [items]="[]" virtualScroll="true" bindLabel="label" bindValue="code" [disabled]="true" [(ngModel)]="field.value" notFoundText="Няма намерени резултати" [clearable]="false" [searchable]="false" [multiple]="true" [closeOnSelect]="false">
+        <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index"> <input id="item-{{ index }}" type="checkbox" [checked]="item$.selected" /> {{ item.label }} </ng-template>
+      </ng-select>
+    </div>
+</div>
+  

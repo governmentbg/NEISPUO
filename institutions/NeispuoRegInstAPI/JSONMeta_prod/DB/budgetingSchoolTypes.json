@@ -1,0 +1,56 @@
+{
+    "template": "SELECT /**select**/ FROM [noms].[BudgetingInstitution] BI JOIN [reginst_nom].[BudgetingInstitutionLimit] BIL ON BI.BudgetingInstitutionID=BIL.BudgetingInstitutionID JOIN [reginst_nom].[FinancialBudgetingLimit] FBL ON FBL.BudgetingInstitutionID=BI.BudgetingInstitutionID /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "BI.BudgetingInstitutionID as code"
+        },
+        {
+            "column": "BI.Name as label"
+        },
+        {
+            "column": "BI.IsValid as isValid"
+        }   
+    ],
+    "params": [
+        {
+            "param": "@IsValid",
+            "column": "BI.IsValid",
+            "operator": "=",
+            "value": 1,
+            "type": "int",
+            "logical_operator": "and",
+			"optional": true,
+			"static": true,
+			"from_claim": false
+        },
+		{
+            "param": "@instKind",
+            "column": "BIL.InstKind",
+            "operator": "=",
+            "value": "instKind",
+            "type": "int",
+            "logical_operator": "and",
+			"optional": true,
+			"static": false,
+			"from_claim": false
+        },
+		{
+            "param": "@filterValue",
+            "column": "FBL.FinancialInstitutionID",
+            "operator": "=",
+            "value": "filterValue",
+            "type": "int",
+            "logical_operator": "and",
+			"optional": true,
+			"static": false,
+			"from_claim": false
+        }
+    ],
+    "order": [
+        {
+            "column": "BI.BudgetingInstitutionID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

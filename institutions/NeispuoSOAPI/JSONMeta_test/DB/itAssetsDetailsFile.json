@@ -1,0 +1,43 @@
+{
+      "arrayName": "itAssetsList",
+      "template": "SELECT /**select**/ FROM [inst_basic].[ITAssetsList] ITA /**where**/ /**orderby**/",
+      "columns": [
+	{
+          "column": "ITA.itAssetsID AS id"
+      	},
+        {
+          "column": "ITA.buildingName AS buildingName"
+        },
+        {
+          "column": "ITA.itAssetCategoryName AS itAssetCategoryName"
+        },
+        {
+          "column": "ITA.typeITAssetName AS typeITAssetName"
+        },
+        {
+          "column": "ITA.itAssetDescription AS itAssetDescription"
+        },
+        {
+          "column": "ITA.acquisitionCost AS acquisitionCost"
+        }
+
+      ],
+      "params": [
+        {
+          "param": "@address",
+          "column": "ITA.InstitutionDepartmentID",
+          "operator": "=",
+          "value": "address",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        }
+      ],
+      "order": [
+        {
+          "column": "ITA.itAssetsID",
+          "type": "ASC"
+        }
+      ]
+    }
+

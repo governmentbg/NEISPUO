@@ -1,0 +1,24 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[ProjectPriorityAreaType] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "ProjectPriorityAreaTypeID as code"
+        },
+        {
+            "column": "Name as label"
+        },
+		{
+            "column": "IsValid as isValid"
+        }
+    ],
+    "params": [
+
+    ],
+    "order": [
+        {
+            "column": "ProjectPriorityAreaTypeID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

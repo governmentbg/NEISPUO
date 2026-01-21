@@ -1,0 +1,65 @@
+<sb-breadcrumb class="block mb-3" [icon]="fasListOl" text="Мои тематични разпределения"></sb-breadcrumb>
+
+<sb-card>
+  <ng-container card-title>Мои тематични разпределения</ng-container>
+  <ng-container card-buttons>
+    <a [routerLink]="['./', 'new']" mat-raised-button color="primary" class="mb-2.5">
+      <fa-icon [icon]="fasPlus" size="lg"></fa-icon>
+      <span>Ново тематично разпределение</span>
+    </a>
+  </ng-container>
+  <ng-container card-body>
+    <div [formGroup]="searchForm" novalidate class="sm:grid grid-cols-3 gap-x-4">
+      <sb-text-field class="col-span-2" label="Наименование" formControlName="name"></sb-text-field>
+      <sb-text-field label="Випуск(Клас)" formControlName="basicClassName"></sb-text-field>
+      <sb-text-field class="col-span-2" label="Предмет" formControlName="subjectName"></sb-text-field>
+      <sb-text-field label="Вид подготовка" formControlName="subjectTypeName"></sb-text-field>
+    </div>
+
+    <sb-table
+      [dataSource]="dataSource"
+      [displayedColumns]="['action', 'name', 'basicClassName', 'subjectName', 'subjectTypeName']"
+    >
+      <ng-container cdkColumnDef="action">
+        <th cdk-header-cell *cdkHeaderCellDef></th>
+        <td cdk-cell *cdkCellDef="let row" class="sb-table-action">
+          <a [routerLink]="['./', row.topicPlanId]" aria-label="Детайли" class="sb-link-btn">
+            <fa-icon [icon]="fadChevronCircleRight"></fa-icon>
+          </a>
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="name">
+        <th cdk-header-cell *cdkHeaderCellDef>Наименование</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.name }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="basicClassName">
+        <th cdk-header-cell *cdkHeaderCellDef>Випуск(Клас)</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.basicClassName }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="subjectName">
+        <th cdk-header-cell *cdkHeaderCellDef>Предмет</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.subjectName }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="subjectTypeName">
+        <th cdk-header-cell *cdkHeaderCellDef>Вид подготовка</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.subjectTypeName }}</td>
+      </ng-container>
+
+      <ng-container
+        *ngIf="
+          searchForm.value.name ||
+          searchForm.value.basicClassName ||
+          searchForm.value.subjectName ||
+          searchForm.value.subjectTypeName
+        "
+        no-data-row
+      >
+        <td colspan="5" class="text-center">Няма намерени тематични разпределения</td>
+      </ng-container>
+    </sb-table>
+  </ng-container>
+</sb-card>

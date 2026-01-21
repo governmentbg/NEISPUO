@@ -1,0 +1,7 @@
+<div class="form">
+    <app-control-component (isHistoryActive)="historyChanged($event)"></app-control-component>
+    <app-history-control *ngIf="isHistoryActive" [history]="history" [currentOption]="currentOption" (versionChanged)="onVersionChanged($event)"></app-history-control>
+    <app-create-edit-form *ngIf="!isLoading" #f [form]="formData" [procId]="currentOption" [mode]="mode" [isHistoryActive]="isHistoryActive" [historyPosition]="pos">
+    </app-create-edit-form>
+    <app-loader *ngIf="isLoading"></app-loader>
+</div>

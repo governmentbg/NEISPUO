@@ -1,0 +1,78 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/SB.Api/SB.Api.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+          "label": "build-expapi",
+          "command": "dotnet",
+          "type": "process",
+          "args": [
+              "build",
+              "${workspaceFolder}/SB.ExtApi/SB.ExtApi.csproj",
+              "/property:GenerateFullPaths=true",
+              "/consoleloggerparameters:NoSummary"
+          ],
+          "problemMatcher": "$msCompile"
+        },
+        {
+          "label": "build-cli",
+          "command": "dotnet",
+          "type": "process",
+          "args": [
+              "build",
+              "${workspaceFolder}/SB.Cli/SB.Cli.csproj",
+              "/property:GenerateFullPaths=true",
+              "/consoleloggerparameters:NoSummary"
+          ],
+          "problemMatcher": "$msCompile"
+        },
+        {
+          "label": "build-jobhost",
+          "command": "dotnet",
+          "type": "process",
+          "args": [
+              "build",
+              "${workspaceFolder}/SB.JobHost/SB.JobHost.csproj",
+              "/property:GenerateFullPaths=true",
+              "/consoleloggerparameters:NoSummary"
+          ],
+          "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "publish",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "publish",
+                "${workspaceFolder}/SB.Api/SB.Api.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "watch",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "watch",
+                "run",
+                "${workspaceFolder}/SB.Api/SB.Api.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}

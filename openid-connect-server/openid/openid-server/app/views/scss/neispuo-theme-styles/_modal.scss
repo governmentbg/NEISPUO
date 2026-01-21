@@ -1,0 +1,21 @@
+.modal-header {
+    .btn-close {
+        margin: 0 0 0 auto;
+        border-radius: 0.188rem;
+        background-color: #EDF1F7;
+        padding: 0.625rem;
+    }
+}
+
+.modal-body {
+    padding-top: 0.188rem;
+    padding-bottom: 0.188rem;
+}
+
+.modal-footer {
+    padding: 1.5rem;
+}
+
+.modal-backdrop.show {
+    background-color: $gray-800;
+}

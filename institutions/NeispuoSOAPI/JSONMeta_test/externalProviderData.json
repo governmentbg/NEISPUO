@@ -1,0 +1,61 @@
+{
+  "paramName": "confDataID",
+  "procedureName": "inst_year.instConfData",
+  "sections": [
+    {
+      "order": 1,
+      "label": "Избор на външен доставчик",
+      "subsections": [
+        {
+          "order": 1,
+          "name": "extSystemData",
+          "fields": [
+		   {
+              "label": "Тип система",
+              "name": "extSystemTypeID",
+              "type": "select",
+              "optionsPath": "/data/get/extSystemTypes",
+              "disabled": false,
+              "width": 800,
+              "validations": [
+                 {
+                      "name": "required",
+                      "validator": "",
+                      "message": "Полето е задължително"
+                    }
+              ],
+			  "influence": [
+                {
+                  "fieldName": "extSystemID",
+                  "url": "/data/get/extSystems",
+                  "type": "options"
+                }
+              ],
+              "order": 1
+            },
+            {
+              "label": "Моля изберете доставчик",
+              "name": "extSystemID",
+              "type": "select",
+              "disabled": false,
+              "width": 800,
+              "validations": [
+   {
+                      "name": "required",
+                      "validator": "",
+                      "message": "Полето е задължително"
+                    }
+              ],
+              "influence": [
+                
+              ],
+              "order": 2
+            }      
+          ]
+        }
+      ]
+    }
+  ]
+}
+
+

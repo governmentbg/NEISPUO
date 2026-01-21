@@ -1,0 +1,65 @@
+<sb-card>
+  <ng-container card-title>Книга за движението на учениците от СПИ/ВУИ</ng-container>
+  <ng-container card-buttons>
+    <button mat-raised-button color="primary" (click)="openDownloadDialog()">
+      <fa-icon [icon]="fasFileExcel" size="lg"></fa-icon>
+      Свали
+    </button>
+    <button *ngIf="canCreate" mat-raised-button color="primary" (click)="openAddDialog()">
+      <fa-icon [icon]="fasPlus" size="lg"></fa-icon>
+      Нов запис
+    </button>
+  </ng-container>
+  <ng-container card-body>
+    <div [formGroup]="searchForm" novalidate class="sm:grid grid-cols-5 gap-x-4">
+      <p class="col-start-1 col-span-full">Филтри</p>
+      <sb-nom-select
+        label="Учебна година"
+        formControlName="recordSchoolYear"
+        [nomService]="schoolYearNomsService"
+      ></sb-nom-select>
+      <sb-number-field label="Пореден номер" formControlName="recordNumber"></sb-number-field>
+      <sb-text-field label="Имена" formControlName="studentName"></sb-text-field>
+      <sb-text-field label="ЕГН/ЛНЧ" formControlName="personalId"></sb-text-field>
+    </div>
+
+    <sb-table
+      [dataSource]="dataSource"
+      [displayedColumns]="['action', 'schoolYear', 'recordNumber', 'studentName', 'personalId', 'gender']"
+    >
+      <ng-container cdkColumnDef="action">
+        <th cdk-header-cell *cdkHeaderCellDef></th>
+        <td cdk-cell *cdkCellDef="let row" class="sb-table-action">
+          <a [routerLink]="['./', row.schoolYear, row.spbsBookRecordId]" aria-label="Детайли" class="sb-link-btn">
+            <fa-icon [icon]="fadChevronCircleRight"></fa-icon>
+          </a>
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="schoolYear">
+        <th cdk-header-cell *cdkHeaderCellDef>Година</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.schoolYear + '/' + (row.schoolYear + 1) }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="recordNumber">
+        <th cdk-header-cell *cdkHeaderCellDef>Пореден номер</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.recordNumber }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="studentName">
+        <th cdk-header-cell *cdkHeaderCellDef>Имена на ученика</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.studentName }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="personalId">
+        <th cdk-header-cell *cdkHeaderCellDef>ЕГН/ЛНЧ</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.personalId }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="gender">
+        <th cdk-header-cell *cdkHeaderCellDef>Пол</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.gender }}</td>
+      </ng-container>
+    </sb-table>
+  </ng-container>
+</sb-card>

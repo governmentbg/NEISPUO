@@ -1,0 +1,48 @@
+:host ::ng-deep {
+  .p-datatable-header {
+    display: flex;
+    justify-content: space-between;
+  }
+  .p-confirm-dialog {
+    width: 50vw;
+  }
+  .p-paginator-current {
+    display: none;
+  }
+}
+
+.overflow-ellipsis {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.user-guides-container {
+  margin: 0rem 3.5rem;
+}
+
+button {
+  margin: 0.1rem;
+}
+
+.empty-message-cell {
+  text-align: center;
+  padding: 2rem;
+  color: #6c757d;
+
+  i {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  &.error {
+    color: #dc3545;
+
+    i {
+      color: #dc3545;
+    }
+  }
+
+  .error-text {
+    color: #dc3545;
+  }
+}

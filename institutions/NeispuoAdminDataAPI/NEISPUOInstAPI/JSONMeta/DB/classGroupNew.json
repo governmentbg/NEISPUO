@@ -1,0 +1,51 @@
+{
+  "template": "SELECT TOP 1 /**select**/ FROM [inst_year].[ClassGroupAll] CD JOIN [inst_basic].[InstitutionAll] I ON I.InstitutionID=CD.InstitutionID /**where**/ /**orderby**/",
+  "columns": [
+  	{
+      "column": "CD.ParentClassID AS parentclassid"
+    },
+  	{
+      "column": "CD.InstitutionID AS instid"
+    },
+    {
+      "column": "I.DetailedSchoolTypeID AS detailedSchoolTypeID"
+    },
+	{
+      "column": "I.BudgetingSchoolTypeID AS budgetingSchoolTypeID"
+    },
+	{
+      "column": "I.InstType AS instType"
+    }
+   ],
+  "params": [
+    {
+      "param": "@parentclassid",
+      "column": "CD.ParentClassID",
+      "operator": "=",
+      "value": "parentclassid",
+      "type": "int",
+      "logical_operator": "and",
+	    "optional": true,
+      "static": false
+    },
+	{
+      "param": "@instid",
+      "column": "I.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": false,
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "CD.ParentClassID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+
+  ]
+}

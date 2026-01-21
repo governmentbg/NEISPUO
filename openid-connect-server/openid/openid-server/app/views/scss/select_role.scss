@@ -1,0 +1,94 @@
+@import './neispuo-theme-styles/variables/variables';
+$background-color: $gray-100;
+
+.select-role-page {
+  min-height: calc(100vh - 130px);
+  margin-top: 130px;
+  background-image: linear-gradient(rgba(23, 42, 83, 0.325), rgba(23, 42, 83, 0.325)),
+    url('/images/home.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: $background-color;
+  display: flex;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  &-content {
+    margin: 2rem 0;
+    .card-body {
+      max-width: 700px;
+      p,
+      p.h1 {
+        color: $gray-800;
+      }
+      p.h1 {
+        text-align: center;
+      }
+      p:not(.h1) {
+        color: $gray-700;
+      }
+      .radio-btns-wrapper {
+        .form-check {
+          &-input {
+            margin-top: 0.125rem;
+          }
+          &-label {
+            font-size: 1rem;
+            .label-row {
+              padding-bottom: 0.5rem;
+              &-value {
+                color: $gray-600;
+              }
+            }
+          }
+        }
+      }
+      hr {
+        margin: 0.75rem 0 1.25rem 0;
+        background-color: $gray-600;
+      }
+    }
+    .card-footer {
+      background-color: transparent;
+      border-top-color: transparent;
+      text-align: right;
+      padding: 2rem 0 1.25rem;
+      button {
+        text-transform: uppercase;
+      }
+    }
+  }
+}
+
+@media (max-width: 767.98px) {
+  .select-role-page {
+    min-height: calc(100vh - 100px);
+    margin-top: 100px;
+    &-content {
+      .radio-btns-wrapper {
+        font-size: 0.875rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 575.98px) {
+  .select-role-page {
+    &-content {
+      .card-body {
+        padding: 1rem;
+        p.h1 {
+          font-size: 1.5rem;
+        }
+        p.h3 {
+          font-size: 1rem;
+        }
+      }
+      .card-footer {
+        button {
+          font-size: 0.75rem;
+        }
+      }
+    }
+  }
+}

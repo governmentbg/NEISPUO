@@ -1,0 +1,127 @@
+<div class="sys-user-table">
+    <div class="sys-user-table-flex">
+        <div class="d-flex justify-content-left align-items-center mb-2 header-row gap-2">
+            <h5 class="mb-0">{{ CONSTANTS.PRIMENG_TITLE_SYS_USER_TABLE | translate }}</h5>
+            <button
+                pButton
+                type="button"
+                icon="pi pi-refresh"
+                class="p-button-icon-only p-button-sm p-button-primary"
+                (click)="reload()"
+                [disabled]="loading"
+                pTooltip="{{ CONSTANTS.PRIMENG_TITLE_REFRESH | translate }}"
+                tooltipPosition="top"
+            ></button>
+        </div>
+
+        <div class="table-scroll-wrapper">
+            <p-table
+                #table
+                [columns]="columnsConfig.allColumns"
+                [value]="users"
+                [paginator]="true"
+                [rows]="10"
+                [resizableColumns]="true"
+                class="p-datatable-sm fixed-table"
+                [loading]="loading"
+            >
+                <ng-template pTemplate="colgroup" let-columns>
+                    <colgroup>
+                        <col *ngFor="let col of columns" [style.width]="col.width" />
+                    </colgroup>
+                </ng-template>
+                <ng-template pTemplate="header" let-columns>
+                    <tr>
+                        <th
+                            *ngFor="let col of columns"
+                            [pSortableColumn]="col?.notSortable ? '' : col.field"
+                            [ngClass]="'col-' + col.field"
+                        >
+                            {{ col.header }}
+                            <p-sortIcon *ngIf="!col?.notSortable" [field]="col.field"></p-sortIcon>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th *ngFor="let col of columns">
+                            <p-dropdown
+                                *ngIf="col.filter?.type === 'select'"
+                                [options]="col.filter?.selectionOptions"
+                                [ngModel]="table.filters[col.field]?.value"
+                                (onChange)="table.filter($event.value, col.field, col.filter?.operator)"
+                                [placeholder]="CONSTANTS.PRIMENG_DROPDOWN_PLACEHOLDER | translate"
+                                optionLabel="label"
+                                optionValue="value"
+                                appendTo="body"
+                            >
+                                <ng-template let-option pTemplate="selectedItem">
+                                    <span>{{ option.label | translate }}</span>
+                                </ng-template>
+                                <ng-template let-option pTemplate="item">
+                                    <span>{{ option.label | translate }}</span>
+                                </ng-template>
+                            </p-dropdown>
+                            <p-calendar
+                                *ngIf="col.filter?.type === 'date'"
+                                appendTo="body"
+                                [monthNavigator]="true"
+                                [yearNavigator]="true"
+                                [yearRange]="'2018:' + currentYear"
+                                dateFormat="yy-mm-dd"
+                                firstDayOfWeek="1"
+                                [showButtonBar]="true"
+                                [dataType]="'date'"
+                                (onSelect)="table.filter($event, col.field, col.filter?.operator)"
+                                (onClearClick)="onDateClear(col.field, col.filter?.operator)"
+                                [placeholder]="CONSTANTS.PRIMENG_DROPDOWN_PLACEHOLDER | translate"
+                            ></p-calendar>
+                            <input
+                                *ngIf="col.filter?.type === 'text'"
+                                class="filter-text"
+                                pInputText
+                                type="text"
+                                [placeholder]="CONSTANTS.PRIMENG_INPUT_PLACEHOLDER | translate"
+                                (input)="table.filter($event.target.value, col.field, col.filter?.operator)"
+                                [ngModel]="table.filters[col.field]?.value"
+                            />
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-row let-columns="columns">
+                    <tr *ngIf="!loadingError">
+                        <td *ngFor="let col of columns" [ngClass]="'col-' + col.field">
+                            <ng-container [ngSwitch]="col.field">
+                                <ng-container *ngSwitchCase="'deletedOn'">
+                                    <span>{{ row.deletedOn | date: 'yyyy-MM-dd HH:mm:ss' }}</span>
+                                </ng-container>
+                                <ng-container *ngSwitchCase="'isAzureUser'">
+                                    <span>{{ row.isAzureUser ? ('YES' | translate) : ('NO' | translate) }}</span>
+                                </ng-container>
+                                <ng-container *ngSwitchCase="'isAzureSynced'">
+                                    <span>{{
+                                        row.isAzureSynced === 1 ? ('YES' | translate) : ('NO' | translate)
+                                    }}</span>
+                                </ng-container>
+                                <ng-container *ngSwitchDefault>
+                                    <span>{{ row[col.field] }}</span>
+                                </ng-container>
+                            </ng-container>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="emptymessage" let-columns>
+                    <tr>
+                        <td [attr.colspan]="columns.length">
+                            <div class="empty-message-center" [ngClass]="{ 'text-danger': loadingError }">
+                                {{
+                                    loadingError
+                                        ? (loadingError | translate)
+                                        : (CONSTANTS.PRIMENG_NO_DATA_FOUND | translate)
+                                }}
+                            </div>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</div>

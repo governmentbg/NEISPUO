@@ -1,0 +1,25 @@
+<div class="wrapper-dynamic-form-create" *ngIf="formGroup">
+  <div class="flex-wrapper-form-create">
+    <ng-container *ngFor="let section of form?.sections">
+      <mat-card class="section-card" color="primary" *ngIf="!section.hidden && section.rendered !== false">
+        <mat-card-header class="bg-cornflower-blue">
+          <mat-card-title>{{ section.label }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="wrapper-body section-class-vscroll">
+            <ng-container *ngFor="let subsection of section?.subsections">
+              <app-subsection *ngIf="!subsection.hidden && subsection.rendered !== false && hasNonHiddenField(subsection)" [instid]="instid" [subsection]="subsection"  [section]="section" [formGroup]="formGroup" [mode]="mode"></app-subsection>
+            </ng-container>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </ng-container>
+  </div>
+  <div class="wrap-btn">
+    <button type="button" mat-raised-button color="primary" [disabled]="formGroup.invalid" (click)="onSave(true)" *ngIf="!parentMode || parentMode === modes.View"><mat-icon>save</mat-icon><span>Запази</span></button>
+    <button type="button" mat-raised-button color="primary" [disabled]="formGroup.invalid" (click)="onSave(true)" *ngIf="row && parentMode === modes.Edit"><span>Промени</span></button>
+    <button type="button" mat-raised-button color="primary" [disabled]="formGroup.invalid" (click)="onSave(true)" *ngIf="!row && parentMode === modes.Edit"><span>Добави</span></button>
+    <button type="button" mat-raised-button color="secondary" class="back-button" (click)="onSave(false)"><mat-icon>cancel</mat-icon><span>Отказ</span></button>
+  </div>
+</div>
+<app-loader *ngIf="isLoading"></app-loader>

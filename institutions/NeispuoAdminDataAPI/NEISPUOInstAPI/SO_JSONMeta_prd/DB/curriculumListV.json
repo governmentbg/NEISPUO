@@ -1,0 +1,129 @@
+{
+  "arrayName": "curriculumListV",
+  "template": "SELECT /**select**/ FROM [inst_year].[CurriculumList] CL /**where**/ /**orderby**/",
+  "sotemplate": "SELECT /**select**/ FROM [sob].[CurriculumList] CL /**where**/ /**orderby**/",
+  "columns": [
+    {
+      "column": "CL.CurriculumID as id"
+    },
+	  {
+      "column": "CL.CurriculumID as curriculumID"
+    },
+    {
+      "column": "CL.SubjectName as subjectName"
+    },
+    {
+      "column": "CL.SubjectTypeName as subjectTypeName"
+    },
+    {
+      "column": "CL.ClassNames as classNames"
+    },
+    {
+      "column": "CL.CurriculumGroupNum as curriculumGroupID"
+    },
+    {
+      "column": "CL.WeeksFirstTerm as weeksFirstTerm"
+    },
+    {
+      "column": "CL.HoursWeeklyFirstTerm as hoursWeeklyFirstTerm"
+    },
+    {
+      "column": "CL.WeeksSecondTerm as weeksSecondTerm"
+    },
+    {
+      "column": "CL.HoursWeeklySecondTerm as hoursWeeklySecondTerm"
+    },
+    {
+      "column": "CL.TotalHours as totalHours"
+    },
+	{
+      "column": "CL.StudentsCount as studentsCount"
+    },
+    {
+      "column": "CL.TeacherNames as teacherNames"
+    },
+    {
+      "column": "CL.DepartmentName as departmentName"
+    },
+    {
+      "column": "'curriculumSubject' AS formName"
+    },
+    {
+      "column": "CL.CurriculumID AS formDataId"
+    },
+    {
+        "column": "CL.SubjectID as subjectid"
+    }
+  ],
+  "params": [
+    {
+      "param": "@isValid",
+      "column": "CL.IsValid",
+      "operator": "=",
+      "value": 1,
+      "type": "int",
+      "logical_operator": "and",
+      "static": true
+    },
+    {
+      "param": "@instid",
+      "column": "CL.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+    {
+      "param": "@parentclassid",
+      "column": "CL.ClassID",
+      "operator": "=",
+      "value": "parentclassid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+    {
+      "param": "@partid",
+      "column": "CL.CurriculumPartID",
+      "operator": "=",
+      "value": 3,
+      "type": "int",
+      "logical_operator": "and",
+      "static": true
+    },
+    {
+      "param": "@year",
+      "column": "CL.SchoolYear",
+      "operator": "=",
+      "value": "year",
+      "type": "int",
+      "logical_operator": "and",
+      "optional": true,
+      "static": false
+    },
+    {
+      "param": "@period",
+      "column": "CL.Period",
+      "operator": "=",
+      "value": "period",
+      "type": "int",
+      "logical_operator": "and",
+      "optional": true,
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "CL.SubjectTypeID",
+      "type": "ASC"
+    },
+    {
+      "column": "CL.SubjectID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+
+  ]
+}

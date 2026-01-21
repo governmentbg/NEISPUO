@@ -1,0 +1,122 @@
+<sb-breadcrumb
+  class="block mb-3"
+  [icon]="fadCalendarMinus"
+  [text]="
+    data.finalGradePointAverageByStudentsReport == null
+      ? 'Създаване на справка среден успех от срочни/годишни оценки по ученици'
+      : 'Преглед на справка среден успех от срочни/годишни оценки по ученици'
+  "
+  [parentItems]="[{ text: 'Среден успех от срочни/годишни оценки по ученици', routeCommands: ['../'] }]"
+></sb-breadcrumb>
+
+<form [formGroup]="form" autocomplete="off" novalidate>
+  <sb-card>
+    <ng-container card-title>
+      {{
+        data.finalGradePointAverageByStudentsReport == null
+          ? 'Създаване на справка среден успех от срочни/годишни оценки по ученици'
+          : 'Преглед на справка среден успех от срочни/годишни оценки по ученици'
+      }}
+    </ng-container>
+    <sb-editor-panel
+      card-buttons
+      [isNew]="data.finalGradePointAverageByStudentsReport == null"
+      [editBtnHidden]="true"
+      (save)="onSave($event)"
+    >
+      <a
+        *ngIf="data.finalGradePointAverageByStudentsReport != null"
+        [href]="downloadUrl"
+        class="mr-3"
+        disabled-mode-buttons
+        target="_blank"
+        download
+        color="primary"
+        mat-raised-button
+        [disabled]="!downloadUrl"
+      >
+        <fa-icon [icon]="fasFileExcel" size="lg"></fa-icon>
+        <span>Свали</span>
+      </a>
+      <button
+        disabled-mode-buttons
+        mat-raised-button
+        color="warn"
+        type="button"
+        (click)="onRemove()"
+        [disabled]="removing"
+      >
+        <fa-icon [icon]="removing ? fasSpinnerThird : fasTrashAlt" [spin]="removing" size="lg"></fa-icon>
+        <span class="hidden sm:inline">Премахни</span>
+      </button>
+    </sb-editor-panel>
+    <ng-container card-body>
+      <div class="sm:grid grid-cols-4 gap-x-4 mb-2">
+        <sb-nom-select
+          class="col-start-1"
+          [nomService]="reportPeriodNomsService"
+          label="Период"
+          formControlName="period"
+        ></sb-nom-select>
+        <sb-nom-select
+          *ngIf="data.finalGradePointAverageByStudentsReport == null"
+          label="Паралелки/Групи"
+          formControlName="classBookIds"
+          [multiple]="true"
+          [nomService]="classBookNomsService"
+        ></sb-nom-select>
+        <sb-text-field
+          *ngIf="data.finalGradePointAverageByStudentsReport != null"
+          label="Паралелки/Групи"
+          formControlName="classBookNames"
+        ></sb-text-field>
+        <sb-number-field
+          *ngIf="data.finalGradePointAverageByStudentsReport == null"
+          label="Минимален успех"
+          formControlName="minimumGradePointAverage"
+          [precision]="2"
+          [validations]="{ min: 'Невалидна стойност', max: 'Невалидна стойност' }"
+        ></sb-number-field>
+        <sb-number-field
+          *ngIf="data.finalGradePointAverageByStudentsReport != null"
+          label="Минимален успех"
+          formControlName="minimumGradePointAverage"
+          [precision]="2"
+        ></sb-number-field>
+      </div>
+      <sb-card-section *ngIf="data.finalGradePointAverageByStudentsReport != null" class="col-span-full">
+        {{ reportName }}
+      </sb-card-section>
+      <ng-container *ngIf="data.finalGradePointAverageByStudentsReport != null && dataSource != null">
+        <sb-table
+          [dataSource]="dataSource"
+          [displayedColumns]="['classBookName', 'studentNames', 'finalGradePointAverage']"
+        >
+          <ng-container cdkColumnDef="classBookName">
+            <th cdk-header-cell *cdkHeaderCellDef>Клас</th>
+            <td cdk-cell [class.font-bold]="row.isTotal" *cdkCellDef="let row">{{ row.classBookName }}</td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="studentNames">
+            <th cdk-header-cell *cdkHeaderCellDef>Ученик</th>
+            <td cdk-cell [class.font-bold]="row.isTotal" *cdkCellDef="let row">
+              {{ row.studentNames }}
+              <span *ngIf="row.isTransferred" class="sb-badge">ОТПИСАН</span>
+            </td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="finalGradePointAverage">
+            <th cdk-header-cell *cdkHeaderCellDef>Среден успех</th>
+            <td cdk-cell [class.font-bold]="row.isTotal" *cdkCellDef="let row">
+              {{ row.finalGradePointAverage | sbDecimalGradeNumber }}
+            </td>
+          </ng-container>
+
+          <ng-container no-data-row>
+            <td colspan="10" class="text-center">Няма ученици с оценки за периода</td>
+          </ng-container>
+        </sb-table>
+      </ng-container>
+    </ng-container>
+  </sb-card>
+</form>

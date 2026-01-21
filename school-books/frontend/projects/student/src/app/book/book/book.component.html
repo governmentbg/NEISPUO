@@ -1,0 +1,37 @@
+<div *ngIf="showSettings" class="flex justify-between items-center p-2 bg-gray-50 rounded-md shadow-sm">
+  <div class="flex flex-col text-sm text-gray-700">
+    <p *ngIf="data.classBookInfo.profession">
+      <span class="font-semibold">Профил/Професия:</span>
+      {{ data.classBookInfo.profession }}
+    </p>
+    <p>
+      <span class="font-semibold">Използвани дни по семейни причини:</span>
+      <span
+        [ngClass]="
+          data.classBookInfo.absenceDaysByFamilyReasonsCount >= maxAbcencesByFamilyReasons
+            ? 'text-red-900'
+            : data.classBookInfo.absenceDaysByFamilyReasonsCount >= maxAbcencesByFamilyReasons / 2
+            ? 'text-yellow-900'
+            : 'text-green-500'
+        "
+      >
+        {{ data.classBookInfo.absenceDaysByFamilyReasonsCount }}/{{ maxAbcencesByFamilyReasons }}
+      </span>
+    </p>
+  </div>
+
+  <div>
+    <button class="flex items-center sb-link-btn" [matMenuTriggerFor]="menu" aria-label="Настройки">
+      <fa-icon [icon]="fadCog" size="sm"></fa-icon>
+      Настройки
+    </button>
+
+    <mat-menu #menu="matMenu">
+      <sb-student-settings-form></sb-student-settings-form>
+    </mat-menu>
+  </div>
+</div>
+
+<sb-tabs [tabs]="tabs" ariaLabel="Раздели на дневника">
+  <router-outlet></router-outlet>
+</sb-tabs>

@@ -1,0 +1,27 @@
+<sb-breadcrumb
+  class="block mb-3"
+  [icon]="fadTasksAlt"
+  [text]="templateData.lessonName"
+  [parentItems]="[
+    {
+      text: 'Проверка на дневници',
+      routeCommands: ['../../../../../'],
+      routeExtras: { queryParamsHandling: 'preserve' }
+    },
+    { text: templateData.monthName, routeCommands: ['../../../'], routeExtras: { queryParamsHandling: 'preserve' } },
+    { text: templateData.dateName, routeCommands: ['../../'], routeExtras: { queryParamsHandling: 'preserve' } }
+  ]"
+></sb-breadcrumb>
+
+<sb-card>
+  <ng-container card-title>Проверка на дневници</ng-container>
+  <ng-container card-buttons>
+    <a mat-raised-button class="ml-2" [routerLink]="['../../']" [queryParamsHandling]="'preserve'">
+      <fa-icon [icon]="fasArrowLeft" size="lg"></fa-icon>
+      <span class="hidden sm:inline">Назад</span>
+    </a>
+  </ng-container>
+  <ng-container card-body>
+    <sb-my-hour-lesson-view-content [data]="data" [mode]="MyHourLessonViewMode"></sb-my-hour-lesson-view-content>
+  </ng-container>
+</sb-card>

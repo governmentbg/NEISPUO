@@ -1,0 +1,9 @@
+<div [class.info-strip-visible]="infoStripService.isVisible$ | async" [class.info-strip-hidden]="!(infoStripService.isVisible$ | async)">
+  <app-new-module-info [showNewModuleInfoModal]="showNewModuleInfoModal"></app-new-module-info>
+  <app-header></app-header>
+  <app-info-strip></app-info-strip>
+  <app-second-nav></app-second-nav>
+  <router-outlet></router-outlet>
+  <app-footer></app-footer>
+  <p-toast key="globalAppToast"></p-toast>
+</div>

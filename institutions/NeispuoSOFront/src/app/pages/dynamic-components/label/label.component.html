@@ -1,0 +1,6 @@
+<div class="l-container-component" [ngClass]="{'preview-mode': mode===modes.View}" [style.width.px]="field.width">
+    <div class="fake-container-mat-form-field">
+        <label class="value-label" [ngStyle]="style">{{field.value}}</label>
+        <app-info-tooltip *ngIf="field.info" [info]="field.info"></app-info-tooltip>
+    </div>
+</div>

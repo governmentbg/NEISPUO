@@ -1,0 +1,139 @@
+<div class="p-fluid p-mt-3">
+
+    <div class=" p-formgrid p-grid">
+        <label for="name" class="p-col-12 p-ml-3 p-mb-2 p-md-2 p-mb-md-0">Наименование</label>
+        <div class="p-field p-col">
+            <input [ngModel]="institution?.name" (ngModelChange)="institution.name = $event" type="text" pInputText placeholder="Name">
+        </div>
+        <div class="p-field p-col">
+        </div>
+    </div>
+
+    <div class=" p-formgrid p-grid">
+        <label for="description" class="p-col-12 p-ml-3 p-mb-2 p-md-2 p-mb-md-0">Описание</label>
+        <div class="p-field p-col">
+            <input [ngModel]="institution?.description" (ngModelChange)="institution.description = $event" type="text" pInputText placeholder="Description">
+        </div>
+        <div class="p-field p-col">
+        </div>
+    </div>
+
+
+    <div class=" p-formgrid p-grid">
+        <label for="principalId" class="p-col-12 p-ml-3 p-mb-2 p-md-2 p-mb-md-0">Идентификатор</label>
+        <div class="p-field p-col">
+            <input [ngModel]="institution?.principalId" (ngModelChange)="institution.principalId = $event" type="text" pInputText placeholder="Principal id">
+        </div>
+        <div class="p-field p-col">
+        </div>
+    </div>
+
+
+    <div class=" p-formgrid p-grid">
+        <label for="principalName" class="p-col-12 p-ml-3 p-mb-2 p-md-2 p-mb-md-0">Име</label>
+        <div class="p-field p-col">
+            <input [ngModel]="institution?.principalName" (ngModelChange)="institution.principalName = $event" type="text" pInputText placeholder="Principal name">
+        </div>
+        <div class="p-field p-col">
+        </div>
+    </div>
+
+
+    <div class=" p-formgrid p-grid">
+        <label for="principalEmail" class="p-col-12 p-ml-3 p-mb-2 p-md-2 p-mb-md-0">Имейл</label>
+        <div class="p-field p-col">
+            <input [ngModel]="institution?.principalEmail" (ngModelChange)="institution.principalEmail = $event" type="text" pInputText placeholder="Principal email">
+        </div>
+        <div class="p-field p-col">
+        </div>
+    </div>
+
+    <!-- <div class=" p-formgrid p-grid">
+        <label for="highestGrade" class="p-col-12 p-ml-3 p-mb-2 p-md-2 p-mb-md-0">Highest grade</label>
+        <div class="p-field p-col">
+            <input [ngModel]="institution?.highestGrade" (ngModelChange)="institution.highestGrade = $event" type="text" pInputText placeholder="Highest grade">
+        </div>
+        <div class="p-field p-col">
+        </div>
+    </div> -->
+
+    <!-- <div class=" p-formgrid p-grid">
+        <label for="lowestGrade" class="p-col-12 p-ml-3 p-mb-2 p-md-2 p-mb-md-0">Lowest grade</label>
+        <div class="p-field p-col">
+            <input [ngModel]="institution?.lowestGrade" (ngModelChange)="institution.lowestGrade = $event" type="text" pInputText placeholder="Lowest grade">
+        </div>
+        <div class="p-field p-col">
+        </div>
+    </div> -->
+
+    <div class=" p-formgrid p-grid">
+        <label for="phone" class="p-col-12 p-ml-3 p-mb-2 p-md-2 p-mb-md-0">Телефон</label>
+        <div class="p-field p-col">
+            <input [ngModel]="institution?.phone" (ngModelChange)="institution.phone = $event" type="text" pInputText placeholder="Phone">
+        </div>
+        <div class="p-field p-col">
+        </div>
+    </div>
+
+
+    <div class=" p-formgrid p-grid">
+        <label for="city" class="p-col-12 p-ml-3 p-mb-2 p-md-2 p-mb-md-0">Населено място</label>
+        <div class="p-field p-col">
+            <input [ngModel]="institution?.city" (ngModelChange)="institution.city = $event" type="text" pInputText placeholder="City">
+        </div>
+        <div class="p-field p-col">
+        </div>
+    </div>
+
+    <div class=" p-formgrid p-grid">
+        <label for="area" class="p-col-12 p-ml-3 p-mb-2 p-md-2 p-mb-md-0">Район</label>
+        <div class="p-field p-col">
+            <input [ngModel]="institution?.area" (ngModelChange)="institution.area = $event" type="text" pInputText placeholder="Area">
+        </div>
+        <div class="p-field p-col">
+        </div>
+    </div>
+
+    <div class=" p-formgrid p-grid">
+        <label for="country" class="p-col-12 p-ml-3 p-mb-2 p-md-2 p-mb-md-0">Държава</label>
+        <div class="p-field p-col">
+            <input [ngModel]="institution?.country" (ngModelChange)="institution.country = $event" type="text" pInputText placeholder="Country">
+        </div>
+        <div class="p-field p-col">
+        </div>
+    </div>
+
+    <div class=" p-formgrid p-grid">
+        <label for="postalCode" class="p-col-12 p-ml-3 p-mb-2 p-md-2 p-mb-md-0">Пощенски код</label>
+        <div class="p-field p-col">
+            <input [ngModel]="institution?.postalCode" (ngModelChange)="institution.postalCode = $event" type="text" pInputText placeholder="Postal code">
+        </div>
+        <div class="p-field p-col">
+        </div>
+    </div>
+
+    <div class=" p-formgrid p-grid">
+        <label for="street" class="p-col-12 p-ml-3 p-mb-2 p-md-2 p-mb-md-0">Улица</label>
+        <div class="p-field p-col">
+            <input [ngModel]="institution?.street" (ngModelChange)="institution.street = $event" type="text" pInputText placeholder="Street">
+        </div>
+        <div class="p-field p-col">
+        </div>
+    </div>
+
+    <div class=" p-formgrid p-grid">
+        <!-- Emtty row -->
+        <div class="p-field p-col">
+        </div>
+        <div class="p-field p-col">
+        </div>
+    </div>
+
+    <div class=" p-formgrid p-grid">
+        <div class="p-field p-col-1">
+            <button pButton type="button" label="Запази" (click)="updateInstitution()" class="p-button-sm"></button>
+        </div>
+        <div class="p-field p-col">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+@import '@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/variables/variables.scss';
+
+:host ::ng-deep {
+  input,
+  .p-dropdown {
+    width: 100%;
+  }
+}
+
+.userGuideModal {
+  margin: 0rem 2rem;
+}
+
+.uploadedFile {
+  display: flex;
+  justify-content: space-around;
+}
+
+.download-file {
+  cursor: pointer;
+}

@@ -1,0 +1,26 @@
+<form [formGroup]="form" novalidate (ngSubmit)="onSave()" class="sm:w-[700px]">
+  <div class="sb-btn-wrapper sb-btn-wrapper-right">
+    <button mat-raised-button color="primary" type="submit" [disabled]="saving">
+      <fa-icon [icon]="saving ? fasSpinnerThird : fasCheck" [spin]="saving" size="lg"></fa-icon>
+      <span>Запази</span>
+    </button>
+    <button mat-raised-button mat-dialog-close>Затвори</button>
+  </div>
+
+  <sb-nom-select
+    label="Дейност"
+    formControlName="supportActivityTypeId"
+    [nomService]="supportActivityTypeNomsService"
+  ></sb-nom-select>
+
+  <sb-date-field label="Дата" formControlName="date"></sb-date-field>
+
+  <sb-textarea-field label="Цел" formControlName="target" [textareaMaxSize]="10000"></sb-textarea-field>
+
+  <sb-textarea-field
+    class="sb-single-row-mat-field"
+    label="Резултат"
+    formControlName="result"
+    [textareaMaxSize]="10000"
+  ></sb-textarea-field>
+</form>

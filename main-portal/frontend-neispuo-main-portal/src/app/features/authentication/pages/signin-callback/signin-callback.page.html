@@ -1,0 +1,21 @@
+<div class="callback-page container-fluid">
+  <div *ngIf="error; else err" class="callback-page-content">
+    <p class="h1 mb-6">Възникна грешка!</p>
+    <p>
+      Възникна грешка по време на вход в системата. Моля натиснете
+      <a routerLink="/">тук</a>, за да опитате отново.
+    </p>
+    <p>В случай че продъжавате да виждате същата грешка се свържете с администратор.</p>
+  </div>
+  <ng-template #err>
+    <div class="callback-page-content">
+      <div class="loader">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <p class="h1 mb-6">Пренасочване</p>
+      <p>Моля изчакайте, пренасочваме Ви към страницата на модула.</p>
+    </div>
+  </ng-template>
+</div>

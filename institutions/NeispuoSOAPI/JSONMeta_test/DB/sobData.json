@@ -1,0 +1,655 @@
+{
+  "template": "SELECT /**select**/ FROM [core].[Institution] I /**where**/ /**orderby**/",
+  "columns": [
+        {
+          "column": "I.InstitutionID AS id"
+        }
+      ],
+  "params": [
+    {
+      "param": "@instid",
+      "column": "I.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "I.InstitutionID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+ {
+      "arrayName": "reportSchoolData",
+      "template": "SELECT /**select**/ FROM [inst_basic].[InstitutionAllreport] IALL /**where**/ /**orderby**/",
+      "columns": [
+	  {
+      "column": "IALL.InstitutionID AS id"
+    },
+    {
+      "column": "IALL.InstitutionID AS codeNEISPUO"
+    },
+    {
+      "column": "IALL.Name AS name"
+    },
+    {
+      "column": "IALL.Abbreviation AS abbreviation"
+    },
+    {
+      "column": "IALL.Bulstat AS bulstat"
+    },
+  	{
+      "column": "IALL.TextInfo AS textInfo"
+    },
+    {
+      "column": "IALL.BaseSchoolTypeName AS baseSchoolTypeID"
+    },
+    {
+      "column": "IALL.DetailedSchoolTypeName AS detailedSchoolTypeID"
+    },
+    {
+      "column": "IALL.BudgetingSchoolTypeName AS budgetingSchoolTypeID"
+    },
+    {
+      "column": "IALL.FinancialSchoolTypeName AS financialSchoolTypeID"
+    },
+    {
+      "column": "IALL.InstitutionDepartmentID AS primaryAddrID"
+    },    
+    {
+      "column": "IALL.RegionName AS region"
+    },
+    {
+      "column": "IALL.MunicipalityID AS municipality"
+    },
+	  {
+      "column": "IALL.CountryName AS country"
+    },
+    {
+      "column": "IALL.TownName AS town"
+    },
+    {
+      "column": "IALL.LocalAreaID AS localArea"
+    },
+    {
+      "column": "IALL.Address AS address"
+    },
+    {
+      "column": "IALL.PostCode AS postCode"
+    },
+    {
+      "column": "IALL.Email AS email"
+    },
+    {
+      "column": "IALL.Website AS website"
+    },
+    {
+      "column": "IALL.EstablishedYear AS established"
+    },
+    {
+      "column": "IALL.ConstitActFirst AS incActFirst"
+    },
+    {
+      "column": "IALL.ConstitActLast AS incActLast"
+    },
+    {
+      "column": "IALL.IsODZ AS isODZ"
+    },
+    {
+      "column": "IALL.IsProfSchool AS isProfSchool"
+    },
+    {
+      "column": "IALL.IsNational AS isNational"
+	  },
+    {
+      "column": "IALL.IsProvideEduServ AS isProvideEduServ"
+    },
+    {
+      "column": "IALL.IsDelegateBudget AS isDelegateBudget"
+    },
+    {
+      "column": "IALL.IsNonIndDormitory AS isNonIndDormitory"
+    },
+    {
+      "column": "IALL.BankIBAN AS bankIBAN"
+    },
+    {
+      "column": "IALL.BankBIC AS bankBIC"
+    },
+    {
+      "column": "IALL.BankName AS bankName"
+    },
+    {
+      "column": "IALL.BankAccountHolder AS bankAccountHolder"
+	  },  
+  	{
+       "column": "IALL.IsInnovative AS isInnovative"
+    },
+	  {
+       "column": "IALL.IsProtected AS isProtected"
+    },
+	  {
+       "column": "IALL.IsCentral AS isCentral"
+    },
+	  {
+       "column": "IALL.IsStateFunded AS isStateFunding"
+    },
+	  {
+       "column": "IALL.IsAppInnovSystem AS isAppInnovSystem"
+    },
+	  {
+       "column": "IALL.HasMunDecisionFor4 AS hasMunDecisionFor4"
+    },
+	  {
+    "column": "IALL.InstitutionOtherDataID AS instOtherDataID"
+	  },
+	  {
+       "column": "IALL.SchoolShiftTypeID AS schoolShiftTypeID"
+    }, 
+	  {
+       "column": "IALL.StaffCountAll AS staffCountAll"
+    },	
+	  {
+       "column": "IALL.PedagogStaffCount AS pedagogStaffCount"
+    },
+	  {
+       "column": "IALL.NonpedagogStaffCount AS pedagogNonStaffCount"
+    },
+	  {
+       "column": "IALL.PedagogStaffSalary AS pedagogStaffSalary"
+    },
+    {
+       "column": "IALL.PedagogStaffSalaryT AS pedagogStaffSalaryT"
+    },
+	  {
+       "column": "IALL.NonpedagogStaffSalary AS pedagogNonStaffSalary"
+    },
+    {
+       "column": "IALL.NonpedagogStaffSalaryT AS pedagogNonStaffSalaryT"
+    },
+	  {
+       "column": "IALL.YearlyBudget AS yearlyBudget"
+    },
+    {
+       "column": "IALL.YearlyBudgetT AS yearlyBudgetT"
+    },
+    {
+      "column": "IALL.Message AS message"
+    },
+    {
+      "column": "IALL.InstitutionNameEn AS institutionNameEn"
+    },
+    {
+      "column": "IALL.AddressEn AS addressEn"
+    },
+    {
+      "column": "IALL.FeesScholarshipEn AS feesScholarshipEn"
+    },
+    {
+      "column": "IALL.EdTypeEnID AS edTypeEnID"
+    }
+      ],
+      "params": [
+        {
+      "param": "@instid",
+      "column": "IALL.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+	  {
+      "param": "@year",
+      "column": "IALL.SchoolYear",
+      "operator": "=",
+      "value": "year",
+      "type": "int",
+      "logical_operator": "and",
+	    "optional": true,
+      "static": false
+    }
+      ],
+      "order": [
+        {
+        "column": "IALL.InstitutionID",
+        "type": "ASC"
+        }
+      ]
+    },
+    {
+      "arrayName": "institutionDepartments",
+      "template": "SELECT /**select**/ FROM [inst_basic].[InstitutionDepartmentList] IDF /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "IDF.InstitutionDepartmentID AS id"
+        },
+		    {
+          "column": "IDF.Name AS departmentName"
+        },
+		    {
+          "column": "IDF.FullAddress AS fullAddress"
+        },
+		    {
+          "column": "IDF.PostCode AS departmentPostalCode"
+        },
+		    {
+          "column": "IDF.IsCentralText AS isCentral"
+        },
+		    {
+          "column": "IDF.IsProtectedText AS isProtected"
+        },
+		    {
+          "column": "'institutionDepartmentData' AS formName"
+        },
+		    {
+          "column": "IDF.InstitutionDepartmentID AS formDataId"
+        }		
+      ],
+        "params": [
+        {
+          "param": "@instid",
+          "column": "IDF.InstitutionID",
+          "operator": "=",
+          "value": "instid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        },
+	      {
+          "param": "@year",
+          "column": "IDF.SchoolYear",
+          "operator": "=",
+          "value": "year",
+          "type": "int",
+          "logical_operator": "and",
+	        "optional": true,
+          "static": false
+        }
+      ],
+      "order": [
+        {
+          "column": "IDF.InstitutionDepartmentID",
+          "type": "ASC"
+        }
+      ]
+    },
+    {
+      "arrayName": "institutionPhones",
+      "template": "SELECT /**select**/ FROM [inst_basic].[InstitutionPhone] IP LEFT JOIN [inst_nom].[PhoneType] PT ON PT.PhoneTypeID=IP.PhoneTypeID /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "IP.InstitutionPhoneID AS id"
+        },
+		    {
+          "column": "PT.Name AS phoneTypeID"
+        },
+        {
+          "column": "IP.PhoneCode AS phoneCode" 
+        },
+        {
+          "column": "IP.PhoneNumber AS phoneNumber"
+        },
+        {
+          "column": "IP.ContactKind AS contactKind"
+        },
+        {
+          "column": "IP.IsMain AS isMain"
+        },
+		    {
+          "column": "'institutionPhoneData' AS formName"
+        },
+        {
+          "column": "IP.InstitutionPhoneID AS formDataId"
+        }
+      ],
+      "params": [
+        {
+          "param": "@instid",
+          "column": "IP.InstitutionID",
+          "operator": "=",
+          "value": "instid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        },
+		    {
+          "param": "@isinst",
+          "column": "IP.IsInstitution",
+          "operator": "=",
+          "value": 1,
+          "type": "int",
+          "logical_operator": "and",
+          "static": true
+        },
+		    {
+			    "param": "@year",
+			    "column": "IP.SchoolYear",
+			    "operator": "=",
+			    "value": "year",
+			    "type": "int",
+			    "logical_operator": "and",
+			    "optional": true,
+			    "static": false
+        }
+      ],
+      "order": [
+        {
+          "column": "IP.IsMain",
+          "type": "DESC"
+        }
+      ]
+    },
+	  {
+      "arrayName": "institutionInnovations",
+      "template": "SELECT /**select**/ FROM [inst_basic].[InstitutionInnovation] IIN LEFT JOIN [inst_nom].[InnovationType] IT ON IT.InnovationTypeID=IIN.InnovationTypeID /**where**/ /**orderby**/",
+	    "columns": [
+        {
+          "column": "IIN.InstitutionInnovationID AS id"
+        },
+		    {
+          "column": "IT.Name AS innovationType"
+        },
+        {
+          "column": "IIN.Notes AS notes"
+        }
+      ],
+      "params": [
+        {
+          "param": "@instid",
+          "column": "IIN.InstitutionID",
+          "operator": "=",
+          "value": "instid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        },
+			  {
+          "param": "@year",
+          "column": "IIN.SchoolYear",
+          "operator": "=",
+          "value": "year",
+          "type": "int",
+          "logical_operator": "and",
+	        "optional": true,
+          "static": false
+        }
+          ],
+            "order": [
+              {
+                "column": "IIN.InstitutionID",
+                "type": "ASC"
+              }
+          ]
+    },
+    {
+      "arrayName": "publicCouncilData",
+      "template": "SELECT /**select**/ FROM [inst_basic].[InstitutionPublicCouncilList] IPC /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "IPC.InstitutionPublicCouncilID AS id"
+        },
+		    {
+          "column": "IPC.FirstName AS firstName"
+        },
+		    {
+          "column": "IPC.MiddleName AS middleName"
+        },
+		    {
+          "column": "IPC.FamilyName AS familyName"
+        },
+		    {
+          "column": "IPC.PublicCouncilType AS publicCouncilTypeID"
+        },
+		    {
+          "column": "IPC.PublicCouncilRole AS publicCouncilRoleID"
+        },
+		    {
+          "column": "IPC.Email AS email"
+        },
+		    {
+          "column": "IPC.PhoneNumber AS phone"
+        },
+		    {
+          "column": "'institutionPublicCouncilData' AS formName"
+        },
+		    {
+          "column": "IPC.InstitutionPublicCouncilID AS formDataId"
+        }
+      ],
+      "params": [
+        {
+          "param": "@instid",
+          "column": "IPC.InstitutionID",
+          "operator": "=",
+          "value": "instid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        },
+	      {
+          "param": "@year",
+          "column": "IPC.SchoolYear",
+          "operator": "=",
+          "value": "year",
+          "type": "int",
+          "logical_operator": "and",
+	        "optional": true,
+          "static": false
+        }
+      ],
+      "order": [
+        {
+          "column": "IPC.PublicCouncilRoleID",
+          "type": "ASC"
+        },
+	      {
+          "column": "IPC.FirstName",
+          "type": "ASC"
+        }
+      ],
+      "inSelects": []
+    },
+    {
+      "arrayName": "schoolBoards",
+      "template": "SELECT /**select**/ FROM [inst_basic].[SchoolBoardList] IPC /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "IPC.InstitutionSchoolBoardID AS id"
+        },
+		    {
+          "column": "IPC.FirstName AS firstName"
+        },
+		    {
+          "column": "IPC.MiddleName AS middleName"
+        },
+		    {
+          "column": "IPC.FamilyName AS familyName"
+        },
+		    {
+          "column": "IPC.SchoolBoardRole AS schoolBoardRole"
+        },
+		    {
+          "column": "IPC.Email AS email"
+        },
+		    {
+          "column": "IPC.PhoneNumber AS phone"
+        },
+		    {
+          "column": "'institutionSchoolBoardData' AS formName"
+        },
+		    {
+          "column": "IPC.InstitutionSchoolBoardID AS formDataId"
+        },
+		    {
+          "column": "IPC.HelpStudentGovernment AS helpStudentGovernment"
+        }
+      ],
+      "params": [
+        {
+          "param": "@instid",
+          "column": "IPC.InstitutionID",
+          "operator": "=",
+          "value": "instid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        }
+      ],
+        "order": [],
+        "inSelects": []
+    },
+    {
+      "arrayName": "institutionProjects",
+      "template": "SELECT /**select**/ FROM [inst_basic].[InstitutionProjectList] IPR /**where**/ /**orderby**/",
+      "columns": [
+	      { 
+		      "column": "IPR.InstitutionProjectID AS id" 
+	      },
+        { 
+		      "column": "IPR.ProjectType AS projectType" 
+	      },
+        { 
+		      "column": "IPR.ProjectProgram AS programType" 
+	      },
+        { 
+		      "column": "IPR.Name AS projectName"
+	      },
+        { 
+		      "column": "IPR.Website AS projectWebsite"
+	      },
+        { 
+		      "column": "IPR.StartDate AS startDate"
+	      },
+        { 
+		      "column": "IPR.EndDate AS endDate"
+	      },
+	      { 
+		      "column": "'institutionProjectData' AS formName"
+	      },
+	      { 
+		      "column": "IPR.InstitutionProjectID AS formDataId"
+	      },
+	      { 
+		      "column": "IPR.Description AS description"
+	      },
+	      { 
+		      "column": "IPR.PlanCountAll AS planCountAll"
+	      },
+	      { 
+		      "column": "IPR.ActualCountAll AS actualCountAll"
+	      },
+	      { 
+		      "column": "IPR.InterCountAll AS interCountAll"
+	      },
+	      { 
+		      "column": "IPR.Goals AS goals"
+	      }
+      ],
+      "params": [
+        {
+          "param": "@instid",
+          "column": "IPR.InstitutionID",
+          "operator": "=",
+          "value": "instid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        },
+	      {
+          "param": "@isArchive",
+          "column": "IPR.IsArchive",
+          "operator": "=",
+          "value": 0,
+          "type": "int",
+          "logical_operator": "and",
+          "static": true
+        },
+	      {
+          "param": "@year",
+          "column": "IPR.SchoolYear",
+          "operator": "=",
+          "value": "year",
+          "type": "int",
+          "logical_operator": "and",
+	        "optional": true,
+          "static": false
+        }
+      ],
+      "order": [
+        {
+          "column": "IPR.InstitutionProjectID",
+          "type": "ASC"
+        }
+	    ]
+    },
+    {
+      "arrayName": "institutionVehicles",
+      "template": "SELECT /**select**/ FROM [inst_basic].[InstitutionVehicleList] IV /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "IV.InstitutionVehicleID AS id"
+        },
+		    {
+          "column": "IV.AcquisitionWay AS acquisitionWayTypeID"
+        },
+		    {
+          "column": "IV.Document AS documentTypeID"
+        },
+		    {
+          "column": "IV.DocumentNum AS documentNum"
+        },
+		    {
+          "column": "IV.DocumentDate AS documentDate"
+        },
+		    {
+          "column": "IV.RegistrationNum AS registrationNum"
+        },
+		    {
+          "column": "IV.ProducedYear AS producedYear"
+        },
+		    {
+          "column": "IV.PlaceCount AS placeCountTypeID"
+        },
+		    {
+          "column": "'institutionVehicleData' AS formName"
+        },
+        {
+          "column": "IV.InstitutionVehicleID AS formDataId"
+        }
+      ],
+      "params": [
+        {
+          "param": "@instid",
+          "column": "IV.InstitutionID",
+          "operator": "=",
+          "value": "instid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        },
+		    {
+          "param": "@year",
+          "column": "IV.SchoolYear",
+          "operator": "=",
+          "value": "year",
+          "type": "int",
+          "logical_operator": "and",
+	        "optional": true,
+          "static": false
+        }
+      ],
+      "order": [
+        {
+          "column": "IV.InstitutionVehicleID",
+          "type": "ASC"
+        }
+      ],
+      "inSelects": []
+    }
+  ]
+}

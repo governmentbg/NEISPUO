@@ -1,0 +1,102 @@
+[
+  {
+    "client_id": "survey",
+    "response_types": ["code"],
+    "redirect_uris": [
+      "https://survey.int/silent-signin-callback",
+      "https://survey.int/signin-callback"
+    ],
+    "post_logout_redirect_uris": ["https://survey.int/login"],
+    "token_endpoint_auth_method": "none"
+  },
+  {
+    "client_id": "metabase",
+    "response_types": ["code"],
+    "redirect_uris": [
+      "https://reporting.int/silent-signin-callback",
+      "https://reporting.int/signin-callback"
+    ],
+    "post_logout_redirect_uris": ["https://reporting.int"],
+    "token_endpoint_auth_method": "none"
+  },
+  {
+    "client_id": "user-management",
+    "response_types": ["code"],
+    "redirect_uris": [
+      "https://usermng.int/silent-signin-callback",
+      "https://usermng.int/signin-callback"
+    ],
+    "post_logout_redirect_uris": ["https://usermng.int/login"],
+    "token_endpoint_auth_method": "none"
+  },
+  {
+    "client_id": "neispuo-portal",
+    "response_types": ["code"],
+    "redirect_uris": [
+      "https://neispuo.int/signin-callback",
+      "https://neispuo.int/silent-signin-callback"
+    ],
+    "post_logout_redirect_uris": ["https://neispuo.int/login"],
+    "token_endpoint_auth_method": "none"
+  },
+  {
+    "client_id": "reg_inst",
+    "response_types": ["code"],
+    "redirect_uris": [
+      "https://institutions.int/silent-signin-callback",
+      "https://institutions.int/signin-callback",
+      "https://ri.int/signin-callback",
+      "https://ri.int/silent-signin-callback"
+    ],
+    "post_logout_redirect_uris": ["https://institutions.int/home", "https://ri.int/home"],
+    "token_endpoint_auth_method": "none"
+  },
+  {
+    "client_id": "students_code_client",
+    "response_types": ["code"],
+    "redirect_uris": [
+      "https://students.int",
+      "https://students.int/callback.html",
+      "https://students.int/silent-renew.html"
+    ],
+    "post_logout_redirect_uris": ["https://students.int"],
+    "token_endpoint_auth_method": "none"
+  },
+  {
+    "client_id": "school-books-frontend",
+    "response_types": ["code"],
+    "redirect_uris": [
+      "https://dnevnik.int",
+      "https://dnevnik.int/t/",
+      "https://dnevnik.int/s/",
+      "https://dnevnik.int/silent-refresh.html"
+    ],
+    "post_logout_redirect_uris": ["https://neispuo.int"],
+    "token_endpoint_auth_method": "none"
+  },
+  {
+    "client_id": "test-rmi",
+    "response_types": ["code"],
+    "redirect_uris": ["https://rmi.int/signin-callback", "https://rmi.int/silent-signin-callback"],
+    "post_logout_redirect_uris": ["https://rmi.int/login"],
+    "token_endpoint_auth_method": "none"
+  },
+  {
+    "client_id": "inst_basic",
+    "response_types": ["code"],
+    "redirect_uris": ["https://so.int/signin-callback", "https://so.int/silent-signin-callback"],
+    "post_logout_redirect_uris": ["https://so.int/home"],
+    "token_endpoint_auth_method": "none"
+  },
+  {
+    "client_id": "helpdesk_code_client",
+    "response_types": ["code"],
+    "redirect_uris": [
+      "https://helpdesk-neispuo.int",
+      "https://helpdesk-neispuo.int/callback.html",
+      "https://helpdesk-neispuo.int/silent-renew.html"
+    ],
+    "post_logout_redirect_uris": ["https://helpdesk-neispuo.int"],
+    "token_endpoint_auth_method": "none"
+  }
+]

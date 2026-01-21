@@ -1,0 +1,30 @@
+<h1 mat-dialog-title>Удостоверение</h1>
+<div class="modal-body">
+  <app-loader *ngIf="isLoading"></app-loader>
+  <div class="button-container">
+    <button class="add-file" type="button" mat-raised-button color="primary" *ngIf="!subsection.certificateId" (click)="getCertificate()">генерирай удостоверение</button>
+    <button class="add-file" type="button" mat-raised-button color="primary" *ngIf="subsection.certificateId" [disabled]="!(subsection.certificateId && !uploadCopy)" (click)="uploadCopy = true">прикачи удостоверение</button>
+  </div>
+  <div class="file-container">
+    <app-file *ngIf="subsection.certificateId" [fileLabel]="subsection.certificateLabel" [fileId]="subsection.certificateId" [mode]="mode.Edit"></app-file>
+    <app-file *ngIf="subsection.copyCertificateId" [fileLabel]="subsection.copyCertificateLabel" [fileId]="subsection.copyCertificateId" [mode]="mode.Edit"></app-file>
+  </div>
+  <div class="file-upload-container" *ngIf="uploadCopy">
+    <span class="label-span">Прикачване на сканирано удостоверение</span>
+    <file-upload [control]="fileUploadControl" accept=".pdf" multiple="false">
+      <ng-template let-isFileDragDropAvailable="isFileDragDropAvailable" #placeholder>
+        <file-upload-drop-zone>
+          <ng-container *ngIf="isFileDragDropAvailable; else isNotDragDropAvailable">
+            {{ text }}
+          </ng-container>
+          <ng-template #isNotDragDropAvailable>
+            {{ text }}
+          </ng-template>
+        </file-upload-drop-zone>
+      </ng-template>
+    </file-upload>
+  </div>
+</div>
+<div class="footer-container-with-two-buttons">
+  <button mat-raised-button class="btn-second btn-second" color="secondary" (click)="closeDialog()">Затвори</button>
+</div>

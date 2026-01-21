@@ -1,0 +1,19 @@
+<form [formGroup]="form" autocomplete="off" novalidate>
+  <sb-tab-card>
+    <ng-container card-title>Редакция на годишна програма</ng-container>
+    <sb-editor-panel
+      card-buttons
+      [editBtnHidden]="!canEdit"
+      [backBtnHidden]="true"
+      [isNew]="false"
+      (save)="onSave($event)"
+    ></sb-editor-panel>
+    <ng-container card-body>
+      <sb-textarea-field
+        label="Годишна програма"
+        formControlName="schoolYearProgram"
+        [textareaMaxSize]="10000"
+      ></sb-textarea-field>
+    </ng-container>
+  </sb-tab-card>
+</form>

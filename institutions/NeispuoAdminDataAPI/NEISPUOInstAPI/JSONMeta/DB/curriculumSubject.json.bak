@@ -1,0 +1,278 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_year].[CurriculumData] CRR /**where**/ /**orderby**/",
+  "sotemplate": "SELECT /**select**/ FROM [so].[CurriculumData] CRR /**where**/ /**orderby**/",
+  "columns": [
+        {
+          "column": "CRR.CurriculumID AS curriculumID"
+        },    
+		{
+          "column": "CRR.SchoolYear AS schoolYear"
+        },
+		{
+          "column": "CRR.InstitutionID AS institutionID"
+        },
+		{
+          "column": "CRR.IsWholeClass AS isWholeClass"
+        },
+		{
+          "column": "CRR.IsAllStudents AS isAllStudents"
+        },
+		{
+          "column": "CRR.CurriculumGroupNum AS curriculumGroupID"
+        },
+		{
+          "column": "CRR.SubjectID AS subjectID"
+        },
+		{
+          "column": "CRR.SubjectTypeID AS subjectTypeID"
+        },
+		{
+          "column": "CRR.NormaS AS normaS"
+        },
+		{
+          "column": "CRR.IsIndividualLesson AS isIndividualLesson"
+        },
+{
+          "column": "CRR.WeeksFirstTerm AS weeksFirstTerm"
+        },
+{
+          "column": "CRR.HoursWeeklyFirstTerm AS hoursWeeklyFirstTerm"
+        },
+{
+          "column": "CRR.WeeksSecondTerm AS weeksSecondTerm"
+        },
+{
+          "column": "CRR.HoursWeeklySecondTerm AS hoursWeeklySecondTerm"
+        },
+{
+          "column": "CRR.IsFL AS isFL"
+        },
+{
+          "column": "CRR.FLSubjectID AS FLSubjectID"
+        },
+{
+          "column": "CRR.IsIndividualCurriculum AS isIndividualCurriculum"
+        },
+{
+          "column": "CRR.NormaS AS normaS"
+        },
+{
+          "column": "CRR.InstitutionDepartmentID AS institutionDepartmentID"
+        },
+{
+          "column": "CRR.ParentCurriculumID AS parentCurriculumID"
+        },
+{
+          "column": "CRR.CurriculumPartID AS curriculumPartID"
+        },
+		{
+          "column": "CRR.SortOrder AS sortOrder"
+        },
+		{
+          "column": "CRR.ClassDepartment AS classDepartment"
+        }		
+  ],
+  "params": [
+        {
+          "param": "@curriculumid",
+          "column": "CRR.CurriculumID",
+          "operator": "=",
+          "value": "curriculumid",
+          "type": "int",
+          "logical_operator": "and",
+		  "optional":true,
+          "static": false
+        },
+			{
+      "param": "@year",
+      "column": "CRR.SchoolYear",
+      "operator": "=",
+      "value": "year",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    },
+	{
+      "param": "@period",
+      "column": "CRR.Period",
+      "operator": "=",
+      "value": "period",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    }
+  ],
+  "order": [
+
+  ],
+  "inSelects": [
+    {
+      "arrayName": "curriculumClasses",
+      "template": "SELECT /**select**/ FROM [inst_year].[CurriculumClassData] CC /**where**/ /**orderby**/",
+	  "sotemplate": "SELECT /**select**/ FROM [so].[CurriculumClass] CC /**where**/ /**orderby**/",
+      "columns": [
+	    {
+          "column": "CC.CurriculumClassesID AS id"
+        },
+        {
+          "column": "CC.ClassID AS classID"
+        }
+      ],
+      "params": [
+		{
+          "param": "@curriculumid",
+          "column": "CC.CurriculumID",
+          "operator": "=",
+          "value": "curriculumid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+       },
+	{
+      "param": "@year",
+      "column": "CC.SchoolYear",
+      "operator": "=",
+      "value": "year",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    },
+	{
+      "param": "@period",
+      "column": "CC.Period",
+      "operator": "=",
+      "value": "period",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    }
+      ],
+      "order": [
+        {
+          "column": "CC.CurriculumID",
+          "type": "ASC"
+        }
+      ]
+    },
+	  {
+      "arrayName": "curriculumStudents",
+      "template": "SELECT /**select**/ FROM [inst_year].[CurriculumAddedStudentList] CS /**where**/ /**orderby**/",
+	  "sotemplate": "SELECT /**select**/ FROM [so].[CurriculumAddedStudentList] CS /**where**/ /**orderby**/",
+      "columns": [
+	      {
+          "column": "CS.SClassID AS id"
+        },
+		{
+          "column": "CS.CurriculumStudentID AS curriculumStudentID"
+        },
+		{
+          "column": "CS.PersonId AS personID"
+        },
+        {
+          "column": "CS.ClassName AS className"
+        },
+        {
+          "column": "CS.PublicEduNumber AS publicEduNumber"
+        },
+        {
+          "column": "CS.FullName AS fullName"
+        }
+      ],
+      "params": [
+		    {
+          "param": "@curriculumid",
+          "column": "CS.CurriculumID",
+          "operator": "=",
+          "value": "curriculumid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        },
+			{
+      "param": "@year",
+      "column": "CS.SchoolYear",
+      "operator": "=",
+      "value": "year",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    },
+	{
+      "param": "@period",
+      "column": "CS.Period",
+      "operator": "=",
+      "value": "period",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    }
+      ],
+      "order": [
+        {
+          "column": "CS.CurriculumID",
+          "type": "ASC"
+        }
+      ]
+    },
+	  {
+      "arrayName": "curriculumTeachers",
+      "template": "SELECT /**select**/ FROM [inst_year].[CurriculumTeacherData] CT /**where**/ /**orderby**/",
+	  "sotemplate": "SELECT /**select**/ FROM [so].[CurriculumTeacher] CT /**where**/ /**orderby**/",
+      "columns": [
+	    {
+          "column": "CT.CurriculumTeacherID AS id"
+        },
+        {
+          "column": "CT.StaffPositionID AS staffPositionID"
+        },
+		{
+          "column": "CT.IsNotRegularTeacher AS isNotRegularTeacher"
+        }
+      ],
+      "params": [
+		    {
+          "param": "@curriculumid",
+          "column": "CT.CurriculumID",
+          "operator": "=",
+          "value": "curriculumid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        },
+					{
+      "param": "@year",
+      "column": "CT.SchoolYear",
+      "operator": "=",
+      "value": "year",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    },
+	{
+      "param": "@period",
+      "column": "CT.Period",
+      "operator": "=",
+      "value": "period",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    }
+      ],
+      "order": [
+        {
+          "column": "CT.CurriculumID",
+          "type": "ASC"
+        }
+      ]
+    }
+	]
+
+}

@@ -1,0 +1,29 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[InstExtData] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "Extdata as extdata"
+        },
+		{
+            "column": "ExtAlldata as extAlldata"
+        }
+    ],
+    "params": [
+        {
+            "param": "@instid",
+            "column": "InstitutionID",
+            "operator": "=",
+            "value": "instid",
+            "type": "int",
+            "logical_operator": "and",
+            "static": false
+        }
+    ],
+    "order": [
+        {
+            "column": "InstitutionID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

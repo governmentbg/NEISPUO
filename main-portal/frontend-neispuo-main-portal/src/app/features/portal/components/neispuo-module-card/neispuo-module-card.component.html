@@ -1,0 +1,13 @@
+<div class="col-12 col-sm-6 col-xl-4">
+  <div class="card">
+    <p class="card-header bg-transparent">{{ module.name }}</p>
+    <div class="card-body">
+      <p class="card-text" [innerHtml]="module.description"></p>
+    </div>
+    <div class="card-footer card-footer-right bg-transparent">
+      <a class="btn-link module-link" [href]="module.link">
+        Към модула
+      </a>
+    </div>
+  </div>
+</div>

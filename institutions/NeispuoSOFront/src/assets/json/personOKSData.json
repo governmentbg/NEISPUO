@@ -1,0 +1,83 @@
+{
+  "label": "Данни за образование и квалификация на персонала",
+  "paramName": "personOKSid",
+  "sections": [
+    {
+      "order": 1,
+      "name": "staffOKSData",
+      "label": "Данни за образование",
+      "subsections": [
+        {
+          "order": 1,
+          "name": "staffOKS",
+          "label": "Данни за образование",
+          "fields": [
+            {
+              "label": "Поредна специалност",
+              "name": "specialityOrdTypeID",
+              "type": "select",
+              "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+              "disabled": false,
+              "order": 1
+            },
+            {
+              "label": "Образователна степен",
+              "name": "educationGradeTypeID",
+              "type": "select",
+              "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+              "disabled": false,
+              "order": 2
+            },
+            {
+              "label": "Диплома №",
+              "name": "certifcateNo",
+              "type": "input",
+              "inputType": "text",
+              "disabled": false,
+              "order": 3,
+              "width": 200,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 50,
+                  "message": "Максимална дължина 50 символа"
+                }
+              ]
+            },
+            {
+              "label": "Година на завършване",
+              "name": "yearOfGraduation",
+              "type": "input",
+              "inputType": "number",
+              "order": 4,
+              "width": 95,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 4,
+                  "message": "Максимална дължина 4 символа"
+                },
+                {
+                  "name": "max",
+                  "validation": 9999,
+                  "message": "Невалидна година"
+                },
+                {
+                  "name": "pattern",
+                  "validation": "^\\d+$",
+                  "message": "Полето трябва да съдържа цяло неотрицателно число"
+                }
+              ]
+            },
+            {
+              "label": "Основна специалност",
+              "name": "isMainOKS",
+              "type": "checkbox",
+              "order": 5
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

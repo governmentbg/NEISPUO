@@ -1,0 +1,29 @@
+<div class="field-grid col-12">
+
+    <button type="button" class="btn btn-outline-primary -ml-2"
+    *ngIf="showBack"
+    aria-label="Back"
+    [routerLink]="backRouterLink"
+    (click)="backwardCallback($event)"
+    routerLinkActive="router-link-active"
+    > {{ backLabel }}
+    </button>
+    
+    <button
+    class="btn btn-primary position-right -mr-1 ml-3 my-primary-edit"
+    pButton type="button" 
+    *ngIf="showEdit"
+    label={{editLabel}}
+    (click)="editCallback('edit')"
+    routerLinkActive="router-link-active"
+    ></button>
+
+    <button
+    class="btn btn-primary position-right -mr-1 my-primary-delete"
+    pButton type="button" 
+    *ngIf="showDelete"
+    label={{deleteLabel}}
+    (click)="deleteCallback('delete')"
+    routerLinkActive="router-link-active"
+    ></button>
+</div>

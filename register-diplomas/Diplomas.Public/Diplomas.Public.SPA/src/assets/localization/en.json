@@ -1,0 +1,67 @@
+{
+  "moduleTitle": "НЕИСПУО",
+  "appTitle": "Diplomas",
+  "principal": "Ministry of Education and Science",
+  "appSubTitle": "Register of documents for completed primary education, secondary education and / or acquired degree of professional qualification",
+  "appFooter": {
+    "title": "© Ministry of Education and Science",
+    "subtitle": "priemna@mon.bg тел.: 02 9217 760"
+  },
+  "moduleName": "Module @:appTitle",
+  "buttons": {
+    "search": "Search...",
+    "close": "Close",
+    "statisticInfo": "Statistical information",
+    "newSearch": "New query"
+  },
+  "validation": {
+    "requiredField": "Field is required",
+    "hasErrors": "There are validation errors"
+  },
+  "common":{
+    "siteInDevelopment" : "This site is still in development. Please visit the",
+    "officialSite" : "official site"
+  },
+  "search": {
+    "title": "Search document",
+    "description": "To receive information about the issued document, please enter PIN (single civil number), PIN (personal number of a foreigner) or LIN (personal identification number of a foreign citizen from an original identity document). ",
+    "egn": "PIN",
+    "lin": "LIN",
+    "idNumberLabel": "Please enter PIN",
+    "docNumberLabel": "Please enter document number",
+    "docNumberHint": "For a document that has a serial and serial number, enter the serial and serial number of the document (eg: A-10, 001122). For a document that does not have a serial and serial number, enter the registration number of the document (eg: 3256-54). ",
+    "noResultsFound": "No results found",
+    "invalidRecaptchaToken": "Invalid verification code"
+  },
+  "details": {
+    "title": "",
+    "grades": "Grades from document",
+    "personName" : "Name",
+    "personNameLatin" : "Name (in latin)",
+    "institutionName" : "Institution",
+    "birthPlace": "Birthplace",
+    "nationality": "Nationality",
+    "scannedImages": "Scanned images",
+    "series": "Series and number",
+    "schoolYear": "School year",
+    "yearGraduated": "Year of graduation",
+    "regNumber": "Registration number",
+    "isCancelled": "Document is canceled",
+    "subjectHeaders":{
+      "subject": "Subject",
+      "gradeText": "Grade",
+      "horarium": "Horarium"
+    },
+    "informationLine1": "The data found in the Register are entered by the institution that issued the document and contain the personal data of the holder, the details and scanned images of the document, and for certain documents - the estimates.",
+    "informationLine2": "In case you find a discrepancy in the data from the Register with the data of the document, please contact the institution that issued it."
+    },
+  "info": {
+    "title": "Information"
+  },
+  "menu": {
+    "home": "Home",
+    "diplomas": "Register of documents for completed primary education, secondary education and / or acquired degree of professional qualification",
+    "activeStudents": "Рeгистър на всички действащи и прекъснали студенти и докторанти",
+    "graduateStudents": "Регистър на завършилите студенти"
+  }
+}

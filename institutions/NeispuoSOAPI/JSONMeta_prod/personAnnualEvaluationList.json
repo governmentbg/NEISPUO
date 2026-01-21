@@ -1,0 +1,70 @@
+{
+  "label": "Атестиране/Ежегодно оценяване на персонала",
+  "changeData": false,
+  "sections": [
+    {
+      "label": "Име на служител",
+      "order": 1,
+      "subsections": [
+        {
+          "order": 1,
+          "label": "fullName",
+          "type": "input",
+          "name": "fullName",
+          "bold": true,
+          "width": 200,
+          "disabled": false,
+          "flexible": false
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "label": "Атестиране/Ежегодно оценяване на персонала",
+      "name": "TableAnnualStaffEvaluation",
+	    "accordion": {"state":"closed"},
+      "table":
+      {
+        "name": "annualStaffEvaluation",
+        "createNew": "redirect",
+        "formName": "personAnnualEvaluationData",
+        "paramName": "annualStaffEvaluationID",
+        "procedureName": "inst_basic.annualStaffEvaluationCUD",
+        "canDeleteRow": true,
+		    "searchable":false,
+        "fields": [
+          {
+            "label": "Период на оценяване - от дата",
+             "name": "fromDate",
+            "type": "textarea",
+            "order": 1
+          },
+          {
+            "label": "Период на оценяване - до дата",
+             "name": "toDate",
+            "type": "textarea",
+            "order": 2
+          },
+          {
+            "label": "Резултат от самооценка",
+            "name": "selfAssessmentResult",
+            "type": "textarea",
+            "order": 3
+          },
+          {
+            "label": "Резултат от оценка на комисия",
+            "name": "commissionEvaluationResult",
+            "type": "textarea",
+            "order": 4
+          },
+          {
+            "label": "Окончателен резултат като показател",
+            "name": "finalResultIndicator",
+            "type": "textarea",
+            "order": 5
+          }
+        ]
+      }
+    }
+  ]
+}

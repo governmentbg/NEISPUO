@@ -1,0 +1,53 @@
+{
+  "name": "db",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "date-fns": "^4.1.0",
+    "lodash": "^4.17.21",
+    "seedrandom": "^3.0.5",
+    "tedious": "^18.6.1"
+  },
+  "devDependencies": {
+    "replace-in-file": "^8.3.0",
+    "run-script-os": "^1.1.6",
+    "x-var": "^3.0.1"
+  },
+  "scripts": {
+    "deploy": "npm run deploy:dev",
+    "deploy:dev": "x-var dbEnv=Dev npm run sqlcmd-deploy",
+    "deploy:test": "x-var dbEnv=Test npm run sqlcmd-deploy",
+    "sqlcmd-deploy": "npm run sqlcmd -- -i CreateAll.sql",
+    "sqlcmd-tsqlt-prepare-server": "npm run sqlcmd -- -i Test/tSQLt/PrepareServer.sql",
+    "sqlcmd-tsqlt-setup": "npm run sqlcmd -- -i Test/Setup.sql",
+    "sqlcmd-test-run": "npm run sqlcmd -- -i Test/Run.sql",
+    "sqlcmd": "run-script-os --",
+    "sqlcmd:nix": "x-env dbName=$SB__Data__DbName sqlcmd -b -S $SB__Data__DbIP,$SB__Data__DbPort -U $SB__Data__DbUser -P $SB__Data__DbPass",
+    "sqlcmd:win32": "x-env dbName=%SB__Data__DbName% sqlcmd -b -S %SB__Data__DbIP%,%SB__Data__DbPort% -U %SB__Data__DbUser% -P %SB__Data__DbPass% -f 65001",
+    "generate-scripts": "npm run mssql-scripter-all && npm run rename-fks && npm run nullable-replace && npm run generate-inserts-all && npm run split-constraints && npm run random-egn-names && npm run line-endings-lf",
+    "rename-fks": "replace-in-file --configFile=./cli/rename-fks.config.json",
+    "nullable-replace": "replace-in-file --configFile=./cli/nullable-replace.config.json",
+    "mssql-scripter-all": "npm run mssql-scripter-core && npm run mssql-scripter-inst_nom && npm run mssql-scripter-inst_basic && npm run mssql-scripter-inst_year && npm run mssql-scripter-inst_year-views && npm run mssql-scripter-document && npm run mssql-scripter-student",
+    "mssql-scripter-core": "npm run mssql-scripter-common -- --include-schemas core noms location family --include-types Table -f ./CreateOtherSchemas/Schemas/core_noms_location_family.sql",
+    "mssql-scripter-inst_nom": "npm run mssql-scripter-common -- --include-schemas inst_nom --include-types Table -f ./CreateOtherSchemas/Schemas/inst_nom.sql",
+    "mssql-scripter-inst_basic": "npm run mssql-scripter-common -- --include-schemas inst_basic --include-types Table -f ./CreateOtherSchemas/Schemas/inst_basic.sql",
+    "mssql-scripter-inst_year": "npm run mssql-scripter-common -- --include-schemas inst_year --include-types Table -f ./CreateOtherSchemas/Schemas/inst_year.sql",
+    "mssql-scripter-inst_year-views": "npm run mssql-scripter-common -- --include-schemas inst_year --include-types View --include-objects inst_year.ClassTeacher199 -f ./CreateOtherSchemas/Schemas/inst_year.views.sql",
+    "mssql-scripter-document": "npm run mssql-scripter-common -- --include-schemas document --include-types Table -f ./CreateOtherSchemas/Schemas/document.sql",
+    "mssql-scripter-student": "npm run mssql-scripter-common -- --include-schemas student --include-types Table -f ./CreateOtherSchemas/Schemas/student.sql",
+    "mssql-scripter-common": "npm run mssql-scripter -- --exclude-headers --exclude-use-database --target-server-version 2016 --constraint-names",
+    "mssql-scripter": "x-env mssql-scripter -S $SB__Data__DbIP_MON,$SB__Data__DbPort_MON -U $SB__Data__DbUser_MON -P $SB__Data__DbPass_MON -d $SB__Data__DbName_MON",
+    "generate-inserts-all": "npm run generate-inserts-core && npm run generate-inserts-document && npm run generate-inserts-inst_basic && npm run generate-inserts-inst_nom && npm run generate-inserts-inst_year && npm run generate-inserts-noms && npm run generate-inserts-student",
+    "generate-inserts-core": "npm run generate-inserts -- ./Insert/core/_InsertQueries.sql",
+    "generate-inserts-document": "npm run generate-inserts -- ./Insert/document/_InsertQueries.sql",
+    "generate-inserts-inst_basic": "npm run generate-inserts -- ./Insert/inst_basic/_InsertQueries.sql",
+    "generate-inserts-inst_nom": "npm run generate-inserts -- ./Insert/inst_nom/_InsertQueries.sql",
+    "generate-inserts-inst_year": "npm run generate-inserts -- ./Insert/inst_year/_InsertQueries.sql",
+    "generate-inserts-noms": "npm run generate-inserts -- ./Insert/noms/_InsertQueries.sql",
+    "generate-inserts-student": "npm run generate-inserts -- ./Insert/student/_InsertQueries.sql",
+    "generate-inserts": "x-env node ./cli/generate-inserts.mjs $SB__Data__DbIP_MON $SB__Data__DbPort_MON $SB__Data__DbUser_MON $SB__Data__DbPass_MON $SB__Data__DbName_MON \"2206409,300125,2999963,200277,607055,1690180,100006,300110,2000218\" \"2021,2022,2023,2024,2025\"",
+    "split-constraints": "node ./cli/split-constraints.mjs ./CreateOtherSchemas/Schemas core_noms_location_family.sql inst_nom.sql inst_basic.sql inst_year.sql document.sql student.sql",
+    "random-egn-names": "node ./cli/random-egn-names.js ./Insert/core tempPerson.sql",
+    "line-endings-lf": "find ./CreateOtherSchemas ./Insert -type f -print0 | xargs -0 dos2unix"
+  }
+}

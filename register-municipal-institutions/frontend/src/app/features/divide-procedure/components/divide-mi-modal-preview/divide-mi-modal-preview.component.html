@@ -1,0 +1,26 @@
+<div class="fluid formgrid grid">
+  <p-confirmDialog header="Потвърждение" icon="pi pi-exclamation-triangle"
+  acceptLabel = 'Потвърди'
+  rejectLabel = 'Откажи'
+  acceptButtonStyleClass="p-button-primary"
+  rejectButtonStyleClass="p-button-outlined p-button-primary">
+</p-confirmDialog>
+  <div class="col-12">
+    <app-mi-form
+      [form]="form"
+      [BaseSchoolTypes$]="BaseSchoolTypes$"
+      [displayRIProcedure]="true"
+      [displayProcedureFields]="true"
+      [displayDocument]="false"
+      [displayRIPremInstitution]="false"
+      [isViewFlexField]="false"
+      [isBulstatLookupEnabled]="isBulstatLookupEnabled"
+      [displayBulstatMessage]="displayBulstatMessage"
+      [onBulstatLoad]="verifyBulstat"
+      [displayWarnMessage]="displayWarnMessage"
+    ></app-mi-form>
+  </div>
+  <div class="field col-12 mt-4">
+   <button type="button" class="btn btn-primary align-right" (click)="addMi()">Запази</button>
+  </div>
+</div>

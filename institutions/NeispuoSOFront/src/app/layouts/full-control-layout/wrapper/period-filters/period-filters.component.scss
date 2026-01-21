@@ -1,0 +1,30 @@
+.block-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  &.mon-ruo {
+    top: 155px;
+  }
+  .l-custom-span-label {
+    padding-bottom: 18px;
+    margin-right: 5px;
+  }
+  .label-label {
+    font-size: 18px;
+  }
+  .filter-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    .required-span {
+      color: #df320c;
+      font-size: 15px;
+      line-height: 13px;
+    }
+  }
+}

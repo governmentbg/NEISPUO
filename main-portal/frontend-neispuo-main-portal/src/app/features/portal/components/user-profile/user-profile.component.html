@@ -1,0 +1,46 @@
+<div class="modal" tabindex="-1" aria-hidden="true" id="userProfileModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Профил</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body pb-4 px-3">
+        <div *ngIf="userData" class="row">
+    <div class="col-lg-3 col-md-6">
+      <div class="title">Потребителско име: </div>
+      {{ userData.Username }}
+    </div>
+    <div class="col-lg-3 col-md-6">
+      <div class="title">Три имена: </div>
+      {{ userData.ThreeNames }}
+    </div>
+    <div class="col-lg-3 col-md-6">
+      <div class="title">Роля: </div>
+      {{ userData.SysRoleName }}
+    </div>
+    <div *ngIf="userData.PositionID" class="col-lg-3 col-md-6">
+      <div class="title">Позиция: </div>
+      {{ userData.PositionName }}
+    </div>
+    <div *ngIf="userData.InstitutionID" class="col-lg-3 col-md-6">
+      <div class="title">Институция: </div>
+      {{ userData.InstitutionName }}
+    </div>
+    <div *ngIf="userData.MunicipalityID" class="col-lg-3 col-md-6">
+      <div class="title">Област: </div>
+      {{ userData.MunicipalityName }}
+    </div>
+    <div *ngIf="userData.RegionID" class="col-lg-3 col-md-6">
+      <div class="title">Регион: </div>
+      {{ userData.RegionName }}
+    </div>
+    <div *ngIf="userData.BudgetingInstitutionID" class="col-lg-3 col-md-6">
+      <div class="title">Финансираща институция: </div>
+      {{ userData.BudgetingInstitutionName }}
+    </div>
+  </div>
+      </div>
+    </div>
+  </div>
+</div>

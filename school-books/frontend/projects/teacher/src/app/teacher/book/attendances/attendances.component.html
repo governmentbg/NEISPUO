@@ -1,0 +1,269 @@
+<sb-banner type="warning" *ngIf="!data.students.length">Групата няма въведени ученици.</sb-banner>
+
+<ng-container *ngIf="data.students.length">
+  <div class="flex justify-between">
+    <div class="sb-btn-wrapper">
+      <a
+        *ngIf="templateData.canCreateToday"
+        [routerLink]="['../../../new', templateData.todayParam]"
+        mat-raised-button
+        color="primary"
+      >
+        <fa-icon [icon]="fasPlus" size="lg"></fa-icon>
+        <span>Ново присъствие</span>
+      </a>
+
+      <a
+        *ngIf="templateData.canRemoveToday"
+        [routerLink]="['../../../remove', templateData.todayParam]"
+        mat-raised-button
+        color="warn"
+      >
+        <fa-icon [icon]="fasTrashAlt" size="lg"></fa-icon>
+        <span>Премахни</span>
+      </a>
+    </div>
+
+    <div class="sb-btn-wrapper">
+      <a class="sb-link-btn" aria-label="Медицински бележки" [routerLink]="['./medical-notices']">
+        <fa-icon [icon]="fadNotesMedical" size="lg"></fa-icon>
+      </a>
+    </div>
+  </div>
+
+  <sb-transferred-students-banner class="mb-2.5" *ngIf="showTransferredStudentsBanner"></sb-transferred-students-banner>
+
+  <sb-banner class="mb-2.5" type="warning" *ngIf="templateData.hasOffProgramUnexcusedAbsences">
+    Има дни от неучебното време, в които има въведени отсъствия по неуважителни причини. Оцветени са в червено.
+  </sb-banner>
+
+  <sb-paginator class="mb-2.5" [items]="monthPaginatorItems"></sb-paginator>
+
+  <sb-banner *ngIf="hasPastMonthLockMessage" class="mb-2.5" type="info">
+    {{ hasPastMonthLockMessage }}
+  </sb-banner>
+
+  <div class="sb-table-container">
+    <table class="sb-table sb-attendances-table">
+      <thead>
+        <tr>
+          <th rowspan="3">Дете</th>
+          <th [attr.colspan]="templateData.days.length" class="text-center px-0">{{ templateData.monthText }}</th>
+          <th rowspan="3" class="px-0">Общо</th>
+        </tr>
+        <tr>
+          <th
+            *ngFor="let day of templateData.days"
+            class="attendance-header p-0.5"
+            [class.text-error]="day.hasOffProgramUnexcusedAbsences"
+          >
+            {{ day.dayOfMonth }}
+          </th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let studentAttendance of templateData.studentAttendances">
+        <tr>
+          <td *ngIf="studentAttendance.showInfoLink" class="sb-names">
+            <a
+              [routerLink]="[
+                '../../../../../../student-info',
+                this.data.classBookId,
+                studentAttendance.personId,
+                'student-book',
+                this.data.classBookId
+              ]"
+              class="text-primary"
+            >
+              {{ studentAttendance.classNumber != null ? studentAttendance.classNumber.toString() + '.' : '' }}
+
+              {{ studentAttendance.firstName }}
+              {{ studentAttendance.middleName }}
+              {{ studentAttendance.lastName }}
+
+              <span *ngIf="studentAttendance.abnormalStatus" class="sb-badge">
+                {{ studentAttendance.abnormalStatus }}
+              </span>
+            </a>
+          </td>
+          <td *ngIf="!studentAttendance.showInfoLink" class="sb-names">
+            {{ studentAttendance.classNumber != null ? studentAttendance.classNumber.toString() + '.' : '' }}
+
+            {{ studentAttendance.firstName }}
+            {{ studentAttendance.middleName }}
+            {{ studentAttendance.lastName }}
+
+            <span *ngIf="studentAttendance.abnormalStatus" class="sb-badge">
+              {{ studentAttendance.abnormalStatus }}
+            </span>
+          </td>
+          <td
+            *ngFor="let attendance of studentAttendance.attendances; let i = index"
+            class="w-px whitespace-nowrap sb-attendance-cell"
+            [class.bg-gray-100]="templateData.days[i].isInactiveDay"
+          >
+            <button *ngIf="attendance" (click)="viewAttendance(studentAttendance.personId, attendance.attendanceId)">
+              <fa-icon *ngIf="attendance.type === ATTENDANCE_TYPE_PRESENCE" [icon]="fasCheck"></fa-icon>
+
+              <fa-icon
+                *ngIf="attendance.type === ATTENDANCE_TYPE_UNEXCUSED_ABSENCE"
+                [icon]="fasSlash"
+                flip="vertical"
+              ></fa-icon>
+
+              <fa-stack *ngIf="attendance.type === ATTENDANCE_TYPE_EXCUSED_ABSENCE">
+                <fa-icon [icon]="fasSlash" stackItemSize="1x"></fa-icon>
+                <fa-icon [icon]="fasSlash" stackItemSize="1x" flip="vertical"></fa-icon>
+              </fa-stack>
+            </button>
+          </td>
+          <td class="w-px py-1 px-0 whitespace-nowrap attendance-header attendance-count-cell">
+            {{ studentAttendance.presencesTotal }}
+          </td>
+        </tr>
+        <tr *ngIf="selectedStudentPersonId === studentAttendance.personId">
+          <td
+            [attr.colspan]="templateData.days.length + 2"
+            class="relative bg-yellow-50"
+            [class.h-16]="loadingAttendance"
+          >
+            <mat-spinner
+              *ngIf="loadingAttendance"
+              [diameter]="40"
+              class="absolute top-1/2 left-1/2 -mt-5 -ml-5"
+            ></mat-spinner>
+            <div *ngIf="!loadingAttendance && selectedAttendance" class="sm:flex">
+              <div class="sm:grow">
+                <div>
+                  <span class="block sm:inline whitespace-nowrap">
+                    <fa-icon [icon]="farCalendarTimes"></fa-icon>
+                    <span [ngSwitch]="selectedAttendance.type" class="font-bold">
+                      <span *ngSwitchCase="ATTENDANCE_TYPE_PRESENCE">Присъствие</span>
+                      <span *ngSwitchCase="ATTENDANCE_TYPE_UNEXCUSED_ABSENCE">Отсъствие по неуважителни причини</span>
+                      <span *ngSwitchCase="ATTENDANCE_TYPE_EXCUSED_ABSENCE">Отсъствие по уважителни причини</span>
+                    </span>
+                  </span>
+                  {{ ' ' }}
+                  <span class="block sm:inline whitespace-nowrap">
+                    на
+                    <fa-icon [icon]="fasCalendarAlt"></fa-icon>
+                    <span class="font-bold">{{ selectedAttendance.date | sbDate }}</span>
+                  </span>
+                </div>
+                <div *ngIf="selectedAttendance.excusedReasonId" class="text-xs italic">
+                  Причини:
+                  <span class="font-bold">{{ selectedAttendance.excusedReasonName }}</span>
+                </div>
+                <div *ngIf="selectedAttendance.excusedReasonComment" class="text-xs italic">
+                  Коментар:
+                  <ng-container *ngIf="selectedAttendance.excusedReasonComment.indexOf('\n') !== -1">
+                    <br />
+                  </ng-container>
+                  <span class="font-bold whitespace-pre-line">{{ selectedAttendance.excusedReasonComment }}</span>
+                </div>
+                <div class="text-xs italic">
+                  <span class="inline sm:hidden">Създ. от</span>
+                  <span class="hidden sm:inline">Създадено от</span>
+                  <span class="font-bold">
+                    {{ selectedAttendance.createdBySysUserFirstName }} {{ selectedAttendance.createdBySysUserLastName }}
+                  </span>
+                  на
+                  <span class="font-bold">{{ selectedAttendance.createDate | sbDateTime }}</span>
+                </div>
+              </div>
+
+              <div class="sm:shrink-0">
+                <button
+                  *ngIf="
+                    selectedAttendance.type === ATTENDANCE_TYPE_UNEXCUSED_ABSENCE &&
+                    (selectedAttendance.canExcuse ||
+                      (selectedAttendance.canUndo && (selectedAttendance.undoExpired$ | async) === false))
+                  "
+                  class="mt-2 sm:mt-0 mr-2"
+                  mat-raised-button
+                  color="accent"
+                  type="button"
+                  (click)="openExcuseAttendanceDialog()"
+                  [disabled]="selectedAttendance.excusing"
+                >
+                  <fa-icon
+                    [icon]="selectedAttendance.excusing ? fasSpinnerThird : farCircle"
+                    [spin]="selectedAttendance.excusing"
+                    size="lg"
+                  ></fa-icon>
+                  <span>Уважи</span>
+                </button>
+
+                <button
+                  *ngIf="
+                    selectedAttendance.canRemove ||
+                    (selectedAttendance.canUndo && (selectedAttendance.undoExpired$ | async) === false)
+                  "
+                  mat-raised-button
+                  class="mt-2 sm:mt-0"
+                  color="warn"
+                  type="button"
+                  (click)="removeSelectedAttendance()"
+                  [disabled]="selectedAttendance.removing"
+                >
+                  <fa-icon
+                    [icon]="selectedAttendance.removing ? fasSpinnerThird : fasTrashAlt"
+                    [spin]="selectedAttendance.removing"
+                    size="lg"
+                  ></fa-icon>
+                  <span>Премахни</span>
+                </button>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td></td>
+          <td class="p-0.5 text-center align-top" *ngFor="let day of templateData.days">
+            <a
+              *ngIf="
+                day.canCreate &&
+                templateData.studentAttendancesTotals.studentsEnrolledDayTotals[day.dayOfMonth - 1] !==
+                  templateData.studentAttendancesTotals.studentsEnrolledCount
+              "
+              [routerLink]="['../../../new', day.dateParam]"
+              class="block sb-link-btn sb-link-btn-sm -mx-0.5"
+            >
+              <fa-icon [icon]="fasPlus"></fa-icon>
+            </a>
+
+            <a
+              *ngIf="
+                day.canRemove && templateData.studentAttendancesTotals.attendancesDayTotals[day.dayOfMonth - 1] > 0
+              "
+              [routerLink]="['../../../remove', day.dateParam]"
+              class="block sb-link-btn sb-link-btn-sm -mx-0.5"
+            >
+              <fa-icon [icon]="fasTrashAlt"></fa-icon>
+            </a>
+          </td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Общо</td>
+          <td
+            class="w-px py-1 px-0 whitespace-nowrap attendance-header attendance-count-cell"
+            *ngFor="let total of templateData.studentAttendancesTotals.presencesDayTotals; let i = index"
+          >
+            <span *ngIf="!templateData.days[i].isInactiveDay">{{ total }}</span>
+          </td>
+          <td class="w-px py-1 px-0 whitespace-nowrap attendance-header attendance-count-cell">
+            {{ templateData.studentAttendancesTotals.presencesCountTotal }}
+          </td>
+        </tr>
+        <tr>
+          <td [attr.colspan]="templateData.days.length + 1">Средна месечна посещаемост</td>
+          <td class="w-px py-1 px-0 whitespace-nowrap attendance-header attendance-count-cell">
+            {{ templateData.studentAttendancesTotals.averagePresencesCount | number: '1.2-2' }}
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</ng-container>

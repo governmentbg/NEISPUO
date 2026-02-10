@@ -1,0 +1,431 @@
+<template>
+  <div>
+    <div
+      v-show="loading"
+      class="loader"
+    />
+    <v-card v-show="!loading">
+      <v-card-title>{{ model.name }}</v-card-title>
+      <v-card-subtitle>{{ model.abbreviation }}</v-card-subtitle>
+      <v-card-text>
+        <v-row>
+          <v-col
+            cols="12"
+            md="3"
+            sm="6"
+          >
+            <v-text-field
+              :value="model.schoolYear"
+              :label="$t('common.schoolYear')"
+              :disabled="disabled"
+              :readonly="readonly"
+            />
+          </v-col>
+          <v-col
+            cols="12"
+            md="3"
+            sm="6"
+          >
+            <v-text-field
+              :value="model.bulstat"
+              :label="$t('institution.bulstat')"
+              :disabled="disabled"
+              :readonly="readonly"
+            />
+          </v-col>
+          <v-col
+            cols="12"
+            md="3"
+            sm="6"
+          >
+            <v-text-field
+              :value="model.baseSchoolType"
+              :label="$t('institution.baseSchoolType')"
+              :disabled="disabled"
+              :readonly="readonly"
+            />
+          </v-col>
+          <v-col
+            cols="12"
+            md="3"
+            sm="6"
+          >
+            <v-text-field
+              :value="model.detailedSchoolType"
+              :label="$t('institution.detailedSchoolType')"
+              :disabled="disabled"
+              :readonly="readonly"
+            />
+          </v-col>
+          <v-col
+            cols="12"
+            md="3"
+            sm="6"
+          >
+            <v-text-field
+              :value="model.financialSchoolType"
+              :label="$t('institution.financialSchoolType')"
+              :disabled="disabled"
+              :readonly="readonly"
+            />
+          </v-col>
+          <v-col
+            cols="12"
+            md="3"
+            sm="6"
+          >
+            <v-text-field
+              :value="model.budgetingSchoolType"
+              :label="$t('institution.budgetingSchoolType')"
+              :disabled="disabled"
+              :readonly="readonly"
+            />
+          </v-col>
+        </v-row>
+        <v-expansion-panels>
+          <v-expansion-panel
+            v-if="model.departments && model.departments.length > 0"
+          >
+            <v-expansion-panel-header>
+              {{ $tc('institution.departments', model.departments.length) }}
+            </v-expansion-panel-header>
+            <v-expansion-panel-content>
+              <v-card
+                v-for="dep in model.departments"
+                :key="dep.id"
+                outlined
+                class="mb-2"
+              >
+                <v-card-text>
+                  <v-row>
+                    <v-col
+                      cols="12"
+                      md="6"
+                    >
+                      <v-text-field
+                        :value="dep.name"
+                        :label="$t('institution.headers.name')"
+                        :disabled="disabled"
+                        :readonly="readonly"
+                      />
+                    </v-col>
+                    <v-col
+                      cols="12"
+                      sm="6"
+                      md="3"
+                    >
+                      <v-text-field
+                        :value="dep.country"
+                        :label="$t('location.country')"
+                        :disabled="disabled"
+                        :readonly="readonly"
+                      />
+                    </v-col>
+                    <v-col
+                      cols="12"
+                      sm="6"
+                      md="3"
+                    >
+                      <v-text-field
+                        :value="dep.town"
+                        :label="$t('location.town')"
+                        :disabled="disabled"
+                        :readonly="readonly"
+                      />
+                    </v-col>
+                    <v-col
+                      cols="12"
+                      sm="6"
+                      md="3"
+                    >
+                      <v-text-field
+                        :value="dep.district"
+                        :label="$t('location.district')"
+                        :disabled="disabled"
+                        :readonly="readonly"
+                      />
+                    </v-col>
+                    <v-col
+                      cols="12"
+                      sm="6"
+                      md="3"
+                    >
+                      <v-text-field
+                        :value="dep.municipality"
+                        :label="$t('location.municipality')"
+                        :disabled="disabled"
+                        :readonly="readonly"
+                      />
+                    </v-col>
+                    <v-col
+                      cols="12"
+                      md="6"
+                    >
+                      <v-text-field
+                        :value="dep.address"
+                        :label="$t('location.address')"
+                        :disabled="disabled"
+                        :readonly="readonly"
+                      />
+                    </v-col>
+                  </v-row>
+                </v-card-text>
+              </v-card>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+          <v-expansion-panel>
+            <v-expansion-panel-header>
+              {{ $t('location.title') }}
+            </v-expansion-panel-header>
+            <v-expansion-panel-content>
+              <v-row>
+                <v-col
+                  cols="12"
+                  sm="6"
+                  md="3"
+                >
+                  <v-text-field
+                    :value="model.country"
+                    :label="$t('location.country')"
+                    :disabled="disabled"
+                    :readonly="readonly"
+                  />
+                </v-col>
+                <v-col
+                  cols="12"
+                  sm="6"
+                  md="3"
+                >
+                  <v-text-field
+                    :value="model.town"
+                    :label="$t('location.town')"
+                    :disabled="disabled"
+                    :readonly="readonly"
+                  />
+                </v-col>
+                <v-col
+                  cols="12"
+                  sm="6"
+                  md="3"
+                >
+                  <v-text-field
+                    :value="model.district"
+                    :label="$t('location.district')"
+                    :disabled="disabled"
+                    :readonly="readonly"
+                  />
+                </v-col>
+                <v-col
+                  cols="12"
+                  sm="6"
+                  md="3"
+                >
+                  <v-text-field
+                    :value="model.municipality"
+                    :label="$t('location.municipality')"
+                    :disabled="disabled"
+                    :readonly="readonly"
+                  />
+                </v-col>
+                <v-col
+                  cols="12"
+                  sm="6"
+                  md="3"
+                >
+                  <v-text-field
+                    :value="model.localArea"
+                    :label="$t('location.localArea')"
+                    :disabled="disabled"
+                    :readonly="readonly"
+                  />
+                </v-col>
+                <v-col
+                  cols="12"
+                  sm="6"
+                  md="9"
+                >
+                  <v-text-field
+                    :value="model.address"
+                    :label="$t('location.address')"
+                    :disabled="disabled"
+                    :readonly="readonly"
+                  />
+                </v-col>
+              </v-row>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+          <v-expansion-panel>
+            <v-expansion-panel-header>
+              {{ $tc('institution.contact', 2) }}
+            </v-expansion-panel-header>
+            <v-expansion-panel-content>
+              <v-row>
+                <v-col
+                  cols="6"
+                >
+                  <v-text-field
+                    :value="model.email"
+                    :label="$t('institution.email')"
+                    :disabled="disabled"
+                    :readonly="readonly"
+                  />
+                </v-col>
+                <v-col
+                  cols="6"
+                >
+                  <v-text-field
+                    :value="model.website"
+                    :label="$t('institution.website')"
+                    :disabled="disabled"
+                    :readonly="readonly"
+                  />
+                </v-col>
+              </v-row>
+              <div
+                v-if="model && model.phones"
+              >
+                <v-card
+                  v-for="(phone, index) in model.phones"
+                  :key="phone.uid"
+                  outlined
+                  class="mb-2"
+                >
+                  <v-card-text>
+                    <phone
+                      v-model="model.phones[index]"
+                      :disabled="disabled"
+                      :readonly="readonly"
+                    />
+                  </v-card-text>
+                </v-card>
+              </div>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+          <v-expansion-panel
+            v-if="model.publicCouncil && model.publicCouncil.length > 0"
+          >
+            <v-expansion-panel-header>
+              {{ $t('publicCouncil.title') }}
+            </v-expansion-panel-header>
+            <v-expansion-panel-content>
+              <v-card
+                v-for="pc in model.publicCouncil"
+                :key="pc.id"
+                outlined
+                class="mb-2"
+              >
+                <v-card-text>
+                  <v-row>
+                    <v-col
+                      cols="12"
+                      sm="6"
+                      md="3"
+                    >
+                      <v-text-field
+                        :value="pc.name"
+                        :label="$t('publicCouncil.name')"
+                        :disabled="disabled"
+                        :readonly="readonly"
+                      />
+                    </v-col>
+                    <v-col
+                      cols="12"
+                      sm="3"
+                      md="2"
+                    >
+                      <v-text-field
+                        :value="pc.type"
+                        :label="$t('publicCouncil.type')"
+                        :disabled="disabled"
+                        :readonly="readonly"
+                      />
+                    </v-col>
+                    <v-col
+                      cols="12"
+                      sm="3"
+                      md="2"
+                    >
+                      <v-text-field
+                        :value="pc.role"
+                        :label="$t('publicCouncil.role')"
+                        :disabled="disabled"
+                        :readonly="readonly"
+                      />
+                    </v-col>
+                    <v-col
+                      cols="12"
+                      sm="6"
+                      md="3"
+                    >
+                      <v-text-field
+                        :value="pc.email"
+                        :label="$t('publicCouncil.email')"
+                        :disabled="disabled"
+                        :readonly="readonly"
+                      />
+                    </v-col>
+                    <v-col
+                      cols="12"
+                      sm="3"
+                      md="2"
+                    >
+                      <v-text-field
+                        :value="pc.phone"
+                        :label="$t('publicCouncil.phone')"
+                        :disabled="disabled"
+                        :readonly="readonly"
+                      />
+                    </v-col>
+                  </v-row>
+                </v-card-text>
+              </v-card>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+        </v-expansion-panels>
+      </v-card-text>
+    </v-card>
+  </div>
+</template>
+
+<script>
+import Phone from '../../components/editors/Phone.vue';
+export default {
+  name: 'InstitutionBasicDetails',
+  components: {
+    Phone
+  },
+  props: {
+    id: {
+      type: Number,
+      required: true
+    }
+  },
+  data() {
+    return {
+      loading: false,
+      disabled: true,
+      readonly: false,
+      model: {}
+    };
+  },
+  mounted() {
+    this.load();
+  },
+  methods: {
+    load() {
+      this.loading = true;
+
+      this.$api.institution
+        .getFullDetails(this.id) //this.id//607055
+        .then((response) => {
+          this.model = response.data;
+        })
+        .catch((error) => {
+          console.log(error);
+          this.$notifier.error("", this.$t("errors.studentInstitutionDetailsLoad"));
+        })
+        .then(() => { this.loading = false; });
+    }
+  }
+};
+</script>

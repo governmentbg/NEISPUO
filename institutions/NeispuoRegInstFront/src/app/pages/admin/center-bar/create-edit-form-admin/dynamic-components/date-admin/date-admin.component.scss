@@ -1,0 +1,22 @@
+.l-container-component {
+  width: 143px;
+  mat-form-field.l-datepicker-container {
+    margin: 0;
+    min-width: 0;
+    max-width: none;
+    width: 100%;
+    .l-custom-input-datepick {
+      color: rgba(0, 0, 0, 0.6);
+      width: fit-content;
+      padding: 1px 5px;
+      position: absolute;
+      margin-top: -34px;
+      background-color: white;
+      margin-left: -3px;
+      font-size: 11px;
+      white-space: normal;
+      width: 100%;
+      max-width: 135px;
+    }
+  }
+}

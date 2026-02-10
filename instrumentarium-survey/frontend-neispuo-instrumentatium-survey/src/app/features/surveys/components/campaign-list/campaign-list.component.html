@@ -1,0 +1,225 @@
+<div class="spinner-container" *ngIf="loading">
+      <p-progressSpinner></p-progressSpinner>
+    </div>
+    <div class="sidebar-container">
+      <div class="wrapper">
+        <div class="top-container grid" *ngIf="!loading">
+          <p class="heading col-12 col-md-2">{{ content.TITLE }}</p>
+    
+          <div class="form-container grid col-12 col-md-7 md:ml-auto">
+            <form class="search-form col-8">
+              <span class="p-input-icon-left">
+                <input
+                class="search-name"
+                type="search"
+                pInputText
+                [placeholder]="content.SEARCH_LABEL"
+                [ngModel]="$any(campaignsTable.filters.name)?.value"
+                (input)="campaignsTable.filter($event.target.value, 'name', '$cont')"
+                />
+              </span>
+            </form>
+    
+            <button
+            pButton
+            type="button"
+            class="p-button-primary create-button ml-2"
+            (click)="createCampaign()"
+            [label]="content.CREATE_BUTTON_LABEL"
+            *ngIf="isInstitution$ | async"
+            >
+              <i class="pi pi-plus new-campaign-icon"></i>
+            </button>
+          </div>
+        </div>
+    
+        <div class="filters-container" *ngIf="!loading">
+          <button
+          pButton
+          id="display-filters"
+          class="p-button-outlined p-button-primary me-2 mt-2"
+          type="button"
+          icon="pi pi-filter"
+          iconPos="left"
+          (click)="displayYearFilters = !displayYearFilters"
+          #filterButton
+        ></button>
+        <button
+          pButton
+          class="p-button-outlined p-button-primary me-2 mt-2"
+          type="button"
+          (click)="onActivateButton(1)"
+          [ngClass]="{ active: activeFilterBtn === 1 }"
+          [label]="content.ALL"
+        >
+        </button>
+        <button
+          pButton
+          class="p-button-outlined p-button-primary me-2 mt-2"
+          type="button"
+          (click)="onActivateButton(2)"
+          [ngClass]="{ active: activeFilterBtn === 2 }"
+          [label]="content.FILTER_ACTIVE "
+        >
+        </button>
+        <button
+          pButton
+          class="p-button-outlined p-button-primary me-2 mt-2"
+          type="button"
+          (click)="onActivateButton(3)"
+          [ngClass]="{ active: activeFilterBtn === 3 }"
+          [label]="content.FILTER_INACTIVE "
+        >
+        </button>
+        <form [formGroup]="form">
+      <div id="filter" *ngIf="displayYearFilters" #filter>
+        <div style="position: relative">
+          <div>
+            <p class="title">{{ content.FILTERS }}</p>
+          </div>
+          <div class="field form-wrapper mx-4">
+            <label class="form-wrapper-label">{{ content.YEARS_TITLE }}</label>
+            <p-multiSelect
+              [options]="years"
+              [defaultLabel]="content.YEARS_LABEL"
+              display="chip"
+              formControlName="selectedYearFilters"
+              (click)="onApplyYearSorting()"
+            ></p-multiSelect>
+          </div>
+        </div>
+      </div>
+    </form>  
+        </div>
+    
+    <div class="delete-campaign-container" [ngStyle]="{ display: campaignsToDelete.length === 0 ? 'none' : 'block' }">
+      <span class="campaigns-selected">{{ campaignsToDelete.length }} {{ content.SELECTED }}</span>
+      <span class="icon-holder" (click)="isModalOpened = true">
+        <i class="pi pi-trash"></i>
+      </span>
+      <p-dialog
+        [header]="content.DELETE_MODAL_TITLE"
+        [(visible)]="isModalOpened"
+        [style]="{ width: '50vw' }"
+        [draggable]="false"
+        [resizable]="false"
+        [modal]="true"
+      >
+        <p>{{ content.CONFIRM_DELETE_MESSAGE }}</p>
+        <ng-template pTemplate="footer">
+          <p-button icon="pi pi-check" (click)="onDeleteCampaign()" [label]="content.DELETE_CONFIRM" styleClass="p-button-text"></p-button>
+          <p-button icon="pi pi-times" (click)="isModalOpened = false" [label]="content.DELETE_CANCEL" styleClass="p-button-text"></p-button>
+        </ng-template>
+      </p-dialog>
+    </div>
+
+    <p-messages [showTransitionOptions]="'500ms'" [hideTransitionOptions]="'500ms'"></p-messages>
+
+    <div class="portal-table-container">
+      <p-table
+        id="campaignsTable"
+        #campaignsTable
+        [rows]="pageSize"
+        [paginator]="true"
+        [value]="paginatedEntries.data"
+        [columns]="columnService.visibleColumns | async"
+        [rowHover]="true"
+        [lazy]="true"
+        (onLazyLoad)="navigate($event)"
+        [lazyLoadOnInit]="true"
+        [loading]="loading"
+        [totalRecords]="paginatedEntries.total"
+        sortField="id"
+        [sortOrder]="-1"
+      >
+        <ng-template pTemplate="colgroup" let-columns>
+          <colgroup>
+            <col *ngFor="let col of columns" [ngStyle]="{ width: col.width }" />
+          </colgroup>
+        </ng-template>
+
+        <ng-template pTemplate="header" let-user let-columns>
+          <tr>
+            <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+              {{ col.header }}
+              <p-sortIcon [field]="col.field"></p-sortIcon>
+            </th>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-campaign let-columns="columns">
+          <tr>
+            <!-- <td class="checkbox-container" *ngIf="!campaign.hasSubmittedQuestionaires && isInstitution$ | async; else hasSubmittedQuestionaires">
+              <label class="container">
+                <input type="checkbox" class="checkbox" (change)="onChecked($event, campaign)" />
+                <span class="checkmark"></span>
+              </label>
+            </td>
+  
+            <ng-template #hasSubmittedQuestionaires>
+              <td class="checkbox-container">
+                <label class="container">
+                  <input type="checkbox" class="checkbox" [attr.disabled]="true" tooltipEvent="focus"/>
+                  <span
+                    *ngIf="isInstitution$ | async"
+                    class="checkmark checkmark-disabled"
+                    tooltipPosition="top"
+                    pTooltip="Кампанията не може да бъде изтрита, понеже вече е била попълнена от поне 1 потребител."
+                  ></span>
+                </label>
+              </td>
+            </ng-template> -->
+
+            <td 
+              style="text-overflow: ellipsis; overflow: hidden"
+              *ngFor="let col of columns"
+              [class]="'campaign-' + col.field"
+              (click)="navigateToCampaignPreview(campaign)"
+            >
+              <ng-container *ngIf="col.field === 'type'; else notType">
+                <span
+                  [ngClass]="campaign.type === campaignType.SELFEVALUATE ? 'self-esteem' : 'esui'"
+                  class="value row-content"
+                >
+                  {{ campaignType.toConvertType(campaign.type) }}
+                </span>
+              </ng-container>
+              <ng-template #notType>
+                <ng-container *ngIf="col.field === 'isActive'; else SubmittedQuestionaires">
+                  <i [ngClass]="campaign.isActive ? 'active' : 'past'" class="pi pi-circle-on"></i>
+                  {{ campaign.isActive ? content.ACTIVE : content.INACTIVE }}
+                </ng-container>
+              </ng-template>
+              <ng-template #SubmittedQuestionaires>
+                <ng-container *ngIf="col.field === 'SubmittedQuestionaires'; else notStatus">
+                  <span class="row-content">
+                    {{ campaign.SubmittedQuestionaires[0].state ? 'Да' : 'Не' }}
+                  </span>
+                </ng-container>
+              </ng-template>
+              <ng-template #notStatus>
+                <ng-container *ngIf="col.filter?.type !== 'date'; else updatedAt">
+                  <span class="row-content">
+                    {{ getToDisplayValue(campaign, col.field) | translate }}
+                  </span>
+                </ng-container>
+              </ng-template>
+              <ng-template #updatedAt>
+                <ng-container *ngIf="col.field === 'updatedAt'; else dateFormatted">
+                  <span class="row-content">
+                    {{ getToDisplayValue(campaign, col.field) | date: 'dd/MM/yyyy h:mm:ss' }}
+                  </span>
+                </ng-container>
+              </ng-template>
+              <ng-template #dateFormatted>
+                <span class="row-content">
+                  {{ getToDisplayValue(campaign, col.field) | date: 'dd/MM/yyyy' }}
+                </span>
+              </ng-template>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>

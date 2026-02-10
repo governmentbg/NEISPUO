@@ -1,0 +1,20 @@
+# Build runtime image
+
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-focal AS base
+WORKDIR /app
+
+
+FROM mcr.microsoft.com/dotnet/sdk:3.1-focal AS build
+COPY . .
+COPY NeispuoExtension.Api/appsettings.test.json NeispuoExtension.Api/appsettings.json
+
+RUN dotnet restore "NeispuoExtension.sln"
+RUN dotnet build "NeispuoExtension.sln" -c Release -o /app/build
+
+FROM build AS publish
+RUN dotnet publish "NeispuoExtension.sln" -c Release -o /app/publish
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "NeispuoExtension.Api.dll"]

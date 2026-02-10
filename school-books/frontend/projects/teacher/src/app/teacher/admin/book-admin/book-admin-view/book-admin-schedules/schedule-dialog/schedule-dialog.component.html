@@ -1,0 +1,266 @@
+<div class="md:w-[1000px]">
+  <div class="sb-btn-wrapper sb-btn-wrapper-right">
+    <button mat-raised-button [class.hidden]="currentStep === 1" (click)="previous()">
+      <fa-icon [icon]="fasAngleLeft" size="lg"></fa-icon>
+      <span>Назад</span>
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      [class.hidden]="currentStep === lastStep"
+      (click)="next()"
+      [disabled]="periodFinishing"
+    >
+      <fa-icon [icon]="fasAngleRight" size="lg"></fa-icon>
+      <span>Напред</span>
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      [class.hidden]="currentStep < lastStep"
+      (click)="next()"
+      [disabled]="saving"
+    >
+      <fa-icon [icon]="saving ? fasSpinnerThird : fasCheck" [spin]="saving" size="lg"></fa-icon>
+      <span>Запази</span>
+    </button>
+    <button mat-raised-button mat-dialog-close>Затвори</button>
+  </div>
+
+  <div class="schedule-dialog-content">
+    <sb-wizard-heading
+      [currentStep]="currentStep"
+      [steps]="[
+        {
+          number: 1,
+          label: '1',
+          caption: 'Период'
+        },
+        {
+          number: 2,
+          label: '2',
+          caption: 'Смяна',
+          hidden: !hasAdhocShiftControl.getRawValue()
+        },
+        {
+          number: 3,
+          label: hasAdhocShiftControl.getRawValue() ? '3' : '2',
+          caption: dayNames[1]
+        },
+        {
+          number: 4,
+          label: hasAdhocShiftControl.getRawValue() ? '4' : '3',
+          caption: dayNames[2]
+        },
+        {
+          number: 5,
+          label: hasAdhocShiftControl.getRawValue() ? '5' : '4',
+          caption: dayNames[3]
+        },
+        {
+          number: 6,
+          label: hasAdhocShiftControl.getRawValue() ? '6' : '5',
+          caption: dayNames[4]
+        },
+        {
+          number: 7,
+          label: hasAdhocShiftControl.getRawValue() ? '7' : '6',
+          caption: dayNames[5]
+        },
+        {
+          number: 8,
+          label: hasAdhocShiftControl.getRawValue() ? '8' : '7',
+          caption: dayNames[6],
+          hidden: !includesWeekendControl.getRawValue()
+        },
+        {
+          number: 9,
+          label: hasAdhocShiftControl.getRawValue() ? '9' : '8',
+          caption: dayNames[7],
+          hidden: !includesWeekendControl.getRawValue()
+        }
+      ]"
+    ></sb-wizard-heading>
+
+    <sb-banner type="error" class="mb-2" *ngFor="let error of errors">{{ error }}</sb-banner>
+    <sb-banner type="error" class="mb-2" *ngFor="let error of periodForm.errors?.dateErrors || []">
+      {{ error }}
+    </sb-banner>
+
+    <div *ngIf="currentStep === 1">
+      <div class="sm:grid grid-cols-2 gap-x-4 mb-2">
+        <sb-nom-select
+          class="col-start-1 col-span-full"
+          [nomService]="termNomsService"
+          label="Срок"
+          [disabled]="hasReadOnlyWeeks"
+          [formControl]="termControl"
+        ></sb-nom-select>
+
+        <div class="col-span-full sm:grid grid-cols-2 gap-x-4" [formGroup]="periodForm">
+          <sb-date-field class="col-start-1" label="От дата" formControlName="startDate"></sb-date-field>
+          <sb-date-field label="До дата" formControlName="endDate"></sb-date-field>
+        </div>
+
+        <sb-select-field
+          [formControl]="includesWeekendControl"
+          class="col-start-1 col-span-full"
+          label="Разписанието включва събота и неделя"
+          [items]="[
+            { id: false, name: 'Не' },
+            { id: true, name: 'Да' }
+          ]"
+        ></sb-select-field>
+
+        <sb-nom-select [nomService]="shiftNomsService" label="Смяна" [formControl]="shiftIdControl"></sb-nom-select>
+
+        <mat-checkbox
+          class="pt-3"
+          color="primary"
+          [formControl]="hasAdhocShiftControl"
+          (change)="hasAdhocShiftChanged()"
+        >
+          Ще дефинирам смяната сега
+        </mat-checkbox>
+      </div>
+
+      <div>
+        <h4>Седмици</h4>
+        <div class="sb-btn-wrapper">
+          <button mat-raised-button (click)="deselectAll()">
+            <fa-icon [icon]="farTrashAlt" size="lg"></fa-icon>
+            <span>Изчисти</span>
+          </button>
+          <button mat-raised-button (click)="selectEven()">
+            <fa-icon [icon]="farCalendarPlus" size="lg"></fa-icon>
+            <span>Четни</span>
+          </button>
+          <button mat-raised-button (click)="selectOdd()">
+            <fa-icon [icon]="farCalendarMinus" size="lg"></fa-icon>
+            <span>Нечетни</span>
+          </button>
+          <button mat-raised-button (click)="selectAll()">
+            <fa-icon [icon]="farCalendarCheck" size="lg"></fa-icon>
+            <span>Всички</span>
+          </button>
+        </div>
+      </div>
+
+      <sb-banner type="warning" *ngIf="hasReadOnlyWeeks" class="mb-2">
+        Седмиците в тъмно сиво не могат да се премахнат, защото за тях има въведени оценки/отсъствия/теми/учителски
+        отсъствия или часове, маркирани като лекторски.
+      </sb-banner>
+
+      <sb-banner type="warning" *ngIf="hasFullyUsedWeeks" class="mb-2">
+        Седмиците в светло сиво не могат да бъдат избрани, защото са използвани в други разписания.
+      </sb-banner>
+
+      <div *ngFor="let year of Object.keys(weeksByYear)">
+        <div>
+          <label>{{ year }}</label>
+          <div class="schedule-weeks">
+            <div *ngFor="let week of weeksByYear[year]" class="schedule-week">
+              <input
+                type="checkbox"
+                id="week{{ week.weekNumber }}_{{ week.year }}"
+                [checked]="week.selected"
+                [disabled]="week.disabled || week.readOnly"
+                (click)="weekSelectionChanged(week)"
+              />
+              <label for="week{{ week.weekNumber }}_{{ week.year }}">
+                <div class="week-dates">{{ week.startDateDisplay }}-{{ week.endDateDisplay }}</div>
+                <div class="week-month">{{ week.monthAbbr }} ({{ week.weekNumber }})</div>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="currentStep === 2">
+      <sb-shift-form
+        [formControl]="shiftForm"
+        [submitted]="shiftFormSubmitted"
+        [usedHours]="readOnlyHours"
+        usedHoursMessage="Не могат да се премахват часове, за които има въведени оценки/отсъствия/теми/учителски отсъствия, или часа е маркиран като
+        лекторски."
+      ></sb-shift-form>
+    </div>
+    <div *ngIf="currentStep > 2" [formGroup]="daysForm">
+      <sb-banner type="warning" *ngIf="days[currentStep - 3].hasReadOnlyHours" class="mb-2">
+        За посочения период има часове, за които има въведени оценки/отсъствия/теми/учителски отсъствия или часа е
+        маркиран като лекторски. Изтрийте въведената информация за периода от съответните секции или модули. За
+        улеснение при проверка на това в кои дневници са оценките/отсъствията/темите за тези дни, може да използвате
+        функционалността "Администрация > Проверка на дневници."
+        <a
+          *ngIf="this.usedHoursTableDownloadUrls != null"
+          [href]="this.usedHoursTableDownloadUrls[currentStep - 3]"
+          target="_blank"
+          download
+          class="text-primary underline"
+        >
+          <span>Свали</span>
+        </a>
+      </sb-banner>
+
+      <sb-banner type="error" class="mb-2" *ngFor="let error of getDayForm(currentStep - 3).errors?.hourErrors || []">
+        {{ error }}
+      </sb-banner>
+
+      <sb-banner type="info" class="mb-2" *ngIf="!days[currentStep - 3].hours.length">
+        Няма въведени часове за този ден в смяната
+      </sb-banner>
+
+      <sb-banner type="warning" class="mb-2" *ngIf="showIndividualCurriculumsWarning">
+        {{ individualCurriculumsWarningMessage }}
+      </sb-banner>
+
+      <div class="sb-table-container" formArrayName="days" *ngIf="days[currentStep - 3].hours.length">
+        <table class="sb-table" [formArrayName]="currentStep - 3">
+          <thead>
+            <tr>
+              <th class="text-center w-px">Час</th>
+              <th class="text-center w-px">Начало</th>
+              <th class="text-center w-px">Край</th>
+              <th class="text-center">Предмет и място на провеждане</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let hour of days[currentStep - 3].hours; let hourIndex = index">
+              <td class="text-center w-px">{{ hour.hourNumber }}</td>
+              <td class="text-center w-px">{{ hour.startTime }}</td>
+              <td class="text-center w-px">{{ hour.endTime }}</td>
+              <td [formArrayName]="hourIndex" class="p-0 schedule-hour">
+                <div
+                  *ngFor="let group of hour.groups; let groupIndex = index"
+                  [formGroupName]="groupIndex"
+                  class="flex items-center"
+                  [ngClass]="{ 'mt-4': hourIndex === 0 }"
+                >
+                  <sb-nom-select
+                    label="Предмет"
+                    formControlName="curriculumId"
+                    [nomService]="classBookCurriculumNomsService"
+                    class="sb-single-row-mat-field sb-wrapped-text-mat-field flex-1 mr-2"
+                  ></sb-nom-select>
+                  <sb-text-field label="Място на провеждане" formControlName="location"></sb-text-field>
+                  <button *ngIf="groupIndex === 0" mat-button (click)="addGroup(hourIndex)" class="flex-none">
+                    <fa-icon [icon]="fasPlus" size="lg"></fa-icon>
+                  </button>
+                  <button
+                    *ngIf="groupIndex > 0"
+                    mat-button
+                    (click)="removeGroup(hourIndex, groupIndex)"
+                    [disabled]="group.isReadOnly"
+                    class="flex-none"
+                  >
+                    <fa-icon [icon]="fasTrash" size="lg"></fa-icon>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+{
+    "template": "SELECT /**select**/ FROM [noms].[BudgetingInstitution] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "BudgetingInstitutionID as code"
+        },
+        {
+            "column": "Name as label"
+        },
+		{
+            "column": "IsValid as isValid"
+        }
+    ],
+    "params": [
+
+    ],
+    "order": [
+        {
+            "column": "BudgetingInstitutionID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

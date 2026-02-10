@@ -1,0 +1,146 @@
+{
+  "paramName": "classid",
+  "changeData": false,
+  "sections": [
+    {
+      "label": "if(instType==2 || instType==3) {section.label='Наименование на група'} else {section.label='Наименование на група/клас'}",
+      "order": 1,
+      "subsections": [
+        {
+          "order": 1,
+          "label": "className",
+          "type": "input",
+          "name": "className",
+          "bold": true,
+          "width": 200,
+          "disabled": false,
+          "flexible": false
+        }
+      ]
+    },
+    {
+      "name": "classGroups",
+      "canDuplicate": false,
+      "order": 2,
+      "subsections": [
+        {
+          "order": 1,
+          "name": "classBasicData",
+          "fields": [
+            {
+              "label": "Вид група",
+              "name": "classKind",
+              "type": "select",
+              "disabled": true,
+              "rendered": false,
+              "optionsPath": "/data/get/classKinds",
+              "order": 1,
+              "influence": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Списък на децата",
+      "order": 3,
+      "name": "TableClassStudentGroupList",
+      "table": {
+        "name": "classStudentList",
+        "hasEditButton": false,
+        "searchable": true,
+        "searchType": "column",
+        "procedureName":"inst_basic.studentClassCUD",
+        "canDeleteRow": "if(classTypeID==38 || classTypeID==39 || classTypeID==48 || classTypeID==49) {table.canDeleteRow=true} else {table.canDeleteRow=false}",
+        "fields": [
+          {
+            "name": "classTypeID",
+            "type": "input",
+            "inputType": "number",
+            "order": 0,
+            "width": 10,
+            "rendered": false,
+            "disabled": false,
+            "influence": [],
+            "validations": []
+          },
+          {
+            "label": "Випуск",
+            "name": "basicClassName",
+            "type": "input",
+            "inputType": "text",
+            "width": 10,
+            "order": 1
+          },
+          {
+            "label": "Номер на групата",
+            "name": "classGroupNum",
+            "type": "input",
+            "inputType": "number",
+            "width": 10,
+            "order": 2
+          },
+          {
+            "label": "Личен образователен номер",
+            "name": "publicEduNumber",
+            "type": "input",
+            "inputType": "number",
+            "width": 10,
+            "order": 3
+          },
+          {
+            "label": "Номер в класа",
+            "name": "classNumber",
+            "type": "input",
+            "inputType": "number",
+            "rendered": "if(instType==2) {field.rendered=false} else {field.rendered=true}",
+            "width": 10,
+            "order": 4
+          },
+          {
+            "label": "Име",
+            "name": "fullName",
+            "type": "input",
+            "inputType": "text",
+            "width": 20,
+            "order": 5
+          },
+          {
+            "label": "Дата на раждане",
+            "name": "birthDate",
+            "type": "input",
+            "inputType": "text",
+            "width": 10,
+            "order": 6
+          },
+          {
+            "label": "if(instType==2) {field.label='Вид организация'} else {field.label='Форма на обучение'}",
+            "name": "studentEdFormName",
+            "type": "input",
+            "inputType": "text",
+            "width": 10,
+            "order": 7
+          },
+          {
+            "label": "Профил/Професия",
+            "name": "classSpecialityName",
+            "type": "input",
+            "inputType": "text",
+            "width": 30,
+            "rendered": "if(instType==2) {field.rendered=false} else {field.rendered=true}",
+            "order": 8
+          },
+          {
+            "label": "Повторно записан",
+            "name": "repeaterName",
+            "type": "input",
+            "inputType": "text",
+            "width": 10,
+            "rendered": "if(instType==2) {field.rendered=false} else {field.rendered=true}",
+            "order": 9
+          }
+        ]
+      }
+    }
+  ]
+}

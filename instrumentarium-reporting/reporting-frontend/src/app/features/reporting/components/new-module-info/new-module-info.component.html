@@ -1,0 +1,26 @@
+<div
+  class="modal fade"
+  id="reloadPageModal"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="reloadPageLabel"
+  aria-hidden="true"
+  [ngClass]="{ show: showNewModuleInfoModal }"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div>
+          Вие сте в обновената версия на модул справки. Моля, натиснете
+          <a href="https://neispuo.mon.bg/portal/user-guide/Ръководство на потребителя - Справки" target="_blank">тук</a> или
+          влезте в основния <a href="https://neispuo.mon.bg" target="_blank">портал</a>, за да свалите и се запознате
+          ръководството на потребителя
+        </div>
+      </div>
+      <div class="modal-footer pt-0">
+        <button type="button" class="btn btn-primary btn-sm" (click)="showNewModuleInfoModal = false">Разбрах</button>
+      </div>
+    </div>
+  </div>
+</div>

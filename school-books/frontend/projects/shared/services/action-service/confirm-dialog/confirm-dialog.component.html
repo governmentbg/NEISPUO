@@ -1,0 +1,12 @@
+<div class="confirm-dialog-content">
+  <p>{{ data.message }}</p>
+
+  <div class="sb-btn-wrapper sb-btn-wrapper-right sb-btn-wrapper-bottom">
+    <button mat-raised-button [mat-dialog-close]="okResult" [ngClass]="{ hidden: data.okBtnHidden }" cdkFocusInitial>
+      {{ data.okBtnText || 'Да' }}
+    </button>
+    <button mat-raised-button [mat-dialog-close]="cancelResult" [ngClass]="{ hidden: data.cancelBtnHidden }">
+      {{ data.cancelBtnText || 'Не' }}
+    </button>
+  </div>
+</div>

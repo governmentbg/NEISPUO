@@ -1,0 +1,158 @@
+<sb-breadcrumb
+  class="block mb-3"
+  [icon]="fadCalendarMinus"
+  [text]="
+    data.dateAbsencesReport == null
+      ? 'Създаване на справка отсъстващи за деня'
+      : 'Преглед на справка отсъстващи за деня'
+  "
+  [parentItems]="[{ text: 'Отсъстващи за деня', routeCommands: ['../'] }]"
+></sb-breadcrumb>
+
+<form [formGroup]="form" autocomplete="off" novalidate>
+  <sb-card>
+    <ng-container card-title>
+      {{
+        data.dateAbsencesReport == null
+          ? 'Създаване на справка отсъстващи за деня'
+          : 'Преглед на справка отсъстващи за деня'
+      }}
+    </ng-container>
+    <sb-editor-panel
+      card-buttons
+      [isNew]="data.dateAbsencesReport == null"
+      [editBtnHidden]="true"
+      (save)="onSave($event)"
+    >
+      <a
+        *ngIf="data.dateAbsencesReport != null"
+        [href]="downloadUrl"
+        class="mr-3"
+        disabled-mode-buttons
+        target="_blank"
+        download
+        color="primary"
+        mat-raised-button
+        [disabled]="!downloadUrl"
+      >
+        <fa-icon [icon]="fasFileExcel" size="lg"></fa-icon>
+        <span>Свали</span>
+      </a>
+      <button
+        disabled-mode-buttons
+        mat-raised-button
+        color="warn"
+        type="button"
+        (click)="onRemove()"
+        [disabled]="removing"
+      >
+        <fa-icon [icon]="removing ? fasSpinnerThird : fasTrashAlt" [spin]="removing" size="lg"></fa-icon>
+        <span class="hidden sm:inline">Премахни</span>
+      </button>
+    </sb-editor-panel>
+    <ng-container card-body>
+      <div class="sm:grid grid-cols-4 gap-x-4 mb-2">
+        <sb-date-field label="Дата" formControlName="reportDate"></sb-date-field>
+        <mat-checkbox
+          class="col-start-1 mb-5"
+          color="primary"
+          [checked]="data.dateAbsencesReport?.isUnited === true"
+          formControlName="isUnited"
+        >
+          Обедини часовете от всички смени
+        </mat-checkbox>
+        <sb-nom-select
+          class="col-start-1"
+          *ngIf="data.dateAbsencesReport == null"
+          label="Паралелки/Групи"
+          formControlName="classBookIds"
+          [multiple]="true"
+          [nomService]="classBookNomsService"
+        ></sb-nom-select>
+        <sb-text-field
+          class="col-start-1"
+          *ngIf="data.dateAbsencesReport != null"
+          label="Паралелки/Групи"
+          formControlName="classBookNames"
+        ></sb-text-field>
+        <sb-nom-select
+          class="col-start-1"
+          *ngIf="data.dateAbsencesReport == null"
+          label="Смени"
+          formControlName="shiftIds"
+          [multiple]="true"
+          [nomService]="shiftNomsService"
+        ></sb-nom-select>
+        <sb-text-field
+          class="col-start-1"
+          *ngIf="data.dateAbsencesReport != null"
+          label="Смени"
+          formControlName="shiftNames"
+        ></sb-text-field>
+      </div>
+      <sb-card-section *ngIf="data.dateAbsencesReport != null" class="col-span-full">
+        {{ reportName }}
+      </sb-card-section>
+      <ng-container *ngIf="data.dateAbsencesReport != null">
+        <div class="sb-table-container">
+          <table class="sb-table">
+            <thead>
+              <tr>
+                <th [attr.rowspan]="data.dateAbsencesReport.isUnited ? 2 : 3">Клас</th>
+                <th [attr.colspan]="items.headerHourNumbers.length" class="text-center">
+                  {{ data.dateAbsencesReport.isUnited ? 'Час' : 'Смяна' }}
+                </th>
+              </tr>
+              <tr *ngIf="!data.dateAbsencesReport.isUnited">
+                <th
+                  *ngFor="let shift of items.headerShifts | keyvalue: originalOrder"
+                  [attr.colspan]="shift.value.hoursNumbers.length"
+                  class="text-center"
+                >
+                  {{ shift.value.shiftName }}
+                </th>
+              </tr>
+              <tr>
+                <th *ngFor="let hour of items.headerHourNumbers" class="text-center">
+                  {{ hour }}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngFor="let item of items.items">
+                <tr *ngIf="!item.isOffDay && item.hasScheduleDate">
+                  <td>
+                    {{ item.classBookName }}
+                  </td>
+                  <td *ngFor="let hour of item.hours" class="text-center" style="font-size: 13px">
+                    {{ hour.absenceStudentNumbers }}
+                  </td>
+                </tr>
+                <tr *ngIf="item.isOffDay || !item.hasScheduleDate">
+                  <td>
+                    {{ item.classBookName }}
+                  </td>
+                  <td [attr.colspan]="items.headerHourNumbers.length" class="text-center" style="font-size: 13px">
+                    {{
+                      item.isOffDay
+                        ? 'Този ден е неучебен за класа и избраната дата'
+                        : 'Този клас няма въведено разписание за избраната дата'
+                    }}
+                  </td>
+                </tr>
+              </ng-container>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Общо</td>
+                <td *ngFor="let hour of items.totals" class="text-center">
+                  {{ hour.count }}
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </ng-container>
+    </ng-container>
+  </sb-card>
+</form>

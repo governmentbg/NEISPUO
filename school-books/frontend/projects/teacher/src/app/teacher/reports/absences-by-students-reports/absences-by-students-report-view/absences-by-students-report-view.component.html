@@ -1,0 +1,112 @@
+<sb-breadcrumb
+  class="block mb-3"
+  [icon]="fadCalendarMinus"
+  [text]="
+    data.absencesByStudentsReport == null
+      ? 'Създаване на справка отсъствия по ученици'
+      : 'Преглед на справка отсъствия по ученици'
+  "
+  [parentItems]="[{ text: 'Отсъствия по ученици', routeCommands: ['../'] }]"
+></sb-breadcrumb>
+
+<form [formGroup]="form" autocomplete="off" novalidate>
+  <sb-card>
+    <ng-container card-title>
+      {{
+        data.absencesByStudentsReport == null
+          ? 'Създаване на справка отсъствия по ученици'
+          : 'Преглед на справка отсъствия по ученици'
+      }}
+    </ng-container>
+    <sb-editor-panel
+      card-buttons
+      [isNew]="data.absencesByStudentsReport == null"
+      [editBtnHidden]="true"
+      (save)="onSave($event)"
+    >
+      <a
+        *ngIf="data.absencesByStudentsReport != null"
+        [href]="downloadUrl"
+        class="mr-3"
+        disabled-mode-buttons
+        target="_blank"
+        download
+        color="primary"
+        mat-raised-button
+        [disabled]="!downloadUrl"
+      >
+        <fa-icon [icon]="fasFileExcel" size="lg"></fa-icon>
+        <span>Свали</span>
+      </a>
+      <button
+        disabled-mode-buttons
+        mat-raised-button
+        color="warn"
+        type="button"
+        (click)="onRemove()"
+        [disabled]="removing"
+      >
+        <fa-icon [icon]="removing ? fasSpinnerThird : fasTrashAlt" [spin]="removing" size="lg"></fa-icon>
+        <span class="hidden sm:inline">Премахни</span>
+      </button>
+    </sb-editor-panel>
+    <ng-container card-body>
+      <div class="sm:grid grid-cols-4 gap-x-4 mb-2">
+        <sb-nom-select
+          class="col-start-1"
+          [nomService]="reportPeriodNomsService"
+          label="Период"
+          formControlName="period"
+        ></sb-nom-select>
+        <sb-nom-select
+          *ngIf="data.absencesByStudentsReport == null"
+          label="Паралелки/Групи"
+          formControlName="classBookIds"
+          [multiple]="true"
+          [nomService]="classBookNomsService"
+        ></sb-nom-select>
+        <sb-text-field
+          *ngIf="data.absencesByStudentsReport != null"
+          label="Паралелки/Групи"
+          formControlName="classBookNames"
+        ></sb-text-field>
+      </div>
+      <sb-card-section *ngIf="data.absencesByStudentsReport != null" class="col-span-full">
+        {{ reoportName }}
+      </sb-card-section>
+      <ng-container *ngIf="data.absencesByStudentsReport != null && dataSource != null">
+        <sb-table
+          [dataSource]="dataSource"
+          [displayedColumns]="['classBookName', 'studentName', 'excusedAbsencesCount', 'unexcusedAbsencesCount']"
+        >
+          <ng-container cdkColumnDef="classBookName">
+            <th cdk-header-cell *cdkHeaderCellDef>Клас</th>
+            <td cdk-cell [class.font-bold]="row.isTotal" *cdkCellDef="let row">{{ row.classBookName }}</td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="studentName">
+            <th cdk-header-cell *cdkHeaderCellDef>Ученик</th>
+            <td cdk-cell [class.font-bold]="row.isTotal" *cdkCellDef="let row">
+              {{ row.studentName }}
+              <span *ngIf="row.isTransferred" class="sb-badge">ОТПИСАН</span>
+            </td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="excusedAbsencesCount">
+            <th cdk-header-cell *cdkHeaderCellDef>Уважителни</th>
+            <td cdk-cell [class.font-bold]="row.isTotal" *cdkCellDef="let row">{{ row.excusedAbsencesCount }}</td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="unexcusedAbsencesCount">
+            <th cdk-header-cell *cdkHeaderCellDef>Неуважителни</th>
+            <td cdk-cell [class.font-bold]="row.isTotal" *cdkCellDef="let row">{{ row.unexcusedAbsencesCount }}</td>
+          </ng-container>
+
+          <ng-container no-data-row>
+            <td colspan="4" class="text-center">Няма ученици с отсъствия за периода</td>
+          </ng-container>
+        </sb-table>
+      </ng-container>
+    </ng-container>
+  </sb-card>
+</form>

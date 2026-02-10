@@ -1,0 +1,22 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[SPKGroupPT] SPKPT /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "SPKPT.SPKGroupID as code"
+        },
+        {
+            "column": "SPKPT.Description as label"
+        },
+		{
+            "column": "SPKPT.IsValid as isValid"
+        }
+    ],
+    "params": [],
+    "order": [
+        {
+            "column": "SPKPT.SPKGroupID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

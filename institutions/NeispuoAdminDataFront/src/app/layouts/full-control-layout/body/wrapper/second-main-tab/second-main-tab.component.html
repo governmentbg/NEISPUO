@@ -1,0 +1,6 @@
+<ul class="l-custom-main-tab">
+    <li class="button-item" *ngFor="let tab of menuData" [ngClass]="{'active': menuItem === tab.path}" (click)="onPathChanged(tab.path)">
+        <span class="span-name">{{ tab.label }}</span>
+    </li>
+</ul>
+<app-loader *ngIf="isLoading"></app-loader>

@@ -1,0 +1,29 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[SchoolProfile] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "SchoolProfileID as code"
+        },
+        {
+            "column": "Name as label"
+        }
+    ],
+    "params": [
+        {
+            "param": "@IsValid",
+            "column": "IsValid",
+            "operator": "=",
+            "value": 1,
+            "type": "int",
+            "logical_operator": "and",
+            "static": true
+        }
+    ],
+    "order": [
+        {
+            "column": "SchoolProfileID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

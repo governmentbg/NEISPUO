@@ -1,0 +1,35 @@
+{
+  "paramName": "instid",
+  "sections": [
+    {
+      "order": 1,
+      "label": "Брой персонал по категория персонал",
+	  "name": "TableReportStaffPositionbyCategoryStaff",
+      "table": {
+	    "order": 1,
+        "name": "reportStaffPositionbyCategoryStaff",
+		"hasEditButton": false,
+		"sortable": false,
+		"searchable": false,
+        "fields": [
+          {
+            "label": "Вид персонал",
+            "name": "categoryStaff",
+            "type": "input",
+            "inputType": "text",
+            "order": 1
+          },
+		  {
+            "label": "Общ брой",
+            "name": "cntStaff",
+            "type": "input",
+            "inputType": "number",
+            "order": 2
+          }
+        ]
+      }
+    }
+  ]
+}
+
+

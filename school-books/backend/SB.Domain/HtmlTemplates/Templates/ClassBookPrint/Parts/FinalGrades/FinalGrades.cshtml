@@ -1,0 +1,157 @@
+@using SB.Domain
+@using System.Linq
+@model FinalGradesModel
+
+<div class="page">
+  @{
+    var types = new Dictionary<string, string>()
+    {
+        {"FirstTermGrade", "I уч.\nсрок"},
+        {"SecondTermGrade", "II уч.\nсрок"},
+        {"FinalGrade", "год.\nоценка"}
+    };
+
+    int curriculumForFirstPage = 3;
+    int curriculumPerPage = 6;
+    int gradeTypeCols = types.Count;
+    var curriculumPages =
+        Model.Curriculum
+        .Take(curriculumForFirstPage)
+        .GroupBy(
+            cc => 0, // first page
+            cc => cc)
+        .Union(
+            Model.Curriculum
+            .Skip(curriculumForFirstPage)
+            .Select((cc, i) => new { cc, i })
+            // the ones with the same quotient are in the same page
+            // grouping indexes by page this way - (0, 1, 2), (3, 4, 5), ...
+            .GroupBy(
+                cci => (cci.i / curriculumPerPage) + 1,
+                cci => cci.cc));
+
+    foreach(var curriculumPage in curriculumPages)
+    {
+      <h3 class="page-header">Срочни и годишни оценки на учениците</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th rowspan="2" class="three-rows-height align-bottom"><div class="vertical-text">№ на ученика</div></th>
+            @if (curriculumPage.Key == 0)
+            {
+              <th rowspan="2">Трите имена на ученика</th>
+            }
+            @foreach (var curriculum in curriculumPage)
+            {
+              <th colspan="@gradeTypeCols">@curriculum.SubjectName / @curriculum.SubjectTypeName</th>
+            }
+            @if (curriculumPage.Key != 0 && curriculumPage.Count() < curriculumPerPage)
+            {
+              for (int i = 0; i < curriculumPerPage - curriculumPage.Count(); i++)
+              {
+                <th colspan="@gradeTypeCols"></th>
+              }
+            }
+
+            <tr>
+              @for (int i = 0; i < curriculumPage.Count(); i++)
+              {
+                foreach (var type in types)
+                {
+                  <th class="grade-cell-width">@type.Value</th>
+                }     
+              }
+              @if (curriculumPage.Key != 0 && curriculumPage.Count() < curriculumPerPage)
+              {
+                for (int i = 0; i < curriculumPerPage - curriculumPage.Count(); i++)
+                {
+                  foreach (var type in types)
+                  {
+                    <th class="grade-cell-width">@type.Value</th>
+                  }
+                }
+              }
+            </tr>
+        </thead>
+        <tbody>
+          @foreach (var student in Model.Students)
+            {
+              var studentGrades = Model.Items
+                  .Where(i => i.PersonId == student.PersonId)
+                  .SelectMany(i => i.Curriculum)
+                  .ToArray();
+
+              <tr>
+                <td>@student.ClassNumber</td>
+
+                @if (curriculumPage.Key == 0)
+                {
+                  <td>
+                    @student.FullName
+                    @if (student.IsTransferred)
+                    {
+                      <span class="sb-badge">ОТПИСАН</span>
+                    }
+                  </td>
+                }
+
+                @foreach (var curriculum in curriculumPage)
+                {
+                  var gradesByType = studentGrades
+                      .Where(i => i.CurriculumId == curriculum.CurriculumId)
+                      .Select(i => i.GradesByType)
+                      .FirstOrDefault();
+
+                  if (gradesByType != null)
+                  {
+                    foreach (var type in types)
+                    {
+                      switch (type.Key)
+                      {
+                        case "FirstTermGrade":
+                          <td>@gradesByType.FirstTermGrade</td>
+                          break;
+                        case "SecondTermGrade":
+                          <td>@gradesByType.SecondTermGrade</td>
+                          break;
+                        case "FinalGrade":
+                          <td>@gradesByType.FinalGrade</td>
+                          break;
+                        default:
+                          <td></td>
+                          break;
+                      }
+                    }
+                  }
+                  else
+                  {
+                    foreach(var type in types.ToList())
+                    {
+                      <td></td>
+                    }
+                  }
+                }
+
+                @if (curriculumPage.Key != 0 && curriculumPage.Count() < curriculumPerPage)
+                {
+                  for (int i = 0; i < curriculumPerPage - curriculumPage.Count(); i++)
+                  {
+                    foreach(var type in types.ToList())
+                    {
+                      <td></td>
+                    }
+                  }
+                }
+              </tr>
+            }
+        </tbody>
+      </table>
+
+      if (curriculumPage.Key < curriculumPages.Count() - 1)
+      {
+        <div class="page-break"></div>
+      }
+    }
+  }
+</div>

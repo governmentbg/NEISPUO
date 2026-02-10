@@ -1,0 +1,14 @@
+[
+  {
+    "client_id": "app-id",
+    "response_types": ["code"],
+    "redirect_uris": [
+      "https://app.domain/signin-callback",
+      "https://app.domain/silent-signin-callback",
+      "http://app.domain/signin-callback",
+      "http://app.domain/silent-signin-callback"
+    ],
+    "post_logout_redirect_uris": ["https://app.domain/login"],
+    "token_endpoint_auth_method": "none"
+  }
+]

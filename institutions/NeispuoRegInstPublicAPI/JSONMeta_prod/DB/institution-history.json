@@ -1,0 +1,31 @@
+{
+    "template": "SELECT /**select**/ FROM [reginst_basic].[RIHistory] RIHistory /**where**/ /**orderby**/",
+    "columns": [
+      {
+        "column": "RIHistory.RIprocedureID AS code"
+      },
+      {
+        "column": "RIHistory.HistoryName AS label"
+      }
+    ],
+    "params": [
+      {
+        "param": "@instid",
+        "column": "RIHistory.InstitutionID",
+        "operator": "=",
+        "value": "instid",
+        "type": "int",
+        "logical_operator": "and",
+		"optional": false,
+       	"static": false,
+		"from_claim": false
+      }
+    ],
+    "order": [
+      {
+        "column": "RIHistory.HistoryName",
+        "type": "ASC"
+      }
+    ],
+    "inSelects": []  
+}

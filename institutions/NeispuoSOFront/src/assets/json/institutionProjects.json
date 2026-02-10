@@ -1,0 +1,354 @@
+{
+  "label": "Проекти",
+  "paramName": "instid",
+  "sections": [
+    {
+      "order": 1,
+      "label": "Проекти",
+      "subsections": [
+        {
+          "order": 1,
+          "name": "institutionProjects",
+          "accordion": { "state": "closed" },
+          "canDuplicate": true,
+          "label": "Проект",
+          "subsections": [
+            {
+              "order": 1,
+              "label": "Основни данни за проекта",
+              "name": "projectBasicData",
+              "accordion": { "state": "closed" },
+              "fields": [
+                {
+                  "label": "Наименование на проекта",
+                  "name": "projectName",
+                  "type": "input",
+                  "inputType": "text",
+                  "disabled": false,
+                  "order": 1,
+                  "width": 1000,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 255,
+                      "message": "Максимална дължина 255 символа"
+                    }
+                  ]
+                },
+                {
+                  "label": "Начална дата",
+                  "name": "startDate",
+                  "type": "date",
+                  "disabled": false,
+                  "order": 2,
+                  "width": 200,
+                  "validations": []
+                },
+                {
+                  "label": "Крайна дата",
+                  "name": "endDate",
+                  "type": "date",
+                  "disabled": false,
+                  "order": 3,
+                  "width": 200,
+                  "validations": []
+                },
+                {
+                  "label": "Вид на проекта",
+                  "name": "projectTypeID",
+                  "type": "select",
+                  "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+                  "disabled": false,
+                  "order": 4
+                },
+                {
+                  "label": "Вид програма",
+                  "name": "programTypeID",
+                  "type": "select",
+                  "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+                  "disabled": false,
+                  "order": 5
+                },
+                {
+                  "label": "Интернет сайт на проекта",
+                  "name": "projectWebsite",
+                  "type": "input",
+                  "inputType": "text",
+                  "disabled": false,
+                  "order": 6,
+                  "width": 400,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 255,
+                      "message": "Максимална дължина 255 символа"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "order": 2,
+              "label": "Резюме (описание) на проекта",
+              "name": "projectDescription",
+              "fields": [
+                {
+                  "name": "projectDescription",
+                  "type": "textarea",
+                  "order": 1,
+                  "width": 1200,
+                  "height": 10,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 1024,
+                      "message": "Максимална дължина 1024 символа"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "order": 3,
+              "label": "Цели и резултати",
+              "name": "goals",
+              "fields": [
+                {
+                  "name": "goals",
+                  "type": "textarea",
+                  "order": 1,
+                  "width": 1200,
+                  "height": 15,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 1024,
+                      "message": "Максимална дължина 1024 символа"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "order": 3,
+              "label": "Планиран брой обхванати деца/ученици",
+              "name": "planSchoolCount",
+              "fields": [
+                {
+                  "label": "Предучилищна степен",
+                  "name": "planPreSchoolCount",
+                  "type": "input",
+                  "inputType": "number",
+                  "order": 1,
+                  "width": 100,
+                  "validations": [
+                    {
+                      "name": "pattern",
+                      "validation": "^\\d+$",
+                      "message": "Полето трябва да съдържа цяло неотрицателно число"
+                    }
+                  ]
+                },
+                {
+                  "label": "Начален етап",
+                  "name": "planPrimarySchoolCount",
+                  "type": "input",
+                  "inputType": "number",
+                  "order": 2,
+                  "width": 100,
+                  "validations": [
+                    {
+                      "name": "pattern",
+                      "validation": "^\\d+$",
+                      "message": "Полето трябва да съдържа цяло неотрицателно число"
+                    }
+                  ]
+                },
+                {
+                  "label": "Прогимназиален етап",
+                  "name": "planSecondarySchoolCount",
+                  "type": "input",
+                  "inputType": "number",
+                  "order": 3,
+                  "width": 100,
+                  "validations": [
+                    {
+                      "name": "pattern",
+                      "validation": "^\\d+$",
+                      "message": "Полето трябва да съдържа цяло неотрицателно число"
+                    }
+                  ]
+                },
+                {
+                  "label": "Гимназиална степен",
+                  "name": "planHighSchoolCount",
+                  "type": "input",
+                  "inputType": "number",
+                  "order": 4,
+                  "width": 100,
+                  "validations": [
+                    {
+                      "name": "pattern",
+                      "validation": "^\\d+$",
+                      "message": "Полето трябва да съдържа цяло неотрицателно число"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "order": 4,
+              "label": "Реализиран брой обхванати деца/ученици",
+              "name": "actualSchoolCount",
+              "fields": [
+                {
+                  "label": "Предучилищна степен",
+                  "name": "actualPreSchoolCount",
+                  "type": "input",
+                  "inputType": "number",
+                  "order": 1,
+                  "width": 100,
+                  "validations": [
+                    {
+                      "name": "pattern",
+                      "validation": "^\\d+$",
+                      "message": "Полето трябва да съдържа цяло неотрицателно число"
+                    }
+                  ]
+                },
+                {
+                  "label": "Начален етап",
+                  "name": "actualPrimarySchoolCount",
+                  "type": "input",
+                  "inputType": "number",
+                  "order": 2,
+                  "width": 100,
+                  "validations": [
+                    {
+                      "name": "pattern",
+                      "validation": "^\\d+$",
+                      "message": "Полето трябва да съдържа цяло неотрицателно число"
+                    }
+                  ]
+                },
+                {
+                  "label": "Прогимназиален етап",
+                  "name": "actualSecondarySchoolCount",
+                  "type": "input",
+                  "inputType": "number",
+                  "order": 3,
+                  "width": 100,
+                  "validations": [
+                    {
+                      "name": "pattern",
+                      "validation": "^\\d+$",
+                      "message": "Полето трябва да съдържа цяло неотрицателно число"
+                    }
+                  ]
+                },
+                {
+                  "label": "Гимназиална степен",
+                  "name": "actualHighSchoolCount",
+                  "type": "input",
+                  "inputType": "number",
+                  "order": 4,
+                  "width": 100,
+                  "validations": [
+                    {
+                      "name": "pattern",
+                      "validation": "^\\d+$",
+                      "message": "Полето трябва да съдържа цяло неотрицателно число"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "order": 5,
+              "label": "В т.ч. обхванати в международна мобилност",
+              "name": "interSchoolCount",
+              "fields": [
+                {
+                  "label": "Предучилищна степен",
+                  "name": "interPreSchoolCount",
+                  "type": "input",
+                  "inputType": "number",
+                  "order": 1,
+                  "width": 100,
+                  "validations": [
+                    {
+                      "name": "pattern",
+                      "validation": "^\\d+$",
+                      "message": "Полето трябва да съдържа цяло неотрицателно число"
+                    }
+                  ]
+                },
+                {
+                  "label": "Начален етап",
+                  "name": "interPrimarySchoolCount",
+                  "type": "input",
+                  "inputType": "number",
+                  "order": 2,
+                  "width": 100,
+                  "validations": [
+                    {
+                      "name": "pattern",
+                      "validation": "^\\d+$",
+                      "message": "Полето трябва да съдържа цяло неотрицателно число"
+                    }
+                  ]
+                },
+                {
+                  "label": "Прогимназиален етап",
+                  "name": "interSecondarySchoolCount",
+                  "type": "input",
+                  "inputType": "number",
+                  "order": 3,
+                  "width": 100,
+                  "validations": [
+                    {
+                      "name": "pattern",
+                      "validation": "^\\d+$",
+                      "message": "Полето трябва да съдържа цяло неотрицателно число"
+                    }
+                  ]
+                },
+                {
+                  "label": "Гимназиална степен",
+                  "name": "interHighSchoolCount",
+                  "type": "input",
+                  "inputType": "number",
+                  "order": 4,
+                  "width": 100,
+                  "validations": [
+                    {
+                      "name": "pattern",
+                      "validation": "^\\d+$",
+                      "message": "Полето трябва да съдържа цяло неотрицателно число"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "order": 6,
+              "label": "Приоритетни области",
+              "name": "institutionProjectPriorityArea",
+              "canDuplicate": true,
+              "fields": [
+                {
+                  "label": "Вид приоритетна област",
+                  "name": "projectPriorityAreaTypeID",
+                  "type": "select",
+                  "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+                  "disabled": false,
+                  "order": 1
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

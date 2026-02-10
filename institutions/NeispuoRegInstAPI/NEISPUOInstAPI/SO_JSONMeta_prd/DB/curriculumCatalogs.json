@@ -1,0 +1,42 @@
+{
+	"arrayName": "curriculumCatalogList",
+	"template": "SELECT /**select**/ FROM [inst_nom].[CurriculumCatalog] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "CurriculumCatalogID as id"
+        },
+		{
+            "column": "CatalogNo as curriculumCatalogNumber"
+        },
+        {
+            "column": "Name as curriculumCatalogName"
+        },
+		{
+            "column": "Description as curriculumCatalogDescription"
+        },
+		{
+          "column": "'curriculumCatalogDataList' AS formName"
+        },
+		{
+          "column": "CurriculumCatalogID AS formDataId"
+        }
+    ],
+    "params": [
+        {
+            "param": "@IsValid",
+            "column": "IsValid",
+            "operator": "=",
+            "value": 1,
+            "type": "int",
+            "logical_operator": "and",
+            "static": true
+        }
+    ],
+    "order": [
+        {
+            "column": "SortOrder",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

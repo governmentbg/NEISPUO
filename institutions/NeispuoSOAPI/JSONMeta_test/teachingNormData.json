@@ -1,0 +1,1102 @@
+{
+  "label": "Данни за длъжност на служител",
+  "dataName": "if(operationType==1) {form.dataName=null} else {form.dataName='teachingNormData'}",
+  "procedureName": "inst_year.pedStaffDataCUD",
+  "sections": [     
+    {
+      "label": "Име на служител",
+      "order": 1,
+      "subsections": [
+          {
+            "order": 1,
+            "label": "fullName",
+            "type": "input",
+            "name": "fullName",
+            "bold": true,
+            "width": 200,
+            "disabled": false,
+            "flexible": false
+          }
+      ]
+    },
+    {
+      "label": "Данни за длъжност на служител",
+      "name": "staffPositionData",
+      "accordion": {
+        "state": "closed"
+      },
+
+      "order": 1,
+      "subsections": [
+        {
+          "order": 1,
+          "name": "staffPosition",
+          "subsections": [
+            {
+              "order": 0,
+              "name": "validData",
+              "fields": [
+                {
+                  "order": 0,
+                  "label": "Валидна",
+                  "name": "isValid",
+                  "type": "checkbox",
+                  "rendered": false,
+                  "disabled": true,
+                  "influence": [
+                    {
+                      "type": "disable",
+                      "subsectionName": "numberData",
+                      "condition": [
+                        true,
+                        false
+                      ]
+                    },
+                    {
+                      "type": "disable",
+                      "subsectionName": "category",
+                      "condition": [
+                        true,
+                        false
+                      ]
+                    },
+                    {
+                      "type": "disable",
+                      "subsectionName": "position",
+                      "condition": [
+                        true,
+                        false
+                      ]
+                    },
+                    {
+                      "type": "disable",
+                      "sectionName": "staffPedData",
+                      "condition": [
+                        false
+                      ]
+                    },
+                    {
+                      "type": "disable",
+                      "sectionName": "staffPositionHorariumTable",
+                      "condition": [
+                        false
+                      ]
+                    }
+                  ],
+                  "defaultValue": 1
+                }
+              ]
+            },
+            {
+              "order": 1,
+              "name": "archive",
+              "label": "Архивиране на длъжност",
+              "fields": [
+                {
+                  "order": 1,
+                  "label": "Архивирана",
+                  "name": "isArchived",
+                  "type": "checkbox",
+                  "rendered": "if(isValid==true) {field.rendered=false} else {field.rendered=true}",
+                  "disabled": false,
+                  "defaultValue": true,
+                  "info": "При премахване на отметката може да активирате отново длъжността на служителя"
+                }
+              ]
+            },
+            {
+              "order": 2,
+              "name": "numberData",
+              "label": "Позиция",
+              "fields": [
+                {
+                  "label": "Вид по чл. 38 (детайлен)",
+                  "name": "detailedSchoolTypeID",
+                  "type": "select",
+                  "optionsPath": "/data/get/detailedSchoolTypes",
+                  "rendered": false,
+                  "disabled": true,
+                  "order": 0
+                },
+                {
+                  "label": "Номер по ред",
+                  "name": "staffOrd",
+                  "type": "input",
+                  "inputType": "number",
+                  "order": 1,
+                  "width": 95,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 4,
+                      "message": "Максимална дължина 4 символа"
+                    },
+                    {
+                      "name": "pattern",
+                      "validation": "^\\d+$",
+                      "message": "Полето трябва да съдържа цяло неотрицателно число"
+                    },
+                    {
+                      "name": "required",
+                      "validator": "",
+                      "message": "Полето е задължително"
+                    }
+                  ]
+                },
+                {
+                  "label": "Длъжност №",
+                  "name": "staffPositionNo",
+                  "type": "input",
+                  "inputType": "number",
+                  "order": 2,
+                  "width": 95,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 4,
+                      "message": "Максимална дължина 4 символа"
+                    },
+                    {
+                      "name": "pattern",
+                      "validation": "^\\d+$",
+                      "message": "Полето трябва да съдържа цяло неотрицателно число"
+                    },
+                    {
+                      "name": "required",
+                      "validator": "",
+                      "message": "Полето е задължително"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "order": 3,
+              "label": "Категория персонал",
+              "name": "category",
+              "fields": [
+                {
+                  "label": "Категория",
+                  "name": "staffTypeID",
+                  "type": "select",
+                  "optionsPath": "/data/get/staffTypes",
+                  "disabled": false,
+                  "order": 1,
+                  "defaultValue": 1,
+                  "validations": [
+                    {
+                      "name": "required",
+                      "validator": "",
+                      "message": "Полето е задължително"
+                    }
+                  ],
+                  "influence": [
+                    {
+                      "fieldName": "categoryStaffTypeID",
+                      "url": "/data/get/categoryStaffTypes",
+                      "type": "options"
+                    },
+                    {
+                      "type": "hide",
+                      "fieldName": "teachStageID",
+                      "condition": [
+                        2
+                      ]
+                    },
+                    {
+                      "type": "hide",
+                      "fieldName": "helpStudentGovernment",
+                      "condition": [
+                        2
+                      ]
+                    },
+                    {
+                      "type": "hide",
+                      "fieldName": "isHospital",
+                      "condition": [
+                        2
+                      ]
+                    },
+                    {
+                      "type": "hide",
+                      "fieldName": "isMentor",
+                      "condition": [
+                        2
+                      ]
+                    },
+                    {
+                      "type": "hide",
+                      "fieldName": "isTrainee",
+                      "condition": [
+                        2
+                      ]
+                    },
+                    {
+                      "type": "hide",
+                      "fieldName": "positionSubjectGroupID",
+                      "condition": [
+                        2
+                      ]
+                    },
+                    {
+                      "type": "hide",
+                      "fieldName": "isNotMeetReq",
+                      "condition": [
+                        2
+                      ]
+                    },
+                    {
+                      "type": "hide",
+                      "sectionName": "staffPedData",
+                      "condition": [
+                        2
+                      ]
+                    },
+                    {
+                      "type": "hide",
+                      "sectionName": "staffPositionHorariumTable",
+                      "condition": [
+                        2
+                      ]
+                    },
+                    {
+                      "fieldName": "NKPDPositionID",
+                      "url": "/data/get/nkpdPositions",
+                      "type": "options"
+                    }
+                  ]
+                },
+                {
+                  "label": "Вид",
+                  "name": "categoryStaffTypeID",
+                  "type": "searchselect",
+                  "disabled": false,
+                  "order": 2,
+                  "width": 700,
+                  "validations": [
+                    {
+                      "name": "required",
+                      "validator": "",
+                      "message": "Полето е задължително"
+                    }
+                  ],
+                  "influence": [
+                    {
+                      "type": "render",
+                      "fieldName": "teachStageID",
+                      "condition": [
+                        116
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "order": 4,
+              "label": "Длъжност",
+              "name": "position",
+              "accordion": {
+                "state": "open"
+              },
+              "fields": [
+                {
+                  "label": "Титуляр/заместник",
+                  "name": "positionKindID",
+                  "type": "select",
+                  "optionsPath": "/data/get/positionKinds",
+                  "disabled": false,
+                  "validations": [
+                    {
+                      "name": "required",
+                      "validator": "",
+                      "message": "Полето е задължително"
+                    }
+                  ],
+                  "order": 1
+                },
+                {
+                  "label": "Щат",
+                  "name": "positionCount",
+                  "type": "input",
+                  "inputType": "number",
+                  "order": 2,
+                  "width": 95,
+                  "info": "Може да приема стойности 0 и 1",
+                  "validations": [
+                    {
+                      "name": "min",
+                      "validation": 0,
+                      "message": "Невалидно число за щат"
+                    },
+                    {
+                      "name": "max",
+                      "validation": 1,
+                      "message": "Невалидно число за щат"
+                    },
+                    {
+                      "name": "maxLength",
+                      "validation": 4,
+                      "message": "Максимална дължина 4 символа"
+                    }
+                  ]
+                },
+                {
+                  "label": "Длъжност",
+                  "name": "NKPDPositionID",
+                  "type": "searchselect",
+                  "width": 700,
+                  "disabled": false,
+                  "validations": [
+                    {
+                      "name": "required",
+                      "validator": "",
+                      "message": "Полето е задължително"
+                    }
+                  ],
+                  "order": 3
+                },
+                {
+                  "label": "Основен етап, в който преподава",
+                  "name": "teachStageID",
+                  "type": "select",
+                  "width": 300,
+                  "optionsPath": "/data/get/teachStages",
+                  "rendered": "if(instType==3) {field.rendered=false} else {field.rendered=true}",
+                  "disabled": false,
+                  "order": 4
+                },
+                {
+                  "label": "Назначен на щатно място по",
+                  "name": "positionSubjectGroupID",
+                  "type": "searchselect",
+                  "width": 400,
+                  "optionsPath": "/data/get/staffMainSubjectGroups",
+                  "disabled": false,
+                  "order": 5
+                },
+                {
+                  "label": "Болничен учител",
+                  "name": "isHospital",
+                  "type": "checkbox",
+                  "disabled": false,
+                  "order": 6
+                },
+                {
+                  "label": "Учител наставник",
+                  "name": "isMentor",
+                  "type": "checkbox",
+                  "disabled": false,
+                  "order": 7
+                },
+                {
+                  "label": "Учител стажант",
+                  "name": "isTrainee",
+                  "type": "checkbox",
+                  "disabled": false,
+                  "order": 8
+                },
+                {
+                  "label": "Не отговаря на изискванията",
+                  "name": "isNotMeetReq",
+                  "type": "checkbox",
+                  "disabled": false,
+                  "order": 9
+                },
+                {
+                  "label": "Прилагат се условията по чл.4, ал.12 от Наредба 4",
+                  "name": "hasTELK",
+                  "type": "checkbox",
+                  "disabled": false,
+                  "order": 10
+                },
+                {
+                  "label": "Активна за текущата учебна година",
+                  "name": "currentlyValid",
+                  "type": "checkbox",
+                  "defaultValue": 1,
+                  "disabled": false,
+                  "order": 11
+                },
+                {
+                  "label": "Подпомага ученическия съвет на училището",
+                  "name": "helpStudentGovernment",
+                  "type": "checkbox",
+                  "disabled": false,
+                  "order": 12
+                },
+                {
+                  "name": "breakpoint",
+                  "type": "breakpoint",
+                  "order": 13
+                },
+                {
+                  "label": "Основна специалност, по която преподава",
+                  "name": "mainPersonOKSID",
+                  "type": "searchselect",
+                  "width": 500,
+                  "optionsPath": "/data/get/personOKSList",
+                  "disabled": false,
+                  "validations": [],
+                  "order": 14
+                },
+                {
+                  "label": "Бележки",
+                  "name": "positionNotes",
+                  "type": "input",
+                  "inputType": "textArea",
+                  "order": 15,
+                  "width": 400
+                }
+              ]
+            },
+            {
+              "order": 5,
+              "label": "Договор и трудов стаж",
+              "name": "contractAndWorkExp",
+              "disabled": false,
+              "rendered": false,
+              "accordion": {
+                "state": "closed"
+              },
+              "fields": [
+                {
+                  "label": "Година на сключване",
+                  "name": "contractYear",
+                  "type": "input",
+                  "inputType": "number",
+                  "order": 1,
+                  "width": 95,
+                  "disabled": false,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 4,
+                      "message": "Максимална дължина 4 символа"
+                    },
+                    {
+                      "name": "minLength",
+                      "validation": 4,
+                      "message": "Минимална дължина 4 символа"
+                    },
+                    {
+                      "name": "max",
+                      "validation": 9999,
+                      "message": "Невалидна година"
+                    },
+                    {
+                      "name": "pattern",
+                      "validation": "^\\d+$",
+                      "message": "Полето трябва да съдържа цяло неотрицателно число"
+                    }
+                  ]
+                },
+                {
+                  "label": "Договор №",
+                  "name": "contractNo",
+                  "type": "input",
+                  "inputType": "text",
+                  "disabled": false,
+                  "order": 2,
+                  "width": 150
+                },
+                {
+                  "label": "Вид на договора",
+                  "name": "contractTypeID",
+                  "type": "select",
+                  "width": 400,
+                  "optionsPath": "/data/get/contractTypes",
+                  "disabled": false,
+                  "order": 3,
+                  "influence": [
+                    {
+                      "fieldName": "norma",
+                      "type": "disable",
+                      "condition": [
+                        14
+                      ]
+                    },
+                    {
+                      "fieldName": "normaT",
+                      "type": "disable",
+                      "condition": [
+                        14
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "label": "Основание на сключване по КТ",
+                  "name": "contractReasonID",
+                  "type": "searchselect",
+                  "width": 400,
+                  "optionsPath": "/data/get/contractReasons",
+                  "disabled": false,
+                  "order": 4
+                },
+                {
+                  "name": "breakpoint",
+                  "type": "breakpoint",
+                  "order": 5
+                },
+                {
+                  "label": "Година на постъпване",
+                  "name": "workStartYear",
+                  "type": "input",
+                  "inputType": "number",
+                  "disabled": false,
+                  "order": 6,
+                  "width": 95,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 4,
+                      "message": "Максимална дължина 4 символа"
+                    },
+                    {
+                      "name": "pattern",
+                      "validation": "^\\d+$",
+                      "message": "Полето трябва да съдържа цяло неотрицателно число"
+                    }
+                  ]
+                },
+                {
+                  "label": "Общ трудов стаж(г.)",
+                  "name": "workExpTotalYears",
+                  "type": "input",
+                  "inputType": "number",
+                  "disabled": false,
+                  "order": 7,
+                  "width": 95,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 4,
+                      "message": "Максимална дължина 4 символа"
+                    },
+                    {
+                      "name": "pattern",
+                      "validation": "^\\d+$",
+                      "message": "Полето трябва да съдържа цяло неотрицателно число"
+                    }
+                  ]
+                },
+                {
+                  "label": "Трудов стаж по специалността(г.)",
+                  "name": "workExpSpecYears",
+                  "type": "input",
+                  "inputType": "number",
+                  "disabled": false,
+                  "order": 8,
+                  "width": 95,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 4,
+                      "message": "Максимална дължина 4 символа"
+                    },
+                    {
+                      "name": "pattern",
+                      "validation": "^\\d+$",
+                      "message": "Полето трябва да съдържа цяло неотрицателно число"
+                    }
+                  ]
+                },
+                {
+                  "label": "Учителски стаж(г.)",
+                  "name": "workExpTeachYears",
+                  "type": "input",
+                  "inputType": "number",
+                  "disabled": false,
+                  "order": 9,
+                  "width": 95,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 4,
+                      "message": "Максимална дължина 4 символа"
+                    },
+                    {
+                      "name": "pattern",
+                      "validation": "^\\d+$",
+                      "message": "Полето трябва да съдържа цяло неотрицателно число"
+                    }
+                  ]
+                },
+                {
+                  "name": "breakpoint",
+                  "type": "breakpoint",
+                  "order": 10
+                },
+                {
+                  "label": "Назначен към",
+                  "name": "contractWithID",
+                  "type": "select",
+                  "optionsPath": "/data/get/contractWith",
+                  "width": 400,
+                  "disabled": false,
+                  "order": 11
+                },
+                {
+                  "label": "Бележки",
+                  "name": "contractNotes",
+                  "type": "input",
+                  "inputType": "textArea",
+                  "disabled": false,
+                  "order": 12,
+                  "width": 400
+                },
+                {
+                  "name": "breakpoint",
+                  "type": "breakpoint",
+                  "order": 13
+                },
+                {
+                  "label": "МОЛ",
+                  "name": "isAccountablePerson",
+                  "type": "checkbox",
+                  "disabled": false,
+                  "order": 14
+                },
+                {
+                  "label": "Пътуващ от друго населено място",
+                  "name": "isTravel",
+                  "type": "checkbox",
+                  "disabled": false,
+                  "order": 15
+                },
+                {
+                  "label": "Дата на прекратяване",
+                  "name": "terminationDate",
+                  "type": "date",
+                  "disabled": false,
+                  "influence": [
+                    {
+                      "type": "require",
+                      "fields": [
+                        "terminationReasonID"
+                      ],
+                      "message": "Полето е задължително",
+                      "notNull": true
+                    }
+                  ],
+                  "order": 16
+                },
+                {
+                  "label": "Основание за прекратяване по КТ",
+                  "name": "terminationReasonID",
+                  "type": "searchselect",
+                  "optionsPath": "/data/get/terminationReasons",
+                  "width": 400,
+                  "disabled": false,
+                  "influence": [
+                    {
+                      "type": "require",
+                      "fields": [
+                        "terminationDate"
+                      ],
+                      "message": "Полето е задължително",
+                      "notNull": true
+                    }
+                  ],
+                  "order": 17
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "name": "staffPedData",
+      "label": "Годишна преподавателска заетост",
+      "accordion": {
+        "state": "opened",
+        "dataName": "staffPositionDataNorma"
+      },
+      "rendered": "if(operationType==1) {section.rendered=false} else {section.rendered=true}",
+      "subsections": [
+        {
+          "order": 1,
+          "name": "norma",
+          "label": "Преподавателска норма",
+          "canDuplicate": false,
+          "fields": [
+            {
+              "label": "Минимална ЗНПР",
+              "name": "norma",
+              "type": "input",
+              "inputType": "number",
+              "order": 1,
+              "width": 95,
+              "disabled": false,
+              "defaultValue": 0,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 7,
+                  "message": "Максимална дължина 7 символа"
+                },
+                {
+                  "name": "pattern",
+                  "validation": "^\\d+(\\.\\d{1,2})?$",
+                  "message": "Полето трябва да съдържа дробно положително число"
+                },
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ]
+            },
+            {
+              "label": "Индивидуална ЗНПР",
+              "name": "normaT",
+              "type": "input",
+              "inputType": "number",
+              "order": 2,
+              "width": 95,
+              "disabled": false,
+              "defaultValue": 0,
+              "validations": [
+                {
+                  "name": "pattern",
+                  "validation": "^\\d+(\\.\\d{1,2})?$",
+                  "message": "Полето трябва да съдържа дробно положително число"
+                },
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ]
+            },
+            {
+              "label": "Часове по норматив на РМ",
+              "name": "normaS",
+              "type": "input",
+              "inputType": "number",
+              "order": 3,
+              "width": 95,
+              "disabled": true,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 4,
+                  "message": "Максимална дължина 4 символа"
+                },
+                {
+                  "name": "pattern",
+                  "validation": "^\\d+(\\.\\d{1,2})?$",
+                  "message": "Полето трябва да съдържа дробно положително число с до два знака след десетичната запетая"
+                }
+              ]
+            },
+            {
+              "label": "Недостиг до минимална ЗНПР",
+              "name": "deficitNorma",
+              "type": "input",
+              "inputType": "number",
+              "order": 4,
+              "width": 95,
+              "disabled": true,
+              "validations": [
+                {
+                  "name": "pattern",
+                  "validation": "^-?\\d+(\\.\\d{1,2})?$",
+                  "message": "Полето трябва да съдържа дробно число с до два знака след десетичната запетая"
+                }
+              ]
+            },
+            {
+              "label": "Недостиг до индивидуална ЗНПР",
+              "name": "deficitNormaT",
+              "type": "input",
+              "inputType": "number",
+              "order": 5,
+              "width": 95,
+              "disabled": true,
+              "validations": [
+                {
+                  "name": "pattern",
+                  "validation": "^-?\\d+(\\.\\d{1,2})?$",
+                  "message": "Полето трябва да съдържа дробно число с до два знака след десетичната запетая"
+                }
+              ]
+            },
+            {
+              "label": "Коефициент на редукция към ЗНПР на РМ",
+              "name": "reductionCoef",
+              "type": "input",
+              "inputType": "number",
+              "order": 6,
+              "width": 95,
+              "disabled": true,
+              "validations": [
+                {
+                  "name": "pattern",
+                  "validation": "^\\d+(\\.\\d{1,2})?$",
+                  "message": "Полето трябва да съдържа дробно положително число с до два знака след десетичната запетая"
+                }
+              ]
+            },
+            {
+              "label": "Часове с различен норматив",
+              "name": "diffNorma",
+              "type": "input",
+              "inputType": "number",
+              "order": 7,
+              "width": 95,
+              "disabled": true,
+              "validations": [
+                {
+                  "name": "pattern",
+                  "validation": "^\\d+(\\.\\d{1,2})?$",
+                  "message": "Полето трябва да съдържа дробно положително число с до два знака след десетичната запетая"
+                }
+              ]
+            },
+            {
+              "label": "Часове, подлежащи на редукция до инд.ЗНПР",
+              "name": "hoursForReduction",
+              "type": "input",
+              "inputType": "number",
+              "order": 8,
+              "width": 95,
+              "disabled": true,
+              "validations": [
+                {
+                  "name": "pattern",
+                  "validation": "^\\d+(\\.\\d{1,2})?$",
+                  "message": "Полето трябва да съдържа дробно положително число с до два знака след десетичната запетая"
+                }
+              ]
+            },
+            {
+              "label": "Брой часове след редукция",
+              "name": "reductionHours",
+              "type": "input",
+              "inputType": "number",
+              "order": 9,
+              "width": 95,
+              "disabled": true,
+              "validations": [
+                {
+                  "name": "pattern",
+                  "validation": "^\\d+(\\.\\d{1,2})?$",
+                  "message": "Полето трябва да съдържа дробно положително число с до два знака след десетичната запетая"
+                }
+              ]
+            },
+            {
+              "label": "Лекторски / недостиг - инд.ЗНПР",
+              "name": "lect",
+              "type": "input",
+              "inputType": "number",
+              "order": 10,
+              "width": 95,
+              "disabled": true,
+              "validations": [
+                {
+                  "name": "pattern",
+                  "validation": "^-?\\d+(\\.\\d{1,2})?$",
+                  "message": "Полето трябва да съдържа дробно число с до два знака след десетичната запетая"
+                }
+              ]
+            },
+            {
+              "label": "Лекторски / недостиг - инд.ЗНПР (год.)",
+              "name": "lectYear",
+              "type": "input",
+              "inputType": "number",
+              "order": 11,
+              "width": 95,
+              "disabled": true,
+              "validations": [
+                {
+                  "name": "pattern",
+                  "validation": "^-?\\d+(\\.\\d{1,2})?$",
+                  "message": "Полето трябва да съдържа дробно число с до два знака след десетичната запетая"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "name": "staffPositionHorariumTable",
+      "label": "Възложени часове",
+      "accordion": {
+        "state": "opened",
+        "dataName": "staffPositionHorarium"
+      },
+      "rendered": "if(operationType==1) {section.rendered=false} else {section.rendered=true}",
+      "table": {
+        "order": 1,
+        "name": "staffPositionHorarium",
+        "hasEditButton": false,
+        "sortable": true,
+        "searchable": true,
+        "searchType": "column",
+        "canDeleteRow": true,
+        "multiAdd": "if(isValid == false) {table.multiAdd = null} else {table.multiAdd = {'addFrom':'staffHorarium','listColumns': ['id','subjectName','className'],'title': 'Добавяне/премахване на часове за преподавател','comparisonColumn': 'id','tableColumns': ['id','subjectName','className'],'dependsOn': []}}",
+        "fields": [
+          {
+            "label": "curriculumTeacherID",
+            "name": "curriculumTeacherID",
+            "type": "input",
+            "rendered": false,
+            "inputType": "number",
+            "width": 10,
+            "order": 0
+          },
+          {
+            "label": "curriculumID",
+            "name": "curriculumID",
+            "type": "input",
+            "rendered": false,
+            "inputType": "number",
+            "width": 10,
+            "order": 0
+          },
+          {
+            "label": "Уник.№",
+            "name": "id",
+            "type": "input",
+            "rendered": false,
+            "inputType": "text",
+            "width": 5,
+            "order": 0
+          },
+          {
+            "label": "if(instType==2) {field.label='Образователно направление'} else if(instType==1) {field.label='Учебен предмет'} else {field.label='Дейност'}",
+            "name": "subjectName",
+            "type": "input",
+            "inputType": "text",
+            "width": 30,
+            "order": 1
+          },
+          {
+            "label": "if(instType==2) {field.label='Форма на педаг.взаимодействие'} else if(instType==1) {field.label='Начин на изучаване'} else {field.label='Вид подкрепа'}",
+            "name": "subjectTypeName",
+            "type": "input",
+            "inputType": "text",
+            "width": 20,
+            "order": 2
+          },
+          {
+            "label": "Клас",
+            "name": "className",
+            "type": "input",
+            "inputType": "text",
+            "width": 20,
+            "order": 3
+          },
+          {
+            "label": "Група",
+            "name": "curriculumGroupID",
+            "type": "input",
+            "inputType": "number",
+            "width": 20,
+            "order": 4
+          },
+          {
+            "label": "if(instType==2 || instType==3) {field.label='Учебни седмици'} else {field.label='I срок УС'}",
+            "name": "weeksFirstTerm",
+            "type": "input",
+            "inputType": "number",
+            "width": 20,
+            "order": 5
+          },
+          {
+            "label": "if(instType==2 || instType==3) {field.label='Часове седмично'} else {field.label='I срок ЧС'}",
+            "name": "hoursWeeklyFirstTerm",
+            "type": "input",
+            "inputType": "number",
+            "width": 20,
+            "order": 6
+          },
+          {
+            "label": "II срок УС",
+            "name": "weeksSecondTerm",
+            "type": "input",
+            "inputType": "number",
+            "rendered": "if(instType==2 || instType==3) {field.rendered=false} else {field.rendered=true}",
+            "width": 20,
+            "order": 7
+          },
+          {
+            "label": "II срок ЧС",
+            "name": "hoursWeeklySecondTerm",
+            "type": "input",
+            "inputType": "number",
+            "rendered": "if(instType==2 || instType==3) {field.rendered=false} else {field.rendered=true}",
+            "width": 20,
+            "order": 8
+          },
+          {
+            "label": "Общ бр.ч.",
+            "name": "hoursAll",
+            "type": "input",
+            "inputType": "number",
+            "rendered": "if(instType==2 || instType==3) {field.rendered=false} else {field.rendered=true}",
+            "width": 20,
+            "order": 9
+          },
+          {
+            "label": "Норма на предмета",
+            "name": "normaS",
+            "type": "input",
+            "inputType": "number",
+            "width": 20,
+            "order": 10,
+            "influence": [
+              {
+                "fieldName": "normaTS",
+                "type": "setValue",
+                "condition": [
+                  null
+                ]
+              }
+            ]
+          },
+          {
+            "label": "Норма на предмета за преподавателя",
+            "name": "normaTS",
+            "type": "input",
+            "inputType": "number",
+            "width": 30,
+            "disabled": false,
+            "validations": [
+              {
+                "name": "pattern",
+                "validation": "^\\d+(\\.\\d{1,2})?$",
+                "message": "Цяло неотрицателно число"
+              }
+            ],
+            "order": 11
+          },
+          {
+            "label": "Дата на възлагане на УЧ",
+            "name": "staffPositionStartDate",
+            "type": "date",
+            "width": 30,
+            "disabled": false,
+            "order": 11
+          },
+          {
+            "label": "Не отговаря на изискванията",
+            "name": "notRegularTeacher",
+            "type": "checkbox",
+            "disabled": false,
+            "width": 25,
+            "order": 13
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "label": "Списък на учениците",
+  "sections": [
+    {
+      "label": "Списък на учениците",
+      "order": 1,
+      "name": "TableStudentGroupList",
+      "table": {
+        "name": "studentList",
+        "paramName": "studentId",
+        "formName": "person",
+        "label": "Списък на учениците",
+        "fields": [
+          {
+            "label": "if(instType==2) {field.label='Личен образователен номер'} else {field.label='ЛОН'}",
+            "name": "publicEduNumber",
+            "type": "input",
+            "inputType": "number",
+            "order": 1
+          },
+          {
+            "label": "Име",
+            "name": "firstName",
+            "type": "input",
+            "inputType": "text",
+            "order": 2
+          },
+          {
+            "label": "Презиме",
+            "name": "middleName",
+            "type": "input",
+            "inputType": "text",
+            "order": 3
+          },
+          {
+            "label": "Фамилия",
+            "name": "lastName",
+            "type": "input",
+            "inputType": "text",
+            "order": 4
+          },
+          {
+            "label": "Дата на раждане",
+            "name": "birthDate",
+            "type": "input",
+            "inputType": "date",
+            "order": 5
+          },
+          {
+            "label": "Форма на обучение",
+            "name": "studentEdFormName",
+            "type": "input",
+            "inputType": "text",
+            "order": 6
+          },
+          {
+            "label": "Профил/Професия",
+            "name": "classSpecialityName",
+            "type": "input",
+            "inputType": "text",
+            "order": 7
+          },
+          {
+            "label": "Повторно записан",
+            "name": "repeaterName",
+            "type": "input",
+            "inputType": "text",
+            "order": 8
+          }
+        ]
+      }
+    }
+  ]
+}

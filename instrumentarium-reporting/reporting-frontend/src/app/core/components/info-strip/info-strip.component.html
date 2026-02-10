@@ -1,0 +1,15 @@
+<div class="info-strip" *ngIf="isVisible$ | async">
+  <div class="container-fluid">
+    <div class="info-text">
+      <i class="bi bi-info-circle"></i>
+      Данните са актуални към предходния ден
+    </div>
+    <button 
+      type="button" 
+      class="btn-close" 
+      (click)="hideStrip()"
+      aria-label="Close">
+      <i class="bi bi-x"></i>
+    </button>
+  </div>
+</div>

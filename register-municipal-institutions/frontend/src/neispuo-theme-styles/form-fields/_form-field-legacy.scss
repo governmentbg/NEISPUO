@@ -1,0 +1,100 @@
+// Theme styles that only apply to the legacy appearance of the form-field.
+@mixin mat-form-field-legacy-theme($theme) {
+  .mat-form-field-appearance-legacy {
+    display: block !important;
+
+    .mat-form-field-label-wrapper {
+      position: static !important;
+    }
+    .mat-form-field-label {
+      color: $gray;
+      display: block;
+      top: 0 !important;
+      // font-size: 1.25em;
+    }
+    .mat-form-field-infix {
+      padding: 0.75em 0 1em 0 !important;
+      border-top: 0.25em solid transparent;
+    }
+
+    .mat-form-field-prefix,
+    .mat-form-field-suffix {
+      top: 6px;
+      color: $gray;
+    }
+
+    .mat-hint {
+      color: $gray;
+    }
+
+    .mat-form-field-underline {
+      display: none;
+    }
+
+    .mat-form-field-flex {
+      border: 1px solid $gray;
+      padding: 0 0.75em 0 0.75em;
+      border-radius: 4px;
+    }
+    &.mat-form-field-invalid {
+      .mat-form-field-flex {
+        border-color: $red;
+      }
+    }
+
+    &.mat-form-field-disabled .mat-form-field-underline {
+      display: none;
+    }
+
+    .mat-form-field-subscript-wrapper {
+      padding: 0 1em;
+    }
+
+    &.mat-form-field-disabled {
+      .mat-form-field-flex {
+        border-color: $silver;
+      }
+      .mat-form-field-label,
+      .mat-icon {
+        color: $silver;
+      }
+      input::-webkit-input-placeholder {
+        /* Edge */
+        color: $silver;
+      }
+
+      input:-ms-input-placeholder {
+        /* Internet Explorer 10-11 */
+        color: $silver;
+      }
+
+      input::placeholder {
+        color: $silver;
+      }
+    }
+
+    &.mat-focused {
+      .mat-form-field-flex {
+        border-color: $cornflower-blue;
+      }
+
+      &.mat-accent .mat-form-field-flex {
+        border-color: $cornflower-blue;
+      }
+
+      &.mat-warn .mat-form-field-flex {
+        border-color: $red;
+      }
+
+      &.mat-form-field-invalid {
+        .mat-form-field-flex {
+          border-color: $red;
+        }
+      }
+
+      .mat-form-field-label {
+        color: $cornflower-blue;
+      }
+    }
+  }
+}

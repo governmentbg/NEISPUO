@@ -1,0 +1,555 @@
+{
+  "exportMapping": {
+    "institution": {
+      "schema": "core",
+      "table": "Institution",
+      "primaryKey": "InstitutionID",
+      "columnMapping": [
+        {
+          "fromColumn": "InstitutionID",
+          "toAttribute": "institutionID"
+        }
+      ],
+      "filter": "InstitutionID = @InstitutionID",
+      "children": {
+        "institutionDetail": {
+          "schema": "inst_basic",
+          "table": "InstitutionDetail",
+          "primaryKey": "InstitutionID",
+          "foreignKey": "InstitutionID",
+          "columnMapping": [
+            {
+              "fromColumn": "InstitutionID",
+              "toAttribute": "institutionID"
+            }
+          ],
+          "filter": ""
+        },
+        "institutionOtherData": {
+          "schema": "inst_year",
+          "table": "InstitutionOtherData",
+          "primaryKey": "InstitutionOtherDataID",
+          "foreignKey": "InstitutionID",
+          "columnMapping": [
+            {
+              "fromColumn": "InstitutionOtherDataID",
+              "toAttribute": "institutionOtherDataID"
+            },
+            {
+              "fromColumn": "ExternalID",
+              "toAttribute": "externalID"
+            }
+          ],
+          "filter": "SchoolYear = @SchoolYear"
+        },
+        "institutionInnovations": {
+          "schema": "inst_basic",
+          "table": "InstitutionInnovation",
+          "primaryKey": "InstitutionInnovationID",
+          "foreignKey": "InstitutionID",
+          "columnMapping": [
+            {
+              "fromColumn": "InstitutionInnovationID",
+              "toAttribute": "institutionInnovationID"
+            },
+            {
+              "fromColumn": "ExternalID",
+              "toAttribute": "externalID"
+            }
+          ],
+          "filter": ""
+        },
+        "classGroups": {
+          "schema": "inst_year",
+          "table": "ClassGroup",
+          "primaryKey": "ClassID",
+          "foreignKey": "InstitutionID",
+          "columnMapping": [
+            {
+              "fromColumn": "ClassID",
+              "toAttribute": "classID"
+            },
+            {
+              "fromColumn": "ExternalID",
+              "toAttribute": "externalID"
+            }
+          ],
+          "filter": "SchoolYear = @SchoolYear",
+          "children": {
+            "classSubGroups": {
+              "schema": "inst_year",
+              "table": "ClassGroup",
+              "primaryKey": "ClassID",
+              "foreignKey": "ParentClassID",
+              "columnMapping": [
+                {
+                  "fromColumn": "ClassID",
+                  "toAttribute": "classID"
+                },
+                {
+                  "fromColumn": "ExternalID",
+                  "toAttribute": "externalID"
+                }
+              ],
+              "children": {
+                "studentClass": {
+                  "schema": "student",
+                  "table": "StudentClass",
+                  "primaryKey": "ID",
+                  "foreignKey": "ClassId",
+                  "columnMapping": [
+                    {
+                      "fromColumn": "ID",
+                      "toAttribute": "id"
+                    },
+                    {
+                      "fromColumn": "ExternalID",
+                      "toAttribute": "externalID"
+                    }
+                  ],
+                  "filter": "SchoolYear = @SchoolYear AND IsCurrent = 1",
+                  "children": {
+                    "scholarshipStudent": {
+                      "schema": "student",
+                      "table": "ScholarshipStudent",
+                      "primaryKey": "Id",
+                      "foreignKey": "StudentClassID",
+                      "columnMapping": [
+                        {
+                          "fromColumn": "Id",
+                          "toAttribute": "id"
+                        },
+                        {
+                          "fromColumn": "ExternalID",
+                          "toAttribute": "externalID"
+                        }
+                      ],
+                      "filter": "SchoolYear = @SchoolYear"
+                    },
+                    "studentSelfGovernment": {
+                      "schema": "student",
+                      "table": "SelfGovernment",
+                      "primaryKey": "Id",
+                      "foreignKey": "StudentClassID",
+                      "columnMapping": [
+                        {
+                          "fromColumn": "Id",
+                          "toAttribute": "id"
+                        },
+                        {
+                          "fromColumn": "ExternalID",
+                          "toAttribute": "externalID"
+                        }
+                      ],
+                      "filter": "SchoolYear = @SchoolYear"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "institutionProjects": {
+          "schema": "inst_basic",
+          "table": "InstitutionProject",
+          "primaryKey": "InstitutionProjectID",
+          "foreignKey": "InstitutionID",
+          "columnMapping": [
+            {
+              "fromColumn": "InstitutionProjectID",
+              "toAttribute": "institutionProjectID"
+            },
+            {
+              "fromColumn": "ExternalID",
+              "toAttribute": "externalID"
+            }
+          ],
+          "filter": "",
+          "children": {
+            "institutionProjectPartners": {
+              "schema": "inst_basic",
+              "table": "InstitutionProjectPartner",
+              "primaryKey": "InstitutionProjectPartnerID",
+              "foreignKey": "InstitutionProjectID",
+              "columnMapping": [
+                {
+                  "fromColumn": "InstitutionProjectPartnerID",
+                  "toAttribute": "institutionProjectPartnerID"
+                },
+                {
+                  "fromColumn": "ExternalID",
+                  "toAttribute": "externalID"
+                }
+              ],
+              "filter": ""
+            },
+            "institutionProjectPriorityAreas": {
+              "schema": "inst_basic",
+              "table": "InstitutionProjectPriorityArea",
+              "primaryKey": "InstitutionProjectPriorityAreaID",
+              "foreignKey": "ProjectID",
+              "columnMapping": [
+                {
+                  "fromColumn": "InstitutionProjectPriorityAreaID",
+                  "toAttribute": "institutionProjectPriorityAreaID"
+                },
+                {
+                  "fromColumn": "ExternalID",
+                  "toAttribute": "externalID"
+                }
+              ],
+              "filter": ""
+            }
+          }
+        },
+        "institutionPublicCouncil": {
+          "schema": "inst_basic",
+          "table": "InstitutionPublicCouncil",
+          "primaryKey": "InstitutionPublicCouncilID",
+          "foreignKey": "InstitutionID",
+          "columnMapping": [
+            {
+              "fromColumn": "InstitutionPublicCouncilID",
+              "toAttribute": "institutionPublicCouncilID"
+            },
+            {
+              "fromColumn": "ExternalID",
+              "toAttribute": "externalID"
+            }
+          ],
+          "filter": ""
+        },
+        "institutionVehicles": {
+          "schema": "inst_basic",
+          "table": "InstitutionVehicle",
+          "primaryKey": "InstitutionVehicleID",
+          "foreignKey": "InstitutionID",
+          "columnMapping": [
+            {
+              "fromColumn": "InstitutionVehicleID",
+              "toAttribute": "institutionVehicleID"
+            },
+            {
+              "fromColumn": "ExternalID",
+              "toAttribute": "externalID"
+            }
+          ],
+          "filter": ""
+        },
+        "staffPositions": {
+          "schema": "inst_basic",
+          "table": "StaffPosition",
+          "primaryKey": "StaffPositionID",
+          "foreignKey": "InstitutionID",
+          "columnMapping": [
+            {
+              "fromColumn": "StaffPositionID",
+              "toAttribute": "staffPositionID"
+            },
+            {
+              "fromColumn": "ExternalID",
+              "toAttribute": "externalID"
+            }
+          ],
+          "filter": "IsValid=1",
+          "children": {
+            "pedStaffData": {
+              "schema": "inst_year",
+              "table": "PedStaffData",
+              "primaryKey": "PedStaffDataID",
+              "foreignKey": "StaffPositionID",
+              "columnMapping": [
+                {
+                  "fromColumn": "PedStaffDataID",
+                  "toAttribute": "pedStaffDataID"
+                },
+                {
+                  "fromColumn": "ExternalID",
+                  "toAttribute": "externalID"
+                }
+              ],
+              "filter": "IsValid=1 AND SchoolYear = @SchoolYear"
+            },
+            "staffPositionMainClass": {
+              "schema": "inst_year",
+              "table": "StaffPositionMainClass",
+              "primaryKey": "StaffPositionMainClassID",
+              "foreignKey": "StaffPositionID",
+              "columnMapping": [
+                {
+                  "fromColumn": "StaffPositionMainClassID",
+                  "toAttribute": "staffPositionMainClassID"
+                },
+                {
+                  "fromColumn": "ExternalID",
+                  "toAttribute": "externalID"
+                }
+              ],
+              "filter": "IsValid=1"
+            },
+            "staffPositionSelfGovernment": {
+              "schema": "student",
+              "table": "SelfGovernment",
+              "primaryKey": "Id",
+              "foreignKey": "StaffPositionID",
+              "columnMapping": [
+                {
+                  "fromColumn": "Id",
+                  "toAttribute": "id"
+                },
+                {
+                  "fromColumn": "ExternalID",
+                  "toAttribute": "externalID"
+                }
+              ],
+              "filter": "SchoolYear = @SchoolYear"
+            }
+          }
+        },
+        "curriculums": {
+          "schema": "inst_year",
+          "table": "Curriculum",
+          "primaryKey": "CurriculumID",
+          "foreignKey": "InstitutionID",
+          "columnMapping": [
+            {
+              "fromColumn": "CurriculumID",
+              "toAttribute": "curriculumID"
+            },
+            {
+              "fromColumn": "ExternalID",
+              "toAttribute": "externalID"
+            }
+          ],
+          "filter": "SchoolYear = @SchoolYear AND Curriculum.SubjectTypeID NOT IN (152,153,154,155)",
+          "children": {
+            "curriculumClasses": {
+              "schema": "inst_year",
+              "table": "CurriculumClass",
+              "primaryKey": "CurriculumClassesID",
+              "foreignKey": "CurriculumID",
+              "columnMapping": [
+                {
+                  "fromColumn": "CurriculumClassesID",
+                  "toAttribute": "curriculumClassesID"
+                },
+                {
+                  "fromColumn": "ExternalID",
+                  "toAttribute": "externalID"
+                }
+              ],
+              "filter": "SchoolYear = @SchoolYear"
+            },
+            "curriculumStudents": {
+              "schema": "inst_year",
+              "table": "CurriculumStudent",
+              "primaryKey": "CurriculumStudentID",
+              "foreignKey": "CurriculumID",
+              "columnMapping": [
+                {
+                  "fromColumn": "CurriculumStudentID",
+                  "toAttribute": "curriculumStudentID"
+                },
+                {
+                  "fromColumn": "ExternalID",
+                  "toAttribute": "externalID"
+                }
+              ],
+              "filter": "SchoolYear = @SchoolYear"
+            },
+            "curriculumTeachers": {
+              "schema": "inst_year",
+              "table": "CurriculumTeacher",
+              "primaryKey": "CurriculumTeacherID",
+              "foreignKey": "CurriculumID",
+              "columnMapping": [
+                {
+                  "fromColumn": "CurriculumTeacherID",
+                  "toAttribute": "curriculumTeacherID"
+                },
+                {
+                  "fromColumn": "ExternalID",
+                  "toAttribute": "externalID"
+                }
+              ],
+              "filter": "SchoolYear = @SchoolYear"
+            }
+          }
+        },
+        "profileSubjects": {
+          "schema": "inst_year",
+          "table": "Curriculum",
+          "primaryKey": "CurriculumID",
+          "foreignKey": "InstitutionID",
+          "columnMapping": [
+            {
+              "fromColumn": "CurriculumID",
+              "toAttribute": "curriculumID"
+            },
+            {
+              "fromColumn": "ExternalID",
+              "toAttribute": "externalID"
+            }
+          ],
+          "filter": "SchoolYear = @SchoolYear AND Curriculum.SubjectTypeID IN (152,153,154,155)",
+          "children": {
+            "curriculumClasses": {
+              "schema": "inst_year",
+              "table": "CurriculumClass",
+              "primaryKey": "CurriculumClassesID",
+              "foreignKey": "CurriculumID",
+              "columnMapping": [
+                {
+                  "fromColumn": "CurriculumClassesID",
+                  "toAttribute": "curriculumClassesID"
+                },
+                {
+                  "fromColumn": "ExternalID",
+                  "toAttribute": "externalID"
+                }
+              ],
+              "filter": "SchoolYear = @SchoolYear"
+            },
+            "subCurriculums": {
+              "schema": "inst_year",
+              "table": "Curriculum",
+              "primaryKey": "CurriculumID",
+              "foreignKey": "ParentCurriculumID",
+              "columnMapping": [
+                {
+                  "fromColumn": "CurriculumID",
+                  "toAttribute": "curriculumID"
+                },
+                {
+                  "fromColumn": "ExternalID",
+                  "toAttribute": "externalID"
+                }
+              ],
+              "filter": "SchoolYear = @SchoolYear AND ParentCurriculumID IS NOT NULL",
+              "children": {
+                "curriculumClasses": {
+                  "schema": "inst_year",
+                  "table": "CurriculumClass",
+                  "primaryKey": "CurriculumClassesID",
+                  "foreignKey": "CurriculumID",
+                  "columnMapping": [
+                    {
+                      "fromColumn": "CurriculumClassesID",
+                      "toAttribute": "curriculumClassesID"
+                    },
+                    {
+                      "fromColumn": "ExternalID",
+                      "toAttribute": "externalID"
+                    }
+                  ],
+                  "filter": "SchoolYear = @SchoolYear"
+                },
+                "curriculumStudents": {
+                  "schema": "inst_year",
+                  "table": "CurriculumStudent",
+                  "primaryKey": "CurriculumStudentID",
+                  "foreignKey": "CurriculumID",
+                  "columnMapping": [
+                    {
+                      "fromColumn": "CurriculumStudentID",
+                      "toAttribute": "curriculumStudentID"
+                    },
+                    {
+                      "fromColumn": "ExternalID",
+                      "toAttribute": "externalID"
+                    }
+                  ],
+                  "filter": "SchoolYear = @SchoolYear"
+                },
+                "curriculumTeachers": {
+                  "schema": "inst_year",
+                  "table": "CurriculumTeacher",
+                  "primaryKey": "CurriculumTeacherID",
+                  "foreignKey": "CurriculumID",
+                  "columnMapping": [
+                    {
+                      "fromColumn": "CurriculumTeacherID",
+                      "toAttribute": "curriculumTeacherID"
+                    },
+                    {
+                      "fromColumn": "ExternalID",
+                      "toAttribute": "externalID"
+                    }
+                  ],
+                  "filter": "SchoolYear = @SchoolYear"
+                }
+              }
+            }
+          }
+        },
+        "institutionSchoolBoards": {
+          "schema": "inst_basic",
+          "table": "InstitutionSchoolBoard",
+          "primaryKey": "InstitutionSchoolBoardID",
+          "foreignKey": "InstitutionID",
+          "columnMapping": [
+            {
+              "fromColumn": "InstitutionSchoolBoardID",
+              "toAttribute": "institutionSchoolBoardID"
+            },
+            {
+              "fromColumn": "ExternalID",
+              "toAttribute": "externalID"
+            }
+          ],
+          "filter": "",
+          "children": {
+            "schoolGovernmentSelfGovernment": {
+              "schema": "student",
+              "table": "SelfGovernment",
+              "primaryKey": "Id",
+              "foreignKey": "InstitutionSchoolBoardID",
+              "columnMapping": [
+                {
+                  "fromColumn": "Id",
+                  "toAttribute": "id"
+                },
+                {
+                  "fromColumn": "ExternalID",
+                  "toAttribute": "externalID"
+                }
+              ],
+              "filter": "SchoolYear = @SchoolYear"
+            }
+          }
+        }
+      }
+    },
+    "person": {
+      "schema": "core",
+      "table": "Person",
+      "primaryKey": "PersonID",
+      "columnMapping": [
+        {
+          "fromColumn": "PersonID",
+          "toAttribute": "personID"
+        }
+      ],
+      "filter": "PersonID IN (SELECT PersonID FROM core.EducationalState WHERE InstitutionID = @InstitutionID)",
+      "children": {
+        "studentSelfGovernment": {
+          "schema": "student",
+          "table": "SelfGovernment",
+          "primaryKey": "Id",
+          "foreignKey": "PersonId",
+          "columnMapping": [
+            {
+              "fromColumn": "Id",
+              "toAttribute": "id"
+            },
+            {
+              "fromColumn": "ExternalID",
+              "toAttribute": "externalID"
+            }
+          ],
+          "filter": "SchoolYear = @SchoolYear"
+        }
+      }
+    }
+  }
+}

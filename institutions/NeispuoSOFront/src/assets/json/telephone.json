@@ -1,0 +1,40 @@
+{
+  "sections": [
+    {
+      "subsections": [
+        {
+          "fields": [
+            {
+              "label": "Тип телефон",
+              "name": "departmentPhoneType",
+              "type": "input",
+              "inputType": "text",
+              "order": 1
+            },
+            {
+              "label": "Код за АТМ",
+              "name": "departmentPhoneCode",
+              "type": "input",
+              "inputType": "text",
+              "order": 2
+            },
+            {
+              "label": "Телефон",
+              "name": "departmentPhone",
+              "type": "input",
+              "inputType": "text",
+              "order": 3
+            },
+            {
+              "label": "Вид телефон",
+              "name": "departmentContactKind",
+              "type": "input",
+              "inputType": "text",
+              "order": 4
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "arrayName": "buildingList",
+  "template": "SELECT /**select**/ FROM [inst_basic].[BuildingList] BL /**where**/ /**orderby**/",
+  "columns": [
+        {
+          "column": "BL.BuildingID AS id"
+        },
+		{
+          "column": "BL.Name AS name"
+        },
+		{
+          "column": "BL.ExpectedStudentCount AS expectedStudentCount"
+        },
+		{
+          "column": "BL.StructureCount AS structureCount"
+        },
+		{
+          "column": "BL.SchoolShiftTypeName AS schoolShiftTypeName"
+        },
+		{
+          "column": "BL.BuildingTypeName AS buildingTypeName"
+        },
+		{
+          "column": "'building' AS formName"
+        },
+        {
+          "column": "BL.BuildingID AS formDataId"
+        }
+  ],
+  "params": [
+	{
+     "param": "@instid",
+     "column": "BL.InstitutionID",
+     "operator": "=",
+     "value": "instid",
+     "type": "int",
+     "logical_operator": "and",
+     "static": false
+    },
+	{
+     "param": "@address",
+     "column": "BL.InstitutionDepartmentID",
+     "operator": "=",
+     "value": "address",
+     "type": "int",
+     "logical_operator": "and",
+     "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "BL.BuildingID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+
+  ]
+}

@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  students:
+    image: students
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: production
+    ports:
+      - 44357:44357

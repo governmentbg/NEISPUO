@@ -1,0 +1,65 @@
+{
+  "label": "Други адреси за осъществяване на дейността",
+  "sections": [
+    {
+      "order": 1,
+      "name": "TableInstitutionDepartments",
+      "table":
+      {
+        "order": 1,
+        "name": "institutionDepartments",
+        "createNew": "redirect",
+        "formName": "institutionDepartmentData",
+        "paramName": "instdepid",
+        "canDeleteRow": true,
+		"procedureName": "inst_basic.institutionDepartmentCUD",
+		"forceOperation": 0, 
+        "searchable": true,
+		"searchType": "column",
+        "fields": [
+        {
+          "label": "Наименование/Предназначение",
+          "name": "departmentName",
+          "type": "input",
+          "inputType": "text",
+		  "rendered":false,
+          "width": 35,
+          "order": 1
+        },
+        {
+          "label": "Адрес",
+          "name": "fullAddress",
+          "type": "input",
+          "inputType": "text",
+          "width": 35,
+          "order": 2
+        },
+        {
+          "label": "Пощ. код",
+          "name": "departmentPostalCode",
+          "type": "input",
+          "inputType": "number",
+          "width": 8,
+          "order": 3
+        },
+        {
+          "label": "Защитен",
+          "name": "isProtected",
+          "type": "input",
+          "inputType": "text",
+          "width": 8,
+          "order": 4
+        },
+        {
+          "label": "Средищен",
+          "name": "isCentral",
+          "type": "input",
+          "inputType": "text",
+          "width": 8,
+          "order": 5
+        }
+        ]
+      }
+    }
+  ]
+}

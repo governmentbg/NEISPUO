@@ -1,0 +1,32 @@
+<nav class="sb-paginator">
+  <ng-container *ngFor="let item of items">
+    <a
+      *ngIf="item.routeCommands != null"
+      class="sb-paginator-item hover:bg-gray-50 focus-visible:z-10"
+      [routerLink]="item.routeCommands"
+      [relativeTo]="item.routeExtras ? item.routeExtras.relativeTo : undefined"
+      [queryParams]="item.routeExtras?.queryParams"
+      [fragment]="item.routeExtras?.fragment"
+      [queryParamsHandling]="item.routeExtras?.queryParamsHandling"
+      [preserveFragment]="item.routeExtras?.preserveFragment || false"
+      [skipLocationChange]="item.routeExtras?.skipLocationChange || false"
+      [replaceUrl]="item.routeExtras?.replaceUrl || false"
+      [state]="item.routeExtras?.state"
+    >
+      <fa-icon *ngIf="item.icon" [icon]="item.icon" size="lg"></fa-icon>
+      {{ item.text }}
+    </a>
+
+    <ng-container *ngIf="item.routeCommands == null">
+      <button *ngIf="item.clickable" class="sb-paginator-item" (click)="itemClick.emit(item)">
+        <fa-icon *ngIf="item.icon" [icon]="item.icon" size="lg"></fa-icon>
+        {{ item.text }}
+      </button>
+
+      <span *ngIf="!item.clickable" class="sb-paginator-item">
+        <fa-icon *ngIf="item.icon" [icon]="item.icon" size="lg"></fa-icon>
+        {{ item.text }}
+      </span>
+    </ng-container>
+  </ng-container>
+</nav>

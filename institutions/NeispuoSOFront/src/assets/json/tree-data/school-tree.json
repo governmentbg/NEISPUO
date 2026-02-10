@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Област София",
+    "children": [
+      {
+        "name": "Община София",
+        "children": [
+          {
+            "name": "Тестово училище 'Алеко Константинов'",
+            "instid": "2999991",
+            "menuPath": "school",
+            "formName": "institutionDepartmentList"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Област Добрич",
+    "children": [
+      {
+        "name": "Община Добрич",
+        "children": [
+          {
+            "name": "Христо Ботев",
+            "instid": "2",
+            "menuPath": "school",
+            "formName": "institutionDepartmentList"
+          }
+        ]
+      }
+    ]
+  }
+]

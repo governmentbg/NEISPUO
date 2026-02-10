@@ -1,0 +1,35 @@
+<sb-card>
+  <ng-container card-title>
+    <span class="whitespace-normal">{{ data.publication.title }}</span>
+  </ng-container>
+
+  <ng-container card-buttons>
+    <button mat-raised-button type="button" [routerLink]="['../']">
+      <fa-icon [icon]="fasArrowLeft" size="lg"></fa-icon>
+      <span class="hidden sm:inline">Назад</span>
+    </button>
+  </ng-container>
+
+  <ng-container card-body>
+    <div class="max-w-full">
+      <div class="mb-2" [innerHtml]="data.publication.contentHtml"></div>
+      <div class="ml-auto w-20 font-light text-sm">{{ data.publication.date | sbDate }}</div>
+      <div *ngIf="data.publication.files.length > 0">
+        <sb-card-section>Прикачени файлове</sb-card-section>
+        <div *ngFor="let file of data.publication.files">
+          <a target="_blank" href="{{ file.location }}" title="{{ file.fileName }}" class="text-primary underline">
+            <ng-container [ngSwitch]="file.extension">
+              <fa-icon *ngSwitchCase="'.xlsx'" [icon]="farFileExcel" size="sm"></fa-icon>
+              <fa-icon *ngSwitchCase="'.xls'" [icon]="farFileExcel" size="sm"></fa-icon>
+              <fa-icon *ngSwitchCase="'.docx'" [icon]="farFileWord" size="sm"></fa-icon>
+              <fa-icon *ngSwitchCase="'.doc'" [icon]="farFileWord" size="sm"></fa-icon>
+              <fa-icon *ngSwitchCase="'.pdf'" [icon]="farFilePdf" size="sm"></fa-icon>
+              <fa-icon *ngSwitchDefault [icon]="farFile" size="sm"></fa-icon>
+            </ng-container>
+            <span>{{ file.fileName }}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</sb-card>

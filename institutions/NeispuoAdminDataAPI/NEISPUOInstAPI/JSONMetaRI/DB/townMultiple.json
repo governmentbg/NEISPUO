@@ -1,0 +1,31 @@
+{
+    "template": "SELECT /**select**/ FROM [location].[Town] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "TownID as code"
+        },
+        {
+            "column": "Name as label"
+        }
+    ],
+    "params": [
+    {
+      "param": "@filterValue",
+      "column": "MunicipalityID",
+      "operator": "IN",
+      "value": "filterValue",
+      "type": "array",
+      "logical_operator": "and",
+	  "optional": true,
+      			"static": false,
+			"from_claim": false
+    }
+    ],
+    "order": [
+        {
+            "column": "TownID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

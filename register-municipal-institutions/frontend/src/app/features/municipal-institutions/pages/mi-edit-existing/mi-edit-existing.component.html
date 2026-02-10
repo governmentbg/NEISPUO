@@ -1,0 +1,22 @@
+<div class="fluid formgrid grid">
+  <div class="col-12">
+    <app-mi-form [form]="form" [BaseSchoolTypes$]="BaseSchoolTypes$" [displayRIProcedure]="true" [displayDocument]="true" [displayProcedureFields]="true"></app-mi-form>
+  </div>
+  <!-- <div class="field-grid col-12 mt-4">
+      <button  type="button" class="btn btn-outline-primary"  (click)="navigateBackward()">Назад</button>
+      <button type="button" class="btn btn-primary posititon-right" (click)="updateMI()">Промяна</button>
+    </div> -->
+  <ng-container>
+    <div class="field-grid col-12 mt-4">
+     <app-action-buttons
+     [showBack]="true"
+     [backLabel]="'Назад'"
+     [backwardCallback]="navigateBackward"
+     [showEdit]="true"
+     [editLabel]="'Промяна'"
+     [editCallback]="updateMI"
+     [showDelete]="false"
+     ></app-action-buttons>
+   </div>
+  </ng-container>
+</div>

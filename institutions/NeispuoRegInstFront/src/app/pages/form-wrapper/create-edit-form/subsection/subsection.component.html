@@ -1,0 +1,47 @@
+<ng-container>
+    <div *ngIf="subsection.canDuplicate === undefined || subsection.canDuplicate === null" class="subsection-container"
+        [ngClass]="{'no-label-section' : !subsection.label, 'label-section-not-duplicate' : subsection.label}">
+        <span *ngIf="subsection.label" class="section-label">{{subsection.label}}</span>
+        <ng-container *ngFor="let field of subsection.fields">
+            <ng-container *ngIf="!field.hidden && field.rendered !== false" dynamicField [field]="field" [group]="formGroup" [mode]="mode"
+                (valueChange)="onValueChange($event)" (selectionChange)="onSelectionChange($event)"></ng-container>
+        </ng-container>
+        <ng-container *ngFor="let subsubsection of subsection.subsections">
+            <div class="wrapper-body one" *ngIf="!subsubsection.hidden && subsubsection.rendered !== false && hasNonHiddenField(subsubsection)">
+                <app-subsection [subsection]="subsubsection" [parentGroup]="formGroup" [wholeFormGroup]="wholeFormGroup"
+                    [formGroup]="getFormGroup(subsubsection)" [mode]="mode" (sectionChanged)="onSectionChanged($event)"
+                    (influenceChanged)="onValueChange($event)" (selectionChange)="onSelectionChange($event)"></app-subsection>
+            </div>
+        </ng-container>
+    </div>
+    <div *ngIf="subsection.canDuplicate !== undefined && subsection.canDuplicate !== null" class="subsection-container duplicate-subsection-container"
+        [ngClass]="{'no-label-section' : !subsection.label}">
+        <span *ngIf="subsection.label" class="sub-subsection-label">{{subsection.label}}</span>
+        <button mat-raised-button class="add-btn-section"
+            [ngClass]="{'both': !(subsection.atLeastOneRequired && subsection.subsectionRecordsCount === 1) && !(isNull() && subsection.position === 0)}"
+            *ngIf="mode !== modes.View && subsection.canDuplicate && subsection.position === subsection.subsectionRecordsCount - 1" type="button"
+            (click)="onAddSubsection()"><mat-icon>add</mat-icon></button>
+        <button mat-raised-button class="delete-btn-section" color="warn"
+            *ngIf="mode !== modes.View && subsection.canDuplicate && !(subsection.atLeastOneRequired && subsection.subsectionRecordsCount === 1) && (!isNull() || subsection.position !== 0 || subsection.subsectionRecordsCount !== 1)"
+            type="button" (click)="onRemoveSubsection()"><mat-icon>remove</mat-icon></button>
+        <ng-container *ngFor="let field of subsection.fields; index as k; trackBy: trackByName">
+            <ng-container *ngIf="!field.hidden && field.rendered !== false" dynamicField [field]="field" [group]="formGroup" [mode]="mode"
+                (valueChange)="onValueChange($event)" (selectionChange)="onSelectionChange($event)"></ng-container>
+        </ng-container>
+        <ng-container *ngFor="let subsubsection of subsection.subsections">
+            <div class="wrapper-body one" *ngIf="!subsubsection.hidden && subsubsection.rendered !== false && hasNonHiddenField(subsubsection)">
+                <app-subsection [subsection]="subsubsection" [parentGroup]="formGroup" [wholeFormGroup]="wholeFormGroup"
+                    [formGroup]="getFormGroup(subsubsection)" [mode]="mode" (sectionChanged)="onSectionChanged($event)"
+                    (influenceChanged)="onValueChange($event)" (selectionChange)="onSelectionChange($event)"></app-subsection>
+            </div>
+        </ng-container>
+        <app-file *ngIf="subsection.canHaveCertificate && subsection.certificateId" [fileLabel]="subsection.certificateLabel"
+            [fileId]="subsection.certificateId" [mode]="mode"></app-file>
+        <app-file *ngIf="subsection.canHaveCertificate && subsection.copyCertificateId" [fileLabel]="subsection.copyCertificateLabel"
+            [fileId]="subsection.copyCertificateId" [mode]="mode"></app-file>
+        <app-file *ngIf="subsection.canHaveFiles && subsection.fileId" [fileLabel]="subsection.fileLabel" [fileId]="subsection.fileId"
+            [mode]="mode"></app-file>
+        <button *ngIf="subsection.canHaveFiles && mode !== modes.View" mat-raised-button (click)="openUploadModal()" type="button"
+            class="upload-button" title="прикачи файл"><mat-icon>attach_file</mat-icon></button>
+    </div>
+</ng-container>

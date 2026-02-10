@@ -1,0 +1,87 @@
+{
+  "label": "Данни за образование и квалификация на персонала",
+  "paramName": "personOKSid",
+  "sections": [
+    {
+      "order": 1,
+      "name": "staffOKSData",
+      "label": "Данни за образование",
+      "subsections": [
+        {
+          "order": 1,
+          "name": "staffOKS",
+          "label": "Първа подсекция",
+          "fields": [
+            {
+              "label": "Поредна специалност",
+              "name": "specialityOrdType",
+              "type": "input",
+              "inputType": "text",
+              "disabled": false,
+              "order": 1
+            },
+            {
+              "label": "Образователна степен",
+              "name": "educationGradeType",
+              "type": "input",
+              "inputType": "text",
+              "disabled": false,
+              "order": 2
+            },
+            {
+              "label": "Диплома №",
+              "name": "certifcateNo",
+              "type": "input",
+              "inputType": "text",
+              "disabled": false,
+              "order": 3,
+              "width": 200
+            }
+          ]
+        },
+        {
+          "order": 1,
+          "name": "staffOKS",
+          "label": "Втора подсекция",
+          "fields": [
+            {
+              "label": "Дата на завършване",
+              "name": "dateOfGraduation",
+              "type": "date",
+              "order": 4,
+              "width": 95
+            },
+            {
+              "label": "Основна специалност",
+              "name": "isMainOKS",
+              "type": "checkbox",
+              "order": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 1,
+      "name": "section2",
+      "label": "Други данни",
+      "subsections": [
+        {
+          "order": 1,
+          "name": "staffOKS",
+          "label": "Други данни",
+          "fields": [
+            {
+              "label": "Нещо",
+              "name": "someData",
+              "type": "input",
+              "inputType": "text",
+              "disabled": false,
+              "order": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_nom].[ClassType] CT /**where**/ /**orderby**/",
+  "columns": [
+	{
+      "column": "CT.ClassTypeID AS code"
+    },
+	{
+      "column": "CT.Name AS label"
+    }
+   ],
+  "params": [
+        {
+          "param": "@classKind",
+          "column": "CT.ClassKind",
+          "operator": "=",
+          "value": 4,
+          "type": "int",
+          "logical_operator": "and",
+	  "optional": false,
+          "static": true
+        }
+  ],
+  "order": [
+    {
+      "column": "CT.ClassTypeID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": []
+}

@@ -1,0 +1,16 @@
+GO
+
+ALTER TABLE [school_books].[LectureSchedulesReportItem]
+REBUILD PARTITION = ALL
+WITH (DATA_COMPRESSION = PAGE)
+GO
+
+ALTER TABLE [school_books].[MissingTopicsReportItem]
+REBUILD PARTITION = ALL
+WITH (DATA_COMPRESSION = PAGE)
+GO
+
+ALTER TABLE [school_books].[MissingTopicsReportItemTeacher]
+REBUILD PARTITION = ALL
+WITH (DATA_COMPRESSION = PAGE)
+GO

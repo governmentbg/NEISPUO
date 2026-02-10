@@ -1,0 +1,31 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_basic].[PersonOKS] P /**where**/ /**orderby**/",
+  "columns": [
+	{
+      "column": "P.PersonOKSID AS code"
+    },
+	{
+      "column": "P.Speciality AS label"
+    }
+   ],
+  "params": [
+    {
+      "param": "@personid",
+      "column": "P.PersonID",
+      "operator": "=",
+      "value": "personid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "P.Speciality",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+
+  ]
+}

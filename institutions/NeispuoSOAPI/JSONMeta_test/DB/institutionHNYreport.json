@@ -1,0 +1,60 @@
+    {
+      "arrayName": "reportHNY",
+      "template": "SELECT /**select**/ FROM [inst_basic].[institutionHNYreport] IHNYR /**where**/ /**orderby**/",
+      "columns": [
+	      {
+          "column": "IHNYR.ChangeYearDataID AS id"
+        },
+        {
+          "column": "IHNYR.InstitutionID AS institutionID"
+        },
+		    {
+          "column": "IHNYR.InstitutionName AS institutionName"
+        },
+		    {
+          "column": "IHNYR.MunicipalityName AS municipalityName"
+        },
+		    {
+          "column": "IHNYR.RegionName AS regionName"
+        },
+		    {
+          "column": "IHNYR.TownName AS townName"
+        },
+		    {
+          "column": "IHNYR.ChangeYearStatusName AS changeYearStatusName"
+        },
+		    {
+          "column": "IHNYR.CreatedOn AS createdOn"
+        },
+		    {
+          "column": "IHNYR.ModifiedOn AS modifiedOn"
+        }
+      ],
+      "params": [
+         {
+          "param": "@sysuserid",
+          "column": "IHNYR.SysUserID",
+          "operator": "=",
+          "value": "sysuserid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        },
+	      {
+          "param": "@sysroleid",
+          "column": "IHNYR.SysRoleID",
+          "operator": "=",
+          "value": "sysroleid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        }
+      ],
+      "order": [
+        {
+          "column": "IHNYR.InstitutionID",
+          "type": "ASC"
+        }
+      ],
+  "inSelects": []
+    }

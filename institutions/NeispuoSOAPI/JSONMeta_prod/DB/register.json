@@ -1,0 +1,217 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_basic].[InstitutionAll] IALL JOIN [inst_year].[InstitutionOtherData] IOD ON IALL.InstitutionID = IOD.InstitutionID JOIN [inst_year].[InstitutionCountFinance] ICF ON IALL.InstitutionID = ICF.InstitutionID /**where**/ /**orderby**/",
+  "columns": [
+    {
+      "column": "IALL.InstitutionID AS codeNEISPUO"
+    },
+    {
+      "column": "IALL.Name AS name"
+    },
+    {
+      "column": "IALL.Abbreviation AS abbreviation"
+    },
+    {
+      "column": "IALL.Bulstat AS bulstat"
+    },
+    {
+      "column": "IALL.BaseSchoolTypeID AS baseSchoolTypeID"
+    },
+    {
+      "column": "IALL.DetailedSchoolTypeID AS detailedSchoolTypeID"
+    },
+    {
+      "column": "IALL.BudgetingSchoolTypeID AS budgetingSchoolTypeID"
+    },
+    {
+      "column": "IALL.FinancialSchoolTypeID AS financialSchoolTypeID"
+    },
+    {
+      "column": "IALL.RegionID AS region"
+    },
+    {
+      "column": "IALL.MunicipalityID AS municipality"
+    },
+	{
+      "column": "IALL.CountryID AS country"
+    },
+    {
+      "column": "IALL.TownID AS town"
+    },
+    {
+      "column": "IALL.LocalAreaID AS localArea"
+    },
+    {
+      "column": "IALL.Address AS address"
+    },
+    {
+      "column": "IALL.PostCode AS postCode"
+    },
+    {
+      "column": "IALL.Email AS email"
+    },
+    {
+      "column": "IALL.Website AS website"
+    },
+    {
+      "column": "IALL.EstablishedYear AS established"
+    },
+    {
+      "column": "IALL.ConstitActFirst AS incActFirst"
+    },
+    {
+      "column": "IALL.ConstitActLast AS incActLast"
+    },
+    {
+      "column": "IALL.IsODZ AS isODZ"
+    },
+    {
+      "column": "IALL.IsProfSchool AS isProfSchool"
+    },
+    {
+      "column": "IALL.IsNational AS isNational"
+	},
+    {
+      "column": "IALL.IsProvideEduServ AS isProvideEduServ"
+    },
+    {
+      "column": "IALL.IsDelegateBudget AS isDelegateBudget"
+    },
+    {
+      "column": "IALL.IsNonIndDormitory AS isNonIndDomitory"
+    },
+    {
+      "column": "IALL.IsInternContract AS isInternContract"
+    },
+    {
+      "column": "IALL.BankIBAN AS bankIBAN"
+    },
+    {
+      "column": "IALL.BankBIC AS bankBIC"
+    },
+    {
+      "column": "IALL.BankName AS bankName"
+    },
+    {
+      "column": "IALL.BankAccountHolder AS bankAccountHolder"
+	},
+	{
+       "column": "IOD.IsInovative AS isInnovative"
+    },
+	{
+       "column": "IOD.SchoolShiftTypeID AS schoolShiftTypeID"
+    },
+	{
+       "column": "IOD.IsProtected AS isProtected"
+    },
+	{
+       "column": "IOD.IsStateFunding AS isStateFunding"
+    },
+	{
+       "column": "ICF.PedagogStaffCount AS pedagogStaffCount"
+    },
+	{
+       "column": "ICF.NonpedagogStaffCount AS pedagogNonStaffCount"
+    },
+	{
+       "column": "ICF.PedagogStaffSalary AS pedagogStaffSalary"
+    },
+	{
+       "column": "ICF.NonpedagogStaffSalary AS pedagogNonStaffSalary"
+    },
+	{
+       "column": "ICF.YearlyBudget AS yearlyBudget"
+    }
+  ],
+  "params": [
+    {
+      "param": "@instid",
+      "column": "IALL.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "IALL.InstitutionID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+    {
+      "arrayName": "institutionPhones",
+      "template": "SELECT /**select**/ FROM [inst_basic].[InstitutionAll] IALL JOIN [inst_basic].[InstitutionPhone] IP ON IALL.InstitutionID = IP.InstitutionID /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "IP.InstitutionPhoneID AS id"
+        },
+		{
+          "column": "IP.PhoneTypeID AS institutionPhoneTypeID"
+        },
+        {
+          "column": "IP.PhoneCode AS institutionPhoneCode" 
+        },
+        {
+          "column": "IP.PhoneNumber AS institutionPhone"
+        },
+        {
+          "column": "IP.ContactKind AS institutionContactKind"
+        },
+        {
+          "column": "IP.IsMain AS isMain"
+        }
+      ],
+      "params": [
+        {
+          "param": "@instid",
+          "column": "IALL.InstitutionID",
+          "operator": "=",
+          "value": "instid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        }
+      ],
+      "order": [
+        {
+          "column": "IALL.InstitutionID",
+          "type": "ASC"
+        }
+      ]
+    },
+	{
+      "arrayName": "innovations",
+      "template": "SELECT /**select**/ FROM [inst_basic].[InstitutionAll] IALL JOIN [inst_basic].[InstitutionInnovation] IIN ON IALL.InstitutionID = IIN.InstitutionID /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "IIN.InstitutionInnovationID AS id"
+        },
+		{
+          "column": "IIN.InovationTypeID AS innovationType"
+        },
+        {
+          "column": "IIN.Notes AS notes"
+        }
+      ],
+      "params": [
+        {
+          "param": "@instid",
+          "column": "IALL.InstitutionID",
+          "operator": "=",
+          "value": "instid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        }
+      ],
+      "order": [
+        {
+          "column": "IALL.InstitutionID",
+          "type": "ASC"
+        }
+      ]
+    }
+  ]
+}

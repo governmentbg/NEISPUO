@@ -1,0 +1,4 @@
+<div class="l-checkbox l-container-component l-focused-element" [ngClass]="{'focused': updateJsonService.focusedElement.index === field.idntfr}" (click)="focus()">
+  <span class="l-custom-info-span">квадратче за отметка</span>
+  <mat-checkbox color="primary" disabled>{{ field.pseudoLabel }}<app-info-tooltip *ngIf="field.info" [info]="field.info"></app-info-tooltip></mat-checkbox>
+</div>

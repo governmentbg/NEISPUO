@@ -1,0 +1,26 @@
+@using SB.Domain
+@model ParentMeetingsModel
+
+<div class="page">
+  <h3 class="page-header">Срещи с родители</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Дата</th>
+        <th>Тема</th>
+        <th>Описание</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (var parentMeeting in Model.ParentMeetings)
+      {
+        <tr>
+          <td>@parentMeeting.Date.ToString("dd.MM.yyyy")</td>
+          <td>@parentMeeting.Title</td>
+          <td>@parentMeeting.Description</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

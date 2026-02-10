@@ -1,0 +1,26 @@
+
+// .btn-tour {
+//     border: 2px solid white;
+//     margin-right: 12px;
+//     padding: 8px;
+//     line-height: 13px;
+//   }
+
+.btn-page-tour {
+    position:absolute;
+    top:-5px;
+    right:0px;
+  }
+
+  :host ::ng-deep {
+    .p-button {
+      padding: 0.5rem 1rem;
+      margin-right: 10px;
+    }
+}
+
+@media (max-width: 992px) {
+  .p-button {
+    display: none;
+  }
+}

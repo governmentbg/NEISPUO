@@ -1,0 +1,69 @@
+{
+  "sections": [
+    {
+      "order": 1,
+      "name": "TableClassDetailList",
+      "table": {
+        "name": "classGroupList",
+        "action": "preview",
+        "paramName": "parentclassid",
+        "additionalParams": ["classdpt"],
+        "searchable": true,
+        "searchType": "column",
+        "fields": [
+          {
+            "label": "Клас",
+            "name": "className",
+            "type": "input",
+            "inputType": "text",
+            "width": 10,
+            "order": 1
+          },
+          {
+            "label": "if(instType==1 || instType==4) {field.label='Випуск (клас)'} else {field.label='Възрастова група'}",
+            "name": "basicClass",
+            "type": "input",
+            "inputType": "text",
+            "width": 10,
+            "order": 2
+          },
+          {
+            "label": "Форма на обучение",
+            "name": "еduFormName",
+            "type": "input",
+            "inputType": "text",
+            "width": 10,
+            "rendered": "if(instType==2) {field.rendered=false} else {field.rendered=true}",
+            "order": 3
+          },
+          {
+            "label": "Организация на учебния процес",
+            "name": "classShiftName",
+            "type": "input",
+            "inputType": "text",
+            "rendered": "if(instType==2 || instType==3) {field.rendered=false} else {field.rendered=true}",
+            "width": 20,
+            "order": 4
+          },
+          {
+            "label": "Изучаван чужд език (ИИЧЕ/РИЧЕ)",
+            "name": "flName",
+            "type": "input",
+            "inputType": "text",
+            "rendered": "if(instType==2 || instType==3) {field.rendered=false} else {field.rendered=true}",
+            "width": 10,
+            "order": 5
+          },
+          {
+            "label": "Адрес на обучение",
+            "name": "departmentName",
+            "type": "input",
+            "inputType": "text",
+            "width": 20,
+            "order": 6
+          }
+        ]
+      }
+    }
+  ]
+}

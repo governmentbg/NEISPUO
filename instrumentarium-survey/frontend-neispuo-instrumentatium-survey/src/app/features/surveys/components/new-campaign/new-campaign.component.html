@@ -1,0 +1,64 @@
+<div class="details-container">
+  <form class="form form-details" [formGroup]="detailsForm" (ngSubmit)="onCreateCampaign()">
+    <div class="grid">
+      <div class="field col-12 col-md-6">
+        <input class="campaign-name" type="text" pInputText formControlName="name" />
+        <small>{{ content.NAME_LABEL }}</small>
+      </div>
+      <div class="field col-12 col-md-6">
+        <p-dropdown
+          [disabled]="true"
+          [options]="type"
+          [(ngModel)]="type"
+          [showClear]="true"
+          optionLabel="name"
+          formControlName="type"
+        ></p-dropdown>
+        <div class="form-wrapper-text">
+          <span>{{ content.TYPE_LABEL }}</span>
+        </div>
+      </div>
+      <div class="field col-12 col-md-6">
+        <p-calendar
+          inputId="icon"
+          appendTo="body"
+          class="campaign-start-date"
+          formControlName="startDate"
+          [(ngModel)]="startDate"
+          [minDate]="todaysDate"
+          [maxDate]="endDate"
+          dateFormat="dd/mm/yy"
+        ></p-calendar>
+        <div class="form-wrapper-text">
+          <span>{{ content.START_DATE_LABEL }}</span>
+        </div>
+      </div>
+      <div class="field col-12 col-md-6">
+        <p-calendar
+          class="campaign-end-date"
+          inputId="icon"
+          appendTo="body"
+          [minDate]="startDate"
+          [disabled]="!startDate"
+          formControlName="endDate"
+          [(ngModel)]="endDate"
+          dateFormat="dd/mm/yy"
+        ></p-calendar>
+        <div class="form-wrapper-text">
+          <span>{{ content.END_DATE_LABEL }}</span>
+        </div>
+      </div>
+    </div>
+    <button
+    pButton
+    type="button"
+    class="p-button-primary btn-continue"
+    [label]="content.BUTTON_LABEL"
+    type="submit"
+    icon="pi pi-angle-right"
+    iconPos="right"
+    [disabled]="detailsForm.invalid"
+    >
+    </button>
+  </form>
+</div>

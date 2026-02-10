@@ -1,0 +1,75 @@
+{
+  "arrayName": "sobStaffPositionDataNorma",
+  "template": "SELECT /**select**/ FROM [inst_year].[StaffPositionList] SPL INNER JOIN [inst_year].[StaffPositionHorariumAll] SPH ON SPH.StaffPositionID=SPL.StaffPositionID AND SPH.InstitutionID=SPL.InstitutionID /**where**/ /**orderby**/",
+  "columns": [
+    {
+      "column": "SPL.StaffPositionID AS id"
+    },
+    {
+      "column": "SPL.PositionKind AS positionKind" 
+    },
+    {
+      "column": "SPL.NKPDPosition AS nkpdPosition" 
+    },
+    {
+      "column": "SPL.PositionCount AS positionCount" 
+    },
+    {
+      "column": "SPL.PositionSubjectGroup AS positionSubjectGroup" 
+    },
+    {
+      "column": "SPL.FullName AS fullName"  
+    },
+    {
+      "column": "SPH.NormaS AS normaS"
+    },
+    {
+      "column": "SPH.Norma AS norma"
+    },
+    {
+      "column": "SPH.NormaT AS normaT"
+    },
+    {
+      "column": "SPH.DeficitNorma AS deficitNorma"
+    },
+    {
+      "column": "SPH.DeficitNormaT AS deficitNormaT"
+    },
+    {
+      "column": "SPH.ReductionCoef AS reductionCoef"
+    },
+    {
+      "column": "SPH.DiffNorma AS diffNorma"
+    },
+    {
+      "column": "SPH.HoursForReduction AS hoursForReduction"
+    },
+    {
+      "column": "SPH.ReductionHours AS reductionHours"
+    },
+    {
+      "column": "SPH.Lect AS lect"
+    },
+    {
+      "column": "SPH.LectYear AS lectYear"
+    }
+  ],
+  "params": [
+    {
+      "param": "@instid",
+      "column": "SPL.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "SPL.StaffPositionID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": []
+}

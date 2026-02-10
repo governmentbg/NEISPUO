@@ -1,0 +1,192 @@
+<sb-breadcrumb
+  class="block mb-3"
+  [icon]="
+    data.mode === LectureSchedulesMode.All
+      ? fadCalendarStar
+      : data.mode === LectureSchedulesMode.My
+      ? fadUserPlus
+      : undefined
+  "
+  [text]="data.lectureSchedule == null ? 'Създаване на лекторски график' : 'Лекторски график'"
+  [parentItems]="[
+    {
+      text:
+        data.mode === LectureSchedulesMode.All
+          ? 'Всички лекторски графици'
+          : data.mode === LectureSchedulesMode.My
+          ? 'Мои лекторски графици'
+          : '',
+      routeCommands: ['../']
+    }
+  ]"
+></sb-breadcrumb>
+
+<form [formGroup]="form" #ngForm="ngForm" autocomplete="off" novalidate>
+  <sb-card>
+    <ng-container card-title>
+      {{ data.lectureSchedule == null ? 'Създаване на лекторски график' : 'Редакция на лекторски график' }}
+    </ng-container>
+    <sb-editor-panel
+      [editBtnHidden]="!canEdit"
+      card-buttons
+      (editableChange)="onEditableChange($event)"
+      [isNew]="data.lectureSchedule == null"
+      (save)="onSave($event)"
+    >
+      <button
+        *ngIf="canRemove"
+        disabled-mode-buttons
+        mat-raised-button
+        color="warn"
+        type="button"
+        (click)="onRemove()"
+        [disabled]="removing"
+      >
+        <fa-icon [icon]="removing ? fasSpinnerThird : fasTrashAlt" [spin]="removing" size="lg"></fa-icon>
+        <span class="hidden sm:inline">Премахни</span>
+      </button>
+    </sb-editor-panel>
+    <ng-container card-body>
+      <div class="sm:grid grid-cols-4 gap-x-4 mb-2">
+        <sb-nom-select
+          class="col-start-1 col-span-2"
+          label="Учител"
+          formControlName="teacherPersonId"
+          [nomService]="instTeacherNomsService"
+          [readonly]="data.lectureSchedule != null"
+        ></sb-nom-select>
+
+        <sb-text-field class="col-start-1" label="Номер на заповед" formControlName="orderNumber"></sb-text-field>
+        <sb-date-field label="Дата на заповед" formControlName="orderDate"></sb-date-field>
+
+        <sb-date-field
+          class="col-start-1 col-span-2"
+          label="Начална дата"
+          formControlName="startDate"
+          [readonly]="data.lectureSchedule != null"
+        ></sb-date-field>
+
+        <sb-date-field
+          class="col-start-1 col-span-2"
+          label="Крайна дата"
+          formControlName="endDate"
+          [readonly]="data.lectureSchedule != null"
+        ></sb-date-field>
+      </div>
+
+      <sb-banner type="error" class="mb-2" *ngIf="ngForm.submitted && !lectureScheduleHours.length">
+        Трябва да въведете информация за поне един час от разписанието, за да можете да запишете лекторския график.
+      </sb-banner>
+
+      <sb-card-section>График на лекторските часове</sb-card-section>
+
+      <div *ngIf="loadingSchedule" class="relative h-[40px]">
+        <mat-spinner [diameter]="40" class="absolute top-1/2 left-1/2 mt-[-20px] ml-[-20px]"></mat-spinner>
+      </div>
+
+      <sb-banner *ngIf="!loadingSchedule && !mappedSchedule" type="warning">
+        Изберете учител и период, за да видите графика.
+      </sb-banner>
+
+      <ng-container *ngIf="!loadingSchedule && mappedSchedule">
+        <div class="mb-4">
+          <button *ngIf="!allGroupsExpanded" type="button" mat-raised-button class="mr-4" (click)="expandAllGroups()">
+            <fa-icon [icon]="farCalendarPlus" size="lg"></fa-icon>
+            <span>Покажи</span>
+          </button>
+          <button
+            *ngIf="!allGroupsCollapsed"
+            type="button"
+            mat-raised-button
+            class="mr-4"
+            (click)="collapseAllGroups()"
+          >
+            <fa-icon [icon]="farCalendarMinus" size="lg"></fa-icon>
+            <span>Скрий</span>
+          </button>
+        </div>
+
+        <sb-banner *ngIf="!mappedSchedule.slotsByNumberByDay.length" type="warning">
+          Учителят няма часове за избрания период.
+        </sb-banner>
+
+        <sb-banner type="warning" class="mb-2" *ngIf="hasInvalidHours">
+          В лекторския график има часове от архивиран дневник. Моля, създайте идентичен лекторски график за тези часове
+          и в новия дневник, за да могат часовете от архивирания да фигурират и там.
+        </sb-banner>
+
+        <div *ngIf="mappedSchedule.slotsByNumberByDay.length" class="sb-table-container">
+          <table class="sb-table">
+            <thead>
+              <tr>
+                <th class="w-px whitespace-nowrap">Час</th>
+                <th>Понеделник</th>
+                <th>Вторник</th>
+                <th>Сряда</th>
+                <th>Четвъртък</th>
+                <th>Петък</th>
+                <ng-container *ngIf="mappedSchedule.scheduleIncludesWeekend">
+                  <th>Събота</th>
+                  <th>Неделя</th>
+                </ng-container>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let shiftHour of mappedSchedule.shiftHours; let i = index">
+                <td class="w-px">
+                  <span class="whitespace-nowrap">{{ shiftHour.startTime }} -</span>
+                  {{ shiftHour.endTime }}
+                </td>
+                <td *ngFor="let slot of mappedSchedule.slotsByNumberByDay[i]">
+                  <div *ngFor="let group of slot.curriculumGroups; let first = first">
+                    <div class="schedule-card cursor-pointer" [class.mt-2]="!first" (click)="viewGroup(group)">
+                      <div *ngIf="group.lectureHours.length" class="mr-2">
+                        <a (click)="toggleGroup($event, group)">
+                          <fa-icon [icon]="group.isExpanded ? fasMinus : fasPlus"></fa-icon>
+                        </a>
+                      </div>
+
+                      <div class="flex-1 mr-2">
+                        <fa-icon [icon]="fasUsersClass"></fa-icon>
+                        {{ group.classBookFullName }} -
+                        <div class="inline sm:hidden">
+                          {{ group.subjectShort }}
+                        </div>
+
+                        <div class="hidden sm:inline">
+                          {{ group.subject }}
+                        </div>
+                        <span *ngIf="!group.isValid" class="sb-badge">АРХИВИРАН</span>
+                      </div>
+
+                      <div>
+                        <fa-icon [icon]="farClock"></fa-icon>
+
+                        <ng-container *ngIf="editable$ | async; else notEditable">
+                          <span>{{ group.lectureHours.length }}/{{ group.curriculumHours.length }}</span>
+                        </ng-container>
+
+                        <ng-template #notEditable>
+                          <span>{{ group.lectureHours.length }}</span>
+                        </ng-template>
+                      </div>
+                    </div>
+
+                    <ng-container *ngIf="group.isExpanded">
+                      <div
+                        *ngFor="let lectureHour of group.lectureHours"
+                        class="schedule-card schedule-card-warning ml-5 mt-2"
+                      >
+                        <div class="flex-1 mr-2">{{ lectureHour.date | sbDate }}</div>
+                      </div>
+                    </ng-container>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </ng-container>
+    </ng-container>
+  </sb-card>
+</form>

@@ -1,0 +1,21 @@
+{
+  "from": [
+    "/(?<=CREATE TABLE \\[inst_basic\\].\\[StaffPosition\\])(.{0,1000}\\[InstitutionID\\][^\\n\\r]*)(NOT NULL,)/gis",
+    "/(?<=CREATE TABLE \\[inst_basic\\].\\[StaffPosition\\])(.{0,1000}\\[ValidFrom\\][^\\n\\r]*)(NOT NULL,)/gis",
+    "/(?<=CREATE TABLE \\[inst_basic\\].\\[StaffPosition\\])(.{0,1000}\\[ValidTo\\][^\\n\\r]*)(NOT NULL,)/gis",
+    "/(?<=CREATE TABLE \\[inst_basic\\].\\[StaffPosition\\])(.{0,1000}\\[StaffTypeID\\][^\\n\\r]*)(NOT NULL,)/gis",
+    "/(?<=CREATE TABLE \\[inst_basic\\].\\[StaffPosition\\])(.{0,1000}\\[CategoryStaffTypeID\\][^\\n\\r]*)(NOT NULL,)/gis",
+    "/(?<=CREATE TABLE \\[inst_basic\\].\\[StaffPosition\\])(.{0,1000}\\[NKPDPositionID\\][^\\n\\r]*)(NOT NULL,)/gis",
+    "/(?<=CREATE TABLE \\[inst_basic\\].\\[StaffPosition\\])(.{0,1000}\\[PositionKindID\\][^\\n\\r]*)(NOT NULL,)/gis",
+    "/(?<=CREATE TABLE \\[inst_nom\\].\\[NKPDPosition\\])(.{0,1000}\\[NKPDSubGroupID\\][^\\n\\r]*)(NOT NULL,)/gis",
+    "/(?<=CREATE TABLE \\[inst_nom\\].\\[SPPOOSpeciality\\])(.{0,1000}\\[ProfessionID\\][^\\n\\r]*)(NOT NULL,)/gis",
+    "/(?<=CREATE TABLE \\[inst_year\\].\\[ClassGroup\\])(.{0,1000}\\[InstitutionDepartmentID\\][^\\n\\r]*)(NOT NULL,)/gis"
+  ],
+  "to": "$1NULL,",
+  "files": [
+    "./CreateOtherSchemas/Schemas/inst_basic.sql",
+    "./CreateOtherSchemas/Schemas/inst_nom.sql",
+    "./CreateOtherSchemas/Schemas/inst_year.sql"
+  ],
+  "disableGlobs": true
+}

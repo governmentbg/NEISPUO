@@ -1,0 +1,32 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_nom].[TypeITAsset] TT /**where**/ /**orderby**/",
+  "columns": [
+	  {
+      "column": "TT.TypeITAssetID AS code"
+    },
+	  {
+      "column": "TT.Description AS label"
+    }
+   ],
+  "params": [
+		{
+      "param": "@filterValue",
+      "column": "TT.ITAssetCategoryID",
+      "operator": "=",
+      "value": "filterValue",
+      "type": "int",
+      "logical_operator": "and",
+      "optional": true,
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "TT.Description",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+
+  ]
+}

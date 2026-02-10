@@ -1,0 +1,50 @@
+       {
+          "order": 14,
+          "label": "Институция, в която се съхранява задължителната документация (при преобразуване или закриване)",
+          "name": "premInstitutions",
+          "canDuplicate": true,
+          "fields": [
+            {
+              "label": "Институция правоприемник",
+              "name": "premInstitutionID",
+              "type": "select",
+              "optionsPath": "/data/get/premInstitutions",
+              "disabled": false,
+              "order": 1
+            },
+            {
+              "label": "Условия и ред за пренасочване на децата и на учениците - при преобразуване",
+              "name": "premStudents",
+              "type": "textarea",
+              "disabled": false,
+              "order": 2,
+              "width": 900,
+              "height": 3,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 4000,
+                  "message": "Максимална дължина 4000 символа"
+                }
+              ]
+            },
+            {
+              "label": "Условия и ред за съхраняване на задължителната документация (при преобразуване или закриване)",
+              "name": "premDocuments",
+              "type": "textarea",
+              "disabled": false,
+              "order": 3,
+              "width": 900,
+              "height": 3,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 4000,
+                  "message": "Максимална дължина 4000 символа"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }

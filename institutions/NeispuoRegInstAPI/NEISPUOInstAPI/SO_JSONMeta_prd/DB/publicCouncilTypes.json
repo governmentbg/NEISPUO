@@ -1,0 +1,24 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[PublicCouncilType] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "PublicCouncilTypeID as code"
+        },
+        {
+            "column": "Name as label"
+        },
+		{
+            "column": "IsValid as isValid"
+        }
+    ],
+    "params": [
+
+    ],
+    "order": [
+        {
+            "column": "PublicCouncilTypeID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

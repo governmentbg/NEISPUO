@@ -1,0 +1,33 @@
+<div class="fluid formgrid grid">
+  <app-user-tour-guide 
+  [typeButton]="'pageGuide'"
+  [guideName]="guideName"
+  ></app-user-tour-guide>
+
+    <p-confirmDialog header="Потвърждение" icon="pi pi-exclamation-triangle"
+      acceptLabel = 'Потвърди'
+      rejectLabel = 'Откажи'
+      acceptButtonStyleClass="p-button-danger"
+      rejectButtonStyleClass="p-button-outlined p-button-primary"> 
+    </p-confirmDialog>
+    <div class="col-12">
+      <app-mi-form [form]="form" [BaseSchoolTypes$]="BaseSchoolTypes$" [displayRIProcedure]="true" [displayDocument]="true" [displayProcedureFields]="true"></app-mi-form>
+    </div>
+    <!-- <div class="field-grid col-12 mt-4">
+      <button type="button" class="btn btn-outline-primary" (click)="goToPreviewPage()">Назад</button>
+      <button type="button" class="btn btn-primary position-right"(click)="deleteMI()">Закриване</button>
+    </div> -->
+    <ng-container>
+      <div class="field-grid col-12 mt-4">
+       <app-action-buttons
+       [showBack]="true"
+       [backLabel]="'Назад'"
+       [backwardCallback]="goToPreviewPage"
+       [showDelete]="true"
+       [deleteLabel]="'Закриване'"
+       [deleteCallback]="deleteMI"
+       [showEdit]="false"
+       ></app-action-buttons>
+     </div>
+    </ng-container>
+</div>

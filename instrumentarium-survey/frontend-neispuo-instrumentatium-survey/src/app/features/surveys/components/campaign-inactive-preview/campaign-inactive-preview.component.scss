@@ -1,0 +1,174 @@
+@import "@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/variables/variables.scss";
+
+.top-container {
+    height: 4.5rem;
+    align-items: center;
+    border-bottom: 0.125rem solid $gray-300;
+    margin: 0;
+
+    .btn-container {
+        width: 4.375rem;
+        text-align: center;
+        border-right: 0.125rem solid $gray-300;
+    }
+    .heading {
+        align-items: center;
+
+        .title {
+            margin: 0 0 0 1.5rem;
+            font-size: 1.25rem;
+            font-weight: 700;
+            font-family: "Inter", sans-serif;
+            font-weight: 700;
+        }
+
+        .campaign-status {
+            margin: 0.125rem 0 0 1.5rem;
+            font-size: 0.875rem;
+            color: $gray-900;
+
+            i {
+                font-size: 0.688rem;
+                margin-right: 0.313rem;
+
+                &.active {
+                    color: $green;
+                }
+
+                &.past {
+                    color: $red;
+                }
+            }
+        }
+    }
+}
+
+.main {
+    min-height: 56.25rem;
+    background-color: $gray-100;
+
+    .wrapper {
+        padding: 1.875rem 1.5rem 0;
+
+        .data-container {
+            overflow: hidden;
+
+            .users-who-filled-campaign,
+            .campaign-result-container {
+                height: fit-content;
+                min-height: 22.5rem;
+                background-color: $white;
+            }
+
+            .users-who-filled-campaign {
+                h4 {
+                    font-size: 1.25rem;
+                    margin-bottom: 0.938rem;
+                }
+
+                span {
+                    font-size: 1.25rem;
+                    color: $gray-500;
+                    font-weight: 600;
+
+                    strong {
+                        color: $blue-900;
+                        font-size: 2.188rem;
+                        margin-right: 0.625rem;
+                    }
+                }
+            }
+
+            .campaign-result-container {
+                padding: 1.25rem 3.125rem;
+                margin-right: 1.5rem;
+
+                .campaign-score {
+                    h4 {
+                        font-size: 1.25rem;
+                        margin-bottom: 0.938rem;
+                    }
+
+                    span {
+                        font-size: 1.25rem;
+                        color: $gray-500;
+                        font-weight: 600;
+
+                        strong {
+                            color: $blue-900;
+                            font-size: 2.188rem;
+                            margin-right: 0.625rem;
+                        }
+                    }
+                }
+
+                .campaign-score-by-role {
+                    border-left: 0.125rem solid $gray-300;
+                }
+
+                .campaign-score-by-role {
+                    .score-box {
+                        overflow: hidden;
+                        padding: 0 0.625rem;
+
+                        .user-avgscore {
+                            display: inline-block;
+                            color: $gray-500;
+                            margin-left: auto;
+
+                            strong {
+                                color: $blue-900;
+                                font-size: 1.25rem;
+                            }
+                        }
+
+                        .user-questionnaire {
+                            margin: 0 0 1.25rem;
+                            font-size: 0.75rem;
+                            color: $gray-600;
+                        }
+                    }
+                }
+            }
+        }
+
+        .indicators-score {
+            h3 {
+                display: inline-block;
+                margin: 2.5rem;
+                margin-left: -0.313rem
+            }
+
+            .indicator-box {
+                border-left: 0.25rem solid $blue;
+                background: $white;
+                border-top-left-radius: 0.313rem;
+                border-bottom-left-radius: 0.313rem;
+            }
+
+            .indicator-score {
+                font-weight: 700;
+                font-size: 1.25rem;
+                display: inline-block;
+
+                span {
+                    font-weight: 600;
+                    color: $gray-500;
+                    display: inline-block;
+                    font-size: 1rem;
+                }
+            }
+
+            .indicator-name {
+                font-size: 0.875rem;
+                font-weight: 700;
+                display: inline-block;
+            }
+        }
+    }
+}
+@media (min-width:665px) {
+    .indicator-score {
+        width: 5%;
+    }
+}

@@ -1,0 +1,27 @@
+<div class="sidebar-toggle">
+  <div *ngFor="let option of sidebarToggleOptions">
+    <button
+      id="menu-toggle"
+      class="btn btn-outline-{{ option.buttonClass }} mr-2"
+      (click)="toggleSidebar(option)"
+      [ngClass]="{ active: sidebarService?.options?.value === option.value && sidebarService?.isSidebarOpen }"
+      [disabled]="isToggleButtonDisabled"
+    >
+      <i class="bi {{ option.iconClass }}"></i>{{ option.label }}
+    </button>
+  </div>
+</div>
+
+<div class="sidebar-toggle mobile" *ngIf="this.sidebarService.visualization || reportService.isCubeData">
+  <div *ngFor="let option of sidebarToggleOptions">
+    <button
+      id="menu-toggle"
+      class="btn btn-outline-{{ option.buttonClass }}"
+      (click)="toggleSidebar(option)"
+      [ngClass]="{ active: sidebarService?.options?.value === option.value && sidebarService?.isSidebarOpen }"
+      [disabled]="isToggleButtonDisabled"
+    >
+      <i class="bi {{ option.iconClass }}"></i>
+    </button>
+  </div>
+</div>

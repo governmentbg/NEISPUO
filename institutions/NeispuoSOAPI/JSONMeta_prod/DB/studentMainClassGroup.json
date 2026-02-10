@@ -1,0 +1,153 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_year].[ClassStudentList] SC /**where**/ /**orderby**/",
+  "sotemplate": "SELECT /**select**/ FROM [sob].[ClassStudentList] SC /**where**/ /**orderby**/",
+  "columns": [
+    {
+      "column": "SC.ID AS id"
+    },
+    {
+      "column": "SC.ParentClassID AS parentclassid"
+    },
+    {
+      "column": "SC.ClassName AS className"
+    },
+    {
+      "column": "SC.StudentEdFormName AS studentEdFormName"
+    },
+    {
+      "column": "SC.StudentEduFormId AS studentEduFormId"
+    },
+    {
+      "column": "SC.ClassSpecialityName AS classSpecialityName"
+    },
+    {
+      "column": "SC.IsIndividualCurriculum AS isIndividualCurriculum"
+    },
+    {
+      "column": "SC.IsHourlyOrganization AS isHourlyOrganization"
+    },
+    {
+      "column": "SC.RepeaterReasonId AS repeaterReasonId"
+    },
+    {
+      "column": "SC.CommuterTypeId AS commuterTypeId"
+    },
+    {
+      "column": "SC.BasicClassID AS basicClassID"
+    },
+    {
+      "column": "SC.ClassTypeID AS classTypeID"
+    },
+    {
+      "column": "SC.ORESTypeID AS oresType"
+    },
+    {
+      "column": "SC.DetailedSchoolTypeID AS detailedSchoolTypeID"
+    }
+  ],
+  "params": [
+    {
+      "param": "@classid",
+      "column": "SC.ClassID",
+      "operator": "=",
+      "value": "classid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+    {
+      "param": "@personid",
+      "column": "SC.PersonID",
+      "operator": "=",
+      "value": "personid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+    {
+      "param": "@year",
+      "column": "SC.SchoolYear",
+      "operator": "=",
+      "value": "year",
+      "type": "int",
+      "logical_operator": "and",
+      "optional": true,
+      "static": false
+    },
+    {
+      "param": "@period",
+      "column": "SC.Period",
+      "operator": "=",
+      "value": "period",
+      "type": "int",
+      "logical_operator": "and",
+      "optional": true,
+      "static": false
+    }
+  ],
+  "order": [],
+  "inSelects": [
+    {
+      "arrayName": "studentProfileSubject",
+      "template": "SELECT /**select**/ FROM [inst_year].[StudentProfileSubject] SPS /**where**/ /**orderby**/",
+      "sotemplate": "SELECT /**select**/ FROM [sob].[StudentProfileSubject] SPS /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "SPS.ID as id"
+        },
+        {
+          "column": "SPS.ProfSubjType as profSubjType"
+        },
+        {
+          "column": "SPS.SubjectName as subjectName"
+        }
+      ],
+      "params": [
+        {
+          "param": "@classid",
+          "column": "SPS.ClassID",
+          "operator": "=",
+          "value": "classid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        },
+        {
+          "param": "@personid",
+          "column": "SPS.PersonID",
+          "operator": "=",
+          "value": "personid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        },
+        {
+          "param": "@year",
+          "column": "SPS.SchoolYear",
+          "operator": "=",
+          "value": "year",
+          "type": "int",
+          "logical_operator": "and",
+          "optional": true,
+          "static": false
+        },
+        {
+          "param": "@period",
+          "column": "SPS.Period",
+          "operator": "=",
+          "value": "period",
+          "type": "int",
+          "logical_operator": "and",
+          "optional": true,
+          "static": false
+        }
+      ],
+      "order": [
+        {
+          "column": "SPS.SubjectTypeID",
+          "type": "ASC"
+        }
+      ]
+    }
+  ]
+}

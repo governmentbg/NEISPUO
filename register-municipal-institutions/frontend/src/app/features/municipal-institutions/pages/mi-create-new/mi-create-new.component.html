@@ -1,0 +1,20 @@
+<div class="fluid grid">
+  <div class="col-12">
+    <app-user-tour-guide 
+    [typeButton]="'pageGuide'"
+    [guideName]="guideName"
+    ></app-user-tour-guide>
+    <app-mi-form [BaseSchoolTypes$]="BaseSchoolTypes$" [form]="form" [displayRIProcedure]="true" [displayDocument]="true" [displayProcedureFields]="true"></app-mi-form>
+  </div>
+  <div class="col-12">
+    <app-stepper-actions
+      [showBack]="true"
+      [backLabel]="'Назад'"
+      [backRouterLink]="['../bulstat-loader']"
+      [showForward]="false"
+      [submitLabel]="'Създай'"
+      [submitCallback]="submitInstitution"
+      [showSubmit]="true"
+    ></app-stepper-actions>
+  </div>
+</div>

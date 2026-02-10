@@ -1,0 +1,5 @@
+###########################
+### Общи статистики ###
+###########################
+0 2 * * * root /scripts/stats.sh 
+# An empty line is required at the end of this file for a valid cron file.

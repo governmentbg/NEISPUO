@@ -1,0 +1,24 @@
+{
+    "template": "SELECT /**select**/ FROM [noms].[BaseSchoolType] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "BaseSchoolTypeID as code"
+        },
+        {
+            "column": "Name as label"
+        },
+		{
+            "column": "IsValid as isValid"
+        }
+    ],
+    "params": [
+
+    ],
+    "order": [
+        {
+            "column": "BaseSchoolTypeID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

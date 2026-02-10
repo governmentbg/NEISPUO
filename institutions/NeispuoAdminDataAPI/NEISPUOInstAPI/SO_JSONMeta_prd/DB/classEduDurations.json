@@ -1,0 +1,33 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[ClassEduDuration] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "ClassEduDurationID as code"
+        },
+        {
+            "column": "Name as label"
+        },
+		{
+            "column": "IsValid as isValid"
+        }
+    ],
+    "params": [
+		{
+              "param": "@canChoose",
+              "column": "CanChoose",
+              "operator": "=",
+              "value": 1,
+              "type": "int",
+              "logical_operator": "and",
+              "optional": false,
+              "static": true
+            }
+    ],
+    "order": [
+        {
+            "column": "ClassEduDurationID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

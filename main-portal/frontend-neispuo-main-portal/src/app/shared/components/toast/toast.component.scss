@@ -1,0 +1,117 @@
+@import "@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/variables/variables.scss";
+
+.top-left,
+.top-center,
+.top-right,
+.bottom-left,
+.bottom-center,
+.bottom-right {
+  position: fixed;
+  z-index: 1060;
+}
+
+.top-left {
+  top: 1.25rem;
+  left: 1.25rem;
+}
+.top-center {
+  top: 1.25rem;
+  left: calc((100vw - 19.875rem)/2);
+}
+.top-right {
+  top: 1.25rem;
+  right: 1.25rem;
+}
+
+.bottom-left {
+  bottom: 1.25rem;
+  left: 1.25rem;
+}
+.bottom-center {
+  bottom: 1.25rem;
+  left: calc((100vw - 19.875rem)/2);
+}
+.bottom-right {
+  bottom: 1.25rem;
+  right: 1.25rem;
+}
+
+.info {
+  border: solid $blue;
+  border-width: 0 0 0 0.25rem;
+  .toast-content::before {
+    content: "\F430";
+    color: $blue;
+  }
+}
+
+.success {
+  border: solid $green;
+  border-width: 0 0 0 0.25rem;
+  .toast-content::before {
+    content: "\F26A";
+    color: $green;
+  }
+}
+
+.error {
+  border: solid $red;
+  border-width: 0 0 0 0.25rem;
+  .toast-content::before {
+    content: "\F622";
+    color: $red;
+  }
+}
+
+.toast-wrapper {
+  background-color: $white;
+  word-break: break-word;
+  opacity: 0;
+  max-width: 19.875rem;
+  z-index: 1060;
+  margin: 0 0 1rem 0;
+  box-shadow: 0 2px 4px -1px rgb(0 0 0 / 20%), 0 4px 5px 0 rgb(0 0 0 / 14%), 0 1px 10px 0 rgb(0 0 0 / 12%);
+  border-radius: 0.188rem;
+  .inner-wrapper {
+    position: relative;
+    padding: 0.75rem 2.25rem;
+    .toast-content {
+      color: $gray-900;
+      &:before {
+        font-size: 1rem;
+        font-family: "bootstrap-icons";
+        position: absolute;
+        top: 0.813rem;
+        left: 0.563rem;
+      }
+      .toast-title {
+        font-size: 1rem;
+        font-weight: 600;
+        color: $gray-900;
+        margin-bottom: 0.25rem;
+        padding-top: 0.125rem;
+      }
+      .toast-text {
+        font-size: 0.875rem;
+        color: $gray-900;
+      }
+    }
+  }
+}
+
+.btn-close {
+  font-size: 1rem;
+  position: absolute;
+  top: 0.813rem;
+  right: 0.813rem;
+}
+
+.close {
+  opacity: 0;
+  transition: opacity .3s linear;
+}
+
+.open {
+  opacity: 0.9;
+  transition: opacity .3s linear;
+}

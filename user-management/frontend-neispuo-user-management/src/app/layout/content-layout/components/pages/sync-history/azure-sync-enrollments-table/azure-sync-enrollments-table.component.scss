@@ -1,0 +1,110 @@
+.azure-sync-enrollments-table #yearSelect,
+.azure-sync-enrollments-table ::ng-deep .p-multiselect {
+    width: 16rem;
+    min-width: 12rem;
+    max-width: 20rem;
+}
+
+.azure-sync-enrollments-table {
+    position: relative;
+    background: #fff;
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.azure-sync-enrollments-table-flex {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-left: 0;
+}
+
+.azure-sync-enrollments-table .d-flex.align-items-center {
+    margin-bottom: 0;
+}
+
+.azure-sync-enrollments-table .p-datatable .p-datatable-tbody > tr > td {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.empty-message-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 6rem;
+    text-align: center;
+}
+
+.year-select-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.enrollments-empty-state {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 4rem;
+    padding: 1.5rem 0;
+}
+
+:host ::ng-deep .p-datatable-wrapper {
+    min-height: 1rem !important;
+    height: auto !important;
+}
+:host ::ng-deep .p-datatable {
+    min-height: unset !important;
+    height: auto !important;
+}
+
+.table-scroll-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.5rem;
+}
+
+.fixed-table {
+    table-layout: fixed;
+    min-width: 72rem;
+}
+
+:host ::ng-deep .p-datatable-table {
+    min-width: 72rem !important;
+}
+.col-rowID {
+    width: 8%;
+}
+.col-workflowType {
+    width: 10%;
+}
+.col-classAzureID {
+    width: 10%;
+}
+.col-organizationAzureID {
+    width: 10%;
+}
+.col-userAzureID {
+    width: 10%;
+}
+.col-createdOn {
+    width: 12%;
+}
+.col-guid {
+    width: 10%;
+}
+.col-retryAttempts {
+    width: 8%;
+}
+.col-errorMessage {
+    width: 12%;
+}
+.col-status {
+    width: 10%;
+}
+.col-options {
+    width: 10%;
+}

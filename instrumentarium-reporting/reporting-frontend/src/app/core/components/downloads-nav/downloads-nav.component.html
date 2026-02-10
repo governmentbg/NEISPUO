@@ -1,0 +1,33 @@
+<div class="downloads-nav">
+  <button type="button" class="downloads-btn" (click)="toggleDownloads()">
+    <span class="pi pi-download"></span>
+    <span class="badge" *ngIf="downloads.length > 0">{{ downloads.length }}</span>
+  </button>
+  <div class="downloads-list" *ngIf="showDownloads">
+    <ng-container *ngIf="downloads.length > 0; else noDownloads">
+      <div class="downloads-table">
+        <div class="downloads-header">
+          <div class="downloads-col filename">Име на файл</div>
+          <div class="downloads-col status">Статус</div>
+          <div class="downloads-col action"></div>
+        </div>
+        <div *ngFor="let d of downloads" class="downloads-row">
+          <div class="downloads-col filename" title="{{ d.fileName }}">{{ d.fileName }}</div>
+          <div class="downloads-col status">
+            <span *ngIf="d.status === 'downloading'" class="status"><i class="pi pi-spin pi-spinner"></i> Изтегляне...</span>
+            <span *ngIf="d.status === 'completed'" class="status"><i class="pi pi-check"></i> Готово</span>
+            <span *ngIf="d.status === 'error'" class="status"><i class="pi pi-times"></i> Грешка</span>
+          </div>
+          <div class="downloads-col action">
+            <button *ngIf="d.status === 'completed' && d.blob" type="button" class="downloads-btn" (click)="saveFile(d)">
+              <span class="pi pi-download"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #noDownloads>
+      <div class="no-downloads">Няма изтеглени файлове</div>
+    </ng-template>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+{
+  "from": "/FK__.+__.+__[A-Z\\d]{8}/g",
+  "to": "$&__",
+  "files": [
+    "./CreateOtherSchemas/Schemas/core_noms_location_family.sql",
+    "./CreateOtherSchemas/Schemas/inst_nom.sql",
+    "./CreateOtherSchemas/Schemas/inst_basic.sql",
+    "./CreateOtherSchemas/Schemas/inst_year.sql",
+    "./CreateOtherSchemas/Schemas/student.sql"
+  ],
+  "disableGlobs": true
+}

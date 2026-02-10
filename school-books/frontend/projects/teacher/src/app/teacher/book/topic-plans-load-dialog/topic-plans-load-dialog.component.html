@@ -1,0 +1,14 @@
+<form [formGroup]="form" novalidate (ngSubmit)="load()" class="sm:w-96">
+  <div class="sb-btn-wrapper sb-btn-wrapper-right">
+    <button mat-raised-button color="primary" type="submit" [disabled]="loading">
+      <fa-icon [icon]="loading ? fasSpinnerThird : fasCheck" [spin]="loading" size="lg"></fa-icon>
+      <span>Зареди</span>
+    </button>
+    <button mat-raised-button mat-dialog-close>Затвори</button>
+  </div>
+  <sb-nom-select
+    label="тематично разпределение"
+    formControlName="topicPlanId"
+    [nomService]="topicPlanNomsService"
+  ></sb-nom-select>
+</form>

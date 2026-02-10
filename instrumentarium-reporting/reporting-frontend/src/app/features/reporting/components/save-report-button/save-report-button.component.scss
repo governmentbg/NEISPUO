@@ -1,0 +1,10 @@
+@import '@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/variables/variables';
+
+:host::ng-deep {
+  .p-button-primary {
+    margin-left: 0.5rem;
+    .p-button-icon {
+      font-size: $font-size-sm;
+    }
+  }
+}

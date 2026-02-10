@@ -1,0 +1,72 @@
+<sb-card>
+  <ng-container card-title>Протоколи за допускане до изпити</ng-container>
+  <ng-container card-body>
+    <div [formGroup]="searchForm" novalidate class="sm:grid grid-cols-4 gap-x-4">
+      <p class="col-start-1 col-span-full">Филтри</p>
+      <sb-nom-select
+        class="col-span-2"
+        label="Вид на протокола"
+        formControlName="protocolType"
+        [nomService]="admProtocolTypeNomsService"
+      ></sb-nom-select>
+      <sb-text-field label="Номер на протокола" formControlName="protocolNum"></sb-text-field>
+      <sb-date-field label="Дата на протокола" formControlName="protocolDate"></sb-date-field>
+    </div>
+
+    <button
+      type="button"
+      *ngIf="canCreate"
+      (click)="openProtocolTypeDialog()"
+      mat-raised-button
+      color="primary"
+      class="mb-2.5"
+    >
+      <fa-icon [icon]="fasPlus" size="lg"></fa-icon>
+      <span>Нов протокол</span>
+    </button>
+
+    <sb-table
+      [dataSource]="dataSource"
+      [displayedColumns]="['action', 'protocolType', 'protocolNum', 'protocolDate', 'examSession']"
+    >
+      <ng-container cdkColumnDef="action">
+        <th cdk-header-cell *cdkHeaderCellDef></th>
+        <td cdk-cell *cdkCellDef="let row" class="sb-table-action">
+          <a
+            [routerLink]="['./', getProtocolTypeSegment(row.protocolType), row.admProtocolId]"
+            aria-label="Детайли"
+            class="sb-link-btn"
+          >
+            <fa-icon [icon]="fadChevronCircleRight"></fa-icon>
+          </a>
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="protocolType">
+        <th cdk-header-cell *cdkHeaderCellDef>Вид на протокола</th>
+        <td cdk-cell *cdkCellDef="let row">
+          {{
+            row.protocolType === 'StateExams'
+              ? 'Протокол за допускане на ученици до държавни изпити'
+              : 'Протокол за допускане  на ученици до изпити за промяна оценката'
+          }}
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="protocolNum">
+        <th cdk-header-cell *cdkHeaderCellDef>Номер на протокола</th>
+        <td cdk-cell *cdkCellDef="let row" class="text-center">{{ row.protocolNum }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="protocolDate">
+        <th cdk-header-cell *cdkHeaderCellDef>Дата на протокола</th>
+        <td cdk-cell *cdkCellDef="let row" class="text-center">{{ row.protocolDate | sbDate }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="examSession">
+        <th cdk-header-cell *cdkHeaderCellDef>Сесия</th>
+        <td cdk-cell *cdkCellDef="let row" class="text-center">{{ row.examSession }}</td>
+      </ng-container>
+    </sb-table>
+  </ng-container>
+</sb-card>

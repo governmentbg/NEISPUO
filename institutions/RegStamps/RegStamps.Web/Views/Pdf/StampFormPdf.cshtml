@@ -1,0 +1,153 @@
+﻿@model RegStamps.Models.Pdf.Response.StampFormPdfResponseModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    @* <link href="~/css/bootstrap.css" rel="stylesheet" /> *@
+    <style>
+        .left-square{
+            float:left;
+            margin-left: 80px;
+            width:350px;
+            height:250px;
+            border:1px solid #000;
+        }
+        .right-square{
+            float:right;
+            margin-right: 80px;
+            width:350px;
+            height:250px;
+            border:1px solid #000;
+        }
+
+        .center-square{
+            margin-top:270px;
+            margin-left:270px;
+            margin-bottom: 270px;
+            width:350px;
+            height:250px;
+            border:1px solid #000;
+        }
+
+        .bottom-custom{
+            position:absolute;
+            bottom:0;
+            right:0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .text-left {
+            text-align: left;
+        }
+
+        .row {
+            margin-right: -15px;
+            margin-left: -15px;
+        }
+
+            .row:before,
+            .row:after {
+                display: table;
+                content: " ";
+            }
+
+            .row:after {
+                clear: both;
+            }
+
+            .row:before,
+            .row:after {
+                display: table;
+                content: " ";
+            }
+
+            .row:after {
+                clear: both;
+            }
+
+    </style>
+</head>
+<body style="margin:20px;">
+    <div>
+        <h2 class="text-center">Министерство на образованието и науката</h2>
+        @* <h3 class="text-center">Регистър на печатите</h3> *@
+    </div>
+
+    <div>
+        <h2 class="text-center">@Model.SchoolData.SchoolName</h2>
+        <h4 class="text-center">Обл: @Model.SchoolData.OblastName, Общ: @Model.SchoolData.MunicipalityName, град/село: @Model.SchoolData.City,  </h4>
+        <h4 class="text-center">Адрес: @Model.SchoolData.Address, Телефон: @Model.SchoolData.Tel, Факс: @Model.SchoolData.Fax, Е-мейл: @Model.SchoolData.Email</h4>
+    </div>
+    <hr />
+
+    <div>
+
+        <h3 class="text-right">Образец на отпечатък</h3>
+        <h3 class="text-right">Вид печат: @Model.StampData.StampTypeName</h3>
+
+        <h3 class="text-left"><b>Уникален номер на печат: @Model.StampData.StampId</b></h3>
+
+    </div>
+    <hr />
+
+    @{
+        if (Model.StampData.StampTypeId == 1)
+        {
+            @*first square*@
+            <div class="row">
+                <div class="left-square"></div>
+            </div>
+            <hr />
+            @*second square*@
+            <div class="row">
+                <div class="right-square"></div>
+            </div>
+            <hr />
+            @*third square*@
+            <div class="row">
+                <div class="left-square"></div>
+
+                <div class="text-right bottom-custom">
+                    <h4 class="text-right">Директор/Началник на РУО:________________</h4>
+                    <h4 class="text-right">/................................/</h4>
+                </div>
+
+            </div>
+        }
+        else
+        {
+            @*second square*@
+            <div class="row">
+                <div class="center-square"></div>
+            </div>
+
+
+            <div class="row">
+
+
+                <div class="text-right bottom-custom">
+                    <h4 class="text-right">Директор/Началник на РУО:________________</h4>
+                    <h4 class="text-right">/................................/</h4>
+                </div>
+
+            </div>
+        }
+
+
+    }
+
+</body>
+</html>

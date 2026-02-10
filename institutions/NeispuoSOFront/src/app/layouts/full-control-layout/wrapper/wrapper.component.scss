@@ -1,0 +1,77 @@
+.btn-hide-menu {
+  &.active {
+    &:hover {
+      background-color: #ffffff52;
+    }
+    background-color: #ffffff2e;
+  }
+  &:hover {
+    background-color: #ffffff2e;
+    transition: 0.3s all;
+  }
+  background-color: #ffffff00;
+  color: white;
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
+  outline: 0;
+  border: 0;
+  padding: 0;
+  position: fixed;
+  top: 8px;
+  left: 5px;
+  transition: 0.3s all;
+  cursor: pointer;
+  display: none;
+}
+.custom {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  .margin {
+    margin-left: 10px;
+  }
+}
+.flex-wrapper {
+  &.hidden-menu-body {
+    height: 100%;
+  }
+  display: flex;
+  flex-direction: row;
+  height: calc(100% - 40px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  .menu-body-container {
+    &.hidden-menu {
+      min-width: 50px !important;
+      overflow: hidden !important;
+      transition: 0.3s all;
+    }
+    display: inline-block;
+    min-width: 212px;
+    height: 100%;
+    background-color: white;
+    transition: 0.3s all;
+  }
+  .right-body-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    transition: 0.3s all;
+    overflow: hidden;
+  }
+}
+app-sample-list {
+  height: 100%;
+  max-height: calc(100% - 42px);
+}
+app-tab-menu-body {
+  height: 100%;
+  max-height: calc(100% - 42px);
+}
+.footer {
+  background-color: white;
+  padding: 7px !important;
+}

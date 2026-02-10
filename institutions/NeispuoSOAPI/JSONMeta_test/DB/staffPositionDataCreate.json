@@ -1,0 +1,25 @@
+{
+"template": "SELECT /**select**/ FROM [inst_basic].[InstitutionAll] I  /**where**/ /**orderby**/",
+"columns": [
+    {
+        "column": "I.DetailedSchoolTypeID AS detailedSchoolTypeID"
+    }
+],
+"params": [
+    {
+        "param": "@instid",
+        "column": "I.InstitutionID",
+        "operator": "=",
+        "value": "instid",
+        "type": "int",
+        "logical_operator": "and",
+        "static": false
+      }
+],
+"order": [
+
+],
+"inSelects": [
+
+]
+}

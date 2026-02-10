@@ -1,0 +1,351 @@
+{
+  "template": "SELECT /**select**/ FROM [sob].[SubmissionData] I JOIN [inst_nom].[SpecialInstitution] SI ON I.InstitutionID=SI.InstitutionID JOIN [core].[Institution] C ON I.InstitutionID=C.InstitutionID JOIN [inst_nom].[InstIsOpenCampaign] IIC ON I.InstitutionID=IIC.InstitutionID /**where**/ /**orderby**/",
+  "columns": [
+        {
+          "column": "I.SubmissionDataID AS id"
+        },
+		{
+          "column": "I.Comment AS comment"
+        },
+		{
+          "column": "I.SubmissionStatusID AS submissionStatusID"
+        },
+		{
+          "column": "SI.SpecialInstType AS specialInstType"
+        },
+		{
+          "column": "C.Bulstat AS eik"
+        },
+		{
+          "column": "IIC.IsOpen AS isOpen"
+        }
+  ],
+  "params": [
+	{
+          "param": "@instid",
+          "column": "I.InstitutionID",
+          "operator": "=",
+          "value": "instid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+    },
+	{
+          "param": "@submissionDataID",
+          "column": "I.SubmissionDataID",
+          "operator": "=",
+          "value": "submissionDataID",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "I.InstitutionID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+  {
+      "arrayName": "validationData",
+      "template": "SELECT /**select**/ FROM [sob].[SubmissionDetail] SS /**where**/ /**orderby**/",
+	  "columns": [
+        {
+          "column": "SS.SubmissionDetailID AS id"
+        },
+		{
+          "column": "SS.SysUserID AS validationSysUserID"
+        },
+		{
+          "column": "SS.UserTypeID AS validationSignDataType"
+        },
+		{
+          "column": "SS.EventDate AS validationSignDate"
+        }		
+      ],
+      "params": [
+		{
+          "param": "@userType",
+          "column": "SS.UserTypeID",
+          "operator": "=",
+          "value": 0,
+          "type": "int",
+          "logical_operator": "and",
+          "static": true
+		},
+		{
+          "param": "@submissionDataID",
+          "column": "SS.SubmissionDataID",
+          "operator": "=",
+          "value": "submissionDataID",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+		},
+		{
+          "param": "@eventTypeID",
+          "column": "SS.EventTypeID",
+          "operator": "=",
+          "value": 0,
+          "type": "int",
+          "logical_operator": "and",
+          "static": true
+		}
+      ],
+      "order": [
+
+      ]
+    },
+    {
+      "arrayName": "accountantSignData",
+      "template": "SELECT /**select**/ FROM [sob].[SubmissionDetail] SS /**where**/ /**orderby**/",
+	  "columns": [
+        {
+          "column": "SS.SubmissionDetailID AS id"
+        },
+		{
+          "column": "SS.SysUserID AS accountantSysUserID"
+        },
+		{
+          "column": "SS.SignerName AS accountantSignerName"
+        },
+		{
+          "column": "SS.UserTypeID AS accountantSignDataType"
+        },
+		{
+          "column": "SS.EventDate AS accountantSignDate"
+        }		
+      ],
+      "params": [
+		{
+          "param": "@userType",
+          "column": "SS.UserTypeID",
+          "operator": "=",
+          "value": 1,
+          "type": "int",
+          "logical_operator": "and",
+          "static": true
+		},
+		{
+          "param": "@submissionDataID",
+          "column": "SS.SubmissionDataID",
+          "operator": "=",
+          "value": "submissionDataID",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+		}
+      ],
+      "order": [
+
+      ]
+    },
+	{
+      "arrayName": "directorSignData",
+      "template": "SELECT /**select**/ FROM [sob].[SubmissionDetail] SS /**where**/ /**orderby**/",
+	  "columns": [
+        {
+          "column": "SS.SubmissionDetailID AS id"
+        },
+		{
+          "column": "SS.SysUserID AS directorSysUserID"
+        },
+		{
+          "column": "SS.SignerName AS directorSignerName"
+        },
+		{
+          "column": "SS.UserTypeID AS directorSignDataType"
+        },
+		{
+          "column": "SS.EventDate AS directorSignDate"
+        }		
+      ],
+      "params": [
+		{
+          "param": "@userType",
+          "column": "SS.UserTypeID",
+          "operator": "=",
+          "value": 2,
+          "type": "int",
+          "logical_operator": "and",
+          "static": true
+		},
+		{
+          "param": "@submissionDataID",
+          "column": "SS.SubmissionDataID",
+          "operator": "=",
+          "value": "submissionDataID",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+		}
+      ],
+      "order": [
+
+      ]
+    },
+	{
+      "arrayName": "budgetingInstitutionSignData",
+      "template": "SELECT /**select**/ FROM [sob].[SubmissionDetail] SS /**where**/ /**orderby**/",
+	  "columns": [
+        {
+          "column": "SS.SubmissionDetailID AS id"
+        },
+		{
+          "column": "SS.SysUserID AS budgetingInstitutionSysUserID"
+        },
+		{
+          "column": "SS.SignerName AS budgetingInstitutionSignerName"
+        },
+		{
+          "column": "SS.Comment AS budgetingInstitutionComment"
+        },
+		{
+          "column": "SS.UserTypeID AS budgetingInstitutionSignDataType"
+        },
+		{
+          "column": "SS.EventDate AS budgetingInstitutionSignDate"
+        }		
+      ],
+      "params": [
+		{
+          "param": "@userType",
+          "column": "SS.UserTypeID",
+          "operator": "=",
+          "value": 3,
+          "type": "int",
+          "logical_operator": "and",
+          "static": true
+		},
+		{
+          "param": "@submissionDataID",
+          "column": "SS.SubmissionDataID",
+          "operator": "=",
+          "value": "submissionDataID",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+		}
+      ],
+      "order": [
+
+      ]
+    },
+		{
+      "arrayName": "directorConfirmationSignData",
+      "template": "SELECT /**select**/ FROM [sob].[SubmissionDetail] SS /**where**/ /**orderby**/",
+	  "columns": [
+        {
+          "column": "SS.SubmissionDetailID AS id"
+        },
+		{
+          "column": "SS.SysUserID AS directorConfirmationSysUserID"
+        },
+		{
+          "column": "SS.UserTypeID AS directorConfirmationSignDataType"
+        },
+		{
+          "column": "SS.SignerName AS directorConfirmationSignerName"
+        },
+		{
+          "column": "SS.EventDate AS directorConfirmationSignDate"
+        }		
+      ],
+      "params": [
+		{
+          "param": "@userType",
+          "column": "SS.UserTypeID",
+          "operator": "=",
+          "value": 4,
+          "type": "int",
+          "logical_operator": "and",
+          "static": true
+		},
+		{
+          "param": "@submissionDataID",
+          "column": "SS.SubmissionDataID",
+          "operator": "=",
+          "value": "submissionDataID",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+		}
+      ],
+      "order": [
+
+      ]
+    },
+	{
+      "arrayName": "directorConfirmationAfterBISignData",
+      "template": "SELECT /**select**/ FROM [sob].[SubmissionDetail] SS /**where**/ /**orderby**/",
+	  "columns": [
+        {
+          "column": "SS.SubmissionDetailID AS id"
+        },
+		{
+          "column": "SS.SysUserID AS directorConfirmationAfterBISysUserID"
+        },
+		{
+          "column": "SS.UserTypeID AS directorConfirmationAfterBISignDataType"
+        },
+		{
+          "column": "SS.SignerName AS directorConfirmationAfterBISignerName"
+        },
+		{
+          "column": "SS.EventDate AS directorConfirmationAfterBISignDate"
+        }		
+      ],
+      "params": [
+		{
+          "param": "@userType",
+          "column": "SS.UserTypeID",
+          "operator": "=",
+          "value": 5,
+          "type": "int",
+          "logical_operator": "and",
+          "static": true
+		},
+		{
+          "param": "@submissionDataID",
+          "column": "SS.SubmissionDataID",
+          "operator": "=",
+          "value": "submissionDataID",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+		}
+      ],
+      "order": [
+
+      ]
+    },
+	{
+      "arrayName": "generateCertificateData",
+      "template": "SELECT /**select**/ FROM [so].[SubmissionCertificate] SC /**where**/ /**orderby**/",
+	  "columns": [
+        {
+          "column": "SC.SubmissionCertificateID AS id"
+        },
+		{
+          "column": "SC.GenerateCertificateFile AS generateCertificateButton"
+        }		
+      ],
+      "params": [
+		{
+          "param": "@submissionDataID",
+          "column": "SC.SubmissionDataID",
+          "operator": "=",
+          "value": "submissionDataID",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+		}
+      ],
+      "order": [
+
+      ]
+    }
+	 
+  ]
+}

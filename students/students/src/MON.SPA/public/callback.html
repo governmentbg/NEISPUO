@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Моля, изчакайте...</title>
+</head>
+
+<body>
+  <script src="js/oidc-client.min.js"></script>
+  <script src="js/crypto-js/crypto-js.js"></script>
+  <script src="js/SecureStorageStateStore.js"></script>
+  <script>
+
+    var mgr = new Oidc.UserManager({ response_mode: 'query', userStore: new SecureStorageStateStore() }).signinRedirectCallback().then(function (user) {
+      console.log("signin response success", user);
+        if (user.state){
+             window.history.replaceState({}, window.document.title, window.location.origin + window.location.pathname);
+             window.location = location.href.substring(0, location.href.lastIndexOf("/")) + (user.state.redirect || "/");
+           }
+          else
+          {
+            let href = window.location.href;
+            let dir = href.substring(0, href.lastIndexOf('/')) + "/";
+            window.location.href = dir;
+          }
+        }).catch(function (err) {
+          console.log(err);
+            let href = window.location.href;
+            let dir = href.substring(0, href.lastIndexOf('/')) + "/errors/AuthenticationError";
+            window.location.href = dir;
+        });
+
+  </script>
+</body>
+
+</html>

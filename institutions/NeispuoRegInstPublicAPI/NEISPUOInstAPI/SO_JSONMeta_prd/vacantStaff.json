@@ -1,0 +1,57 @@
+{
+    "label": "Незаети щатни бройки",
+    "sections": [
+        {
+            "order": 1,
+            "table": {
+                "name": "staff",
+                "searchable": true,
+                "searchType": "column",
+                "formName":  "vacantStaffData",
+                "paramName": "vacantStaffID",
+                "createNew": "samePage",
+                "canDeleteRow": true,
+                "procedureName": "inst_year.vacantStaffCUD",
+                "fields": [
+                    {
+                        "label": "Вид персонал",
+                        "name": "staffTypeID",
+                        "type": "input",
+                        "inputType": "text",
+                        "width": 30,
+                        "order": 1
+                    },
+                    {
+                      "label": "Длъжност",
+                      "name": "nkpdPositionID",
+                      "type": "input",
+                      "inputType": "text",
+                      "width": 50,
+                      "order": 2
+                    },
+                    {
+                      "name": "breakpoint",
+                      "type": "breakpoint",
+                      "order": 3
+                    },
+                    {
+                      "label": "Щатно място по",
+                      "name": "positionSubjectGroupID",
+                      "type": "input",
+                      "inputType": "text",
+                      "width": 30,
+                      "order": 4
+                    },
+                    {
+                      "label": "Щатни бройки",
+                      "name": "positionCount",
+                      "type": "input",
+                      "inputType": "text",
+                      "width": 10,
+                      "order": 5
+                    }
+                ]
+            }
+        }
+    ]
+}

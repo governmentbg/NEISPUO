@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Dapper" Version="2.0.78" />
+		<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Razor" Version="2.2.0" />
+		<PackageReference Include="Microsoft.Extensions.Options" Version="3.1.0" />
+		<PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\MonProjects.Configurations\MonProjects.Configurations.csproj" />
+		<ProjectReference Include="..\MonProjects.Constants\MonProjects.Constants.csproj" />
+		<ProjectReference Include="..\MonProjects.Exceptions\MonProjects.Exceptions.csproj" />
+	</ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="MsSql\" />
+  </ItemGroup>
+
+</Project>

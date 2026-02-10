@@ -1,0 +1,13 @@
+<div class="second-nav">
+  <div class="row">
+    <div class="col-12 col-lg-10 -mt-4">
+      <ol class="breadcrumb">
+        <li *ngFor="let breadcrumb of breadcrumbs">
+          <span [routerLink]="breadcrumb.url" routerLinkActive="active">
+            {{ breadcrumb.label }}
+          </span>
+        </li>
+      </ol>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,81 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_basic].[PersonAll] P /**where**/ /**orderby**/",
+  "sotemplate": "SELECT /**select**/ FROM [inst_basic].[PersonAll] P /**where**/ /**orderby**/",
+
+  "columns": [
+		{
+          "column": "P.FirstName AS firstName"
+        },
+		{
+          "column": "P.MiddleName AS middleName"
+        },
+		{
+          "column": "P.LastName AS lastName"
+        },
+		{
+          "column": "P.PersonalIDTypeDecode AS personalIDType"
+        },
+		{
+          "column": "P.PersonalID AS personalID"
+        },
+		{
+          "column": "P.GenderDecode AS gender"
+        },
+		{
+          "column": "P.BirthDate AS birthDate"
+        },
+		{
+          "column": "P.PermanentRegion AS permanentRegion"
+        },
+		{
+          "column": "P.PermanentMunicipality AS permanentMunicipality"
+        },
+		{
+          "column": "P.PermanentTown AS permanentTown"
+        },
+		{
+          "column": "P.PermanentAddress AS permanentAddress"
+        },
+		{
+          "column": "P.CurrentRegion AS currentRegion"
+        },
+		{
+          "column": "P.CurrentMunicipality AS currentMunicipality"
+        },
+		{
+          "column": "P.CurrentTown AS currentTown"
+        },
+		{
+          "column": "P.CurrentAddress AS currentAddress"
+        },
+		{
+          "column": "P.PublicEduNumber AS publicEduNumber"
+        },
+		{
+          "column": "P.NationalityName AS nationality"
+        },
+		{
+          "column": "P.BirthPlaceTownName AS birthPlaceTown"
+        },
+		{
+          "column": "P.BirthPlaceCountryName AS birthPlaceCountry"
+        }		
+  ],
+  "params": [
+	{
+          "param": "@personid",
+          "column": "P.PersonID",
+          "operator": "=",
+          "value": "personid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+    }	
+  ],
+  "order": [
+
+  ],
+  "inSelects": [
+  	
+  ]
+}

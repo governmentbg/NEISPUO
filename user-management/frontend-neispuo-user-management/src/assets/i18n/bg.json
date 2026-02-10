@@ -1,0 +1,238 @@
+{
+    "DASHBOARD": {
+        "MENU": {
+            "TITLE": "Табло за управление",
+            "OPTIONS": {
+                "MAIN_PORTAL": "Към табло за управление"
+            }
+        }
+    },
+    "USERMENU": {
+        "MENU": {
+            "OPTIONS": {
+                "EXIT": "Изход"
+            }
+        }
+    },
+    "SIDEMENU": {
+        "SECTION": {
+            "TITLE": {
+                "USERS": {
+                    "NEISPUO": "Потребители - НЕИСПУО",
+                    "EXTERNAL": "Потребители - Azure",
+                    "SYNCRONIZATION": "Azure - Синхронизация",
+                    "ADMIN": "Администриране"
+                }
+            }
+        },
+        "TAB": {
+            "TITLE": {
+                "HOME": "Начало",
+                "TEACHERS": "Персонал",
+                "TEACHER_CLASSES": "Моите класове",
+                "TEACHERS_UPDATE": "Редакция учител",
+                "ROLES_UPDATE": "Управление на достъп",
+                "ROLE_AUDIT": "Одит на права",
+                "LOGIN_AUDIT": "Одит на достъпа",
+                "STUDENTS": "Ученици",
+                "STUDENTS_UPDATE": "Редакция ученик",
+                "PARENTS": "Родители",
+                "INSTITUTIONS": "Институции",
+                "INSTITUTIONS_UPDATE": "Редакция институция",
+                "MON": "МОН",
+                "RUO": "РУО",
+                "MUNICIPALITIES": "Общини",
+                "BUDGET_INSTITUTIONS": "Финансиращи институции",
+                "OTHER_USERS": "Други",
+                "USERS": "Потребители",
+                "CLASSES": "Класове",
+                "ORGANIZATIONS": "Организации",
+                "ENROLLMENTS": "Записвания",
+                "ERRORS": "Грешки",
+                "CREATE_USER": "Създаване на потребител",
+                "JOBS": "Панел",
+                "UNAUTHORIZED": "Нямате достъп"
+            }
+        }
+    },
+    "CONTENT": {
+        "TOOLBAR": {
+            "EXPORT": {
+                "BUTTON": {
+                    "LABEL": {
+                        "LOADING": "Моля изчакайте",
+                        "NOT_LOADING": "Изтегли",
+                        "ADD": "Добави",
+                        "REMOVE": "Премахни"
+                    }
+                }
+            }
+        }
+    },
+    "FOOTER": {
+        "CONTENT": {
+            "TEXT1": "&copy; Министерство на образованието и науката",
+            "TEXT2": "За въпроси, моля да използвате ",
+            "TEXT3": "системата за поддръжка"
+        }
+    },
+    "PRIMENG": {
+        "TITLE": {
+            "SAVE": "Запази",
+            "LOADING": "Моля изчакайте",
+            "CANCEL": "Откажи",
+            "TOGGLE": "Смени",
+            "CONVERT_USER": "Конвертирай към учител",
+            "SYNC_USER": "Обнови потребител",
+            "CREATE_USER": "Създай потребител",
+            "GENERATE_CODE": "Генерирай код",
+            "REFRESH": "Обнови",
+            "SEARCH": "Търсене",
+            "WORKFLOW_RESTART": "Рестартирай процес",
+            "ROLES_MANAGEMENT": "Роли",
+            "SCHOOL_BOOKS_ACCESS": "Достъп до дневник",
+            "SCHOOL_BOOKS_ACCESS_REMOVE": "Премахни достъп до дневник",
+            "IMPERSONATION": "Имперсонация",
+            "SYNC_HISTORY": "История на синхронизации",
+            "RELOAD_ACTIVE_YEAR": "Презареди активна година",
+            "SYS_USER_TABLE": "Системен потребител",
+            "AZURE_DATA": "Данни в Azure",
+            "LOAD_WITH": "Зареди с",
+            "PUBLIC_EDU_NUMBER": "ЛОН",
+            "AZURE_ID": "Azure ID",
+            "SCHOOL_PROFILE": "Профил Училище",
+            "ADD_STUDENT": "Добави ученик",
+            "ADD_PARENT": "Добави родител",
+            "ADD": "Добави",
+            "REMOVE": "Премахни",
+            "EMAIL": "Имейл",
+            "GIVE_SCHOOL_BOOKS_ACCESS": "Дай достъп до дневник",
+            "IDENTIFIER": "Идентификатор"
+        },
+        "DYNAMIC_DIALOG": {
+            "SELECT_SCHOOL_BOOKS_HEADER": "Избор на дневник"
+        },
+        "CONFIRM_DIALOG": {
+            "HEADER": "Потвърждение",
+            "SUMMARY": {
+                "UPDATE_SCHOOL_BOOK_CODE": "Кодът беше успешно променен."
+            },
+            "MESSAGE": {
+                "UPDATE_SCHOOL_BOOK_CODE": "При регенериране на код за дневника на ученик родители, използващи текущия код, ще загубят достъп до дневника на ученика. Желаете ли да продължите?",
+                "DELETE_SCHOOL_BOOK_ACCESS": "Сигурни ли сте, че искате да прекратите този достъп?",
+                "DELETE_SELECTED_SCHOOL_BOOK_ACCESSES": "Сигурни ли сте, че искате да отнемете избраните достъпи до дневници?",
+                "ARE_YOU_SURE": "Сигурни ли сте?"
+            },
+            "BUTTON": {
+                "CONFIRM": "Да",
+                "DECLINE": "Не"
+            }
+        },
+        "MULTISELECT": {
+            "LABEL": {
+                "EMPTY": "Няма допълнителни полета",
+                "NO_MORE_SCHOOL_BOOKS": "Няма намерени дневници",
+                "PLACEHOLDER": "Още филтри"
+            }
+        },
+        "TOASTR": {
+            "SUMMARY": {
+                "RESTART_WORKFLOW": "Успешно рестартирахте работния процес.",
+                "GIVE_SCHOOL_BOOK_ACCESS": "Успешно даване на достъп до дневници.",
+                "DELETE_SCHOOL_BOOK_ACCESS": "Успешно прекратяване на достъп до дневници.",
+                "UPDATE_SCHOOL_BOOK_ACCESS": "Успешно обновяване на достъп до дневник.",
+                "ERROR": "Възникна грешка"
+            }
+        },
+        "DROPDOWN": {
+            "PLACEHOLDER": "Избери"
+        },
+        "INPUT": {
+            "PLACEHOLDER": "Търси",
+            "START_SEARCH": "Започнете като въведете данни в полето за търсене."
+        },
+        "CALENDAR": {
+            "PLACEHOLDER": "Търси",
+            "dayNames": ["Неделя", "Понеделник", "Втoрник", "Сряда", "Четвъртък", "Петък", "Събота"],
+            "dayNamesShort": ["Нед", "Пон", "Втор", "Ср", "Четв", "Пет", "Съб"],
+            "dayNamesMin": ["Н", "П", "В", "С", "Ч", "П", "С"],
+            "monthNames": [
+                "Януари",
+                "Февруари",
+                "Март",
+                "Април",
+                "Май",
+                "Юни",
+                "Юли",
+                "Август",
+                "Септември",
+                "Октомври",
+                "Ноември",
+                "Декември"
+            ],
+            "monthNamesShort": ["Ян", "Фев", "Март", "Април", "Май", "Юни", "Юли", "Авг", "Сеп", "Окт", "Ноем", "Дек"],
+            "today": "Днес",
+            "clear": "Изчисти"
+        },
+        "TABLE": {
+            "FIELD": {
+                "SCHOOL_YEAR": "Учебна година",
+                "SCHOOL_BOOK": "Дневник",
+                "ADMIN_ACCESS": "Админ достъп"
+            }
+        },
+        "ERROR": {
+            "LOADING_DATA": "Възникна грешка при зареждане на данните."
+        },
+        "NO_DATA_FOUND": "Няма намерени данни.",
+        "LABEL": {
+            "SELECT_YEARS": "Изберете години",
+            "LOAD_ENROLLMENTS": "Зареди записвания"
+        },
+        "TAB": {
+            "SYNC": "Синхронизации",
+            "ENROLLMENTS": "Записвания"
+        }
+    },
+    "ADMIN": "Администратор",
+    "true": "Да",
+    "false": "Не",
+    "AWAITING_CREATION": "Изчаква създаване",
+    "IN_CREATION": "В процес на създаване",
+    "FAILED": "Несъздаден",
+    "SUCCESSFUL": "Създаден",
+    "SYNCHRONIZED": "Синхронизиран",
+    "FAILED_CREATION": "Грешка при създаване",
+    "FAILED_SYNCRONIZATION": "Грешка при синхронизиране",
+    "FAILED_USERNAME_GENERATION": "Грешка при създаване на потребителско име",
+    "IN_USERNAME_GENERATION": "В процес на създаване на потребителско име",
+    "STUCK": "В безкраен цикъл",
+    "SCHOOL_CREATE": "Създаване на училище",
+    "SCHOOL_UPDATE": "Промяна на училище",
+    "SCHOOL_DELETE": "Изтриване на училище",
+    "CLASS_CREATE": "Създаване на клас",
+    "CLASS_UPDATE": "Промяна на клас",
+    "CLASS_DELETE": "Изтриване на клас",
+    "USER_CREATE": "Създаване на потребител",
+    "USER_UPDATE": "Промяна на потребител",
+    "USER_DELETE": "Изтриване на потребител",
+    "ENROLLMENT_CREATE": "Създаване на записване",
+    "ENROLLMENT_CLASS_CREATE": "Създаване на записване в клас",
+    "ENROLLMENT_SCHOOL_CREATE": "Създаване на записване в училище",
+    "ENROLLMENT_DELETE": "Изтриване на записване",
+    "ENROLLMENT_CLASS_DELETE": "Изтриване на записване в клас",
+    "ENROLLMENT_SCHOOL_DELETE": "Изтриване на записване в училище",
+    "CHOOSE": "Избери",
+    "INSERT": "Добавяне",
+    "DELETE": "Изтриване",
+    "NO": "Не",
+    "YES": "Да",
+    "PROFILE": {
+        "NEISPUO": "НЕИСПУО Профил",
+        "TAB": {
+            "PROFILE": "Профил",
+            "SCHOOL_ENROLLMENTS": "Записвания в училища",
+            "CLASS_ENROLLMENTS": "Записвания в класове"
+        }
+    }
+}

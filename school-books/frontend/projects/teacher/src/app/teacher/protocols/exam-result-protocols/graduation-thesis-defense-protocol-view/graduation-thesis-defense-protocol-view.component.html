@@ -1,0 +1,141 @@
+<form [formGroup]="form" autocomplete="off" novalidate>
+  <sb-card>
+    <ng-container card-title>
+      {{
+        data.graduationThesisDefenseProtocol == null
+          ? 'Създаване на протокол на комисията за оценяване на изпит чрез защитa на дипломен проект - част по теория на професията'
+          : 'Редакция на протокол на комисията за оценяване на изпит чрез защитa на дипломен проект - част по теория на професията'
+      }}
+    </ng-container>
+    <sb-editor-panel
+      [backBtnRouteCommands]="data.graduationThesisDefenseProtocol == null ? ['../'] : ['../../']"
+      card-buttons
+      [editBtnHidden]="!canEdit"
+      [isNew]="data.graduationThesisDefenseProtocol == null"
+      (save)="onSave($event)"
+    >
+      <a
+        [href]="downloadUrl"
+        class="mr-3"
+        disabled-mode-buttons
+        target="_blank"
+        download
+        color="primary"
+        mat-raised-button
+        [disabled]="!downloadUrl || loading"
+      >
+        <fa-icon [icon]="loading ? fasSpinnerThird : fasFileWord" [spin]="loading" size="lg"></fa-icon>
+        <span>Свали</span>
+      </a>
+      <a
+        [href]="downloadTemplateUrl"
+        class="mr-3"
+        new-mode-buttons
+        target="_blank"
+        download
+        color="primary"
+        mat-raised-button
+        [disabled]="!downloadTemplateUrl || loadingTemplate"
+      >
+        <fa-icon [icon]="loadingTemplate ? fasSpinnerThird : fasFileWord" [spin]="loadingTemplate" size="lg"></fa-icon>
+        <span>Свали шаблон</span>
+      </a>
+      <a
+        [href]="downloadTemplateUrl"
+        class="mr-3"
+        disabled-mode-buttons
+        target="_blank"
+        download
+        color="primary"
+        mat-raised-button
+        [disabled]="!downloadTemplateUrl || loadingTemplate"
+      >
+        <fa-icon [icon]="loadingTemplate ? fasSpinnerThird : fasFileWord" [spin]="loadingTemplate" size="lg"></fa-icon>
+        <span>Свали шаблон</span>
+      </a>
+      <button
+        *ngIf="canRemove"
+        disabled-mode-buttons
+        mat-raised-button
+        color="warn"
+        type="button"
+        (click)="onRemove()"
+        [disabled]="removing"
+      >
+        <fa-icon [icon]="removing ? fasSpinnerThird : fasTrashAlt" [spin]="removing" size="lg"></fa-icon>
+        <span class="hidden sm:inline">Премахни</span>
+      </button>
+    </sb-editor-panel>
+    <ng-container card-body>
+      <sb-banner type="error" class="mb-5" *ngFor="let error of errors">{{ error }}</sb-banner>
+
+      <sb-text-field
+        class="-mt-5 col-start-1 col-span-full whitespace-pre-wrap"
+        label="Вид на протокола"
+        formControlName="protocolName"
+        [readonly]="true"
+      ></sb-text-field>
+      <div class="sm:grid grid-cols-3 gap-x-4 mb-2">
+        <sb-text-field label="Номер на протокола" formControlName="protocolNumber"></sb-text-field>
+
+        <sb-date-field label="Дата на протокола" formControlName="protocolDate"></sb-date-field>
+
+        <sb-text-field class="col-start-1" label="Сесия" formControlName="sessionType"></sb-text-field>
+
+        <sb-nom-select
+          label="Форма на обучение"
+          formControlName="eduFormId"
+          [nomService]="eduFormNomsService"
+        ></sb-nom-select>
+
+        <sb-date-field label="Дата на събиране на комисията" formControlName="commissionMeetingDate"></sb-date-field>
+
+        <sb-text-field label="Номер на заповедта на директора" formControlName="directorOrderNumber"></sb-text-field>
+
+        <sb-date-field label="Дата на заповедта на директора" formControlName="directorOrderDate"></sb-date-field>
+
+        <sb-nom-select
+          label="Директор"
+          formControlName="directorPersonId"
+          [nomService]="instTeacherNomsService"
+        ></sb-nom-select>
+
+        <sb-card-section class="col-span-full">Комисия</sb-card-section>
+        <sb-nom-select
+          class="col-start-1 col-span-full"
+          label="Председател на комисията"
+          formControlName="commissionChairman"
+          [nomService]="instTeacherNomsService"
+        ></sb-nom-select>
+
+        <sb-nom-select
+          class="col-start-1 col-span-full"
+          label="Членове на комисията"
+          formControlName="commissionMembers"
+          [nomService]="instTeacherNomsService"
+          [multiple]="true"
+        ></sb-nom-select>
+
+        <sb-number-field
+          label="Брой ученици от първа секция"
+          formControlName="section1StudentsCapacity"
+        ></sb-number-field>
+
+        <sb-number-field
+          label="Брой ученици от втора секция"
+          formControlName="section2StudentsCapacity"
+        ></sb-number-field>
+
+        <sb-number-field
+          label="Брой ученици от трета секция"
+          formControlName="section3StudentsCapacity"
+        ></sb-number-field>
+
+        <sb-number-field
+          label="Брой ученици от четвърта секция"
+          formControlName="section4StudentsCapacity"
+        ></sb-number-field>
+      </div>
+    </ng-container>
+  </sb-card>
+</form>

@@ -1,0 +1,182 @@
+body {
+    /* background: url('../img/stamp-background.png'); */
+    margin: 0px;
+    height: 100%;
+    /* background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover; */
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+/*input,
+select,
+textarea {
+    max-width: 280px;
+}*/
+
+/*custom*/
+
+
+/**upload pics*/
+.upload-custom {
+    position: relative;
+    overflow: hidden;
+    float: left;
+    clear: left;
+}
+
+    .upload-custom input[type="file"] {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        opacity: 0;
+        font-size: 100px;
+        filter: alpha(opacity=0);
+        cursor: pointer;
+    }
+
+.upload-img {
+    width: 165px;
+    height: 60px;
+}
+
+
+/* end file upload*/
+.col-lg-1-custom {
+    width: 130px;
+}
+
+.icon-small-custom {
+    width: 25px;
+    height: 25px;
+}
+
+.icon-middle-custom {
+    width: 50px;
+    height: 50px;
+}
+
+.loadingDiv {
+    display: none;
+}
+
+.logo {
+    height: 130px;
+    text-align: center;
+    margin: auto;
+}
+
+.line {
+    border: solid;
+    border-color: #000000;
+    padding: 0px;
+    border-width: 0.5px;
+    width: 100%;
+}
+
+.line-nav {
+    border: solid;
+    border-color: #f8f6b8; /*ffd800*/
+    padding: 0px;
+    border-width: 6px;
+    width: 100%;
+}
+
+.right {
+    float: right;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+.text-blue {
+    color: #317eac;
+}
+
+.first-line {
+    text-indent: 30px;
+}
+
+.modal-dialog-custom {
+    width: 1200px;
+}
+
+.modal-dialog-custom-sm {
+    width: 360px;
+}
+
+.padding-custom {
+    padding: 10px;
+}
+
+.margin-custom {
+    margin: 10px;
+}
+
+.font-size-custom {
+    font-size: 20px;
+}
+
+.margin-custom-bottom {
+    margin-bottom: 25px;
+}
+
+/*alert custom formating*/
+
+.alert {
+    margin: 5px;
+}
+
+/*start of panel filter table css*/
+.filterable {
+    margin-top: 15px;
+}
+
+    .filterable .panel-heading .pull-right {
+        margin-top: -20px;
+    }
+
+    .filterable .filters input[disabled] {
+        background-color: transparent;
+        border: none;
+        cursor: auto;
+        box-shadow: none;
+        padding: 0;
+        height: auto;
+    }
+
+        .filterable .filters input[disabled]::-webkit-input-placeholder {
+            color: #333;
+        }
+
+        .filterable .filters input[disabled]::-moz-placeholder {
+            color: #333;
+        }
+
+        .filterable .filters input[disabled]:-ms-input-placeholder {
+            color: #333;
+        }
+
+.tab-content {
+    border: 1px solid #428bca;
+}
+
+/*end of panel filter table css*/

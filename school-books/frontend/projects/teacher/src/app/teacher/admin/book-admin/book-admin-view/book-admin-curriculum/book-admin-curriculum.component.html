@@ -1,0 +1,52 @@
+<sb-tab-card [hideHeader]="true">
+  <ng-container card-body>
+    <sb-table [dataSource]="dataSource" [displayedColumns]="displayedColumns">
+      <ng-container cdkColumnDef="action">
+        <th cdk-header-cell *cdkHeaderCellDef></th>
+        <td cdk-cell *cdkCellDef="let row" class="sb-table-action">
+          <button
+            (click)="
+              openCurriculumDialog(
+                row.curriculumId,
+                row.subjectName,
+                row.subjectTypeName,
+                row.teacherNames,
+                row.withoutGrade
+              )
+            "
+            aria-label="Редактирай"
+            class="sb-link-btn"
+          >
+            <fa-icon [icon]="fadChevronCircleRight"></fa-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="subjectName">
+        <th cdk-header-cell *cdkHeaderCellDef>Предмет</th>
+        <td cdk-cell *cdkCellDef="let row">
+          {{
+            (!row.curriculumGroupName ? row.subjectName : row.subjectName + ' - ' + row.curriculumGroupName) +
+              (row.isIndividualCurriculum ? ' (ИУП)' : '') +
+              (row.isIndividualLesson ? ' (ИЧ)' : '')
+          }}
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="subjectTypeName">
+        <th cdk-header-cell *cdkHeaderCellDef>Вид подготовка</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.subjectTypeName }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="teacherNames">
+        <th cdk-header-cell *cdkHeaderCellDef>Учители</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.teacherNames }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="withoutGrade">
+        <th cdk-header-cell *cdkHeaderCellDef>Без оценка</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.withoutGrade ? 'да' : 'не' }}</td>
+      </ng-container>
+    </sb-table>
+  </ng-container>
+</sb-tab-card>

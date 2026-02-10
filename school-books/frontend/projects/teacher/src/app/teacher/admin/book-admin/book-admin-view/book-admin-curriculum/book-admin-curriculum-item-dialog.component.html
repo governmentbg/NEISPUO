@@ -1,0 +1,14 @@
+<form [formGroup]="form" novalidate class="sm:w-96">
+  <div class="sb-btn-wrapper sb-btn-wrapper-right">
+    <button mat-raised-button color="primary" type="button" (click)="update()" [disabled]="loading">
+      <fa-icon [icon]="loading ? fasSpinnerThird : fasCheck" [spin]="loading" size="lg"></fa-icon>
+      <span>Запази</span>
+    </button>
+    <button mat-raised-button mat-dialog-close>Затвори</button>
+  </div>
+
+  <sb-text-field label="Предмет" formControlName="subjectName"></sb-text-field>
+  <sb-text-field label="Вид подготовка" formControlName="subjectTypeName"></sb-text-field>
+  <sb-text-field label="Учители" formControlName="teacherNames"></sb-text-field>
+  <mat-checkbox color="primary" formControlName="withoutGrade">Без оценка</mat-checkbox>
+</form>

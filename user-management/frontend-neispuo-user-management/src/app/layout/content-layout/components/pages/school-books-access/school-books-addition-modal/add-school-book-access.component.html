@@ -1,0 +1,36 @@
+<div class="row mb-3">
+    <div class="col-12">
+        <p-multiSelect
+            [options]="availableSchoolBooks$ | async"
+            [(ngModel)]="selectedSchoolBooks"
+            [emptyMessage]="CONSTANTS.PRIMENG_MULTISELECT_LABEL_NO_MORE_SCHOOL_BOOKS | translate"
+            optionLabel="label"
+            optionValue="code"
+            appendTo="body"
+            [disabled]="isLoading"
+        >
+        </p-multiSelect>
+    </div>
+</div>
+<div class="row">
+    <div class="col buttons-right">
+        <button
+            pButton
+            type="button"
+            label="{{ (isLoading ? CONSTANTS.PRIMENG_TITLE_LOADING : CONSTANTS.PRIMENG_TITLE_SAVE) | translate }}"
+            class="p-button-success"
+            [icon]="isLoading ? 'pi pi-spin pi-spinner' : 'pi pi pi-check'"
+            (click)="saveSchoolBooksAccess()"
+            [disabled]="isLoading"
+        ></button>
+        <button
+            pButton
+            type="button"
+            label="{{ CONSTANTS.PRIMENG_TITLE_CANCEL | translate }}"
+            class="p-button-outlined p-button-secondary ms-3"
+            [icon]="'pi pi-times'"
+            (click)="closeDialog()"
+            [disabled]="isLoading"
+        ></button>
+    </div>
+</div>

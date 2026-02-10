@@ -1,0 +1,22 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[BudgetingGroupPT] BGPT /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "BGPT.BudgetingGroupID as code"
+        },
+        {
+            "column": "BGPT.Description as label"
+        },
+		{
+            "column": "BGPT.IsValid as isValid"
+        }
+    ],
+    "params": [],
+    "order": [
+        {
+            "column": "BGPT.BudgetingGroupID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

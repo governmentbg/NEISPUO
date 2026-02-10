@@ -1,0 +1,44 @@
+<p-fieldset legend="Избор на институция">
+  <div class="grid fluid col-12">
+    <div class="col-12 pb-4">{{ procedureDescriptionText }}</div>
+    <div class="field form-wrapper col-12 col-md-6">
+      <label for="RIInstitution" class="form-wrapper-label label-postiton"> {{ miPickerLabel }} </label>
+      <p-dropdown
+        [filter]="true"
+        [autoDisplayFirst]="false"
+        inputId="RIInstitution"
+        [options]="activeMIs$ | async"
+        [ngModel]="miToUpdate$ | async"
+        optionLabel="DisplayValue"
+        [dataKey]="'RIInstitutionID'"
+        (onChange)="onMIToUpdateChange($event)"
+        [virtualScroll]="true"
+        [autoZIndex]="99999"
+        [autoZIndex]="false"
+        itemSize="25"
+      ></p-dropdown>
+    </div>
+    <ng-container *ngIf="miToUpdate$ | async as miToUpdate">
+      <div class="col-12">
+        <app-mi-preview-only
+          *ngIf="!!miToUpdate"
+          [resp]="miToUpdate"
+          [displayRIPremInstitution]="false"
+        ></app-mi-preview-only>
+      </div>
+
+      <div class="col-12">
+        <app-stepper-actions
+          [showBack]="true"
+          [backLabel]="'Назад'"
+          [backRouterLink]="['..', 'mis-to-delete']"
+          [showForward]="true"
+          [forwardLabel]="'Напред'"
+          [forwardRouterLink]="['..', 'ri-document']"
+          [disableForward]="!(miToUpdate)"
+          [showSubmit]="false"
+        ></app-stepper-actions>
+      </div>
+    </ng-container>
+  </div>
+</p-fieldset>

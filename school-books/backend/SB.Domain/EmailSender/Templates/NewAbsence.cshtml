@@ -1,0 +1,13 @@
+@{
+  var absenceTypeText = (string)Model["absenceTypeText"]!;
+  var curriculumName = (string)Model["curriculumName"]!;
+  var studentName = (string)Model["studentName"]!;
+}
+
+<th:block>
+  <th:block-row>
+    <th:p>
+      В НЕИСПУО има ново <strong>@absenceTypeText</strong> по <strong>@curriculumName</strong> на <strong>@studentName</strong>.
+    </th:p>
+  </th:block-row>
+</th:block>

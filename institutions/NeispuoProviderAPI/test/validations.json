@@ -1,0 +1,6162 @@
+{
+  "validations": {
+    "institution": {
+      "required": true,
+      "isArray": false,
+      "rules": [
+        {
+          "column": "institutionID",
+          "dataType": "NUMBER",
+          "minValue": 1,
+          "maxValue": 2999999,
+          "pattern": "",
+          "required": true,
+          "type": "ERROR"
+        },
+        {
+          "column": "schoolYear",
+          "dataType": "NUMBER",
+          "minValue": 2000,
+          "maxValue": 9999,
+          "pattern": "^\\d+$",
+          "required": true,
+          "type": "ERROR"
+        },
+        {
+          "column": "operationType",
+          "dataType": "ENUMERATION",
+          "values": [
+            "0"
+          ],
+          "required": true,
+          "type": "ERROR"
+        },
+        {
+          "column": "externalID",
+          "dataType": "STRING",
+          "minValue": 1,
+          "maxValue": 255,
+          "pattern": "",
+          "required": true,
+          "type": "ERROR"
+        }
+      ],
+      "children": {
+        "institutionDetail": {
+          "required": true,
+          "isArray": true,
+          "minOccurs": 0,
+          "maxOccurs": 1,
+          "rules": [
+            {
+              "column": "operationType",
+              "dataType": "ENUMERATION",
+              "values": [
+                "0",
+                "2"
+              ],
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "externalID",
+              "dataType": "STRING",
+              "minValue": 1,
+              "maxValue": 100,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "email",
+              "dataType": "STRING",
+              "pattern": "",
+              "minLenght": 1,
+              "maxLenght": 255,
+              "required": false,
+              "type": "WARNING"
+            },
+            {
+              "column": "website",
+              "dataType": "STRING",
+              "minLenght": 1,
+              "maxLenght": 50,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "establishedYear",
+              "dataType": "STRING",
+              "minValue": 1,
+              "maxValue": 255,
+              "pattern": "^\\d+$",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "constitActFirst",
+              "dataType": "STRING",
+              "minLenght": 1,
+              "maxLenght": 1024,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "constitActLast",
+              "dataType": "STRING",
+              "minLenght": 1,
+              "maxLenght": 1024,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "isODZ",
+              "dataType": "FLAG",
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "isProfSchool",
+              "dataType": "FLAG",
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "isProvideEduServ",
+              "dataType": "FLAG",
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "isDelegateBudget",
+              "dataType": "FLAG",
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "isNonIndDormitory",
+              "dataType": "FLAG",
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "isAppInnovSystem",
+              "dataType": "FLAG",
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "isNational",
+              "dataType": "FLAG",
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "bankBIC",
+              "dataType": "STRING",
+              "minLenght": 8,
+              "maxLenght": 8,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "bankIBAN",
+              "dataType": "STRING",
+              "minLenght": 20,
+              "maxLenght": 255,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "bankName",
+              "dataType": "STRING",
+              "minLenght": 1,
+              "maxLenght": 255,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "bankAccountHolder",
+              "dataType": "STRING",
+              "minLenght": 1,
+              "maxLenght": 255,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            }
+          ]
+        },
+        "institutionOtherData": {
+          "required": false,
+          "isArray": true,
+          "minOccurs": 0,
+          "maxOccurs": 1,
+          "rules": [
+            {
+              "column": "operationType",
+              "dataType": "ENUMERATION",
+              "values": [
+                "0",
+                "2"
+              ],
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "externalID",
+              "dataType": "STRING",
+              "minValue": 1,
+              "maxValue": 100,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "institutionOtherDataID",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 9999999999999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "schoolShiftTypeID",
+              "dataType": "NUMBER",
+              "minValue": -1,
+              "maxValue": 999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "pedagogStaffCount",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 9999,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "nonpedagogStaffCount",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 9999,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "staffCountAll",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 9999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "pedagogStaffSalary",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 99999999,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "nonPedagogStaffSalary",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 99999999,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "yearlyBudget",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 99999999999999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            }
+          ]
+        },
+        "institutionInnovations": {
+          "required": false,
+          "isArray": true,
+          "minOccurs": 0,
+          "maxOccurs": null,
+          "rules": [
+            {
+              "column": "operationType",
+              "dataType": "ENUMERATION",
+              "values": [
+                "0",
+                "1",
+                "2",
+                "3"
+              ],
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "externalID",
+              "dataType": "STRING",
+              "minValue": 1,
+              "maxValue": 100,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "institutionInnovationID",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 9999999999999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "innovationTypeID",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 999,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "notes",
+              "dataType": "STRING",
+              "minLenght": 0,
+              "maxLenght": 1024,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            }
+          ]
+        },
+        "institutionProjects": {
+          "required": false,
+          "isArray": true,
+          "minOccurs": null,
+          "maxOccurs": null,
+          "rules": [
+            {
+              "column": "operationType",
+              "dataType": "ENUMERATION",
+              "values": [
+                "0",
+                "1",
+                "2",
+                "3"
+              ],
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "externalID",
+              "dataType": "STRING",
+              "minValue": 1,
+              "maxValue": 100,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "institutionProjectID",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 9999999999999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "projectTypeID",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 99,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "projectProgramTypeID",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 99,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "startDate",
+              "dataType": "DATE",
+              "format": "yyyy-MM-dd",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "endDate",
+              "dataType": "DATE",
+              "format": "yyyy-MM-dd",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "name",
+              "dataType": "STRING",
+              "minLenght": 1,
+              "maxLenght": 255,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "website",
+              "dataType": "STRING",
+              "minLenght": 1,
+              "maxLenght": 50,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "description",
+              "dataType": "STRING",
+              "minLenght": 1,
+              "maxLenght": 3000,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "goals",
+              "dataType": "STRING",
+              "minLenght": 1,
+              "maxLenght": 3000,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "actualCountAll",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 99999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "actualHighSchoolCount",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 99999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "actualPreSchoolCount",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 99999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "actualPrimarySchoolCount",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 99999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "actualSecondarySchoolCount",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 99999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "interCountAll",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 99999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "interHighSchoolCount",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 99999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "interPreSchoolCount",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 99999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "interPrimarySchoolCount",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 99999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "interSecondarySchoolCount",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 99999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "planCountAll",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 99999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "planHighSchoolCount",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 99999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "planPreSchoolCount",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 99999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "planPrimarySchoolCount",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 99999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "planSecondarySchoolCount",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 99999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "isArchive",
+              "dataType": "FLAG",
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            }
+          ],
+          "children": {
+            "institutionProjectPartners": {
+              "required": false,
+              "isArray": true,
+              "minOccurs": null,
+              "maxOccurs": null,
+              "rules": [
+                {
+                  "column": "operationType",
+                  "dataType": "ENUMERATION",
+                  "values": [
+                    "0",
+                    "1",
+                    "2",
+                    "3"
+                  ],
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "externalID",
+                  "dataType": "STRING",
+                  "minValue": 1,
+                  "maxValue": 100,
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "institutionProjectPartnerID",
+                  "dataType": "NUMBER",
+                  "minValue": 0,
+                  "maxValue": 9999999999999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "eik",
+                  "dataType": "STRING",
+                  "minLenght": 9,
+                  "maxLenght": 13,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "name",
+                  "dataType": "STRING",
+                  "minLenght": 1,
+                  "maxLenght": 255,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "projectPartnerTypeID",
+                  "dataType": "NUMBER",
+                  "minValue": 0,
+                  "maxValue": 99,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "isCoordinator",
+                  "dataType": "FLAG",
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                }
+              ]
+            },
+            "institutionProjectPriorityAreas": {
+              "required": false,
+              "isArray": true,
+              "minOccurs": null,
+              "maxOccurs": null,
+              "rules": [
+                {
+                  "column": "operationType",
+                  "dataType": "ENUMERATION",
+                  "values": [
+                    "0",
+                    "1",
+                    "2",
+                    "3"
+                  ],
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "externalID",
+                  "dataType": "STRING",
+                  "minValue": 1,
+                  "maxValue": 100,
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "institutionProjectPriorityAreaID",
+                  "dataType": "NUMBER",
+                  "minValue": 0,
+                  "maxValue": 9999999999999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "projectPriorityAreaTypeID",
+                  "dataType": "NUMBER",
+                  "minValue": 0,
+                  "maxValue": 99,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                }
+              ]
+            }
+          }
+        },
+        "institutionPublicCouncil": {
+          "required": false,
+          "isArray": true,
+          "minOccurs": 0,
+          "maxOccurs": null,
+          "rules": [
+            {
+              "column": "operationType",
+              "dataType": "ENUMERATION",
+              "values": [
+                "0",
+                "1",
+                "2",
+                "3"
+              ],
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "externalID",
+              "dataType": "STRING",
+              "minValue": 1,
+              "maxValue": 100,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "institutionPublicCouncilID",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 9999999999999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "firstName",
+              "dataType": "STRING",
+              "minLenght": 1,
+              "maxLenght": 255,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "middleName",
+              "dataType": "STRING",
+              "minLenght": 1,
+              "maxLenght": 255,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "familyName",
+              "dataType": "STRING",
+              "minLenght": 1,
+              "maxLenght": 255,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "email",
+              "dataType": "STRING",
+              "pattern": "^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$",
+              "minLenght": 1,
+              "maxLenght": 50,
+              "required": false,
+              "type": "WARNING"
+            },
+            {
+              "column": "phoneNumber",
+              "dataType": "STRING",
+              "minLenght": 1,
+              "maxLenght": 150,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "publicCouncilRoleID",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 99,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "publicCouncilTypeID",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 99,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            }
+          ]
+        },
+        "institutionSchoolBoard": {
+          "required": false,
+          "isArray": true,
+          "minOccurs": 0,
+          "maxOccurs": null,
+          "rules": [
+            {
+              "column": "operationType",
+              "dataType": "ENUMERATION",
+              "values": [
+                "0",
+                "1",
+                "2",
+                "3"
+              ],
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "externalID",
+              "dataType": "STRING",
+              "minValue": 1,
+              "maxValue": 100,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "InstitutionSchoolBoardID",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 9999999999999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "firstName",
+              "dataType": "STRING",
+              "minLenght": 1,
+              "maxLenght": 255,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "middleName",
+              "dataType": "STRING",
+              "minLenght": 1,
+              "maxLenght": 255,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "familyName",
+              "dataType": "STRING",
+              "minLenght": 1,
+              "maxLenght": 255,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "schoolBoardRoleID",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 99,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "email",
+              "dataType": "STRING",
+              "pattern": "^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$",
+              "minLenght": 1,
+              "maxLenght": 50,
+              "required": false,
+              "type": "WARNING"
+            },
+            {
+              "column": "phoneNumber",
+              "dataType": "STRING",
+              "minLenght": 1,
+              "maxLenght": 150,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "helpStudentGovernment",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 1,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            }
+          ]
+        },
+        "institutionVehicles": {
+          "required": false,
+          "isArray": true,
+          "minOccurs": null,
+          "maxOccurs": null,
+          "rules": [
+            {
+              "column": "operationType",
+              "dataType": "ENUMERATION",
+              "values": [
+                "0",
+                "1",
+                "2",
+                "3"
+              ],
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "externalID",
+              "dataType": "STRING",
+              "minValue": 1,
+              "maxValue": 100,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "institutionVehicleID",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 9999999999999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "acquisitionWayTypeID",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 99,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "documentTypeID",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 99,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "documentNum",
+              "dataType": "STRING",
+              "minLenght": 1,
+              "maxLenght": 50,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "documentDate",
+              "dataType": "DATE",
+              "format": "yyyy-MM-dd",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "registrationNum",
+              "dataType": "STRING",
+              "minLenght": 1,
+              "maxLenght": 50,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "producedYear",
+              "dataType": "NUMBER",
+              "minValue": 1900,
+              "maxValue": 9999,
+              "pattern": "^\\d+$",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "placeCountTypeID",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 99,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            }
+          ]
+        },
+        "staffPositions": {
+          "required": false,
+          "isArray": true,
+          "minOccurs": 0,
+          "maxOccurs": null,
+          "rules": [
+            {
+              "column": "operationType",
+              "dataType": "ENUMERATION",
+              "values": [
+                "0",
+                "1",
+                "2"
+              ],
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "externalID",
+              "dataType": "STRING",
+              "minValue": 1,
+              "maxValue": 100,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "personID",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 9999999999999,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "staffPositionID",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 9999999999999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "staffOrd",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 999,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "staffPositionNo",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 999,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "contractTypeID",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 99,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "contractReasonID",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 99,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "contractNo",
+              "dataType": "STRING",
+              "minLenght": 1,
+              "maxLenght": 50,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "contractYear",
+              "dataType": "NUMBER",
+              "minValue": 1900,
+              "maxValue": 9999,
+              "pattern": "^\\d+$",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "contractWithID",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 99,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "staffTypeID",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 99,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "categoryStaffTypeID",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 999,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "positionKindID",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 99,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "positionCount",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 1,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "NKPDPositionID",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 999999,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "teachStageID",
+              "dataType": "NUMBER",
+              "minValue": -1,
+              "maxValue": 999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "positionSubjectGroupID",
+              "dataType": "NUMBER",
+              "minValue": -1,
+              "maxValue": 999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "isHospital",
+              "dataType": "FLAG",
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "isMentor",
+              "dataType": "FLAG",
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "isTrainee",
+              "dataType": "FLAG",
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "isNotMeetReq",
+              "dataType": "FLAG",
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "hasTELK",
+              "dataType": "FLAG",
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "currentlyValid",
+              "dataType": "FLAG",
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "mainPersonOKSID",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 9999999999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "isAccountablePerson",
+              "dataType": "FLAG",
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "isTravel",
+              "dataType": "FLAG",
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "positionNotes",
+              "dataType": "STRING",
+              "minLenght": 1,
+              "maxLenght": 1024,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "contractNotes",
+              "dataType": "STRING",
+              "minLenght": 1,
+              "maxLenght": 1024,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "workStartYear",
+              "dataType": "NUMBER",
+              "minValue": 1900,
+              "maxValue": 9999,
+              "pattern": "^\\d+$",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "workExpTotalYears",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 100,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "workExpSpecYears",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 100,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "workExpTeachYears",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 100,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "terminationDate",
+              "dataType": "DATE",
+              "format": "yyyy-MM-dd",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "terminationReasonID",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 9999999999999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "mainClassID",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 9999999999999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "helpStudentGovernment",
+              "dataType": "FLAG",
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "isValid",
+              "dataType": "FLAG",
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            }
+          ],
+          "children": {
+            "pedStaffData": {
+              "required": false,
+              "isArray": true,
+              "minOccurs": 0,
+              "maxOccurs": 1,
+              "rules": [
+                {
+                  "column": "operationType",
+                  "dataType": "ENUMERATION",
+                  "values": [
+                    "0",
+                    "1",
+                    "2",
+                    "3"
+                  ],
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "externalID",
+                  "dataType": "STRING",
+                  "minValue": 1,
+                  "maxValue": 100,
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "pedStaffDataID",
+                  "dataType": "NUMBER",
+                  "minValue": 0,
+                  "maxValue": 9999999999999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "norma",
+                  "dataType": "NUMBER",
+                  "minValue": 0,
+                  "maxValue": 9999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "normaT",
+                  "dataType": "NUMBER",
+                  "minValue": 0,
+                  "maxValue": 9999,
+                  "pattern": "^\\d+(\\.\\d{1,2})?$",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "normaS",
+                  "dataType": "NUMBER",
+                  "minValue": 0,
+                  "maxValue": 9999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "deficitNorma",
+                  "dataType": "NUMBER",
+                  "minValue": 0,
+                  "maxValue": 9999,
+                  "pattern": "^-?\\d+(\\.\\d{1,2})?$",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "deficitNormaT",
+                  "dataType": "NUMBER",
+                  "minValue": 0,
+                  "maxValue": 9999,
+                  "pattern": "^-?\\d+(\\.\\d{1,2})?$",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "reductionCoef",
+                  "dataType": "NUMBER",
+                  "minValue": 0,
+                  "maxValue": 9999,
+                  "pattern": "^\\d+(\\.\\d{1,2})?$",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "diffNorma",
+                  "dataType": "NUMBER",
+                  "minValue": 0,
+                  "maxValue": 9999,
+                  "pattern": "^\\d+(\\.\\d{1,2})?$",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "hoursForReduction",
+                  "dataType": "NUMBER",
+                  "minValue": 0,
+                  "maxValue": 9999,
+                  "pattern": "^\\d+(\\.\\d{1,2})?$",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "reductionHours",
+                  "dataType": "NUMBER",
+                  "minValue": 0,
+                  "maxValue": 9999,
+                  "pattern": "^\\d+(\\.\\d{1,2})?$",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "lect",
+                  "dataType": "NUMBER",
+                  "minValue": -9999,
+                  "maxValue": 9999,
+                  "pattern": "^-?\\d+(\\.\\d{1,2})?$",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "lectYear",
+                  "dataType": "NUMBER",
+                  "minValue": -9999,
+                  "maxValue": 9999,
+                  "pattern": "^-?\\d+(\\.\\d{1,2})?$",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "schoolYear",
+                  "dataType": "NUMBER",
+                  "minValue": 2000,
+                  "maxValue": 9999,
+                  "pattern": "^\\d+$",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "isValid",
+                  "dataType": "FLAG",
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                }
+              ]
+            },
+            "staffPositionSelfGovernment": {
+              "required": false,
+              "isArray": true,
+              "minOccurs": 0,
+              "maxOccurs": 1,
+              "rules": [
+                {
+                  "column": "operationType",
+                  "dataType": "ENUMERATION",
+                  "values": [
+                    "0",
+                    "1",
+                    "2",
+                    "3"
+                  ],
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "externalID",
+                  "dataType": "STRING",
+                  "minValue": 1,
+                  "maxValue": 100,
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "schoolYear",
+                  "dataType": "NUMBER",
+                  "minValue": 2000,
+                  "maxValue": 9999,
+                  "pattern": "^\\d+$",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "id",
+                  "dataType": "NUMBER",
+                  "minValue": 0,
+                  "maxValue": 9999999999999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "personId",
+                  "dataType": "NUMBER",
+                  "minValue": 0,
+                  "maxValue": 9999999999999,
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "participationId",
+                  "dataType": "NUMBER",
+                  "minValue": 0,
+                  "maxValue": 999,
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "positionId",
+                  "dataType": "NUMBER",
+                  "minValue": 0,
+                  "maxValue": 999,
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                }
+              ]
+            }
+          }
+        },
+        "vacantStaff": {
+          "required": false,
+          "isArray": true,
+          "minOccurs": 0,
+          "maxOccurs": null,
+          "rules": [
+            {
+              "column": "operationType",
+              "dataType": "ENUMERATION",
+              "values": [
+                "0",
+                "1",
+                "2"
+              ],
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "externalID",
+              "dataType": "STRING",
+              "minValue": 1,
+              "maxValue": 100,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "vacantStaffID",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 9999999999999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "institutionID",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 2999999,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "staffTypeID",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 9999,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "nKPDPositionID",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 999999,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "positionCount",
+              "dataType": "NUMBER",
+              "minValue": null,
+              "maxValue": 9999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "positionSubjectGroupID",
+              "dataType": "NUMBER",
+              "minValue": -1,
+              "maxValue": 9999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "schoolYear",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 9999,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "isValid",
+              "dataType": "FLAG",
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            }
+          ]
+        },
+        "curriculums": {
+          "required": false,
+          "isArray": true,
+          "minOccurs": 0,
+          "maxOccurs": null,
+          "rules": [
+            {
+              "column": "operationType",
+              "dataType": "ENUMERATION",
+              "values": [
+                "0",
+                "1",
+                "2"
+              ],
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "externalID",
+              "dataType": "STRING",
+              "minValue": 1,
+              "maxValue": 100,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "curriculumID",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 9999999999999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "isIndividualCurriculum",
+              "dataType": "FLAG",
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "isIndividualLesson",
+              "dataType": "FLAG",
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "curriculumPartID",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 10,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "subjectID",
+              "dataType": "NUMBER",
+              "minValue": -1,
+              "maxValue": 999999,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "isFL",
+              "dataType": "FLAG",
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "flSubjectID",
+              "dataType": "NUMBER",
+              "minValue": -1,
+              "maxValue": 999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "normaS",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 9999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "subjectTypeID",
+              "dataType": "NUMBER",
+              "minValue": 1,
+              "maxValue": 999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "isWholeClass",
+              "dataType": "FLAG",
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "curriculumGroupNum",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 99,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "isAllStudents",
+              "dataType": "FLAG",
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "institutionDepartmentID",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 9999999999999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "weeksFirstTerm",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 52,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "hoursWeeklyFirstTerm",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 999,
+              "pattern": "^\\d+(\\.\\d{1,2})?$",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "weeksSecondTerm",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 52,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "hoursWeeklySecondTerm",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 999,
+              "pattern": "^\\d+(\\.\\d{1,2})?$",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "tmp_CurricID_orig",
+              "dataType": "NUMBER",
+              "minValue": 1,
+              "maxValue": 99999999999999999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "tmp_ClassID_orig",
+              "dataType": "NUMBER",
+              "minValue": 1,
+              "maxValue": 99999999999999999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "tmp_SubjectID_orig",
+              "dataType": "NUMBER",
+              "minValue": 1,
+              "maxValue": 99999999999999999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "isCombined",
+              "dataType": "FLAG",
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "isValid",
+              "dataType": "FLAG",
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "externalLinkID",
+              "dataType": "STRING",
+              "minValue": 0,
+              "maxValue": 255,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "totalTermHours",
+              "dataType": "NUMBER",
+              "minValue": -1,
+              "maxValue": 99999,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "studentsCount",
+              "dataType": "NUMBER",
+              "minValue": -1,
+              "maxValue": 99999,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "sortOrder",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            }
+          ],
+          "children": {
+            "curriculumClasses": {
+              "required": false,
+              "isArray": true,
+              "minOccurs": 0,
+              "maxOccurs": null,
+              "rules": [
+                {
+                  "column": "operationType",
+                  "dataType": "ENUMERATION",
+                  "values": [
+                    "0",
+                    "1",
+                    "2"
+                  ],
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "externalID",
+                  "dataType": "STRING",
+                  "minValue": 1,
+                  "maxValue": 255,
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "curriculumClassesID",
+                  "dataType": "NUMBER",
+                  "minValue": 0,
+                  "maxValue": 9999999999999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "isValid",
+                  "dataType": "FLAG",
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "externalLinkID",
+                  "dataType": "STRING",
+                  "minValue": 0,
+                  "maxValue": 255,
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                }
+              ]
+            },
+            "curriculumTeachers": {
+              "required": false,
+              "isArray": true,
+              "minOccurs": 0,
+              "maxOccurs": null,
+              "rules": [
+                {
+                  "column": "operationType",
+                  "dataType": "ENUMERATION",
+                  "values": [
+                    "0",
+                    "1",
+                    "2"
+                  ],
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "externalID",
+                  "dataType": "STRING",
+                  "minValue": 1,
+                  "maxValue": 255,
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "curriculumTeacherID",
+                  "dataType": "NUMBER",
+                  "minValue": 0,
+                  "maxValue": 9999999999999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "isNotRegularTeacher",
+                  "dataType": "FLAG",
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "isValid",
+                  "dataType": "FLAG",
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "externalLinkID",
+                  "dataType": "STRING",
+                  "minValue": 0,
+                  "maxValue": 255,
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "normaTS",
+                  "dataType": "NUMBER",
+                  "minValue": 0,
+                  "maxValue": 9999999999999,
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "staffPositionStartDate",
+                  "dataType": "DATE",
+                  "format": "yyyy-MM-dd",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "staffPositionTerminationDate",
+                  "dataType": "DATE",
+                  "format": "yyyy-MM-dd",
+                  "required": false,
+                  "type": "ERROR"
+                }
+              ]
+            },
+            "curriculumStudents": {
+              "required": false,
+              "isArray": true,
+              "minOccurs": 0,
+              "maxOccurs": null,
+              "rules": [
+                {
+                  "column": "operationType",
+                  "dataType": "ENUMERATION",
+                  "values": [
+                    "0",
+                    "1",
+                    "2"
+                  ],
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "externalID",
+                  "dataType": "STRING",
+                  "minValue": 1,
+                  "maxValue": 255,
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "curriculumStudentID",
+                  "dataType": "NUMBER",
+                  "minValue": 0,
+                  "maxValue": 9999999999999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "personID",
+                  "dataType": "NUMBER",
+                  "minValue": 0,
+                  "maxValue": 9999999999999,
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "isValid",
+                  "dataType": "FLAG",
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "validFrom",
+                  "dataType": "DATE",
+                  "format": "yyyy-MM-dd",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "validTo",
+                  "dataType": "DATE",
+                  "format": "yyyy-MM-dd",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "externalLinkID",
+                  "dataType": "STRING",
+                  "minValue": 0,
+                  "maxValue": 255,
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                }
+              ]
+            }
+          }
+        },
+        "profileSubjects": {
+          "required": false,
+          "isArray": true,
+          "minOccurs": 0,
+          "maxOccurs": null,
+          "rules": [
+            {
+              "column": "operationType",
+              "dataType": "ENUMERATION",
+              "values": [
+                "0",
+                "1",
+                "2"
+              ],
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "externalID",
+              "dataType": "STRING",
+              "minValue": 1,
+              "maxValue": 255,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "curriculumID",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 9999999999999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "isIndividualCurriculum",
+              "dataType": "FLAG",
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "isIndividualLesson",
+              "dataType": "FLAG",
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "curriculumPartID",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 10,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "subjectID",
+              "dataType": "NUMBER",
+              "minValue": -1,
+              "maxValue": 999999,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "isFL",
+              "dataType": "FLAG",
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "flSubjectID",
+              "dataType": "NUMBER",
+              "minValue": -1,
+              "maxValue": 999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "normaS",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 9999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "subjectTypeID",
+              "dataType": "NUMBER",
+              "minValue": 1,
+              "maxValue": 999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "isWholeClass",
+              "dataType": "FLAG",
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "curriculumGroupNum",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 99,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "isAllStudents",
+              "dataType": "FLAG",
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "institutionDepartmentID",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 9999999999999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "weeksFirstTerm",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 52,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "hoursWeeklyFirstTerm",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 999,
+              "pattern": "^\\d+(\\.\\d{1,2})?$",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "weeksSecondTerm",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 52,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "hoursWeeklySecondTerm",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 52,
+              "pattern": "^\\d+(\\.\\d{1,2})?$",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "tmp_CurricID_orig",
+              "dataType": "NUMBER",
+              "minValue": 1,
+              "maxValue": 99999999999999999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "tmp_ClassID_orig",
+              "dataType": "NUMBER",
+              "minValue": 1,
+              "maxValue": 99999999999999999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "tmp_SubjectID_orig",
+              "dataType": "NUMBER",
+              "minValue": 1,
+              "maxValue": 99999999999999999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "isCombined",
+              "dataType": "FLAG",
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "isValid",
+              "dataType": "FLAG",
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "totalTermHours",
+              "dataType": "NUMBER",
+              "minValue": -1,
+              "maxValue": 99999,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "studentsCount",
+              "dataType": "NUMBER",
+              "minValue": -1,
+              "maxValue": 99999,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "externalLinkID",
+              "dataType": "STRING",
+              "minValue": 1,
+              "maxValue": 100,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "sortOrder",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            }
+          ],
+          "children": {
+            "curriculumClasses": {
+              "required": false,
+              "isArray": true,
+              "minOccurs": 0,
+              "maxOccurs": null,
+              "rules": [
+                {
+                  "column": "operationType",
+                  "dataType": "ENUMERATION",
+                  "values": [
+                    "0",
+                    "1",
+                    "2"
+                  ],
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "externalID",
+                  "dataType": "STRING",
+                  "minValue": 1,
+                  "maxValue": 255,
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "curriculumClassesID",
+                  "dataType": "NUMBER",
+                  "minValue": 0,
+                  "maxValue": 9999999999999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "externalLinkID",
+                  "dataType": "STRING",
+                  "minValue": 0,
+                  "maxValue": 255,
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                }
+              ]
+            },
+            "subCurriculums": {
+              "required": false,
+              "isArray": true,
+              "minOccurs": 0,
+              "maxOccurs": null,
+              "rules": [
+                {
+                  "column": "operationType",
+                  "dataType": "ENUMERATION",
+                  "values": [
+                    "0",
+                    "1",
+                    "2"
+                  ],
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "externalID",
+                  "dataType": "STRING",
+                  "minValue": 1,
+                  "maxValue": 255,
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "curriculumID",
+                  "dataType": "NUMBER",
+                  "minValue": 0,
+                  "maxValue": 9999999999999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "isIndividualCurriculum",
+                  "dataType": "FLAG",
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "isIndividualLesson",
+                  "dataType": "FLAG",
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "curriculumPartID",
+                  "dataType": "NUMBER",
+                  "minValue": 0,
+                  "maxValue": 10,
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "subjectID",
+                  "dataType": "NUMBER",
+                  "minValue": -1,
+                  "maxValue": 999999,
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "isFL",
+                  "dataType": "FLAG",
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "flSubjectID",
+                  "dataType": "NUMBER",
+                  "minValue": -1,
+                  "maxValue": 999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "normaS",
+                  "dataType": "NUMBER",
+                  "minValue": 0,
+                  "maxValue": 9999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "subjectTypeID",
+                  "dataType": "NUMBER",
+                  "minValue": 1,
+                  "maxValue": 999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "isWholeClass",
+                  "dataType": "FLAG",
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "curriculumGroupNum",
+                  "dataType": "NUMBER",
+                  "minValue": 0,
+                  "maxValue": 99,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "isAllStudents",
+                  "dataType": "FLAG",
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "institutionDepartmentID",
+                  "dataType": "NUMBER",
+                  "minValue": 0,
+                  "maxValue": 9999999999999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "weeksFirstTerm",
+                  "dataType": "NUMBER",
+                  "minValue": 0,
+                  "maxValue": 52,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "hoursWeeklyFirstTerm",
+                  "dataType": "NUMBER",
+                  "minValue": 0,
+                  "maxValue": 999,
+                  "pattern": "^\\d+(\\.\\d{1,2})?$",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "weeksSecondTerm",
+                  "dataType": "NUMBER",
+                  "minValue": 0,
+                  "maxValue": 52,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "hoursWeeklySecondTerm",
+                  "dataType": "NUMBER",
+                  "minValue": 0,
+                  "maxValue": 52,
+                  "pattern": "^\\d+(\\.\\d{1,2})?$",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "parentCurriculumID",
+                  "dataType": "NUMBER",
+                  "minValue": 1,
+                  "maxValue": 99999999999999999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "tmp_CurricID_orig",
+                  "dataType": "NUMBER",
+                  "minValue": 1,
+                  "maxValue": 99999999999999999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "tmp_ClassID_orig",
+                  "dataType": "NUMBER",
+                  "minValue": 1,
+                  "maxValue": 99999999999999999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "tmp_SubjectID_orig",
+                  "dataType": "NUMBER",
+                  "minValue": 1,
+                  "maxValue": 99999999999999999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "isCombined",
+                  "dataType": "FLAG",
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "isValid",
+                  "dataType": "FLAG",
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "totalTermHours",
+                  "dataType": "NUMBER",
+                  "minValue": -1,
+                  "maxValue": 99999,
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "studentsCount",
+                  "dataType": "NUMBER",
+                  "minValue": -1,
+                  "maxValue": 99999,
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "externalLinkID",
+                  "dataType": "STRING",
+                  "minValue": 0,
+                  "maxValue": 255,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "sortOrder",
+                  "dataType": "NUMBER",
+                  "minValue": 0,
+                  "maxValue": 999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                }
+              ],
+              "children": {
+                "curriculumClasses": {
+                  "required": false,
+                  "isArray": true,
+                  "minOccurs": 0,
+                  "maxOccurs": null,
+                  "rules": [
+                    {
+                      "column": "operationType",
+                      "dataType": "ENUMERATION",
+                      "values": [
+                        "0",
+                        "1",
+                        "2"
+                      ],
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "externalID",
+                      "dataType": "STRING",
+                      "minValue": 1,
+                      "maxValue": 255,
+                      "pattern": "",
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "curriculumClassesID",
+                      "dataType": "NUMBER",
+                      "minValue": 0,
+                      "maxValue": 9999999999999,
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "externalLinkID",
+                      "dataType": "STRING",
+                      "minValue": 0,
+                      "maxValue": 255,
+                      "pattern": "",
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "isValid",
+                      "dataType": "FLAG",
+                      "pattern": "",
+                      "required": true,
+                      "type": "ERROR"
+                    }
+                  ]
+                },
+                "curriculumTeachers": {
+                  "required": false,
+                  "isArray": true,
+                  "minOccurs": 0,
+                  "maxOccurs": null,
+                  "rules": [
+                    {
+                      "column": "operationType",
+                      "dataType": "ENUMERATION",
+                      "values": [
+                        "0",
+                        "1",
+                        "2"
+                      ],
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "externalID",
+                      "dataType": "STRING",
+                      "minValue": 1,
+                      "maxValue": 255,
+                      "pattern": "",
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "curriculumTeacherID",
+                      "dataType": "NUMBER",
+                      "minValue": 0,
+                      "maxValue": 9999999999999,
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "isNotRegularTeacher",
+                      "dataType": "FLAG",
+                      "pattern": "",
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "externalLinkID",
+                      "dataType": "STRING",
+                      "minValue": 0,
+                      "maxValue": 255,
+                      "pattern": "",
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "normaTS",
+                      "dataType": "NUMBER",
+                      "minValue": 0,
+                      "maxValue": 9999999999999,
+                      "pattern": "",
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "isValid",
+                      "dataType": "FLAG",
+                      "pattern": "",
+                      "required": true,
+                      "type": "ERROR"
+                    }
+                  ]
+                },
+                "curriculumStudents": {
+                  "required": false,
+                  "isArray": true,
+                  "minOccurs": 0,
+                  "maxOccurs": null,
+                  "rules": [
+                    {
+                      "column": "operationType",
+                      "dataType": "ENUMERATION",
+                      "values": [
+                        "0",
+                        "1",
+                        "2"
+                      ],
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "externalID",
+                      "dataType": "STRING",
+                      "minValue": 1,
+                      "maxValue": 255,
+                      "pattern": "",
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "curriculumStudentID",
+                      "dataType": "NUMBER",
+                      "minValue": 0,
+                      "maxValue": 9999999999999,
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "personID",
+                      "dataType": "NUMBER",
+                      "minValue": 0,
+                      "maxValue": 9999999999999,
+                      "pattern": "",
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "externalLinkID",
+                      "dataType": "STRING",
+                      "minValue": 0,
+                      "maxValue": 255,
+                      "pattern": "",
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "isValid",
+                      "dataType": "FLAG",
+                      "pattern": "",
+                      "required": true,
+                      "type": "ERROR"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "classGroups": {
+          "required": false,
+          "isArray": true,
+          "minOccurs": 0,
+          "maxOccurs": null,
+          "rules": [
+            {
+              "column": "operationType",
+              "dataType": "ENUMERATION",
+              "values": [
+                "0",
+                "1",
+                "2",
+                "3"
+              ],
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "externalID",
+              "dataType": "STRING",
+              "minValue": 1,
+              "maxValue": 255,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "classID",
+              "dataType": "NUMBER",
+              "minValue": 1,
+              "maxValue": 99999999999999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "institutionDepartmentID",
+              "dataType": "NUMBER",
+              "minValue": 1,
+              "maxValue": 9999999999999,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "classGroupNum",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 2999999,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "className",
+              "dataType": "STRING",
+              "minValue": 0,
+              "maxValue": 255,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "paralellClassName",
+              "dataType": "STRING",
+              "minValue": 0,
+              "maxValue": 255,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "basicClassID",
+              "dataType": "NUMBER",
+              "minValue": -10,
+              "maxValue": 9999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "classTypeID",
+              "dataType": "NUMBER",
+              "minValue": -1,
+              "maxValue": 9999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "areaID",
+              "dataType": "NUMBER",
+              "minValue": -1,
+              "maxValue": 9999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "classEduFormID",
+              "dataType": "NUMBER",
+              "minValue": -1,
+              "maxValue": 9999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "classEduDurationID",
+              "dataType": "NUMBER",
+              "minValue": -1,
+              "maxValue": 9999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "classShiftID",
+              "dataType": "NUMBER",
+              "minValue": -1,
+              "maxValue": 9999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "budgetingClassTypeID",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 9999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "entranceLevelID",
+              "dataType": "NUMBER",
+              "minValue": -1,
+              "maxValue": 9999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "classSpecialityID",
+              "dataType": "NUMBER",
+              "minValue": -1,
+              "maxValue": 99999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "fLTypeID",
+              "dataType": "NUMBER",
+              "minValue": -1,
+              "maxValue": 9999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "fLID",
+              "dataType": "NUMBER",
+              "minValue": -1,
+              "maxValue": 9999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "isProfModule",
+              "dataType": "FLAG",
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "studentCountPlaces",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 2999999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "notes",
+              "dataType": "STRING",
+              "minValue": 0,
+              "maxValue": 1024,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "isCombined",
+              "dataType": "FLAG",
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "isNoList",
+              "dataType": "FLAG",
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "isSpecNeed",
+              "dataType": "FLAG",
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "isWholeClass",
+              "dataType": "FLAG",
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "isNotPresentForm",
+              "dataType": "FLAG",
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "isValid",
+              "dataType": "FLAG",
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            }
+          ],
+          "children": {
+            "classSubGroups": {
+              "required": false,
+              "isArray": true,
+              "minOccurs": 0,
+              "maxOccurs": null,
+              "rules": [
+                {
+                  "column": "operationType",
+                  "dataType": "ENUMERATION",
+                  "values": [
+                    "0",
+                    "1",
+                    "2",
+                    "3"
+                  ],
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "externalID",
+                  "dataType": "STRING",
+                  "minValue": 1,
+                  "maxValue": 255,
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "classID",
+                  "dataType": "NUMBER",
+                  "minValue": 1,
+                  "maxValue": 99999999999999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "institutionDepartmentID",
+                  "dataType": "NUMBER",
+                  "minValue": 1,
+                  "maxValue": 9999999999999,
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "classGroupNum",
+                  "dataType": "NUMBER",
+                  "minValue": 1,
+                  "maxValue": 9999,
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "className",
+                  "dataType": "STRING",
+                  "minValue": 0,
+                  "maxValue": 255,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "paralellClassName",
+                  "dataType": "STRING",
+                  "minValue": 0,
+                  "maxValue": 255,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "parentClassID",
+                  "dataType": "NUMBER",
+                  "minValue": 1,
+                  "maxValue": 9999999999999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "basicClassID",
+                  "dataType": "NUMBER",
+                  "minValue": -10,
+                  "maxValue": 2999999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "classTypeID",
+                  "dataType": "NUMBER",
+                  "minValue": -1,
+                  "maxValue": 9999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "areaID",
+                  "dataType": "NUMBER",
+                  "minValue": -1,
+                  "maxValue": 9999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "classEduFormID",
+                  "dataType": "NUMBER",
+                  "minValue": -1,
+                  "maxValue": 9999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "classEduDurationID",
+                  "dataType": "NUMBER",
+                  "minValue": -1,
+                  "maxValue": 9999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "classShiftID",
+                  "dataType": "NUMBER",
+                  "minValue": -1,
+                  "maxValue": 9999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "budgetingClassTypeID",
+                  "dataType": "NUMBER",
+                  "minValue": 0,
+                  "maxValue": 9999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "entranceLevelID",
+                  "dataType": "NUMBER",
+                  "minValue": -1,
+                  "maxValue": 9999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "classSpecialityID",
+                  "dataType": "NUMBER",
+                  "minValue": -1,
+                  "maxValue": 99999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "fLTypeID",
+                  "dataType": "NUMBER",
+                  "minValue": -1,
+                  "maxValue": 9999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "fLID",
+                  "dataType": "NUMBER",
+                  "minValue": -1,
+                  "maxValue": 9999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "isProfModule",
+                  "dataType": "FLAG",
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "studentCountPlaces",
+                  "dataType": "NUMBER",
+                  "minValue": 0,
+                  "maxValue": 9999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "notes",
+                  "dataType": "STRING",
+                  "minValue": 0,
+                  "maxValue": 1024,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "isCombined",
+                  "dataType": "FLAG",
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "isNoList",
+                  "dataType": "FLAG",
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "isSpecNeed",
+                  "dataType": "FLAG",
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "isWholeClass",
+                  "dataType": "FLAG",
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "isNotPresentForm",
+                  "dataType": "FLAG",
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "isValid",
+                  "dataType": "FLAG",
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                }
+              ],
+              "children": {
+                "studentClasses": {
+                  "required": false,
+                  "isArray": true,
+                  "minOccurs": 0,
+                  "maxOccurs": null,
+                  "rules": [
+                    {
+                      "column": "operationType",
+                      "dataType": "ENUMERATION",
+                      "values": [
+                        "0",
+                        "2"
+                      ],
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "externalID",
+                      "dataType": "STRING",
+                      "minValue": 1,
+                      "maxValue": 255,
+                      "pattern": "",
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "studentClassID",
+                      "dataType": "NUMBER",
+                      "minValue": 1,
+                      "maxValue": 9999999999999,
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "personId",
+                      "dataType": "NUMBER",
+                      "minValue": 1,
+                      "maxValue": 99999999999999,
+                      "pattern": "",
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "status",
+                      "dataType": "NUMBER",
+                      "minValue": 0,
+                      "maxValue": 2,
+                      "pattern": "",
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "isIndividualCurriculum",
+                      "dataType": "FLAG",
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "isHourlyOrganization",
+                      "dataType": "FLAG",
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "isCurrent",
+                      "dataType": "FLAG",
+                      "pattern": "",
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "repeaterId",
+                      "dataType": "NUMBER",
+                      "minValue": -1,
+                      "maxValue": 9999,
+                      "pattern": "",
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "commuterTypeId",
+                      "dataType": "NUMBER",
+                      "minValue": 1,
+                      "maxValue": 9999,
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "hasSupportiveEnvironment",
+                      "dataType": "FLAG",
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "supportiveEnvironment",
+                      "dataType": "STRING",
+                      "minValue": 1,
+                      "maxValue": 1000,
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "studentSpecialityId",
+                      "dataType": "NUMBER",
+                      "minValue": -1,
+                      "maxValue": 99999,
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "studentEduFormId",
+                      "dataType": "NUMBER",
+                      "minValue": -1,
+                      "maxValue": 9999,
+                      "pattern": "",
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "classNumber",
+                      "dataType": "NUMBER",
+                      "minValue": 0,
+                      "maxValue": 9999,
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "isForSubmissionToNRA",
+                      "dataType": "FLAG",
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "enrollmentDate",
+                      "dataType": "DATE",
+                      "format": "yyyy-MM-dd",
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "admissionDocumentId",
+                      "dataType": "NUMBER",
+                      "minValue": 1,
+                      "maxValue": 99999999999999,
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "positionId",
+                      "dataType": "NUMBER",
+                      "minValue": 1,
+                      "maxValue": 9999,
+                      "pattern": "",
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "basicClassID",
+                      "dataType": "NUMBER",
+                      "minValue": -10,
+                      "maxValue": 9999,
+                      "pattern": "",
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "classTypeID",
+                      "dataType": "NUMBER",
+                      "minValue": 1,
+                      "maxValue": 9999,
+                      "pattern": "",
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "fromStudentClassId",
+                      "dataType": "NUMBER",
+                      "minValue": 1,
+                      "maxValue": 99999999999999,
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "dischargeReasonId",
+                      "dataType": "NUMBER",
+                      "minValue": 1,
+                      "maxValue": 9999,
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "dischargeDocumentId",
+                      "dataType": "NUMBER",
+                      "minValue": 1,
+                      "maxValue": 99999999999999,
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "relocationDocumentId",
+                      "dataType": "NUMBER",
+                      "minValue": 1,
+                      "maxValue": 99999999999999,
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "oresTypeID",
+                      "dataType": "NUMBER",
+                      "minValue": 1,
+                      "maxValue": 99999999999999,
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "isNotPresentForm",
+                      "dataType": "FLAG",
+                      "pattern": "",
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "entryDate",
+                      "dataType": "DATE",
+                      "format": "yyyy-MM-dd",
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "dischargeDate",
+                      "dataType": "DATE",
+                      "format": "yyyy-MM-dd",
+                      "required": false,
+                      "type": "ERROR"
+                    }
+                  ],
+                  "children": {
+                    "scholarshipStudent": {
+                      "required": false,
+                      "isArray": true,
+                      "minOccurs": 0,
+                      "maxOccurs": null,
+                      "rules": [
+                        {
+                          "column": "operationType",
+                          "dataType": "ENUMERATION",
+                          "values": [
+                            "0",
+                            "1",
+                            "2",
+                            "3"
+                          ],
+                          "required": true,
+                          "type": "ERROR"
+                        },
+                        {
+                          "column": "externalID",
+                          "dataType": "STRING",
+                          "minValue": 1,
+                          "maxValue": 255,
+                          "pattern": "",
+                          "required": true,
+                          "type": "ERROR"
+                        },
+                        {
+                          "column": "id",
+                          "dataType": "NUMBER",
+                          "minValue": 1,
+                          "maxValue": 9999999999999,
+                          "pattern": "",
+                          "required": false,
+                          "type": "ERROR"
+                        },
+                        {
+                          "column": "studentClassID",
+                          "dataType": "NUMBER",
+                          "minValue": 1,
+                          "maxValue": 9999999999999,
+                          "pattern": "",
+                          "required": true,
+                          "type": "ERROR"
+                        },
+                        {
+                          "column": "scholarshipAmountId",
+                          "dataType": "NUMBER",
+                          "minValue": 1,
+                          "maxValue": 9999999999999,
+                          "pattern": "",
+                          "required": true,
+                          "type": "ERROR"
+                        },
+                        {
+                          "column": "description",
+                          "dataType": "STRING",
+                          "minValue": 1,
+                          "maxValue": 10000,
+                          "pattern": "",
+                          "required": false,
+                          "type": "ERROR"
+                        },
+                        {
+                          "column": "scholarshipTypeId",
+                          "dataType": "NUMBER",
+                          "minValue": 1,
+                          "maxValue": 9999999999999,
+                          "pattern": "",
+                          "required": true,
+                          "type": "ERROR"
+                        },
+                        {
+                          "column": "amountRate",
+                          "dataType": "NUMBER",
+                          "minValue": 1,
+                          "maxValue": 9999999999999,
+                          "pattern": "",
+                          "required": true,
+                          "type": "ERROR"
+                        },
+                        {
+                          "column": "periodicity",
+                          "dataType": "ENUMERATION",
+                          "values": [
+                            "1",
+                            "2"
+                          ],
+                          "required": false,
+                          "type": "ERROR"
+                        },
+                        {
+                          "column": "orderNumber",
+                          "dataType": "STRING",
+                          "minValue": 1,
+                          "maxValue": 1000,
+                          "pattern": "",
+                          "required": false,
+                          "type": "ERROR"
+                        },
+                        {
+                          "column": "orderDate",
+                          "dataType": "DATE",
+                          "format": "yyyy-MM-dd",
+                          "required": false,
+                          "type": "ERROR"
+                        },
+                        {
+                          "column": "schoolYear",
+                          "dataType": "NUMBER",
+                          "minValue": 2000,
+                          "maxValue": 9999,
+                          "pattern": "^\\d+$",
+                          "required": true,
+                          "type": "ERROR"
+                        },
+                        {
+                          "column": "institutionId",
+                          "dataType": "NUMBER",
+                          "minValue": 1,
+                          "maxValue": 9999999999999,
+                          "pattern": "",
+                          "required": false,
+                          "type": "ERROR"
+                        },
+                        {
+                          "column": "financingOrganId",
+                          "dataType": "NUMBER",
+                          "minValue": 1,
+                          "maxValue": 9999999999999,
+                          "pattern": "",
+                          "required": true,
+                          "type": "ERROR"
+                        },
+                        {
+                          "column": "personID",
+                          "dataType": "NUMBER",
+                          "minValue": 1,
+                          "maxValue": 9999999999999,
+                          "pattern": "",
+                          "required": true,
+                          "type": "ERROR"
+                        },
+                        {
+                          "column": "commissionDate",
+                          "dataType": "DATE",
+                          "format": "yyyy-MM-dd",
+                          "required": false,
+                          "type": "ERROR"
+                        },
+                        {
+                          "column": "commissionNumber",
+                          "dataType": "NUMBER",
+                          "minValue": 1,
+                          "maxValue": 9999999999999,
+                          "pattern": "",
+                          "required": false,
+                          "type": "ERROR"
+                        },
+                        {
+                          "column": "validFrom",
+                          "dataType": "DATE",
+                          "format": "yyyy-MM-dd",
+                          "required": false,
+                          "type": "ERROR"
+                        },
+                        {
+                          "column": "validTo",
+                          "dataType": "DATE",
+                          "format": "yyyy-MM-dd",
+                          "required": false,
+                          "type": "ERROR"
+                        }
+                      ]
+                    },
+                    "studentSelfGovernment": {
+                      "required": false,
+                      "isArray": true,
+                      "minOccurs": 0,
+                      "maxOccurs": null,
+                      "rules": [
+                        {
+                          "column": "operationType",
+                          "dataType": "ENUMERATION",
+                          "values": [
+                            "0",
+                            "1",
+                            "2",
+                            "3"
+                          ],
+                          "required": true,
+                          "type": "ERROR"
+                        },
+                        {
+                          "column": "externalID",
+                          "dataType": "STRING",
+                          "minValue": 1,
+                          "maxValue": 100,
+                          "pattern": "",
+                          "required": true,
+                          "type": "ERROR"
+                        },
+                        {
+                          "column": "schoolYear",
+                          "dataType": "NUMBER",
+                          "minValue": 2000,
+                          "maxValue": 9999,
+                          "pattern": "^\\d+$",
+                          "required": true,
+                          "type": "ERROR"
+                        },
+                        {
+                          "column": "id",
+                          "dataType": "NUMBER",
+                          "minValue": 0,
+                          "maxValue": 9999999999999,
+                          "pattern": "",
+                          "required": false,
+                          "type": "ERROR"
+                        },
+                        {
+                          "column": "personId",
+                          "dataType": "NUMBER",
+                          "minValue": 0,
+                          "maxValue": 9999999999999,
+                          "pattern": "",
+                          "required": true,
+                          "type": "ERROR"
+                        },
+                        {
+                          "column": "participationId",
+                          "dataType": "NUMBER",
+                          "minValue": 0,
+                          "maxValue": 999,
+                          "pattern": "",
+                          "required": true,
+                          "type": "ERROR"
+                        },
+                        {
+                          "column": "positionId",
+                          "dataType": "NUMBER",
+                          "minValue": 0,
+                          "maxValue": 999,
+                          "pattern": "",
+                          "required": true,
+                          "type": "ERROR"
+                        },
+                        {
+                          "column": "participationAdditionalInformation",
+                          "dataType": "STRING",
+                          "minValue": 0,
+                          "maxValue": 2048,
+                          "pattern": "",
+                          "required": false,
+                          "type": "ERROR"
+                        },
+                        {
+                          "column": "additionalInformation",
+                          "dataType": "STRING",
+                          "minValue": 0,
+                          "maxValue": 2048,
+                          "pattern": "",
+                          "required": false,
+                          "type": "ERROR"
+                        },
+                        {
+                          "column": "institutionSchoolBoardId",
+                          "dataType": "NUMBER",
+                          "minValue": 0,
+                          "maxValue": 9999999999999,
+                          "pattern": "",
+                          "required": false,
+                          "type": "ERROR"
+                        }
+                      ]
+                    }
+                  }
+                },
+                "studentClassesCDO": {
+                  "required": false,
+                  "isArray": true,
+                  "minOccurs": 0,
+                  "maxOccurs": null,
+                  "rules": [
+                    {
+                      "column": "operationType",
+                      "dataType": "ENUMERATION",
+                      "values": [
+                        "0",
+                        "1",
+                        "2",
+                        "3"
+                      ],
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "externalID",
+                      "dataType": "STRING",
+                      "minValue": 1,
+                      "maxValue": 255,
+                      "pattern": "",
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "studentClassID",
+                      "dataType": "NUMBER",
+                      "minValue": 1,
+                      "maxValue": 9999999999999,
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "personId",
+                      "dataType": "NUMBER",
+                      "minValue": 1,
+                      "maxValue": 99999999999999,
+                      "pattern": "",
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "status",
+                      "dataType": "NUMBER",
+                      "minValue": 0,
+                      "maxValue": 2,
+                      "pattern": "",
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "isIndividualCurriculum",
+                      "dataType": "FLAG",
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "isHourlyOrganization",
+                      "dataType": "FLAG",
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "isCurrent",
+                      "dataType": "FLAG",
+                      "pattern": "",
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "repeaterId",
+                      "dataType": "NUMBER",
+                      "minValue": -1,
+                      "maxValue": 9999,
+                      "pattern": "",
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "commuterTypeId",
+                      "dataType": "NUMBER",
+                      "minValue": 1,
+                      "maxValue": 9999,
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "hasSupportiveEnvironment",
+                      "dataType": "FLAG",
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "supportiveEnvironment",
+                      "dataType": "STRING",
+                      "minValue": 1,
+                      "maxValue": 1000,
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "studentSpecialityId",
+                      "dataType": "NUMBER",
+                      "minValue": -1,
+                      "maxValue": 99999,
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "studentEduFormId",
+                      "dataType": "NUMBER",
+                      "minValue": -1,
+                      "maxValue": 9999,
+                      "pattern": "",
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "classNumber",
+                      "dataType": "NUMBER",
+                      "minValue": 0,
+                      "maxValue": 9999,
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "isForSubmissionToNRA",
+                      "dataType": "FLAG",
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "enrollmentDate",
+                      "dataType": "DATE",
+                      "format": "yyyy-MM-dd",
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "admissionDocumentId",
+                      "dataType": "NUMBER",
+                      "minValue": 1,
+                      "maxValue": 99999999999999,
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "positionId",
+                      "dataType": "NUMBER",
+                      "minValue": 1,
+                      "maxValue": 9999,
+                      "pattern": "",
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "basicClassID",
+                      "dataType": "NUMBER",
+                      "minValue": -10,
+                      "maxValue": 9999,
+                      "pattern": "",
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "classTypeID",
+                      "dataType": "NUMBER",
+                      "minValue": 1,
+                      "maxValue": 9999,
+                      "pattern": "",
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "fromStudentClassId",
+                      "dataType": "NUMBER",
+                      "minValue": 1,
+                      "maxValue": 99999999999999,
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "dischargeReasonId",
+                      "dataType": "NUMBER",
+                      "minValue": 1,
+                      "maxValue": 9999,
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "dischargeDocumentId",
+                      "dataType": "NUMBER",
+                      "minValue": 1,
+                      "maxValue": 99999999999999,
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "relocationDocumentId",
+                      "dataType": "NUMBER",
+                      "minValue": 1,
+                      "maxValue": 99999999999999,
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "oresTypeID",
+                      "dataType": "NUMBER",
+                      "minValue": 1,
+                      "maxValue": 99999999999999,
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "isNotPresentForm",
+                      "dataType": "FLAG",
+                      "pattern": "",
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "entryDate",
+                      "dataType": "DATE",
+                      "format": "yyyy-MM-dd",
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "dischargeDate",
+                      "dataType": "DATE",
+                      "format": "yyyy-MM-dd",
+                      "required": false,
+                      "type": "ERROR"
+                    }
+                  ]
+                },
+                "studentClassesOtherGroup": {
+                  "required": false,
+                  "isArray": true,
+                  "minOccurs": 0,
+                  "maxOccurs": null,
+                  "rules": [
+                    {
+                      "column": "operationType",
+                      "dataType": "ENUMERATION",
+                      "values": [
+                        "0",
+                        "1",
+                        "2",
+                        "3"
+                      ],
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "externalID",
+                      "dataType": "STRING",
+                      "minValue": 1,
+                      "maxValue": 255,
+                      "pattern": "",
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "studentClassID",
+                      "dataType": "NUMBER",
+                      "minValue": 1,
+                      "maxValue": 99999999999999,
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "personId",
+                      "dataType": "NUMBER",
+                      "minValue": 1,
+                      "maxValue": 99999999999999,
+                      "pattern": "",
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "status",
+                      "dataType": "NUMBER",
+                      "minValue": 0,
+                      "maxValue": 2,
+                      "pattern": "",
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "isIndividualCurriculum",
+                      "dataType": "FLAG",
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "isHourlyOrganization",
+                      "dataType": "FLAG",
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "isCurrent",
+                      "dataType": "FLAG",
+                      "pattern": "",
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "repeaterId",
+                      "dataType": "NUMBER",
+                      "minValue": -1,
+                      "maxValue": 9999,
+                      "pattern": "",
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "commuterTypeId",
+                      "dataType": "NUMBER",
+                      "minValue": 1,
+                      "maxValue": 99999999999999,
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "hasSupportiveEnvironment",
+                      "dataType": "FLAG",
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "supportiveEnvironment",
+                      "dataType": "STRING",
+                      "minValue": 1,
+                      "maxValue": 1000,
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "studentSpecialityId",
+                      "dataType": "NUMBER",
+                      "minValue": -1,
+                      "maxValue": 99999,
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "studentEduFormId",
+                      "dataType": "NUMBER",
+                      "minValue": -1,
+                      "maxValue": 9999,
+                      "pattern": "",
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "classNumber",
+                      "dataType": "NUMBER",
+                      "minValue": 0,
+                      "maxValue": 99999999999999,
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "isForSubmissionToNRA",
+                      "dataType": "FLAG",
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "enrollmentDate",
+                      "dataType": "DATE",
+                      "format": "yyyy-MM-dd",
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "admissionDocumentId",
+                      "dataType": "NUMBER",
+                      "minValue": 1,
+                      "maxValue": 99999999999999,
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "positionId",
+                      "dataType": "NUMBER",
+                      "minValue": 1,
+                      "maxValue": 99999999999999,
+                      "pattern": "",
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "basicClassID",
+                      "dataType": "NUMBER",
+                      "minValue": -10,
+                      "maxValue": 99999999999999,
+                      "pattern": "",
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "classTypeID",
+                      "dataType": "NUMBER",
+                      "minValue": 1,
+                      "maxValue": 99999999999999,
+                      "pattern": "",
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "fromStudentClassId",
+                      "dataType": "NUMBER",
+                      "minValue": 1,
+                      "maxValue": 99999999999999,
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "dischargeReasonId",
+                      "dataType": "NUMBER",
+                      "minValue": 1,
+                      "maxValue": 99999999999999,
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "dischargeDocumentId",
+                      "dataType": "NUMBER",
+                      "minValue": 1,
+                      "maxValue": 99999999999999,
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "relocationDocumentId",
+                      "dataType": "NUMBER",
+                      "minValue": 1,
+                      "maxValue": 99999999999999,
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "oresTypeID",
+                      "dataType": "NUMBER",
+                      "minValue": 1,
+                      "maxValue": 9999,
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "isNotPresentForm",
+                      "dataType": "FLAG",
+                      "pattern": "",
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "entryDate",
+                      "dataType": "DATE",
+                      "format": "yyyy-MM-dd",
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "dischargeDate",
+                      "dataType": "DATE",
+                      "format": "yyyy-MM-dd",
+                      "required": false,
+                      "type": "ERROR"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "classGroupNotPresent": {
+          "required": false,
+          "isArray": true,
+          "minOccurs": 0,
+          "maxOccurs": null,
+          "rules": [
+            {
+              "column": "operationType",
+              "dataType": "ENUMERATION",
+              "values": [
+                "0"
+              ],
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "externalID",
+              "dataType": "STRING",
+              "minValue": 1,
+              "maxValue": 255,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "classID",
+              "dataType": "NUMBER",
+              "minValue": 1,
+              "maxValue": 99999999999999,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            }
+          ],
+          "children": {
+            "studentClasses": {
+              "required": false,
+              "isArray": true,
+              "minOccurs": 0,
+              "maxOccurs": null,
+              "rules": [
+                {
+                  "column": "operationType",
+                  "dataType": "ENUMERATION",
+                  "values": [
+                    "0",
+                    "2"
+                  ],
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "externalID",
+                  "dataType": "STRING",
+                  "minValue": 1,
+                  "maxValue": 255,
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "studentClassID",
+                  "dataType": "NUMBER",
+                  "minValue": 1,
+                  "maxValue": 9999999999999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "personId",
+                  "dataType": "NUMBER",
+                  "minValue": 1,
+                  "maxValue": 99999999999999,
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "status",
+                  "dataType": "NUMBER",
+                  "minValue": 0,
+                  "maxValue": 2,
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "isIndividualCurriculum",
+                  "dataType": "FLAG",
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "isHourlyOrganization",
+                  "dataType": "FLAG",
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "isCurrent",
+                  "dataType": "FLAG",
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "repeaterId",
+                  "dataType": "NUMBER",
+                  "minValue": -1,
+                  "maxValue": 9999,
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "commuterTypeId",
+                  "dataType": "NUMBER",
+                  "minValue": 1,
+                  "maxValue": 9999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "hasSupportiveEnvironment",
+                  "dataType": "FLAG",
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "supportiveEnvironment",
+                  "dataType": "STRING",
+                  "minValue": 1,
+                  "maxValue": 1000,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "studentSpecialityId",
+                  "dataType": "NUMBER",
+                  "minValue": -1,
+                  "maxValue": 99999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "studentEduFormId",
+                  "dataType": "NUMBER",
+                  "minValue": -1,
+                  "maxValue": 9999,
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "classNumber",
+                  "dataType": "NUMBER",
+                  "minValue": 0,
+                  "maxValue": 9999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "isForSubmissionToNRA",
+                  "dataType": "FLAG",
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "enrollmentDate",
+                  "dataType": "DATE",
+                  "format": "yyyy-MM-dd",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "admissionDocumentId",
+                  "dataType": "NUMBER",
+                  "minValue": 1,
+                  "maxValue": 99999999999999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "positionId",
+                  "dataType": "NUMBER",
+                  "minValue": 1,
+                  "maxValue": 9999,
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "basicClassID",
+                  "dataType": "NUMBER",
+                  "minValue": -10,
+                  "maxValue": 9999,
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "classTypeID",
+                  "dataType": "NUMBER",
+                  "minValue": 1,
+                  "maxValue": 9999,
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "fromStudentClassId",
+                  "dataType": "NUMBER",
+                  "minValue": 1,
+                  "maxValue": 99999999999999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "dischargeReasonId",
+                  "dataType": "NUMBER",
+                  "minValue": 1,
+                  "maxValue": 9999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "dischargeDocumentId",
+                  "dataType": "NUMBER",
+                  "minValue": 1,
+                  "maxValue": 99999999999999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "relocationDocumentId",
+                  "dataType": "NUMBER",
+                  "minValue": 1,
+                  "maxValue": 99999999999999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "oresTypeID",
+                  "dataType": "NUMBER",
+                  "minValue": 1,
+                  "maxValue": 99999999999999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "isNotPresentForm",
+                  "dataType": "FLAG",
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "persons": {
+      "required": true,
+      "isArray": true,
+      "rules": [
+        {
+          "column": "personID",
+          "dataType": "NUMBER",
+          "minValue": 1,
+          "maxValue": 99999999999999,
+          "pattern": "",
+          "required": true,
+          "type": "ERROR"
+        },
+        {
+          "column": "operationType",
+          "dataType": "ENUMERATION",
+          "values": [
+            "0"
+          ],
+          "required": true,
+          "type": "ERROR"
+        },
+        {
+          "column": "externalID",
+          "dataType": "STRING",
+          "minValue": 1,
+          "maxValue": 255,
+          "pattern": "",
+          "required": true,
+          "type": "ERROR"
+        }
+      ],
+      "children": {
+        "personDetail": {
+          "required": false,
+          "isArray": true,
+          "minOccurs": 0,
+          "maxOccurs": 1,
+          "rules": [
+            {
+              "column": "operationType",
+              "dataType": "ENUMERATION",
+              "values": [
+                "0",
+                "1",
+                "2"
+              ],
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "externalID",
+              "dataType": "STRING",
+              "minValue": 1,
+              "maxValue": 255,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "personDetailID",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 9999999999999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "title",
+              "dataType": "STRING",
+              "minLenght": 1,
+              "maxLenght": 100,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "phoneNumber",
+              "dataType": "STRING",
+              "minLenght": 1,
+              "maxLenght": 50,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "isPensioneer",
+              "dataType": "FLAG",
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "isExtendStudent",
+              "dataType": "FLAG",
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "email",
+              "dataType": "STRING",
+              "pattern": "",
+              "minLenght": 1,
+              "maxLenght": 255,
+              "required": false,
+              "type": "WARNING"
+            }
+          ]
+        },
+        "personOKS": {
+          "required": false,
+          "isArray": true,
+          "minOccurs": 0,
+          "maxOccurs": null,
+          "rules": [
+            {
+              "column": "operationType",
+              "dataType": "ENUMERATION",
+              "values": [
+                "0",
+                "1",
+                "2",
+                "3"
+              ],
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "externalID",
+              "dataType": "STRING",
+              "minValue": 1,
+              "maxValue": 255,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "personOKSID",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 9999999999999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "specialityOrdTypeID",
+              "dataType": "NUMBER",
+              "minValue": -1,
+              "maxValue": 99,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "educationGradeTypeID",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 99,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "certifcateNo",
+              "dataType": "STRING",
+              "minLenght": 1,
+              "maxLenght": 50,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "yearOfGraduation",
+              "dataType": "NUMBER",
+              "minValue": 1900,
+              "maxValue": 9999,
+              "pattern": "^\\d+$",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "isPKTeacher",
+              "dataType": "FLAG",
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "speciality",
+              "dataType": "STRING",
+              "minLenght": 1,
+              "maxLenght": 1024,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "acquiredPK",
+              "dataType": "STRING",
+              "minLenght": 0,
+              "maxLenght": 1024,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "universityID",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 9999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "universityNotes",
+              "dataType": "STRING",
+              "minLenght": 0,
+              "maxLenght": 1024,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            }
+          ],
+          "children": {
+            "personOKSSubjectGroup": {
+              "required": false,
+              "isArray": true,
+              "minOccurs": 0,
+              "maxOccurs": null,
+              "rules": [
+                {
+                  "column": "operationType",
+                  "dataType": "ENUMERATION",
+                  "values": [
+                    "0",
+                    "1",
+                    "2",
+                    "3"
+                  ],
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "externalID",
+                  "dataType": "STRING",
+                  "minValue": 1,
+                  "maxValue": 255,
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "personOKSSubjectGroupID",
+                  "dataType": "NUMBER",
+                  "minValue": 0,
+                  "maxValue": 9999999999999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "subjectGroupID",
+                  "dataType": "NUMBER",
+                  "minValue": 0,
+                  "maxValue": 9999,
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                }
+              ]
+            }
+          }
+        },
+        "personPKS": {
+          "required": false,
+          "isArray": true,
+          "minOccurs": 0,
+          "maxOccurs": null,
+          "rules": [
+            {
+              "column": "operationType",
+              "dataType": "ENUMERATION",
+              "values": [
+                "0",
+                "1",
+                "2",
+                "3"
+              ],
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "externalID",
+              "dataType": "STRING",
+              "minValue": 1,
+              "maxValue": 255,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "personPKSID",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 9999999999999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "pKSTypeID",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 99,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "certifcateNo",
+              "dataType": "STRING",
+              "minLenght": 1,
+              "maxLenght": 50,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "yearOfGraduation",
+              "dataType": "NUMBER",
+              "minValue": 1900,
+              "maxValue": 9999,
+              "pattern": "^\\d+$",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "speciality",
+              "dataType": "STRING",
+              "minLenght": 1,
+              "maxLenght": 1024,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "universityID",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 9999,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "universityNotes",
+              "dataType": "STRING",
+              "minLenght": 1,
+              "maxLenght": 1024,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            }
+          ]
+        },
+        "personQCourse": {
+          "required": false,
+          "isArray": true,
+          "minOccurs": 0,
+          "maxOccurs": null,
+          "rules": [
+            {
+              "column": "operationType",
+              "dataType": "ENUMERATION",
+              "values": [
+                "0",
+                "1",
+                "2",
+                "3"
+              ],
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "externalID",
+              "dataType": "STRING",
+              "minValue": 1,
+              "maxValue": 255,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "personQCourseID",
+              "dataType": "NUMBER",
+              "minValue": 1,
+              "maxValue": 9999999999999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "qCourseActTypeID",
+              "dataType": "NUMBER",
+              "minValue": 1,
+              "maxValue": 2,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "qCourseYear",
+              "dataType": "NUMBER",
+              "minValue": 1900,
+              "maxValue": 9999,
+              "pattern": "^\\d+$",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "qCourseTypeID",
+              "dataType": "NUMBER",
+              "minValue": 1,
+              "maxValue": 99,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "qCourseTypeNotes",
+              "dataType": "STRING",
+              "minLenght": 1,
+              "maxLenght": 255,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "qCourseBudgetSourceTypeID",
+              "dataType": "NUMBER",
+              "minValue": null,
+              "maxValue": 99,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "internalCoursePrice",
+              "dataType": "NUMBER",
+              "minValue": null,
+              "maxValue": 9999999999999999,
+              "pattern": "^\\d+(\\.\\d{1,2})$",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "qCourseDurationTypeID",
+              "dataType": "NUMBER",
+              "minValue": 1,
+              "maxValue": 99,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "documentType",
+              "dataType": "STRING",
+              "minLenght": 1,
+              "maxLenght": 255,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "qCourseDurationCredits",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 99,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "qCourseDurationHours",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 99,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "qCourseTopic",
+              "dataType": "STRING",
+              "minLenght": 1,
+              "maxLenght": 255,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "universityID",
+              "dataType": "NUMBER",
+              "minValue": null,
+              "maxValue": 9999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "universityNotes",
+              "dataType": "STRING",
+              "minLenght": null,
+              "maxLenght": 1024,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            }
+          ]
+        },
+        "personFLSkill": {
+          "required": false,
+          "isArray": true,
+          "minOccurs": 0,
+          "maxOccurs": null,
+          "rules": [
+            {
+              "column": "operationType",
+              "dataType": "ENUMERATION",
+              "values": [
+                "0",
+                "1",
+                "2",
+                "3"
+              ],
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "externalID",
+              "dataType": "STRING",
+              "minValue": 1,
+              "maxValue": 255,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "personFLSkillID",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 9999999999999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "fLID",
+              "dataType": "NUMBER",
+              "minValue": -1,
+              "maxValue": 999,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "fLLevelID",
+              "dataType": "NUMBER",
+              "minValue": 1,
+              "maxValue": 99,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "notes",
+              "dataType": "STRING",
+              "minLenght": 1,
+              "maxLenght": 1024,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            }
+          ]
+        },
+        "personCompSkill": {
+          "required": false,
+          "isArray": true,
+          "minOccurs": 0,
+          "maxOccurs": null,
+          "rules": [
+            {
+              "column": "operationType",
+              "dataType": "ENUMERATION",
+              "values": [
+                "0",
+                "1",
+                "2",
+                "3"
+              ],
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "externalID",
+              "dataType": "STRING",
+              "minValue": 1,
+              "maxValue": 255,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "personCompSkillID",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 9999999999999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "compSkillID",
+              "dataType": "NUMBER",
+              "minValue": -1,
+              "maxValue": 999,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "compSkillLevelID",
+              "dataType": "NUMBER",
+              "minValue": 1,
+              "maxValue": 99,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "notes",
+              "dataType": "STRING",
+              "minLenght": null,
+              "maxLenght": 1024,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            }
+          ]
+        },
+        "resourceSupportReport": {
+          "required": false,
+          "isArray": true,
+          "minOccurs": 0,
+          "maxOccurs": null,
+          "rules": [
+            {
+              "column": "operationType",
+              "dataType": "ENUMERATION",
+              "values": [
+                "0"
+              ],
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "externalID",
+              "dataType": "STRING",
+              "minValue": 1,
+              "maxValue": 255,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "iD",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 9999999999999,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            }
+          ],
+          "children": {
+            "resourceSupport": {
+              "required": true,
+              "isArray": true,
+              "minOccurs": 0,
+              "maxOccurs": null,
+              "rules": [
+                {
+                  "column": "operationType",
+                  "dataType": "ENUMERATION",
+                  "values": [
+                    "0"
+                  ],
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "externalID",
+                  "dataType": "STRING",
+                  "minValue": 1,
+                  "maxValue": 255,
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "iD",
+                  "dataType": "NUMBER",
+                  "minValue": 0,
+                  "maxValue": 9999999999999,
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                }
+              ],
+              "children": {
+                "resourceSupportSpecialist": {
+                  "required": true,
+                  "isArray": true,
+                  "minOccurs": 1,
+                  "maxOccurs": null,
+                  "rules": [
+                    {
+                      "column": "operationType",
+                      "dataType": "ENUMERATION",
+                      "values": [
+                        "0",
+                        "1",
+                        "2",
+                        "3"
+                      ],
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "externalID",
+                      "dataType": "STRING",
+                      "minValue": 1,
+                      "maxValue": 255,
+                      "pattern": "",
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "iD",
+                      "dataType": "NUMBER",
+                      "minValue": 0,
+                      "maxValue": 9999999999999,
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "name",
+                      "dataType": "STRING",
+                      "minLenght": 1,
+                      "maxLenght": 200,
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "organizationType",
+                      "dataType": "STRING",
+                      "minLenght": 1,
+                      "maxLenght": 200,
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "organizationName",
+                      "dataType": "STRING",
+                      "minLenght": 1,
+                      "maxLenght": 200,
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "specialistType",
+                      "dataType": "STRING",
+                      "minLenght": 1,
+                      "maxLenght": 200,
+                      "pattern": "",
+                      "required": false,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "resourceSupportSpecialistTypeId",
+                      "dataType": "NUMBER",
+                      "minValue": 0,
+                      "maxValue": 999,
+                      "pattern": "",
+                      "required": true,
+                      "type": "ERROR"
+                    },
+                    {
+                      "column": "workPlaceID",
+                      "dataType": "NUMBER",
+                      "minValue": 0,
+                      "maxValue": 999,
+                      "pattern": "",
+                      "required": true,
+                      "type": "ERROR"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "specialNeedsYear": {
+          "required": false,
+          "isArray": true,
+          "minOccurs": 0,
+          "maxOccurs": null,
+          "rules": [
+            {
+              "column": "operationType",
+              "dataType": "ENUMERATION",
+              "values": [
+                "0",
+                "1",
+                "2",
+                "3"
+              ],
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "externalID",
+              "dataType": "STRING",
+              "minValue": 1,
+              "maxValue": 255,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "id",
+              "dataType": "NUMBER",
+              "minValue": 1,
+              "maxValue": 9999999999999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "personId",
+              "dataType": "NUMBER",
+              "minValue": 1,
+              "maxValue": 9999999999999,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "schoolYear",
+              "dataType": "NUMBER",
+              "minValue": 2000,
+              "maxValue": 9999,
+              "pattern": "^\\d+$",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "hasSuportiveEnvironment",
+              "dataType": "FLAG",
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "supportiveEnvironment",
+              "dataType": "STRING",
+              "minValue": 1,
+              "maxValue": 1000,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            }
+          ],
+          "children": {
+            "specialNeeds": {
+              "required": true,
+              "isArray": true,
+              "minOccurs": 1,
+              "maxOccurs": null,
+              "rules": [
+                {
+                  "column": "operationType",
+                  "dataType": "ENUMERATION",
+                  "values": [
+                    "0",
+                    "1",
+                    "2",
+                    "3"
+                  ],
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "externalID",
+                  "dataType": "STRING",
+                  "minValue": 1,
+                  "maxValue": 255,
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "id",
+                  "dataType": "NUMBER",
+                  "minValue": 1,
+                  "maxValue": 9999999999999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "specialNeedsYearId",
+                  "dataType": "NUMBER",
+                  "minValue": 1,
+                  "maxValue": 9999999999999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "specialNeedsTypeId",
+                  "dataType": "NUMBER",
+                  "minValue": 1,
+                  "maxValue": 9999999999999,
+                  "pattern": "",
+                  "required": true,
+                  "type": "ERROR"
+                },
+                {
+                  "column": "specialNeedsSubTypeId",
+                  "dataType": "NUMBER",
+                  "minValue": 1,
+                  "maxValue": 9999999999999,
+                  "pattern": "",
+                  "required": false,
+                  "type": "ERROR"
+                }
+              ]
+            }
+          }
+        },
+        "scholarshipStudent": {
+          "required": false,
+          "isArray": true,
+          "minOccurs": 0,
+          "maxOccurs": null,
+          "rules": [
+            {
+              "column": "operationType",
+              "dataType": "ENUMERATION",
+              "values": [
+                "0",
+                "1",
+                "2",
+                "3"
+              ],
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "externalID",
+              "dataType": "STRING",
+              "minValue": 1,
+              "maxValue": 255,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "id",
+              "dataType": "NUMBER",
+              "minValue": 1,
+              "maxValue": 9999999999999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "studentClassID",
+              "dataType": "NUMBER",
+              "minValue": 1,
+              "maxValue": 9999999999999,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "scholarshipAmountId",
+              "dataType": "NUMBER",
+              "minValue": 1,
+              "maxValue": 9999999999999,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "description",
+              "dataType": "STRING",
+              "minValue": 1,
+              "maxValue": 10000,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "scholarshipTypeId",
+              "dataType": "NUMBER",
+              "minValue": 1,
+              "maxValue": 9999999999999,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "amountRate",
+              "dataType": "NUMBER",
+              "minValue": 1,
+              "maxValue": 9999999999999,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "periodicity",
+              "dataType": "ENUMERATION",
+              "values": [
+                "1",
+                "2"
+              ],
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "orderNumber",
+              "dataType": "STRING",
+              "minValue": 1,
+              "maxValue": 1000,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "orderDate",
+              "dataType": "DATE",
+              "format": "yyyy-MM-dd",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "schoolYear",
+              "dataType": "NUMBER",
+              "minValue": 2000,
+              "maxValue": 9999,
+              "pattern": "^\\d+$",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "institutionId",
+              "dataType": "NUMBER",
+              "minValue": 1,
+              "maxValue": 9999999999999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "financingOrganId",
+              "dataType": "NUMBER",
+              "minValue": 1,
+              "maxValue": 9999999999999,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "personID",
+              "dataType": "NUMBER",
+              "minValue": 1,
+              "maxValue": 9999999999999,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "commissionDate",
+              "dataType": "DATE",
+              "format": "yyyy-MM-dd",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "commissionNumber",
+              "dataType": "NUMBER",
+              "minValue": 1,
+              "maxValue": 9999999999999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            }
+          ]
+        },
+        "student": {
+          "required": false,
+          "isArray": true,
+          "minOccurs": 0,
+          "maxOccurs": 1,
+          "rules": [
+            {
+              "column": "operationType",
+              "dataType": "ENUMERATION",
+              "values": [
+                "0",
+                "2"
+              ],
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "personID",
+              "dataType": "NUMBER",
+              "minValue": 1,
+              "maxValue": 9999999999999,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "homePhone",
+              "dataType": "STRING",
+              "minValue": 1,
+              "maxValue": 255,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "workPhone",
+              "dataType": "STRING",
+              "minValue": 1,
+              "maxValue": 255,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "mobilePhone",
+              "dataType": "STRING",
+              "minValue": 1,
+              "maxValue": 255,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "email",
+              "dataType": "STRING",
+              "pattern": "",
+              "minLenght": 1,
+              "maxLenght": 255,
+              "required": false,
+              "type": "WARNING"
+            },
+            {
+              "column": "livesWithFosterFamily",
+              "dataType": "FLAG",
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "hasParentConsent",
+              "dataType": "FLAG",
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "gpPhone",
+              "dataType": "STRING",
+              "minValue": 1,
+              "maxValue": 255,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "gpName",
+              "dataType": "STRING",
+              "minValue": 1,
+              "maxValue": 1000,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "representedByTheMajor",
+              "dataType": "FLAG",
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "nativeLanguageId",
+              "dataType": "NUMBER",
+              "minValue": 1,
+              "maxValue": 9999999999999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "familyEducationWeight",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 9999999999999,
+              "pattern": "^\\d+(\\.\\d{1,2})?$",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "familyWorkStatusWeight",
+              "dataType": "NUMBER",
+              "minValue": 0,
+              "maxValue": 9999999999999,
+              "pattern": "^\\d+(\\.\\d{1,2})?$",
+              "required": true,
+              "type": "ERROR"
+            }
+          ]
+        },
+        "relative": {
+          "required": false,
+          "isArray": true,
+          "minOccurs": 0,
+          "maxOccurs": null,
+          "rules": [
+            {
+              "column": "operationType",
+              "dataType": "ENUMERATION",
+              "values": [
+                "0",
+                "1",
+                "2",
+                "3"
+              ],
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "externalID",
+              "dataType": "STRING",
+              "minValue": 1,
+              "maxValue": 255,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "relativeID",
+              "dataType": "NUMBER",
+              "minValue": 1,
+              "maxValue": 9999999999999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "personID",
+              "dataType": "NUMBER",
+              "minValue": 1,
+              "maxValue": 9999999999999,
+              "pattern": "",
+              "required": true,
+              "type": "ERROR"
+            },
+            {
+              "column": "notes",
+              "dataType": "STRING",
+              "minLenght": 1,
+              "maxLenght": 3000,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "workStatusID",
+              "dataType": "NUMBER",
+              "minValue": 1,
+              "maxValue": 9999999999999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "description",
+              "dataType": "STRING",
+              "minLenght": 1,
+              "maxLenght": 3000,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "email",
+              "dataType": "STRING",
+              "pattern": "",
+              "minLenght": 1,
+              "maxLenght": 255,
+              "required": false,
+              "type": "WARNING"
+            },
+            {
+              "column": "phoneNumber",
+              "dataType": "STRING",
+              "minValue": 1,
+              "maxValue": 255,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "educationTypeId",
+              "dataType": "NUMBER",
+              "minValue": 1,
+              "maxValue": 9999999999999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "firstName",
+              "dataType": "STRING",
+              "minLenght": 1,
+              "maxLenght": 255,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "middleName",
+              "dataType": "STRING",
+              "minLenght": 1,
+              "maxLenght": 255,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "lastName",
+              "dataType": "STRING",
+              "minLenght": 1,
+              "maxLenght": 255,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "personalID",
+              "dataType": "STRING",
+              "minValue": 1,
+              "maxValue": 255,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "personalIDType",
+              "dataType": "NUMBER",
+              "minValue": -1,
+              "maxValue": 10,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            },
+            {
+              "column": "relativeTypeID",
+              "dataType": "NUMBER",
+              "minValue": 1,
+              "maxValue": 9999999999999,
+              "pattern": "",
+              "required": false,
+              "type": "ERROR"
+            }
+          ]
+        }
+      }
+    },
+    "educationalState": {
+      "required": false,
+      "isArray": true,
+      "rules": [
+        {
+          "column": "operationType",
+          "dataType": "ENUMERATION",
+          "values": [
+            "0",
+            "1",
+            "3"
+          ],
+          "required": true,
+          "type": "ERROR"
+        },
+        {
+          "column": "externalID",
+          "dataType": "STRING",
+          "minValue": 1,
+          "maxValue": 255,
+          "pattern": "",
+          "required": true,
+          "type": "ERROR"
+        },
+        {
+          "column": "educationalStateID",
+          "dataType": "NUMBER",
+          "minValue": 1,
+          "maxValue": 99999999999999,
+          "pattern": "",
+          "required": false,
+          "type": "ERROR"
+        },
+        {
+          "column": "personID",
+          "dataType": "NUMBER",
+          "minValue": 1,
+          "maxValue": 99999999999999,
+          "pattern": "",
+          "required": true,
+          "type": "ERROR"
+        },
+        {
+          "column": "institutionID",
+          "dataType": "NUMBER",
+          "minValue": 1,
+          "maxValue": 2999999,
+          "pattern": "",
+          "required": true,
+          "type": "ERROR"
+        },
+        {
+          "column": "positionID",
+          "dataType": "NUMBER",
+          "minValue": 1,
+          "maxValue": 9999,
+          "pattern": "",
+          "required": true,
+          "type": "ERROR"
+        }
+      ]
+    }
+  }
+}

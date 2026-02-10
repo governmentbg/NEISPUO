@@ -1,0 +1,1596 @@
+﻿@model RegStamps.Models.Stamp.EditStamp.EditStampViewModel
+@using RegStamps.Models.Constants
+@{
+    ViewBag.Title = "Регистриране на печат";
+}
+
+@section Head {
+    @*<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>*@
+    <link href="~/css/jquery.steps.css" rel="stylesheet" />
+    <link href="~/css/jquery-ui.css" rel="stylesheet" />
+    <script src="~/js/jquery-ui-1.12.1.js"></script>
+    <script src="~/js/datepicker-bg.js"></script>
+}
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        @* @Html.ActionLink("Назад", ActionNameType.ListStamp, null, null, new { @class = "btn btn-sm btn-default" }) *@
+        @await Html.PartialAsync("_RedirectToListStamp")
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+        <h4>@await Html.PartialAsync("_UinData", Model.StampData.StampId)</h4>
+    </div>
+</div>
+
+<br />
+
+<div class="alert alert-danger alert-danger-required" role="alert"></div>
+<div class="alert alert-success alert-success-fade" role="alert"></div>
+<div class="alert alert-warning alert-warning-fade" role="alert"></div>
+<div class="alert alert-danger alert-danger-fade" role="alert">Грешка. Данните не бяха записани</div>
+
+@Html.HiddenFor(model => model.StampData.StampId, new { @id = "stampId-info" })
+@Html.HiddenFor(model => model.StampData.StampIdByte, new { @id = "stampIdByte-info" })
+@Html.HiddenFor(model => model.RequestStampData.RequestId, new { @id = "requestId-info" })
+@Html.HiddenFor(model => model.KeeperData.KeeperId, new { @id = "keeperId-info" })
+@Html.HiddenFor(model => model.RequestStampData.KeepPlaceId, new { @id = "keepPlaceId-info" })
+
+<div class="row" id="steps-create-stamps">
+    <h3>Данни за печата</h3>
+    <div class="row">
+        <h4 class="margin-custom">Данни за печата</h4>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                <div class="">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <p>@Html.LabelFor(model => model.StampData.StampId, new { @class = "control-label" })</p>
+                            <div class="col-lg-10">
+                                <b class="font-size-custom">@Html.DisplayFor(model => model.StampData.StampId)</b>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <p>@Html.LabelFor(model => model.StampData.StampTypeDropDown, new { @class = "control-label" })</p>
+                            <div class="col-lg-10">
+                                @Html.DropDownListFor(model => model.StampData.StampTypeId, new SelectList(Model.StampData.StampTypeDropDown, "StampTypeId", "StampTypeName"), "изберете тип на печата", new { @class = "form-control stamp-type-drop-down", @id = "stamp-type-id" })
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <br />
+                <div class="">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <p>@Html.LabelFor(model => model.StampData.FirstUseDate, new { @class = "control-label" })</p>
+                            <div class="col-lg-10">
+                                @Html.EditorFor(model => model.StampData.FirstUseDate, new { htmlAttributes = new { @class = "form-control stamp-first-use-date datepicker datepicker-first-use", @required = "required", @placeholder = "" } })
+                                @Html.ValidationMessageFor(model => model.StampData.FirstUseDate, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <p>
+                                @Html.LabelFor(model => model.StampData.FirstUsePerson, new { @class = "control-label" })
+                            </p>
+                            <div class="col-lg-10">
+                                @Html.EditorFor(model => model.StampData.FirstUsePerson, new { htmlAttributes = new { @class = "form-control first-use-person", @required = "required" } })
+                                @Html.ValidationMessageFor(model => model.StampData.FirstUsePerson, "", new { @class = "text-danger" })
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <br />
+                <div class="">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <p>@Html.LabelFor(model => model.StampData.LetterNumber, new { @class = "control-label" })</p>
+                            <div class="col-lg-10">
+                                @if (Model.StampData.StampTypeId == 2)
+                                {
+                                    @Html.EditorFor(model => model.StampData.LetterNumber, new { htmlAttributes = new { @class = "form-control first-letter-number", @disabled = "disabled" } })
+                                }
+                                else
+                                {
+                                    @Html.EditorFor(model => model.StampData.LetterNumber, new { htmlAttributes = new { @class = "form-control first-letter-number" } })
+                                }
+
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <p>
+                                @Html.LabelFor(model => model.StampData.LetterDate, new { @class = "control-label" })
+                            </p>
+                            <div class="col-lg-10">
+                                @if (Model.StampData.StampTypeId == 2)
+                                {
+                                    @Html.EditorFor(model => model.StampData.LetterDate, new { htmlAttributes = new { @class = "form-control datepicker datepicker-letter-date", @disabled = "disabled" } })
+                                }
+                                else
+                                {
+                                    @Html.EditorFor(model => model.StampData.LetterDate, new { htmlAttributes = new { @class = "form-control datepicker datepicker-letter-date" } })
+                                }
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Информация</h4>
+                    </div>
+                    <div class="panel-body">
+                        @await Html.PartialAsync("_StampDataInfo")
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <h3>Данни за пазителя</h3>
+    <div class="row">
+        <h4 class="margin-custom">Данни за пазителя на печата</h4>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                        <p>@Html.LabelFor(model => model.KeeperData.IdNumber, new { @class = "control-label" })</p>
+
+                        <div class="col-lg-4">
+                            @Html.DropDownList("IdType", new SelectList(Model.KeeperData.IdTypeDropDown, "IdType", "IdTypeName", Model.KeeperData.IdType), null, new { @class = "form-control idType-name-drop-down", @id = "keeper-idType" })
+                        </div>
+                        <div class="col-lg-8">
+                            @Html.EditorFor(model => model.KeeperData.IdNumber, new { htmlAttributes = new { @class = "form-control keeper-id-number", @required = "required" } })
+                            @Html.ValidationMessageFor(model => model.KeeperData.IdNumber, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                        <p>@Html.LabelFor(model => model.KeeperData.FirstName, new { @class = "control-label" })</p>
+                        <div class="col-lg-12">
+                            @Html.EditorFor(model => model.KeeperData.FirstName, new { htmlAttributes = new { @class = "form-control keeper-first-name", @required = "required" } })
+                            @Html.ValidationMessageFor(model => model.KeeperData.FirstName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                        <p class="control-label">
+                            @Html.LabelFor(model => model.KeeperData.SecondName, new { @class = "control-label" })
+                        </p>
+                        <div class="col-lg-12">
+                            @Html.EditorFor(model => model.KeeperData.SecondName, new { htmlAttributes = new { @class = "form-control keeper-second-name", @required = "required" } })
+                            @Html.ValidationMessageFor(model => model.KeeperData.SecondName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                        <p class="control-label">
+                            @Html.LabelFor(model => model.KeeperData.FamilyName, new { @class = "control-label" })
+                        </p>
+                        <div class="col-lg-12">
+                            @Html.EditorFor(model => model.KeeperData.FamilyName, new { htmlAttributes = new { @class = "form-control keeper-family-name", @required = "required" } })
+                            @Html.ValidationMessageFor(model => model.KeeperData.FamilyName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <br />
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                        <p>@Html.LabelFor(model => model.KeeperData.OccupationName, new { @class = "control-label" })</p>
+                        <div class="col-lg-12">
+                            @Html.DropDownListFor(model => model.KeeperData.OccupationId, new SelectList(Model.KeeperData.OccupationDropDown, "OccupId", "OccupName", Model.KeeperData.OccupationId), "изберете длъжност", new { @class = "form-control occup-name-drop-down", @id = "occup-id" })
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                        <p class="control-label">
+                            @Html.LabelFor(model => model.RequestStampData.KeepPlaceName, new { @class = "control-label" })
+                        </p>
+                        <div class="col-lg-12">
+                            @Html.EditorFor(model => model.RequestStampData.KeepPlaceName, new { htmlAttributes = new { @class = "form-control stamp-keep-place-name" } })
+                            @Html.ValidationMessageFor(model => model.RequestStampData.KeepPlaceName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <br />
+
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
+                        <p>@Html.LabelFor(model => model.RequestStampData.OrderNumber, new { @class = "control-label" })</p>
+                        <div class="col-lg-12">
+                            @Html.EditorFor(model => model.RequestStampData.OrderNumber, new { htmlAttributes = new { @class = "form-control stamp-order-number" } })
+                            @Html.ValidationMessageFor(model => model.RequestStampData.OrderNumber, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
+                        <p class="control-label">
+                            @Html.LabelFor(model => model.RequestStampData.OrderDate, new { @class = "control-label" })
+                        </p>
+                        <div class="col-lg-12">
+                            @Html.EditorFor(model => model.RequestStampData.OrderDate, new { htmlAttributes = new { @class = "form-control datepicker datepicker-order-date" } })
+                            @Html.ValidationMessageFor(model => model.RequestStampData.OrderDate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
+                        <p class="control-label">
+                            @Html.LabelFor(model => model.RequestStampData.StartDate, new { @class = "control-label" })
+                        </p>
+                        <div class="col-lg-12">
+                            @Html.EditorFor(model => model.RequestStampData.StartDate, new { htmlAttributes = new { @class = "form-control datepicker datepicker-start-date" } })
+                            @Html.ValidationMessageFor(model => model.RequestStampData.StartDate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    @*<div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
+                        <p class="control-label">
+                            @Html.LabelFor(model => model.RequestStampData.EndDate, new { @class = "control-label" })
+                        </p>
+                        <div class="col-lg-12">
+                            @Html.EditorFor(model => model.RequestStampData.EndDate, new { htmlAttributes = new { @class = "form-control datepicker datepicker-end-date", @disabled = "disabled" } })
+                            @Html.ValidationMessageFor(model => model.RequestStampData.EndDate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>*@
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+
+    <h3>Образец на отпечатък</h3>
+    <div class="row">
+        <h4 class="margin-custom">Образец на отпечатък на печата</h4>
+        <br />
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <p class="control-label"><b>Изтегляне на бланка за отпечатък</b></p>
+                        <div class="col-lg-12">
+                            @Html.ActionLink("Изтегли бланка", ActionNameType.CreatePdf, ControllerNameType.Pdf, null, null, null, new { param = Model.StampData.StampIdByte }, new { @class = "btn btn-danger", @target="_blank"  })
+                        </div>
+                    </div>
+
+                </div>
+
+                <br />
+
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div id="result-stamp-file">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" id="stamp-form-upload">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <p class="control-label">
+                            <b>Прикачи образец</b>
+                        </p>
+                        <div class="col-lg-12">
+
+                            <label class="upload-custom">
+                                <img class="upload-img" src="~/img/upload.png" />
+                                <input type="file" name="UploadData" id="stamp-file-id" />
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Информация</h4>
+                    </div>
+                    <div class="panel-body">
+                        <p class="text-justify">
+                            В този раздел трябва да изтеглите и разпечатате предварително генерирана бланка с УИН на печата чрез натискането на бутона "Изтегли бланка".<br />
+                            За печат с държавен герб трябва да се поставят <strong>три отпечатъка на печата</strong> върху разпечатаната бланка в празните очертания и директора да положи подпис. За обикновен печат бланката съдържа само <strong>едно поле за отпечатък</strong> на печата.<br />
+                            След това бланката трябва да бъде сканирана и да се прикачи чрез бутона "Прикачи".
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h3>Други документи</h3>
+    <div class="row" style="overflow-y: auto">
+        <h4 class="margin-custom">Други документи</h4>
+        <br />
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                <p class="margin-custom-bottom">@Html.LabelFor(model => model.RequestFileData.FileTypeDropDown, new { @class = "control-label" })</p>
+                <div class="col-lg-12">
+                    @Html.DropDownList("FileTypeVal", new SelectList(Model.RequestFileData.FileTypeDropDown, "FileTypeId", "FileTypeName"), "изберете тип на документа", new { @class = "form-control", @id = "file-type-id" })
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                <p class="control-label">
+                    @Html.LabelFor(model => model.RequestFileData.UploadData, new { @class = "control-label" })
+                </p>
+                <div class="col-lg-12">
+                    <label class="upload-custom">
+                        <img class="upload-img" src="~/img/upload.png" />
+                        <input type="file" name="UploadData" id="request-file-id">
+                    </label>
+                </div>
+            </div>
+
+
+
+            <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1"></div>
+            <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Информация</h4>
+                    </div>
+                    <div class="panel-body">
+                        @await Html.PartialAsync("_RequestStampFileDataInfo", RequestType.NewStampRequest)
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div id="result-request-file">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h3>Изпращане на заявката</h3>
+    <div class="row">
+        <h4 class="margin-custom">Изпращане на заявката</h4>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                <div class="row">
+                    <!--row for send modal-->
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <p class="control-label">
+                            <label>Изпращане на заявката за регистриране на печата за разглеждане в МОН</label>
+                        </p>
+
+
+                        <button type="submit" id="btn-send-stamp" class="btn btn-sm btn-danger" data-target="#modal-send-stamp" data-toggle="modal" disabled="disabled">Изпращане</button>
+
+                        <div id="modal-send-stamp" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+                            <div class="modal-dialog modal-dialog-custom-md">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title text-center">Внимание</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p class="first-line text-justify">Заявка за регистриране на печат с УИН @Model.StampData.StampId ще бъде изпратена за разглеждане в МОН.</p>
+                                        <p class="first-line text-justify">Няма да можете да правите повече промени, докато не бъде одобрена или върната за корекция.</p>
+                                        <p class="first-line text-justify">Сигурни ли сте, че искате да изпратите заявката за разглеждане?</p>
+                                        <br />
+
+                                        @*<div class="row">
+                                            <div class="col-xs-4"></div>
+                                            <div class="col-xs-4">
+                                                <button id="btn-sign-stamp" class="btn btn-sm btn-danger">Подписване</button>
+
+                                                <div class="alert alert-danger alert-danger-fade-el">Грешка</div>
+                                                <div class="alert alert-success alert-success-fade-el">Подписването премина успешно!</div>
+                                            </div>
+                                        </div>*@
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="alert alert-danger alert-danger-fade-el">Грешка при подписване</div>
+                                                <div class="alert alert-success alert-success-fade-el">Подписването премина успешно!</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-xs-3"></div>
+                                            <div class="col-xs-3 text-center">
+
+                                                @using (Html.BeginForm("SendStampRequest", "Stamp", FormMethod.Post, new { @id = "send-request-form-id" }))
+                                                {
+                                                    <input type="hidden" name="paramReq" value="@Model.RequestStampData.RequestIdByte">
+                                                    <input type="hidden" name="paramStamp" value="@Model.StampData.StampIdByte">
+                                                    <input type="hidden" name="signData" value="" id="signdata">
+
+                                                    <button id="btn-sign-stamp" class="btn btn-sm btn-success">Подписване</button>
+                                                    @*<input type="submit" id="btn-modal-confirm" class="btn btn-sm btn-success" value="Изпрати" disabled="disabled">*@
+
+                                                }
+                                            </div>
+
+                                            <div class="col-xs-6 text-center">
+                                                <button class="btn btn-danger btn-sm" data-dismiss="modal">Отказ</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+                    </div>
+                </div>
+                <div class="row">
+                    <!--row for errors-->
+                    <div id="result-check" class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+                        <div class="alert alert-danger alert-danger-fade-check" role="alert"></div>
+                        <div class="alert alert-success alert-success-fade-check" role="alert"></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Информация</h4>
+                    </div>
+                    <div class="panel-body">
+                        @await Html.PartialAsync("_SendStampDataInfo")
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        @await Html.PartialAsync("_RedirectToListStamp")
+    </div>
+</div>
+
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('.alert-success-fade').hide();
+            $('.alert-danger-fade').hide();
+            $('.alert-warning-fade').hide();
+            $('.alert-danger-required').hide();
+            $('.alert-success-fade-check').hide();
+            $('.alert-danger-fade-check').hide();
+
+            $('.alert-success-fade-el').hide();
+            $('.alert-danger-fade-el').hide();
+
+            $('.datepicker').removeAttr("data-val-date");
+            $(".datepicker").keydown(false)// disabled user input
+
+            //init
+            $("#steps-create-stamps").steps({
+                headerTag: "h3",
+                bodyTag: "div",
+                transitionEffect: "fade",
+                autoFocus: true,
+                enableAllSteps: true,
+                enableFinishButton: false,
+                labels: {
+                    cansel: "Отказ",
+                    finish: "Приключване",
+                    next: "Следващ",
+                    previous: "Предишен",
+                },
+                onStepChanged: function (event, currentIndex) {
+                    if (currentIndex == 4) {
+                        //$('#btn-check-input-data').trigger('click');
+                        CheckInputData();
+                    }
+
+                }
+            });
+
+            //ELSign
+            $("#btn-sign-stamp").click(function (e) {
+                e.preventDefault();
+
+                signWithNeispuo(@Model.StampData.StampId);
+            });
+
+            ShowStampFile();
+            ShowRequestFileList();
+
+            //auto save for create stamp
+            //stamp type drop down
+            $('.stamp-type-drop-down').change(function () {
+                var field = '@Html.Raw(Html.DisplayNameFor(model => model.StampData.StampTypeDropDown))';
+                var stampTypeVal = $(this).val();
+
+                var stampId = $('#stampId-info').val();
+
+                if (stampTypeVal == 1) {
+                    $('.first-letter-number').removeAttr('disabled', 'disabled');
+                    $('.datepicker-letter-date').removeAttr('disabled', 'disabled');
+                }
+                else if (stampTypeVal == 2) {
+                    $('.first-letter-number').attr('disabled', 'disabled');
+                    $('.first-letter-number').val('');
+                    $('.datepicker-letter-date').attr('disabled', 'disabled');
+                    $('.datepicker-letter-date').val('');
+                }
+
+                if (stampTypeVal == "" || stampTypeVal < 1 || stampTypeVal > 2 || stampId == "") {
+                    requiredFuncShow(field);
+                } else {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("SaveStampType", "AutoSave")',
+                        data: { stampId: stampId, stampTypeVal: stampTypeVal },
+                        //contentType: "application/json; charset=utf-8",
+                        dataType: "text",
+                        success: successFunc,
+                        error: errorFunc
+                    });
+
+                    function successFunc(data) {
+                        successFuncShow(data, field);
+                    }
+
+                    function errorFunc() {
+                    }
+                }
+
+            });
+
+            //input first use date
+            $(".datepicker-first-use").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'dd.mm.yy',
+                showAnim: 'clip',
+                onClose: function (selectedDate) {
+                    var field = '@Html.Raw(Html.DisplayNameFor(model => model.StampData.FirstUseDate))';
+                    var firstUseDateVal = $(this).val();
+                    var stampId = $('#stampId-info').val();
+                    //console.log(stampId);
+
+                    if (stampId == "" || firstUseDateVal == "") {
+                        requiredFuncShow(field);
+                    } else {
+                        $.ajax({
+                            type: "POST",
+                            url: '@Url.Action("SaveFirstUseDate", "AutoSave")',
+                            data: { stampId: stampId, firstUseDateVal: firstUseDateVal },
+                            //contentType: "application/json; charset=utf-8",
+                            dataType: "text",
+                            success: successFunc,
+                            error: errorFunc
+                        });
+
+                    }
+
+                    function successFunc(data) {
+                        successFuncShow(data, field);
+                    }
+
+                    function errorFunc() {
+
+                    }
+                }
+
+            });
+
+            //input first letter date
+            $(".datepicker-letter-date").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'dd.mm.yy',
+                showAnim: 'clip',
+                onClose: function (selectedDate) {
+                    var field = '@Html.Raw(Html.DisplayNameFor(model => model.StampData.LetterDate))';
+                    var firstLetterDateVal = $(this).val();
+                    var stampId = $('#stampId-info').val();
+                    //console.log(stampId);
+
+                    if (stampId == "" || firstLetterDateVal == "") {
+                        requiredFuncShow(field);
+                    } else {
+                        $.ajax({
+                            type: "POST",
+                            url: '@Url.Action("SaveFirstLetterDate", "AutoSave")',
+                            data: { stampId: stampId, firstLetterDateVal: firstLetterDateVal },
+                            //contentType: "application/json; charset=utf-8",
+                            dataType: "text",
+                            success: successFunc,
+                            error: errorFunc
+                        });
+
+                    }
+
+                    function successFunc(data) {
+                        successFuncShow(data, field);
+                    }
+
+                    function errorFunc() {
+
+                    }
+                }
+
+            });
+
+            //stamp first use person input
+            $('.first-use-person').blur(function () {
+                var field = '@Html.Raw(Html.DisplayNameFor(model => model.StampData.FirstUsePerson))';
+                var firstUsePersonVal = $(this).val();
+                //console.log(stampTypeVal);
+
+                var stampId = $('#stampId-info').val();
+                //console.log(stampId);
+
+                if (firstUsePersonVal == "" || stampId == "") {
+                    requiredFuncShow(field);
+                } else {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("SaveFirstUsePerson", "AutoSave")',
+                        data: { stampId: stampId, firstUsePersonVal: firstUsePersonVal },
+                        //contentType: "application/json; charset=utf-8",
+                        dataType: "text",
+                        success: successFunc,
+                        error: errorFunc
+                    });
+
+                    function successFunc(data) {
+                        successFuncShow(data, field);
+                    }
+
+                    function errorFunc() {
+
+                    }
+                }
+
+            });
+
+            //stamp first letter number input
+            $('.first-letter-number').blur(function () {
+                var field = '@Html.Raw(Html.DisplayNameFor(model => model.StampData.LetterNumber))';
+                var firstLetterNumberVal = $(this).val();
+                //console.log(stampTypeVal);
+
+                var stampId = $('#stampId-info').val();
+                //console.log(stampId);
+
+                if (firstLetterNumberVal == "" || stampId == "") {
+                    requiredFuncShow(field);
+                } else {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("SaveFirstLetterNumber", "AutoSave")',
+                        data: { stampId: stampId, firstLetterNumberVal: firstLetterNumberVal },
+                        //contentType: "application/json; charset=utf-8",
+                        dataType: "text",
+                        success: successFunc,
+                        error: errorFunc
+                    });
+
+                    function successFunc(data) {
+                        successFuncShow(data, field);
+                    }
+
+                    function errorFunc() {
+
+                    }
+                }
+
+            });
+
+            //stamp keeper id number input
+            $('.keeper-id-number').blur(function () {
+                var field = '@Html.Raw(Html.DisplayNameFor(model => model.KeeperData.IdNumber))';
+                var keeperIdTypeVal = $('#keeper-idType').val();
+                var keeperIdNumberVal = $(this).val();
+                //console.log(keeperIdNumberVal);
+
+                //var stampId = $('#stampId-info').val();
+                //console.log(stampId);
+
+                //var requestId = $('#requestId-info').val();
+                //console.log(requestId);
+
+                var keeperId = $('#keeperId-info').val();
+                //console.log(keeperId);
+
+                if (keeperIdNumberVal == "" || keeperId == "" || keeperIdTypeVal == "" || keeperIdTypeVal < 0 || keeperIdTypeVal > 2) {
+                    requiredFuncShow(field);
+                } else {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("SaveKeeperIdNumber", "AutoSave")',
+                        data: { keeperId: keeperId, keeperIdNumberVal: keeperIdNumberVal, keeperIdTypeVal: keeperIdTypeVal },
+                        //contentType: "application/json; charset=utf-8",
+                        dataType: "text",
+                        success: successFunc,
+                        error: errorFunc
+                    });
+
+                    function successFunc(data) {
+                        successFuncShow(data, field);
+
+                    }
+
+                    function errorFunc() {
+
+                    }
+                }
+
+            });
+
+            //stamp keeper first name input
+            $('.keeper-first-name').blur(function () {
+                var field = '@Html.Raw(Html.DisplayNameFor(model => model.KeeperData.FirstName))';
+                var keeperFirstNameVal = $(this).val();
+                //console.log(keeperFirstNameVal);
+
+                //var stampId = $('#stampId-info').val();
+                //console.log(stampId);
+
+                //var requestId = $('#requestId-info').val();
+                //console.log(requestId);
+
+                var keeperId = $('#keeperId-info').val();
+                //console.log(keeperId);
+
+                if (keeperFirstNameVal == "" || keeperId == "") {
+                    requiredFuncShow(field);
+                } else {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("SaveKeeperFirstName", "AutoSave")',
+                        data: { keeperId: keeperId, keeperFirstNameVal: keeperFirstNameVal },
+                        //contentType: "application/json; charset=utf-8",
+                        dataType: "text",
+                        success: successFunc,
+                        error: errorFunc
+                    });
+
+                    function successFunc(data) {
+                        successFuncShow(data, field);
+                    }
+
+                    function errorFunc() {
+
+                    }
+                }
+
+            });
+
+            //stamp keeper second name input
+            $('.keeper-second-name').blur(function () {
+                var field = '@Html.Raw(Html.DisplayNameFor(model => model.KeeperData.SecondName))';
+                var keeperSecondNameVal = $(this).val();
+                //console.log(keeperSecondNameVal);
+
+                //var stampId = $('#stampId-info').val();
+                //console.log(stampId);
+
+                //var requestId = $('#requestId-info').val();
+                //console.log(requestId);
+
+                var keeperId = $('#keeperId-info').val();
+
+                //second name can be empty
+                if (keeperId == "") {
+                    requiredFuncShow(field);
+                } else {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("SaveKeeperSecondName", "AutoSave")',
+                        data: { keeperId: keeperId, keeperSecondNameVal: keeperSecondNameVal },
+                        //contentType: "application/json; charset=utf-8",
+                        dataType: "text",
+                        success: successFunc,
+                        error: errorFunc
+                    });
+
+                    function successFunc(data) {
+                        successFuncShow(data, field);
+                    }
+
+                    function errorFunc() {
+
+                    }
+                }
+
+            });
+
+            //stamp keeper family name input
+            $('.keeper-family-name').blur(function () {
+                var field = '@Html.Raw(Html.DisplayNameFor(model => model.KeeperData.FamilyName))';
+                var keeperFamilyNameVal = $(this).val();
+                //console.log(keeperFamilyNameVal);
+
+                //var stampId = $('#stampId-info').val();
+                //console.log(stampId);
+
+                //var requestId = $('#requestId-info').val();
+                //console.log(requestId);
+
+                var keeperId = $('#keeperId-info').val();
+
+                if (keeperFamilyNameVal == "" || keeperId == "") {
+                    requiredFuncShow(field);
+                } else {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("SaveKeeperFamilyName", "AutoSave")',
+                        data: { keeperId: keeperId, keeperFamilyNameVal: keeperFamilyNameVal },
+                        //contentType: "application/json; charset=utf-8",
+                        dataType: "text",
+                        success: successFunc,
+                        error: errorFunc
+                    });
+
+                    function successFunc(data) {
+                        successFuncShow(data, field);
+                    }
+
+                    function errorFunc() {
+
+                    }
+                }
+
+            });
+
+
+            //occup type drop down
+            $('.occup-name-drop-down').blur(function () {
+                var field = '@Html.Raw(Html.DisplayNameFor(model => model.KeeperData.OccupationName))';
+                var occupNameVal = $(this).val();
+                //console.log(occupNameVal);
+
+                var keeperId = $('#keeperId-info').val();
+
+                if (occupNameVal == "" || occupNameVal < 1 || keeperId == "") {
+                    requiredFuncShow(field);
+                } else {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("SaveOccupName", "AutoSave")',
+                        data: { keeperId: keeperId, occupNameVal: occupNameVal },
+                        //contentType: "application/json; charset=utf-8",
+                        dataType: "text",
+                        success: successFunc,
+                        error: errorFunc
+                    });
+
+                    function successFunc(data) {
+                        successFuncShow(data, field);
+                    }
+
+                    function errorFunc() {
+
+                    }
+                }
+
+            });
+
+            //stamp place keep name input
+            $('.stamp-keep-place-name').blur(function () {
+                var field = '@Html.Raw(Html.DisplayNameFor(model => model.RequestStampData.KeepPlaceName))';
+                var keepPlaceNameVal = $(this).val();
+                //console.log(keepPlaceNameVal);
+
+                //var stampId = $('#stampId-info').val();
+                //console.log(stampId);
+
+                //var requestId = $('#requestId-info').val();
+                //var keeperId = $('#keeperId-info').val();
+
+                var keepPlaceId = $('#keepPlaceId-info').val();
+
+                if (keepPlaceNameVal == "" || keepPlaceId == "") {
+                    requiredFuncShow(field);
+                } else {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("SaveKeepPlaceName", "AutoSave")',
+                        data: { keepPlaceId: keepPlaceId, keepPlaceNameVal: keepPlaceNameVal },
+                        //contentType: "application/json; charset=utf-8",
+                        dataType: "text",
+                        success: successFunc,
+                        error: errorFunc
+                    });
+
+                    function successFunc(data) {
+                        successFuncShow(data, field);
+                    }
+
+                    function errorFunc() {
+
+                    }
+                }
+
+            });
+
+            //stamp order number input
+            $('.stamp-order-number').blur(function () {
+                var field = '@Html.Raw(Html.DisplayNameFor(model => model.RequestStampData.OrderNumber))';
+                var orderNumberVal = $(this).val();
+                //console.log(keepPlaceNameVal);
+
+                //var stampId = $('#stampId-info').val();
+                //console.log(stampId);
+
+                var requestId = $('#requestId-info').val();
+                //var keeperId = $('#keeperId-info').val();
+
+                //var keepPlaceId = $('#keepPlaceId-info').val();
+
+                if (orderNumberVal == "" || requestId == "") {
+                    requiredFuncShow(field);
+                } else {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("SaveOrderNumber", "AutoSave")',
+                        data: { requestId: requestId, orderNumberVal: orderNumberVal },
+                        //contentType: "application/json; charset=utf-8",
+                        dataType: "text",
+                        success: successFunc,
+                        error: errorFunc
+                    });
+
+                    function successFunc(data) {
+                        successFuncShow(data, field);
+                    }
+
+                    function errorFunc() {
+
+                    }
+                }
+
+            });
+
+            //input order date
+            $(".datepicker-order-date").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'dd.mm.yy',
+                showAnim: 'clip',
+                onClose: function (selectedDate) {
+                    var field = '@Html.Raw(Html.DisplayNameFor(model => model.RequestStampData.OrderDate))';
+                    var orderDateVal = $(this).val();
+                    var stampId = $('#stampId-info').val();
+                    var requestId = $('#requestId-info').val();
+                    //console.log(stampId);
+
+                    if (stampId == "" || requestId == "" || orderDateVal == "") {
+                        requiredFuncShow(field);
+                    } else {
+                        $.ajax({
+                            type: "POST",
+                            url: '@Url.Action("SaveOrderDate", "AutoSave")',
+                            data: { stampId: stampId, requestId: requestId, orderDateVal: orderDateVal },
+                            //contentType: "application/json; charset=utf-8",
+                            dataType: "text",
+                            success: successFunc,
+                            error: errorFunc
+                        });
+
+                    }
+
+                    function successFunc(data) {
+                        successFuncShow(data, field);
+                    }
+
+                    function errorFunc() {
+
+                    }
+                }
+
+            });
+
+            //input start date
+            $(".datepicker-start-date").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'dd.mm.yy',
+                showAnim: 'clip',
+                onClose: function (selectedDate) {
+                    var field = '@Html.Raw(Html.DisplayNameFor(model => model.RequestStampData.StartDate))';
+                    var startDateVal = $(this).val();
+                    var stampId = $('#stampId-info').val();
+                    var requestId = $('#requestId-info').val();
+                    //console.log(stampId);
+
+                    if (stampId == "" || requestId == "" || startDateVal == "") {
+                        requiredFuncShow(field);
+                    } else {
+                        $.ajax({
+                            type: "POST",
+                            url: '@Url.Action("SaveStartDate", "AutoSave")',
+                            data: { stampId: stampId, requestId: requestId, startDateVal: startDateVal },
+                            //contentType: "application/json; charset=utf-8",
+                            dataType: "text",
+                            success: successFunc,
+                            error: errorFunc
+                        });
+
+                    }
+
+                    function successFunc(data) {
+                        successFuncShow(data, field);
+                    }
+
+                    function errorFunc() {
+
+                    }
+                }
+
+            });
+
+            //input start date
+            $(".datepicker-end-date").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'dd.mm.yy',
+                showAnim: 'clip',
+                onClose: function (selectedDate) {
+                    var field = '@Html.Raw(Html.DisplayNameFor(model => model.RequestStampData.EndDate))';
+                    var endDateVal = $(this).val();
+                    var stampId = $('#stampId-info').val();
+                    var requestId = $('#requestId-info').val();
+                    //console.log(stampId);
+
+                    if (stampId == "" || requestId == "" || endDateVal == "") {
+                        requiredFuncShow(field);
+                    } else {
+                        $.ajax({
+                            type: "POST",
+                            url: '@Url.Action("SaveEndDate", "AutoSave")',
+                            data: { stampId: stampId, requestId: requestId, endDateVal: endDateVal },
+                            //contentType: "application/json; charset=utf-8",
+                            dataType: "text",
+                            success: successFunc,
+                            error: errorFunc
+                        });
+
+                    }
+
+                    function successFunc(data) {
+                        successFuncShow(data, field);
+                    }
+
+                    function errorFunc() {
+
+                    }
+                }
+
+            });
+
+            $('#request-file-id').change(function () {
+                RequestFileSubmit();
+            });
+
+            $('#file-type-id').change(function () {
+                RequestFileSubmit();
+            });
+
+            function RequestFileSubmit() {
+                var field = $('#file-type-id').find('option:selected').text();
+
+                var requestFileVal = $('#request-file-id').get(0).files;
+                var fileTypeVal = $('#file-type-id').val();
+                var requestId = $('#requestId-info').val();
+
+                //model RequestFileBindModel
+                var data = new FormData();
+                data.append("RequestId", requestId);
+                data.append("FileTypeVal", fileTypeVal);
+                data.append("UploadData", requestFileVal[0]);
+
+                if (requestFileVal.length === 0) {
+                    // requiredFuncShow("документ");
+                } else if (fileTypeVal == "" || fileTypeVal > 10) {
+                    requiredFuncShow(field);
+                } else {
+
+                    //check is pdf file png or jpeg
+                    if (requestFileVal[0]?.type != "application/pdf" && requestFileVal[0].type != "image/png" && requestFileVal[0]?.type != "image/jpeg") {
+                        requiredFuncPdfShow(field);
+                    } else {
+
+                        $.ajax({
+                            type: "POST",
+                            url: '@Url.Action("SaveUploadRequestFile", "AutoSave")',
+                            data: data,
+                            //data: { requestId: requestId, fileTypeVal: fileTypeVal, requestFileVal: requestFileVal },
+                            //contentType: "application/json; charset=utf-8",
+                            dataType: "text",
+                            processData: false, // Don't process the files
+                            contentType: false, // Set content type to false as jQuery will tell the server its a query string request
+                            success: successFunc,
+                            error: errorFunc
+                        });
+
+                        function successFunc(data) {
+                            $('#request-file-id').val(null);
+                            $('#file-type-id').val('');
+                            successFuncShow(data, field);
+
+                            ShowRequestFileList();
+                        }
+
+                        function errorFunc() {
+
+                        }
+                    }
+                }
+            }
+
+            $(document).on('click', '.request-image-del', function () {
+                var fileId = $(this).parent().parent().attr('id');
+                ConfirmDialogFile("Изтриване на документа?", fileId);
+            });
+
+            function ConfirmDialogFile(message, fileId) {
+                $('<div></div>').appendTo('body')
+                    .html('<div><h6>' + message + '</h6></div>')
+                    .dialog({
+                        modal: true, title: 'Изтриване файл', zIndex: 10000, autoOpen: true,
+                        width: 'auto', resizable: false,
+                        buttons: {
+                            "Да": function () {
+                                // $(obj).removeAttr('onclick');
+                                // $(obj).parents('.Parent').remove();
+
+                                //$('body').append('<h1>Confirm Dialog Result: <i>Yes</i></h1>');
+                                DeleteRequestFile(fileId);
+                                $(this).dialog("close");
+                            },
+                            "Не": function () {
+                                //$('body').append('<h1>Confirm Dialog Result: <i>No</i></h1>');
+
+                                $(this).dialog("close");
+                            }
+                        },
+                        close: function (event, ui) {
+                            $(this).remove();
+                        }
+                    });
+            };
+
+
+            function DeleteRequestFile(fileId) {
+                //alert(fileId);
+                var field = '@Html.Raw(Html.DisplayNameFor(model => model.RequestFileData.UploadData))';
+                var requestId = $('#requestId-info').val();
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("DeleteRequestFile", "AutoSave")',
+                    data: { fileId: fileId, requestId: requestId },
+                    //data: { requestId: requestId, fileTypeVal: fileTypeVal, requestFileVal: requestFileVal },
+                    //contentType: "application/json; charset=utf-8",
+                    dataType: "text",
+                    success: successFuncRequestFileDel,
+                    error: errorFuncRequestFileDel
+                });
+
+                function successFuncRequestFileDel(data) {
+                    if (data == 1) {
+                        ShowRequestFileList();
+                    }
+                    else {
+                        successFuncShow(data, field);
+                    }
+                }
+
+                function errorFuncRequestFileDel() {
+
+                }
+
+            }
+
+            function ShowRequestFileList() {
+                var field = "списък файлове";
+                var requestId = $('#requestId-info').val();
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("ShowRequestFileList", "AutoSave")',
+                    data: { requestId: requestId },
+                    //contentType: "application/json; charset=utf-8",
+                    dataType: "text",
+                    success: successFunc,
+                    error: errorFunc
+                });
+
+                function successFunc(data) {
+                    if (data == -3 || data == -2 || data == -1) {
+                        successFuncShow(data, field);
+                    }
+                    else {
+                        if (data == 100) {
+                            var tableData = "<table class='table'><thead><tr><th>Име на файла</th><th>Тип на документа</th><th>Изтриване</th></tr></thead><tbody>";
+                            tableData += "<tr><td colspan='3' class='text-center text-danger'>Няма прикачени документи.</td></tr>";
+                            tableData += "</tbody></table>";
+                            $('#result-request-file').html(tableData);
+                            $('#result-request-file').hide();
+                        }
+                        else {
+                            var jsonData = JSON.parse(data);
+
+                            if (jsonData != null) {
+                                var tableData = "<table class='table'><thead><tr><th>Име на файла</th><th>Тип на документа</th><th>Изтриване</th></tr></thead><tbody>";
+
+                                for (var i = 0; i < jsonData.length; i++) {
+                                    //var message = "Поле " + jsonData[i].FieldName + " не е попълнено!";
+                                    //errorMes.push(message);
+                                    tableData += "<tr id=" + jsonData[i].FileId + ">";
+                                    tableData += "<td>";
+                                    tableData += "<a target='_blank' href='@Url.Action(ActionNameType.ShowRequestFile, ControllerNameType.DocumentFiles)?paramFile=" + jsonData[i].FileIdByte + "&paramStamp=@Model.StampData.StampIdByte' class='request-file-show'>" + jsonData[i].FileName + "</a>";
+                                    tableData += "</td>";
+                                    tableData += "<td>";
+                                    tableData += jsonData[i].FileTypeName;
+                                    tableData += "</td>";
+                                    tableData += "<td>";
+                                    //tableData += "<span class='glyphicon glyphicon-trash request-image-del' aria-hidden='true'>";
+                                    tableData += "<img src='@Url.Content("~/img/del-small.png")' class='request-image-del icon-small-custom' />";
+                                    tableData += "</td>";
+                                    tableData += "</tr>";
+                                }
+
+                                tableData += "</tbody></table>"
+
+                                $('#result-request-file').html(tableData);
+                                $('#result-request-file').show();
+
+                            }
+                        }
+
+                    }
+                }
+
+                function errorFunc() {
+
+                }
+
+            }
+
+            //stamp file input
+            $('#stamp-file-id').change(function () {
+                StampFileSubmit();
+            });
+
+            function StampFileSubmit() {
+                var field = '@Html.Raw(Html.DisplayNameFor(model => model.StampData.Image))';
+                var stampFileVal = $('#stamp-file-id').get(0).files;
+                var stampId = $('#stampId-info').val();
+
+                var data = new FormData();
+                data.append("StampId", stampId);
+                data.append("UploadData", stampFileVal[0]);
+
+                if (stampFileVal == "" || stampId == "") {
+                    requiredFuncShow(field);
+                } else {
+
+                    //check is pdf file
+
+
+                    //if (ext != 'pdf' && ext != 'png' && ext != 'jpeg' && ext != 'jpg') {
+                    //    requiredFuncPdfShow(field);
+                    //}
+                    if (stampFileVal[0].type != "application/pdf" && stampFileVal[0].type != "image/png" && stampFileVal[0].type != "image/jpeg") {
+                        requiredFuncPdfShow(field);
+                    } else {
+
+                        $.ajax({
+                            type: "POST",
+                            url: '@Url.Action("SaveUploadStampFile", "AutoSave")',
+                            data: data,
+                            //data: { stampId: stampId, request: data },
+                            //contentType: "application/json; charset=utf-8",
+                            dataType: "text",
+                            processData: false, // Don't process the files
+                            contentType: false, // Set content type to false as jQuery will tell the server its a query string request
+                            success: successFunc,
+                            error: errorFunc
+                        });
+
+                        function successFunc(data) {
+
+                            $('#stamp-file-id').val(null);
+                            successFuncShow(data, field);
+
+                            //$('#stamp-file-id').attr("disabled", "disabled");
+                            //$('.btn-stamp-file-submit').attr("disabled", "disabled");
+
+                            $('#stamp-form-upload').fadeOut(1000);
+                            ShowStampFile();
+
+                        }
+
+                        function errorFunc() {
+
+                        }
+                    }
+                }
+
+            }
+
+            $(document).on('click', '#stamp-image-del', function () {
+                ConfirmDialog('Изтриване на образеца?');
+            });
+
+            function ConfirmDialog(message) {
+                $('<div></div>').appendTo('body')
+                    .html('<div><h6>' + message + '</h6></div>')
+                    .dialog({
+                        modal: true, title: 'Изтриване', zIndex: 10000, autoOpen: true,
+                        width: 'auto', resizable: false,
+                        buttons: {
+                            "Да": function () {
+                                // $(obj).removeAttr('onclick');
+                                // $(obj).parents('.Parent').remove();
+
+                                //$('body').append('<h1>Confirm Dialog Result: <i>Yes</i></h1>');
+                                DeleteStampImage();
+                                $(this).dialog("close");
+                            },
+                            "Не": function () {
+                                //$('body').append('<h1>Confirm Dialog Result: <i>No</i></h1>');
+
+                                $(this).dialog("close");
+                            }
+                        },
+                        close: function (event, ui) {
+                            $(this).remove();
+                        }
+                    });
+            };
+
+            function DeleteStampImage() {
+                var field = '@Html.Raw(Html.DisplayNameFor(model => model.StampData.Image))';
+                var stampId = $('#stampId-info').val();
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("DeleteStampFile", "AutoSave")',
+                    data: { stampId: stampId },
+                    //data: { requestId: requestId, fileTypeVal: fileTypeVal, requestFileVal: requestFileVal },
+                    //contentType: "application/json; charset=utf-8",
+                    dataType: "text",
+                    success: successFuncImageDel,
+                    error: errorFuncImageDel
+                });
+
+                function successFuncImageDel(data) {
+                    if (data == 1) {
+                        ShowStampFile();
+
+                        //$('#stamp-file-id').removeAttr("disabled", "disabled");
+                        //$('.btn-stamp-file-submit').removeAttr("disabled", "disabled");
+
+                        $('#stamp-form-upload').fadeIn(1000);
+                    }
+                    else {
+                        successFuncShow(data, field);
+                    }
+                }
+
+                function errorFuncImageDel() {
+
+                }
+            }
+
+            function ShowStampFile() {
+                var field = "образец на печата";
+                var stampId = $('#stampId-info').val();
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("ShowStampImageData", "AutoSave")',
+                    data: { stampId: stampId },
+                    //contentType: "application/json; charset=utf-8",
+                    dataType: "text",
+                    success: successFunc,
+                    error: errorFunc
+                });
+
+                function successFunc(data) {
+                    if (data == -3 || data == -2 || data == -1) {
+                        successFuncShow(data, field);
+                    }
+                    else {
+                        if (data == 100) {
+                            var tableData = "<table class='table'><thead><tr><th>Име на файла</th><th>Изтриване</th></tr></thead><tbody>";
+                            tableData += "<tr><td colspan='2' class='text-center text-danger'>Няма прикачен отпечатък.</td></tr>";
+                            tableData += "</tbody></table>";
+                            $('#result-stamp-file').html(tableData);
+                            $('#result-stamp-file').hide();
+                        }
+                        else {
+                            var jsonData = JSON.parse(data);
+
+                            if (jsonData != null) {
+                                var tableData = "<table class='table'><thead><tr><th>Име на файла</th><th>Изтриване</th></tr></thead><tbody>";
+
+                                tableData += "<tr>";
+                                tableData += "<td>";
+                                tableData += "<a target='_blank' href='@Url.Action(ActionNameType.ShowStampFile, ControllerNameType.DocumentFiles)?param=@Model.StampData.StampIdByte'>" + jsonData + "</a>";
+                                tableData += "</td>";
+                                tableData += "<td>";
+                                //tableData += "<span id='stamp-image-del' class='glyphicon glyphicon-trash' aria-hidden='true'>";
+                                tableData += "<img src='@Url.Content("~/img/del-small.png")' id='stamp-image-del' class='icon-small-custom'/>";
+                                tableData += "</td>";
+                                tableData += "</tr>";
+
+                                tableData += "</tbody></table>"
+
+                                $('#result-stamp-file').html(tableData);
+                                $('#result-stamp-file').show();
+
+                                //$('#stamp-file-id').attr("disabled", "disabled");
+                                //$('.btn-stamp-file-submit').attr("disabled", "disabled");
+                                $('#stamp-form-upload').fadeOut(1000);
+                            }
+
+
+                        }
+
+                    }
+                }
+
+                function errorFunc() {
+
+                }
+            }
+
+            //ajax function to show message
+            function successFuncShow(data, field) {
+                var messageSuccess = "Данните за " + field + " са успешно записани!";
+                var messageNoChange = "Няма промяна в данните за " + field + "!";
+                var messageError = "Грешка в данните за " + field + "! Моля, опитайте отново!";
+
+                if (data == -1) {
+                    //var $this = $('#' + idDiv);
+                    $('.alert-danger-fade').text(messageError).fadeIn(1000, function () {
+                        $('.alert-danger-fade').fadeOut(20000);
+                    });
+                } else if (data == -2) {
+                    //var $this = $('#' + idDiv);
+                    $('.alert-danger-fade').text('Вашата сесия е изтекла. Моля, използвайте електронния подпис.').fadeIn(1000, function () {
+                        $('.alert-danger-fade').fadeOut(20000);
+                    });
+                } else if (data == -3) {
+                    $('.alert-danger-fade').text('Грешка. Данните за избрания печат не бяха намерени. Уверете се че не сте изтрили данните за печата.').fadeIn(1000, function () {
+                        $('.alert-danger-fade').fadeOut(20000);
+                    });
+                }
+            }
+
+            function errorFuncShow() {
+            }
+
+            function requiredFuncShow(field) {
+                var message = "Данните за " + field + " са задължителни. Моля, изберете валидна стойност!";
+
+                $('.alert-danger-required').text(message).fadeIn(1000, function () {
+                    $('.alert-danger-required').fadeOut(25000);
+                });
+            }
+
+            function requiredFuncPdfShow(field) {
+                var message = "Докуменент тип " + field + " е в неправилен формат!";
+
+                $('.alert-danger-required').text(message).fadeIn(1000, function () {
+                    $('.alert-danger-required').fadeOut(25000);
+                });
+            }
+
+            function CheckInputData() {
+                var keeperId = $('#keeperId-info').val();
+                var stampId = $('#stampId-info').val();
+                var requestId = $('#requestId-info').val();
+                var placeId = $('#keepPlaceId-info').val();
+
+                var modelData = new FormData();
+                modelData.append("StampId", stampId);
+                modelData.append("RequestId", requestId);
+                modelData.append("KeeperId", keeperId);
+                modelData.append("PlaceId", placeId);
+
+                if (keeperId < 0 || stampId < 100000 || stampId > 999999 || requestId < 0 || placeId < 0) {
+                    var message = "Няма намерени данни. Нямате права за достъп!";
+
+                    $('.alert-danger-fade').text(message).fadeIn(1000, function () {
+                        $('.alert-danger-fade').fadeOut(10000);
+                    });
+                }
+                else {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("CheckData", "Check")',
+                        data: modelData,
+                        //contentType: "application/json; charset=utf-8",
+                        dataType: "text",
+                        processData: false, // Don't process the files
+                        contentType: false, // Set content type to false as jQuery will tell the server its a query string request
+                        success: successFunc,
+                        error: errorFunc
+                    });
+
+                    function successFunc(data) {
+                        $('#result-check').find('.alert').fadeOut();
+                        successFuncShowReport(data);
+                    }
+
+                    function errorFunc() {
+
+                    }
+                }
+            }
+
+            //function to show message to correct or not input data
+            function successFuncShowReport(data) {
+                if (data == 1) {
+                    var message = "Въведените данни са коректни! <br /> Може да изпратите заявката за одобрение към МОН.";
+
+                    //$('.alert-success-fade').text(message).fadeIn(1000, function () {
+                    //    $('.alert-success-fade').fadeOut(10000);
+                    //});
+
+                    $('.alert-success-fade-check').html(message).fadeIn(1000).appendTo('#result-check');
+
+                    $('#btn-send-stamp').removeAttr("disabled", "disabled");
+
+                } else if (data == -3) {
+                    var message = "Няма намерени данни. Нямате права за достъп!";
+
+                    $('.alert-danger-fade').text(message).fadeIn(1000, function () {
+                        $('.alert-danger-fade').fadeOut(10000);
+                    });
+                }
+                else {
+                    var jsonData = JSON.parse(data);
+
+                    if (jsonData != null) {
+                        //var errorMes = [];
+
+                        var messageText = "<ol>"
+
+                        for (var i = 0; i < jsonData.length; i++) {
+                            //var message = "Поле " + jsonData[i].FieldName + " не е попълнено!";
+                            //errorMes.push(message);
+                            messageText += "<li>"
+                            messageText += "Поле " + jsonData[i].FieldName + " не е попълнено!";
+                            messageText += "</li>"
+                        }
+
+                        messageText += "</ol>"
+
+                        $('.alert-danger-fade-check').html(messageText).fadeIn(1000).appendTo('#result-check');
+
+                        //$('.alert-danger-fade').html(messageText).fadeIn(1000, function () {
+                        //    $('.alert-danger-fade').fadeOut(20000);
+                        //});
+                    }
+                }
+            }
+        });
+    </script>
+
+    @* @Scripts.Render("~/bundles/jqueryval") *@
+    <script src="~/js/jquery.steps.js"></script>
+    <script src="~/js/sign.js"></script>
+}

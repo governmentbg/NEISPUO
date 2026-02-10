@@ -1,0 +1,80 @@
+{
+  "SPPOOSpecialities": [],
+  "abbreviation": "Не беше частно средно училище 'Юрий Гагарин'",
+  "baseSchoolTypeID": 12,
+  "basicProfiles": [
+    { "id": 216, "schoolBasicProfile": 21 },
+    { "id": 217, "schoolBasicProfile": 25 },
+    { "id": 218, "schoolBasicProfile": 26 },
+    { "id": 219, "schoolBasicProfile": 27 }
+  ],
+  "budgetingSchoolTypeID": 6,
+
+  "certificates": [{ "id": 454545555, "certificateLabel": "оригинал", "certificateId": 1234 }],
+  "codeNEISPUO": 403559,
+  "cplrAreas": [],
+  "detailedSchoolTypeID": 124,
+  "documents": [
+    {
+      "documentDate": "2019-03-11T00:00:00",
+      "documentNumber": "РД 14-12",
+      "id": 985,
+      "fileId": 1008,
+      "fileLabel": "прикачен документ"
+    },
+    {
+      "documentDate": "2019-03-18T00:00:00",
+      "documentNumber": "РД 14-12",
+      "id": 986,
+      "fileId": 2152,
+      "fileLabel": "прикачен документ 2"
+    }
+  ],
+  "financialSchoolTypeID": 3,
+  "headFirstName": "Снежина",
+  "headLastName": "Иванова",
+  "headMiddleName": "Георгиева",
+  "instType": 1,
+  "institutionDepartments": [
+    {
+      "departmentAddress": "курортен комплекс 'Камчия'",
+      "departmentCadasterCode": "УПИ VI-56,106, кв. 50",
+      "departmentCountry": 34,
+      "departmentMunicipality": 28,
+      "departmentPostalCode": 9130,
+      "departmentRegion": 3,
+      "departmentTown": 84,
+      "id": 49686
+    }
+  ],
+  "isDataDue": true,
+  "isNational": false,
+  "name": "ЧАСТНО СРЕДНО УЧИЛИЩЕ 'Юрий Гагарин' ЕООД",
+  "premInstitutions": [],
+  "primaryAddress": [
+    {
+      "id": 38156,
+      "primaryAddrAddress": "курортен комплекс 'Камчия'",
+      "primaryAddrCountry": 34,
+      "primaryAddrMunicipality": 28,
+      "primaryAddrName": "ЧАСТНО СРЕДНО УЧИЛИЩЕ 'Юрий Гагарин' ЕООД",
+      "primaryAddrPostCode": 9130,
+      "primaryAddrRegion": 3,
+      "primaryAddrTown": 84
+    }
+  ],
+  "procedureDate": "2019-03-12T00:00:00",
+  "procedureIsActive": true,
+  "procedureStatusTypeID": 4,
+  "procedureTransformTypeID": 6,
+  "procedureTypeID": 2,
+  "procedureYearDue": 2018,
+  "riInstitutionID": 78589,
+  "riProcedureID": 37034,
+  "settlementAddress": "курортен комплекс 'Камчия'",
+  "settlementCountry": 34,
+  "settlementMunicipality": 28,
+  "settlementPostCode": 9130,
+  "settlementRegion": 3,
+  "settlementTown": 84
+}

@@ -1,0 +1,39 @@
+{
+    "template": "SELECT /**select**/ FROM [reginst_basic].[ReportActiveInstitutions] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "RegName as regName"
+        },
+        {
+            "column": "MunName as munName"
+        },
+		{
+            "column": "TownName as townName"
+        },
+		{
+            "column": "InstitutionID as institutionID"
+        },
+		{
+            "column": "InstitutionName as institutionName"
+        },
+		{
+            "column": "InstitutionType as institutionType"
+        },
+		{
+            "column": "InstitutionAddress as institutionAddress"
+        },
+		{
+            "column": "HeadMaster as headMaster"
+        }
+    ],
+    "params": [
+
+    ],
+    "order": [
+		{
+      "column": "SortOrder",
+      "type": "ASC"
+		}
+    ],
+    "inSelects": []
+}

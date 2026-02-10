@@ -1,0 +1,29 @@
+<link rel="stylesheet" type="text/css" href="/css/user_messages.min.css" />
+
+<div class="user-msg-page container-fluid">
+  <%- include('header.ejs') %>
+  <div class="user-msg-page-content card">
+    <form autocomplete="off" action="/interaction/<%= uid %>/successful_login" method="post">
+      <input type="hidden" name="account" value="<%= account %>" />
+      <input type="hidden" name="selected_role" value="<%= selected_role %>" />
+
+      <div class="card-body">
+        <p class="h1 mb-6">Съобщение</p>
+        <div class="message-scroll">
+          <% messages.forEach((message) => { %>
+          <div class="message">
+            <hr />
+            <h5 class="card-title"><%= message.Title %></h5>
+            <p class="card-content"><%- message.Content %></p>
+          </div>
+          <% }) %>
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <hr />
+        <button class="btn btn-primary" type="submit" autofocus>Продължи</button>
+      </div>
+    </form>
+  </div>
+</div>

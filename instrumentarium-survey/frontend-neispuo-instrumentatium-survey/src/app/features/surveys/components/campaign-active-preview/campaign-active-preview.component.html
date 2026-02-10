@@ -1,0 +1,126 @@
+<div class="spinner-container" *ngIf="showSpinner">
+  <p-progressSpinner></p-progressSpinner>
+</div>
+<div class="top-container grid flex-nowrap" *ngIf="!showSpinner">
+  <div class="btn-container">
+    <button pButton pRipple type="button" icon="pi pi-arrow-left" [routerLink]="['/']" class="p-button-text btn-icon-primary"></button>
+  </div>
+  <div class="heading grid col-6 col-md-8">
+    <h4 class="title">{{ campaign.name }}</h4>
+    <span class="campaign-status">
+      <i [ngClass]="campaign.isActive ? 'active' : 'past'" class="pi pi-circle-on"></i>
+      {{ campaign.isActive ? content.ACTIVE : content.INACTIVE }}
+    </span>
+  </div>
+  <div class="edit-button-container">
+    <button 
+    pButton pRipple type="button"
+    class="p-button-outlined p-button-primary me-3"
+      (click)="this.isDialogDisplayed = true"
+      *ngIf="isInstitution$ | async"
+    >{{ content.EDIT_BUTTON_LABEL }}</button>
+  </div>
+</div>
+<div class="main" *ngIf="!showSpinner">
+  <div class="preview-container">
+    <div class="preview-content col-10 col-md-6 p-0">
+      <div class="preview-details">
+        <h4 class="title mb-3">{{ content.PREVIEW_TITLE }}</h4>
+        <div class="properties grid">
+          <div class="properties-key col-6 col-md-3">
+            <span>{{ content.NAME }}</span>
+            <span>{{ content.TYPE }}</span>
+            <span>{{ content.DEADLINE }}</span>
+            <span>{{ content.STATUS }}</span>
+          </div>
+          <div class="properties-value col-6 col-md-9">
+            <span>{{ campaign.name }}</span>
+            <span [ngClass]="campaign.type === campaignType.EVALUATE ? 'evaluation' : 'self-esteem'">
+              {{ campaign.type === campaignType.SELFEVALUATE ? content.SELF_EVALUATE : content.EVALUATE }}
+            </span>
+            <span>{{ campaign.startDate | date: 'dd/MM/yyyy' }} до {{ campaign.endDate | date: 'dd/MM/yyyy' }}</span>
+            <span>{{ campaign.isActive ? content.ACTIVE : content.INACTIVE }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="preview-questionnaire">
+        <h4 class="title mb-3">{{ content.QUESTIONNAIRES_TITLE }}</h4>
+        <div class="properties grid">
+          <div class="properties-key col-6 col-md-3">{{ content.SELECTED }}<br />{{ content.QUESTIONNAIRES_TITLE }}</div>
+          <div class="properties-value col-6 col-md-6">
+            <div class="criteria-container">
+              <span
+                class="criteria-name"
+                (click)="goToQuestionnaire()"
+                pTooltip="{{questionnaire.state === 0 ? 'Попълни въпросник' : 'Прегледай въпросник'}}"
+              >
+                <i class="pi pi-list"></i>
+                {{ questionnaire.questionaireId.name }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="preview-participants" *ngIf="(isInstitution$ | async) || (isMon$ | async)">
+        <h4 class="title mb-3">{{ content.STATISTICS_TITLE }}</h4>
+        <div class="properties grid">
+          <div class="properties-key col-6 col-md-3">{{ content.FILED_CAMPAIGN }}</div>
+          <div class="properties-value col-6 col-md-6">
+            <span>{{ totalUsersSubmitted }}/{{ totalUsersAssignedTo }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p-dialog
+  [header]="content.EDIT_TITLE"
+  [(visible)]="isDialogDisplayed"
+  [breakpoints]="{ '960px': '75vw' }"
+  [style]="{ width: '55vw' }"
+  [draggable]="false"
+  [resizable]="false"
+  *ngIf="!showSpinner"
+  [modal]="true"
+>
+  <form class="form form-details" [formGroup]="form" (ngSubmit)="onSave()">
+    <div class="grid">
+      <div class="field col-12">
+        <input class="campaign-name" id="campaign-name" type="text" pInputText formControlName="name" />
+        <div class="form-wrapper-text">
+          <span>{{ content.NAME_LABEL }}</span>
+        </div>
+      </div>
+      <div class="field col-12 col-md-6">
+        <p-calendar
+          class="campaign-start-date"
+          appendTo="body"
+          inputId="icon"
+          formControlName="startDate"
+          [(ngModel)]="startDate"
+          [minDate]="todaysDate"
+          dateFormat="dd/mm/yy"
+          [disabled] = "true"
+        ></p-calendar>
+        <div class="form-wrapper-text">
+          <span>{{ content.START_DATE_LABEL }}</span>
+        </div>
+      </div>
+      <div class="field col-12 col-md-6">
+        <p-calendar
+          class="campaign-end-date"
+          appendTo="body"
+          inputId="icon"
+          formControlName="endDate"
+          [minDate]="startDate"
+          dateFormat="dd/mm/yy"
+        ></p-calendar>
+        <div class="form-wrapper-text">
+          <span>{{ content.END_DATE_LABEL }}</span>
+        </div>
+      </div>
+    </div>
+    <button pButton [label]="content.EDIT_SUBMIT_BUTTON_LABEL" type="submit" class="btn btn-save" [disabled]="form.invalid"></button>  
+  </form>
+</p-dialog>

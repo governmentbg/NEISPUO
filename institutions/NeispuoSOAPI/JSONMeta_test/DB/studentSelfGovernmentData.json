@@ -1,0 +1,39 @@
+{
+  "template": "SELECT /**select**/ FROM [student].[SelfGovernment] SSG JOIN [student].[Student] S ON S.PersonID=SSG.PersonId /**where**/ /**orderby**/",
+  "columns": [
+    {
+      "column": "SSG.Id AS Id"
+    },
+    {
+      "column": "SSG.PersonId AS personID"
+    },
+    {
+      "column": "SSG.InstitutionId AS instid"
+    },
+    {
+      "column": "SSG.PositionId AS positionId"
+    },
+    {
+      "column": "SSG.AdditionalInformation AS additionalInformation"
+    },
+    {
+      "column": "S.Email AS email"
+    },
+    {
+      "column": "S.MobilePhone AS mobilePhone"
+    }
+  ],
+  "params": [
+    {
+      "param": "@Id",
+      "column": "SSG.Id",
+      "operator": "=",
+      "value": "Id",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+  ],
+  "order": [],
+  "inSelects": []
+}

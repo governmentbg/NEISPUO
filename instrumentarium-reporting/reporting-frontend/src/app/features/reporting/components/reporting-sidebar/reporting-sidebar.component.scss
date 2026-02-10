@@ -1,0 +1,53 @@
+@import '@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/variables/variables';
+@import '@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/mixins';
+
+.sidebar {
+  position: fixed;
+  top: calc(4rem + 64px + var(--info-strip-height));
+  bottom: 72px;
+  left: 355px;
+  width: 355px;
+  margin-left: -355px;
+  box-shadow: $box-shadow-right;
+  z-index: 5;
+  background: $white;
+  overflow-x: hidden;
+  transition: all 0.5s ease, top 0.3s ease;
+  .accordion {
+    &-button {
+      font-size: $font-size-lg;
+      font-weight: bold;
+      &:hover {
+        color: $blue-400;
+        &::after {
+          background-image: escape-svg($accordion-button-active-icon);
+        }
+      }
+      &:not(.collapsed) {
+        background-color: $blue-100;
+        color: $blue-400;
+        &::after {
+          background-image: escape-svg($accordion-button-active-icon);
+        }
+      }
+    }
+  }
+  &.toggled {
+    width: 0;
+    overflow: hidden;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .sidebar {
+    bottom: 113px;
+  }
+}
+
+@media (max-width: 300px) {
+  .sidebar {
+    left: 275px;
+    width: 275px;
+    margin-left: -275px;
+  }
+}

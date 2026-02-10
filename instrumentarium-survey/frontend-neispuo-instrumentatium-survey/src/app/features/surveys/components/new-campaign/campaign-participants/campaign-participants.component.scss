@@ -1,0 +1,143 @@
+.participants-container {
+  width: 65%;
+  padding: 24px;
+  margin-bottom: 100px;
+  overflow: hidden;
+  border-radius: 5px;
+  background-color: #fff;
+  border: 2px solid #2f73da;
+  box-shadow: 0px 2px 8px rgba(106, 115, 129, 0.12);
+  .stepper-info {
+    display: flex;
+    margin-bottom: 20px;
+    .stepper-participants .step-title {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 600;
+    }
+    .stepper-participants .step-description {
+      margin: 0;
+      color: #6a7381;
+      font-size: 14px;
+      font-weight: 400;
+    }
+    .step-number {
+      width: 40px;
+      height: 40px;
+      color: #165ecc;
+      font-weight: 600;
+      display: inline-block;
+      background-color: #eaf1fb;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 16px;
+    }
+  }
+
+  .spinner-container {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .p-input-icon-left {
+    margin-bottom: 10px;
+    .search-name {
+      width: 300px;
+      height: 44px;
+    }
+  }
+  .btn-continue {
+    color: #fff;
+    float: right;
+    height: 44px;
+    border-radius: 4px;
+    background-color: #2f73da;
+  }
+}
+
+:host {
+  .header-table {
+    ::ng-deep .p-datatable-thead {
+      height: 48px;
+      & > tr > th {
+        font-size: 14px;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        background-color: #eef1f6 !important;
+      }
+    }
+    .grid {
+      margin-bottom: 0px;
+    }
+  }
+
+  .participant-table {
+    ::ng-deep .p-datatable {
+      margin-bottom: 20px;
+    }
+  }
+
+  ::ng-deep .p-datatable table {
+    table-layout: auto !important;
+    td.participant-details .participant-name {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 400;
+    }
+    td.participant-details .participant-email {
+      color: #6a7381;
+      font-size: 12px;
+    }
+    td.participant-position span {
+      padding: 3px 8px;
+      border-radius: 20px;
+      font-size: 10px;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      text-transform: uppercase;
+    }
+    .teacher {
+      color: #165ecc;
+      background: #eaf1fb;
+    }
+    .director {
+      color: #165027;
+      background: #ddfded;
+    }
+    td.participant-school {
+      font-size: 14px;
+    }
+  }
+
+  ::ng-deep .p-datatable {
+    .p-paginator-bottom {
+      width: 100%;
+      height: 40px;
+      margin-bottom: 20px;
+      text-align: left;
+      display: inline-table;
+      background-color: #eef1f6;
+      padding: 10px 10px 5px;
+    }
+  }
+
+  ::ng-deep .p-paginator {
+    .p-paginator-first,
+    .p-paginator-prev,
+    .p-paginator-next,
+    .p-paginator-last {
+      margin: 0;
+      padding: 0;
+      height: unset;
+      border-radius: unset;
+    }
+  }
+
+  ::ng-deep .p-dropdown,
+  ::ng-deep .p-paginator-pages,
+  ::ng-deep .p-paginator-rpp-options {
+    display: none;
+  }
+}

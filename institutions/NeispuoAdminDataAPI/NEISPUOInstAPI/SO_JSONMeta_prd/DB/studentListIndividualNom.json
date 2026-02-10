@@ -1,0 +1,31 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_year].[StudentListIndividual] CL /**where**/ /**orderby**/",
+  "columns": [
+	{
+      "column": "CL.ID AS code"
+    },
+	{
+      "column": "CL.FullName AS label"
+    }
+   ],
+  "params": [
+    {
+      "param": "@instid",
+      "column": "CL.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "CL.FullName",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+
+  ]
+}

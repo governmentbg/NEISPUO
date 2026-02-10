@@ -1,0 +1,85 @@
+{
+  "arrayName": "sobStudentRelativeList",
+  "template": "SELECT /**select**/ FROM [inst_year].[StudentRelativeList] RL /**where**/ /**orderby**/",
+  "columns": [
+    {
+      "column": "RL.RelativeID AS id"
+    },
+    {
+      "column": "RL.StudentName AS studentName"
+    },
+    {
+      "column": "RL.MobilePhone AS mobilePhone"
+    },
+    {
+      "column": "RL.HomePhone AS homePhone"
+    },
+    {
+      "column": "RL.Email AS email"
+    },
+    {
+      "column": "RL.LivesWithFosterFamily AS livesWithFosterFamily"
+    },
+    {
+      "column": "RL.HasParentConsent AS hasParentConsent"
+    },
+    {
+      "column": "RL.RepresentedByTheMajor AS representedByTheMajor"
+    },
+    {
+      "column": "RL.SubjectName AS nativeLanguageName"
+    },
+    {
+      "column": "RL.GPName AS gpName"
+    },
+    {
+      "column": "RL.GPPhone AS gpPhone"
+    },
+    {
+      "column": "RL.FamilyEducationWeight AS familyEducationWeight"
+    },
+    {
+      "column": "RL.FamilyWorkStatusWeight AS familyWorkStatusWeight"
+    },
+    {
+      "column": "RL.RelativeName AS relativeName"
+    },
+    {
+      "column": "RL.RelativeTypeNeme AS relativeTypeNeme"
+    },
+    {
+      "column": "RL.WorkStatusName AS workStatusName"
+    },
+    {
+      "column": "RL.EducationTypeName AS educationTypeName"
+    }
+  ],
+  "params": [
+    {
+      "param": "@instid",
+      "column": "RL.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+    {
+      "param": "@year",
+      "column": "RL.SchoolYear",
+      "operator": "=",
+      "value": "year",
+      "type": "int",
+      "logical_operator": "and",
+      "optional": true,
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "RL.StudentName",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": []
+}

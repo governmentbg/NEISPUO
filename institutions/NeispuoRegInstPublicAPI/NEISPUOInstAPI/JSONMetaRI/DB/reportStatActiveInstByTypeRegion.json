@@ -1,0 +1,33 @@
+{
+    "template": "SELECT /**select**/ FROM [reginst_basic].[ReportStatActiveInstByTypeRegion] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "RegName as regName"
+        },
+        {
+            "column": "CntSchool as cntSchool"
+        },
+		{
+            "column": "CntKindergarden as cntKindergarden"
+        },
+		{
+            "column": "CntCPLR as cntCPLR"
+        },
+		{
+            "column": "CntCSOP as cntCSOP"
+        },
+		{
+            "column": "CntSOZ as cntSOZ"
+        }
+    ],
+    "params": [
+
+    ],
+    "order": [
+		{
+      "column": "SortOrder",
+      "type": "ASC"
+		}
+    ],
+    "inSelects": []
+}

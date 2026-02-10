@@ -1,0 +1,35 @@
+.logo-img {
+    margin-left: 37px;
+    margin-right: 5px;
+}
+
+.container-menu-main-tab {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 100;
+    align-items: flex-start;
+    justify-content: center;
+}
+mat-toolbar {
+    padding-left: 75px;
+}
+.right-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    .container-help {
+        margin-top: -45px;
+        margin-right: 100px;
+        position: absolute;
+        right: 0;
+        span {
+            font-size: 11px;
+            color: #d2d2d2;
+            a {
+                color: #d2d2d2;
+            }
+        }
+    }
+}

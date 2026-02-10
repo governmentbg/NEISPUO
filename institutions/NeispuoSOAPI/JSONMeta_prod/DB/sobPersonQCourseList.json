@@ -1,0 +1,63 @@
+{
+      "arrayName": "staffQCourses",
+      "template": "SELECT /**select**/ FROM [inst_basic].[sobPersonQCourseList] PQC /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "PQC.ID AS id"
+        },
+        {
+          "column": "PQC.PersonID AS personID"
+        },
+        {
+          "column": "PQC.FullName AS fullName"
+        },
+        {
+          "column": "PQC.QCourse AS qCourseType"
+        },
+        {
+          "column": "PQC.QCourseYear AS qCourseYear"
+        },
+        {
+          "column": "PQC.QCourseBudgetSource AS qCourseBudgetSourceType"
+        },
+        {
+          "column": "PQC.InternalCoursePrice AS internalCoursePrice"
+        },
+        {
+          "column": "PQC.University AS university"
+        },
+        {
+          "column": "PQC.QCourseTopic AS qCourseTopic"
+        },
+        {
+          "column": "PQC.QCourseDuration AS qCourseDurationType"
+        },
+        {
+          "column": "PQC.QCourseDurationCredits AS qCourseDurationCredits"
+        },
+        {
+          "column": "PQC.QCourseDurationHours AS qCourseDurationHours"
+        },
+        {
+          "column": "PQC.DocumentType AS documentType"
+        }
+      ],
+      "params": [
+        {
+          "param": "@instid",
+          "column": "PQC.InstitutionID",
+          "operator": "=",
+          "value": "instid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+    	  }
+      ],
+      "order": [
+        {
+          "column": "PQC.QCourseYear",
+          "type": "DESC"
+        }
+      ],
+  "inSelects": []
+}

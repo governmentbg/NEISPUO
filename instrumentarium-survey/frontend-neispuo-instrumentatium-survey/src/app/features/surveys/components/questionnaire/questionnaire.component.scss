@@ -1,0 +1,169 @@
+@import "@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/variables/variables.scss";
+
+.top-container {
+  height: fit-content;
+  min-height: 4.5rem;
+  align-items: center;
+  border-bottom: 0.125rem solid $gray-300;
+  display: flex;
+  margin: 0;
+
+  .btn-container {
+    width: 4.375rem;
+    text-align: center;
+    border-right: 0.125rem solid $gray-300;
+  }
+
+  .heading {
+    align-items: center;
+    font-size: 0.875rem;
+    font-family: "Inter";
+    display: flex;
+
+    .title {
+      margin: 0 0 0 1.5rem;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: "Inter", sans-serif;
+    }
+
+    .questions-count {
+      margin-left: auto;
+      margin-right: 1rem;
+      line-height: 1.063rem;
+      color: $gray-700;
+      &>span {
+        white-space: nowrap;
+      }
+    }
+
+    .blue-heading {
+      color: $blue;
+    }
+  }
+}
+
+.main {
+  background-color: $gray-100;
+  font-family: "Inter";
+
+  .warning-container {
+    text-align: center;
+  }
+
+  .questionnaire-criteria-container {
+    padding-top: 1.5rem;
+    margin: 0 auto;
+
+    .questionnaire-criteria-content {
+      padding: 1.5rem;
+      margin: 0 auto;
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+      background: $white;
+      border: 0.125rem solid $blue;
+      box-sizing: border-box;
+      box-shadow: 0rem 0.125rem 0.5rem rgba(106, 115, 129, 0.12);
+      border-radius: 0.25rem;
+
+      .indicators-container {
+        display: flex;
+        margin: 0 0 1.25rem 0;
+        flex-wrap: wrap;
+
+        .indicator,
+        .sub-indicator {
+          color: $gray-600;
+          font-size: 0.875rem;
+          font-weight: 400;
+        }
+
+        .pi {
+          padding-top: 0.188rem;
+          margin-left: 0.313rem;
+          margin-right: 1.583rem;
+          object-fit: fill;
+          font-size: 0.833rem;
+          color: $blue;
+        }
+      }
+
+      .question-name {
+        font-size: 1rem;
+        line-height: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 2rem;
+
+        .text {
+          margin-bottom: 0rem;
+        }
+      }
+
+      .answers-container {
+        display: flex;
+        text-align: center;
+
+        hr {
+          width: 70.125rem;
+          height: 0;
+          margin: 10.125rem 0.5rem 0 0.5rem;
+          border: none;
+          border-top: 0.188rem solid $gray-300;
+        }
+
+        .choice-container {
+          margin: 0.625rem;
+          margin-left: 0.938rem;
+          text-align: justify;
+        }
+
+        .card {
+          width: 100%;
+
+          label {
+            height: 1rem;
+            color: $gray-900;
+            font-size: 10.188rem;
+            line-height: 1rem;
+            font-weight: 400;
+            text-align: center;
+          }
+        }
+        .choice-container{
+          margin: 10px;
+          margin-left: 15px;
+          text-align: justify;
+        }
+      }
+    }
+
+
+
+  }
+}
+
+.spinner-container {
+  justify-content: center;
+  text-align: center;
+  display: block;
+}
+
+::ng-deep {
+  .p-radiobutton .p-radiobutton-box .p-radiobutton-icon {
+    background-color: $blue;
+  }
+
+  .p-radiobutton .p-radiobutton-box.p-highlight {
+    border-color: $blue !important;
+  }
+}
+
+// .indicator-contrainer {
+//   width: fit-content;
+// }
+
+@media (max-width:770px) {
+  .questions-count {
+    display: none;
+  }
+}

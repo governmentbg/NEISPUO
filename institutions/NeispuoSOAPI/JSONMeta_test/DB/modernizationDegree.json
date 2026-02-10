@@ -1,0 +1,29 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_nom].[ModernizationDegree] MD /**where**/ /**orderby**/",
+  "columns": [
+  	{
+      "column": "MD.ModernizationDegreeID AS id"
+    },
+	{
+      "column": "MD.ModernizationDegreeID AS modernizationDegreeID"
+    },
+	{
+      "column": "MD.Name AS modernizationDegreeName"
+    },
+	{
+      "column": "MD.IsValid as isValid"
+    }
+   ],
+  "params": [
+
+  ],
+  "order": [
+    {
+      "column": "MD.ModernizationDegreeID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+
+  ]
+}

@@ -1,0 +1,10 @@
+<span [pTooltip]="exportTooltip" tooltipPosition="left">
+  <button
+    pButton
+    type="button"
+    class="p-button-success p-button-sm"
+    (click)="exportExcel()"
+    [disabled]="isDisabled || isExportExcelButtonDisabled"
+    [icon]="exportIcon"
+  ></button>
+</span>

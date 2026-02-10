@@ -1,0 +1,63 @@
+{
+  "template": "SELECT DISTINCT /**select**/ FROM [inst_nom].[ClassType] CT JOIN [inst_nom].[ClassTypeLimit] CTL ON CTL.ClassTypeID=CT.ClassTypeID /**where**/ /**orderby**/",
+  "columns": [
+    {
+      "column": "CT.ClassTypeID as code"
+    },
+    {
+      "column": "CT.Name as label"
+    },
+    {
+      "column": "CT.IsValid as isValid"
+    }
+  ],
+  "params": [
+    {
+      "param": "@classKind",
+      "column": "CT.ClassKind",
+      "operator": "=",
+      "value": "classKind",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    },
+    {
+      "param": "@instType",
+      "column": "CTL.InstType",
+      "operator": "=",
+      "value": "instType",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    },
+    {
+      "param": "@detailedSchoolTypeID",
+      "column": "CTL.DetailedSchoolTypeID",
+      "operator": "=",
+      "value": "detailedSchoolTypeID",
+	  "optional": true,
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+    {
+      "param": "@basicClassID",
+      "column": "CTL.BasicClassID",
+      "operator": "=",
+      "value": "basicClassID",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "CT.ClassTypeID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": []
+}

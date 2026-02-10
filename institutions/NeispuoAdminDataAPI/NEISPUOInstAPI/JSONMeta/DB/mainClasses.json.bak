@@ -1,0 +1,40 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_year].[MainClasses] MC /**where**/ /**orderby**/",
+  "columns": [
+	{
+      "column": "MC.ClassID AS code"
+    },
+	{
+      "column": "MC.ClassName AS label"
+    }
+   ],
+  "params": [
+    {
+      "param": "@instid",
+      "column": "MC.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+	{
+      "param": "@schoolYear",
+      "column": "MC.SchoolYear",
+      "operator": "=",
+      "value": 2020,
+      "type": "int",
+      "logical_operator": "and",
+      "static": true
+    }
+  ],
+  "order": [
+    {
+      "column": "MC.ClassName",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+
+  ]
+}

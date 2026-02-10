@@ -1,0 +1,25 @@
+{
+  "bank": [
+    {
+      "id": 1245,
+      "bankIBAN": "BG92FINV91503117319092",
+      "bankBIC": "FINVBGVN",
+      "bankName": "\u041F\u044A\u0440\u0432\u0430 \u0438\u043D\u0432\u0435\u0441\u0442\u0438\u0446\u0438\u043E\u043D\u043D\u0430 \u0431\u0430\u043D\u043A\u0430 \u0410\u0414",
+      "bankAccountHolder": "\u0422\u0435\u0441\u0442\u043E\u0432\u043E \u0443\u0447\u0438\u043B\u0438\u0449\u0435"
+    },
+    {
+      "id": 5665,
+      "bankIBAN": "BG92FINV91503117319099",
+      "bankBIC": "FINVBGSF",
+      "bankName": "\u041F\u044A\u0440\u0432\u0430 \u0438\u043D\u0432\u0435\u0441\u0442\u0438\u0446\u0438\u043E\u043D\u043D\u0430 \u0431\u0430\u043D\u043A\u0430 \u0410\u0414",
+      "bankAccountHolder": "\u0422\u0435\u0441\u0442\u043E\u0432\u043E \u0443\u0447\u0438\u043B\u0438\u0449\u0435"
+    },
+    {
+      "id": 5618,
+      "bankIBAN": "BG92FINV91503117319000",
+      "bankBIC": "FINVTEST",
+      "bankName": "\u041F\u044A\u0440\u0432\u0430 \u0438\u043D\u0432\u0435\u0441\u0442\u0438\u0446\u0438\u043E\u043D\u043D\u0430 \u0431\u0430\u043D\u043A\u0430 \u0410\u0414",
+      "bankAccountHolder": "\u0422\u0435\u0441\u0442\u043E\u0432\u043E \u0443\u0447\u0438\u043B\u0438\u0449\u0435"
+    }
+  ]
+}

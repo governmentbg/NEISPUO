@@ -1,0 +1,59 @@
+{
+  "label": "Пътувания",
+  "sections": [
+    {
+      "order": 1,
+      "label": "Пътувания",
+      "subsections": [
+        {
+          "order": 1,
+          "name": "trips",
+          "canDuplicate": true,
+          "fields": [
+            {
+              "label": "Пътуване до",
+              "name": "destination",
+              "type": "input",
+              "inputType": "text",
+              "order": 1,
+              "width": 400,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 255,
+                  "message": "Максимална дължина 255 символа"
+                }
+              ]
+            },
+            {
+              "label": "Дата на заминаване",
+              "name": "startDate",
+              "type": "date",
+              "order": 2
+            },
+            {
+              "label": "Дата на пристигане",
+              "name": "endDate",
+              "type": "date",
+              "order": 3
+            },
+            {
+              "label": "Описание на пътуването",
+              "name": "description",
+              "type": "textarea",
+              "order": 4,
+              "width": 300,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 50,
+                  "message": "Максимална дължина 50 символа"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

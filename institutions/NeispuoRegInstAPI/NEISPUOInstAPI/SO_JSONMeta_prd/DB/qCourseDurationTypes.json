@@ -1,0 +1,35 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[QCourseDurationType] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "QCourseDurationTypeID as code"
+        },
+        {
+            "column": "Name as label"
+        },
+		{
+            "column": "IsValid as isValid"
+        }
+    ],
+    "params": [
+
+		{
+            "param": "@filterValue",
+            "column": "QCourseActTypeID",
+            "operator": "=",
+            "value": "filterValue",
+            "type": "int",
+            "logical_operator": "and",
+			"optional": true,
+            "static": false
+        }
+		
+    ],
+    "order": [
+        {
+            "column": "SortOrd",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

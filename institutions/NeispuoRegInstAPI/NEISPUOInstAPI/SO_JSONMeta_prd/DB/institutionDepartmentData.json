@@ -1,0 +1,121 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_basic].[InstitutionDepartmentList] IDF /**where**/ /**orderby**/",
+  "sotemplate": "SELECT /**select**/ FROM [sob].[InstitutionDepartmentList] IDF /**where**/ /**orderby**/",
+  "columns": [
+        {
+          "column": "IDF.InstitutionDepartmentID AS departmentAddrID"
+        },
+        {
+          "column": "IDF.InstitutionID AS instid"
+        },        
+		{
+          "column": "IDF.Name AS departmentName"
+        },
+		{
+		"column": "IDF.CountryID AS country"
+		},
+		{
+		"column": "IDF.RegionID AS region"
+		},
+		{
+		"column": "IDF.MunicipalityID AS municipality"
+		},
+		{
+		"column": "IDF.TownID AS town"
+		},
+		{
+		"column": "IDF.LocalAreaID AS localArea"
+		},
+		{
+          "column": "IDF.Address AS departmentAddress"
+        },
+		{
+          "column": "IDF.PostCode AS departmentPostalCode"
+        },
+		{
+          "column": "IDF.IsCentral AS isCentral"
+        },
+		{
+          "column": "IDF.IsProtected AS isProtected"
+        },
+		{
+          "column": "IDF.IsValid AS isValid"
+        }		
+  ],
+  "params": [
+    {
+      "param": "@instdepid",
+      "column": "IDF.InstitutionDepartmentID",
+      "operator": "=",
+      "value": "instdepid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "IDF.InstitutionDepartmentID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+   {
+      "arrayName": "departmentPhones",
+      "template": "SELECT /**select**/ FROM [inst_basic].[InstitutionPhone] IP /**where**/ /**orderby**/",
+	  "sotemplate": "SELECT /**select**/ FROM [sob].[InstitutionPhone] IP /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "IP.InstitutionPhoneID AS id"
+        },
+		{
+          "column": "IP.PhoneTypeID AS phoneTypeID"
+        },
+        {
+          "column": "IP.PhoneCode AS phoneCode" 
+        },
+        {
+          "column": "IP.PhoneNumber AS phoneNumber"
+        },
+        {
+          "column": "IP.ContactKind AS contactKind"
+        },
+		{
+          "column": "IP.IsMain AS isMain"
+        },
+		{
+          "column": "'institutionPhoneData' AS formName"
+        },
+        {
+          "column": "IP.InstitutionPhoneID AS formDataId"
+        }
+      ],
+      "params": [
+			{
+				"param": "@instdepid",
+				"column": "IP.DepartmentID",
+				"operator": "=",
+				"value": "instdepid",
+				"type": "int",
+				"logical_operator": "and",
+				"static": false
+			},
+			{
+				"param": "@isinst",
+				"column": "IP.IsInstitution",
+				"operator": "=",
+				"value": 0,
+				"type": "int",
+				"logical_operator": "and",
+				"static": true
+			}
+      ],
+      "order": [
+        {
+          "column": "IP.InstitutionPhoneID",
+          "type": "ASC"
+        }
+      ]
+    }
+  ]
+}

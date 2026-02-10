@@ -1,0 +1,33 @@
+{
+  "template": "SELECT /**select**/ FROM [reginst_basic].[Navigation] RIPI  /**where**/ /**orderby**/",
+  "columns": [
+      {
+        "column": "RIPI.InstitutionID AS code"
+      },
+      {
+        "column": "RIPI.Abbreviation AS label"
+      }
+	],
+  "params": [
+    {
+      "param": "@filterValue",
+      "column": "RegID",
+      "operator": "=",
+      "value": "filterValue",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+	  "static": false,
+      "from_claim": false
+    }
+  ],
+  "order": [
+    {
+      "column": "RIPI.InstitutionID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+ 
+  ]
+}

@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.1.66" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="3.1.7" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="9.0.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NeispuoExtension.DependencyInjection\NeispuoExtension.DependencyInjection.csproj" />
+    <ProjectReference Include="..\NeispuoExtension.Exceptions\NeispuoExtension.Exceptions.csproj" />
+    <ProjectReference Include="..\NeispuoExtension.Settings\NeispuoExtension.Settings.csproj" />
+  </ItemGroup>
+
+</Project>

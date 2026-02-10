@@ -1,0 +1,87 @@
+<sb-breadcrumb class="block mb-3" [icon]="fadCalendarAlt" text="Учителски разписания"></sb-breadcrumb>
+
+<form [formGroup]="form" #ngForm="ngForm" autocomplete="off" novalidate>
+  <sb-card>
+    <ng-container card-title>Учителски разписания</ng-container>
+
+    <ng-container card-body>
+      <sb-nom-select
+        label="Учител"
+        formControlName="teacherPersonId"
+        [nomService]="instTeacherNomsService"
+      ></sb-nom-select>
+
+      <sb-paginator
+        *ngIf="form.value.teacherPersonId"
+        class="mb-2.5"
+        [items]="weekPaginatorItems"
+        (itemClick)="paginatorItemClicked($event.state)"
+      ></sb-paginator>
+
+      <sb-banner *ngIf="!form.value.teacherPersonId" type="info">Изберете учител, за да видите разписанието.</sb-banner>
+
+      <ng-container *ngIf="form.value.teacherPersonId">
+        <div *ngIf="templateData == null && loadingSchedule" class="relative h-96">
+          <mat-spinner [diameter]="80" class="absolute top-1/2 left-1/2 -mt-10 -ml-10"></mat-spinner>
+        </div>
+
+        <div *ngIf="templateData != null" class="sb-table-container relative">
+          <mat-spinner
+            *ngIf="loadingSchedule"
+            [diameter]="80"
+            class="absolute top-1/2 left-1/2 -mt-10 -ml-10"
+          ></mat-spinner>
+          <table class="sb-table">
+            <thead>
+              <tr>
+                <th class="w-px whitespace-nowrap">Час</th>
+                <th>Понеделник</th>
+                <th>Вторник</th>
+                <th>Сряда</th>
+                <th>Четвъртък</th>
+                <th>Петък</th>
+                <ng-container *ngIf="templateData.scheduleIncludesWeekend">
+                  <th>Събота</th>
+                  <th>Неделя</th>
+                </ng-container>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let shiftHour of templateData.shiftHours; let i = index">
+                <td class="w-px">
+                  <span class="whitespace-nowrap">{{ shiftHour.startTime }} -</span>
+                  {{ shiftHour.endTime }}
+                </td>
+                <td *ngFor="let slot of templateData.slotsByNumberByDay[i]">
+                  <div class="divide-y divide-gray-200">
+                    <div *ngFor="let hour of slot.hours" class="py-1">
+                      <div class="inline sm:hidden">
+                        <div class="font-bold">
+                          <a [routerLink]="hour.bookRouteCommands" class="text-primary underline">
+                            {{ hour.classBookFullName }}
+                          </a>
+                          - {{ hour.subjectShort }}
+                        </div>
+                      </div>
+                      <div class="hidden sm:inline">
+                        <div class="font-bold">
+                          <a [routerLink]="hour.bookRouteCommands" class="text-primary underline">
+                            {{ hour.classBookFullName }}
+                          </a>
+                          - {{ hour.subject }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr *ngIf="!templateData.shiftHours.length">
+                <td colspan="6" class="text-center">Няма въведена програма за седмицата</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </ng-container>
+    </ng-container>
+  </sb-card>
+</form>

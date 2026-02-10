@@ -1,0 +1,41 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_nom].[TextbooksInst] TB /**where**/ /**orderby**/",
+  "columns": [
+	{
+      "column": "TB.[TextbookID] AS code"
+    },
+	{
+      "column": "TB.[TextbookName] AS label"
+    }
+   ],
+  "params": [
+    {
+      "param": "@filterValue",
+      "column": "TB.ID",
+      "operator": "=",
+      "value": "filterValue",
+      "type": "text",
+      "logical_operator": "and",
+      "optional": true,
+      "static": false
+    },
+    {
+      "param": "@instid",
+      "column": "TB.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "TB.TextbookName",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+
+  ]
+}

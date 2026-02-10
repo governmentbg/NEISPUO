@@ -1,0 +1,45 @@
+<div class="sb-btn-wrapper sb-btn-wrapper-right">
+  <a href="{{ templateUrl }}" color="primary" target="_blank" download="template.xlsx" mat-raised-button>
+    <fa-icon [icon]="fasFileExcel" size="lg"></fa-icon>
+    <span class="hidden sm:inline">Изтегли шаблон</span>
+  </a>
+  <button mat-raised-button color="primary" (click)="onSave()" [disabled]="saving || this.file == null">
+    <fa-icon [icon]="saving ? fasSpinnerThird : fasCheck" [spin]="saving" size="lg"></fa-icon>
+    <span>Зареди от Ексел</span>
+  </button>
+  <button mat-raised-button mat-dialog-close>Затвори</button>
+</div>
+
+<div *ngIf="file != null" class="sb-table-container col-span-full">
+  <table class="sb-table" role="table">
+    <tbody role="rowgroup">
+      <tr role="row">
+        <td class="sb-table-action">
+          <button (click)="onRemoveFile(file.blobId)" aria-label="Изтрий" class="sb-link-btn" type="button">
+            <fa-icon [icon]="fasTrashAlt" size="lg"></fa-icon>
+          </button>
+        </td>
+        <td>
+          <a target="_blank" href="{{ file.location }}" class="text-primary underline">{{ file.fileName }}</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<uppy-progress-bar
+  *ngIf="file == null"
+  [uppy]="uppy"
+  [props]="{
+    hideAfterFinish: true
+  }"
+  class="col-span-full mt-2"
+></uppy-progress-bar>
+<uppy-drag-drop
+  *ngIf="file == null"
+  [uppy]="uppy"
+  [props]="{
+    locale: BgLocale
+  }"
+  class="col-span-full"
+></uppy-drag-drop>

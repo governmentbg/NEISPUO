@@ -1,0 +1,15 @@
+@import '~@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/variables/variables';
+@import '~@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/mixins';
+
+:host ::ng-deep {
+    @include media-breakpoint-down(sm) {
+        .p-button.export-button {
+            .p-button-label {
+                display: none;
+            }
+            .p-button-icon {
+                margin-right: 0;
+            }
+        }
+    }
+}

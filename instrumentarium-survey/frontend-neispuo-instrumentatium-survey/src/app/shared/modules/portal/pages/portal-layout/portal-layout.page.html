@@ -1,0 +1,30 @@
+<div>
+  <header class="fixed-top">
+    <nav class="navbar bg-color-blue-500">
+      <div class="container-fluid navbar-container">
+        <div class="logo">
+          <a href=""><img class="mon-logo" src="assets/images/mon-logo.png" alt="" /></a>
+          <h3 class="mon-title">НЕИСПУО</h3>
+        </div>
+        <div class="d-flex justify-content-center align-items-center">
+          <div class="me-3">
+            <app-dashboard-menu></app-dashboard-menu>
+          </div>
+          <app-user-menu></app-user-menu>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="portal-content">
+    <router-outlet></router-outlet>
+  </div>
+
+  <footer>
+    <div class="footer d-flex align-items-center flex-column p-3">
+      <div class="flex-grow-1 p-small">&copy; Министерство на образованието и науката</div>
+      <div class="flex-grow-1 p-small">За въпроси, моля да използвате <a class="text-sm"  href="https://helpdesk-neispuo.mon.bg/">системата за поддръжка</a></div>
+      <div class="flex-grow-1 tiny app-version color-gray-700">{{ appVersion }}</div>
+    </div>
+  </footer>
+</div>

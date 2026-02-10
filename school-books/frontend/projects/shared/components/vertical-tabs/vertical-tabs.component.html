@@ -1,0 +1,47 @@
+<nav class="hidden md:block border divide-y rounded overflow-hidden" [attr.aria-label]="ariaLabel">
+  <ng-container *ngFor="let tab of flattenedTabs">
+    <a
+      *ngIf="!tab.isHidden"
+      class="block relative p-2 text-sm outline-offset-[-4px]"
+      [ngClass]="!rla.isActive ? 'text-gray-500 hover:text-blue-900' : 'text-primary font-medium'"
+      [class.pl-6]="tab.isChild"
+      [routerLink]="tab.routeCommands"
+      [relativeTo]="tab.routeExtras ? tab.routeExtras.relativeTo : undefined"
+      [queryParams]="tab.routeExtras?.queryParams"
+      [fragment]="tab.routeExtras?.fragment"
+      [queryParamsHandling]="tab.routeExtras?.queryParamsHandling"
+      [preserveFragment]="tab.routeExtras?.preserveFragment || false"
+      [skipLocationChange]="tab.routeExtras?.skipLocationChange || false"
+      [replaceUrl]="tab.routeExtras?.replaceUrl || false"
+      [state]="tab.routeExtras?.state"
+      routerLinkActive
+      #rla="routerLinkActive"
+      [attr.aria-current]="rla.isActive ? 'page' : null"
+    >
+      <div *ngIf="rla.isActive" class="absolute top-0 left-0 bottom-0 w-0.5 bg-primary"></div>
+      <button
+        type="button"
+        *ngIf="tab.tabItems?.length"
+        (click)="toggleTab($event, tab)"
+        aria-label="Покажи/скрий модулите"
+        [attr.aria-expanded]="!tab.isClosed"
+      >
+        <fa-icon [icon]="tab.isClosed ? fasPlus : fasMinus"></fa-icon>
+      </button>
+      <fa-icon *ngIf="tab.icon" [icon]="tab.icon" class="mr-1" size="lg"></fa-icon>
+      {{ tab.text }}
+
+      <span *ngIf="tab.badge" class="sb-badge">
+        {{ tab.badge }}
+      </span>
+    </a>
+  </ng-container>
+</nav>
+
+<div class="block md:hidden sb-form-control-select-wrapper">
+  <select class="sb-form-control" (change)="onChange($event)" [value]="selectedTab">
+    <option *ngFor="let tab of flattenedTabs; index as i" [value]="i.toString()">
+      {{ tab.text }}
+    </option>
+  </select>
+</div>

@@ -1,0 +1,65 @@
+{
+    "root": true,
+    "ignorePatterns": ["projects/**/*"],
+    "overrides": [
+        {
+            "files": ["*.ts"],
+            "parserOptions": {
+                "project": ["tsconfig.json"],
+                "createDefaultProgram": true
+            },
+            "extends": [
+                "plugin:@angular-eslint/recommended",
+                "plugin:@angular-eslint/template/process-inline-templates",
+                "airbnb-base",
+                "airbnb-typescript/base",
+                "prettier",
+                "plugin:prettier/recommended"
+            ],
+            "rules": {
+                "prettier/prettier": [
+                    "error",
+                    {
+                        "endOfLine": "auto"
+                    }
+                ],
+                "no-continue": "off",
+                "implicit-arrow-linebreak": "off",
+                "no-param-reassign": "off",
+                "no-return-assign": "off",
+                "class-methods-use-this": "off",
+                "no-restricted-syntax": "off",
+                "no-restricted-globals": "off",
+                "prefer-destructuring": "off",
+                "@typescript-eslint/no-unused-vars": "off",
+                "no-console": "off",
+                "max-len": "off",
+                "no-underscore-dangle": "off",
+                "import/prefer-default-export": "off",
+                "@angular-eslint/directive-selector": [
+                    "error",
+                    {
+                        "type": "attribute",
+                        "prefix": "app",
+                        "style": "camelCase"
+                    }
+                ],
+                "@angular-eslint/component-selector": [
+                    "error",
+                    {
+                        "type": "element",
+                        "prefix": "app",
+                        "style": "kebab-case"
+                    }
+                ]
+            }
+        },
+        {
+            "files": ["*.html"],
+            "extends": ["plugin:@angular-eslint/template/recommended"],
+            "rules": {
+                "@angular-eslint/template/no-negated-async": "off"
+            }
+        }
+    ]
+}

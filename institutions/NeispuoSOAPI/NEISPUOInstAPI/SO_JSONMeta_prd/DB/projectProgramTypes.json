@@ -1,0 +1,24 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[ProjectProgramType] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "ProjectProgramTypeID as code"
+        },
+        {
+            "column": "Name as label"
+        },
+		{
+            "column": "IsValid as isValid"
+        }
+    ],
+    "params": [
+  
+    ],
+    "order": [
+        {
+            "column": "ProjectProgramTypeID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

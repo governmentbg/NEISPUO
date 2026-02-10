@@ -1,0 +1,33 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_year].[ClassStudentList] CSL /**where**/ /**orderby**/",
+  "columns": [
+    {
+      "column": "CSL.PersonID AS code"
+    },
+    {
+      "column": "CSL.FullName AS label"
+    }
+  ],
+  "params": [
+    {
+      "param": "@instid",
+      "column": "CSL.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+    {
+      "param": "@bClassID",
+      "column": "CSL.BasicClassID",
+      "operator": "=",
+      "value": "bClassID",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+  ],
+  "order": [],
+  "inSelects": []
+}

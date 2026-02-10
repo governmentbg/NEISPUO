@@ -1,0 +1,76 @@
+{
+	"template": "SELECT /**select**/ FROM [inst_year].[StudentResourseSupport] R /**where**/ /**orderby**/",
+	"sotemplate": "SELECT /**select**/ FROM [sob].[StudentResourseSupport] R /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "R.ID as id"
+        },
+        {
+            "column": "R.ReportNumber as reportNumber"
+        },
+		{
+            "column": "R.ReportDate as reportDate"
+        },
+		{
+            "column": "R.ResourceSupportTypeName as resourceSupportTypeName"
+        }
+    ],
+    "params": [
+			{
+          "param": "@resourceSupportID",
+          "column": "R.ResourceSupportID",
+          "operator": "=",
+          "value": "resourceSupportID",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+	  	}
+    ],
+    "order": [
+
+    ],
+    "inSelects": [
+    {
+      "arrayName": "resourceSupportSpecialist",
+      "template": "SELECT /**select**/ FROM [student].[ResourceSupportSpecialist] RSS /**where**/ /**orderby**/",
+	  "sotemplate": "SELECT /**select**/ FROM [sob].[ResourceSupportSpecialist] RSS /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "RSS.Id AS id"
+        },
+	    	{
+          "column": "RSS.ResourceSupportSpecialistTypeId AS resourceSupportSpecialistTypeId"
+        },
+		    {
+          "column": "RSS.WorkPlaceID AS workPlaceID"
+        },
+		    {
+          "column": "RSS.Name AS name"
+        },
+		    {
+          "column": "RSS.OrganizationType AS organizationType"
+        },
+		    {
+          "column": "RSS.OrganizationName AS organizationName"
+        },
+		    {
+          "column": "RSS.SpecialistType AS specialistType"
+        }
+      ],
+      "params": [
+		    {
+          "param": "@resourceSupportID",
+          "column": "RSS.ResourceSupportID",
+          "operator": "=",
+          "value": "resourceSupportID",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+		    }
+      ],
+      "order": [
+
+      ]
+    }
+	]
+}

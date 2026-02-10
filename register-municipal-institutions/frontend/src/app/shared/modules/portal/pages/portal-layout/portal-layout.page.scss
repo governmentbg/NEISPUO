@@ -1,0 +1,253 @@
+@import "@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/variables/variables.scss";
+@import "@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/mixins";
+
+.navbar {
+  padding: 1rem 0.75rem;
+  box-shadow: -2px 0 5px $chart-mono-6;
+
+  &-container {
+    .logo {
+      display: flex;
+      align-items: center;
+      color: $white;
+
+      i {
+        display: none;
+        margin-right: 1rem;
+        font-size: 2rem;
+      }
+
+      .mon-logo {
+        height: 32px;
+        width: auto;
+        margin-right: 1rem;
+      }
+
+      .mon-title {
+        margin: 0;
+      }
+
+      a {
+        background-size: 0;
+      }
+    }
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+.sidebar {
+  top: 4.15rem;
+  position: fixed;
+  height: 100%;
+  width: 18.75rem;
+  box-shadow: $box-shadow-right;
+  transition: 0.5s ease;
+  z-index: 98;
+
+  &.shown {
+    visibility: visible;
+    transform: none;
+    transition: 0.5s ease;
+  }
+
+  .side-menu {
+    &-scrollable {
+      a {
+        width: -webkit-fill-available;
+      }
+
+      height: calc(100vh - 154px);
+      overflow-y: auto;
+      margin-bottom: 0;
+
+      .btn-toggle {
+        position: relative;
+        font-size: 1.125rem;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        padding: 1.25rem 1.75rem;
+        width: 100%;
+        color: $gray-900;
+        background-color: transparent;
+        border: 0;
+        pointer-events: none; // Currently, all submenus are open
+
+        &:not(.collapsed),
+        &:focus,
+        &:hover {
+          color: $blue-400;
+          background-color: $blue-100;
+        }
+
+        &-nav {
+          a {
+            display: flex;
+            padding: 1.25rem 1.75rem;
+            margin-left: 3.75rem;
+            background-size: 0;
+            font-size: 1rem;
+            color: $gray-700;
+
+            &.active,
+            &:hover {
+              color: $blue-400;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+hr {
+  width: 90%;
+  color: $gray-400;
+  margin: auto;
+}
+
+.content-container {
+  margin-top: 5rem;
+  margin-left: 18.75rem;
+  margin-bottom: 5.25rem;
+  padding: 1rem;
+  padding-bottom: 5.625rem;
+  position: relative;
+}
+
+.fixed-top {
+  z-index: 100;
+}
+
+.sidenav-toggle {
+  padding-left: 0;
+  padding-right: 1.563rem;
+  background-color: transparent;
+  border-color: transparent;
+
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+.bi-list {
+  &::before {
+    font-size: 1.875rem;
+    font-weight: bold !important;
+  }
+}
+
+.sidebar.show-sidemenu {
+  padding-top: 1rem;
+  visibility: visible;
+  transform: none;
+  transition: 0.5s;
+}
+
+.sidebar {
+  z-index: 98;
+  box-shadow: $box-shadow-right;
+  transition: 0.5s;
+}
+
+.backdrop {
+  position: fixed;
+  top: 5.52rem;
+  width: 100%;
+  min-height: 100%;
+  background-color: rgba(31, 35, 41, 0.5);
+  transition: background-color 0.4s ease;
+  z-index: 80;
+}
+
+footer {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  background-color: $white;
+  z-index: 99;
+  box-shadow: $box-shadow-top;
+
+  .app-version {
+    color: $gray-700;
+  }
+}
+
+@media (max-width: 960px) {
+  .content-container {
+    margin-left: 0;
+    padding-bottom: 8rem;
+  }
+}
+
+@media (max-width: 840px) {
+  .content-container {
+    margin-left: 0;
+  }
+}
+
+@media (min-width: 960px) {
+  .backdrop {
+    visibility: hidden;
+  }
+}
+
+
+@media (max-width: 575.98px) {
+  .navbar {
+    &-container {
+      .logo {
+        .mon-title {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .sidebar {
+    visibility: hidden;
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .sidebar {
+    .side-menu {
+      &-scrollable {
+        height: calc(100vh - 255px);
+      }
+    }
+  }
+}
+
+@media (max-width:940px) {
+  .sidebar {
+    top: unset;
+  }
+}
+
+@media (max-width: 300px) {
+  .sidebar {
+    width: 270px;
+    top: 7.5rem;
+
+    .side-menu {
+      &-scrollable {
+        .btn-toggle {
+          font-size: 1rem;
+
+          &-nav {
+            a {
+              font-size: 0.875rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}

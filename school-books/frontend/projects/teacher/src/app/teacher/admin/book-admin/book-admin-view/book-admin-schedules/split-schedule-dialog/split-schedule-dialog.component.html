@@ -1,0 +1,54 @@
+<div class="sb-btn-wrapper sb-btn-wrapper-right">
+  <button mat-raised-button color="primary" type="button" (click)="save()" [disabled]="loading">
+    <fa-icon [icon]="loading ? fasSpinnerThird : farClone" [spin]="loading" size="lg"></fa-icon>
+    <span>Раздели</span>
+  </button>
+  <button mat-raised-button mat-dialog-close>Затвори</button>
+</div>
+
+<div class="schedule-dialog-content">
+  <sb-banner type="error" class="mb-5" *ngFor="let error of errors">{{ error }}</sb-banner>
+
+  <div>
+    <h4>Седмици</h4>
+    <div class="sb-btn-wrapper">
+      <button mat-raised-button (click)="deselectAll()">
+        <fa-icon [icon]="farTrashAlt" size="lg"></fa-icon>
+        <span>Изчисти</span>
+      </button>
+      <button mat-raised-button (click)="selectEven()">
+        <fa-icon [icon]="farCalendarPlus" size="lg"></fa-icon>
+        <span>Четни</span>
+      </button>
+      <button mat-raised-button (click)="selectOdd()">
+        <fa-icon [icon]="farCalendarMinus" size="lg"></fa-icon>
+        <span>Нечетни</span>
+      </button>
+      <button mat-raised-button (click)="selectAll()">
+        <fa-icon [icon]="farCalendarCheck" size="lg"></fa-icon>
+        <span>Всички</span>
+      </button>
+    </div>
+  </div>
+
+  <div *ngFor="let year of Object.keys(weeksByYear)">
+    <div>
+      <label>{{ year }}</label>
+      <div class="schedule-weeks">
+        <div *ngFor="let week of weeksByYear[year]" class="schedule-week">
+          <input
+            type="checkbox"
+            id="week{{ week.weekNumber }}_{{ week.year }}"
+            [checked]="week.selected"
+            [disabled]="week.disabled"
+            (click)="weekSelectionChanged(week)"
+          />
+          <label for="week{{ week.weekNumber }}_{{ week.year }}">
+            <div class="week-dates">{{ week.startDateDisplay }}-{{ week.endDateDisplay }}</div>
+            <div class="week-month">{{ week.monthAbbr }} ({{ week.weekNumber }})</div>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

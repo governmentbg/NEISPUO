@@ -1,0 +1,226 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_year].[StudentList] SL /**where**/ /**orderby**/",
+  "sotemplate": "SELECT /**select**/ FROM [sob].[StudentList] SL /**where**/ /**orderby**/",
+  "columns": [
+    {
+      "column": "SL.PersonID AS id"
+    }
+  ],
+  "params": [
+    {
+      "param": "@personid",
+      "column": "SL.PersonID",
+      "operator": "=",
+      "value": "personid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+    {
+      "param": "@year",
+      "column": "SL.SchoolYear",
+      "operator": "=",
+      "value": "year",
+      "type": "int",
+      "logical_operator": "and",
+      "optional": true,
+      "static": false
+    },
+    {
+      "param": "@period",
+      "column": "SL.Period",
+      "operator": "=",
+      "value": "period",
+      "type": "int",
+      "logical_operator": "and",
+      "optional": true,
+      "static": false
+    }
+  ],
+  "order": [],
+  "inSelects": [
+    {
+      "arrayName": "studentMainClassGroups",
+      "template": "SELECT /**select**/ FROM [inst_year].[ClassStudentList] SC /**where**/ /**orderby**/",
+      "sotemplate": "SELECT /**select**/ FROM [sob].[ClassStudentList] SC /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "SC.ID AS id"
+        },
+        {
+          "column": "SC.ID AS studentid"
+        },
+        {
+          "column": "SC.ParentClassID AS parentclassid"
+        },
+        {
+          "column": "SC.ClassName AS className"
+        },
+        {
+          "column": "SC.StudentEdFormName AS studentEdFormName"
+        },
+        {
+          "column": "SC.ClassSpecialityName AS classSpecialityName"
+        },
+        {
+          "column": "SC.IsIndividualCurriculumDecode AS isIndividualCurriculum"
+        },
+        {
+          "column": "SC.IsHourlyOrganizationDecode AS isHourlyOrganizationDecode"
+        },
+        {
+          "column": "SC.RepeaterName AS repeaterName"
+        },
+        {
+          "column": "SC.CommuterTypeName AS commuterTypeName"
+        },
+        {
+          "column": "SC.BasicClassID AS basicClassID"
+        },
+        {
+          "column": "SC.ClassTypeID AS classTypeID"
+        },
+        {
+          "column": "SC.ClassKind AS classKind"
+        },
+        {
+          "column": "'studentMainClassGroup' AS formName"
+        },
+        {
+          "column": "SC.ClassID AS formDataId"
+        }
+      ],
+      "params": [
+        {
+          "param": "@personid",
+          "column": "SC.PersonID",
+          "operator": "=",
+          "value": "personid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        },
+        {
+          "param": "@classKind",
+          "column": "SC.ClassKind",
+          "operator": "=",
+          "value": 1,
+          "type": "int",
+          "logical_operator": "and",
+          "static": true
+        },
+        {
+          "param": "@instid",
+          "column": "SC.InstitutionID",
+          "operator": "=",
+          "value": "instid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        },
+        {
+          "param": "@year",
+          "column": "SC.SchoolYear",
+          "operator": "=",
+          "value": "year",
+          "type": "int",
+          "logical_operator": "and",
+          "optional": true,
+          "static": false
+        },
+        {
+          "param": "@period",
+          "column": "SC.Period",
+          "operator": "=",
+          "value": "period",
+          "type": "int",
+          "logical_operator": "and",
+          "optional": true,
+          "static": false
+        }
+      ],
+      "order": []
+    },
+    {
+      "arrayName": "studentOtherClassGroups",
+      "template": "SELECT /**select**/ FROM [inst_year].[ClassStudentList] SC /**where**/ /**orderby**/",
+      "sotemplate": "SELECT /**select**/ FROM [sob].[ClassStudentList] SC /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "SC.ID AS id"
+        },
+        {
+          "column": "SC.ID AS studentid"
+        },
+        {
+          "column": "SC.ParentClassID AS parentclassid"
+        },
+        {
+          "column": "SC.ClassName AS className"
+        },
+        {
+          "column": "SC.ClassTypeID AS classTypeID"
+        },
+        {
+          "column": "SC.ClassKind AS classKind"
+        },
+        {
+          "column": "'studentOtherClassGroup' AS formName"
+        },
+        {
+          "column": "SC.ClassID AS formDataId"
+        }
+      ],
+      "params": [
+        {
+          "param": "@personid",
+          "column": "SC.PersonID",
+          "operator": "=",
+          "value": "personid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        },
+        {
+          "param": "@classKind",
+          "column": "SC.ClassKind",
+          "operator": "<>",
+          "value": 1,
+          "type": "int",
+          "logical_operator": "and",
+          "static": true
+        },
+        {
+          "param": "@instid",
+          "column": "SC.InstitutionID",
+          "operator": "=",
+          "value": "instid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        },
+        {
+          "param": "@year",
+          "column": "SC.SchoolYear",
+          "operator": "=",
+          "value": "year",
+          "type": "int",
+          "logical_operator": "and",
+          "optional": true,
+          "static": false
+        },
+        {
+          "param": "@period",
+          "column": "SC.Period",
+          "operator": "=",
+          "value": "period",
+          "type": "int",
+          "logical_operator": "and",
+          "optional": true,
+          "static": false
+        }
+      ],
+      "order": []
+    }
+  ]
+}

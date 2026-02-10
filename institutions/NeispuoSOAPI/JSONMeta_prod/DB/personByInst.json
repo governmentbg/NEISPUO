@@ -1,0 +1,35 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[PersonByInst] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "IsExist as isExist"
+        }
+    ],
+    "params": [
+		{
+          "param": "@instid",
+          "column": "InstitutionID",
+          "operator": "=",
+          "value": "instid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+		},
+		{
+          "param": "@pesonalid",
+          "column": "PersonalID",
+          "operator": "=",
+          "value": "pesonalid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+		}
+    ],
+    "order": [
+        {
+            "column": "InstitutionID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

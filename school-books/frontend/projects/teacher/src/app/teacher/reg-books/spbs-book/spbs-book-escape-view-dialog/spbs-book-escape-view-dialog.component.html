@@ -1,0 +1,53 @@
+<form [formGroup]="form" novalidate (ngSubmit)="onSave()" class="sm:w-96">
+  <div class="sb-btn-wrapper sb-btn-wrapper-right">
+    <button mat-raised-button color="primary" type="submit" [disabled]="saving">
+      <fa-icon [icon]="saving ? fasSpinnerThird : fasCheck" [spin]="saving" size="lg"></fa-icon>
+      <span>Запази</span>
+    </button>
+    <button mat-raised-button mat-dialog-close>Затвори</button>
+  </div>
+
+  <sb-date-field
+    class="col-start-1"
+    label="Дата на регистриране на бягството"
+    formControlName="escapeDate"
+  ></sb-date-field>
+
+  <sb-text-field
+    label="Час на регистриране на бягството"
+    [placeholder]="timeFormatHint"
+    formControlName="escapeTime"
+    [validations]="{ pattern: 'Некоректен формат' }"
+  ></sb-text-field>
+
+  <sb-date-field
+    class="col-start-1 col-span-full"
+    label="Дата на уведомяването на РПУ"
+    formControlName="policeNotificationDate"
+  ></sb-date-field>
+
+  <sb-text-field
+    label="Час на уведомяването на РПУ"
+    [placeholder]="timeFormatHint"
+    formControlName="policeNotificationTime"
+    [validations]="{ pattern: 'Некоректен формат' }"
+  ></sb-text-field>
+
+  <sb-text-field
+    class="col-start-1 col-span-full"
+    label="№ на писмо до РПУ/НС 'Полиция'"
+    formControlName="policeLetterNumber"
+  ></sb-text-field>
+
+  <sb-date-field
+    class="col-start-1"
+    label="Дата на писмо до РПУ/НС 'Полиция'"
+    formControlName="policeLetterDate"
+  ></sb-date-field>
+
+  <sb-date-field
+    class="sb-single-row-mat-field col-start-1"
+    label="Дата на връщане"
+    formControlName="returnDate"
+  ></sb-date-field>
+</form>

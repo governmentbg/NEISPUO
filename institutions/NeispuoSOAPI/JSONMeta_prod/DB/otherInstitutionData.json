@@ -1,0 +1,74 @@
+{
+  "arrayName": "otherInstitutionData",
+  "template": "SELECT /**select**/ FROM [inst_year].[StudentOtherInstitution] OI /**where**/ /**orderby**/",
+  "sotemplate": "SELECT /**select**/ FROM [sob].[StudentOtherInstitution] OI /**where**/ /**orderby**/",
+  "columns": [
+    {
+      "column": "OI.Id as id"
+    },
+    {
+      "column": "OI.InstitutionName as institutionName"
+    },
+    {
+      "column": "OI.BasicClass as basicClass"
+    },
+    {
+      "column": "OI.DepartmentAddress as address"
+    },
+    {
+      "column": "OI.ClassType as classType"
+    }
+  ],
+  "params": [
+    {
+      "param": "@personid",
+      "column": "OI.PersonId",
+      "operator": "=",
+      "value": "personid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+    {
+      "param": "@instid",
+      "column": "OI.InstitutionID",
+      "operator": "<>",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+    {
+      "param": "@schoolYear",
+      "column": "OI.SchoolYear",
+      "operator": "=",
+      "value": "schoolYear",
+      "type": "int",
+      "logical_operator": "and",
+      "optional": true,
+      "static": false
+    },
+    {
+      "param": "@year",
+      "column": "OI.SchoolYear",
+      "operator": "=",
+      "value": "year",
+      "type": "int",
+      "logical_operator": "and",
+      "optional": true,
+      "static": false
+    },
+    {
+      "param": "@period",
+      "column": "OI.Period",
+      "operator": "=",
+      "value": "period",
+      "type": "int",
+      "logical_operator": "and",
+      "optional": true,
+      "static": false
+    }
+  ],
+  "order": [],
+  "inSelects": []
+}

@@ -1,0 +1,98 @@
+{
+  "arrayName": "classGroupList",
+  "template": "SELECT /**select**/ FROM [inst_year].[ClassChildGroupList] CD /**where**/ /**orderby**/",
+  "sotemplate": "SELECT /**select**/ FROM [sob].[ClassChildGroupList] CD /**where**/ /**orderby**/",
+  "columns": [
+	{
+      "column": "CD.ClassID AS id"
+    },
+	{
+      "column": "CD.ClassName AS className"
+    },
+	{
+      "column": "CD.ClassKind AS classKind"
+    },
+	{
+      "column": "CD.BasicClass AS basicClass"
+    },
+	{
+      "column": "CD.ParentClassID AS parentclassid"
+    },
+	{
+      "column": "CD.BasicClassID AS basicClassID"
+    },
+	{
+      "column": "CD.BasicClassID AS bClassID"
+    },
+	{
+      "column": "CD.ClassTypeID AS classTypeID"
+    },
+	{
+      "column": "CD.ClassTypeName AS classTypeName"
+    },
+	{
+      "column": "CD.ClassShiftName AS classShiftName"
+    },
+	{
+      "column": "CD.FLName AS flName"
+    },
+	{
+      "column": "CD.DepartmentName AS departmentName"
+    },
+	{
+      "column": "'classGroupData' AS formName"
+    },
+	{
+      "column": "CD.ClassID AS formDataId"
+    }
+   ],
+  "params": [
+    {
+      "param": "@instid",
+      "column": "CD.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+	{
+      "param": "@classKind",
+      "column": "CD.ClassKind",
+      "operator": "=",
+      "value": 2,
+      "type": "int",
+      "logical_operator": "and",
+      "static": true
+    },
+		{
+			"param": "@year",
+			"column": "CD.SchoolYear",
+			"operator": "=",
+			"value": "year",
+			"type": "int",
+			"logical_operator": "and",
+			"optional": true,
+			"static": false
+    },
+		{
+			"param": "@period",
+			"column": "CD.Period",
+			"operator": "=",
+      "value": "period",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "CD.ClassName",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+
+  ]
+}

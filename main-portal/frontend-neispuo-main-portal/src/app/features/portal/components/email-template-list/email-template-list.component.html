@@ -1,0 +1,138 @@
+<div class="email-template-list-container">
+  <div class="table-scroll-wrapper">
+    <p-table
+      #templatesTable
+      [value]="templates$ | async"
+      [rows]="6"
+      [paginator]="true"
+      [globalFilterFields]="['title', 'emailTemplateType.displayName', 'recipients']"
+      [rowHover]="true"
+      dataKey="id"
+    >
+      <!-- top bar with search box -->
+      <ng-template pTemplate="caption">
+        <div>
+          <button class="btn btn-success rounded icon" (click)="openCreatePage()">Добави</button>
+        </div>
+        <div class="p-d-flex p-ai-center p-jc-between">
+          <input
+            pInputText
+            type="text"
+            (input)="templatesTable.filterGlobal($event.target.value, 'contains')"
+            placeholder="Търси"
+          />
+        </div>
+      </ng-template>
+
+      <!-- table header -->
+      <ng-template pTemplate="header">
+        <tr>
+          <th class="col-title">Заглавие</th>
+          <th class="col-type">Вид съобщение</th>
+          <th class="col-recipients">Получатели</th>
+          <th pSortableColumn="isActive" class="col-status">
+            Статус <p-sortIcon field="isActive" class="responsive-sort-icon"></p-sortIcon>
+          </th>
+          <th pSortableColumn="createdAt" class="col-date">
+            Създаден <p-sortIcon field="createdAt" class="responsive-sort-icon"></p-sortIcon>
+          </th>
+          <th pSortableColumn="updatedAt" class="col-date">
+            Обновен <p-sortIcon field="updatedAt" class="responsive-sort-icon"></p-sortIcon>
+          </th>
+          <th class="col-actions">Действия</th>
+        </tr>
+      </ng-template>
+
+      <!-- table body -->
+      <ng-template pTemplate="body" let-template>
+        <tr>
+          <td class="col-title">
+            <div class="template-title" pTooltip="{{ template.title }}">
+              {{ template.title }}
+            </div>
+          </td>
+
+          <td class="col-type">
+            <div class="template-type">
+              {{ template.emailTemplateType?.displayName || 'Н/А' }}
+            </div>
+          </td>
+
+          <td class="col-recipients">
+            <ng-container *ngIf="template.recipients?.length > 0; else noRecipients">
+              <app-tags [items]="template.recipients" direction="column"></app-tags>
+            </ng-container>
+            <ng-template #noRecipients>
+              <span class="no-recipients">Няма получатели</span>
+            </ng-template>
+          </td>
+
+          <td class="col-status">
+            <span class="status-badge" [class.active]="template.isActive" [class.inactive]="!template.isActive">
+              {{ template.isActive ? 'Активен' : 'Неактивен' }}
+            </span>
+          </td>
+
+          <td class="col-date">{{ template.createdAt | date: 'dd/MM/yy' }}</td>
+          <td class="col-date">{{ template.updatedAt | date: 'dd/MM/yy' }}</td>
+
+          <td class="col-actions">
+            <div class="actions-grid">
+              <button
+                pButton
+                type="button"
+                icon="pi pi-eye"
+                class="p-button-text p-button-sm"
+                (click)="openPreview(template)"
+                pTooltip="Преглед"
+                tooltipPosition="top"
+              ></button>
+
+              <button
+                pButton
+                type="button"
+                icon="pi pi-send"
+                class="p-button-text p-button-sm"
+                (click)="openSend(template)"
+                pTooltip="Изпрати"
+                tooltipPosition="top"
+              ></button>
+
+              <button
+                pButton
+                type="button"
+                icon="pi pi-pencil"
+                class="p-button-text p-button-sm"
+                (click)="editTemplate(template)"
+                pTooltip="Редактиране"
+                tooltipPosition="top"
+              ></button>
+
+              <button
+                pButton
+                type="button"
+                icon="pi pi-trash"
+                class="p-button-text p-button-sm delete-btn"
+                (click)="confirmDelete(template.id)"
+                pTooltip="Изтриване"
+                tooltipPosition="top"
+              ></button>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="7">
+            <div class="empty-message-cell">
+              <i class="pi pi-info-circle"></i>
+              Няма намерени съобщения
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  <p-confirmDialog styleClass="confirm-delete-dialog"></p-confirmDialog>
+</div>

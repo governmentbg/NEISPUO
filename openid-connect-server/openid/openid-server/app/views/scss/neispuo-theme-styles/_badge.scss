@@ -1,0 +1,33 @@
+.badge {
+  text-transform: uppercase;
+}
+
+.badge-lg {
+  font-size: 0.75rem;
+  padding: $badge-padding-y-lg $badge-padding-x-lg;
+}
+
+.tag-primary {
+  color: $blue-400;
+  background-color: $blue-100 !important;
+}
+
+.tag-secondary {
+  color: $gray-700;
+  background-color: $gray-300 !important;
+}
+
+.tag-success {
+  color: $green-500;
+  background-color: $green-100 !important;
+}
+
+.tag-warning {
+  color: $yellow-500;
+  background-color: $yellow-100 !important;
+}
+
+.tag-danger {
+  color: $red-500;
+  background-color: $red-100 !important;
+}

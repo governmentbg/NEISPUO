@@ -1,0 +1,54 @@
+<sb-tab-card [hideHeader]="true">
+  <ng-container card-body>
+    <div class="sb-btn-wrapper">
+      <a
+        *ngIf="canCreate"
+        [routerLink]="['./', 'new', { type: 'ControlExam' }]"
+        mat-raised-button
+        color="primary"
+        aria-label="Нова Контролна"
+      >
+        <fa-icon [icon]="fasPlus" size="lg"></fa-icon>
+        <span>Нова Контролна</span>
+      </a>
+      <a
+        *ngIf="canCreate"
+        [routerLink]="['./', 'new', { type: 'ClassExam' }]"
+        mat-raised-button
+        color="accent"
+        aria-label="Нова Класна"
+      >
+        <fa-icon [icon]="fasPlus" size="lg"></fa-icon>
+        <span>Нова Класна</span>
+      </a>
+    </div>
+
+    <sb-table [dataSource]="dataSource" [displayedColumns]="['action', 'bookExamType', 'subject', 'date']">
+      <ng-container cdkColumnDef="action">
+        <th cdk-header-cell *cdkHeaderCellDef></th>
+        <td cdk-cell *cdkCellDef="let row" class="sb-table-action">
+          <a [routerLink]="['./', row.examId, { type: row.bookExamType }]" aria-label="Детайли" class="sb-link-btn">
+            <fa-icon [icon]="fadChevronCircleRight"></fa-icon>
+          </a>
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="bookExamType">
+        <th cdk-header-cell *cdkHeaderCellDef>Вид</th>
+        <td cdk-cell *cdkCellDef="let row">
+          {{ row.bookExamType === 'ControlExam' ? 'Контролна работа' : 'Класна работа' }}
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="subject">
+        <th cdk-header-cell *cdkHeaderCellDef>Предмет</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.subject }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="date">
+        <th cdk-header-cell *cdkHeaderCellDef>Дата</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.date | sbDate }}</td>
+      </ng-container>
+    </sb-table>
+  </ng-container>
+</sb-tab-card>

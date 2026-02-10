@@ -1,0 +1,127 @@
+{
+  "label": "Учебници",
+  "procedureName": "inst_basic.textbooksInstUpdateFL",
+  "dataName": "basicClassSubjectDataFL",
+  "sections": [
+    {
+      "order": 1,
+      "label": "Учебници",
+      "subsections": [
+        {
+          "order": 1,
+          "name": "basicClassSubjectDataFL",
+          "fields": [
+            {
+              "label": "Код",
+              "name": "id",
+              "type": "input",
+              "inputType": "text",
+              "order": 1,
+              "width": 100,
+              "disabled": true,
+              "rendered": false,
+              "validations": [],
+              "influence": [
+                {
+                  "fieldName": "levelFLID",
+                  "url": "/data/get/levelFLlist",
+                  "type": "options"
+                }
+              ]
+            },
+            {
+              "label": "Клас - Група",
+              "name": "basicClassName",
+              "type": "input",
+              "inputType": "text",
+              "order": 2,
+              "width": 200,
+              "disabled": true,
+              "validations": []
+            },
+            {
+              "label": "Учебен предмет",
+              "name": "subjectName",
+              "type": "input",
+              "inputType": "text",
+              "order": 3,
+              "width": 300,
+              "disabled": true,
+              "validations": []
+            },
+            {
+              "label": "Клас",
+              "name": "classID",
+              "type": "input",
+              "inputType": "text",
+              "order": 4,
+              "width": 400,
+              "disabled": true,
+              "rendered": false,
+              "validations": []
+            },
+            {
+              "label": "Ниво по ОЕЕР",
+              "name": "levelFLID",
+              "type": "searchselect",
+              "order": 5,
+              "width": 200,
+              "disabled": false,
+              "influence": [
+                {
+                  "fieldName": "textBookID",
+                  "url": "/data/get/textBookFL",
+                  "type": "options"
+                }
+              ],
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ]
+            },
+		        {
+              "label": "Учебник",
+              "name": "textBookID",
+              "type": "searchselect",
+              "width": 1000,
+              "disabled": false,
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ],
+              "order": 6
+            },
+            {
+              "label": "Код на учебен предмет",
+              "name": "subjectID",
+              "type": "input",
+              "inputType": "text",
+              "order": 7,
+              "width": 50,
+              "disabled": true,
+              "rendered": false,
+              "validations": []
+            },
+            {
+              "label": "Група в учебен план",
+              "name": "curriculumGroupNum",
+              "type": "input",
+              "inputType": "text",
+              "order": 8,
+              "width": 10,
+              "disabled": true,
+              "rendered": false,
+              "validations": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

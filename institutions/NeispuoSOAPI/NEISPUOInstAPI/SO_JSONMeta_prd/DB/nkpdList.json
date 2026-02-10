@@ -1,0 +1,48 @@
+{
+  "arrayName": "nkpdList",
+  "template": "SELECT /**select**/ FROM [inst_nom].[NKPDPositionInstitution] CD /**where**/ /**orderby**/",
+  "columns": [
+    {
+      "column": "CD.ID AS id"
+    },
+    {
+      "column": "CD.PositionFullName AS positionName"
+    },
+    {
+      "column": "CD.StaffTypeName AS staffTypeName"
+    },
+    {
+      "column": "'nkpdData' AS formName"
+    },
+    {
+      "column": "CD.ID AS formDataId"
+    }
+  ],
+  "params": [
+    {
+      "param": "@instid",
+      "column": "CD.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+    {
+      "param": "@isValid",
+      "column": "CD.IsValidForInst",
+      "operator": "=",
+      "value": 1,
+      "type": "int",
+      "logical_operator": "and",
+      "static": true
+    }
+  ],
+  "order": [
+    {
+      "column": "CD.PositionFullName",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": []
+}

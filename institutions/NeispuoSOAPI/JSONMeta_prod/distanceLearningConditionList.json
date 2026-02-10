@@ -1,0 +1,37 @@
+{
+  "label": "Осигуреност на дистанционна форма на обучение",
+  "sections": [
+    {
+      "order": 1,
+      "name": "TableDistanceLearningCondition",
+      "table":
+      {
+        "name": "distanceLearningConditionList",
+		    "searchable": false,
+        "procedureName": "inst_basic.distanceLearningConditionCUD", 
+        "canDeleteRow": false,
+        "hasEditButton": true,
+        "formName":"distanceLearningConditionData",
+        "paramName":"distanceLearningConditionID",
+        "fields": [
+          {
+            "label": "Технически и технологични условия, необходими за предоставяне на дистанционна форма на обучение",
+            "name": "condition",
+            "type": "input",
+            "inputType": "text",
+            "width": 9,
+            "order": 1
+          },
+		      {
+            "label": "% осигуреност от учителите/учениците",
+            "name": "compliedDegree",
+            "type": "input",
+            "inputType": "number",
+            "width": 1,
+            "order": 2
+          }     
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,148 @@
+<form [formGroup]="form" autocomplete="off" novalidate>
+  <sb-tab-card>
+    <ng-container card-title>Въвеждане на резултати</ng-container>
+    <ng-container card-buttons>
+      <button mat-raised-button color="primary" type="submit" [disabled]="saveBtnDisabled" (click)="onSave()">
+        <fa-icon [icon]="saveBtnDisabled ? fasSpinnerThird : fasCheck" [spin]="saveBtnDisabled" size="lg"></fa-icon>
+        <span class="hidden sm:inline">Запази</span>
+      </button>
+      <a mat-raised-button class="ml-2" [routerLink]="['../']">
+        <fa-icon [icon]="fasArrowLeft" size="lg"></fa-icon>
+        <span class="hidden sm:inline">Назад</span>
+      </a>
+    </ng-container>
+    <ng-container card-body>
+      <div class="sb-table-container">
+        <table class="sb-table">
+          <thead>
+            <tr>
+              <th colspan="2" rowspan="3">Ученик</th>
+              <th colspan="2" rowspan="3" class="text-center">Предмет</th>
+              <th [attr.colspan]="2 + (session1Show ? 1 : 0) + (session2Show ? 1 : 0)" class="text-center">
+                Редовни сесии
+              </th>
+              <th [attr.colspan]="1 + (session3Show ? 1 : 0)" rowspan="2" class="text-center">Допълнителна сесия</th>
+            </tr>
+            <tr>
+              <th [attr.colspan]="1 + (session1Show ? 1 : 0)" class="text-center">I сесия</th>
+              <th [attr.colspan]="1 + (session2Show ? 1 : 0)" class="text-center">II сесия</th>
+            </tr>
+            <tr>
+              <th class="text-center">Присъствие</th>
+              <th *ngIf="session1Show" class="text-center">Оценка</th>
+              <th class="text-center">Присъствие</th>
+              <th *ngIf="session2Show" class="text-center">Оценка</th>
+              <th class="text-center">Присъствие</th>
+              <th *ngIf="session3Show" class="text-center">Оценка</th>
+            </tr>
+          </thead>
+          <tbody class="text-sm" formArrayName="sessions">
+            <ng-container *ngFor="let session of sessions; index as i" [formGroupName]="i">
+              <tr>
+                <td colspan="2" class="sb-names whitespace-nowrap">
+                  {{ session.classNumber != null ? session.classNumber.toString() + '.' : '' }}
+
+                  {{ session.firstName }}
+                  {{ session.middleName }}
+                  {{ session.lastName }}
+
+                  <span *ngIf="session.abnormalStatus" class="sb-badge">{{ session.abnormalStatus }}</span>
+                </td>
+
+                <td colspan="2" class="whitespace-nowrap font-medium align-middle p-1">
+                  {{ session.curriculum }}
+                </td>
+
+                <td class="whitespace-nowrap font-medium align-middle p-1">
+                  <mat-button-toggle-group formControlName="session1NoShow" aria-label="">
+                    <mat-button-toggle [value]="false">Присъства</mat-button-toggle>
+                    <mat-button-toggle [value]="null">
+                      <fa-icon [icon]="fasTimes"></fa-icon>
+                    </mat-button-toggle>
+                    <mat-button-toggle [value]="true">Неявил се</mat-button-toggle>
+                  </mat-button-toggle-group>
+                </td>
+
+                <td *ngIf="session1Show" class="whitespace-nowrap font-medium align-middle p-1">
+                  <sb-decimal-grade-picker
+                    *ngIf="form.value.sessions[i].session1NoShow === false"
+                    formControlName="session1Grade"
+                    [allowFractional]="false"
+                    [showGradeButtons]="false"
+                  ></sb-decimal-grade-picker>
+                </td>
+
+                <td class="whitespace-nowrap font-medium align-middle p-1">
+                  <mat-button-toggle-group
+                    *ngIf="
+                      form.value.sessions[i].session1NoShow === true ||
+                      (form.value.sessions[i].session1NoShow === false && form.value.sessions[i].session1Grade === 2)
+                    "
+                    formControlName="session2NoShow"
+                    aria-label=""
+                  >
+                    <mat-button-toggle [value]="false">Присъства</mat-button-toggle>
+                    <mat-button-toggle [value]="null">
+                      <fa-icon [icon]="fasTimes"></fa-icon>
+                    </mat-button-toggle>
+                    <mat-button-toggle [value]="true">Неявил се</mat-button-toggle>
+                  </mat-button-toggle-group>
+                </td>
+
+                <td *ngIf="session2Show" class="whitespace-nowrap font-medium align-middle p-1">
+                  <sb-decimal-grade-picker
+                    *ngIf="
+                      form.value.sessions[i].session2NoShow === false &&
+                      (form.value.sessions[i].session1NoShow === true ||
+                        (form.value.sessions[i].session1NoShow === false && form.value.sessions[i].session1Grade === 2))
+                    "
+                    formControlName="session2Grade"
+                    [allowFractional]="false"
+                    [showGradeButtons]="false"
+                  ></sb-decimal-grade-picker>
+                </td>
+
+                <td class="whitespace-nowrap font-medium align-middle p-1">
+                  <mat-button-toggle-group
+                    *ngIf="
+                      (form.value.sessions[i].session1NoShow === true || form.value.sessions[i].session1Grade === 2) &&
+                      (form.value.sessions[i].session1NoShow === true ||
+                        (form.value.sessions[i].session1NoShow === false &&
+                          form.value.sessions[i].session1Grade === 2)) &&
+                      (form.value.sessions[i].session2NoShow === true ||
+                        (form.value.sessions[i].session2NoShow === false && form.value.sessions[i].session2Grade === 2))
+                    "
+                    formControlName="session3NoShow"
+                    aria-label=""
+                  >
+                    <mat-button-toggle [value]="false">Присъства</mat-button-toggle>
+                    <mat-button-toggle [value]="null">
+                      <fa-icon [icon]="fasTimes"></fa-icon>
+                    </mat-button-toggle>
+                    <mat-button-toggle [value]="true">Неявил се</mat-button-toggle>
+                  </mat-button-toggle-group>
+                </td>
+
+                <td *ngIf="session3Show" class="whitespace-nowrap font-medium align-middle p-1">
+                  <sb-decimal-grade-picker
+                    *ngIf="
+                      form.value.sessions[i].session3NoShow === false &&
+                      (form.value.sessions[i].session1NoShow === true ||
+                        (form.value.sessions[i].session1NoShow === false &&
+                          form.value.sessions[i].session1Grade === 2)) &&
+                      (form.value.sessions[i].session2NoShow === true ||
+                        (form.value.sessions[i].session2NoShow === false && form.value.sessions[i].session2Grade === 2))
+                    "
+                    formControlName="session3Grade"
+                    [allowFractional]="false"
+                    [showGradeButtons]="false"
+                  ></sb-decimal-grade-picker>
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </ng-container>
+  </sb-tab-card>
+</form>

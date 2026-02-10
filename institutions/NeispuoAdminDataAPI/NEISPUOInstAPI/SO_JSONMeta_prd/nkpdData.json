@@ -1,0 +1,47 @@
+{
+  "procedureName": "inst_basic.NKPDPositionInstitutionCD",
+  "sections": [
+    {
+      "name": "nkpdData",
+      "order": 1,
+      "subsections": [
+		{
+          "order": 0,
+          "name": "InfoMessages",
+          "label": "Важна информация",
+          "fields": [
+            {
+              "type": "info",
+              "rendered": true,
+              "defaultValue": "<p style='color:MediumSeaGreen;'>Ако желаете да добавите посочената длъжност за вашата институция, моля изберете бутон Запиши</p>",
+              "order": 0
+            }
+          ]
+        },
+        {
+          "order": 1,
+          "name": "nkpdBasicData",
+          "fields": [
+            {
+              "label": "Длъжност",
+              "name": "positionName",
+              "type": "input",
+              "inputType": "text",
+              "order": 1,
+              "width": 1000,
+              "disabled": true,
+              "defaultValue": "positionName",
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

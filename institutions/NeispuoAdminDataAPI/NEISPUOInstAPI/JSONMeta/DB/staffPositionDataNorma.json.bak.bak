@@ -1,0 +1,81 @@
+{
+    "arrayName": "norma",
+    "template": "SELECT /**select**/ FROM [inst_year].[PedStaffData] PSD /**where**/ /**orderby**/",
+	"sotemplate": "SELECT /**select**/ FROM [so].[PedStaffData] PSD /**where**/ /**orderby**/",
+    "columns": [
+		{
+          "column": "PSD.PedStaffDataID AS id"
+        },
+		{
+          "column": "PSD.NormaS AS normaS"
+        },
+		{
+          "column": "PSD.Norma AS norma"
+        },
+		{
+          "column": "PSD.NormaT AS normaT"
+        },
+		{
+          "column": "PSD.DeficitNorma AS deficitNorma"
+        },
+		{
+          "column": "PSD.DeficitNormaT AS deficitNormaT"
+        },
+		{
+          "column": "PSD.ReductionCoef AS reductionCoef"
+        },
+		{
+          "column": "PSD.DiffNorma AS diffNorma"
+        },
+		{
+          "column": "PSD.HoursForReduction AS hoursForReduction"
+        },
+		{
+          "column": "PSD.ReductionHours AS reductionHours"
+        },
+		{
+          "column": "PSD.Lect AS lect"
+        },
+		{
+          "column": "PSD.LectYear AS lectYear"
+        }
+	
+  ],
+  "params": [
+	{
+      "param": "@staffPositionID",
+      "column": "PSD.StaffPositionID",
+      "operator": "=",
+      "value": "staffPositionID",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+	{
+      "param": "@year",
+      "column": "PSD.SchoolYear",
+      "operator": "=",
+      "value": "year",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    },
+	{
+      "param": "@period",
+      "column": "PSD.Period",
+      "operator": "=",
+      "value": "period",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    }
+  ],
+  "order": [
+
+  ],
+  "inSelects": [
+
+  ]
+}

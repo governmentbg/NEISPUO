@@ -1,0 +1,6 @@
+<div class="parse-container" *ngIf="showInfo()">
+    <mat-label class="custom-label-json">Допълнителна информация</mat-label>
+    <mat-form-field class="custom-mat-form-field-json" floatLabel="never">
+      <input matInput [(ngModel)]="element.info" />
+    </mat-form-field>
+</div>

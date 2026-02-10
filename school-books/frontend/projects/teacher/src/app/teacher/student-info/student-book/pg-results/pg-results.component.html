@@ -1,0 +1,25 @@
+<sb-tab-card [hideHeader]="true">
+  <ng-container card-body>
+    <sb-table
+      [dataSource]="dataSource"
+      [displayedColumns]="['curriculumName', 'startSchoolYearResult', 'endSchoolYearResult']"
+    >
+      <ng-container cdkColumnDef="curriculumName">
+        <th cdk-header-cell *cdkHeaderCellDef>Образователно направление</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.curriculumName }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="startSchoolYearResult">
+        <th cdk-header-cell *cdkHeaderCellDef>В началото на учебната година</th>
+        <td cdk-cell *cdkCellDef="let row">
+          <span class="whitespace-pre-line">{{ row.startSchoolYearResult }}</span>
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="endSchoolYearResult">
+        <th cdk-header-cell *cdkHeaderCellDef>В края на учебната година</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.endSchoolYearResult }}</td>
+      </ng-container>
+    </sb-table>
+  </ng-container>
+</sb-tab-card>

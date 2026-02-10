@@ -1,0 +1,9 @@
+<div class="body-body-container">
+  <button class="btn-hide-tree" (click)="hidden = !hidden" [ngClass]="{'active': hidden}" *ngIf="authorized">
+    <span class="material-icons"> view_headline </span>
+  </button>
+  <div class="left-body-container" [ngClass]="{'hidden-tree': hidden}" *ngIf="authorized">
+    <app-tree-menu></app-tree-menu>
+  </div>
+  <router-outlet></router-outlet>
+</div>

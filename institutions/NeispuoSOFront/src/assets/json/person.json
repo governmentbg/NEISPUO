@@ -1,0 +1,688 @@
+{
+  "label": "Основни данни за лице",
+  "paramName": "personid",
+  "procedureName": "inst_basic.personCUD",
+  "sections": [
+    {
+      "label": "Основни данни за лице",
+      "order": 1,
+      "subsections": [
+        {
+          "order": 1,
+          "name": "personData",
+          "subsections": [
+            {
+              "order": 1,
+              "label": "Данни за лицето",
+              "name": "personalData",
+              "fields": [
+                {
+                  "label": "Титла",
+                  "name": "title",
+                  "type": "input",
+                  "inputType": "text",
+                  "order": 1,
+                  "width": 100,
+                  "disabled": false,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 100,
+                      "message": "Максимална дължина 100 символа"
+                    }
+                  ],
+                  "influence": [],
+                  "info": ""
+                },
+                {
+                  "label": "Име",
+                  "name": "firstName",
+                  "type": "input",
+                  "inputType": "text",
+                  "order": 2,
+                  "width": 200,
+                  "disabled": false,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 255,
+                      "message": "Максимална дължина 255 символа"
+                    },
+                    {
+                      "name": "required",
+                      "validator": "",
+                      "message": "Полето е задължително"
+                    },
+                    {
+                      "name": "pattern",
+                      "validation": "^[а-яА-Я-,.:;()/\"' \\\\]*$",
+                      "message": "Моля, въведете на кирилица"
+                    }
+                  ],
+                  "influence": [],
+                  "info": ""
+                },
+                {
+                  "label": "Презиме",
+                  "name": "middleName",
+                  "type": "input",
+                  "inputType": "text",
+                  "order": 3,
+                  "width": 200,
+                  "disabled": false,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 255,
+                      "message": "Максимална дължина 255 символа"
+                    },
+                    {
+                      "name": "pattern",
+                      "validation": "^[а-яА-Я-,.:;()/\"' \\\\]*$",
+                      "message": "Моля, въведете на кирилица"
+                    }
+                  ],
+                  "influence": [],
+                  "info": ""
+                },
+                {
+                  "label": "Фамилия",
+                  "name": "lastName",
+                  "type": "input",
+                  "inputType": "text",
+                  "order": 4,
+                  "width": 200,
+                  "disabled": false,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 255,
+                      "message": "Максимална дължина 255 символа"
+                    },
+                    {
+                      "name": "required",
+                      "validator": "",
+                      "message": "Полето е задължително"
+                    },
+                    {
+                      "name": "pattern",
+                      "validation": "^[а-яА-Я-,.:;()/\"' \\\\]*$",
+                      "message": "Моля, въведете на кирилица"
+                    }
+                  ],
+                  "influence": [],
+                  "info": ""
+                },
+                {
+                  "label": "Тип идентификатор",
+                  "name": "personalIDType",
+                  "type": "select",
+                  "optionsPath": "/data/get/personalIDTypes",
+                  "disabled": false,
+                  "order": 5,
+                  "validations": [
+                    {
+                      "name": "required",
+                      "validator": "",
+                      "message": "Полето е задължително"
+                    }
+                  ],
+                  "influence": [
+                    { "type": "render", "fieldName": "isForeignCitizen", "condition": [0, 1] },
+                    { "type": "disable", "fieldName": "isForeignCitizen", "condition": [1] },
+                    { "type": "defaultValue", "fieldName": "isForeignCitizen", "condition": [1], "defaultValue": true },
+                    { "type": "defaultValue", "fieldName": "identifierType", "condition": [0], "defaultValue": "EGN" },
+                    { "type": "defaultValue", "fieldName": "identifierType", "condition": [1], "defaultValue": "LNCh" },
+                    { "type": "render", "fieldName": "regixPrsnBtn", "condition": [0] },
+                    { "type": "render", "fieldName": "regixAddressBtn", "condition": [0] },
+                    { "type": "render", "fieldName": "regixTempAddressBtn", "condition": [0] },
+                    { "type": "render", "fieldName": "regixLnchBtn", "condition": [0, 1] }
+                  ],
+                  "info": ""
+                },
+                {
+                  "label": "ЕГН/ЛНЧ",
+                  "name": "personalID",
+                  "type": "input",
+                  "inputType": "text",
+                  "order": 6,
+                  "width": 150,
+                  "disabled": true,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 255,
+                      "message": "Максимална дължина 255 символа"
+                    },
+                    {
+                      "name": "required",
+                      "validator": "",
+                      "message": "Полето е задължително"
+                    }
+                  ],
+                  "influence": [],
+                  "info": ""
+                },
+                {
+                  "label": "Личен образователен номер",
+                  "name": "publicEduNumber",
+                  "type": "input",
+                  "inputType": "text",
+                  "order": 7,
+                  "width": 150,
+                  "disabled": true,
+                  "influence": [],
+                  "info": ""
+                },
+                {
+                  "label": "Пол",
+                  "name": "gender",
+                  "type": "select",
+                  "optionsPath": "/data/get/gender",
+                  "disabled": false,
+                  "validations": [
+                    {
+                      "name": "required",
+                      "validator": "",
+                      "message": "Полето е задължително"
+                    }
+                  ],
+                  "order": 8,
+                  "influence": [],
+                  "info": ""
+                },
+                {
+                  "label": "Дата на раждане",
+                  "name": "birthDate",
+                  "type": "date",
+                  "disabled": false,
+                  "order": 9,
+                  "width": 200,
+                  "validations": [],
+                  "influence": [],
+                  "info": ""
+                },
+                {
+                  "label": "Месторождение(държава)",
+                  "name": "birthPlaceCountry",
+                  "type": "searchselect",
+                  "optionsPath": "/data/get/country",
+                  "disabled": false,
+                  "validations": [],
+                  "order": 10,
+                  "influence": [],
+                  "info": ""
+                },
+                {
+                  "label": "Месторождение(град)",
+                  "name": "birthPlaceTownID",
+                  "type": "searchselect",
+                  "optionsPath": "/data/get/town",
+                  "disabled": false,
+                  "validations": [],
+                  "order": 11,
+                  "influence": [],
+                  "info": ""
+                },
+                {
+                  "label": "Гражданство",
+                  "name": "nationalityID",
+                  "type": "searchselect",
+                  "optionsPath": "/data/get/country",
+                  "disabled": false,
+                  "validations": [],
+                  "order": 12,
+                  "influence": [],
+                  "info": ""
+                },
+                {
+                  "label": "Физическо лице - чужденец",
+                  "name": "isForeignCitizen",
+                  "type": "checkbox",
+                  "defaultValue": false,
+                  "influence": [
+                    { "type": "hide", "fieldName": "regixPrsnBtn", "condition": [true] },
+                    { "type": "hide", "fieldName": "regixAddressBtn", "condition": [true] },
+                    { "type": "hide", "fieldName": "regixTempAddressBtn", "condition": [true] },
+                    { "type": "hide", "fieldName": "regixLnchBtn", "condition": [false] }
+                  ],
+                  "order": 13
+                },
+                {
+                  "name": "identifierType",
+                  "type": "input",
+                  "defaultValue": "EGN",
+                  "rendered": false,
+                  "influence": [],
+                  "order": 13
+                },
+                {
+                  "label": "Синхронизирай с ГРАО",
+                  "name": "regixPrsnBtn",
+                  "type": "regixbutton",
+                  "order": 14,
+                  "rendered": "if(operationType==2) {field.rendered=true} else {field.rendered=false}",
+                  "regixData": {
+                    "operation": "TechnoLogica.RegiX.GraoNBDAdapter.APIService.INBDAPI.PersonDataSearch",
+                    "xmlns": "http://egov.bg/RegiX/GRAO/NBD/PersonDataRequest",
+                    "requestName": "PersonDataRequest",
+                    "responseName": "PersonDataResponse",
+                    "requestMap": [{ "neispuoField": "personalID", "regixField": "EGN" }],
+                    "responseMap": [
+                      { "neispuoField": "firstName", "regixField": "PersonNames.FirstName" },
+                      { "neispuoField": "middleName", "regixField": "PersonNames.SurName" },
+                      { "neispuoField": "lastName", "regixField": "PersonNames.FamilyName" },
+                      { "neispuoField": "birthDate", "regixField": "BirthDate" },
+                      {
+                        "neispuoField": "gender",
+                        "regixField": "Gender.GenderName",
+                        "optionsPath": "assets/json/fake-data/gender-mapping.json"
+                      },
+                      {
+                        "neispuoField": "nationalityID",
+                        "regixField": "Nationality.NationalityName",
+                        "optionsPath": "/data/get/mapNationality"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "label": "Синхронизирай с ГРАО",
+                  "name": "regixLnchBtn",
+                  "type": "regixbutton",
+                  "order": 14,
+                  "rendered": "if(operationType==2) {field.rendered=true} else {field.rendered=false}",
+                  "regixData": {
+                    "operation": "TechnoLogica.RegiX.MVRERChAdapter.APIService.IMVRERChAPI.GetForeignIdentityV2",
+                    "xmlns": "http://egov.bg/RegiX/MVR/RCH/ForeignIdentityInfoRequest",
+                    "requestName": "PersonDataRequest",
+                    "responseName": "PersonDataResponse",
+                    "requestMap": [
+                      { "neispuoField": "identifierType", "regixField": "IdentifierType" },
+                      { "neispuoField": "personalID", "regixField": "Identifier" }
+                    ],
+                    "responseMap": [
+                      { "neispuoField": "firstName", "regixField": "PersonNames.FirstName" },
+                      { "neispuoField": "middleName", "regixField": "PersonNames.Surname" },
+                      { "neispuoField": "lastName", "regixField": "PersonNames.FamilyName" },
+                      { "neispuoField": "birthDate", "regixField": "BirthDate" },
+                      { "neispuoField": "currentRegion", "regixField": "TemporaryAddress.DistrictCode" },
+                      {
+                        "neispuoField": "currentMunicipality",
+                        "regixField": "TemporaryAddress.SettlementCode",
+                        "optionsPath": "/data/get/mapMunicipality"
+                      },
+                      { "neispuoField": "currentTown", "regixField": "TemporaryAddress.SettlementCode" },
+                      {
+                        "neispuoField": "currentAddress",
+                        "regixFields": [
+                          { "regixField": "TemporaryAddress.LocationName", "prefix": "" },
+                          { "regixField": "TemporaryAddress.BuildingNumber", "prefix": " №" },
+                          { "regixField": "TemporaryAddress.Entrance", "prefix": ", Вх. " },
+                          { "regixField": "TemporaryAddress.Floor", "prefix": ", Ет. " },
+                          { "regixField": "TemporaryAddress.Apartment", "prefix": ", Ап. " }
+                        ]
+                      },
+                      { "neispuoField": "permanentRegion", "regixField": "PermanentAddress.DistrictCode" },
+                      {
+                        "neispuoField": "permanentMunicipality",
+                        "regixField": "PermanentAddress.SettlementCode",
+                        "optionsPath": "/data/get/mapMunicipality"
+                      },
+                      { "neispuoField": "permanentTown", "regixField": "PermanentAddress.SettlementCode" },
+                      {
+                        "neispuoField": "permanentAddress",
+                        "regixFields": [
+                          { "regixField": "PermanentAddress.LocationName", "prefix": "" },
+                          { "regixField": "PermanentAddress.BuildingNumber", "prefix": " №" },
+                          { "regixField": "PermanentAddress.Entrance", "prefix": ", Вх. " },
+                          { "regixField": "PermanentAddress.Floor", "prefix": ", Ет. " },
+                          { "regixField": "PermanentAddress.Apartment", "prefix": ", Ап. " }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ],
+              "idntfr": 3
+            },
+            {
+              "order": 2,
+              "label": "Постоянен адрес",
+              "name": "personPermanentAddress",
+              "fields": [
+                {
+                  "order": 1,
+                  "label": "Област",
+                  "name": "permanentRegion",
+                  "type": "select",
+                  "optionsPath": "/data/get/region",
+                  "disabled": false,
+                  "influence": [
+                    {
+                      "fieldName": "permanentMunicipality",
+                      "url": "/data/get/municipality",
+                      "type": "options"
+                    }
+                  ],
+                  "validations": [],
+                  "info": ""
+                },
+                {
+                  "order": 2,
+                  "label": "Община",
+                  "name": "permanentMunicipality",
+                  "type": "select",
+                  "disabled": false,
+                  "influence": [
+                    {
+                      "fieldName": "permanentTown",
+                      "url": "/data/get/town",
+                      "type": "options"
+                    }
+                  ],
+                  "validations": [],
+                  "info": ""
+                },
+                {
+                  "order": 3,
+                  "label": "Населено място",
+                  "name": "permanentTown",
+                  "disabled": false,
+                  "type": "select",
+                  "influence": [],
+                  "validations": [],
+                  "info": ""
+                },
+                {
+                  "label": "Адрес",
+                  "name": "permanentAddress",
+                  "type": "input",
+                  "inputType": "text",
+                  "order": 4,
+                  "width": 600,
+                  "disabled": false,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 255,
+                      "message": "Максимална дължина 255 символа"
+                    },
+                    {
+                      "name": "required",
+                      "validator": "",
+                      "message": "Полето е задължително"
+                    }
+                  ],
+                  "influence": [],
+                  "info": ""
+                },
+                {
+                  "label": "Синхронизирай с ГРАО",
+                  "name": "regixAddressBtn",
+                  "type": "regixbutton",
+                  "order": 5,
+                  "rendered": "if(operationType==2) {field.rendered=true} else {field.rendered=false}",
+                  "regixData": {
+                    "operation": "TechnoLogica.RegiX.GraoPNAAdapter.APIService.IPNAAPI.PermanentAddressSearch",
+                    "xmlns": "http://egov.bg/RegiX/GRAO/PNA/PermanentAddressRequest",
+                    "requestName": "PermanentAddressRequest",
+                    "responseName": "PermanentAddressResponse",
+                    "requestMap": [{ "neispuoField": "personalID", "regixField": "EGN" }],
+                    "responseMap": [
+                      { "neispuoField": "permanentRegion", "regixField": "DistrictCode" },
+                      {
+                        "neispuoField": "permanentMunicipality",
+                        "regixField": "SettlementCode",
+                        "optionsPath": "/data/get/mapMunicipality"
+                      },
+                      { "neispuoField": "permanentTown", "regixField": "SettlementCode" },
+                      {
+                        "neispuoField": "permanentAddress",
+                        "regixFields": [
+                          { "regixField": "LocationName", "prefix": "" },
+                          { "regixField": "BuildingNumber", "prefix": " №" },
+                          { "regixField": "Entrance", "prefix": ", Вх. " },
+                          { "regixField": "Floor", "prefix": ", Ет. " },
+                          { "regixField": "Apartment", "prefix": ", Ап. " }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ],
+              "idntfr": 13
+            },
+            {
+              "order": 3,
+              "label": "Настоящ адрес",
+              "name": "personCurrentAddress",
+              "fields": [
+                {
+                  "order": 1,
+                  "label": "Област",
+                  "name": "currentRegion",
+                  "type": "select",
+                  "optionsPath": "/data/get/region",
+                  "disabled": false,
+                  "influence": [
+                    {
+                      "fieldName": "currentMunicipality",
+                      "url": "/data/get/municipality",
+                      "type": "options"
+                    }
+                  ],
+                  "validations": [],
+                  "info": ""
+                },
+                {
+                  "order": 2,
+                  "label": "Община",
+                  "name": "currentMunicipality",
+                  "type": "select",
+                  "disabled": false,
+                  "influence": [
+                    {
+                      "fieldName": "currentTown",
+                      "url": "/data/get/town",
+                      "type": "options"
+                    }
+                  ],
+                  "validations": [],
+                  "info": ""
+                },
+                {
+                  "label": "Населено място",
+                  "name": "currentTown",
+                  "type": "select",
+                  "disabled": false,
+                  "order": 3,
+                  "influence": [],
+                  "validations": [],
+                  "info": ""
+                },
+                {
+                  "label": "Адрес",
+                  "name": "currentAddress",
+                  "type": "input",
+                  "inputType": "text",
+                  "order": 4,
+                  "width": 600,
+                  "disabled": false,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 255,
+                      "message": "Максимална дължина 255 символа"
+                    },
+                    {
+                      "name": "required",
+                      "validator": "",
+                      "message": "Полето е задължително"
+                    }
+                  ],
+                  "influence": [],
+                  "info": ""
+                },
+                {
+                  "label": "Синхронизирай с ГРАО",
+                  "name": "regixTempAddressBtn",
+                  "type": "regixbutton",
+                  "order": 5,
+                  "rendered": "if(operationType==2) {field.rendered=true} else {field.rendered=false}",
+                  "regixData": {
+                    "operation": "TechnoLogica.RegiX.GraoPNAAdapter.APIService.IPNAAPI.TemporaryAddressSearch",
+                    "xmlns": "http://egov.bg/RegiX/GRAO/PNA/TemporaryAddressRequest",
+                    "requestName": "TemporaryAddressRequest",
+                    "responseName": "TemporaryAddressResponse",
+                    "requestMap": [{ "neispuoField": "personalID", "regixField": "EGN" }],
+                    "responseMap": [
+                      { "neispuoField": "currentRegion", "regixField": "DistrictCode" },
+                      { "neispuoField": "currentMunicipality", "regixField": "SettlementCode", "optionsPath": "/data/get/mapMunicipality" },
+                      { "neispuoField": "currentTown", "regixField": "SettlementCode" },
+                      {
+                        "neispuoField": "currentAddress",
+                        "regixFields": [
+                          { "regixField": "LocationName", "prefix": "" },
+                          { "regixField": "BuildingNumber", "prefix": " №" },
+                          { "regixField": "Entrance", "prefix": ", Вх. " },
+                          { "regixField": "Floor", "prefix": ", Ет. " },
+                          { "regixField": "Apartment", "prefix": ", Ап. " }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ],
+              "idntfr": 18
+            },
+            {
+              "order": 4,
+              "label": "Данни за контакт",
+              "name": "contactData",
+              "fields": [
+                {
+                  "label": "Телефон",
+                  "name": "phoneNumber",
+                  "type": "input",
+                  "inputType": "text",
+                  "order": 1,
+                  "width": 250,
+                  "disabled": "if(extdata==1) {field.disabled=true} else {field.disabled=false}",
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 255,
+                      "message": "Максимална дължина 255 символа"
+                    }
+                  ],
+                  "influence": [],
+                  "info": ""
+                },
+                {
+                  "label": "Електронна поща",
+                  "name": "email",
+                  "type": "input",
+                  "inputType": "text",
+                  "order": 2,
+                  "width": 250,
+                  "disabled": "if(extdata==1) {field.disabled=true} else {field.disabled=false}",
+                  "validations": [
+                    {
+                      "name": "pattern",
+                      "validation": "^[A-Za-z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$",
+                      "message": "Невалиден адрес на електронна поща"
+                    },
+                    {
+                      "name": "maxLength",
+                      "validation": 50,
+                      "message": "Максимална дължина 50 символа"
+                    }
+                  ],
+                  "influence": [],
+                  "info": ""
+                }
+              ],
+              "idntfr": 23
+            },
+            {
+              "order": 5,
+              "label": "Други данни",
+              "name": "otherData",
+              "fields": [
+                {
+                  "label": "Работещ пенсионер",
+                  "name": "isPensioneer",
+                  "type": "checkbox",
+                  "order": 1,
+                  "disabled": "if(extdata==1) {field.disabled=true} else {field.disabled=false}",
+                  "influence": [],
+                  "validations": [],
+                  "info": ""
+                },
+                {
+                  "label": "Продължава образованието си",
+                  "name": "isExtendStudent",
+                  "type": "checkbox",
+                  "flexible": false,
+                  "disabled": "if(extdata==1) {field.disabled=true} else {field.disabled=false}",
+                  "order": 3,
+                  "influence": [],
+                  "validations": [],
+                  "info": ""
+                }
+              ],
+              "idntfr": 25
+            },
+            {
+              "order": 6,
+              "label": "Прекратяване на договор",
+              "rendered": "if(operationType==1) {subsection.rendered=false} else {subsection.rendered=true}",
+              "disabled": "if(extdata==1) {subsection.disabled=true} else {subsection.disabled=false}",
+              "fields": [
+                {
+                  "label": "Напускане на служител",
+                  "name": "isTerminatedContract",
+                  "disabled": "if(extdata==1) {field.disabled=true} else {field.disabled=false}",
+                  "type": "checkbox",
+                  "order": 1,
+                  "influence": [
+                    {
+                      "type": "disable",
+                      "subsectionName": "personalData",
+                      "condition": [true]
+                    },
+                    {
+                      "type": "disable",
+                      "subsectionName": "personPermanentAddress",
+                      "condition": [true]
+                    },
+                    {
+                      "type": "disable",
+                      "subsectionName": "personCurrentAddress",
+                      "condition": [true]
+                    },
+                    {
+                      "type": "disable",
+                      "subsectionName": "contactData",
+                      "condition": [true]
+                    },
+                    {
+                      "type": "disable",
+                      "subsectionName": "otherData",
+                      "condition": [true]
+                    }
+                  ],
+                  "validations": [],
+                  "info": ""
+                }
+              ],
+              "idntfr": 25
+            }
+          ],
+          "idntfr": 2
+        }
+      ]
+    }
+  ]
+}

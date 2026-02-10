@@ -1,0 +1,104 @@
+@import '@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/variables/variables';
+
+:host ::ng-deep {
+  .p-multiselect,
+  .p-dropdown {
+    width: 100%;
+  }
+
+  .p-calendar {
+    .p-datepicker {
+      right: 0;
+      left: auto !important;
+    }
+    .p-monthpicker,
+    .p-yearpicker {
+      display: flex;
+    }
+  }
+
+  .p-datatable {
+    font-size: $font-size-sm;
+    table {
+      width: max-content;
+    }
+    &-thead {
+      tr:first-of-type > th {
+        position: relative;
+        &:hover {
+          cursor: move;
+        }
+        i:hover {
+          cursor: pointer;
+        }
+      }
+    }
+    &-tbody {
+      > tr {
+        color: $gray-700;
+        > td {
+          white-space: nowrap;
+          overflow: hidden;
+          span {
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+        }
+      }
+    }
+
+    &-footer {
+      background: $white;
+      color: $gray-700;
+      border-top: 1px solid $gray-200;
+      border-bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      white-space: nowrap;
+      overflow-x: auto;
+      .load-next {
+        cursor: pointer;
+        color: $gray-600;
+        &:hover {
+          color: $gray-700;
+        }
+      }
+      .btn-export-excel {
+        padding: 0.25rem 0.75rem;
+        &::after {
+          content: ' \F367';
+          font-family: 'bootstrap-icons';
+          color: $white;
+        }
+      }
+    }
+  }
+  .p-datatable-resizable {
+    .p-datatable-thead > tr > th {
+      overflow: inherit;
+      white-space: normal;
+    }
+  }
+  .p-datepicker-calendar {
+    tr:first-of-type > th {
+      &:hover {
+        cursor: default;
+        &::after {
+          content: '';
+        }
+      }
+    }
+  }
+  .p-column-filter-menu-button.p-column-filter-menu-button {
+    margin-left: 0.5rem;
+    &-open {
+      color: $blue;
+    }
+    &-active,
+    &-active:hover {
+      background: darken($blue-100, 5%);
+      color: $blue;
+    }
+  }
+}

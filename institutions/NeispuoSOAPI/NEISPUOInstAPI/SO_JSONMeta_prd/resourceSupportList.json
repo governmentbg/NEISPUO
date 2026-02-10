@@ -1,0 +1,39 @@
+{
+  "sections": [
+   {
+      "name": "resourceSupportDocumentData",
+      "table": {
+        "name": "resourceSupportReport",
+        "hasEditButton":true,
+		"searchable": false,
+		"sortable": false,
+		"action": "edit",
+		"formName": "resourceSupport",
+		"paramName": "resourceSupportID",
+          "fields": [
+            {
+              "label": "Номер на документ",
+              "name": "reportNumber",
+              "type": "input",
+			  "inputType":"text",
+              "order": 1
+            },
+			{
+              "label": "Дата на документ",
+              "name": "reportDate",
+              "type": "date",
+              "order": 2
+            },
+			{
+              "label": "Извършва се от",
+              "name": "resourceSupportTypeName",
+              "type": "input",
+			  "inputType":"text",
+              "order": 3
+            }
+          ]
+		}
+}		
+      ]
+    }
+

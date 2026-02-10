@@ -1,0 +1,83 @@
+<sb-breadcrumb
+  class="block mb-3"
+  [icon]="fadCalendarDay"
+  [text]="data.offDay == null ? 'Създаване на неучебен ден' : truncatedDescription"
+  [parentItems]="[{ text: 'Неучебни дни', routeCommands: ['../'] }]"
+></sb-breadcrumb>
+
+<form [formGroup]="form" autocomplete="off" novalidate>
+  <sb-card>
+    <ng-container card-title>
+      {{ data.offDay == null ? 'Създаване на неучебен ден' : 'Редакция на неучебен ден' }}
+    </ng-container>
+    <sb-editor-panel
+      [editBtnHidden]="!canEdit"
+      card-buttons
+      [isNew]="data.offDay == null"
+      (save)="onSave($event)"
+      (editableChange)="onEditableChange($event)"
+    >
+      <button
+        *ngIf="canRemove"
+        disabled-mode-buttons
+        mat-raised-button
+        color="warn"
+        type="button"
+        (click)="onRemove()"
+        [disabled]="removing"
+      >
+        <fa-icon [icon]="removing ? fasSpinnerThird : fasTrashAlt" [spin]="removing" size="lg"></fa-icon>
+        <span class="hidden sm:inline">Премахни</span>
+      </button>
+    </sb-editor-panel>
+    <ng-container card-body>
+      <div class="sm:grid grid-cols-4 gap-x-4 mb-2">
+        <sb-textarea-field
+          class="col-start-1 col-span-full"
+          label="Описание"
+          formControlName="description"
+        ></sb-textarea-field>
+
+        <sb-date-field class="col-start-1 col-span-2" label="От" formControlName="from"></sb-date-field>
+        <sb-date-field class="col-span-2" label="До" formControlName="to"></sb-date-field>
+
+        <sb-select-field
+          formControlName="appliesTo"
+          class="col-start-1"
+          label="Важи за"
+          [items]="[
+            { id: AppliesToValues_All, name: 'Всички' },
+            { id: AppliesToValues_BasicClass, name: 'Випуски' },
+            { id: AppliesToValues_ClassBook, name: 'Паралелки/Групи' }
+          ]"
+        ></sb-select-field>
+
+        <sb-nom-select
+          class="col-start-2 col-span-3"
+          [class.hidden]="form.value.appliesTo !== AppliesToValues_BasicClass"
+          label="Випуски"
+          formControlName="basicClassIds"
+          [multiple]="true"
+          [nomService]="basicClassNomsService"
+        ></sb-nom-select>
+
+        <sb-nom-select
+          class="col-start-2 col-span-3"
+          [class.hidden]="form.value.appliesTo !== AppliesToValues_ClassBook"
+          label="Паралелки/Групи"
+          formControlName="classBookIds"
+          [multiple]="true"
+          [nomService]="classBookNomsService"
+        ></sb-nom-select>
+
+        <sb-nom-select
+          class="col-start-1 col-span-full"
+          label="Позволено ли е въвеждане на присъствия в ПГ за дните от понеделник до петък?"
+          formControlName="isPgOffProgramDay"
+          [nomService]="yesNoNomsService"
+          [searchable]="false"
+        ></sb-nom-select>
+      </div>
+    </ng-container>
+  </sb-card>
+</form>

@@ -1,0 +1,48 @@
+<sb-breadcrumb class="block mb-3" [icon]="fadInfoSquare" text="Публикации"></sb-breadcrumb>
+
+<sb-card>
+  <ng-container card-title>Публикации</ng-container>
+  <ng-container *ngIf="canCreate" card-buttons>
+    <a [routerLink]="['./', 'new']" mat-raised-button color="primary" aria-label="Нова публикация">
+      <fa-icon [icon]="fasPlus" size="lg"></fa-icon>
+      <span>Нова публикация</span>
+    </a>
+  </ng-container>
+  <ng-container card-body>
+    <sb-table [dataSource]="dataSource" [displayedColumns]="['action', 'type', 'date', 'title', 'content', 'status']">
+      <ng-container cdkColumnDef="action">
+        <th cdk-header-cell *cdkHeaderCellDef></th>
+        <td cdk-cell *cdkCellDef="let row" class="sb-table-action">
+          <a [routerLink]="['./', row.publicationId]" aria-label="Редактирай" class="sb-link-btn">
+            <fa-icon [icon]="fadChevronCircleRight"></fa-icon>
+          </a>
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="type">
+        <th cdk-header-cell *cdkHeaderCellDef>Тип</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.type }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="date">
+        <th cdk-header-cell *cdkHeaderCellDef>Публикувана на</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.date | sbDate }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="title">
+        <th cdk-header-cell *cdkHeaderCellDef>Заглавие</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.title }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="content">
+        <th cdk-header-cell *cdkHeaderCellDef>Съдържание</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.content }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="status">
+        <th cdk-header-cell *cdkHeaderCellDef>Статус</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.status }}</td>
+      </ng-container>
+    </sb-table>
+  </ng-container>
+</sb-card>

@@ -1,0 +1,51 @@
+@import '~@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/variables/variables';
+@import '~@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/mixins';
+
+.profile-tabbar-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.profile-tabbar-card {
+    width: 100%;
+    padding: 2rem 0 2rem 1.5rem;
+    background: #fff;
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+@media (max-width: 900px) {
+    .profile-tabbar-card {
+        width: 100%;
+        margin-left: 0.25rem;
+        margin-right: 0.25rem;
+        max-width: 100%;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+    .profile-tabbar-wrapper {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+.load-method-selector {
+    display: flex;
+    align-items: center;
+    border: 1px solid gainsboro;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    margin-right: 1rem;
+
+    label {
+        margin-right: 0.5rem;
+        font-weight: 500;
+    }
+    p-radioButton:not(:last-child) {
+        margin-right: 0.5rem;
+    }
+}

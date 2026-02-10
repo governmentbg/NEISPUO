@@ -1,0 +1,28 @@
+@using SB.Domain
+@model StudentFinalGradesModel
+
+<div class="page">
+  <h3 class="page-header">Срочни и годишни оценки</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Учебен предмет/модул</th>
+          <th class="grade-cell-width">I<br/>срок</th>
+          <th class="grade-cell-width">II<br/>срок</th>
+          <th class="grade-cell-width">год.<br/>оценка</th>
+        </tr>
+      </thead>
+      <tbody>
+      @foreach (var subject in Model.Items)
+        {
+          <tr>
+            <td>@subject.CurriculumName</td>
+            <td>@subject.FirstTermGrade</td>
+            <td>@subject.SecondTermGrade</td>
+            <td>@subject.FinalGrade</td>
+          </tr>
+          }
+      </tbody>
+  </table>
+</div>

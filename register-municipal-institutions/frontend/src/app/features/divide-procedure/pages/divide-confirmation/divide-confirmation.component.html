@@ -1,0 +1,48 @@
+<div class="grid fluid">
+  <div class="col-12">
+    <h5>Институция, която бъде заличена в резултат на процедура по разделяне</h5>
+  </div>
+  <div class="col-12">
+    <app-divide-mi-preview-only 
+    [resp]="miToDelete$ | async" 
+    [displayRIProcedure]="true" 
+    [displayDocument]="false" ></app-divide-mi-preview-only>
+  </div>
+  <div class="col-12">
+    <h5>Институции, които ще бъдат създадени в резултат на процедура по разделяне</h5>
+  </div>
+  <div class="col-12">
+    <ng-container *ngFor="let mi of misToCreate$ | async; let i = index">
+      <p-divider align="center">
+        <h5>Институция № {{ i + 1 }}</h5>
+      </p-divider>
+      <app-divide-mi-preview-only
+        *ngIf="!!mi"
+        [resp]="mi"
+        [displayRIPremInstitution]="false"
+        [displayRIProcedure]="true"
+        [displayDocument]="false"
+      ></app-divide-mi-preview-only>
+    </ng-container>
+  </div>
+  <div class="col-12">
+    <app-divide-mi-preview-ri-document 
+     [displayRIProcedure]="true" 
+     [displayDocument]="true"
+     [isReadOnly]="true"
+     [resp]="miToDelete$ | async"
+   ></app-divide-mi-preview-ri-document>
+</div>
+
+  <div class="col-12">
+    <app-stepper-actions
+      [showBack]="true"
+      [backLabel]="'Назад'"
+      [backRouterLink]="['..', 'ri-document']"
+      [showForward]="false"
+      [submitLabel]="'Разделяне'"
+      [submitCallback]="join"
+      [showSubmit]="true"
+    ></app-stepper-actions>
+  </div>
+</div>

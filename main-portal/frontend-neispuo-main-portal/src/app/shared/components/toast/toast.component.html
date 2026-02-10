@@ -1,0 +1,21 @@
+<div *ngFor="let postiton of positions" class="{{ postiton }}">
+  <div *ngFor="let toast of getToastsByPosition(postiton)"
+  (mouseenter)="stopCountDown(toast.toastId)"
+  (mouseleave)="countDown(toast.toastId, true)"
+  class="toast-wrapper  {{ toast.style }}"
+  [ngClass]="(toast.postiton === 'top-right' || toast.postiton === undefined) && toast.show ? 'open' : 'close'"
+  >
+    <div class="inner-wrapper">
+      <div class="toast-content">
+        <div class="toast-title" *ngIf="toast.title">
+          {{  toast.title }}
+        </div>
+        <div class="toast-text">
+          {{  toast.content }}
+        </div>
+      </div>
+      <button class="btn-close" (click)="toastService.hide(toast.toastId); stopCountDown(toast.toastId)" [ngStyle]="{'visibility':  toast.closable === false ? 'hidden' : 'visible' }">
+     </button> 
+    </div>
+  </div>
+</div>

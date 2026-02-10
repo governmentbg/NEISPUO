@@ -1,0 +1,60 @@
+<form [formGroup]="form" autocomplete="off" novalidate>
+  <sb-tab-card>
+    <ng-container card-title>Редакция на основни данни</ng-container>
+    <sb-editor-panel
+      card-buttons
+      [editBtnHidden]="!canEdit"
+      [backBtnRouteCommands]="['../../']"
+      [isNew]="false"
+      (save)="onSave($event)"
+    >
+      <button
+        *ngIf="canRemove"
+        disabled-mode-buttons
+        mat-raised-button
+        color="warn"
+        type="button"
+        (click)="onRemove()"
+        [disabled]="removing"
+      >
+        <fa-icon [icon]="removing ? fasSpinnerThird : fasTrashAlt" [spin]="removing" size="lg"></fa-icon>
+        <span class="hidden sm:inline">Премахни</span>
+      </button>
+      <button
+        *ngIf="!data.classBookMainData.isFinalized && canFinalize"
+        disabled-mode-buttons
+        mat-raised-button
+        color="accent"
+        type="button"
+        (click)="onFinalize()"
+        [disabled]="finalizing"
+      >
+        <fa-icon [icon]="finalizing ? fasSpinnerThird : fadLock" [spin]="finalizing" size="lg"></fa-icon>
+        <span class="hidden sm:inline">Приключи</span>
+      </button>
+      <button
+        *ngIf="data.classBookMainData.isValid && data.classBookMainData.isFinalized && canUnfinalize"
+        disabled-mode-buttons
+        mat-raised-button
+        color="accent"
+        type="button"
+        (click)="onUnfinalize()"
+        [disabled]="unfinalizing"
+      >
+        <fa-icon [icon]="unfinalizing ? fasSpinnerThird : fadLockOpen" [spin]="unfinalizing" size="lg"></fa-icon>
+        <span class="hidden sm:inline">Премахни приключването</span>
+      </button>
+    </sb-editor-panel>
+    <ng-container card-body>
+      <div class="sm:grid grid-cols-3 gap-x-4 mb-2">
+        <sb-text-field label="Клас" formControlName="className" [readonly]="true"></sb-text-field>
+        <sb-text-field label="Випуск (клас)" formControlName="basicClassName" [readonly]="true"></sb-text-field>
+        <sb-text-field label="Наименование в менюто" formControlName="bookName"></sb-text-field>
+      </div>
+      <a [routerLink]="bookRouteCommands" class="text-primary" href="#">
+        <fa-icon [icon]="fasArrowAltRight" size="sm"></fa-icon>
+        към дневника
+      </a>
+    </ng-container>
+  </sb-tab-card>
+</form>

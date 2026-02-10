@@ -1,0 +1,21 @@
+{
+    "template": "SELECT /**select**/ FROM [student].[ORESType] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "Id as code"
+        },
+        {
+            "column": "Name as label"
+        },
+		{
+            "column": "IsValid as isValid"
+        }
+    ],
+    "params": [
+
+    ],
+    "order": [
+
+    ],
+    "inSelects": []
+}

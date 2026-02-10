@@ -1,0 +1,49 @@
+@import "@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/variables/variables.scss";
+
+.shepherd-element {
+  margin-top: 0.625em !important;
+  margin-left: 0.625em !important;
+  .shepherd-header {
+    padding: 1rem 0.75rem !important;
+    background-color: $gray-300 !important;
+    h3 {
+      font-size: 1.25em;
+      font-weight: bold;
+      margin: 0;
+    }
+  }
+  .shepherd-footer {
+    display: block;
+    justify-content: right;
+    text-align: right;
+    .shepherd-button {
+      color: $white;
+      background-color: $blue;
+      padding: 0.5rem 1rem;
+      .bi {
+        font-size: 0.875rem;
+      }
+      .bi-chevron-right {
+        margin-left: 0.25rem;
+      }
+      .bi-chevron-left {
+        margin-right: 0.25rem;
+      }
+      &:not(.left):hover {
+          color: $white;
+          background-color: $blue-400;
+      }
+    }
+    .left {
+      float: left;
+      color: $gray-900;
+      background-color: $gray-300;
+    }
+  }
+}
+
+.bottom-message-step {
+  .shepherd-arrow {
+    left: -0.625em !important;
+  }
+}

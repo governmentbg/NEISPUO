@@ -1,0 +1,34 @@
+@using SB.Domain
+@model IndividualWorksModel
+
+<div class="page">
+  <h3 class="page-header">Проведени индивидуални работи с ученика</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th class="three-rows-height align-bottom"><div class="vertical-text align-bottom">№ на ученика</div></th>
+        <th>Трите имена на ученика</th>
+        <th>Дата</th>
+        <th>Проведена индивидуална работа с ученика</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (var note in Model.IndividualWorks)
+      {
+        <tr>
+          <td>@note.ClassNumber</td>
+          <td>
+            @note.FullName
+            @if (note.IsTransferred)
+            {
+              <span class="sb-badge">ОТПИСАН</span>
+            }
+          </td>
+          <td>@note.Date.ToString("dd.MM.yy")</td>
+          <td>@note.IndividualWorkActivity</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,16 @@
+<div class="l-container-component" *ngIf="mode===modes.Edit" [style.width.px]="field.width">
+    <span class="l-custom-span-label" *ngIf="showLabel">{{field.label}}
+        <span class="required-span" *ngIf="required">*</span>
+    </span>
+    <mat-form-field class="l-select" [formGroup]="group" appearance="outline" [title]="field.disabled?s.triggerValue:''">
+        <mat-select #s [formControlName]="field.name" (selectionChange)="onSelectionChange($event)" [attr.disabled]="!field.options?.length">
+            <ng-container *ngFor="let item of field.options">
+                <mat-option *ngIf="item.isValid!==false" [value]="item.code">{{item.label}}</mat-option>
+            </ng-container>
+        </mat-select>
+    </mat-form-field>
+</div>
+<div class="l-container-component preview-mode" *ngIf="mode===modes.View" [style.width.px]="field.width">
+    <span class="l-custom-span-label" *ngIf="showLabel">{{field.label}}</span>
+    <label class="value-label">{{optionLabel}}</label>
+</div>

@@ -1,0 +1,36 @@
+<div class="field-grid col-12">
+
+  <button type="button" class="btn btn-outline-primary -ml-2"
+  aria-label="Back"
+  *ngIf="showBack"
+  [routerLink]="backRouterLink"
+  (click)="backwardCallback($event)"
+  routerLinkActive="router-link-active"
+  >
+    {{ backLabel }}
+  </button>
+
+<div class="position-right">
+  <span [pTooltip]="disableForward ? disableForwardButtonTooltip : undefined">
+    <button
+      *ngIf="showForward"
+      type="button"
+      class="btn btn-primary my-primary-forward"
+      aria-label="Forward"
+      [routerLink]="forwardRouterLink"
+      (click)="forwardCallback($event)"
+      routerLinkActive="router-link-active"
+      [disabled]="disableForward"
+    > {{ forwardLabel }}</button>
+  </span>
+</div>
+
+  <button type="button" class="btn btn-primary position-right -mr-1 my-primary-submit"
+  aria-label="Submit"
+  *ngIf="showSubmit"
+  (click)="submitCallback($event)"
+  routerLinkActive="router-link-active"
+  > 
+    {{ submitLabel }}
+  </button>
+</div>

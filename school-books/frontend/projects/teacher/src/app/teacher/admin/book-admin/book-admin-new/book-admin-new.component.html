@@ -1,0 +1,70 @@
+<sb-breadcrumb
+  class="block mb-3"
+  [icon]="fadBook"
+  text="Създаване на дневници"
+  [parentItems]="[{ text: 'Дневници', routeCommands: ['../'] }]"
+></sb-breadcrumb>
+
+<form [formGroup]="form" autocomplete="off" novalidate>
+  <sb-card>
+    <ng-container card-title>Създаване на дневници</ng-container>
+    <sb-editor-panel card-buttons [isNew]="true" (save)="onSave($event)"></sb-editor-panel>
+    <ng-container card-body>
+      <div class="sb-table-container">
+        <table class="sb-table text-sm" formArrayName="classBooks">
+          <thead>
+            <tr>
+              <th class="w-[100px] whitespace-nowrap">
+                <mat-checkbox
+                  color="primary"
+                  [checked]="allClassBooksSelected"
+                  (change)="toggleAllClassBooksSelected()"
+                ></mat-checkbox>
+              </th>
+              <th class="pl-1">Клас</th>
+              <th class="pl-1">Випуск (клас)</th>
+              <th class="pl-1">Вид на паралелката</th>
+              <th class="pl-1">Вид на дневника</th>
+              <th class="pl-1">Наименование в менюто</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let classBook of classBooksFormArray.controls; let i = index" [formGroupName]="i">
+              <td class="px-4">
+                <fa-icon
+                  *ngIf="sortedClassGroups[i].classIsLvl2"
+                  [icon]="fasAngleRight"
+                  size="lg"
+                  class="sb-fa-rotate-135"
+                ></fa-icon>
+                <mat-checkbox
+                  color="primary"
+                  *ngIf="sortedClassGroups[i].bookType"
+                  formControlName="checked"
+                  (change)="classBookSelectionChanged(i)"
+                ></mat-checkbox>
+                <span class="whitespace-nowrap" *ngIf="!sortedClassGroups[i].bookType">(на групи)</span>
+              </td>
+              <td class="p-1" [class.px-6]="sortedClassGroups[i].classIsLvl2">{{ sortedClassGroups[i].className }}</td>
+              <td class="p-1" [class.px-6]="sortedClassGroups[i].classIsLvl2">
+                {{ sortedClassGroups[i].basicClassName ?? '(на групи)' }}
+              </td>
+              <td class="p-1" [class.px-6]="sortedClassGroups[i].classIsLvl2">
+                {{ sortedClassGroups[i].classTypeName ?? '(на групи)' }}
+              </td>
+              <td class="p-1" [attr.colspan]="sortedClassGroups[i].bookType ? 1 : 2">
+                {{ sortedClassGroups[i].bookTypeDescription }}
+                <sb-banner type="info" [small]="true" *ngIf="sortedClassGroups[i].bookTypeErrorDescription">
+                  Не може да се създаде дневник, защото {{ sortedClassGroups[i].bookTypeErrorDescription }}
+                </sb-banner>
+              </td>
+              <td class="p-1" *ngIf="sortedClassGroups[i].bookType">
+                <input *ngIf="classBookCheckedAt(i)" class="sb-form-control" matInput formControlName="classBookName" />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </ng-container>
+  </sb-card>
+</form>

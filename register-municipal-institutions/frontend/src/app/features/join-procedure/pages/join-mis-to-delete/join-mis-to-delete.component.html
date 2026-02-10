@@ -1,0 +1,51 @@
+<p-fieldset legend="Избор на институции за вливане">
+  <div class="grid fluid col-12">
+    <div class="col-12 pb-4">{{ procedureDescriptionText }}</div>
+    <div class="field col-12 col-md-6">
+      <label for="RIInstitutions"> {{ miPickerLabel }} </label>
+      <p-multiSelect
+        display="chip"
+        [options]="activeMIs$ | async"
+        [maxSelectedLabels]="10"
+        emptyFilterMessage="Няма избрани"
+        [showToggleAll]="false"
+        [ngModel]="misToDelete$ | async"
+        [optionLabel]="'DisplayValue'"
+        [dataKey]="'InstitutionID'"
+        [filter]="true"
+        inputId="RIInstitutions"
+        (onChange)="onMIsToDeleteChange($event)"
+        [virtualScroll]="true"
+        [autoZIndex]="true"
+        itemSize="25"
+      ></p-multiSelect>
+    </div>
+    <div class="col-12">
+      <ng-container *ngFor="let mi of misToDelete$ | async; let i = index">
+        <p-divider align="center">
+          <h5>Институция № {{ i + 1 }}</h5>
+        </p-divider>
+        <app-join-mi-preview-delete 
+        [resp]="mi" 
+        [displayRIPremInstitution]="true"
+        [displayDocument]="false"
+        [displayProcedureFields]="true"
+        ></app-join-mi-preview-delete>
+      </ng-container>
+    </div>
+    <div class="col-12">
+        <app-stepper-actions
+          [showBack]="true"
+          [backLabel]="'Назад'"
+          [backRouterLink]="['/procedures']"
+          [showForward]="true"
+          [forwardLabel]="'Напред'"
+          [forwardCallback]="forwardCb"
+          [showSubmit]="false"
+          [disableForward]="(misToDelete$ | async).length === 0" 
+          [disableForwardButtonTooltip]="'Моля изберете институции, които ще се влеят.'"
+          ></app-stepper-actions>
+        <!-- [disableForward]="!(selectedMIs?.length > 1)" -->
+      </div>
+    </div>
+</p-fieldset>

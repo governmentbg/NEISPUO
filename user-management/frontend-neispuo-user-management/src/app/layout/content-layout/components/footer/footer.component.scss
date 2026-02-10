@@ -1,0 +1,24 @@
+@import '~@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/variables/variables';
+@import '~@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/mixins';
+
+footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    background-color: $white;
+    box-shadow: $box-shadow-top;
+    z-index: 1030;
+    .app-version {
+        margin-top: 0.3125rem;
+        color: $gray-700;
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    footer {
+        height: 140px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

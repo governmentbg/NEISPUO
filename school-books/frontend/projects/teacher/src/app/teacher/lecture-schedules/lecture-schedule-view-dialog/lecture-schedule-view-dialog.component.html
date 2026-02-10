@@ -1,0 +1,57 @@
+<form [formGroup]="form" novalidate (ngSubmit)="onSave()" class="sm:w-[700px]">
+  <div class="sb-btn-wrapper sb-btn-wrapper-right">
+    <button mat-raised-button color="primary" type="submit" [disabled]="saving" *ngIf="data.editable">
+      <fa-icon [icon]="saving ? fasSpinnerThird : fasCheck" [spin]="saving" size="lg"></fa-icon>
+      <span>Запази</span>
+    </button>
+    <button mat-raised-button mat-dialog-close>Затвори</button>
+  </div>
+
+  <sb-banner class="mt-2 mb-2" *ngIf="data.editable && hasInvalidHours" type="warning">
+    Часовете са от архивиран дневник и не могат да бъдат редактирани
+  </sb-banner>
+
+  <div *ngIf="data.group" class="font-bold mb-2">
+    {{ data.group.dayName }}
+    <span class="whitespace-nowrap">({{ data.group.shiftHour.startTime }} - {{ data.group.shiftHour.endTime }})</span>
+    /
+    {{ data.group.classBookFullName }} -
+    <span class="inline sm:hidden">
+      {{ data.group.subjectShort }}
+    </span>
+    <span class="hidden sm:inline">
+      {{ data.group.subject }}
+    </span>
+  </div>
+
+  <div class="sb-table-container">
+    <table class="sb-table" formArrayName="hours">
+      <thead>
+        <tr>
+          <th class="pl-1 w-1">Дата</th>
+          <th>
+            <mat-checkbox
+              [disabled]="!data.editable || hasInvalidHours"
+              [checked]="allLectureScheduleHours"
+              (change)="toggleAllLectureScheduleHours()"
+              class="mr-2"
+            ></mat-checkbox>
+            <span>Лекторски час</span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let _ of hours.controls; let i = index" [formGroupName]="i">
+          <td class="p-1 w-1">{{ data.hours[i].date | sbDate }}</td>
+          <td>
+            <mat-checkbox
+              [disabled]="!data.editable || hasInvalidHours"
+              formControlName="checked"
+              (change)="onIsLectureHourChanged()"
+            ></mat-checkbox>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</form>

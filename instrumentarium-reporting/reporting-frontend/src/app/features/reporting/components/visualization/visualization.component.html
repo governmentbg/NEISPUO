@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-12 fw-bold mt-2 title">Изберете визуализация</div>
+</div>
+<div class="row">
+  <div *ngFor="let option of visualizationOptions" class="col-4">
+    <div>
+      <button
+        type="button"
+        class="btn btn-primary btn-lg"
+        [routerLink]="[]"
+        routerLinkActive="active"
+        [queryParams]="{ visualization: option.value }"
+        (click)="toggleSidebar(option)"
+      >
+        <i [class]="option.iconClass"></i>
+      </button>
+      <div class="xsmall text-center fw-bold color-gray-600 mt-2">{{ option.label }}</div>
+    </div>
+  </div>
+</div>

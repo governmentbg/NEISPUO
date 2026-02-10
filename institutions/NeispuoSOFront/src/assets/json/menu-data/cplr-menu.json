@@ -1,0 +1,24 @@
+[
+  {
+    "label": "Институция",
+    "path": "cplr",
+    "children": [
+      {
+        "label": "Други адреси на институцията",
+        "path": "institutionCDepartments"
+      },
+      {
+        "label": "Настоятелство и Обществен съвет",
+        "path": "trustBoardPublicCouncils"
+      },
+      {
+        "label": "Проекти",
+        "path": "institutionProjects"
+      },
+      {
+        "label": "Автобуси",
+        "path": "institutionVehicles"
+      }
+    ]
+  }
+]

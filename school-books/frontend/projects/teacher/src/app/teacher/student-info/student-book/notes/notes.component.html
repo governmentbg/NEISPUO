@@ -1,0 +1,22 @@
+<sb-tab-card [hideHeader]="true">
+  <ng-container card-body>
+    <sb-table [dataSource]="dataSource" [displayedColumns]="['dateCreated', 'createdBySysUserName', 'description']">
+      <ng-container cdkColumnDef="dateCreated">
+        <th cdk-header-cell *cdkHeaderCellDef>Дата на създаване</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.dateCreated | sbDate }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="createdBySysUserName">
+        <th cdk-header-cell *cdkHeaderCellDef>Създадена от</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.createdBySysUserName }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="description">
+        <th cdk-header-cell *cdkHeaderCellDef>Описание</th>
+        <td cdk-cell *cdkCellDef="let row">
+          <span class="whitespace-pre-line">{{ row.description }}</span>
+        </td>
+      </ng-container>
+    </sb-table>
+  </ng-container>
+</sb-tab-card>

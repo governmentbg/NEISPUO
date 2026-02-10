@@ -1,0 +1,233 @@
+{
+ "template": "SELECT /**select**/ FROM [core].[Person] SA /**where**/ /**orderby**/",
+  "columns": [
+        {
+          "column": "SA.PersonID AS id"
+        },
+		{
+          "column": "SA.FirstName AS firstName"
+        },
+		{
+          "column": "SA.MiddleName AS middleName"
+        },
+		{
+          "column": "SA.LastName AS lastName"
+        }
+  ],
+  "params": [
+	{
+          "param": "@personid",
+          "column": "SA.PersonID",
+          "operator": "=",
+          "value": "personid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "SA.PersonID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+{
+  "arrayName": "staffPositions",
+  "template": "SELECT /**select**/ FROM [inst_year].[StaffPositionList] SP /**where**/ /**orderby**/",
+  "sotemplate": "SELECT /**select**/ FROM [sob].[StaffPositionList] SP /**where**/ /**orderby**/",
+  "columns": [
+    {
+      "column": "SP.StaffPositionID AS id"
+    },
+    {
+      "column": "SP.StaffOrd AS staffOrd"
+    },
+    {
+      "column": "SP.StaffPositionNo AS staffPositionNo"
+    },
+	{
+      "column": "SP.PositionKind AS positionKind"
+    },
+	{
+      "column": "SP.NKPDPosition AS NKPDposition"
+    },
+	{
+      "column": "SP.PositionCount AS positionCount"
+    },
+	{
+      "column": "SP.CategoryStaffType AS categoryStaffType"
+    },
+	{
+      "column": "SP.CurrentlyValid AS currentlyValid"
+    },
+	{
+      "column": "'staffPositionData' AS formName"
+    },
+	{
+      "column": "SP.StaffPositionID AS formDataId"
+    }
+  ],
+  "params": [
+    {
+      "param": "@personid",
+      "column": "SP.PersonID",
+      "operator": "=",
+      "value": "personid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+	{
+      "param": "@instid",
+      "column": "SP.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+	{
+      "param": "@year",
+      "column": "SP.SchoolYear",
+      "operator": "=",
+      "value": "year",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    },
+	{
+      "param": "@period",
+      "column": "SP.Period",
+      "operator": "=",
+      "value": "period",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    },
+	{
+      "param": "@isValid",
+      "column": "SP.IsValid",
+      "operator": "=",
+      "value": 1,
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": false,
+      "static": true
+    }
+  ],
+  "order": [
+    {
+      "column": "SP.StaffOrd",
+      "type": "ASC"
+    },
+	{
+      "column": "SP.StaffPositionNo",
+      "type": "ASC"
+    }
+  ]
+ },
+ {
+  "arrayName": "staffArchivePositions",
+  "template": "SELECT /**select**/ FROM [inst_year].[StaffPositionList] SP /**where**/ /**orderby**/",
+  "sotemplate": "SELECT /**select**/ FROM [so].[StaffPositionList] SP /**where**/ /**orderby**/",
+  "columns": [
+    {
+      "column": "SP.StaffPositionID AS id"
+    },
+    {
+      "column": "SP.StaffOrd AS staffOrd"
+    },
+    {
+      "column": "SP.StaffPositionNo AS staffPositionNo"
+    },
+	{
+      "column": "SP.PositionKind AS positionKind"
+    },
+	{
+      "column": "SP.NKPDPosition AS NKPDposition"
+    },
+	{
+      "column": "SP.PositionCount AS positionCount"
+    },
+	{
+      "column": "SP.CategoryStaffType AS categoryStaffType"
+    },
+	{
+      "column": "SP.CurrentlyValid AS currentlyValid"
+    },
+	{
+      "column": "'staffPositionData' AS formName"
+    },
+	{
+      "column": "SP.StaffPositionID AS formDataId"
+    },
+	{
+      "column": "SP.IsValid AS isValid"
+    }
+  ],
+  "params": [
+    {
+      "param": "@personid",
+      "column": "SP.PersonID",
+      "operator": "=",
+      "value": "personid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+	{
+      "param": "@instid",
+      "column": "SP.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+	{
+      "param": "@year",
+      "column": "SP.SchoolYear",
+      "operator": "=",
+      "value": "year",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    },
+	{
+      "param": "@period",
+      "column": "SP.Period",
+      "operator": "=",
+      "value": "period",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    },
+	{
+      "param": "@isValid",
+      "column": "SP.IsValid",
+      "operator": "=",
+      "value": 0,
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": false,
+      "static": true
+    }
+  ],
+  "order": [
+    {
+      "column": "SP.StaffOrd",
+      "type": "ASC"
+    },
+	{
+      "column": "SP.StaffPositionNo",
+      "type": "ASC"
+    }
+  ]
+ }
+  ]
+}

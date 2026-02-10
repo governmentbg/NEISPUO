@@ -1,0 +1,8 @@
+:host ::ng-deep {
+  .p-fileupload-buttonbar {
+    > * {
+      // Make all buttons same height
+      height: 2.5em;
+    }
+  }
+}

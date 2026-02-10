@@ -1,0 +1,20 @@
+<div class="l-container-component date-container" *ngIf="mode===modes.Edit">
+    <span class="l-custom-span-label" *ngIf="showLabel">
+        {{field.label}}
+        <span class="required-span" *ngIf="required">*</span>
+    </span>
+    <mat-form-field class="l-datepicker-container" [formGroup]="group" appearance="outline">
+        <input matInput [matDatepicker]="picker" [formControlName]="field.name">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-hint></mat-hint>
+        <ng-container *ngFor="let validation of field.validations;" ngProjectAs="mat-error">
+            <mat-error *ngIf="group.get(field.name).hasError(validation.name)">{{validation.message}}</mat-error>
+            <mat-error *ngIf="group.get(field.name).hasError('matDatepickerParse')">Невалидна дата</mat-error>
+        </ng-container>
+    </mat-form-field>
+</div>
+<div class="l-container-component date-container" *ngIf="mode===modes.View">
+    <span class="l-custom-span-label" *ngIf="showLabel">{{field.label}}</span>
+    <label class="value-label">{{field.value | date: 'dd.MM.yyyy'}}</label>
+</div>

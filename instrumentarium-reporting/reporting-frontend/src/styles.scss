@@ -1,0 +1,90 @@
+/* You can add global styles to this file, and also import other style files */
+@import '@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/bootstrap-theme.scss';
+@import '@dssbg/neispuo-style-guide/neispuo-primeng-theme-styles/primeng-theme.scss';
+
+body {
+  overflow-x: hidden;
+}
+
+.p-inputnumber-buttons-stacked {
+  .p-inputnumber-button-group {
+    display: none !important;
+  }
+  .p-inputnumber-input {
+    border-top-right-radius: 0.25rem !important;
+    border-bottom-right-radius: 0.25rem !important;
+  }
+}
+
+//
+// Scrollbar styles
+//
+*::-webkit-scrollbar,
+*::-webkit-scrollbar-thumb {
+  width: 8px;
+  height: 8px;
+  border-radius: 25px;
+  background-clip: padding-box;
+  border: 0 solid $gray-200;
+  color: $gray-500;
+  background-color: $gray-200;
+}
+
+*::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 0 1rem;
+}
+
+//  bug in the style guide -> when fixed there it can be removed from here
+.p-toast .p-toast-message .p-toast-icon-close {
+  min-width: 1rem;
+}
+
+.p-column-filter-overlay {
+  .p-column-filter-constraints {
+    max-height: 50vh;
+    overflow: auto;
+  }
+}
+
+.filter-calendar {
+  .p-datepicker {
+    .p-datepicker-header {
+      padding: 0;
+    }
+
+    table th,
+    td {
+      padding: 0.1rem;
+      text-align: center;
+    }
+  }
+}
+.summary-dropdown {
+  min-width: 330px !important;
+}
+
+@include media-breakpoint-down(lg) {
+  .p-dialog {
+    min-width: 60%;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .p-dialog {
+    min-width: 90%;
+  }
+}
+
+.info-strip-visible {
+  --info-strip-height: 48px;
+  --second-nav-top: calc(4rem + 48px);
+  --dataview-header-top: calc(4rem + 48px + 64px);
+  --table-height-offset: 48px;
+}
+
+.info-strip-hidden {
+  --info-strip-height: 0px;
+  --second-nav-top: 4rem;
+  --dataview-header-top: calc(4rem + 64px);
+  --table-height-offset: 0px;
+}

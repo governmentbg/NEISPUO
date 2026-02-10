@@ -1,0 +1,23 @@
+{
+  "template": "SELECT /**select**/ FROM [student].[CommuterType] CT /**where**/ /**orderby**/",
+  "columns": [
+	{
+      "column": "CT.Id AS code"
+    },
+	{
+      "column": "CT.Name AS label"
+    }
+   ],
+  "params": [
+
+  ],
+  "order": [
+    {
+      "column": "CT.Name",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+
+  ]
+}

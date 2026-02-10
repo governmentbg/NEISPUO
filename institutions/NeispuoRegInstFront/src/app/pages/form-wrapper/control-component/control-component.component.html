@@ -1,0 +1,17 @@
+<div class="container-control">
+    <button *ngIf="path === menu.Active && showButtons" mat-raised-button color="primary" class="btn-edit" (click)="navigate(2, null, 1)" [disabled]="historyMode"><span>Промяна/ преобразуване</span></button>
+    <button *ngIf="path === menu.Active && showButtons" mat-raised-button color="primary" class="btn-delete" (click)="navigate(3, null, 1)" [disabled]="historyMode"><span>Закриване/ заличаване</span></button>
+    <button *ngIf="path === menu.Active && certificateSubsection && showButtons && !hideCertificateBtn" mat-raised-button color="primary" class="btn-document" [disabled]="historyMode" (click)="openModal()"><span>Удостоверение</span></button>
+    <button *ngIf="path === menu.Active && showButtons && (canBeAnnulled || canBeRenewed)" color="primary" mat-raised-button [disabled]="historyMode" [matMenuTriggerFor]="menuCustom" class="more-options">Други действия</button>
+    <mat-menu #menuCustom="matMenu" class="menuCustom">
+        <button mat-menu-item color="primary" class="btn-cancellation" (click)="navigate(null, null, 7)" *ngIf="canBeAnnulled">Анулиране</button>
+        <!-- <button color="primary" mat-menu-item class="btn-corection" (click)="navigate(null, 1, 1)">Корекция</button> -->
+        <button mat-menu-item color="primary" class="btn-renewal" (click)="navigate(null, null, 8)" *ngIf="canBeRenewed">Възобновяване</button>
+    </mat-menu>
+    <button mat-raised-button class="btn-current" (click)="historyChanged(false)" [ngClass]="{'active': !historyMode}">
+        <mat-icon>done</mat-icon><span>Текуща</span>
+    </button>
+    <button mat-raised-button class="btn-history" (click)="historyChanged(true)" [ngClass]="{'active': historyMode}">
+        <mat-icon>history</mat-icon><span>История</span>
+    </button>
+</div>

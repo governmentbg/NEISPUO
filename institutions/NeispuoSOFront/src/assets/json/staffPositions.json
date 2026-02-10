@@ -1,0 +1,449 @@
+{
+  "label": "Длъжност на персонала",
+  "paramName": "staffid",
+  "sections": [
+    {
+      "order": 1,
+      "label": "Длъжност на персонала",
+      "subsections": [
+        {
+          "order": 1,
+          "name": "staffBasicData",
+          "label": "Основна информация",
+          "subsections": [
+            {
+              "order": 1,
+              "name": "staffData",
+              "fields": [
+                {
+                  "label": "Пореден номер",
+                  "name": "staffOrd",
+                  "type": "input",
+                  "inputType": "number",
+                  "order": 1,
+                  "width": 50,
+                  "disabled": false,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 4,
+                      "message": "Максимална дължина 4 символа"
+                    }
+                  ]
+                },
+                {
+                  "label": "Пътуващ от друго населено място",
+                  "name": "isTravel",
+                  "type": "checkbox",
+                  "flexible": false,
+                  "disabled": false,
+                  "order": 2
+                },
+                {
+                  "label": "Бележки",
+                  "name": "staffNotes",
+                  "type": "textarea",
+                  "order": 3,
+                  "width": 1200,
+                  "height": 3,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 1024,
+                      "message": "Максимална дължина 1024 символа"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "order": 2,
+              "name": "workData",
+              "label": "Трудов стаж",
+              "fields": [
+                {
+                  "label": "Постъпил (година)",
+                  "name": "workStartYear",
+                  "type": "input",
+                  "inputType": "number",
+                  "order": 1,
+                  "width": 95,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 4,
+                      "message": "Максимална дължина 4 символа"
+                    },
+                    {
+                      "name": "max",
+                      "validation": 9999,
+                      "message": "Невалидна година"
+                    },
+                    {
+                      "name": "pattern",
+                      "validation": "^\\d+$",
+                      "message": "Полето трябва да съдържа цяло неотрицателно число"
+                    }
+                  ]
+                },
+                {
+                  "label": "Общ стаж (год.)",
+                  "name": "workExpTotalYears",
+                  "type": "input",
+                  "inputType": "number",
+                  "order": 2,
+                  "width": 50,
+                  "disabled": false,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 4,
+                      "message": "Максимална дължина 4 символа"
+                    }
+                  ]
+                },
+                {
+                  "label": "По спец. (год.)",
+                  "name": "workExpSpecYears",
+                  "type": "input",
+                  "inputType": "number",
+                  "order": 3,
+                  "width": 50,
+                  "disabled": false,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 4,
+                      "message": "Максимална дължина 4 символа"
+                    }
+                  ]
+                },
+                {
+                  "label": "Учителски (год.)",
+                  "name": "workExpTeachYears",
+                  "type": "input",
+                  "inputType": "number",
+                  "order": 4,
+                  "width": 50,
+                  "disabled": false,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 4,
+                      "message": "Максимална дължина 4 символа"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "name": "staffPositions",
+          "label": "Данни за длъжност",
+          "canDuplicate": true,
+          "subsections": [
+            {
+              "order": 1,
+              "name": "basicData",
+              "label": "Основна информация",
+              "fields": [
+                {
+                  "label": "Пореден номер",
+                  "name": "positionOrd",
+                  "type": "input",
+                  "inputType": "number",
+                  "order": 1,
+                  "width": 50,
+                  "disabled": false,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 4,
+                      "message": "Максимална дължина 4 символа"
+                    }
+                  ]
+                },
+                {
+                  "label": "Титуляр/Заместник",
+                  "name": "positionKindID",
+                  "type": "select",
+                  "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+                  "disabled": false,
+                  "order": 2
+                },
+                {
+                  "label": "Щат",
+                  "name": "positionCount",
+                  "type": "input",
+                  "inputType": "number",
+                  "order": 1,
+                  "width": 50,
+                  "disabled": false,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 2,
+                      "message": "Максимална дължина 2 символа"
+                    }
+                  ]
+                },
+                {
+                  "label": "Професионален опит (год.)",
+                  "name": "experienceYear",
+                  "type": "input",
+                  "inputType": "number",
+                  "order": 3,
+                  "width": 50,
+                  "disabled": false,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 2,
+                      "message": "Максимална дължина 2 символа"
+                    }
+                  ]
+                },
+                {
+                  "label": "Болничен учител",
+                  "name": "isHospital",
+                  "type": "checkbox",
+                  "flexible": false,
+                  "disabled": false,
+                  "order": 4
+                },
+                {
+                  "label": "Учител-наставник",
+                  "name": "isMentor",
+                  "type": "checkbox",
+                  "flexible": false,
+                  "disabled": false,
+                  "order": 5
+                },
+                {
+                  "label": "Учител-стажант",
+                  "name": "isTrainee",
+                  "type": "checkbox",
+                  "flexible": false,
+                  "disabled": false,
+                  "order": 6
+                },
+                {
+                  "label": "Водеща за учебната година",
+                  "name": "currentForYear",
+                  "type": "checkbox",
+                  "flexible": false,
+                  "disabled": false,
+                  "order": 7
+                }
+              ]
+            },
+            {
+              "order": 2,
+              "name": "categoryStaff",
+              "label": "Категория персонал",
+              "fields": [
+                {
+                  "label": "Вид",
+                  "name": "staffTypeID",
+                  "type": "select",
+                  "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+                  "disabled": false,
+                  "influence": [
+                    {
+                      "fieldName": "categoryStaffTypeID",
+                      "url": "assets/json/fake-data/baseSchoolTypes.json",
+                      "type": "options"
+                    }
+                  ],
+                  "order": 1
+                },
+                {
+                  "label": "Категория персонал",
+                  "name": "categoryStaffTypeID",
+                  "type": "select",
+                  "disabled": false,
+                  "order": 2
+                }
+              ]
+            },
+            {
+              "order": 3,
+              "name": "staffPosition",
+              "label": "Длъжност",
+              "fields": [
+                {
+                  "label": "Клас",
+                  "name": "nkpdClassID",
+                  "type": "select",
+                  "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+                  "disabled": false,
+                  "influence": [
+                    {
+                      "fieldName": "nkpdSubClassID",
+                      "url": "assets/json/fake-data/baseSchoolTypes.json",
+                      "type": "options"
+                    }
+                  ],
+                  "order": 1
+                },
+                {
+                  "label": "Подклас",
+                  "name": "nkpdSubClassID",
+                  "type": "select",
+                  "disabled": false,
+                  "influence": [
+                    {
+                      "fieldName": "nkpdGroupID",
+                      "url": "assets/json/fake-data/baseSchoolTypes.json",
+                      "type": "options"
+                    }
+                  ],
+                  "order": 2
+                },
+                {
+                  "label": "Група",
+                  "name": "nkpdGroupID",
+                  "type": "select",
+                  "disabled": false,
+                  "influence": [
+                    {
+                      "fieldName": "nkpdSubGroupID",
+                      "url": "assets/json/fake-data/baseSchoolTypes.json",
+                      "type": "options"
+                    }
+                  ],
+                  "order": 3
+                },
+                {
+                  "label": "Единична група",
+                  "name": "nkpdSubGroupID",
+                  "type": "select",
+                  "disabled": false,
+                  "influence": [
+                    {
+                      "fieldName": "nkpdPositionID",
+                      "url": "assets/json/fake-data/baseSchoolTypes.json",
+                      "type": "options"
+                    }
+                  ],
+                  "order": 4
+                },
+                {
+                  "label": "Длъжност",
+                  "name": "nkpdPositionID",
+                  "type": "select",
+                  "disabled": false,
+                  "order": 5
+                },
+                {
+                  "label": "Бележки",
+                  "name": "positionNotes",
+                  "type": "textarea",
+                  "order": 6,
+                  "width": 1200,
+                  "height": 3,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 1024,
+                      "message": "Максимална дължина 1024 символа"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "order": 4,
+              "name": "contractData",
+              "label": "Основна информация за ТД",
+              "fields": [
+                {
+                  "order": 1,
+                  "label": "Категория",
+                  "name": "contractTypeID",
+                  "type": "select",
+                  "optionsPath":"assets/json/fake-data/baseSchoolTypes.json",
+                  "disabled": false
+                },
+                {
+                  "order": 2,
+                  "label": "Основание (по КТ)",
+                  "name": "contractReasonID",
+                  "type": "select",
+                  "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+                  "disabled": false
+                },
+                {
+                  "label": "Договор №",
+                  "name": "contractNumber",
+                  "type": "input",
+                  "inputType": "text",
+                  "order": 3,
+                  "width": 100,
+                  "disabled": false,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 255,
+                      "message": "Максимална дължина 255 символа"
+                    }
+                  ]
+                },
+                {
+                  "label": "Година",
+                  "name": "contractYear",
+                  "type": "input",
+                  "inputType": "number",
+                  "order": 4,
+                  "width": 95,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 4,
+                      "message": "Максимална дължина 4 символа"
+                    },
+                    {
+                      "name": "max",
+                      "validation": 9999,
+                      "message": "Невалидна година"
+                    },
+                    {
+                      "name": "pattern",
+                      "validation": "^\\d+$",
+                      "message": "Полето трябва да съдържа цяло неотрицателно число"
+                    }
+                  ]
+                },
+                {
+                  "order": 5,
+                  "label": "Назначен към",
+                  "name": "contractWithID",
+                  "type": "select",
+                  "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+                  "disabled": false
+                },
+                {
+                  "label": "Бележки",
+                  "name": "contractNotes",
+                  "type": "textarea",
+                  "order": 7,
+                  "width": 1200,
+                  "height": 3,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 1024,
+                      "message": "Максимална дължина 1024 символа"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

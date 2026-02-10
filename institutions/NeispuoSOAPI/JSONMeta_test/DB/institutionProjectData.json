@@ -1,0 +1,210 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_basic].[InstitutionProject] IPR /**where**/ /**orderby**/",
+  "sotemplate": "SELECT /**select**/ FROM [sob].[InstitutionProject] IPR /**where**/ /**orderby**/",
+  "columns": [
+	  { 
+		"column": "IPR.InstitutionProjectID AS projectid" 
+	  },
+      { 
+		"column": "IPR.ProjectTypeID AS projectTypeID" 
+	  },
+      { 
+		"column": "IPR.ProjectProgramTypeID AS programTypeID" 
+	  },
+      { 
+		"column": "IPR.Name AS projectName"
+	  },
+      { 
+		"column": "IPR.Description AS projectDescription"
+	  },
+      { 
+		"column": "IPR.Website AS projectWebsite"
+	  },
+      { 
+		"column": "IPR.StartDate AS startDate"
+	  },
+      { 
+		"column": "IPR.EndDate AS endDate"
+	  },
+      { 
+		"column": "IPR.PlanPreSchoolCount AS planPreSchoolCount"
+	  },
+      { 
+		"column": "IPR.PlanPrimarySchoolCount AS planPrimarySchoolCount"
+	  },
+      { 
+		"column": "IPR.PlanSecondarySchoolCount AS planSecondarySchoolCount" 
+	  },
+      { 
+		"column": "IPR.PlanHighSchoolCount AS planHighSchoolCount" 
+	  },
+	  { 
+		"column": "IPR.PlanCountAll AS planCountAll" 
+	  },
+      { 
+		"column": "IPR.ActualPreSchoolCount AS actualPreSchoolCount" 
+	  },
+      { 
+		"column": "IPR.ActualPrimarySchoolCount AS actualPrimarySchoolCount"
+	  },
+      { 
+		"column": "IPR.ActualSecondarySchoolCount AS actualSecondarySchoolCount"
+	  },
+      { 
+		"column": "IPR.ActualHighSchoolCount AS actualHighSchoolCount"
+	  },
+	  { 
+		"column": "IPR.ActualCountAll AS actualCountAll"
+	  },
+      { 
+		"column": "IPR.InterPreSchoolCount AS interPreSchoolCount"
+	  },
+      { 
+		"column": "IPR.InterPrimarySchoolCount AS interPrimarySchoolCount"
+	  },
+      { 
+		"column": "IPR.InterSecondarySchoolCount AS interSecondarySchoolCount"
+	  },
+      { 
+		"column": "IPR.InterHighSchoolCount AS interHighSchoolCount"
+	  },
+	  { 
+		"column": "IPR.InterCountAll AS interCountAll"
+	  },
+      { 
+		"column": "IPR.Goals AS goals"
+	  },
+	  { 
+		"column": "IPR.IsArchive AS isArchive"
+	  }
+  ],
+  "params": [
+    {
+      "param": "@projectid",
+      "column": "IPR.InstitutionProjectID",
+      "operator": "=",
+      "value": "projectid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false,
+      "optional": true
+    }
+  ],
+  "order": [
+    {
+      "column": "IPR.InstitutionProjectID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+	{
+      "arrayName": "institutionProjectPartners",
+      "template": "SELECT /**select**/ FROM [inst_basic].[InstitutionProject] IPR JOIN [inst_basic].[InstitutionProjectPartner] IPP ON IPR.InstitutionProjectID=IPP.InstitutionProjectID /**where**/ /**orderby**/",
+      "sotemplate": "SELECT /**select**/ FROM [sob].[InstitutionProject] IPR JOIN [sob].[InstitutionProjectPartner] IPP ON IPR.InstitutionProjectID=IPP.InstitutionProjectID /**where**/ /**orderby**/",
+	  "columns": [
+	  { 
+		"column": "IPP.InstitutionProjectPartnerID AS id" 
+	  },
+	  { 
+		"column": "IPP.ProjectPartnerTypeID AS partnerTypeID" 
+	  },
+	  { 
+		"column": "IPP.Eik AS eik" 
+	  },
+	  { 
+		"column": "IPP.Name AS name" 
+	  },
+	  { 
+		"column": "IPP.IsCoordinator AS isCoordinator" 
+	  }
+	],
+      "params": [
+        {
+          "param": "@projectid",
+          "column": "IPP.InstitutionProjectID",
+          "operator": "=",
+          "value": "projectid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+		},
+			{
+      "param": "@year",
+      "column": "IPP.SchoolYear",
+      "operator": "=",
+      "value": "year",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    },
+	{
+      "param": "@period",
+      "column": "IPP.Period",
+      "operator": "=",
+      "value": "period",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    }
+      ],
+      "order": [
+        {
+          "column": "IPP.InstitutionProjectID",
+          "type": "ASC"
+        }
+      ]
+    },
+	{
+      "arrayName": "institutionProjectPriorityAreas",
+      "template": "SELECT /**select**/ FROM [inst_basic].[InstitutionProject] IPR JOIN [inst_basic].[InstitutionProjectPriorityArea] IPA ON IPR.InstitutionProjectID=IPA.ProjectID /**where**/ /**orderby**/",
+      "sotemplate": "SELECT /**select**/ FROM [sob].[InstitutionProject] IPR JOIN [sob].[InstitutionProjectPriorityArea] IPA ON IPR.InstitutionProjectID=IPA.ProjectID /**where**/ /**orderby**/",
+	  "columns": [
+	  { 
+		"column": "IPA.InstitutionProjectPriorityAreaID AS id" 
+	  },
+	  { 
+		"column": "IPA.ProjectPriorityAreaTypeID AS projectPriorityAreaTypeID" 
+	  }
+	],
+      "params": [
+        {
+          "param": "@projectid",
+          "column": "IPA.ProjectID",
+          "operator": "=",
+          "value": "projectid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        },
+			{
+      "param": "@year",
+      "column": "IPA.SchoolYear",
+      "operator": "=",
+      "value": "year",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    },
+	{
+      "param": "@period",
+      "column": "IPA.Period",
+      "operator": "=",
+      "value": "period",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    }
+      ],
+      "order": [
+        {
+          "column": "IPA.ProjectID",
+          "type": "ASC"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+textarea {
+  min-height: 33px !important;
+}
+
+.sb-table-container .sb-table.sb-schedule-table td:not(:first-child) {
+  vertical-align: middle;
+}
+
+::ng-deep .mat-tooltip {
+  font-size: small;
+  white-space: pre-wrap;
+}
+
+::ng-deep .mat-checkbox-disabled:not(.mat-checkbox-checked) .mat-checkbox-frame {
+  border-color: #b0b0b0;
+  background-color: #b0b0b0;
+}

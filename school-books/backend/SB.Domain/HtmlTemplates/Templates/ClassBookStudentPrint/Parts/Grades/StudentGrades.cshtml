@@ -1,0 +1,25 @@
+@using SB.Domain
+@model StudentGradesModel
+
+<div class="page">
+  <h3 class="page-header">@($"Текущи оценки за {(Model.Term == SchoolTerm.TermOne ? "първия" : "втория")} учебен срок")</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Дата</th>
+        <th>Учебен предмет/модул</th>
+        <th>Оценка</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (var grade in Model.Grades)
+      {
+        <tr>
+          <td>@grade.Date.ToString("dd.MM.yyyy")</td>
+          <td>@grade.CurriculumName</td>
+          <td>@grade.GradeText</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

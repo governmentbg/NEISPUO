@@ -1,0 +1,34 @@
+{
+    "template": "SELECT /**select**/ FROM [reginst_nom].[StatusType] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "StatusTypeID as code"
+        },
+        {
+            "column": "Name as label"
+        },
+        {
+            "column": "IsValid as isValid"
+        }
+    ],
+    "params": [
+        {
+            "param": "@IsValid",
+            "column": "IsValid",
+            "operator": "=",
+            "value": 1,
+            "type": "int",
+            "logical_operator": "and",
+			"optional": true,
+  			"static": true,
+			"from_claim": false
+        }
+    ],
+    "order": [
+        {
+            "column": "StatusTypeID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

@@ -1,0 +1,119 @@
+<div class="userGuideModal">
+  <div class="row mb-2">
+    <div class="col-12">
+      <form [formGroup]="saveUserGuideForm" (ngSubmit)="saveUserGuide()">
+        <div>
+          <div class="row mb-2">
+            <div class="col-12">
+              <label for="name" class="form-label">Име на ръководство *</label>
+              <input
+                id="name"
+                formControlName="name"
+                type="text"
+                placeholder="Въведете име на ръководство"
+                pInputText
+                [ngClass]="{
+                  'ng-invalid ng-dirty': saveUserGuideForm.get('name')?.invalid && saveUserGuideForm.get('name')?.touched
+                }"
+              />
+              <small class="text-danger" *ngIf="getNameErrorMessage()">
+                {{ getNameErrorMessage() }}
+              </small>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-12">
+              <label class="form-label">Категория *</label>
+              <div class="field col mt-1">
+                <p-dropdown
+                  formControlName="category"
+                  [options]="selectableCategories"
+                  placeholder="Избери категория"
+                  optionLabel="label"
+                  optionValue="value"
+                  [ngClass]="{
+                    'ng-invalid ng-dirty':
+                      saveUserGuideForm.get('category')?.invalid && saveUserGuideForm.get('category')?.touched
+                  }"
+                ></p-dropdown>
+                <small class="text-danger" *ngIf="getCategoryErrorMessage()">
+                  {{ getCategoryErrorMessage() }}
+                </small>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-12">
+              <label for="URLOverride" class="form-label">Линк</label>
+              <input id="URLOverride" formControlName="URLOverride" type="text" placeholder="Въведете линк" pInputText />
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-12">
+              <label class="form-label">Прикачен файл</label>
+              <div class="field col mt-1">
+                <p-fileUpload
+                  #fileUpload
+                  [customUpload]="true"
+                  className="btn btn-primary"
+                  (uploadHandler)="onUpload($event, fileUpload)"
+                  [multiple]="false"
+                  [maxFileSize]="100000000"
+                  chooseLabel="Избери"
+                  uploadLabel="Прикачи"
+                  cancelLabel="Откажи"
+                  [auto]="true"
+                >
+                  <ng-template pTemplate="content">
+                    <div class="ng-star-inserted">
+                      <div class="p-fileupload-row ng-star-inserted">
+                        <div *ngIf="uploadedFile" class="uploadedFile">
+                          <div class="d-flex align-items-center">
+                            <span class="me-2"><B>Прикачен файл:</B></span>
+                            <a
+                              class="px-0 icon download-file me-2"
+                              (click)="userGuideManagementService.downloadUserGuide(userGuide)"
+                            >
+                              {{ uploadedFile.name }}</a
+                            >
+                            <button
+                              pButton
+                              type="button"
+                              icon="pi pi-trash"
+                              class="p-button-text p-button-sm"
+                              (click)="clearFile()"
+                              title="Премахни файл"
+                            ></button>
+                          </div>
+                        </div>
+                        <div
+                          *ngIf="!uploadedFile && userGuide"
+                          class="text-muted d-flex align-items-center justify-content-center"
+                        >
+                          <i class="bi bi-info-circle me-1"></i>
+                          Няма прикачен файл.
+                        </div>
+                      </div>
+                    </div>
+                  </ng-template>
+                </p-fileUpload>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-12">
+              <small class="text-danger" *ngIf="getLinkOrFileErrorMessage()">
+                {{ getLinkOrFileErrorMessage() }}
+              </small>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2 offset-md-10 col-lg-2 offset-lg-10 col-sm-12">
+              <button type="submit" class="btn btn-primary" [disabled]="loading">Запази</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+{
+"template": "SELECT /**select**/ FROM [inst_basic].[MedicalStaff] MS  /**where**/ /**orderby**/",
+"sotemplate": "",
+  "columns": [
+    {
+      "column": "MS.ExMedStaffID AS exMedStaffID"
+    },
+    {
+      "column": "MS.InstitutionID AS instid"
+    },
+    {
+      "column": "MS.FirstName AS firstName"
+    },
+    {
+      "column": "MS.MiddleName AS middleName"
+    },
+    {
+      "column": "MS.LastName AS lastName"
+    },
+    {
+      "column": "MS.NKPDPositionID AS nkpdPositionID"
+    },
+    {
+      "column": "MS.PersonalIDType AS personalIDType"
+    },
+    {
+      "column": "MS.PersonalID AS personalID"
+    }
+  ],
+  "params": [
+    {
+      "param": "@exMedStaffID",
+      "column": "MS.ExMedStaffID",
+      "operator": "=",
+      "value": "exMedStaffID",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "MS.ExMedStaffID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": []
+}

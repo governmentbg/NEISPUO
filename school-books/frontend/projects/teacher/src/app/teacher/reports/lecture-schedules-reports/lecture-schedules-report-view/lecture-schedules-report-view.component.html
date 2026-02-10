@@ -1,0 +1,161 @@
+<sb-breadcrumb
+  class="block mb-3"
+  [icon]="fadCalendarStar"
+  [text]="
+    data.lectureSchedulesReport == null
+      ? 'Създаване на справка лекторски часове'
+      : 'Преглед на справка лекторски часове'
+  "
+  [parentItems]="[{ text: 'Лекторски часове', routeCommands: ['../'] }]"
+></sb-breadcrumb>
+
+<form [formGroup]="form" autocomplete="off" novalidate>
+  <sb-card>
+    <ng-container card-title>
+      {{
+        data.lectureSchedulesReport == null
+          ? 'Създаване на справка лекторски часове'
+          : 'Преглед на справка лекторски часове'
+      }}
+    </ng-container>
+    <sb-editor-panel
+      card-buttons
+      [isNew]="data.lectureSchedulesReport == null"
+      [editBtnHidden]="true"
+      (save)="onSave($event)"
+    >
+      <a
+        *ngIf="data.lectureSchedulesReport != null"
+        [href]="downloadUrl"
+        class="mr-3"
+        disabled-mode-buttons
+        target="_blank"
+        download
+        color="primary"
+        mat-raised-button
+        [disabled]="!downloadUrl"
+      >
+        <fa-icon [icon]="fasFileExcel" size="lg"></fa-icon>
+        <span>Свали</span>
+      </a>
+      <button
+        disabled-mode-buttons
+        mat-raised-button
+        color="warn"
+        type="button"
+        (click)="onRemove()"
+        [disabled]="removing"
+      >
+        <fa-icon [icon]="removing ? fasSpinnerThird : fasTrashAlt" [spin]="removing" size="lg"></fa-icon>
+        <span class="hidden sm:inline">Премахни</span>
+      </button>
+    </sb-editor-panel>
+    <ng-container card-body>
+      <sb-banner
+        *ngIf="
+          data.lectureSchedulesReport == null &&
+          data.schoolYear === 2022 &&
+          (periodIsTermOrWholeYear || monthIsFeb23OrEarlier)
+        "
+        type="warning"
+        class="mb-2"
+      >
+        За учебната 2022/23 справка лекторски часове може да се пуска само месечно, започвайки от месец март.
+      </sb-banner>
+      <div class="sm:grid grid-cols-2 gap-x-4 mb-2">
+        <sb-nom-select
+          label="Период"
+          formControlName="period"
+          [nomService]="lectureSchedulesReportPeriodNomsService"
+        ></sb-nom-select>
+
+        <sb-select-field
+          class="col-start-1"
+          label="Месец"
+          formControlName="month"
+          [items]="monthsSelect"
+        ></sb-select-field>
+
+        <sb-nom-select
+          *ngIf="data.lectureSchedulesReport == null"
+          class="col-start-1"
+          label="Учител"
+          formControlName="teacherPersonId"
+          [nomService]="instTeacherNomsService"
+        ></sb-nom-select>
+        <sb-text-field
+          *ngIf="data.lectureSchedulesReport != null"
+          class="col-start-1"
+          label="Учител"
+          formControlName="teacherPersonName"
+        ></sb-text-field>
+      </div>
+      <sb-card-section *ngIf="data.lectureSchedulesReport != null" class="col-span-full">
+        Лекторски часове към {{ data.lectureSchedulesReport.createDate | sbDateTime }}
+      </sb-card-section>
+      <ng-container *ngIf="data.lectureSchedulesReport != null && dataSource != null">
+        <sb-table
+          [dataSource]="dataSource"
+          [displayedColumns]="['teacherPersonName', 'classBookName', 'date', 'curriculumName', 'hoursTaken', 'order']"
+        >
+          <ng-container cdkColumnDef="teacherPersonName">
+            <th cdk-header-cell *cdkHeaderCellDef>Учител</th>
+            <td cdk-cell *cdkCellDef="let row">{{ row.infoRow.teacherPersonName }}</td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="classBookName">
+            <th cdk-header-cell *cdkHeaderCellDef>Клас/Паралелка/Група</th>
+            <td cdk-cell *cdkCellDef="let row">{{ row.infoRow.classBookName }}</td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="date">
+            <th cdk-header-cell *cdkHeaderCellDef>Дата</th>
+            <td cdk-cell *cdkCellDef="let row">{{ row.infoRow.date | sbDate }}</td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="curriculumName">
+            <th cdk-header-cell *cdkHeaderCellDef>Премет</th>
+            <td cdk-cell *cdkCellDef="let row">{{ row.infoRow.curriculumName }}</td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="hoursTaken">
+            <th cdk-header-cell *cdkHeaderCellDef>Взети часове</th>
+            <td cdk-cell *cdkCellDef="let row">{{ row.infoRow.hoursTaken }}</td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="order">
+            <th cdk-header-cell *cdkHeaderCellDef>Заповед №/Дата</th>
+            <td cdk-cell *cdkCellDef="let row">
+              <span *ngIf="row.lectureScheduleId == null">
+                {{ row.infoRow.orderNumber }}/{{ row.infoRow.orderDate | sbDate }}
+              </span>
+              <a
+                *ngIf="row.infoRow.lectureScheduleId != null"
+                [routerLink]="[
+                  '../../lecture-schedules',
+                  { mode: lectureSchedulesMode },
+                  row.infoRow.lectureScheduleId
+                ]"
+                class="text-primary underline"
+              >
+                {{ row.orderNumber }}/{{ row.infoRow.orderDate | sbDate }}
+              </a>
+            </td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="totalHoursTaken">
+            <td colspan="6" class="text-right font-bold" cdk-cell *cdkCellDef="let row">
+              Общ брой взети лекторски часове за периода: {{ row.totalRow.totalHoursTaken }}
+            </td>
+          </ng-container>
+
+          <ng-container no-data-row>
+            <td colspan="6" class="text-center">Няма взети лекторски часове за периода</td>
+          </ng-container>
+
+          <tr cdk-row *cdkRowDef="let row; columns: ['totalHoursTaken']; when: isTotalHoursTakenRow"></tr>
+        </sb-table>
+      </ng-container>
+    </ng-container>
+  </sb-card>
+</form>

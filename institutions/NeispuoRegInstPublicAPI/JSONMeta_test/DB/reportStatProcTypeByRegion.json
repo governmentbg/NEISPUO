@@ -1,0 +1,63 @@
+{
+    "template": "SELECT /**select**/ FROM [reginst_basic].[ReportStatProcTypeByRegion] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "RegName as regName"
+        },
+		{
+            "column": "SchoolNew as schoolNew"
+        },
+		{
+            "column": "SchoolChange as schoolChange"
+        },
+		{
+            "column": "SchoolArchived as schoolArchived"
+        },
+		{
+            "column": "KindergardenNew as kindergardenNew"
+        },
+		{
+            "column": "KindergardenChange as kindergardenChange"
+        },
+		{
+            "column": "KindergardenArchived as kindergardenArchived"
+        },
+		{
+            "column": "CPLRNew as cplrNew"
+        },
+		{
+            "column": "CPLRChange as cplrChange"
+        },
+		{
+            "column": "CPLRArchived as cplrArchived"
+        },
+		{
+            "column": "CSOPNew as csopNew"
+        },
+		{
+            "column": "CSOPChange as csopChange"
+        },
+		{
+            "column": "CSOPArchived as csopArchived"
+        },
+		{
+            "column": "SOZNew as sozNew"
+        },
+		{
+            "column": "SOZChange as sozChange"
+        },
+		{
+            "column": "SOZArchived as sozArchived"
+        }
+    ],
+    "params": [
+
+    ],
+    "order": [
+		{
+      "column": "SortOrder",
+      "type": "ASC"
+		}
+    ],
+    "inSelects": []
+}

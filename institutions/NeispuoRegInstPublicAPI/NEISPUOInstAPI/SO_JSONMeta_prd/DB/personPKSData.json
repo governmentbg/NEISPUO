@@ -1,0 +1,50 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_basic].[PersonPKS] PPKS /**where**/ /**orderby**/",
+  "sotemplate": "SELECT /**select**/ FROM [sob].[PersonPKS] PPKS /**where**/ /**orderby**/",
+  "columns": [
+		{
+          "column": "PPKS.PersonPKSID AS personPKSID"
+        },
+		{
+          "column": "PPKS.PersonID AS personID"
+        },
+		{
+          "column": "PPKS.PKSTypeID AS pksTypeID"
+        },
+		{
+          "column": "PPKS.CertifcateNo AS pksCertifcateNo"
+        },
+		{
+          "column": "PPKS.YearOfGraduation AS pksYearOfGraduation"
+        },
+		{
+          "column": "PPKS.Speciality AS speciality"
+        },
+		{
+          "column": "PPKS.UniversityID AS universityID"
+        },
+		{
+          "column": "PPKS.UniversityNotes AS universityNotes"
+        }	
+  ],
+  "params": [
+	{
+          "param": "@personPKSID",
+          "column": "PPKS.PersonPKSID",
+          "operator": "=",
+          "value": "personPKSID",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "PPKS.PersonPKSID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+	]
+
+}

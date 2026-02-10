@@ -1,0 +1,459 @@
+{
+  "template": "SELECT /**select**/ FROM [reginst_basic].[RIInstitutionAll] RIIAll  /**where**/ /**orderby**/",
+  "columns": [
+    {
+      "column": "RIIAll.InstitutionID AS codeNEISPUO"
+    },
+    {
+      "column": "RIIAll.Name AS name"
+    },
+    {
+      "column": "RIIAll.Abbreviation AS abbreviation"
+    },
+    {
+      "column": "RIIAll.Bulstat AS bulstat"
+    },
+    {
+      "column": "RIIAll.ProcedureTransformTypeID AS procedureTransformTypeID"
+    },       
+    {
+      "column": "RIIAll.BaseSchoolTypeID AS baseSchoolTypeID"
+    },
+    {
+      "column": "RIIAll.DetailedSchoolTypeID AS detailedSchoolTypeID"
+    },
+    {
+      "column": "RIIAll.BudgetingSchoolTypeID AS budgetingSchoolTypeID"
+    },
+    {
+      "column": "RIIAll.FinancialSchoolTypeID AS financialSchoolTypeID"
+    },
+	  {
+      "column": "RIIAll.TRCountryID AS settlementCountry"
+    },
+    {
+      "column": "RIIAll.TRRegionID AS settlementRegion"
+    },
+    {
+      "column": "RIIAll.TRMunicipID AS settlementMunicipality"
+    },
+    {
+      "column": "RIIAll.TRTownID AS settlementTown"
+    },
+    {
+      "column": "RIIAll.TRLocalAreaID AS settlementLocalArea"
+    },
+    {
+      "column": "RIIAll.TRAddress AS settlementAddress"
+    },
+    {
+      "column": "RIIAll.TRPostCode AS settlementPostCode"
+    },
+    {
+      "column": "RIIAll.ReligInstDetails AS religInstDetails"
+    },
+    {
+      "column": "RIIAll.HeadFirstName AS headFirstName"
+    },
+    {
+      "column": "RIIAll.HeadMiddleName AS headMiddleName"
+    },
+    {
+      "column": "RIIAll.HeadLastName AS headLastName"
+    },
+    {
+      "column": "RIIAll.IsNational AS isNational"
+    },
+    {
+      "column": "RIIAll.PersonnelCount AS personnelCount"
+    },
+    {
+      "column": "RIIAll.AuthProgram AS authProgram"
+    },                        
+    {
+      "column": "RIIAll.IsDataDue AS isDataDue"
+    },                            
+    {
+      "column": "RIIAll.InstType AS instType"
+  	}
+  ],
+  "params": [
+    {
+      "param": "@instid",
+      "column": "RIIAll.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": false,
+      "static": false,
+	  "from_claim": false
+    },
+    {
+      "param": "@procID",
+      "column": "RIIAll.RIprocedureID",
+      "operator": "=",
+      "value": "procID",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": false,
+			"static": false,
+			"from_claim": false
+    }    
+  ],
+  "order": [
+    {
+      "column": "RIIAll.InstitutionID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+    {
+      "arrayName": "primaryAddress",
+      "template": "SELECT /**select**/ FROM [reginst_basic].[RIInstitutionDepartment] RIIDs JOIN [inst_basic].[EKATTE] AS EKATTEID ON RIIDs.TownID = EKATTEID.TownID /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "RIIDs.RIinstitutionDepartmentID AS id"
+        },
+        {
+          "column": "RIIDs.Name AS primaryAddrName"
+        },  
+        {
+          "column": "RIIDs.CountryID AS primaryAddrCountry"
+        },  
+        {
+          "column": "EKATTEID.RegionID AS primaryAddrRegion"
+        },  
+        {
+          "column": "EKATTEID.MunicipalityID AS primaryAddrMunicipality"
+        },  
+        {
+          "column": "RIIDs.TownID AS primaryAddrTown"
+        },  
+        {
+          "column": "RIIDs.LocalAreaID AS primaryAddrLocalArea"
+        },  
+        {
+          "column": "RIIDs.Address AS primaryAddrAddress"
+        },  
+        {
+          "column": "RIIDs.PostCode AS primaryAddrPostCode"
+        },
+        {
+          "column": "RIIDs.CadasterCode AS primaryAddrCadasterCode"
+        }
+      ],
+      "params": [
+        {
+          "param": "@procID",
+          "column": "RIIDs.RIprocedureID",
+          "operator": "=",
+          "value": "procID",
+          "type": "int",
+          "logical_operator": "and",
+			"static": false,
+			"from_claim": false
+        },
+    		{
+          "param": "@ismain",
+          "column": "RIIDs.IsMain",
+          "operator": "=",
+          "value": 1,
+          "type": "int",
+          "logical_operator": "and",
+			"static": true,
+			"from_claim": false
+        }
+      ],
+      "order": [
+        {
+          "column": "RIIDs.RIinstitutionDepartmentID",
+          "type": "ASC"
+        }
+      ]
+    },
+    {
+      "arrayName": "institutionDepartments",
+      "template": "SELECT /**select**/ FROM [reginst_basic].[RIInstitutionDepartment] RIIDs JOIN [inst_basic].[EKATTE] AS EKATTEID ON RIIDs.TownID = EKATTEID.TownID /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "RIIDs.RIinstitutionDepartmentID AS id"
+        },
+        {
+          "column": "RIIDs.Name AS departmentName"
+        },  
+        {
+          "column": "RIIDs.CountryID AS departmentCountry"
+        },  
+        {
+          "column": "EKATTEID.RegionID AS departmentRegion"
+        },  
+        {
+          "column": "EKATTEID.MunicipalityID AS departmentMunicipality"
+        },  
+        {
+          "column": "RIIDs.TownID AS departmentTown"
+        },  
+        {
+          "column": "RIIDs.LocalAreaID AS departmentLocalArea"
+        },  
+        {
+          "column": "RIIDs.Address AS departmentAddress"
+        },  
+        {
+          "column": "RIIDs.PostCode AS departmentPostalCode"
+        },
+        {
+          "column": "RIIDs.CadasterCode AS departmentCadasterCode"
+        }
+      ],
+      "params": [
+        {
+          "param": "@procID",
+          "column": "RIIDs.RIprocedureID",
+          "operator": "=",
+          "value": "procID",
+          "type": "int",
+          "logical_operator": "and",
+			"static": false,
+			"from_claim": false
+        },
+    		{
+          "param": "@ismain",
+          "column": "RIIDs.IsMain",
+          "operator": "=",
+          "value": 0,
+          "type": "int",
+          "logical_operator": "and",
+			"static": true,
+			"from_claim": false
+        }
+      ],
+      "order": [
+        {
+          "column": "RIIDs.RIinstitutionDepartmentID",
+          "type": "ASC"
+        }
+      ]
+    },
+    {
+      "arrayName": "cplrAreas",
+      "template": "SELECT /**select**/ FROM [reginst_basic].[RICPLRArea] RICPLRs /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "RICPLRs.RICPLRAreaID AS id"
+        },
+        {
+          "column": "RICPLRs.CPLRAreaTypeID AS cplrAreaType"
+        }
+      ],
+      "params": [
+        {
+          "param": "@procID",
+          "column": "RICPLRs.RIprocedureID",
+          "operator": "=",
+          "value": "procID",
+          "type": "int",
+          "logical_operator": "and",
+		      "optional": false,
+			    "static": false,
+			    "from_claim": false
+        }
+      ],
+      "order": [
+        {
+          "column": "RICPLRs.RICPLRAreaID",
+          "type": "ASC"
+        }
+      ]
+    },
+    {
+      "arrayName": "basicProfiles",
+      "template": "SELECT /**select**/ FROM [reginst_basic].[RIProfile] RIProfiles /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "RIProfiles.RIProfileID AS id"
+        },
+        {
+          "column": "RIProfiles.BasicProfileID AS schoolBasicProfile"
+        }
+      ],
+      "params": [
+        {
+          "param": "@procID",
+          "column": "RIProfiles.RIprocedureID",
+          "operator": "=",
+          "value": "procID",
+          "type": "int",
+          "logical_operator": "and",
+		      "optional": false,
+			    "static": false,
+			    "from_claim": false
+        }
+      ],
+      "order": [
+        {
+          "column": "RIProfiles.RIProfileID",
+          "type": "ASC"
+        }
+      ]
+    },
+    {
+      "arrayName": "SPPOOSpecialities",
+      "template": "SELECT /**select**/ FROM [reginst_basic].[RISPPOOSpecialityAll] RISpeciality /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "RISpeciality.RISpecialityID AS id"
+        },
+        {
+          "column": "RISpeciality.SPPOOSpecialityID AS SPPOOSpeciality"
+        },        
+	    	{
+          "column": "RISpeciality.SPPOOProfessionID AS SPPOOProfession"
+        },        
+        {
+          "column": "RISpeciality.SPPOOProfAreaID AS SPPOOProfArea"
+        },
+		    {
+          "column": "RISpeciality.SPPOOEducAreaID AS SPPOOEducArea"
+        }
+      ],
+      "params": [
+        {
+          "param": "@procID",
+          "column": "RISpeciality.RIprocedureID",
+          "operator": "=",
+          "value": "procID",
+          "type": "int",
+          "logical_operator": "and",
+		      "optional": false,
+			    "static": false,
+			    "from_claim": false
+        }
+      ],
+      "order": [
+        {
+          "column": "RISpeciality.SPPOOSpecialityID",
+          "type": "DESC"
+        }
+      ]
+    },
+    {
+      "arrayName": "premInstitutions",
+      "template": "SELECT /**select**/ FROM [reginst_basic].RIPremInstitution RIPremInst /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "RIPremInst.RIPremInstitutionID AS id"
+        },
+        {
+          "column": "RIPremInst.PremInstitutionID AS premInstitution"
+        },
+        {
+          "column": "RIPremInst.PremStudents AS premStudents"
+        },
+        {
+          "column": "RIPremInst.PremDocs AS premDocuments"
+        },
+		{
+          "column": "RIPremInst.PremInventory AS premInventory"
+		}  		
+      ],
+      "params": [
+        {
+          "param": "@procID",
+          "column": "RIPremInst.RIprocedureID",
+          "operator": "=",
+          "value": "procID",
+          "type": "int",
+          "logical_operator": "and",
+		      "optional": false,
+			    "static": false,
+			    "from_claim": false
+        }
+      ],
+      "order": [
+        {
+          "column": "RIPremInst.RIPremInstitutionID",
+          "type": "ASC"
+        }
+      ]
+    }, 
+    {
+      "arrayName": "documents",
+      "template": "SELECT /**select**/ FROM [reginst_basic].[RIDocument] RIDocument /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "RIDocument.RIDocumentID AS id"
+        },
+        {
+          "column": "RIDocument.DocumentNo AS documentNumber"
+        },
+		    {
+          "column": "RIDocument.DocumentDate AS documentDate"
+        },
+		    {
+          "column": "RIDocument.StateNewspaperData AS stateNewspaperData"
+        },
+		    {
+          "column": "RIDocument.DocumentNotes AS documentNotes"
+        }
+      ],
+      "params": [
+        {
+          "param": "@procID",
+          "column": "RIDocument.RIprocedureID",
+          "operator": "=",
+          "value": "procID",
+          "type": "int",
+          "logical_operator": "and",
+		      "optional": false,
+			    "static": false,
+			    "from_claim": false
+        }
+      ],
+      "order": [
+        {
+          "column": "RIDocument.RIDocumentID",
+          "type": "ASC"
+        }
+      ]
+    },    
+    {
+      "arrayName": "certificates",
+      "template": "SELECT /**select**/ FROM [reginst_basic].[RICertificate] RICertificate /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "RICertificate.RICertificateID AS id"
+        },
+        {
+          "column": "RICertificate.CertificateNo AS certificateNumber"
+        },
+		    {
+          "column": "RICertificate.CertificateDate AS certificateDate"
+        },
+		    {
+          "column": "RICertificate.CertificateNotes AS certificateNotes"
+        }     
+      ],
+      "params": [
+        {
+          "param": "@procID",
+          "column": "RICertificate.RIprocedureID",
+          "operator": "=",
+          "value": "procID",
+          "type": "int",
+          "logical_operator": "and",
+		      "optional": false,
+		      "static": false,
+	        "from_claim": false
+        }
+      ],
+      "order": [
+        {
+          "column": "RICertificate.RICertificateID",
+          "type": "ASC"
+        }
+      ]
+    }    
+  ]  
+}

@@ -1,0 +1,17 @@
+<ng-container *ngIf="form" [formGroup]="form">
+  <div class="fluid formgrid grid row-gap-4">
+    <div class="field col-12 col-md-4">
+      <label for="HeadFirstName">Име</label>
+      <input id="HeadFirstName" type="text" pInputText pInputText formControlName="HeadFirstName" />
+    </div>
+
+    <div class="field col-12 col-md-4">
+      <label for="HeadMiddleName">Презиме</label>
+      <input id="HeadMiddleName" type="text" pInputText pInputText formControlName="HeadMiddleName" />
+    </div>
+    <div class="field col-12 col-md-4">
+      <label for="HeadLastName" >Фамилия</label>
+      <input id="HeadLastName" type="text" pInputText pInputText formControlName="HeadLastName" />
+    </div>
+  </div>
+</ng-container>

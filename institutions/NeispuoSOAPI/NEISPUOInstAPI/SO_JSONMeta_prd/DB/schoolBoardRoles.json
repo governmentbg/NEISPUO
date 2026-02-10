@@ -1,0 +1,24 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[SchoolBoardRole] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "SchoolBoardRoleID as code"
+        },
+        {
+            "column": "Name as label"
+        },
+		{
+            "column": "IsValid as isValid"
+        }
+    ],
+    "params": [
+
+    ],
+    "order": [
+        {
+            "column": "SchoolBoardRoleID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

@@ -1,0 +1,162 @@
+@using SB.Domain
+@using System.Linq
+@model ScheduleAndAbsencesWeeksModel
+
+@for(int i = 0; i < Model.Weeks.Length; i++)
+{
+  @if(String.IsNullOrEmpty(@Model.Weeks[i].StudentName))
+  {
+    <h3 class="page-header">Учебни предмети/модули и отсъствия на учениците</h3>
+  }
+  else
+  {
+    <h3 class="page-header">Учебни предмети/модули и отсъствия на @Model.Weeks[i].StudentName</h3>
+  }
+  <table>
+    <thead>
+      <tr>
+        <th colspan="6">@Model.Weeks[i].WeekName</th>
+      </tr>
+      <tr>
+        <th rowspan="2"><div class="vertical-text">Ден</div></th>
+        <th rowspan="2"><div class="vertical-text">Час</div></th>
+        <th rowspan="2">Предмет/Учител/Място на провеждане</th>
+        <th colspan="3">@(!Model.IsDPLR ? "Отсъстващи ученици" : "Отсъстващи/присъстващи ученици")</th>
+      </tr>
+      <tr>
+        @if (!Model.IsDPLR)
+        {
+          <th>уваж.</th>
+          <th>неуваж.</th>
+          <th>закъснели</th>
+        }
+        else
+        {
+          <th>остъствия</th>
+          <th>присъствия</th>
+        }
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (var day in Model.Weeks[i].Days)
+      {
+        @if(day.Hours.Any() && !day.IsOffDay)
+        {
+          int index = 0;
+          foreach (var hour in day.Hours)
+          {
+            <tr>
+              @if (index == 0)
+              {
+                <td rowspan="@day.Hours.Length" class="align-bottom" style="height: 110px"><div class="vertical-text"><p>@day.DayString @day.Date.ToString("dd.MM")</p></div></td>
+              }
+              <td>@hour.HourNumber</td>
+              @if (hour.IsEmptyHour == true)
+              {
+                <td>Свободен час</td>
+              }
+              else
+              {
+                <td>@(hour.ReplTeacherIsNonSpecialist == true ? "Гражданско образование" : hour.SubjectName != null ? $"{hour.SubjectName} / {hour.SubjectTypeName}" : string.Empty)
+                  @(!string.IsNullOrEmpty(hour.CurriculumTeachers) ? "- " + hour.CurriculumTeachers : "") @(!string.IsNullOrEmpty(hour.Location) ? $" ({hour.Location})": "")</td>
+              }
+
+              @if (!Model.IsDPLR)
+              {
+                <td>@hour.ExcusedStudentClassNumbers</td>
+                <td>@hour.UnexcusedStudentClassNumbers</td>
+                <td>@hour.LateStudentClassNumbers</td>
+              }
+              else
+              {
+                <td>@hour.DplrAbsenceStudentClassNumbers</td>
+                <td>@hour.DplrAttendanceStudentClassNumbers</td>
+              }
+            </tr>
+
+            index++;
+          }
+        }
+        else
+        {
+          <tr>
+            <td class="align-bottom" style="height: 110px"><div class="vertical-text"><p>@day.DayString @day.Date.ToString("dd.MM")</p></div></td>
+            <td class="text-center" colspan="5">@(!day.IsOffDay ? "Няма въведена програма за деня" : "Неучебен ден")</td>
+          </tr>
+        }
+      }
+    </tbody>
+  </table>
+
+  <div class="page-break"></div>
+
+  @if(String.IsNullOrEmpty(@Model.Weeks[i].StudentName))
+  {
+    <h3 class="page-header">Учебни предмети/модули и отсъствия на учениците</h3>
+  }
+  else
+  {
+    <h3 class="page-header">Учебни предмети/модули и отсъствия на @Model.Weeks[i].StudentName</h3>
+  }
+
+  <table>
+    <thead>
+      <tr>
+        <th colspan="3">@Model.Weeks[i].WeekName</th>
+      </tr>
+      <tr>
+        <th class="two-rows-height grade-cell-width"><div class="vertical-text">Ден</div></th>
+        <th class="two-rows-height grade-cell-width"><div class="vertical-text">Час</div></th>
+        <th>Тема на урока</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (var day in Model.Weeks[i].Days)
+      {
+        @if(day.Hours.Any() && !day.IsOffDay)
+        {
+          int index = 0;
+          foreach (var hour in day.Hours)
+          {
+            <tr>
+              @if (index == 0)
+              {
+                <td rowspan="@day.Hours.Length" class="align-bottom" style="height: 110px"><div class="vertical-text"><p>@day.DayString @day.Date.ToString("dd.MM")</p></div></td>
+              }
+              <td>@hour.HourNumber</td>
+              <td>
+                @if (hour.Topics.Length == 1)
+                {
+                  @hour.Topics[0]
+                }
+                else if (hour.Topics.Length > 1)
+                {
+                  <ul style="margin: 0; padding-left: 15px;">
+                    @foreach (var topic in hour.Topics)
+                    {
+                      <li>@topic</li>
+                    }
+                  </ul>
+                }
+              </td>
+            </tr>
+
+            index++;
+          }
+        }
+        else
+        {
+          <tr>
+            <td class="align-bottom" style="height: 110px"><div class="vertical-text"><p>@day.DayString @day.Date.ToString("dd.MM")</p></div></td>
+            <td class="text-center" colspan="2">@(!day.IsOffDay ? "Няма въведена програма за деня" : "Неучебен ден")</td>
+          </tr>
+        }
+      }
+    </tbody>
+  </table>
+
+  if (i < Model.Weeks.Length - 1)
+  {
+    <div class="page-break"></div>
+  }
+}

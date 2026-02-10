@@ -1,0 +1,47 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_nom].[EquipmentType] ET /**where**/ /**orderby**/",
+  "columns": [
+  	{
+      "column": "ET.EquipmentTypeId AS id"
+    },
+	{
+      "column": "ET.EquipmentTypeId AS equipmentTypeID"
+    },
+	{
+      "column": "ET.EquipmentTypeName AS equipmentTypeName"
+    },
+	{
+      "column": "ET.IsValid AS isValid"
+    }
+   ],
+  "params": [
+      {
+        "param": "@isSpecial",
+        "column": "ET.IsSpecial",
+        "operator": "=",
+        "value": 1,
+        "type": "int",
+        "logical_operator": "and",
+        "static": true
+      },
+	  	{
+      "param": "@buildingRoomTypeID",
+      "column": "ET.BuildingRoomTypeID",
+      "operator": "=",
+      "value": "buildingRoomTypeID",
+      "type": "int",
+      "logical_operator": "and",
+	    "optional": false,
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "ET.EquipmentTypeName",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+
+  ]
+}

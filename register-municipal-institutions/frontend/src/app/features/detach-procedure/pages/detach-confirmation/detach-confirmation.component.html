@@ -1,0 +1,48 @@
+<div class="grid fluid">
+  <div class="col-12">
+    <h5>Институция, която ще бъде променена в резултат на процедура по отделяне</h5>
+  </div>
+  <div class="col-12">
+    <app-detach-mi-preview-only
+      [displayRIProcedure]="true"
+      [displayDocument]="false"
+      [resp]="miToUpdate$ | async"
+    ></app-detach-mi-preview-only>
+  </div>
+  <div class="col-12">
+    <h5>Институции, които ще бъдат създадени в резултат на процедура по отделяне</h5>
+  </div>
+  <div class="col-12">
+    <ng-container *ngFor="let mi of misToCreate$ | async; let i = index">
+      <p-divider align="center">
+        <h5>Институция № {{ i + 1 }}</h5>
+      </p-divider>
+      <app-detach-mi-preview-only
+        *ngIf="!!mi"
+        [resp]="mi"
+        [displayRIPremInstitution]="false"
+        [displayRIProcedure]="true"
+        [displayDocument]="false"
+      ></app-detach-mi-preview-only>
+    </ng-container>
+  </div>
+  
+  <div class="col-12">
+       <app-detach-mi-preview-ri-document
+        [displayDocument]="true"
+        [isReadOnly]="true"
+       [resp]="miToUpdate$ | async"
+      ></app-detach-mi-preview-ri-document>
+  </div>
+  <div class="col-12">
+    <app-stepper-actions
+      [showBack]="true"
+      [backLabel]="'Назад'"
+      [backRouterLink]="['..', 'ri-document']"
+      [showForward]="false"
+      [submitLabel]="'Отделяне'"
+      [submitCallback]="detach"
+      [showSubmit]="true"
+    ></app-stepper-actions>
+  </div>
+</div>

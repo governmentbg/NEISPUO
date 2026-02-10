@@ -1,0 +1,52 @@
+<div class="grid justify-content-center">
+  <app-user-tour-guide 
+  [typeButton]="'pageGuide'"
+  [guideName]="guideName"
+  ></app-user-tour-guide>
+  <div class="col-12 col-md-4">
+    <p-fieldset legend="Вид преобразуване">
+      <div class="grid fluid">
+        <div class="col-12 field-radiobutton join-procedure">
+          <p-radioButton
+            name="selectedProcedure"
+            [value]="procedureTypes.JOIN"
+            [(ngModel)]="selectedProcedure"
+            inputId="selectedProcedure_join"
+          ></p-radioButton>
+          <label for="selectedProcedure_join" class="label-medium">Преобразуване чрез вливане</label>
+        </div>
+        <div class="col-12 field-radiobutton merge-procedure">
+          <p-radioButton
+            name="selectedProcedure"
+            [value]="procedureTypes.MERGE"
+            [(ngModel)]="selectedProcedure"
+            inputId="selectedProcedure_merge"
+          ></p-radioButton>
+          <label for="selectedProcedure_merge" class="label-medium">Преобразуване чрез сливане</label>
+        </div>
+        <div class="col-12 field-radiobutton divide-procedure">
+          <p-radioButton
+            name="selectedProcedure"
+            [value]="procedureTypes.DIVIDE"
+            [(ngModel)]="selectedProcedure"
+            inputId="selectedProcedure_divide"
+          ></p-radioButton>
+          <label for="selectedProcedure_divide" class="label-medium">Преобразуване чрез разделяне</label>
+        </div>
+        <div class="col-12 field-radiobutton detach-procedure">
+          <p-radioButton
+            name="selectedProcedure"
+            [value]="procedureTypes.DETACH"
+            [(ngModel)]="selectedProcedure"
+            inputId="selectedProcedure_detach"
+          ></p-radioButton>
+          <label for="selectedProcedure_detach" class="label-medium">Преобразуване чрез отделяне</label>
+        </div>
+
+        <div class="field col-12 justify-content-end">
+          <button type="button" class="btn btn-primary" (click)="goToProcedure()">Напред</button>
+        </div>
+      </div>
+    </p-fieldset>
+  </div>
+</div>

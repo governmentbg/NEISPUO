@@ -1,0 +1,11 @@
+<ul class="wizard">
+  <ng-container *ngFor="let step of steps">
+    <li *ngIf="!step.hidden" [ngClass]="{ complete: step.number < currentStep, active: step.number === currentStep }">
+      <div class="step">
+        <span *ngIf="step.number >= currentStep">{{ step.label ?? step.number }}</span>
+        <fa-icon *ngIf="step.number < currentStep" [icon]="fasCheck"></fa-icon>
+      </div>
+      <div class="caption">{{ step.caption }}</div>
+    </li>
+  </ng-container>
+</ul>

@@ -1,0 +1,21 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[SubmissionUserType] ST /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "ST.SubmissionUserTypeID as code"
+        },
+        {
+            "column": "ST.Name as label"
+        },
+		 {
+            "column": "ST.IsValid as isValid"
+        }
+    ],
+        "params": [
+
+    ],
+    "order": [
+  
+    ],
+    "inSelects": []
+}

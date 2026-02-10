@@ -1,0 +1,55 @@
+{
+  "label": "Общежития",
+  "sections": [
+    {
+      "order": 1,
+      "label": "Помещения в общежития",
+      "name": "TableBuildingAreaTypeBedRoom",
+      "table":
+      {
+        "name": "buildingAreaTypeBedRoom",
+		    "searchable": false,
+        "canDeleteRow": true,
+        "createNew": "redirect",
+        "formName":"buildingRoom",
+        "procedureName": "inst_basic.buildingRoomCUD",  
+        "createParams":{"buildingAreaTypeID":41,"buildingTypeID":2},
+        "paramName":"buildingRoomID",
+        "fields": [
+          {
+            "label": "Сграда",
+            "name": "buildingName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 1
+          },
+          {
+            "label": "Наименование",
+            "name": "name",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 2
+          },
+          {
+            "label": "Вид",
+            "name": "buildingRoomTypeName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 3
+          },
+          {
+            "label": "Съответства на изискванията",
+            "name": "meetRequirementsLevelName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 4
+          }
+        ]
+      }
+    }
+  ]
+}

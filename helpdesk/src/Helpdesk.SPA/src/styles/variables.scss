@@ -1,0 +1,121 @@
+// Globals
+$body-font-family: Roboto, Avenir, Helvetica, Arial, sans-serif;
+$border-radius-root: 6px;
+$font-size-root: 16px;
+
+// Variables must come before the import
+$btn-letter-spacing: 0;
+$btn-font-weight: 400;
+$list-item-title-font-size: 0.929rem;
+$list-item-dense-title-font-size: 0.929rem;
+$list-item-dense-title-font-weight: initial;
+$card-border-radius: 8px;
+$fab-icon-sizes: (
+  "small": 20,
+);
+$btn-sizes: (
+  "default": 41,
+  "large": 54,
+);
+
+// НЕИСПУО theme
+$stratos: #002966;
+$cornflower-blue: #7476f7;
+.text-h1 {
+  font-size: 45px !important;
+}
+.text-h2 {
+  font-size: 35px !important;
+}
+
+$btn-border-radius: 4px;
+
+.bg-cornflower-blue{
+  background-color: $cornflower-blue;
+  color: white !important;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.v-textarea textarea[readonly="readonly"] {
+  color: rgb(0,0,0,0.70)
+}
+.v-text-field input[readonly="readonly"] {
+  color: rgb(0,0,0,0.70)
+}
+
+.v-textarea textarea[disabled="disabled"] {
+  color: rgb(0,0,0,0.70);
+}
+.v-text-field input[disabled="disabled"] {
+  color: rgb(0,0,0,0.70)
+}
+
+.tracking-wider {
+  letter-spacing: .05em;
+}
+
+
+.v-application h1 {
+  font-size: 6rem !important;
+  font-weight: 300;
+  line-height: 6rem;
+  letter-spacing: -0.015625em !important;
+  font-family: "Roboto", sans-serif !important;
+}
+
+.v-application h2 {
+  font-size: 3.75rem !important;
+  font-weight: 300;
+  line-height: 3.75rem;
+  letter-spacing: -0.0083333333em !important;
+  font-family: "Roboto", sans-serif !important;
+}
+
+.v-application h3 {
+  font-size: 3rem !important;
+  font-weight: 400;
+  line-height: 3.125rem;
+  letter-spacing: normal !important;
+  font-family: "Roboto", sans-serif !important;
+}
+
+.v-application h4 {
+  font-size: 2.125rem !important;
+  font-weight: 400;
+  line-height: 2.5rem;
+  letter-spacing: 0.0073529412em !important;
+  font-family: "Roboto", sans-serif !important;
+}
+
+.v-application h5 {
+  font-size: 1.5rem !important;
+  font-weight: 400;
+  line-height: 2rem;
+  letter-spacing: normal !important;
+  font-family: "Roboto", sans-serif !important;
+}
+
+.v-application h6 {
+  font-size: 1.25rem !important;
+  font-weight: 500;
+  line-height: 2rem;
+  letter-spacing: 0.0125em !important;
+  font-family: "Roboto", sans-serif !important;
+}
+
+.textarea {
+  border: 1px solid gray;
+  padding: 15px;
+  font-size: 16px;
+  border-radius: 5px;
+  background: #f0f0f0;
+  min-height: 150px;
+}
+.textarea:hover {
+  background: lightgray;
+}
+
+.textarea p{
+  margin-bottom: 6px;
+}

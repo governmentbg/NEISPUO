@@ -1,0 +1,45 @@
+<ng-container *ngIf="!isSkeleton">
+  <nav aria-label="breadcrumb">
+    <ol class="list-none flex flex-wrap items-baseline p-0 pl-2">
+      <li class="sb-breadcrumb-item text-primary" *ngFor="let parentItem of parentItems; let first = first">
+        <a
+          class="cursor-pointer"
+          [routerLink]="parentItem.routeCommands"
+          [relativeTo]="parentItem.routeExtras ? parentItem.routeExtras.relativeTo : undefined"
+          [queryParams]="parentItem.routeExtras?.queryParams"
+          [fragment]="parentItem.routeExtras?.fragment"
+          [queryParamsHandling]="parentItem.routeExtras?.queryParamsHandling"
+          [preserveFragment]="parentItem.routeExtras?.preserveFragment || false"
+          [skipLocationChange]="parentItem.routeExtras?.skipLocationChange || false"
+          [replaceUrl]="parentItem.routeExtras?.replaceUrl || false"
+          [state]="parentItem.routeExtras?.state"
+        >
+          <fa-icon *ngIf="first && icon" [icon]="icon" size="lg" class="mr-0.5"></fa-icon>
+          <span>{{ parentItem.text }}</span>
+        </a>
+      </li>
+
+      <li class="sb-breadcrumb-item text-gray-600">
+        <fa-icon *ngIf="!parentItems.length && icon" [icon]="icon" size="lg" class="mr-0.5"></fa-icon>
+        <span>{{ text }}</span>
+      </li>
+    </ol>
+  </nav>
+</ng-container>
+
+<ng-container *ngIf="isSkeleton">
+  <nav aria-label="breadcrumb">
+    <ol class="list-none flex flex-wrap items-baseline p-0 pl-2">
+      <li>
+        <a class="flex items-center sb-breadcrumb-item">
+          <span
+            class="h-6 w-6 inline-block ml-0.5 mr-2 rounded-md align-middle sb-breadcrumb-skeleton sb-breadcrumb-skeleton-icon"
+          ></span>
+          <span
+            class="h-4 w-40 inline-block rounded-md align-middle sb-breadcrumb-skeleton sb-breadcrumb-skeleton-text"
+          ></span>
+        </a>
+      </li>
+    </ol>
+  </nav>
+</ng-container>

@@ -1,0 +1,118 @@
+{
+  "template": "SELECT /**select**/ FROM [core].[Institution] I /**where**/ /**orderby**/",
+  "columns": [
+		{
+          "column": "I.InstitutionID AS instid"
+        }
+  ],
+  "params": [
+    {
+      "param": "@instid",
+      "column": "I.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "I.InstitutionID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+{
+  "arrayName": "reportStudents",
+  "template": "SELECT /**select**/ FROM [inst_year].[ReportStudents] RCL /**where**/ /**orderby**/",
+  "columns": [
+        {
+          "column": "RCL.ID AS id"
+        },
+		{
+          "column": "RCL.SchoolYear AS schoolYear"
+        },
+		{
+          "column": "RCL.NumOfStdsAll AS numOfStdsAll"
+        },
+		{
+          "column": "RCL.NumOfGirls AS numOfGirls"
+        },
+		{
+          "column": "RCL.NumOfBoys AS numOfBoys"
+        },
+		{
+          "column": "RCL.NumOfStdsCDO AS numOfStdsCDO"
+        }
+  ],
+  "params": [
+    {
+      "param": "@instid",
+      "column": "RCL.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "RCL.InstitutionID",
+      "type": "ASC"
+    }
+  ]
+},
+{
+  "arrayName": "reportStudentProfileSubjects",
+  "template": "SELECT /**select**/ FROM [inst_year].[StudentProfileSubject] RCL /**where**/ /**orderby**/",
+  "columns": [
+        {
+          "column": "RCL.ID AS id"
+        },
+		{
+          "column": "RCL.ClassName AS className"
+        },
+		{
+          "column": "RCL.StudentName AS studentName"
+        },
+		{
+          "column": "RCL.ProfSubjType AS profSubjType"
+        },
+		{
+          "column": "RCL.SubjectName AS subjectName"
+        }
+  ],
+  "params": [
+    {
+      "param": "@instid",
+      "column": "RCL.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "RCL.BasicClassID",
+      "type": "ASC"
+    },
+	{
+      "column": "RCL.ClassName",
+      "type": "ASC"
+    },
+	{
+      "column": "RCL.StudentName",
+      "type": "ASC"
+    },
+	{
+      "column": "RCL.SubjectName",
+      "type": "ASC"
+    }
+  ]
+}
+  ]
+}

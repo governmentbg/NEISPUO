@@ -1,0 +1,47 @@
+<form *ngIf="!!this.form" [formGroup]="form">
+  <p-fieldset legend="Данни за институцията">
+    <div class="fluid formgrid grid gap-4">
+      <div class="field col-12 general-information">
+        <p-fieldset legend="Обща информация">
+          <app-institution-identifier-data [isBulstatLookupEnabled]="isBulstatLookupEnabled" [displayBulstatMessage]="displayBulstatMessage" [onBulstatLoad]="onBulstatLoad"></app-institution-identifier-data>
+          <div *ngIf="displayWarnMessage" class="col-12 p-0 -mt-2 ">
+            <p-message severity="warn" [text]="warnMessage" styleClass="p-message p-message-warn"></p-message>
+          </div>
+        </p-fieldset>
+      </div>
+      <div class="field col-12 institution-address">
+        <p-fieldset legend="Седалище и адрес на управление">
+          <app-rmt-selection></app-rmt-selection>
+        </p-fieldset>
+      </div>
+      <div class="field col-12 institution-headmaster">
+        <p-fieldset legend="Данни за директор">
+          <app-institution-headmaster-data></app-institution-headmaster-data>
+        </p-fieldset>
+      </div>
+
+      <div class="field col-12 institution-type">
+        <p-fieldset legend="Вид на институцията">
+          <app-institution-type-data [BaseSchoolTypes$]="BaseSchoolTypes$"></app-institution-type-data>
+        </p-fieldset>
+      </div>
+
+      <div class="field col-12 institution-procedure-data">
+        <p-fieldset legend="Данни за процедура" *ngIf="!!displayRIProcedure">
+          <app-institution-procedure-data [controlName]="'RIProcedure'" [displayDocument]="displayDocument" [displayProcedureFields]="displayProcedureFields" [isView]="isView"></app-institution-procedure-data>
+        </p-fieldset>
+      </div>
+
+      <div class="field col-12" *ngIf="displayRIProcedure && displayRIPremInstitution">
+        <p-fieldset legend="Данни за приемаща институция">
+          <app-prem-institution-data [controlName]="'RIProcedure.RIPermInstitution'"> </app-prem-institution-data>
+        </p-fieldset>
+      </div>
+
+      <div class="field col-12 institution-flex-field">
+        <app-institution-flex-field style="display: contents" [isViewFlexField]="isViewFlexField"></app-institution-flex-field>
+      </div>
+
+    </div>
+  </p-fieldset>
+</form>

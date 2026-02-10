@@ -1,0 +1,70 @@
+{
+  "label": "Данни за училищно настоятелство",
+  "sections": [
+    {
+      "order": 1,
+      "name": "TableSchoolBoardsData",
+      "table": 
+        {
+          "name": "schoolBoards",
+          "createNew": "samePage",
+          "formName": "institutionSchoolBoardData",
+          "canDeleteRow": true,
+          "paramName": "institutionSchoolBoardID",
+          "procedureName": "inst_basic.institutionSchoolBoardCUD",
+		  "searchable": true,
+		  "searchType": "column",
+          "fields": [
+            {
+              "label": "Роля",
+              "name": "schoolBoardRole",
+              "type": "input",
+              "inputType": "text",
+			  "width": 10,
+              "order": 2
+            },
+            {
+              "label": "Име",
+              "name": "firstName",
+              "type": "input",
+              "inputType": "text",
+			  "width": 20,
+              "order": 3
+            },
+			    {
+              "label": "Презиме",
+              "name": "middleName",
+              "type": "input",
+              "inputType": "text",
+			  "width": 20,
+              "order": 4
+            },
+			{
+              "label": "Фамилия",
+              "name": "familyName",
+              "type": "input",
+              "inputType": "text",
+			  "width": 20,
+              "order": 5
+            },
+            {
+              "label": "Електронна поща",
+              "name": "email",
+              "type": "input",
+              "inputType": "text",
+			  "width": 10,
+              "order": 6
+            },
+            {
+              "label": "Телефон",
+              "name": "phone",
+              "type": "input",
+              "inputType": "text",
+			  "width": 10,
+              "order": 7
+            }
+          ]
+        }
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/2021-01-12-minutes.txt
+/students/src/MON.API/.config
+
+/students/db/insertFile.sql
+/students/src/MON.API/Telerik Reporting
+/students/docs/media
+/students/docs/diplomas/Integration/DiplomaImportParseModel.cs
+/students/src/Regix/certificates

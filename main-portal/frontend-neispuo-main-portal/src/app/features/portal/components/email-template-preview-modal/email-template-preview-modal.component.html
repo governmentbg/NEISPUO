@@ -1,0 +1,15 @@
+<div class="email-template-preview" *ngIf="!isLoading && !hasError">
+  <div class="preview-content" [innerHTML]="sanitizedContent"></div>
+</div>
+
+<div class="error-wrapper" *ngIf="!isLoading && hasError">
+  <div class="error-message">
+    <i class="pi pi-exclamation-triangle"></i>
+    <p>{{ errorMessage }}</p>
+  </div>
+</div>
+
+
+<div class="loading-wrapper" *ngIf="isLoading">
+  <p>Зареждане...</p>
+</div> 

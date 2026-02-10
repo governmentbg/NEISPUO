@@ -1,0 +1,151 @@
+@import "~@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/variables/variables";
+@import "~@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/mixins";
+
+.dropdown {
+  &::before {
+    content: "";
+    width: 1px;
+    height: 32px;
+    background-color: $white;
+    position: absolute;
+    left: 0;
+    opacity: 0.5;
+  }
+  &::after {
+    display: none;
+  }
+  &-toggle {
+    height: 32px;
+    font-size: $font-size-sm;
+    padding: 0 1rem;
+    border: 1px solid transparent;
+    border-radius: 1rem;
+    &-content {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-right: 0.5rem;
+      max-width: 15rem;
+      width: 100%;
+      line-height: 1.25;
+      overflow: hidden;
+      > span {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: $white;
+        width: inherit;
+        &:nth-child(1) {
+          text-transform: uppercase;
+          font-weight: bold;
+        }
+        &:nth-child(2) {
+          font-size: 10px;
+          font-weight: normal;
+        }
+      }
+    }
+    &::after {
+      content: "\F282";
+      font-family: "bootstrap-icons";
+      border: none;
+      margin-left: 0.5rem;
+      color: $white;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    &:hover {
+      background-size: 0;
+    }
+    &.show {
+      &::after {
+        content: "\F286";
+      }
+    }
+  }
+
+  &-menu-end {
+    right: -1rem;
+  }
+
+  .mobile-avatar {
+    display: none;
+    font-size: 1.125rem;
+  }
+
+  .user-menu {
+    width: max-content;
+    padding: 1.5rem;
+    margin-top: 0.5rem;
+    z-index: 1001;
+    .user-info-wrapper {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.75rem;
+      .user-avatar {
+        height: 42px;
+        min-width: 42px;
+        width: 42px;
+        font-size: 1.25rem;
+        font-weight: bold;
+      }
+      .user-info {
+        overflow: hidden;
+        .user-name {
+          text-transform: uppercase;
+          font-weight: $font-weight-bold;
+          margin-bottom: 0.125rem;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        .user-email {
+          color: $gray-700;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
+    }
+    .profile-btn-wrapper,
+    .exit-btn-wrapper {
+      text-align: center;
+    }
+    .profile-btn-wrapper {
+      button {
+        width: 100%;
+      }
+    }
+    .exit-btn-wrapper {
+      margin-top: 1.125rem;
+    }
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .dropdown {
+    &-toggle {
+      display: none;
+    }
+    .mobile-avatar {
+      display: inline-block;
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .dropdown {
+    .user-menu {
+      max-width: 345px;
+    }
+  }
+}
+
+@media (max-width: 300px) {
+  .dropdown {
+    .user-menu {
+      max-width: 265px;
+    }
+  }
+}

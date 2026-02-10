@@ -1,0 +1,45 @@
+{
+  "sections": [
+    {
+      "order": 1,
+	  "name": "TableClassDetailList",
+      "table": 
+	  {
+          "name": "classGroupList",
+		  "action": "preview",
+		  "paramName": "parentclassid",
+		  "additionalParams": ["classdpt", "instType", "showProfilePart", "classTypeID", "basicClassID", "classKind"],
+		  "searchable": true,
+		  "searchType": "column",
+		  "procedureName": "inst_basic.classGroupCUD",
+		  "fields": [
+			{
+				"label": "Група",
+				"name": "className",
+				"type": "input",
+				"inputType": "text",
+				"width":10,
+				"order": 1
+			},
+			{
+				"label": "Форма на обучение",
+				"name": "еduFormName",
+				"type": "input",
+				"inputType": "text",
+				"width":10,
+				"rendered": true,
+				"order": 2
+			},
+			{
+				"label": "Адрес на обучение",
+				"name": "departmentName",
+				"type": "input",
+				"inputType": "text",
+				"width":20,
+				"order": 3
+			}
+        ]
+      }
+    }
+  ]
+}

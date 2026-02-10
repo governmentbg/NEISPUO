@@ -1,0 +1,13 @@
+export enum RoleEnum {
+  SCHOOL = 0,
+  MON = 1,
+  RUO = 2,
+  MUNICIPALITY = 3,
+  BUDGETING_INSTITUTION = 4,
+  TEACHER = 5,
+  STUDENT = 6,
+  PARENT = 7,
+  MON_OBGUM = 15,
+  MON_OBGUM_FINANCES = 16,
+  MON_CHRAO = 17,
+}

@@ -1,0 +1,74 @@
+.mat-button-wrapper > * {
+  vertical-align: baseline !important;
+}
+
+.mat-button-wrapper .ng-fa-icon + span,
+.mat-button-wrapper .fa-layers + span {
+  @apply tracking-wider;
+
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 0.25rem;
+  }
+}
+
+.sb-mat-icon {
+  @apply inline-block fill-current;
+
+  > svg {
+    @apply w-full h-full;
+  }
+}
+
+#twroot .mat-form-field-flex {
+  @apply px-2 pt-1.5 pb-0 rounded border border-gray-200;
+
+  .mat-form-field-infix {
+    @apply pb-1.5;
+  }
+}
+
+#twroot .mat-focused .mat-form-field-flex {
+  @apply border-primary;
+}
+
+#twroot .mat-form-field-subscript-wrapper {
+  @apply px-2 mt-1;
+}
+
+#twroot .mat-form-field-underline {
+  display: none;
+}
+
+#twroot .mat-tab-link {
+  min-width: 5rem;
+}
+
+#twroot .mat-badge-content.mat-badge-active {
+  background-color: theme('colors.red.500');
+}
+
+.mat-paginator-container {
+  min-height: auto;
+}
+
+.mat-paginator-page-size {
+  .mat-form-field-infix {
+    border-top-width: 0;
+  }
+
+  .mat-form-field-appearance-legacy .mat-form-field-wrapper {
+    padding-bottom: 7px;
+  }
+}
+
+#twroot .mat-paginator-navigation-previous,
+#twroot .mat-paginator-navigation-next {
+  padding-top: 5px;
+}
+
+#twroot .mat-raised-button:focus-visible {
+  outline: theme('colors.blue.700') auto 1px;
+  outline-offset: 2px;
+}

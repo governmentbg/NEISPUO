@@ -1,0 +1,428 @@
+{
+  "procedureName": "inst_basic.personQCourseCUD",
+  "dataName": "if(operationType==1) {form.dataName=null} else {form.dataName='personQCourseData'}",
+  "sections": [
+    {
+      "label": "Данни за курс",
+      "name": "staffQCourse",
+      "order": 1,
+      "subsections": [
+        {
+          "order": 1,
+          "name": "staffQCourse",
+          "label": "Данни за курс",
+          "fields": [
+            {
+              "label": "Сист. ID",
+              "name": "personQCourseDataID",
+              "type": "input",
+              "inputType": "number",
+              "rendered": false,
+              "disabled": true,
+              "order": 0
+            },
+            {
+              "label": "Сист. ID на контекста (човека)",
+              "name": "personID",
+              "type": "input",
+              "inputType": "number",
+              "rendered": false,
+              "disabled": true,
+              "order": 0
+            },
+            {
+              "label": "Тип на курса",
+              "name": "qCourseActTypeID",
+              "type": "searchselect",
+              "optionsPath": "/data/get/qCourseActTypes",
+              "defaultValue": "qCourseActTypeID",
+              "influence": [
+                {
+                  "fieldName": "qCourseTypeID",
+                  "url": "/data/get/qCourseTypes",
+                  "type": "options"
+                },
+                {
+                  "fieldName": "qCourseBudgetSourceTypeID",
+                  "url": "/data/get/qCourseBudgetSourceTypes",
+                  "type": "options"
+                },
+                {
+                  "fieldName": "qCourseDurationTypeID",
+                  "url": "/data/get/qCourseDurationTypes",
+                  "type": "options"
+                }
+              ],
+              "disabled": true,
+              "rendered": false,
+              "order": 0
+            },
+            {
+              "label": "Година на завършване",
+              "name": "qCourseYear",
+              "type": "input",
+              "inputType": "number",
+              "order": 1,
+              "width": 95,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 4,
+                  "message": "Максимална дължина 4 символа"
+                },
+                {
+                  "name": "minLength",
+                  "validation": 4,
+                  "message": "Минимална дължина 4 символа"
+                },
+                {
+                  "name": "max",
+                  "validation": 9999,
+                  "message": "Невалидна година"
+                },
+                {
+                  "name": "pattern",
+                  "validation": "^\\d+$",
+                  "message": "Полето трябва да съдържа цяло неотрицателно число"
+                },
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ]
+            },
+            {
+              "label": "Вид на курса",
+              "name": "qCourseTypeID",
+              "type": "searchselect",
+              "disabled": false,
+              "width": 800,
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ],
+              "order": 2
+            },
+            {
+              "label": "Пояснения",
+              "name": "qCourseTypeNotes",
+              "type": "textarea",
+              "order": 3,
+              "width": 1000,
+              "height": 2,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 1024,
+                  "message": "Максимална дължина 1024 символа"
+                }
+              ]
+            },
+            {
+              "label": "Проведен от",
+              "name": "qCourseBudgetSourceTypeID",
+              "type": "searchselect",
+	      "influence": [
+		{
+                  "fieldName": "qCourseFinancingMethodID",
+                  "url": "/data/get/qCourseFinancingMethod",
+                  "type": "options"
+                },
+                {
+                  "type": "defaultValue",
+                  "fieldName": "qCourseFinancingMethodID",
+                  "condition": [
+                    1
+                  ],
+                  "defaultValue": 3
+                },
+		{
+                  "type": "defaultValue",
+                  "fieldName": "qCourseFinancingMethodID",
+                  "condition": [
+                    6
+                  ],
+                  "defaultValue": 4
+                }
+              ],
+              "disabled": false,
+              "width": 600,
+              "order": 4
+            },
+	    {
+              "label": "Начин на финансиране",
+              "name": "qCourseFinancingMethodID",
+	      "optionsPath": "/data/get/qCourseFinancingMethod",
+              "type": "searchselect",
+	      "influence": [
+                {
+                  "fieldName": "qCourseFinancingMethodProgramsID",
+                  "url": "/data/get/qCourseFinancingMethodPrograms",
+                  "type": "options"
+                },
+		{
+                  "type": "render",
+                  "fieldName": "qCourseFinancingMethodProgramsID",
+                  "condition": [
+                    1,
+		    2
+                  ]
+                }
+              ],
+              "disabled": false,
+              "width": 300,
+              "order": 4
+            },
+	    {
+              "label": "Финансиран от програми или проект/национална програма",
+              "name": "qCourseFinancingMethodProgramsID",
+              "type": "searchselect",
+              "disabled": false,
+              "width": 1000,
+              "order": 5
+            },
+            {
+              "label": "Цена",
+              "name": "internalCoursePrice",
+              "type": "input",
+              "inputType": "number",
+              "order": 6,
+              "width": 95,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 10,
+                  "message": "Максимална дължина 10 символа"
+                },
+                {
+                  "name": "pattern",
+                  "validation": "^\\d+(\\.\\d{1,2})?$",
+                  "message": "Полето трябва да съдържа неотрицателно число с до два знака след десетичната запетая"
+                }
+              ]
+            },
+            {
+              "label": "Продължителност",
+              "name": "qCourseDurationTypeID",
+              "type": "searchselect",
+              "disabled": false,
+              "order": 7,
+              "width": 400,
+              "influence": [
+                {
+                  "type": "render",
+                  "fieldName": "qCourseDurationHours",
+                  "condition": [
+                    25
+                  ]
+                },
+                {
+                  "type": "render",
+                  "fieldName": "qCourseDurationCredits",
+                  "condition": [
+                    20,
+                    21,
+                    22,
+                    23,
+                    24
+                  ]
+                },
+                {
+                  "type": "defaultValue",
+                  "fieldName": "qCourseDurationCredits",
+                  "condition": [
+                    20
+                  ],
+                  "defaultValue": 1
+                },
+                {
+                  "type": "defaultValue",
+                  "fieldName": "qCourseDurationCredits",
+                  "condition": [
+                    21
+                  ],
+                  "defaultValue": 2
+                },
+                {
+                  "type": "defaultValue",
+                  "fieldName": "qCourseDurationCredits",
+                  "condition": [
+                    22
+                  ],
+                  "defaultValue": 3
+                }
+              ]
+            },
+            {
+              "label": "Документ",
+              "name": "documentType",
+              "type": "input",
+              "inputType": "text",
+              "disabled": false,
+              "order": 8,
+              "width": 400,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 255,
+                  "message": "Максимална дължина 255 символа"
+                }
+              ]
+            },
+            {
+              "label": "Тема",
+              "name": "qCourseTopic",
+              "type": "input",
+              "inputType": "text",
+              "disabled": false,
+              "order": 11,
+              "width": 1000,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 255,
+                  "message": "Максимална дължина 255 символа"
+                }
+              ]
+            },
+            {
+              "label": "Брой кредити",
+              "name": "qCourseDurationCredits",
+              "type": "input",
+              "inputType": "number",
+              "order": 9,
+              "width": 95,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 10,
+                  "message": "Максимална дължина 10 символа"
+                },
+                {
+                  "name": "pattern",
+                  "validation": "^\\d+$",
+                  "message": "Полето трябва да съдържа цяло неотрицателно число"
+                }
+              ]
+            },
+            {
+              "label": "Брой часове",
+              "name": "qCourseDurationHours",
+              "type": "input",
+              "inputType": "number",
+              "order": 10,
+              "width": 95,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 10,
+                  "message": "Максимална дължина 10 символа"
+                },
+                {
+                  "name": "pattern",
+                  "validation": "^\\d+(\\.\\d{1,2})?$",
+                  "message": "Неотрицателно десетично число с ДО два знака след десетичната запетая"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "label": "Институция",
+          "fields": [
+            {
+              "label": "Наименование",
+              "name": "universityID",
+              "type": "searchselect",
+              "optionsPath": "/data/get/university",
+              "disabled": false,
+              "width": 800,
+              "order": 1
+            },
+            {
+              "label": "Бележки",
+              "name": "universityNotes",
+              "type": "textarea",
+              "order": 2,
+              "width": 800,
+              "height": 2,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 1024,
+                  "message": "Максимална дължина 1024 символа"
+                }
+              ]
+            }
+          ]
+        }
+     ]
+    },
+    {
+      "order": 2,
+      "name": "presentedTeachersList",
+      "label": "Списък служители, към които да бъде добавен курса",
+      "table": {
+        "name": "presentedTeachers",
+	"rendered": "if(operationType==1) {table.rendered=true} else {table.rendered=false}",
+        "hasEditButton": false,
+        "canDeleteRow": false,
+        "procedureName": "",
+        "searchable": true,
+        "searchType": "column",
+        "multiAdd": {
+          "addFrom": "teachers",
+          "listColumns": [
+            "fullName"
+          ],
+          "title": "Добавяне на служители",
+          "comparisonColumn": "staffPositionID",
+          "tableColumns": [
+            "fullName"
+          ],
+          "dependsOn": []
+        },
+        "fields": [
+          {
+            "name": "id",
+            "type": "input",
+            "inputType": "number",
+            "width": 5,
+            "rendered": false,
+            "order": 0
+          },
+          {
+            "name": "personID",
+            "type": "input",
+            "inputType": "number",
+            "width": 5,
+            "rendered": false,
+            "order": 0
+          },
+          {
+            "name": "staffPositionID",
+            "type": "input",
+            "inputType": "number",
+            "width": 5,
+            "rendered": false,
+            "order": 1
+          },
+          {
+            "label": "Име на преподавател",
+            "name": "fullName",
+            "type": "input",
+            "inputType": "text",
+            "width": 70,
+            "rendered": true,
+            "order": 2
+          }
+        ]
+       }
+      }
+  ]
+}

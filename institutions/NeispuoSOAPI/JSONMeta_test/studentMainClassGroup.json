@@ -1,0 +1,961 @@
+{
+  "label": "Профил на детето/ученика",
+  "procedureName": "inst_basic.studentClassCUD",
+  "sections": [
+    {
+      "order": 1,
+      "subsections": [
+        {
+          "order": 1,
+          "name": "studentClassGroups",
+          "label": "Клас/група",
+          "fields": [
+            {
+              "label": "DetailedSchoolType",
+              "name": "detailedSchoolTypeID",
+              "optionsPath": "/data/get/detailedSchoolTypes",
+              "type": "select",
+              "disabled": false,
+              "rendered": false,
+              "influence": [
+                {
+                  "type": "render",
+                  "sectionName": "TableCurriculumListG",
+                  "condition": [131,132]
+                }
+              ],
+              "order": 0
+            },
+            {
+              "label": "BasicClass",
+              "name": "basicClassID",
+              "type": "select",
+              "optionsPath": "/data/get/basicClasses",
+              "order": 0,
+              "width": 400,
+              "disabled": true,
+              "rendered": false,
+              "influence": [
+                {
+                  "type": "render",
+                  "fieldName": "isIndividualCurriculum",
+                  "condition": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    19,
+                    20,
+                    21,
+                    22,
+                    23,
+                    24,
+                    25,
+                    26,
+                    27,
+                    28,
+                    29,
+                    30,
+                    31,
+                    40,
+                    41,
+                    42,
+                    43
+                  ]
+                },
+                {
+                  "type": "hide",
+                  "fieldName": "isHourlyOrganization",
+                  "condition": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    19,
+                    20,
+                    21,
+                    22,
+                    23,
+                    24,
+                    25,
+                    26,
+                    27,
+                    28,
+                    29,
+                    30,
+                    31,
+                    40,
+                    41,
+                    42,
+                    43
+                  ]
+                }
+              ],
+              "validations": []
+            },
+            {
+              "label": "Наименование",
+              "name": "className",
+              "type": "input",
+              "inputType": "text",
+              "order": 1,
+              "width": 150,
+              "disabled": true,
+              "influence": [],
+              "validations": [],
+              "info": ""
+            },
+            {
+              "label": "Форма на обучение",
+              "name": "studentEdFormName",
+              "type": "input",
+              "inputType": "text",
+              "order": 2,
+              "width": 400,
+              "disabled": true,
+              "influence": [],
+              "validations": []
+            },
+            {
+              "label": "Профил/Професия/Специалност",
+              "name": "classSpecialityName",
+              "type": "input",
+              "inputType": "text",
+              "order": 3,
+              "width": 800,
+              "disabled": true,
+              "influence": [],
+              "validations": []
+            },
+            {
+              "order": 4,
+              "type": "breakpoint"
+            },
+            {
+              "label": "Обучава се на индивидуален план",
+              "name": "isIndividualCurriculum",
+              "type": "checkbox",
+              "order": 5,
+              "width": 200,
+              "disabled": false,
+              "influence": [],
+              "validations": []
+            },
+            {
+              "label": "Обучава се на почасова организация",
+              "name": "isHourlyOrganization",
+              "type": "checkbox",
+              "order": 6,
+              "width": 200,
+              "disabled": false,
+              "influence": [],
+              "validations": []
+            },
+            {
+              "order": 7,
+              "type": "breakpoint"
+            },
+            {
+              "label": "Повторно записан в същия клас",
+              "name": "repeaterReasonId",
+              "type": "searchselect",
+              "optionsPath": "/data/get/repeaterReasons",
+              "order": 8,
+              "width": 400,
+              "disabled": false,
+              "influence": [],
+              "validations": [
+                    {
+                      "name": "required",
+                      "validator": "",
+                      "message": "Полето е задължително"
+                    }
+                  ]
+            },
+            {
+              "label": "Пътуващ с организиран от училището транспорт",
+              "name": "commuterTypeId",
+              "type": "searchselect",
+              "optionsPath": "/data/get/commuterTypes",
+              "order": 9,
+              "width": 600,
+              "disabled": false,
+              "influence": [],
+              "validations": []
+            },
+            {
+              "label": "ОРЕС",
+              "name": "oresType",
+              "type": "searchselect",
+              "optionsPath": "/data/get/oresTypes",
+              "order": 10,
+              "width": 800,
+              "disabled": false,
+              "influence": [],
+              "validations": []
+            },
+            {
+              "name": "classTypeID",
+              "type": "select",
+              "optionsPath": "/data/get/classTypes",
+              "order": 11,
+              "width": 600,
+              "disabled": false,
+              "rendered": false,
+              "influence": [
+                {
+                  "type": "render",
+                  "sectionName": "studentProfileSubjects",
+                  "condition": [
+                    21,
+                    22,
+                    23,
+                    24,
+                    25,
+                    26,
+                    27,
+                    28,
+                    29,
+                    30,
+                    31,
+                    32,
+                    33
+                  ]
+                }
+              ],
+              "validations": []
+            },
+            {
+              "name": "studentEduFormId",
+              "type": "select",
+              "optionsPath": "/data/get/studentEdForms",
+              "order": 12,
+              "width": 600,
+              "disabled": false,
+              "rendered": false,
+              "influence": [
+                {
+                  "type": "render",
+                  "fieldName": "oresType",
+                  "condition": [
+                    1,5,51,52,53,54,8,81,82,83,9
+                  ]
+                }
+              ],
+              "validations": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Профилиращи учебни предмети",
+      "name": "studentProfileSubjects",
+      "order": 2,
+      "accordion": {
+        "state": "closed"
+      },
+      "table": {
+        "name": "studentProfileSubject",
+        "hasEditButton": false,
+        "searchable": false,
+        "sortable": false,
+        "fields": [
+          {
+            "label": "Вид",
+            "name": "profSubjType",
+            "type": "input",
+            "inputType": "text",
+            "order": 1,
+            "disabled": true,
+            "width": 300
+          },
+          {
+            "label": "Предмет",
+            "name": "subjectName",
+            "type": "input",
+            "inputType": "text",
+            "order": 2,
+            "width": 600,
+            "disabled": false
+          }
+        ]
+      }
+    },
+    {
+      "order": 3,
+      "label": "if(instType==2) {section.label='Основни форми на педагогическо взаимодействие'} else {section.label='Изучавани предмети - Раздел А – задължителни учебни часове'}",
+      "name": "TableCurriculumListA",
+      "accordion": {"state":"closed","dataName":"studentCurriculumA"},
+      "table": {
+        "name": "studentCurriculumA",
+        "hasEditButton":true,
+        "searchable":true,
+        "searchType":"column",
+        "multiAdd": {
+          "addFrom": "studentCurriculumListA",
+          "listColumns": [
+            "curriculumID",
+            "subjectName",
+            "subjectTypeName",
+            "curriculumGroupID"
+          ],
+          "comparisonColumn": "curriculumID",
+          "tableColumns": [
+            "curriculumID",
+            "subjectName",
+            "subjectTypeName",
+            "curriculumGroupID"
+          ],
+          "dependson": [
+            "parentclassid"
+          ],
+          "title": "Избор на предмет"
+        },
+	"formName":  "studentMainClassData",
+        "paramName": "curriculumStudentID",
+        "canDeleteRow": false,
+        "fields": [
+          {
+            "label": "Уник.ID",
+            "name": "curriculumStudentID",
+            "type": "input",
+            "inputType": "number",
+            "width": 9,
+            "rendered": false,
+            "order": 0
+          },
+          {
+            "label": "Сист.ID",
+            "name": "curriculumID",
+            "type": "input",
+            "inputType": "number",
+            "rendered": false,
+            "width": 9,
+            "order": 1
+          },
+          {
+            "label": "if(instType==2) {field.label='Образователно направление'} else if(instType==1) {field.label='Учебен предмет'} else {field.label='Дейност'}",
+            "name": "subjectName",
+            "type": "input",
+            "inputType": "text",
+            "width": 20,
+            "order": 2
+          },
+          {
+            "label": "if(instType==2) {field.label='Форма на педаг.взаимодействие'} else if(instType==1) {field.label='Начин на изучаване'} else {field.label='Вид подкрепа'}",
+            "name": "subjectTypeName",
+            "type": "input",
+            "inputType": "text",
+            "width": 20,
+            "order": 3
+          },
+          {
+            "label": "Група",
+            "name": "curriculumGroupID",
+            "type": "input",
+            "inputType": "number",
+            "width": 10,
+            "order": 4
+          },
+          {
+            "label": "if(instType==2 || instType==3) {field.label='УС годишно'} else {field.label='I срок УС'}",
+            "name": "weeksFirstTerm",
+            "type": "input",
+            "inputType": "number",
+            "width": 10,
+            "order": 5
+          },
+          {
+            "label": "if(instType==2 || instType==3) {field.label='ЧС годишно'} else {field.label='I срок ЧС'}",
+            "name": "hoursWeeklyFirstTerm",
+            "type": "input",
+            "inputType": "number",
+            "width": 10,
+            "order": 6
+          },
+          {
+            "label": "II срок УС",
+            "name": "weeksSecondTerm",
+            "type": "input",
+            "inputType": "number",
+            "rendered": "if(instType==2 || instType==3) {field.rendered=false} else {field.rendered=true}",
+            "width": 10,
+            "order": 7
+          },
+          {
+            "label": "II срок ЧС",
+            "name": "hoursWeeklySecondTerm",
+            "type": "input",
+            "inputType": "number",
+            "rendered": "if(instType==2 || instType==3) {field.rendered=false} else {field.rendered=true}",
+            "width": 10,
+            "order": 8
+          },
+          {
+            "label": "Общо",
+            "name": "hoursAll",
+            "type": "input",
+            "inputType": "number",
+            "rendered": "if(instType==2 || instType==3) {field.rendered=false} else {field.rendered=true}",
+            "width": 10,
+            "order": 9
+          },
+          {
+            "label": "Преподавател",
+            "name": "teacherName",
+            "type": "input",
+            "inputType": "text",
+            "width": 20,
+            "order": 10
+          }
+        ]
+      }
+    },
+    {
+      "order": 4,
+      "rendered": "if(instType==1 || instType==4) {section.rendered=true} else {section.rendered=false}",
+      "label": "Раздел Б – избираеми учебни часове",
+      "name": "TableCurriculumListB",
+      "accordion": {"state":"closed","dataName":"studentCurriculumB"},
+      "table": {
+        "name": "studentCurriculumB",
+        "hasEditButton": true,
+        "searchable":true,
+        "searchType":"column",
+        "multiAdd": {
+          "addFrom": "studentCurriculumListB",
+          "listColumns": [
+            "curriculumID",
+            "subjectName",
+            "subjectTypeName",
+            "curriculumGroupID"
+          ],
+          "comparisonColumn": "curriculumID",
+          "tableColumns": [
+            "curriculumID",
+            "subjectName",
+            "subjectTypeName",
+            "curriculumGroupID"
+          ],
+          "dependson": [
+            "parentclassid"
+          ],
+          "title": "Избор на предмет"
+        },
+	"formName":  "studentMainClassData",
+        "paramName": "curriculumStudentID",
+        "canDeleteRow": false,
+        "fields": [
+          {
+            "label": "Уник.ID",
+            "name": "curriculumStudentID",
+            "type": "input",
+            "inputType": "number",
+            "rendered": false,
+            "width": 15,
+            "order": 0
+          },
+          {
+            "label": "Сист.ID",
+            "name": "curriculumID",
+            "type": "input",
+            "inputType": "number",
+            "rendered": false,
+            "width": 15,
+            "order": 1
+          },
+          {
+            "label": "if(instType==2) {field.label='Образователно направление'} else {field.label='Учебен предмет'}",
+            "name": "subjectName",
+            "type": "input",
+            "inputType": "text",
+            "width": 20,
+            "order": 2
+          },
+          {
+            "label": "if(instType==2) {field.label='Форма на педаг.взаимодействие'} else {field.label='Начин на изучаване'}",
+            "name": "subjectTypeName",
+            "type": "input",
+            "inputType": "text",
+            "width": 20,
+            "order": 3
+          },
+          {
+            "label": "Група",
+            "name": "curriculumGroupID",
+            "type": "input",
+            "inputType": "number",
+            "width": 10,
+            "order": 4
+          },
+          {
+            "label": "if(instType==2) {field.label='УС годишно'} else {field.label='I срок УС'}",
+            "name": "weeksFirstTerm",
+            "type": "input",
+            "inputType": "number",
+            "width": 10,
+            "order": 5
+          },
+          {
+            "label": "if(instType==2) {field.label='ЧС годишно'} else {field.label='I срок ЧС'}",
+            "name": "hoursWeeklyFirstTerm",
+            "type": "input",
+            "inputType": "number",
+            "width": 10,
+            "order": 6
+          },
+          {
+            "label": "II срок УС",
+            "name": "weeksSecondTerm",
+            "type": "input",
+            "inputType": "number",
+            "rendered": "if(instType==2) {field.rendered=false} else {field.rendered=true}",
+            "width": 10,
+            "order": 7
+          },
+          {
+            "label": "II срок ЧС",
+            "name": "hoursWeeklySecondTerm",
+            "type": "input",
+            "inputType": "number",
+            "rendered": "if(instType==2) {field.rendered=false} else {field.rendered=true}",
+            "width": 10,
+            "order": 8
+          },
+          {
+            "label": "Общо",
+            "name": "hoursAll",
+            "type": "input",
+            "inputType": "number",
+            "rendered": "if(instType==2) {field.rendered=false} else {field.rendered=true}",
+            "width": 10,
+            "order": 9
+          },
+          {
+            "label": "Преподавател",
+            "name": "teacherName",
+            "type": "input",
+            "inputType": "text",
+            "width": 20,
+            "order": 10
+          }
+        ]
+      }
+    },
+    {
+      "order": 5,
+      "label": "if(instType==2) {section.label='Допълнителни форми на педагогическо взаимодействие'} else {section.label='Изучавани предмети - Раздел В – факултативни учебни часове'}",
+      "name": "TableCurriculumListV",
+      "accordion": {"state":"closed","dataName":"studentCurriculumV"},
+      "table": {
+        "name": "studentCurriculumV",
+        "hasEditButton": true,
+        "searchable":true,
+        "searchType":"column",
+        "multiAdd": {
+          "addFrom": "studentCurriculumListV",
+          "listColumns": [
+            "curriculumID",
+            "subjectName",
+            "subjectTypeName",
+            "curriculumGroupID"
+          ],
+          "comparisonColumn": "curriculumID",
+          "tableColumns": [
+            "curriculumID",
+            "subjectName",
+            "subjectTypeName",
+            "curriculumGroupID"
+          ],
+          "dependson": [
+            "parentclassid"
+          ],
+          "title": "Избор на предмет"
+        },
+	"formName":  "studentMainClassData",
+        "paramName": "curriculumStudentID",
+        "canDeleteRow": false,
+        "fields": [
+          {
+            "label": "Уник.ID",
+            "name": "curriculumStudentID",
+            "type": "input",
+            "inputType": "number",
+            "width": 15,
+            "rendered": false,
+            "order": 0
+          },
+          {
+            "label": "Сист.ID",
+            "name": "curriculumID",
+            "type": "input",
+            "inputType": "number",
+            "rendered": false,
+            "width": 15,
+            "order": 1
+          },
+          {
+            "label": "if(instType==2) {field.label='Образователно направление'} else {field.label='Учебен предмет'}",
+            "name": "subjectName",
+            "type": "input",
+            "inputType": "text",
+            "width": 20,
+            "order": 2
+          },
+          {
+            "label": "if(instType==2) {field.label='Форма на педаг.взаимодействие'} else {field.label='Начин на изучаване'}",
+            "name": "subjectTypeName",
+            "type": "input",
+            "inputType": "text",
+            "width": 20,
+            "order": 3
+          },
+          {
+            "label": "Група",
+            "name": "curriculumGroupID",
+            "type": "input",
+            "inputType": "number",
+            "width": 10,
+            "order": 4
+          },
+          {
+            "label": "if(instType==2) {field.label='УС годишно'} else {field.label='I срок УС'}",
+            "name": "weeksFirstTerm",
+            "type": "input",
+            "inputType": "number",
+            "width": 10,
+            "order": 5
+          },
+          {
+            "label": "if(instType==2) {field.label='ЧС годишно'} else {field.label='I срок ЧС'}",
+            "name": "hoursWeeklyFirstTerm",
+            "type": "input",
+            "inputType": "number",
+            "width": 10,
+            "order": 6
+          },
+          {
+            "label": "II срок УС",
+            "name": "weeksSecondTerm",
+            "type": "input",
+            "inputType": "number",
+            "rendered": "if(instType==2) {field.rendered=false} else {field.rendered=true}",
+            "width": 10,
+            "order": 7
+          },
+          {
+            "label": "II срок ЧС",
+            "name": "hoursWeeklySecondTerm",
+            "type": "input",
+            "inputType": "number",
+            "rendered": "if(instType==2) {field.rendered=false} else {field.rendered=true}",
+            "width": 10,
+            "order": 8
+          },
+          {
+            "label": "Общо",
+            "name": "hoursAll",
+            "type": "input",
+            "inputType": "number",
+            "rendered": "if(instType==2) {field.rendered=false} else {field.rendered=true}",
+            "width": 10,
+            "order": 9
+          },
+          {
+            "label": "Преподавател",
+            "name": "teacherName",
+            "type": "input",
+            "inputType": "text",
+            "width": 20,
+            "order": 10
+          }
+        ]
+      }
+    },
+    {
+      "order": 6,
+      "label": "Раздел Г на учебния план",
+      "name": "TableCurriculumListG",
+      "rendered": "if(instType==1) {section.rendered=true} else {section.rendered=false}",
+      "accordion": {"state":"closed","dataName":"studentCurriculumG"},
+      "table": {
+        "name": "studentCurriculumG",
+        "hasEditButton": true,
+        "searchable":true,
+        "searchType":"column",
+        "multiAdd": {
+          "addFrom": "studentCurriculumListG",
+          "listColumns": [
+            "curriculumID",
+            "subjectName",
+            "subjectTypeName",
+            "curriculumGroupID"
+          ],
+          "comparisonColumn": "curriculumID",
+          "tableColumns": [
+            "curriculumID",
+            "subjectName",
+            "subjectTypeName",
+            "curriculumGroupID"
+          ],
+          "dependson": [
+            "parentclassid"
+          ],
+          "title": "Избор на предмет"
+        },
+	"formName":  "studentMainClassData",
+        "paramName": "curriculumStudentID",
+        "canDeleteRow": false,
+        "fields": [
+          {
+            "label": "Уник.ID",
+            "name": "curriculumStudentID",
+            "type": "input",
+            "inputType": "number",
+            "width": 15,
+            "rendered": false,
+            "order": 0
+          },
+          {
+            "label": "Сист.ID",
+            "name": "curriculumID",
+            "type": "input",
+            "inputType": "number",
+            "rendered": false,
+            "width": 15,
+            "order": 1
+          },
+          {
+            "label": "Учебен предмет",
+            "name": "subjectName",
+            "type": "input",
+            "inputType": "text",
+            "width": 20,
+            "order": 2
+          },
+          {
+            "label": "Начин на изучаване",
+            "name": "subjectTypeName",
+            "type": "input",
+            "inputType": "text",
+            "width": 20,
+            "order": 3
+          },
+          {
+            "label": "Група",
+            "name": "curriculumGroupID",
+            "type": "input",
+            "inputType": "number",
+            "width": 10,
+            "order": 4
+          },
+          {
+            "label": "I срок УС",
+            "name": "weeksFirstTerm",
+            "type": "input",
+            "inputType": "number",
+            "width": 10,
+            "order": 5
+          },
+          {
+            "label": "I срок ЧС",
+            "name": "hoursWeeklyFirstTerm",
+            "type": "input",
+            "inputType": "number",
+            "width": 10,
+            "order": 6
+          },
+          {
+            "label": "II срок УС",
+            "name": "weeksSecondTerm",
+            "type": "input",
+            "inputType": "number",
+            "rendered": true,
+            "width": 10,
+            "order": 7
+          },
+          {
+            "label": "II срок ЧС",
+            "name": "hoursWeeklySecondTerm",
+            "type": "input",
+            "inputType": "number",
+            "rendered": true,
+            "width": 10,
+            "order": 8
+          },
+          {
+            "label": "Общо",
+            "name": "hoursAll",
+            "type": "input",
+            "inputType": "number",
+            "rendered": true,
+            "width": 10,
+            "order": 9
+          },
+          {
+            "label": "Преподавател",
+            "name": "teacherName",
+            "type": "input",
+            "inputType": "text",
+            "width": 20,
+            "order": 10
+          }
+        ]
+      }
+    },
+    {
+      "order": 7,
+      "label": "Часове извън учебния план",
+      "name": "TableCurriculumListD",
+      "rendered": "if(instType==1 || instType==4) {section.rendered=true} else {section.rendered=false}",
+      "accordion": {"state":"closed","dataName":"studentCurriculumD"},
+      "table": {
+        "name": "studentCurriculumD",
+        "hasEditButton": true,
+        "searchable":true,
+        "searchType":"column",
+        "multiAdd": {
+          "addFrom": "studentCurriculumListD",
+          "listColumns": [
+            "curriculumID",
+            "subjectName",
+            "subjectTypeName",
+            "curriculumGroupID"
+          ],
+          "comparisonColumn": "curriculumID",
+          "tableColumns": [
+            "curriculumID",
+            "subjectName",
+            "subjectTypeName",
+            "curriculumGroupID"
+          ],
+          "dependson": [
+            "parentclassid"
+          ],
+          "title": "Избор на предмет"
+        },
+	"formName":  "studentMainClassData",
+        "paramName": "curriculumStudentID",
+        "canDeleteRow": false,
+        "fields": [
+          {
+            "label": "Уник.ID",
+            "name": "curriculumStudentID",
+            "type": "input",
+            "inputType": "number",
+            "width": 15,
+            "rendered": false,
+            "order": 0
+          },
+          {
+            "label": "Сист.ID",
+            "name": "curriculumID",
+            "type": "input",
+            "inputType": "number",
+            "rendered": false,
+            "width": 15,
+            "order": 1
+          },
+          {
+            "label": "if(instType==2) {field.label='Образователно направление'} else {field.label='Учебен предмет'}",
+            "name": "subjectName",
+            "type": "input",
+            "inputType": "text",
+            "width": 20,
+            "order": 2
+          },
+          {
+            "label": "if(instType==2) {field.label='Форма на педаг.взаимодействие'} else {field.label='Начин на изучаване'}",
+            "name": "subjectTypeName",
+            "type": "input",
+            "inputType": "text",
+            "width": 20,
+            "order": 3
+          },
+          {
+            "label": "Група",
+            "name": "curriculumGroupID",
+            "type": "input",
+            "inputType": "number",
+            "width": 10,
+            "order": 4
+          },
+          {
+            "label": "if(instType==2) {field.label='УС годишно'} else {field.label='I срок УС'}",
+            "name": "weeksFirstTerm",
+            "type": "input",
+            "inputType": "number",
+            "width": 10,
+            "order": 5
+          },
+          {
+            "label": "if(instType==2) {field.label='ЧС годишно'} else {field.label='I срок ЧС'}",
+            "name": "hoursWeeklyFirstTerm",
+            "type": "input",
+            "inputType": "number",
+            "width": 10,
+            "order": 6
+          },
+          {
+            "label": "II срок УС",
+            "name": "weeksSecondTerm",
+            "type": "input",
+            "inputType": "number",
+            "rendered": "if(instType==2) {field.rendered=false} else {field.rendered=true}",
+            "width": 10,
+            "order": 7
+          },
+          {
+            "label": "II срок ЧС",
+            "name": "hoursWeeklySecondTerm",
+            "type": "input",
+            "inputType": "number",
+            "rendered": "if(instType==2) {field.rendered=false} else {field.rendered=true}",
+            "width": 10,
+            "order": 8
+          },
+          {
+            "label": "Общо",
+            "name": "hoursAll",
+            "type": "input",
+            "inputType": "number",
+            "rendered": "if(instType==2) {field.rendered=false} else {field.rendered=true}",
+            "width": 10,
+            "order": 9
+          },
+          {
+            "label": "Преподаватели",
+            "name": "teacherName",
+            "type": "input",
+            "inputType": "text",
+            "width": 20,
+            "order": 10
+          }
+        ]
+      }
+    }
+  ]
+}

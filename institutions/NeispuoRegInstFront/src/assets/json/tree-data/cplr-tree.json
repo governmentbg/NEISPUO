@@ -1,0 +1,21 @@
+[
+  {
+    "name": "Област София",
+    "children": [
+      {
+        "name": "Община София",
+        "children": [
+          {
+            "name": "ЦПЛР-СПОРТНА ШКОЛА-СОФИЯ",
+            "instid": "2999983",
+            "color": "#ffff00",
+            "status": "Институция (чака МОН)",
+            "formName": "cplr",
+            "procID": 1,
+            "instKind": "cplr"
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,46 @@
+<form [formGroup]="form" novalidate (ngSubmit)="onSave()" class="sm:w-96">
+  <div class="sb-btn-wrapper sb-btn-wrapper-right">
+    <button mat-raised-button color="primary" type="submit" [disabled]="saving">
+      <fa-icon [icon]="saving ? fasSpinnerThird : fasCheck" [spin]="saving" size="lg"></fa-icon>
+      <span>Запази</span>
+    </button>
+    <button mat-raised-button mat-dialog-close>Затвори</button>
+  </div>
+
+  <sb-banner type="error" class="mb-5" *ngFor="let error of errors">{{ error }}</sb-banner>
+
+  <sb-nom-select
+    class="col-start-1 col-span-full"
+    label="Ученик"
+    formControlName="studentKey"
+    [nomService]="institutionStudentNomsService"
+    [complexValue]="true"
+  ></sb-nom-select>
+
+  <mat-checkbox
+    color="primary"
+    class="mb-4"
+    [checked]="data.student?.examsPassed === true"
+    formControlName="examsPassed"
+  >
+    Успешно положени изпити
+  </mat-checkbox>
+
+  <ng-container>
+    <sb-number-field [precision]="2" label="Точки по теория" formControlName="theoryPoints"></sb-number-field>
+
+    <sb-number-field
+      [precision]="2"
+      class="sb-single-row-mat-field"
+      label="Точки по практика"
+      formControlName="practicePoints"
+    ></sb-number-field>
+
+    <p class="mt-5">Обща оценка на ДИ за ПК</p>
+    <sb-decimal-grade-picker
+      class="col-span-3"
+      formControlName="averageDecimalGrade"
+      [allowFractional]="true"
+    ></sb-decimal-grade-picker>
+  </ng-container>
+</form>

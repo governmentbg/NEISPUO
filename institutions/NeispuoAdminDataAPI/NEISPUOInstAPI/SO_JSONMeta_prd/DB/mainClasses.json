@@ -1,0 +1,56 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_year].[MainClasses] MC /**where**/ /**orderby**/",
+  "sotemplate": "SELECT /**select**/ FROM [sob].[MainClasses] MC /**where**/ /**orderby**/",
+  "columns": [
+	{
+      "column": "MC.ClassID AS code"
+    },
+	{
+      "column": "MC.ClassName AS label"
+    }
+   ],
+  "params": [
+    {
+      "param": "@instid",
+      "column": "MC.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+	{
+	  "param": "@year",
+	  "column": "MC.SchoolYear",
+	  "operator": "=",
+	  "value": "year",
+	  "type": "int",
+	  "logical_operator": "and",
+	  "optional": true,
+	  "static": false
+    },
+	{
+	  "param": "@period",
+	  "column": "MC.Period",
+	  "operator": "=",
+      "value": "period",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    }
+  ],
+  "order": [
+	{
+      "column": "MC.SortOrd",
+      "type": "ASC"
+    },
+    {
+      "column": "MC.ClassName",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+
+  ]
+}

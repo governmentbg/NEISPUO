@@ -1,0 +1,24 @@
+@using SB.Domain
+@model Student_Book_CDOModel
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    @{ await IncludeAsync("ClassBookPrint.Parts._Styles", null); }
+  </head>
+  <body>
+    @{ await IncludeAsync("ClassBookStudentPrint.Parts.CoverPage.StudentCoverPageCDO", Model.CoverPageModel); }
+
+    @{ await IncludeAsync("ClassBookStudentPrint.Parts.AbsencesCdo.StudentAbsencesCdo", Model.AbsencesCdoModel); }
+
+
+    @if (Model.NotesModel.Notes.Any())
+    {
+      await IncludeAsync("ClassBookStudentPrint.Parts.Notes.StudentNotes", Model.NotesModel);
+    }
+
+    @{ await IncludeAsync("ClassBookStudentPrint.Parts.FooterPage.StudentFooterPage"); }
+    
+  </body>
+</html>

@@ -1,0 +1,33 @@
+export interface IMIFormComponentState {
+  InstitutionIDDisabled?: boolean;
+  NameDisabled?: boolean;
+  AbbreviationDisabled?: boolean;
+  BulstatDisabled?: boolean;
+  TownDisabled?: boolean;
+  MunicipalityDisabled?: boolean;
+  RegionDisabled?: boolean;
+  LocalAreaDisabled?: boolean;
+  FinancialSchoolType?: boolean;
+  BaseSchoolTypeDisabled?: boolean;
+  BudgetingInstitutionDisabled?: boolean;
+  DetailedSchoolTypeDisabled?: boolean;
+  CPLRAreaTypeDisabled?: boolean;
+  HeadFirstNameDisabled?: boolean;
+  HeadMiddleNameDisabled?: boolean;
+  HeadLastNameDisabled?: boolean;
+  TRPostCodeDisabled?: boolean;
+  TRAddressDisabled?: boolean;
+  TransformDetailsDisabled?: boolean;
+  ProcedureDateDisabled?: boolean;
+  YearDueDisabled?: boolean;
+  ProcedureTypeDisabled?: boolean;
+  TransformTypeDisabled?: boolean;
+  RIFlexFieldValuesDisabled?: boolean;
+  PremStudentsDisabled?: boolean;
+  PremDocsDisabled?: boolean;
+  PremInventoryDisabled?: boolean;
+  // RIDocument:
+  RIDocumentNoDisabled?: boolean;
+  RIDocumentDateDisabled?: boolean;
+  RIDocumentFileDisabled?: boolean;
+}

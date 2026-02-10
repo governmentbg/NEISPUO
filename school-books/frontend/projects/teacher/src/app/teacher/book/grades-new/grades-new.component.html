@@ -1,0 +1,156 @@
+<form #ngForm="ngForm" [formGroup]="form" autocomplete="off" novalidate>
+  <sb-tab-card>
+    <ng-container card-title>
+      Нова оценка по {{ data.curriculum.subjectName }} / {{ data.curriculum.subjectTypeName }}
+    </ng-container>
+    <sb-editor-panel card-buttons [isNew]="true" (save)="onSave($event)"></sb-editor-panel>
+    <ng-container card-body>
+      <sb-banner type="warning" *ngIf="!students.length">
+        Паралелката няма въведени ученици, които да изучават този предмет от учебния план.
+      </sb-banner>
+
+      <ng-container *ngIf="students.length">
+        <div class="sm:grid grid-cols-4 gap-x-4">
+          <sb-nom-select
+            class="col-span-2 md:col-span-1"
+            label="Вид на оценката"
+            formControlName="type"
+            [nomService]="gradeTypeNomsService"
+          ></sb-nom-select>
+
+          <sb-date-field class="col-span-2 md:col-span-1" label="Дата" formControlName="date"></sb-date-field>
+
+          <sb-select-field
+            class="col-span-full md:col-span-2"
+            label="Занятие"
+            noDataMessage="За избраната дата няма часове по {{ data.curriculum.subjectName }} / {{
+              data.curriculum.subjectTypeName
+            }}"
+            formControlName="scheduleLesson"
+            [items]="scheduleLessons"
+            [class.hidden]="!gradeTypeIsNullOrRequiresScheduleLesson"
+          ></sb-select-field>
+
+          <sb-select-field
+            class="col-span-full md:col-span-2"
+            label="Срок"
+            formControlName="term"
+            [items]="[
+              { id: SchoolTerm_TermOne, name: 'Първи срок' },
+              { id: SchoolTerm_TermTwo, name: 'Втори срок' }
+            ]"
+            [class.hidden]="gradeTypeIsNullOrRequiresScheduleLesson || gradeTypeIsFinal"
+          ></sb-select-field>
+        </div>
+
+        <sb-banner type="info" class="mb-4" *ngIf="showIndividualCurriculumStudentBanner">
+          Избрали сте занятие за ученик с ИУП
+        </sb-banner>
+
+        <sb-banner *ngIf="hasComments" class="mb-4" type="warning">
+          Коментарите към оценките са видими и в модула за ученици/родители
+        </sb-banner>
+
+        <sb-banner
+          type="error"
+          *ngIf="ngForm.submitted && form.get('date')?.errors?.beforeSchoolYearStartDate"
+          class="mb-4"
+        >
+          Датата не може да е преди началото на учебната година
+        </sb-banner>
+        <sb-banner
+          type="error"
+          *ngIf="ngForm.submitted && form.get('date')?.errors?.afterSchoolYearEndDate"
+          class="mb-4"
+        >
+          Датата не може да е след края на учебната година
+        </sb-banner>
+        <sb-banner type="error" *ngIf="ngForm.submitted && form.get('date')?.errors?.betweenTerms" class="mb-4">
+          Дата трябва да попада в първи или втори срок
+        </sb-banner>
+        <sb-banner
+          type="error"
+          *ngIf="ngForm.submitted && form.get('type')?.errors?.cannotCreateGradeWithoutScheduleLesson"
+          class="mb-4"
+        >
+          Нямате права да създавате оценки от тип неизискващ занятие (напр. срочни и годишни)
+        </sb-banner>
+        <sb-banner type="error" *ngIf="ngForm.submitted && form.errors?.bookLocked" class="mb-4">
+          {{ form.errors?.bookLocked }}
+        </sb-banner>
+
+        <div class="sb-table-container mt-2.5 sm:mt-4 md:mt-0">
+          <table class="sb-table">
+            <thead>
+              <tr>
+                <th>Ученик</th>
+                <th>Оценка</th>
+                <th>Коментар</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let student of students" [formGroup]="studentForm(student.studentFormIndex)">
+                <td *ngIf="student.showInfoLink" class="sb-names">
+                  <a
+                    [routerLink]="[
+                      '../../../../../student-info',
+                      this.data.classBookId,
+                      student.personId,
+                      'student-book',
+                      this.data.classBookId
+                    ]"
+                    class="text-primary"
+                  >
+                    {{ student.classNumber != null ? student.classNumber.toString() + '.' : '' }}
+
+                    {{ student.firstName }}
+                    {{ student.middleName }}
+                    {{ student.lastName }}
+
+                    <span class="sb-badge" *ngIf="student.abnormalStatus">{{ student.abnormalStatus }}</span>
+                  </a>
+                </td>
+                <td *ngIf="!student.showInfoLink" class="sb-names">
+                  {{ student.classNumber != null ? student.classNumber.toString() + '.' : '' }}
+
+                  {{ student.firstName }}
+                  {{ student.middleName }}
+                  {{ student.lastName }}
+
+                  <span class="sb-badge" *ngIf="student.abnormalStatus">{{ student.abnormalStatus }}</span>
+                </td>
+
+                <td *ngIf="!student.hasSpecialNeeds && !hasQualitativeGrades" class="w-px py-0">
+                  <sb-decimal-grade-picker
+                    formControlName="decimalGrade"
+                    [allowFractional]="
+                      gradeTypeIsNullOrRequiresScheduleLesson || data.curriculum.subjectTypeIsProfilingSubject
+                    "
+                  ></sb-decimal-grade-picker>
+                </td>
+                <td *ngIf="!student.hasSpecialNeeds && hasQualitativeGrades" class="w-px py-0">
+                  <sb-qualitative-grade-picker formControlName="qualitativeGrade"></sb-qualitative-grade-picker>
+                </td>
+                <td *ngIf="student.hasSpecialNeeds" class="w-px py-0">
+                  <mat-select class="sb-form-control min-w-[205px]" formControlName="specialGrade">
+                    <mat-option [value]="item.id" *ngFor="let item of this.data.specialNeedsGradeNoms">
+                      {{ item.name }}
+                    </mat-option>
+                  </mat-select>
+                </td>
+                <td class="py-1">
+                  <textarea
+                    class="sb-form-control block w-full"
+                    formControlName="comment"
+                    cdkTextareaAutosize
+                    cdkAutosizeMinRows="1"
+                  ></textarea>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </ng-container>
+    </ng-container>
+  </sb-tab-card>
+</form>

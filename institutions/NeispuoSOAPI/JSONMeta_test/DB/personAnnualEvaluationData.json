@@ -1,0 +1,66 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_year].[AnnualStaffEvaluation] ASE /**where**/ /**orderby**/",
+  "columns": [
+    {
+      "column": "ASE.AnnualStaffEvaluationID AS annualStaffEvaluationID"
+    },
+    {
+      "column": "ASE.FromDate AS fromDate"
+    },
+    {
+      "column": "ASE.ToDate AS toDate"
+    },
+    {
+      "column": "ASE.Commission AS commission"
+    },
+    {
+      "column": "ASE.SelfAssessmentResult AS selfAssessmentResult"
+    },
+    {
+      "column": "ASE.CommissionEvaluationResult AS commissionEvaluationResult"
+    },
+    {
+      "column": "ASE.FinalResultIndicator AS finalResultIndicator"
+    },
+    {
+      "column": "ASE.FinalResultSummary AS finalResultSummary"
+    },
+    {
+      "column": "ASE.GuidelinesForQualifications AS guidelinesForQualifications"
+    },
+    {
+      "column": "ASE.ThereIsEvaluationCard AS thereIsEvaluationCard"
+    },
+    {
+      "column": "ASE.EvaluationCardDoc AS evaluationCardDoc"
+    }
+  ],
+  "params": [
+    {
+      "param": "@annualStaffEvaluationID",
+      "column": "ASE.AnnualStaffEvaluationID",
+      "operator": "=",
+      "value": "annualStaffEvaluationID",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+    {
+      "param": "@year",
+      "column": "ASE.SchoolYear",
+      "operator": "=",
+      "value": "year",
+      "type": "int",
+      "logical_operator": "and",
+      "optional": true,
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "ASE.AnnualStaffEvaluationID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": []
+}

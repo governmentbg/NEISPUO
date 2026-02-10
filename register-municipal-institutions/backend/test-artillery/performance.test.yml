@@ -1,0 +1,155 @@
+config:
+  target: "http://localhost:3001"
+  payload:
+    # path is relative to the location of the test script
+    path: "user_jwt_tokens.csv"
+    skipHeader: true
+    fields:
+      - "role"
+      - "token"
+  tls:
+    rejectUnauthorized: false
+  http:
+    # you need to add large timeout 1000s in this case to wait for the responses otherwise you start getting 499 from NGINX + pm2 hangs
+    # This might be some side effect from nginx -> pm2 communication need to verify
+    timeout: 1000
+  phases:
+    - duration: 60
+      arrivalRate: 5
+      name: Warm up
+    - duration: 120
+      arrivalRate: 10
+      rampTo: 50
+      name: Ramp up load
+    - duration: 600
+      arrivalRate: 50
+      name: Sustained load
+
+scenarios:
+  - name: "Get lastest active institutions"
+    flow:
+      - get:
+          url: "/v1/ri-institution-latest-active?s=%7B%22$and%22:%5B%7B%22InstitutionID%22:%7B%22$cont%22:%22%22%7D%7D,%7B%22Name%22:%7B%22$cont%22:%22%22%7D%7D,%7B%22Town.Name%22:%7B%22$cont%22:%22%22%7D%7D%5D%7D&page=1&limit=20"
+          headers:
+            Authorization: "Bearer {{ token }}"
+
+
+  
+  -  name: "Get a single institution"
+     flow:
+      - get:
+          url: "/v1/ri-institution/14377"
+          headers:
+            Authorization: "Bearer {{ token }}"
+
+          
+  - name: "Get institution with neispuo id 101013"
+    flow:
+      - get:
+          url: "/v1/ri-institution-latest-active?s=%7B%22$and%22:%5B%7B%22InstitutionID%22:%7B%22$cont%22:%22101013%22%7D%7D,%7B%22Name%22:%7B%22$cont%22:%22%22%7D%7D,%7B%22Town.Name%22:%7B%22$cont%22:%22%22%7D%7D%5D%7D&page=1&limit=20"
+          headers:
+            Authorization: "Bearer {{ token }}"
+          
+
+  - name: "Get institution with name 'Детска градина Вела Пеева'"
+    flow:
+      - get:
+          url: "/v1/ri-institution-latest-active?s=%7B%22$and%22:%5B%7B%22InstitutionID%22:%7B%22$cont%22:%22%22%7D%7D,%7B%22Name%22:%7B%22$cont%22:%22%D0%94%D0%B5%D1%82%D1%81%D0%BA%D0%B0%20%D0%B3%D1%80%D0%B0%D0%B4%D0%B8%D0%BD%D0%B0%20%5C%22%D0%92%D0%B5%D0%BB%D0%B0%20%D0%9F%D0%B5%D0%B5%D0%B2%D0%B0%22%7D%7D,%7B%22Town.Name%22:%7B%22$cont%22:%22%22%7D%7D%5D%7D&page=1&limit=20"
+          headers:
+            Authorization: "Bearer {{ token }}"
+
+
+  -  name: "Get institution with town 'Боголин'"
+     flow:
+      - get:
+          url: "/v1/ri-institution-latest-active?s=%7B%22$and%22:%5B%7B%22InstitutionID%22:%7B%22$cont%22:%22%22%7D%7D,%7B%22Name%22:%7B%22$cont%22:%22%D0%94%D0%B5%D1%82%D1%81%D0%BA%D0%B0%20%D0%B3%D1%80%D0%B0%D0%B4%D0%B8%D0%BD%D0%B0%20%5C%22%D0%92%D0%B5%D0%BB%D0%B0%20%D0%9F%D0%B5%D0%B5%D0%B2%D0%B0%22%7D%7D,%7B%22Town.Name%22:%7B%22$cont%22:%22%22%7D%7D%5D%7D&page=1&limit=20"
+          headers:
+            Authorization: "Bearer {{ token }}"
+
+
+  -  name: "Get institution with id 272"
+     flow:
+      - get:
+          url: "/v1/ri-institution/272"
+          headers:
+            Authorization: "Bearer {{ token }}"
+
+
+  - name: "Get history of institution with id 272"
+    flow:
+      - get:
+          url: "/v1/ri-institution/history/272"
+          headers:
+            Authorization: "Bearer {{ token }}"
+
+
+  - name: "Get closed institutions"
+    flow:
+      - get:
+          url: "/v1/ri-institution-closed?s=%7B%22$and%22:%5B%7B%22InstitutionID%22:%7B%22$cont%22:%22%22%7D%7D,%7B%22Name%22:%7B%22$cont%22:%22%22%7D%7D,%7B%22Town.Name%22:%7B%22$cont%22:%22%22%7D%7D%5D%7D&page=1&limit=20"
+          headers:
+            Authorization: "Bearer {{ token }}"
+
+
+  - name: "Get flex fields"
+    flow:
+      - get:
+          url: "/v1/ri-flex-field"
+          headers:
+            Authorization: "Bearer {{ token }}"
+
+
+  - name: "Get flex field with id 11"
+    flow:
+      - get:
+          url: "/v1/ri-flex-field/11"
+          headers:
+            Authorization: "Bearer {{ token }}"
+
+  - name: "Get flex field with id 12"
+    flow:
+      - get:
+          url: "/v1/ri-flex-field/12"
+          headers:
+            Authorization: "Bearer {{ token }}"
+
+
+  - name: "Get public institutions"
+    flow:
+      - get:
+          url: "/v1/ri-institution-public?s=%7B%22$and%22:%5B%7B%22InstitutionID%22:%7B%22$cont%22:%22%22%7D%7D,%7B%22Name%22:%7B%22$cont%22:%22%22%7D%7D,%7B%22town_municipality_region.Name%22:%7B%22$cont%22:%22%22%7D%7D,%7B%22town_municipality.Name%22:%7B%22$cont%22:%22%22%7D%7D,%7B%22Town.Name%22:%7B%22$cont%22:%22%22%7D%7D%5D%7D&page=1&limit=10c"
+          headers:
+            Authorization: "Bearer {{ token }}"
+
+
+  - name: "Get public institutions with municipality Blagoevgrad"
+    flow:
+      - get:
+          url: "/v1/ri-institution-public?s=%7B%22$and%22:%5B%7B%22InstitutionID%22:%7B%22$cont%22:%22%22%7D%7D,%7B%22Name%22:%7B%22$cont%22:%22%22%7D%7D,%7B%22town_municipality_region.Name%22:%7B%22$cont%22:%22%D0%91%D0%BB%D0%B0%D0%B3%D0%BE%D0%B5%D0%B2%D0%B3%D1%80%D0%B0%D0%B4%22%7D%7D,%7B%22town_municipality.Name%22:%7B%22$cont%22:%22%22%7D%7D,%7B%22Town.Name%22:%7B%22$cont%22:%22%22%7D%7D%5D%7D&page=1&limit=10"
+          headers:
+            Authorization: "Bearer {{ token }}"
+
+
+  - name: "Get public institutions with name 'Център за подкрепа и личностно развитие - ученическо общежитие'"
+    flow:
+      - get:
+          url: "/v1/ri-institution-public?s=%7B%22$and%22:%5B%7B%22InstitutionID%22:%7B%22$cont%22:%22%22%7D%7D,%7B%22Name%22:%7B%22$cont%22:%22%D0%A6%D0%B5%D0%BD%D1%82%D1%8A%D1%80%20%D0%B7%D0%B0%20%D0%BF%D0%BE%D0%B4%D0%BA%D1%80%D0%B5%D0%BF%D0%B0%20%D0%B8%20%D0%BB%D0%B8%D1%87%D0%BD%D0%BE%D1%81%D1%82%D0%BD%D0%BE%20%D1%80%D0%B0%D0%B7%D0%B2%D0%B8%D1%82%D0%B8%D0%B5%20-%20%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%20%D0%BE%D0%B1%D1%89%D0%B5%D0%B6%D0%B8%D1%82%D0%B8%D0%B5%22%7D%7D,%7B%22town_municipality_region.Name%22:%7B%22$cont%22:%22%22%7D%7D,%7B%22town_municipality.Name%22:%7B%22$cont%22:%22%22%7D%7D,%7B%22Town.Name%22:%7B%22$cont%22:%22%22%7D%7D%5D%7D&page=1&limit=10"
+          headers:
+            Authorization: "Bearer {{ token }}"
+
+
+  - name: "Get public institutions with municipality neispuo id 100040"
+    flow:
+      - get:
+          url: "/v1/ri-institution-public?s=%7B%22$and%22:%5B%7B%22InstitutionID%22:%7B%22$cont%22:%22100040%22%7D%7D,%7B%22Name%22:%7B%22$cont%22:%22%22%7D%7D,%7B%22town_municipality_region.Name%22:%7B%22$cont%22:%22%22%7D%7D,%7B%22town_municipality.Name%22:%7B%22$cont%22:%22%22%7D%7D,%7B%22Town.Name%22:%7B%22$cont%22:%22%22%7D%7D%5D%7D&page=1&limit=10"
+          headers:
+            Authorization: "Bearer {{ token }}"
+
+  - name: "Get history with id 14334"
+    flow:
+      - get:
+          url: "/v1/ri-institution/history/14334"
+          headers:
+            Authorization: "Bearer {{ token }}"
+            
+

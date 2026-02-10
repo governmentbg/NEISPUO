@@ -1,0 +1,108 @@
+<sb-breadcrumb
+  class="block mb-3"
+  [icon]="fadInfoSquare"
+  [text]="!breakpointService.sm ? 'Инф. табло' : 'Информационно табло'"
+></sb-breadcrumb>
+
+<sb-card>
+  <ng-container card-title>Информационно табло</ng-container>
+  <ng-container card-buttons>
+    <div class="btn-group">
+      <button
+        class="btn"
+        type="button"
+        [ngClass]="{ 'bg-primary text-white': !data.type }"
+        [routerLink]="['./', { status: data.status }]"
+      >
+        <span>Всички</span>
+      </button>
+
+      <button
+        class="btn"
+        type="button"
+        [ngClass]="{ 'bg-primary text-white': data.type === PublicationType.Public }"
+        [routerLink]="['./', { status: data.status, type: PublicationType.Public }]"
+      >
+        <span>Публични</span>
+      </button>
+
+      <button
+        class="btn"
+        type="button"
+        [ngClass]="{ 'bg-primary text-white': data.type === PublicationType.Internal }"
+        [routerLink]="['./', { status: data.status, type: PublicationType.Internal }]"
+      >
+        <span>Вътрешни</span>
+      </button>
+    </div>
+  </ng-container>
+  <ng-container card-body>
+    <sb-table
+      *ngIf="
+        (data.metadata.count && data.status === 'published') ||
+        (data.metadata.archivedCount && data.status === 'archived')
+      "
+      [dataSource]="dataSource"
+      [displayedColumns]="['publication']"
+      [hideHeader]="true"
+    >
+      <ng-container cdkColumnDef="publication">
+        <th cdk-header-cell *cdkHeaderCellDef>Публикация</th>
+        <td cdk-cell *cdkCellDef="let publication">
+          <a [routerLink]="['./', publication.publicationId]">
+            <div class="flex">
+              <div>
+                <ng-container [ngSwitch]="publication.isInternal">
+                  <fa-icon *ngSwitchCase="true" class="text-red-900" [icon]="fasUniversity" size="2x"></fa-icon>
+                  <fa-icon *ngSwitchCase="false" class="text-primary" [icon]="fasUsers" size="2x"></fa-icon>
+                </ng-container>
+                <fa-icon
+                  *ngIf="publication.hasAttachedFiles"
+                  class="text-primary"
+                  [icon]="farPaperclip"
+                  title="публикацията има прикачени файлове"
+                  size="2x"
+                ></fa-icon>
+              </div>
+              <div class="ml-4">
+                <div class="font-bold">{{ publication.title }}</div>
+                <div class="text-sm mb-4">{{ publication.date | sbDate }}</div>
+                <div [innerHtml]="publication.contentHtml"></div>
+              </div>
+            </div>
+          </a>
+        </td>
+      </ng-container>
+    </sb-table>
+
+    <sb-banner *ngIf="!data.metadata.count && data.status === 'published'" type="info">
+      {{
+        data.type === PublicationType.Public
+          ? 'Няма качени публични публикации'
+          : data.type === PublicationType.Internal
+          ? 'Няма качени вътрешни публикации'
+          : 'Няма качени публикации'
+      }}
+    </sb-banner>
+
+    <sb-banner *ngIf="!data.metadata.archivedCount && data.status === 'archived'" type="info">
+      {{
+        data.type === PublicationType.Public
+          ? 'Няма архивирани публични публикации'
+          : data.type === PublicationType.Internal
+          ? 'Няма архивирани вътрешни публикации'
+          : 'Няма архивирани публикации'
+      }}
+    </sb-banner>
+
+    <div class="col-xs-12 col-sm-6 text-primary">
+      <a
+        *ngIf="data.metadata.archivedCount && data.status === 'published'"
+        [routerLink]="['./', { status: 'archived' }]"
+      >
+        ({{ data.metadata.archivedCount }} в архив)
+      </a>
+      <a *ngIf="data.status === 'archived'" [routerLink]="['./', { status: 'published' }]">(към публикувани)</a>
+    </div>
+  </ng-container>
+</sb-card>

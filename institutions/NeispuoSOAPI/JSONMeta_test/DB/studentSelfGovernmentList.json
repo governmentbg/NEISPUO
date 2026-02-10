@@ -1,0 +1,160 @@
+{
+  "template": "SELECT /**select**/ FROM [core].[Institution] I /**where**/ /**orderby**/",
+  "columns": [
+    {
+      "column": "I.InstitutionID AS instid"
+    }
+  ],
+  "params": [
+    {
+      "param": "@instid",
+      "column": "I.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+  ],
+  "order": [
+
+  ],
+  "inSelects": [
+    {
+      "arrayName": "selfGovernmentData",
+      "template": "SELECT /**select**/ FROM [inst_year].[StudentSelfGovernment] SSG /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "SSG.Id AS id"
+        },
+        {
+          "column": "SSG.StudentName AS studentName"
+        },
+        {
+          "column": "SSG.ClassName AS className"
+        },
+        {
+          "column": "SSG.ParticipationName AS participationName"
+        },
+        {
+          "column": "SSG.SelfGovernmentPositionName AS selfGovernmentPositionName"
+        },
+        {
+          "column": "SSG.ParticipationAdditionalInformation AS participationAdditionalInformation"
+        },
+        {
+          "column": "SSG.AdditionalInformation AS additionalInformation"
+        },
+        {
+          "column": "SSG.Email AS email"
+        },
+        {
+          "column": "SSG.MobilePhone AS mobilePhone"
+        },
+        {
+          "column": "'studentSelfGovernmentData' AS formName"
+        },
+        {
+          "column": "SSG.Id AS formDataId"
+        }
+      ],
+      "params": [
+        {
+          "param": "@instid",
+          "column": "SSG.InstitutionID",
+          "operator": "=",
+          "value": "instid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        }
+      ],
+      "order": [
+        {
+          "column": "SSG.StudentName",
+          "type": "ASC"
+        },
+        {
+          "column": "SSG.BasicClassID",
+          "type": "ASC"
+        }
+      ]
+    },
+	{
+      "arrayName": "schoolStaffGovernmentData",
+      "template": "SELECT /**select**/ FROM [inst_year].[StudentStaffSelfGovernment] SSG /**where**/ /**orderby**/",
+      "columns": [
+		{
+          "column": "SSG.Id AS id"
+        },
+        {
+          "column": "SSG.PersonName AS personName"
+        },
+		{
+          "column": "SSG.SelfGovernmentPositionName AS selfGovernmentPositionName"
+        },
+		{
+          "column": "SSG.Email AS email"
+        },
+        {
+          "column": "SSG.PhoneNumber AS phoneNumber"
+        }
+      ],
+      "params": [
+        {
+          "param": "@instid",
+          "column": "SSG.InstitutionID",
+          "operator": "=",
+          "value": "instid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        }
+      ],
+      "order": [
+        {
+          "column": "SSG.PersonName",
+          "type": "ASC"
+        }
+      ]
+    },
+	{
+      "arrayName": "schoolGovernmentData",
+      "template": "SELECT /**select**/ FROM [inst_year].[StudentSchoolGovernment] SSG /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "SSG.InstitutionSchoolBoardID AS id"
+        },
+        {
+          "column": "SSG.PersonName AS personName"
+        },
+		{
+          "column": "SSG.PositionName AS positionName"
+        },
+		{
+          "column": "SSG.Email AS email"
+        },
+        {
+          "column": "SSG.PhoneNumber AS phoneNumber"
+        }
+      ],
+      "params": [
+        {
+          "param": "@instid",
+          "column": "SSG.InstitutionID",
+          "operator": "=",
+          "value": "instid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        }
+      ],
+      "order": [
+        {
+          "column": "SSG.PersonName",
+          "type": "ASC"
+        }
+      ]
+    }
+  ]
+}

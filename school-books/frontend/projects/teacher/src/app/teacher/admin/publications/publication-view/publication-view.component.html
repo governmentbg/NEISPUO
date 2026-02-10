@@ -1,0 +1,144 @@
+<sb-breadcrumb
+  class="block mb-3"
+  [icon]="fadInfoSquare"
+  [text]="data.publication == null ? 'Създаване на публикация' : data.publication.title"
+  [parentItems]="[{ text: 'Публикации', routeCommands: ['../'] }]"
+></sb-breadcrumb>
+
+<form [formGroup]="form" autocomplete="off" novalidate>
+  <sb-card>
+    <ng-container card-title>
+      {{ data.publication == null ? 'Създаване на публикация' : 'Редакция на публикация' }}
+    </ng-container>
+    <sb-editor-panel
+      card-buttons
+      [isNew]="data.publication == null"
+      [editBtnHidden]="!canEdit || (data.publication !== null && data.publication.status !== publicationStatus.Draft)"
+      [backBtnHidden]="false"
+      (editableChange)="onEditableChange($event)"
+      (save)="onSave($event)"
+    >
+      <button
+        *ngIf="canEdit"
+        disabled-mode-buttons
+        mat-raised-button
+        color=""
+        type="button"
+        (click)="onChangeStatus('Published')"
+        [disabled]="statusChanging"
+        [class.hidden]="data.publication !== null && data.publication.status !== publicationStatus.Draft"
+      >
+        <fa-icon
+          [icon]="statusChanging ? fasSpinnerThird : fasArrowAltCircleUp"
+          [spin]="statusChanging"
+          size="lg"
+        ></fa-icon>
+        <span class="hidden sm:inline">Публикувай</span>
+      </button>
+
+      <button
+        *ngIf="canEdit"
+        disabled-mode-buttons
+        mat-raised-button
+        color="warn"
+        type="button"
+        (click)="onChangeStatus('Draft')"
+        [disabled]="statusChanging"
+        [class.hidden]="data.publication?.status === publicationStatus.Draft"
+      >
+        <fa-icon
+          [icon]="statusChanging ? fasSpinnerThird : fasArrowAltCircleDown"
+          [spin]="statusChanging"
+          size="lg"
+        ></fa-icon>
+        <span class="hidden sm:inline">Върни в чернова</span>
+      </button>
+
+      <button
+        *ngIf="canEdit"
+        disabled-mode-buttons
+        mat-raised-button
+        color="accent"
+        type="button"
+        (click)="onChangeStatus('Archived')"
+        [disabled]="statusChanging"
+        [class.hidden]="data.publication !== null && data.publication.status !== publicationStatus.Published"
+      >
+        <fa-icon [icon]="statusChanging ? fasSpinnerThird : fasArchive" [spin]="statusChanging" size="lg"></fa-icon>
+        <span class="hidden sm:inline">Архивирай</span>
+      </button>
+
+      <button
+        *ngIf="canRemove"
+        disabled-mode-buttons
+        mat-raised-button
+        color="warn"
+        type="button"
+        (click)="onRemove()"
+        [disabled]="removing"
+        [class.hidden]="data.publication?.status !== publicationStatus.Draft"
+      >
+        <fa-icon [icon]="removing ? fasSpinnerThird : fasTrashAlt" [spin]="removing" size="lg"></fa-icon>
+        <span class="hidden sm:inline">Премахни</span>
+      </button>
+    </sb-editor-panel>
+    <ng-container card-body>
+      <div class="sm:grid grid-cols-3 gap-x-4 mb-2">
+        <sb-nom-select
+          label="Тип на публикацията"
+          formControlName="type"
+          [nomService]="publicationTypeNomsService"
+        ></sb-nom-select>
+        <sb-date-field label="Дата на публикуване" formControlName="date"></sb-date-field>
+        <sb-nom-select
+          label="Статус"
+          formControlName="status"
+          [nomService]="publicationStatusNomsService"
+        ></sb-nom-select>
+        <sb-text-field
+          label="Заглавие"
+          formControlName="title"
+          class="col-span-full"
+          [hint]="showTitleHint ? 'за по-четимо инф. табло е препоръчително заглавието да е до 50 символа' : null"
+        ></sb-text-field>
+        <sb-textarea-field label="Описание" formControlName="content" class="col-span-full"></sb-textarea-field>
+
+        <sb-card-section class="col-span-full">Прикачени файлове</sb-card-section>
+        <div class="sb-table-container col-span-full">
+          <table class="sb-table" role="table">
+            <tbody role="rowgroup">
+              <tr *ngFor="let file of files" role="row">
+                <td *ngIf="editable" class="sb-table-action">
+                  <button (click)="onRemoveFile(file.blobId)" aria-label="Изтрий" class="sb-link-btn" type="button">
+                    <fa-icon [icon]="fasTrashAlt" size="lg"></fa-icon>
+                  </button>
+                </td>
+                <td>
+                  <a target="_blank" href="{{ file.location }}" class="text-primary underline">{{ file.fileName }}</a>
+                </td>
+              </tr>
+              <tr *ngIf="files.length === 0"><td>Няма прикачени файлове</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <uppy-progress-bar
+          *ngIf="editable"
+          [uppy]="uppy"
+          [props]="{
+            hideAfterFinish: true
+          }"
+          class="col-span-full mt-2"
+        ></uppy-progress-bar>
+        <uppy-drag-drop
+          *ngIf="editable"
+          [uppy]="uppy"
+          [props]="{
+            locale: BgLocale
+          }"
+          class="col-span-full"
+        ></uppy-drag-drop>
+      </div>
+    </ng-container>
+  </sb-card>
+</form>

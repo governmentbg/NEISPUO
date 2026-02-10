@@ -1,0 +1,39 @@
+:host ::ng-deep .mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
+  line-height: 32px;
+}
+
+.sb-exams-col {
+  width: 360px;
+}
+
+.mat-button-toggle-group {
+  @apply border-0 rounded-none -space-x-px;
+}
+
+.mat-button-toggle {
+  @apply text-sm border;
+
+  &:first-child {
+    @apply rounded-l;
+  }
+
+  &:last-child {
+    @apply rounded-r;
+  }
+}
+
+.mat-button-toggle-checked {
+  @apply z-10;
+
+  &.completes-grade {
+    @apply bg-green-500 border-green-700 text-white;
+  }
+
+  &.must-retake-exams {
+    @apply bg-yellow-500 border-yellow-700 text-white;
+  }
+
+  &.repeats-grade {
+    @apply bg-red-500 border-red-700 text-white;
+  }
+}

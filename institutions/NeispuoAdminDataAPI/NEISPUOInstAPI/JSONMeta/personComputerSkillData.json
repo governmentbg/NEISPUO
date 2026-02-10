@@ -1,0 +1,67 @@
+{
+  "label": "Умения на персонала",
+  "procedureName": "inst_basic.personCompSkillCUD",
+  "dataName": "if(operationType==1) {form.dataName=null} else {form.dataName='personComputerSkillData'}",  
+  "sections": [
+    {
+      "order": 1,
+	  "label": "Компютърни умения",
+	  "name": "computerSkills",
+      "subsections": [
+        {
+          "order": 1,
+          "name": "staffComputerSkills",
+          "label": "Данни за компютърно умение",
+          "fields": [
+            {
+              "label": "Компютърно умение",
+              "name": "compSkillID",
+              "type": "searchselect",
+              "optionsPath": "/data/get/compSkills",
+			  "width": 600,
+              "disabled": false,
+			      "validations": [
+                    {
+                      "name": "required",
+                      "validator": "",
+                      "message": "Полето е задължително"
+                    }
+                  ],
+              "order": 1
+            },
+            {
+              "label": "Ниво",
+              "name": "compSkillLevelID",
+              "type": "select",
+              "optionsPath": "/data/get/compSkillLevels",
+              "disabled": false,
+			      "validations": [
+                    {
+                      "name": "required",
+                      "validator": "",
+                      "message": "Полето е задължително"
+                    }
+                  ],
+              "order": 2
+            },
+            {
+              "label": "Бележки",
+              "name": "notes",
+              "type": "textarea",
+              "order": 3,
+              "width": 1000,
+              "height": 2,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 1024,
+                  "message": "Максимална дължина 1024 символа"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

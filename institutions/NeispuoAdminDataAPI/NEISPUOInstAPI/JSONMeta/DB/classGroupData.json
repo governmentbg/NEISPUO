@@ -1,0 +1,131 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_year].[ClassGroupAll] CG /**where**/ /**orderby**/",
+  "sotemplate": "SELECT /**select**/ FROM [sob].[ClassGroupAll] CG /**where**/ /**orderby**/",
+  "columns": [
+        {
+          "column": "CG.ClassID AS id"
+        },
+        {
+          "column": "CG.ClassTypeID AS classTypeID"
+        },
+        {
+          "column": "CG.ClassName AS className"
+        },
+        {
+          "column": "CG.StudentCountPlaces AS studentCountPlaces"
+        },
+        {
+          "column": "CG.ClassEduFormID AS classEduFormID"
+        },
+        {
+          "column": "CG.ClassGroupNum AS classGroupID"
+        },
+        {
+          "column": "CG.BasicClassID AS basicClassID"
+        },
+        {
+          "column": "CG.ClassEduDurationID AS classEduDurationID"
+        },
+        {
+          "column": "CG.InstitutionDepartmentID AS institutionDepartmentID"
+        },
+        {
+          "column": "CG.ClassShiftID AS classShiftID"
+        },
+        {
+          "column": "CG.AreaID AS educationArea"
+        },
+        {
+          "column": "CG.BasicEducationAreaID AS basicEducationArea"
+        },
+        {
+          "column": "CG.BudgetingClassTypeID AS budgetingClassTypeID"
+        },
+        {
+          "column": "CG.EntranceLevelID AS entranceLevelID"
+        },
+        {
+          "column": "CG.SPPOOEducAreaID AS SPPOOEducArea"
+        },
+        {
+          "column": "CG.SPPOOProfAreaID AS SPPOOProfArea"
+        },
+        {
+          "column": "CG.SPPOOProfessionID AS SPPOOProfession"
+        },
+        {
+          "column": "CG.ClassSpecialityID AS SPPOOSpeciality"
+        },
+        {
+          "column": "CG.FlID AS flID"
+        },
+        {
+          "column": "CG.FlTypeID AS flStudyTypeID"
+        },
+        {
+          "column": "CG.IsProfModule AS isProfModule"
+        },
+        {
+          "column": "CG.Notes AS notes"
+        },
+        {
+          "column": "CG.IsCombined AS isCombined"
+        },
+        {
+          "column": "CG.IsNoList AS isNoList"
+        },
+        {
+          "column": "CG.IsSpecNeed AS isSpecNeed"
+        },
+		{
+          "column": "CG.InstType AS instType"
+        },
+		{
+          "column": "CG.DetailedSchoolTypeID AS detailedSchoolTypeID"
+        },
+		{
+          "column": "CG.BudgetingSchoolTypeID AS budgetingSchoolTypeID"
+        }
+  ],
+  "params": [
+     {
+              "param": "@classid",
+              "column": "CG.ClassID",
+              "operator": "=",
+              "value": "classid",
+              "type": "int",
+              "logical_operator": "and",
+              "optional": false,
+              "static": false
+            },
+		{
+      "param": "@year",
+      "column": "CG.SchoolYear",
+      "operator": "=",
+      "value": "year",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    },
+	{
+      "param": "@period",
+      "column": "CG.Period",
+      "operator": "=",
+      "value": "period",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "CG.ParentClassID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [ 
+        
+      ]
+    }

@@ -1,0 +1,33 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[EdTypeFL] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "EdTypeEnID as code"
+        },
+        {
+            "column": "DescriptionEn as label"
+        },
+		{
+            "column": "IsValid as isValid"
+        }
+    ],
+    "params": [
+{
+              "param": "@isValid",
+              "column": "IsValid",
+              "operator": "=",
+              "value": 1,
+              "type": "int",
+              "logical_operator": "and",
+              "optional": false,
+              "static": true
+            }
+    ],
+    "order": [
+        {
+            "column": "EdTypeEnID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

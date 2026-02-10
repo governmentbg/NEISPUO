@@ -1,0 +1,42 @@
+{
+  "arrayName": "staffFLSkills",
+  "template": "SELECT /**select**/ FROM [inst_basic].[sobPersonFLSkilsList] SL /**where**/ /**orderby**/",
+  "columns": [
+     {
+      "column": "SL.ID AS id"
+    },
+    {
+      "column": "SL.PersonID AS personID"
+    },
+    {
+      "column": "SL.FullName AS fullName"
+    },
+    {
+      "column": "SL.FL AS languageSkill"
+    },
+    {
+      "column": "SL.FLLevel AS languageSkillLevel"
+    },
+    {
+      "column": "SL.NotesPFLS AS languageSkillNotes"
+    }
+  ],
+  "params": [
+     {
+      "param": "@instid",
+      "column": "SL.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "SL.PersonID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": []
+}

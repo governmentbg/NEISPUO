@@ -1,0 +1,78 @@
+<div class="full-wrapper">
+    <mat-card class="section-card first-card" color="primary">
+        <mat-card-header class="bg-cornflower-blue">
+            <mat-card-title>Нов служител</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="row-col">
+                <div class="l-container-component">
+                    <div class="v-field-container">
+                        <span class="l-custom-span-label">Тип идентификатор
+                            <span class="required-span">*</span>
+                        </span>
+                        <div class="l-select" appearance="outline" matTooltipClass="l-custom-tooltip">
+                            <ng-select #idTypeFld="ngModel" [(ngModel)]="idType" [items]="personalIdTypes" virtualScroll="true" bindLabel="label"
+                                bindValue="code" notFoundText="Няма намерени резултати" [clearable]="false" [searchable]="false"
+                                (change)="isInvalidId()">
+                            </ng-select>
+                        </div>
+                    </div>
+                    <div class="v-field-container">
+                        <span class="l-custom-span-label">Моля въведете идентификатор
+                            <span class="required-span">*</span>
+                        </span>
+                        <mat-form-field appearance="outline" floatLabel="never" class="full-width">
+                            <input matInput *ngIf="idType === 0" [(ngModel)]="egn" digitOnly #egnfld="ngModel" required egnvalidator minlength="10"
+                                maxlength="10" (input)="isInvalidId()">
+                            <input matInput *ngIf="idType === 1" [(ngModel)]="egn" digitOnly #lnchfld="ngModel" required lnchvalidator minlength="10"
+                                maxlength="10" (input)="isInvalidId()">
+                            <input matInput *ngIf="idType !== 0 && idType !== 1" [(ngModel)]="egn" digitOnly #idnfld="ngModel" required
+                                notEgnValidator notLnchValidator [disabled]="idType === null" (input)="isInvalidId()">
+                        </mat-form-field>
+                        <div *ngIf="invalidEgn" class="l-custom-error">Невалиден ЕГН</div>
+                        <div *ngIf="invalidLnch" class="l-custom-error">Невалиден ЛНЧ</div>
+                        <div *ngIf="idnValidEgn" class="l-custom-error">Въведеният идентификатор е валиден ЕГН. Моля, изберете Тип идентикатор „ЕГН“
+                        </div>
+                        <div *ngIf="idnValidLnch" class="l-custom-error">Въведеният идентификатор е валиден ЛНЧ. Моля, изберете Тип идентикатор
+                            „ЛНЧ“.</div>
+                    </div>
+                </div>
+                <div class="foreign-citizen-container" *ngIf="idType === 0">
+                    <mat-checkbox color="primary" [(ngModel)]="isForeignCitizen" #foreignCitizen="ngModel"><span> Физическо лице - чужденец </span></mat-checkbox>
+                </div>
+            </div>
+            <button mat-raised-button color="primary" class="check-btn" [disabled]="invalidEgn || invalidLnch || idnValidEgn || idnValidLnch || !egn"
+                (click)="getData()"><span>Провери</span></button>
+        </mat-card-content>
+    </mat-card>
+    <span class="message-for-info" *ngIf="message"
+        [ngStyle]="message === trMessage.ExistExtData ? {'font-weight': 'bold', 'color': 'red'} : {}">{{message}}</span>
+    <mat-card class="section-card second-card" color="primary" *ngIf="data">
+        <mat-card-header class="bg-cornflower-blue">
+            <mat-card-title>резултати</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="scroll-container">
+                <div class="body-result-container">
+                    <ng-container *ngFor="let section of data.sections">
+                        <ng-container *ngFor="let subsection of section.subsections">
+                            <app-subsection [subsection]="subsection" [section]="section" [formGroup]="getFormGroup(subsection)"
+                                [mode]="modes.View"></app-subsection>
+                        </ng-container>
+                    </ng-container>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    <div class="action-container"
+        *ngIf="data || message === trMessage.MissingEGN || message === trMessage.ExistForInst || message === trMessage.DeadPerson">
+        <button mat-raised-button color="secondary" (click)="goBack()"><span>{{ exists ? 'Назад' : 'Откажи'}}</span></button>
+        <button mat-raised-button class="btn-add-institution" *ngIf="data && !extData" color="primary"
+            (click)="navigate()"><span>Потвърди</span></button>
+        <button mat-raised-button class="btn-add-institution" *ngIf="message === trMessage.MissingEGN && !exists && !regixError && idType !== 2"
+            color="primary" (click)="getRegixData()"><span>Продължи с проверка в ГРАО / МВР</span></button>
+        <button mat-raised-button class="btn-add-institution" *ngIf="message === trMessage.MissingEGN && !exists && (regixError || idType === 2)"
+            color="primary" (click)="navigate()"><span>Продължи с ръчно въвеждане на данните</span></button>
+    </div>
+</div>
+<app-loader *ngIf="isLoading"></app-loader>

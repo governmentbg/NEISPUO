@@ -1,0 +1,63 @@
+<sb-tab-card [hideHeader]="true">
+  <ng-container card-body>
+    <button
+      *ngIf="canPrint"
+      type="button"
+      mat-raised-button
+      color="primary"
+      aria-label="Принтирай"
+      class="mb-2.5"
+      (click)="startPrint()"
+      [disabled]="printing"
+    >
+      <fa-icon [icon]="printing ? fasSpinnerThird : fasFilePdf" [spin]="printing" size="lg"></fa-icon>
+      <span>Принтирай</span>
+    </button>
+
+    <sb-table [dataSource]="dataSource" [displayedColumns]="['download', 'createDate', 'createdBy']">
+      <ng-container cdkColumnDef="download">
+        <th cdk-header-cell *cdkHeaderCellDef></th>
+        <td cdk-cell *cdkCellDef="let row" class="sb-table-action">
+          <a
+            *ngIf="row.status === ClassBookPrintStatus.Pending"
+            aria-label="Генериране"
+            disabled="disabled"
+            class="sb-link-btn"
+          >
+            <fa-icon [icon]="fasSpinnerThird" [spin]="true"></fa-icon>
+          </a>
+          <a
+            *ngIf="row.status === ClassBookPrintStatus.Errored"
+            aria-label="Грешка"
+            matTooltip="Възникна неочаквана грешка. Моля, опитайте отново по-късно."
+            [matTooltipPosition]="'right'"
+            disabled="disabled"
+            class="sb-link-btn text-error"
+          >
+            <fa-icon [icon]="fasExclamationCircle"></fa-icon>
+          </a>
+          <a
+            *ngIf="row.status === ClassBookPrintStatus.Processed"
+            [href]="row.blobDownloadUrl"
+            target="_blank"
+            download
+            aria-label="Свали"
+            class="sb-link-btn"
+          >
+            <fa-icon [icon]="fasFilePdf"></fa-icon>
+          </a>
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="createDate">
+        <th cdk-header-cell *cdkHeaderCellDef>Принтиран на</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.createDate | sbDateTime }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="createdBy">
+        <th cdk-header-cell *cdkHeaderCellDef>Принтиран от</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.createBySysUserFirstName }} {{ row.createBySysUserLastName }}</td>
+      </ng-container>
+    </sb-table>
+  </ng-container>
+</sb-tab-card>

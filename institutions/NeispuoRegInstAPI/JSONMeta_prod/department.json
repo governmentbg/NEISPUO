@@ -1,0 +1,294 @@
+{
+  "label": "<<<< Институция - пълен набор данни >>>>>",
+  "statusFieldName": "procedureStatusTypeID",
+  "sections": [
+    {
+      "order": 1,
+      "label": "Данни за процедурата",
+      "name": "procedureData",
+	  "rendered": "if(operationType==10 || operationType==14) {section.rendered=false} else {section.rendered=true}",
+      "subsections": [
+        {
+          "order": 1,
+          "name": "procedureBasicData",
+          "fields": [
+            {
+              "label": "Сист. ID на процедурата",
+              "name": "procedureID",
+              "type": "input",
+              "inputType": "number",
+              "value": "if(operationType==1 && (procType==2 || procType==3)){field.value=null} else {field.value=value}",
+              "rendered": false,
+              "disabled": true,
+              "order": 0
+            },
+            {
+              "label": "Вид процедура",
+              "name": "procedureTypeID",
+              "type": "select",
+              "optionsPath": "/data/get/procedureTypes",
+              "value": "if(operationType==1 && (procType==2 || procType==3)){field.value=null} else {field.value=value}",
+              "defaultValue": "if(operationType==1 && procType==1){field.defaultValue=1} else if(operationType==1 && procType==2){field.defaultValue=2} else if(operationType==1 && procType==3){field.defaultValue=3} else if(operationType==1 && procType==4){field.defaultValue=4} else {field.defaultValue=null}",
+              "disabled": "if(operationType==1) {field.disabled=true} else {field.disabled=false}",
+              "width": 300,
+              "order": 1
+            },
+            {
+              "label": "Дата на вписване/промяна",
+              "name": "procedureDate",
+              "type": "date",
+              "value": "if(operationType==1 && (procType==2 || procType==3)){field.value=null} else {field.value=value}",
+              "disabled": false,
+              "order": 2,
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ]
+            },
+            {
+              "label": "Статус на процедурата",
+              "name": "procedureStatusTypeID",
+              "type": "searchselect",
+              "value": "if(operationType==1 && (procType==2 || procType==3)){field.value=null} else {field.value=value}",
+              "defaultValue": "if(operationType==1){field.defaultValue=1} else {field.defaultValue=null}",
+              "disabled": false,
+              "optionsPath": "/data/get/statusTypes",
+              "width": 500,
+              "order": 4
+            },
+            {
+              "label": "Бележки по движението в Регистъра",
+              "name": "procedureTransformDetails",
+              "type": "textarea",
+              "disabled": false,
+              "rendered": "if(operationType==1 && procType==1) {field.rendered=false} else {field.rendered=true}",
+              "order": 5,
+              "value": "if(operationType==1 && (procType==2 || procType==3)){field.value=null} else {field.value=value}",
+              "width": 900,
+              "height": 3,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 4000,
+                  "message": "Максимална дължина 4000 символа"
+                }
+              ]
+            }
+          ]
+        }
+	},
+        {
+          "order": 2,
+          "label": "Данни за филиала",
+          "name": "departmentData",
+          "canDuplicate": true,
+          "fields": [
+		    {
+              "label": "Код на филиала (терит.структура)",
+              "name": "departmentCode",
+              "type": "input",
+              "inputType": "text",
+              "disabled": false,
+			  "rendered": "if(operationType==10 || operationType==14) {field.rendered=false} else {field.rendered=true}",
+              "order": 1,
+              "width": 95,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 10,
+                  "message": "Максимална дължина 10 символа"
+                },
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ]
+            },
+			{
+              "label": "ЕИК",
+              "name": "departmentBulstat",
+              "type": "input",
+              "inputType": "text",
+              "disabled": true,
+              "defaultValue": "if(operationType==1){field.defaultValue=instid} else {field.defaultValue=null}",
+              "rendered": "if(instKind==13) {field.rendered=false} else {field.rendered=true}",
+              "order": 2,
+              "width": 120,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 13,
+                  "message": "Максимална дължина 13 символа"
+                },
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ]
+            },
+			{
+              "label": "Наименование",
+              "name": "name",
+              "type": "input",
+              "inputType": "text",
+              "order": 3,
+              "width": 1200,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 1024,
+                  "message": "Максимална дължина 1024 символа"
+                },
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ]
+            },
+            {
+              "label": "Област",
+              "name": "departmentAddrRegion",
+              "type": "searchselect",
+              "optionsPath": "/data/get/region",
+              "disabled": false,
+			  "flexible": "if(operationType==10 || operationType==14) {field.flexible=true} else {field.flexible=false}",
+              "influence": [
+                {
+                  "fieldName": "primaryAddrMunicipality",
+                  "url": "/data/get/municipality",
+                  "type": "options"
+                }
+              ],
+              "order": 4,
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ]
+            },
+            {
+              "label": "Община",
+              "name": "departmentAddrMunicipality",
+              "type": "searchselect",
+              "disabled": false,
+			  "flexible": "if(operationType==10 || operationType==14) {field.flexible=true} else {field.flexible=false}",
+              "influence": [
+                {
+                  "fieldName": "primaryAddrTown",
+                  "url": "/data/get/town",
+                  "type": "options"
+                }
+              ],
+              "order": 5,
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ]
+            },
+            {
+              "label": "Населено място",
+              "name": "departmentAddrTown",
+              "type": "searchselect",
+              "influence": [
+                {
+                  "fieldName": "primaryAddrLocalArea",
+                  "url": "/data/get/localArea",
+                  "type": "options"
+                }
+              ],
+              "disabled": false,
+			  "flexible": "if(operationType==10 || operationType==14) {field.flexible=true} else {field.flexible=false}",
+              "order": 6,
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ]
+            },
+            {
+              "label": "Адрес",
+              "name": "departmentAddrAddress",
+              "type": "input",
+              "inputType": "text",
+              "order": 7,
+              "disabled": false,
+			  "flexible": "if(operationType==10 || operationType==14) {field.flexible=true} else {field.flexible=false}",
+              "width": 850,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 255,
+                  "message": "Максимална дължина 255 символа"
+                },
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ]
+            }
+        },
+		   {
+      "order": 4,
+      "label": "Данни за контакт",
+      "name": "contactData",
+      "subsections": [
+        {
+          "order": 1,
+          "name": "contactData",
+          "fields": [
+            {
+              "label": "Телефон",
+              "name": "phone",
+              "type": "input",
+              "inputType": "text",
+              "order": 1,
+              "disabled": false,
+              "width": 400,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 50,
+                  "message": "Максимална дължина 50 символа"
+                }
+              ]
+            },
+			{
+              "label": "Електронна поща",
+              "name": "email",
+              "type": "input",
+              "inputType": "text",
+              "order": 1,
+              "disabled": false,
+              "width": 400,
+              "validations": [
+                {
+                  "name": "pattern",
+                  "validation": "^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$",
+                  "message": "Невалиден адрес на електронна поща"
+                },
+                {
+                  "name": "maxLength",
+                  "validation": 50,
+                  "message": "Максимална дължина 50 символа"
+                }
+              ]
+            }
+          ]
+        }
+    }
+  ]
+}

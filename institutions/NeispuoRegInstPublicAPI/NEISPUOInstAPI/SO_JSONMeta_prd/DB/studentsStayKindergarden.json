@@ -1,0 +1,44 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_year].[StudentListStayKindergarden] CD /**where**/ /**orderby**/",
+  "columns": [
+	{
+      "column": "CD.ID AS id"
+    },
+	{
+      "column": "CD.PublicEduNumber AS publicEduNumber"
+    },
+	{
+      "column": "CD.FullName AS fullName"
+    },
+	{
+      "column": "CD.ClassName AS className"
+    },
+	{
+      "column": "CD.PersonID AS personID"
+    }
+   ],
+  "params": [
+	{
+      "param": "@instid",
+      "column": "CD.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+	],
+  "order": [
+    {
+      "column": "CD.ClassName",
+      "type": "ASC"
+    },
+	{
+      "column": "CD.FullName",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+
+  ]
+}

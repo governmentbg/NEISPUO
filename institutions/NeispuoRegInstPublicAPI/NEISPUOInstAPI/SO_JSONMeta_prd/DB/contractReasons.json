@@ -1,0 +1,24 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[ContractReason] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "ContractReasonID as code"
+        },
+        {
+            "column": "Name as label"
+        },
+		{
+            "column": "IsValid as isValid"
+        }
+    ],
+    "params": [
+
+    ],
+    "order": [
+        {
+            "column": "ContractReasonID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

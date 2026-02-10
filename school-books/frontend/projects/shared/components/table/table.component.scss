@@ -1,0 +1,7 @@
+:host ::ng-deep .mat-paginator-container {
+  @apply px-0 border-t border-gray-200;
+}
+
+.sb-no-data-row:empty {
+  @apply h-80;
+}

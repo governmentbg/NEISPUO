@@ -1,0 +1,10 @@
+@import '../../../../../node_modules/@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/variables/variables';
+
+:host::ng-deep {
+    .p-dialog-content {
+        i {
+            color: $gray-700;
+            margin-right: 1rem;
+        }
+    }
+}

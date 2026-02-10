@@ -1,0 +1,13 @@
+<h1 mat-dialog-title *ngIf="message">{{ message }}</h1>
+<div class="l-help-container" *ngIf="helpText || hasLocalServerLink">
+  <label class="value-label" *ngIf="helpText" [innerHtml]="helpText | dompurify"></label>
+  <span *ngIf="hasLocalServerLink">За да можете да подпишете документа за подаване на Списък-образец № 1, 2 или 3, трябва първо да изтеглите и инсталирате на Вашия компютър приложението за подписване: <a href='https://students.mon.bg/software/localServer' target='_blank'>изтегли</a></span>
+</div>
+<div class="footer-container-with-two-buttons">
+  <button mat-raised-button class="btn-first btn-normal" color="primary" (click)="closeDialog(true)" *ngIf="confirmButtonLabel">
+    {{ confirmButtonLabel }}
+  </button>
+  <button mat-raised-button class="btn-second btn-second" color="secondary" (click)="closeDialog(false)">
+    {{ cancelButtonLabel }}
+  </button>
+</div>

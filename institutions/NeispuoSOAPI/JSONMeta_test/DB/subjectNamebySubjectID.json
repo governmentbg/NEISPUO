@@ -1,0 +1,21 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[Subject] S /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "S.SubjectName AS subjectName"
+        }
+    ],
+    "params": [
+        {
+            "param": "@subjectID",
+            "column": "S.SubjectID",
+            "operator": "=",
+            "value": "subjectID",
+            "type": "int",
+            "logical_operator": "and",
+            "static": false
+        }
+    ],
+    "order": [],
+    "inSelects": []
+}

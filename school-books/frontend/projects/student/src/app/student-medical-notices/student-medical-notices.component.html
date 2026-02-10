@@ -1,0 +1,37 @@
+<sb-card>
+  <ng-container card-title>
+    Електронни медицински бележки на {{ data.studentName }} за {{ data.schoolYear }}/{{ data.schoolYear + 1 }}
+  </ng-container>
+  <ng-container card-body>
+    <sb-table [dataSource]="dataSource" [displayedColumns]="['period', 'nrnMedicalNotice', 'pmi']">
+      <ng-container cdkColumnDef="period">
+        <th cdk-header-cell *cdkHeaderCellDef>Обхваща Дата/Период</th>
+        <td cdk-cell *cdkCellDef="let row">
+          <ng-container *ngIf="row.fromDate.getTime() === row.toDate.getTime(); else period">
+            <span>{{ row.fromDate | sbDate }}</span>
+          </ng-container>
+
+          <ng-template #period>
+            <span>{{ row.fromDate | sbDate }} - {{ row.toDate | sbDate }}</span>
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="nrnMedicalNotice">
+        <th cdk-header-cell *cdkHeaderCellDef>НРН</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.nrnMedicalNotice }}/{{ row.authoredOn | sbDate }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="pmi">
+        <th cdk-header-cell *cdkHeaderCellDef>УИН на лекаря</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.pmi }}</td>
+      </ng-container>
+
+      <ng-container no-data-row>
+        <td colspan="3" class="text-center">
+          {{ 'Няма подадени електронни медицински бележки за ' + data.studentName }}
+        </td>
+      </ng-container>
+    </sb-table>
+  </ng-container>
+</sb-card>

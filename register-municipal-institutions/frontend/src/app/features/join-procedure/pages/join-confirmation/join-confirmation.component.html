@@ -1,0 +1,46 @@
+<div class="grid fluid">
+  <div class="col-12">
+    <h5>Институции, които ще бъдат заличени в резултат на процедура по вливане</h5>
+  </div>
+  <div class="col-12">
+    <ng-container *ngFor="let mi of misToDelete$ | async; let i = index">
+      <p-divider align="center">
+        <h5>Институция № {{ i + 1 }}</h5>
+      </p-divider>
+      <app-mi-preview-only
+        *ngIf="!!mi"
+        [resp]="mi"
+        [displayRIPremInstitution]="true"
+        [displayRIProcedure]="true"
+       [displayProcedureFields]="true"
+      ></app-mi-preview-only>
+    </ng-container>
+  </div>
+  <div class="col-12">
+    <h5>Институция, към която ще се осъществи вливане</h5>
+  </div>
+  <div class="col-12">
+    <app-mi-preview-only 
+    [resp]="miToUpdate$ | async"
+    ></app-mi-preview-only>
+  </div>
+  <div class="col-12">
+    <app-join-mi-preview-ri-document
+    [displayRIProcedure]="true" 
+    [displayDocument]="true"
+    [isReadOnly]="true"
+    [resp]="misToDeleteFirst$ | async"
+  ></app-join-mi-preview-ri-document>
+</div>
+  <div class="col-12">
+    <app-stepper-actions
+      [showBack]="true"
+      [backLabel]="'Назад'"
+      [backRouterLink]="['..', 'ri-document']"
+      [showForward]="false"
+      [submitLabel]="'Вливане'"
+      [submitCallback]="join"
+      [showSubmit]="true"
+    ></app-stepper-actions>
+  </div>
+</div>

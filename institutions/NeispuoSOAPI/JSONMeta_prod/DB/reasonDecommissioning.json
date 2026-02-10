@@ -1,0 +1,23 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_nom].[ReasonDecommissioning] RD /**where**/ /**orderby**/",
+  "columns": [
+	{
+      "column": "RD.ReasonDecommissioningID AS code"
+    },
+	{
+      "column": "RD.Description AS label"
+    }
+   ],
+  "params": [
+
+  ],
+  "order": [
+    {
+      "column": "RD.Description",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+
+  ]
+}

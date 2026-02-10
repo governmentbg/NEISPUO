@@ -1,0 +1,41 @@
+<div>
+  <div [formGroup]="searchForm" novalidate>
+    <sb-text-field class="col-span-full" label="Търсене" formControlName="bookName"></sb-text-field>
+  </div>
+  <sb-table
+    [dataSource]="dataSource"
+    [displayedColumns]="['action', 'className', 'basicClassName', 'bookTypeDescription', 'bookName']"
+  >
+    <ng-container cdkColumnDef="action">
+      <th cdk-header-cell *cdkHeaderCellDef></th>
+      <td cdk-cell *cdkCellDef="let row" class="sb-table-action">
+        <a [routerLink]="['./', row.classBookId]" aria-label="Детайли" class="sb-link-btn">
+          <fa-icon [icon]="fadChevronCircleRight"></fa-icon>
+        </a>
+      </td>
+    </ng-container>
+
+    <ng-container cdkColumnDef="className">
+      <th cdk-header-cell *cdkHeaderCellDef>Клас</th>
+      <td cdk-cell *cdkCellDef="let row">
+        {{ row.className }}
+        <span *ngIf="row.isValid === false" class="sb-badge">Архивиран</span>
+      </td>
+    </ng-container>
+
+    <ng-container cdkColumnDef="basicClassName">
+      <th cdk-header-cell *cdkHeaderCellDef>Випуск (клас)</th>
+      <td cdk-cell *cdkCellDef="let row">{{ row.basicClassName }}</td>
+    </ng-container>
+
+    <ng-container cdkColumnDef="bookTypeDescription">
+      <th cdk-header-cell *cdkHeaderCellDef>Вид на дневника</th>
+      <td cdk-cell *cdkCellDef="let row">{{ row.bookTypeDescription }}</td>
+    </ng-container>
+
+    <ng-container cdkColumnDef="bookName">
+      <th cdk-header-cell *cdkHeaderCellDef>Наименование в менюто</th>
+      <td cdk-cell *cdkCellDef="let row">{{ row.bookName }}</td>
+    </ng-container>
+  </sb-table>
+</div>

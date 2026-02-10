@@ -1,0 +1,81 @@
+@using SB.Domain
+@model StudentsModel
+
+<div class="page">
+  <h3 class="page-header">Общи сведения за учениците</h3>
+    @{
+        var rowspan = !Model.IsPg ? 3 : 1; 
+    }
+    <table>
+    <thead>
+      <tr>
+        <th class="three-rows-height align-bottom"><div class="vertical-text">@(!Model.IsPg ? "№ на ученика" : "№ по ред")</div></th>
+        <th>@(!Model.IsPg ? "Трите имена на ученика" : "Трите имена на детето")</th>
+        <th>Дата и<br/>година<br/>на<br/>раждане</th>
+        <th>Месторождение</th>
+        <th>@(!Model.IsPg ? "Адрес на ученика" : "Адрес на детето")<br/>и телефон</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (var student in Model.Students)
+      {
+        <tr class="two-rows-height">
+          <td>@student.ClassNumber</td>
+          <td>
+            @student.FullName
+            @if (student.IsTransferred)
+            {
+              <span class="sb-badge">ОТПИСАН</span>
+            }
+          </td>
+          <td>@(student.BirthDate?.ToString("dd.MM.yy") ?? "")</td>
+          <td>@student.BirthPlace</td>
+          <td>@student.AddressAndPhoneNumber</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+
+  <div class="page-break"></div>
+
+  <h3 class="page-header">Общи сведения за учениците</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th rowspan="@rowspan" class="three-rows-height align-bottom"><div class="vertical-text">@(!Model.IsPg ? "№ на ученика" : "№ по ред")</div></th>
+        @if (!Model.IsPg)
+        {
+          <th rowspan="3">Профил/<br/>Професия</th>
+        }
+        else
+        {
+          <th>Допълнителни дейности извън държавните образователни изисквания</th>
+        }
+        
+        <th rowspan="@rowspan">Собствено и фамилно<br/>име, адрес и телефон<br/>на родителя<br/>или настойника</th>
+        <th rowspan="@rowspan">Фамилно<br/>име<br/>и телефон<br/>на личния<br/>лекар</th>
+        <th rowspan="@rowspan">№ и дата<br/>на удосто-<br/>верението<br/>за премест-<br/>ване</th>
+        <th rowspan="@rowspan">№ и дата<br/>на съобще-<br/>нието за<br/>записване</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (var student in Model.Students)
+      {
+        <tr class="two-rows-height">
+          <td>@student.ClassNumber</td>
+          <td>@student.Profession</td>
+          <td>
+            @foreach (var p in student.ParentsContact)
+            {
+              @p<br/>
+            }
+          </td>
+          <td>@student.DoctorNameAndPhoneNumber</td>
+          <td>@student.RelocationDocumentNoteNumber @(student.RelocationDocumentNoteDate?.ToString("dd.MM.yyyy") ?? "")</td>
+          <td>@student.AdmissionDocumentNoteNumber @(student.AdmissionDocumentNoteDate?.ToString("dd.MM.yyyy") ?? "")</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

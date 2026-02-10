@@ -1,0 +1,54 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_nom].[ProfileSubjectLimit] PS /**where**/ /**orderby**/",
+  "columns": [
+    {
+      "column": "PS.ModuleSubjectID as code"
+    },
+    {
+      "column": "PS.ModuleSubjectName as label"
+    }
+  ],
+  "params": [
+    {
+      "param": "@parentCurriculumID",
+      "column": "PS.CurriculumID",
+      "operator": "=",
+      "value": "parentCurriculumID",
+      "optional": true,
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+    {
+      "param": "@schoolYear",
+      "column": "PS.SchoolYear",
+      "operator": "=",
+      "value": "schoolYear",
+      "type": "int",
+      "logical_operator": "and",
+      "optional": true,
+      "static": false
+    },
+    {
+      "param": "@parentclassid",
+      "column": "PS.ClassID",
+      "operator": "=",
+      "value": "parentclassid",
+      "optional": true,
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+    {
+      "param": "@instid",
+      "column": "PS.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+  ],
+  "order": [],
+  "inSelects": []
+}

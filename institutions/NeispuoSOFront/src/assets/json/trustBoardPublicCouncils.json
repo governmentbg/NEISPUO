@@ -1,0 +1,355 @@
+{
+  "label": "Данни за настоятелство и обществен съвет",
+  "paramName": "instid",
+  "sections": [
+    {
+      "label": "Настоятелство",
+      "order": 1,
+      "subsections": [
+        {
+          "order": 1,
+          "label": "Данни за регистрацията",
+          "fields": [
+            {
+              "label": "Статус на регистрация",
+              "name": "trustBoardRegistryStatusID",
+              "type": "select",
+              "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+              "disabled": false,
+              "order": 1
+            },
+            {
+              "label": "Наименование",
+              "name": "trustBoardName",
+              "type": "input",
+              "inputType": "text",
+              "disabled": false,
+              "order": 2,
+              "width": 800,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 255,
+                  "message": "Максимална дължина 255 символа"
+                }
+              ]
+            },
+            {
+              "label": "Година на първоначална регистрация",
+              "name": "trustBoardEstablishedYear",
+              "type": "input",
+              "inputType": "number",
+              "order": 3,
+              "width": 95,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 4,
+                  "message": "Максимална дължина 4 символа"
+                },
+                {
+                  "name": "max",
+                  "validation": 9999,
+                  "message": "Невалидна година"
+                },
+                {
+                  "name": "pattern",
+                  "validation": "^\\d+$",
+                  "message": "Полето трябва да съдържа цяло неотрицателно число"
+                }
+              ]
+            },
+            {
+              "label": "Вид, номер и дата на документа за регистрация",
+              "name": "documentHistory",
+              "type": "input",
+              "inputType": "text",
+              "disabled": false,
+              "order": 4,
+              "width": 800,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 255,
+                  "message": "Максимална дължина 255 символа"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "label": "Адрес на регистрация",
+          "fields": [
+            {
+              "label": "Област",
+              "name": "trustBoardRegion",
+              "type": "select",
+              "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+              "disabled": false,
+              "influence": [
+                {
+                  "fieldName": "trustBoardMunicipality",
+                  "url": "assets/json/fake-data/baseSchoolTypes.json",
+                  "type": "options"
+                }
+              ],
+              "order": 1
+            },
+            {
+              "label": "Община",
+              "name": "trustBoardMunicipality",
+              "type": "select",
+              "disabled": false,
+              "influence": [
+                {
+                  "fieldName": "trustBoardTown",
+                  "url": "assets/json/fake-data/baseSchoolTypes.json",
+                  "type": "options"
+                }
+              ],
+              "order": 2
+            },
+            {
+              "label": "Населено място",
+              "name": "trustBoardTown",
+              "type": "select",
+              "disabled": false,
+              "order": 3
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "label": "Председател",
+          "fields": [
+            {
+              "label": "Име на председател",
+              "name": "chairmanFirstName",
+              "type": "input",
+              "inputType": "text",
+              "disabled": false,
+              "order": 1,
+              "width": 400,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 255,
+                  "message": "Максимална дължина 255 символа"
+                }
+              ]
+            },
+            {
+              "label": "Презиме на председател",
+              "name": "chairmanMiddleName",
+              "type": "input",
+              "inputType": "text",
+              "disabled": false,
+              "order": 1,
+              "width": 400,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 255,
+                  "message": "Максимална дължина 255 символа"
+                }
+              ]
+            },
+            {
+              "label": "Фамилия на председател",
+              "name": "chairmanFamilyName",
+              "type": "input",
+              "inputType": "text",
+              "disabled": false,
+              "order": 1,
+              "width": 400,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 255,
+                  "message": "Максимална дължина 255 символа"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "order": 4,
+          "label": "Данни за контакт",
+          "fields": [
+            {
+              "label": "Електронна поща",
+              "name": "chairmanEmail",
+              "type": "input",
+              "inputType": "text",
+              "order": 1,
+              "disabled": false,
+              "width": 400,
+              "validations": [
+                {
+                  "name": "pattern",
+                  "validation": "^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$",
+                  "message": "Невалиден адрес на електронна поща"
+                },
+                {
+                  "name": "maxLength",
+                  "validation": 50,
+                  "message": "Максимална дължина 50 символа"
+                }
+              ]
+            },
+            {
+              "label": "Телефон",
+              "name": "chairmanPhone",
+              "type": "input",
+              "inputType": "text",
+              "order": 2,
+              "disabled": false,
+              "width": 150,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 50,
+                  "message": "Максимална дължина 50 символа"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Обществен съвет",
+      "order": 2,
+      "subsections": [
+        {
+          "order": 1,
+          "label": "Данни за обществен съвет",
+          "name": "publicCouncilData",
+          "canDuplicate": true,
+          "subsections": [
+            {
+              "order": 1,
+              "label": "Вид и роля",
+              "fields": [
+                {
+                  "label": "Институция, на която е представител",
+                  "name": "publicCouncilTypeID",
+                  "type": "select",
+                  "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+                  "disabled": false,
+                  "order": 1
+                },
+                {
+                  "label": "Роля",
+                  "name": "publicCouncilRoleID",
+                  "type": "select",
+                  "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+                  "disabled": false,
+                  "order": 2
+                }
+              ]
+            },
+            {
+              "order": 2,
+              "label": "Данни за лицето",
+              "fields": [
+                {
+                  "label": "Име",
+                  "name": "firstName",
+                  "type": "input",
+                  "inputType": "text",
+                  "disabled": false,
+                  "order": 3,
+                  "width": 300,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 255,
+                      "message": "Максимална дължина 255 символа"
+                    }
+                  ]
+                },
+                {
+                  "label": "Презиме",
+                  "name": "middleName",
+                  "type": "input",
+                  "inputType": "text",
+                  "disabled": false,
+                  "order": 4,
+                  "width": 300,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 255,
+                      "message": "Максимална дължина 255 символа"
+                    }
+                  ]
+                },
+                {
+                  "label": "Фамилия",
+                  "name": "familyName",
+                  "type": "input",
+                  "inputType": "text",
+                  "disabled": false,
+                  "order": 5,
+                  "width": 300,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 255,
+                      "message": "Максимална дължина 255 символа"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "order": 3,
+              "label": "Данни за контакт",
+              "fields": [
+                {
+                  "label": "Електронна поща",
+                  "name": "email",
+                  "type": "input",
+                  "inputType": "text",
+                  "order": 6,
+                  "disabled": false,
+                  "width": 400,
+                  "validations": [
+                    {
+                      "name": "pattern",
+                      "validation": "^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$",
+                      "message": "Невалиден адрес на електронна поща"
+                    },
+                    {
+                      "name": "maxLength",
+                      "validation": 50,
+                      "message": "Максимална дължина 50 символа"
+                    }
+                  ]
+                },
+                {
+                  "label": "Телефон",
+                  "name": "phone",
+                  "type": "input",
+                  "inputType": "text",
+                  "order": 7,
+                  "disabled": false,
+                  "width": 150,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 15,
+                      "message": "Максимална дължина 15 символа"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

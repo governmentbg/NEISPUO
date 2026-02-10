@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Този проект трябва да се компилира за netstandard2.0, за да се поддържа от стария .net framework.
+    Така assembly-то може да се ползва от Telerik standalone report designer-а.
+    Дизайнерът използва типовете от dll-ката, за да конфигурира ObjectDataSource-овете в .trdp файловете.
+  -->
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+
+</Project>

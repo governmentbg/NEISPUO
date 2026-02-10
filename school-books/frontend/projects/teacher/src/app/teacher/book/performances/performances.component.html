@@ -1,0 +1,71 @@
+<sb-tab-card [hideHeader]="true">
+  <ng-container card-body>
+    <div class="flex justify-between items-start">
+      <div class="mb-2.5">
+        <a *ngIf="canCreate" [routerLink]="['./', 'new']" mat-raised-button color="primary" aria-label="Нова изява">
+          <fa-icon [icon]="fasPlus" size="lg"></fa-icon>
+          <span class="hidden sm:inline">Нова изява</span>
+        </a>
+      </div>
+      <div class="mb-2.5">
+        <a
+          [href]="downloadUrl"
+          target="_blank"
+          download
+          color="primary"
+          mat-raised-button
+          [disabled]="!downloadUrl"
+          class="mr-3"
+        >
+          <fa-icon [icon]="fasFileExcel" size="lg"></fa-icon>
+          <span class="hidden sm:inline">Свали</span>
+        </a>
+        <a
+          *ngIf="canExportForAllBooks"
+          [href]="downloadForAllBooksUrl"
+          target="_blank"
+          download
+          color="primary"
+          mat-raised-button
+          [disabled]="!downloadForAllBooksUrl"
+        >
+          <fa-icon [icon]="fasFileSpreadsheet" size="lg"></fa-icon>
+          <span class="hidden sm:inline">Свали за всички дневници</span>
+        </a>
+      </div>
+    </div>
+    <sb-table
+      [dataSource]="dataSource"
+      [displayedColumns]="['action', 'name', 'performanceType', 'startDate', 'endDate']"
+    >
+      <ng-container cdkColumnDef="action">
+        <th cdk-header-cell *cdkHeaderCellDef></th>
+        <td cdk-cell *cdkCellDef="let row" class="sb-table-action">
+          <a [routerLink]="['./', row.sanctionId]" aria-label="Детайли" class="sb-link-btn">
+            <fa-icon [icon]="fadChevronCircleRight"></fa-icon>
+          </a>
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="name">
+        <th cdk-header-cell *cdkHeaderCellDef>Наименование</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.name }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="performanceType">
+        <th cdk-header-cell *cdkHeaderCellDef>Вид на изявата</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.performanceType }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="startDate">
+        <th cdk-header-cell *cdkHeaderCellDef>Начална дата</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.startDate | sbDate }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="endDate">
+        <th cdk-header-cell *cdkHeaderCellDef>Крайна дата</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.endDate | sbDate }}</td>
+      </ng-container>
+    </sb-table>
+  </ng-container>
+</sb-tab-card>

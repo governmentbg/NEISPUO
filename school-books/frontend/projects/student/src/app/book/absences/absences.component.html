@@ -1,0 +1,141 @@
+<div class="sb-table-container">
+  <table class="sb-table">
+    <thead>
+      <tr>
+        <th rowspan="2">Предмет</th>
+        <th colspan="3" class="text-center">Неуважителни</th>
+        <th rowspan="2" class="w-px text-center align-top">Уваж.</th>
+      </tr>
+      <tr>
+        <th class="w-px text-center">
+          <span class="inline sm:hidden">Зак.</span>
+          <span class="hidden sm:inline">Закъсн.</span>
+        </th>
+        <th class="w-px text-center">
+          <span class="inline sm:hidden">Неув.</span>
+          <span class="hidden sm:inline">Неуваж.</span>
+        </th>
+        <th class="w-px text-center">
+          <span class="inline sm:hidden">Об.</span>
+          <span class="hidden sm:inline">Общо</span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let curriculum of studentAbsences.absences">
+        <tr>
+          <td class="sb-names">
+            {{ curriculum.curriculumName }}
+          </td>
+
+          <td class="w-px whitespace-nowrap text-center font-medium align-middle p-1">
+            <button
+              class="book-count-button late"
+              [class.disabled]="curriculum.lateAbsencesCount === 0"
+              [class.active]="selectedCurriculumId === curriculum.curriculumId && selectedType === ABSENCE_TYPE_LATE"
+              (click)="viewAbsences(curriculum.curriculumId, ABSENCE_TYPE_LATE)"
+            >
+              {{ curriculum.lateAbsencesCount }}
+            </button>
+          </td>
+          <td class="w-px whitespace-nowrap text-center font-medium align-middle p-1">
+            <button
+              class="book-count-button unexcused"
+              [class.disabled]="curriculum.unexcusedAbsencesCount === 0"
+              [class.active]="
+                selectedCurriculumId === curriculum.curriculumId && selectedType === ABSENCE_TYPE_UNEXCUSED
+              "
+              (click)="viewAbsences(curriculum.curriculumId, ABSENCE_TYPE_UNEXCUSED)"
+            >
+              {{ curriculum.unexcusedAbsencesCount }}
+            </button>
+          </td>
+          <td class="w-px whitespace-nowrap text-center font-medium align-middle p-1">
+            {{ curriculum.lateAbsencesCount * 0.5 + curriculum.unexcusedAbsencesCount | number: '1.1-1' }}
+          </td>
+          <td class="w-px whitespace-nowrap text-center font-medium align-middle p-1">
+            <button
+              class="book-count-button excused"
+              [class.disabled]="curriculum.excusedAbsencesCount === 0"
+              [class.active]="selectedCurriculumId === curriculum.curriculumId && selectedType === ABSENCE_TYPE_EXCUSED"
+              (click)="viewAbsences(curriculum.curriculumId, ABSENCE_TYPE_EXCUSED)"
+            >
+              {{ curriculum.excusedAbsencesCount }}
+            </button>
+          </td>
+        </tr>
+        <tr *ngIf="selectedCurriculumId === curriculum.curriculumId && loadingAbsences">
+          <td
+            colspan="5"
+            class="relative book-item-cell h-16"
+            [class.late]="selectedType === ABSENCE_TYPE_LATE"
+            [class.unexcused]="selectedType === ABSENCE_TYPE_UNEXCUSED"
+            [class.excused]="selectedType === ABSENCE_TYPE_EXCUSED"
+          >
+            <mat-spinner [diameter]="40" class="absolute top-1/2 left-1/2 -mt-5 -ml-5"></mat-spinner>
+          </td>
+        </tr>
+        <ng-container *ngIf="selectedCurriculumId === curriculum.curriculumId && !loadingAbsences">
+          <tr *ngFor="let absence of selectedAbsences">
+            <td
+              colspan="5"
+              class="relative p-2 book-item-cell"
+              [class.late]="selectedType === ABSENCE_TYPE_LATE"
+              [class.unexcused]="selectedType === ABSENCE_TYPE_UNEXCUSED"
+              [class.excused]="selectedType === ABSENCE_TYPE_EXCUSED"
+            >
+              <div class="sm:flex">
+                <div class="sm:grow">
+                  <div class="text-sm">
+                    <span class="block sm:inline whitespace-nowrap">
+                      <fa-icon [icon]="farCalendarTimes"></fa-icon>
+                      <span class="font-bold">{{ absence.typeName }}</span>
+                    </span>
+                    {{ ' ' }}
+                    <span class="block sm:inline whitespace-nowrap">
+                      по
+                      <fa-icon [icon]="fasBookOpen"></fa-icon>
+                      <span class="font-bold">
+                        {{ absence.subjectName }} / {{ absence.subjectTypeName }}
+                        {{ absence.replTeacherIsNonSpecialist ? '(ГО)' : '' }}
+                      </span>
+                    </span>
+                    {{ ' ' }}
+                    <span class="block sm:inline whitespace-nowrap">
+                      на
+                      <fa-icon [icon]="fasCalendarAlt"></fa-icon>
+                      <span class="font-bold">{{ absence.date | sbDate }}</span>
+                    </span>
+                  </div>
+                  <div *ngIf="absence.excusedReasonId" class="text-xs italic">
+                    Причини:
+                    <span class="font-bold">{{ absence.excusedReasonName }}</span>
+                  </div>
+                  <div *ngIf="absence.excusedReasonComment" class="text-xs italic">
+                    Коментар:
+                    <ng-container *ngIf="absence.excusedReasonComment.indexOf('\n') !== -1"><br /></ng-container>
+                    <span class="font-bold whitespace-pre-line">{{ absence.excusedReasonComment }}</span>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </ng-container>
+      </ng-container>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>Общо</td>
+        <td class="text-center text-sm">{{ studentAbsences.totals.lateAbsencesCountTotal }}</td>
+        <td class="text-center text-sm">{{ studentAbsences.totals.unexcusedAbsencesCountTotal }}</td>
+        <td class="text-center text-sm">
+          {{
+            studentAbsences.totals.lateAbsencesCountTotal * 0.5 + studentAbsences.totals.unexcusedAbsencesCountTotal
+              | number: '1.0-1'
+          }}
+        </td>
+        <td class="text-center text-sm">{{ studentAbsences.totals.excusedAbsencesCountTotal }}</td>
+      </tr>
+    </tfoot>
+  </table>
+</div>

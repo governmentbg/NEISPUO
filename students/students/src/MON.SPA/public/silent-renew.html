@@ -1,0 +1,16 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Моля, изчакайте...</title>
+</head>
+<body>
+    <script src="js/oidc-client.min.js"></script>
+    <script src="js/crypto-js/crypto-js.js"></script>
+    <script src="js/SecureStorageStateStore.js"></script>
+    <script>
+
+        var mgr = new Oidc.UserManager({ userStore: new SecureStorageStateStore() }).signinSilentCallback();
+    </script>
+</body>
+</html>

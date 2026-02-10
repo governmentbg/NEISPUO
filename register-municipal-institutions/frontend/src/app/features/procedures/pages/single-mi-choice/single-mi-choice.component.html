@@ -1,0 +1,54 @@
+<p-fieldset legend="Избор на институция">
+  <div class="grid fluid">
+    <div class="col-12">{{ procedureDescriptionText }}</div>
+    <div class="col-md-8">
+      <label for="RIInstitution"> {{ miPickerLabel }} </label>
+      <p-dropdown
+        [filter]="true"
+        [autoDisplayFirst]="false"
+        inputId="RIInstitution"
+        [options]="availableMis$ | async"
+        [(ngModel)]="selectedMI"
+        optionLabel="DisplayValue"
+        (onChange)="updateStoreCallback()"
+        [virtualScroll]="true"
+        [autoZIndex]="99999"
+        [autoZIndex]="false"
+        itemSize="25"
+      ></p-dropdown>
+    </div>
+    <div class="col-12" *ngIf="selectedMI">
+      <app-institution-card-details
+        [resp]="storedMi$ | async"
+        [displayRIPremInstitution]="displayRIPremInstitution"
+        [disableProcedureFields]="disableProcedureFields"
+      ></app-institution-card-details>
+    </div>
+    <div class="col-12" *ngIf="mode !== 'join'">
+      <div class="grid p-nogutter p-justify-end">
+        <app-stepper-actions
+          [showBack]="false"
+          [backLabel]="'Назад'"
+          [backRouterLink]="['/procedures']"
+          [showForward]="true"
+          [forwardLabel]="'Напред'"
+          [forwardRouterLink]="['..', 'mi-to-create']"
+          [disableForward]="!selectedMI"
+          [showSubmit]="false"
+        ></app-stepper-actions>
+      </div>
+    </div>
+    <div class="col-12" *ngIf="mode === 'join'">
+      <app-stepper-actions
+        [showBack]="true"
+        [backLabel]="'Назад'"
+        [backRouterLink]="['..', 'mis-to-delete']"
+        [showForward]="true"
+        [forwardLabel]="'Напред'"
+        [forwardRouterLink]="['..', 'confirm']"
+        [disableForward]="!selectedMI"
+        [showSubmit]="false"
+      ></app-stepper-actions>
+    </div>
+  </div>
+</p-fieldset>

@@ -1,0 +1,189 @@
+{
+  "label": "Данни за паралелка",
+  "paramName": "classDetailid",
+  "sections": [
+    {
+      "label": "Описание на паралелката",
+      "name": "classDetail",
+      "order": 1,
+      "subsections": [
+        {
+          "order": 1,
+          "name": "classBasicData",
+          "label": "Основни данни",
+          "fields": [
+            {
+              "label": "Вид на паралелката",
+              "name": "classTypeID",
+              "type": "select",
+              "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+              "disabled": false,
+              "order": 1
+            },
+            {
+              "label": "Форма на обучение",
+              "name": "classEduFormID",
+              "type": "select",
+              "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+              "disabled": false,
+              "order": 2
+            },
+            {
+              "label": "Клас",
+              "name": "basicClassID",
+              "type": "select",
+              "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+              "disabled": false,
+              "order": 3
+            },
+            {
+              "label": "Срок на обучение",
+              "name": "classEduDurationID",
+              "type": "select",
+              "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+              "disabled": false,
+              "order": 4
+            },
+            {
+              "label": "Адрес на обучение",
+              "name": "institutionDepartmentID",
+              "type": "select",
+              "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+              "disabled": false,
+              "order": 5
+            },
+            {
+              "label": "Наименование",
+              "name": "className",
+              "type": "input",
+              "inputType": "text",
+              "order": 6,
+              "width": 400
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "name": "classOrganization",
+          "label": "Организация и финансиране",
+          "fields": [
+            {
+              "label": "Организация на уч. ден",
+              "name": "classShiftID",
+              "type": "select",
+              "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+              "disabled": false,
+              "order": 1
+            },
+            {
+              "label": "Финансира се от",
+              "name": "budgetingClassTypeID",
+              "type": "select",
+              "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+              "disabled": false,
+              "order": 2
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "name": "classProfile",
+          "label": "Профил/професия/специалност",
+          "fields": [
+            {
+              "label": "Прием след",
+              "name": "entranceLevelID",
+              "type": "select",
+              "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+              "disabled": false,
+              "order": 1
+            },
+            {
+              "label": "Чужд език",
+              "name": "flID",
+              "type": "select",
+              "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+              "disabled": false,
+              "order": 2
+            },
+            {
+              "label": "Начин на изучаване",
+              "name": "flStudyTypeID",
+              "type": "select",
+              "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+              "disabled": false,
+              "order": 3
+            },
+            {
+              "label": "Професионално обучение по модули",
+              "name": "isProfModule",
+              "type": "checkbox",
+              "flexible": false,
+              "disabled": false,
+              "order": 4
+            }
+          ],
+          "subsections": [
+            {
+              "order": 1,
+              "name": "SPPOOProfile",
+              "label": "Данни за специалност",
+              "fields": [
+                {
+                  "label": "Област на образование",
+                  "name": "SPPOOEducAreaID",
+                  "type": "select",
+                  "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+                  "disabled": false,
+                  "influence": [
+                    {
+                      "fieldName": "SPPOOProfAreaID",
+                      "url": "assets/json/fake-data/baseSchoolTypes.json",
+                      "type": "options"
+                    }
+                  ],
+                  "order": 1
+                },
+                {
+                  "label": "Професионално направление",
+                  "name": "SPPOOProfAreaID",
+                  "type": "select",
+                  "disabled": false,
+                  "influence": [
+                    {
+                      "fieldName": "SPPOOProfessionID",
+                      "url": "assets/json/fake-data/baseSchoolTypes.json",
+                      "type": "options"
+                    }
+                  ],
+                  "order": 2
+                },
+                {
+                  "label": "Наименование на професията",
+                  "name": "SPPOOProfessionID",
+                  "type": "select",
+                  "disabled": false,
+                  "influence": [
+                    {
+                      "fieldName": "SPPOOSpecialityID",
+                      "url": "assets/json/fake-data/baseSchoolTypes.json",
+                      "type": "options"
+                    }
+                  ],
+                  "order": 3
+                },
+                {
+                  "label": "Наименование на специалността",
+                  "name": "SPPOOSpecialityID",
+                  "type": "select",
+                  "disabled": false,
+                  "order": 4
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

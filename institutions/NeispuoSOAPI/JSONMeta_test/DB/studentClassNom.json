@@ -1,0 +1,31 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_year].[ClassGroupAll] CGA JOIN [student].[StudentClass] CL ON CL.ClassID=CGA.ClassID /**where**/ /**orderby**/",
+  "columns": [
+	{
+      "column": "CGA.ParentClassID AS code"
+    },
+	{
+      "column": "CGA.ClassName AS label"
+    }
+   ],
+  "params": [
+    {
+      "param": "@studentid",
+      "column": "CL.ID",
+      "operator": "=",
+      "value": "studentid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "CGA.ClassName",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+
+  ]
+}

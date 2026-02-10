@@ -1,0 +1,38 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_basic].[PersonCompSkill] PCS /**where**/ /**orderby**/",
+  "sotemplate": "SELECT /**select**/ FROM [sob].[PersonCompSkill] PCS /**where**/ /**orderby**/",
+  "columns": [
+        {
+          "column": "PCS.PersonCompSkillID AS personCompSkillID"
+        },
+		{
+          "column": "PCS.CompSkillID AS compSkillID"
+        },
+		{
+          "column": "PCS.CompSkillLevelID AS compSkillLevelID"
+        },	
+		{
+          "column": "PCS.Notes AS notes"
+        }
+  ],
+  "params": [
+	{
+          "param": "@personCompSkillID",
+          "column": "PCS.PersonCompSkillID",
+          "operator": "=",
+          "value": "personCompSkillID",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "PCS.PersonCompSkillID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+ 
+  ]
+}

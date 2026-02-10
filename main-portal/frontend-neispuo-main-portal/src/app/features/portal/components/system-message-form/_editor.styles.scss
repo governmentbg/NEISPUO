@@ -1,0 +1,19 @@
+// fix the color picker, list menus not appearing when Editor is used inside a Modal component
+// 'editor-in-modal' class is appended to the <body> element when the editor is active inside a Modal component, based on that style fixes are applied
+// this is not a very clean fix - it will not be needed once we update tinyMCE version
+body.editor-in-modal {
+  .tox-tinymce-aux {
+    z-index: 99999 !important;
+    width: auto !important;
+    min-width: 150px !important;
+    overflow: visible !important;
+  }
+
+  .tox-color-picker .tox-menu {
+    position: fixed !important;
+    left: 50% !important;
+    transform: translateX(-50%);
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+}

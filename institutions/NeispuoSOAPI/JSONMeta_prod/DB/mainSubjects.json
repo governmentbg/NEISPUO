@@ -1,0 +1,19 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[MainSubjectLimit] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "MainSubjectID as code"
+        },
+        {
+            "column": "MainSubjectName as label"
+        },
+		{
+            "column": "IsValid as isValid"
+        }
+    ],
+    "params": [
+    ],
+    "order": [
+    ],
+    "inSelects": []
+}

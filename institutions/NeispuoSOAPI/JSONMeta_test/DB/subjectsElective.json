@@ -1,0 +1,47 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[SubjectInstitutionCode] SC /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "SC.SubjectID as code"
+        },
+        {
+            "column": "SC.SubjectName as label"
+        }
+    ],
+    "params": [
+        {
+            "param": "@isValid",
+            "column": "SC.IsValid",
+            "operator": "=",
+            "value": 1,
+            "type": "int",
+            "logical_operator": "and",
+            "static": true
+        },
+        {
+            "param": "@instid",
+            "column": "SC.InstitutionID",
+            "operator": "=",
+            "value": "instid",
+            "type": "int",
+            "logical_operator": "and",
+            "static": false
+        },
+        {
+            "param": "@isMandatory",
+            "column": "SC.IsMandatory",
+            "operator": "=",
+            "value": 0,
+            "type": "int",
+            "logical_operator": "and",
+            "static": true
+        }
+    ],
+    "order": [
+        {
+            "column": "SortOrd",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

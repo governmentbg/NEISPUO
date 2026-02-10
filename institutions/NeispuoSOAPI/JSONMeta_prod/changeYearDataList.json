@@ -1,0 +1,78 @@
+{
+  "changeData": false,
+  "sections": [
+    {
+      "name": "InfoMessagesSectionNew",
+      "order": 1,
+      "subsections": [
+        {
+          "order": 0,
+          "name": "InfoMessagesSubsectionEdit",
+          "label": "Важна информация",
+          "fields": [
+            {
+              "type": "info",
+              "rendered": true,
+              "defaultValue": "<p style='color:Red;'>Преминаването в нова учебна година ще създаде нова учебна година за институцията. Необходимо е да се уверите, че сте изпратили последните си актуални данни от външния доставчик на Списък-образец, ако използвате такъв. ВСИЧКИ ДАННИ ОТ ПРЕДХОДНАТА УЧЕБНА ГОДИНА ЩЕ БЪДАТ ОКОНЧАТЕЛНО ЗАКЛЮЧЕНИ ЗА РЕДАКЦИЯ, БЕЗ ВЪЗМОЖНОСТ ЗА ПОСЛЕДВАЩО ВРЪЩАНЕ!</p>",
+              "order": 0
+            },
+            {
+              "type": "info",
+              "rendered": true,
+              "defaultValue": "<p style='color:MediumSeaGreen;'>За да стартирате процес по преминаване в нова учебна година, моля натиснете бутон +</p>",
+              "order": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 1,
+      "name": "TableChangeYearDataList",
+      "table":
+      {
+        "name": "changeYearDataList",
+        "searchable": false,
+        "formName":"changeYearData",
+        "createNew":"redirect",
+        "paramName":"changeYearDataID",
+        "hasEditButton":"if(isLocked == true && (changeYearStatus==1 || changeYearStatus==99)) {table.hasEditButton = true} else {table.hasEditButton = false}",
+        "fields": [
+          {
+            "label": "От учебна година",
+            "name": "fromSchoolYearText",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 1
+          },
+          {
+            "label": "Към учебна година",
+            "name": "toSchoolYearText",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 2
+          },
+          {
+            "label": "Статус",
+            "name": "statusName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 3
+          },
+          {
+            "label": "Статус",
+            "name": "changeYearStatus",
+            "type": "input",
+            "inputType": "number",
+            "rendered": false,
+            "width": 8,
+            "order": 3
+          }
+        ]
+      }
+    }
+  ]
+}

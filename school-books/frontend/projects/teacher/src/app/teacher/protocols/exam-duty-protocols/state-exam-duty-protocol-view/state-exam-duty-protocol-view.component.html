@@ -1,0 +1,123 @@
+<form [formGroup]="form" autocomplete="off" novalidate>
+  <sb-card>
+    <ng-container card-title>
+      {{
+        data.stateExamDutyProtocol == null
+          ? 'Създаване на протокола за дежурство при провеждане на писмен ДЗИ'
+          : 'Редакция на протокола за дежурство при провеждане на писмен ДЗИ'
+      }}
+    </ng-container>
+    <sb-editor-panel
+      [backBtnRouteCommands]="data.stateExamDutyProtocol == null ? ['../'] : ['../../']"
+      card-buttons
+      [editBtnHidden]="!canEdit"
+      [isNew]="data.stateExamDutyProtocol == null"
+      (save)="onSave($event)"
+    >
+      <a
+        [href]="downloadUrl"
+        class="mr-3"
+        disabled-mode-buttons
+        target="_blank"
+        download
+        color="primary"
+        mat-raised-button
+        [disabled]="!downloadUrl || loading"
+      >
+        <fa-icon [icon]="loading ? fasSpinnerThird : fasFileWord" [spin]="loading" size="lg"></fa-icon>
+        <span>Свали</span>
+      </a>
+      <a
+        [href]="downloadTemplateUrl"
+        class="mr-3"
+        new-mode-buttons
+        target="_blank"
+        download
+        color="primary"
+        mat-raised-button
+        [disabled]="!downloadTemplateUrl || loadingTemplate"
+      >
+        <fa-icon [icon]="loadingTemplate ? fasSpinnerThird : fasFileWord" [spin]="loadingTemplate" size="lg"></fa-icon>
+        <span>Свали шаблон</span>
+      </a>
+      <a
+        [href]="downloadTemplateUrl"
+        class="mr-3"
+        disabled-mode-buttons
+        target="_blank"
+        download
+        color="primary"
+        mat-raised-button
+        [disabled]="!downloadTemplateUrl || loadingTemplate"
+      >
+        <fa-icon [icon]="loadingTemplate ? fasSpinnerThird : fasFileWord" [spin]="loadingTemplate" size="lg"></fa-icon>
+        <span>Свали шаблон</span>
+      </a>
+      <button
+        *ngIf="canRemove"
+        disabled-mode-buttons
+        mat-raised-button
+        color="warn"
+        type="button"
+        (click)="onRemove()"
+        [disabled]="removing"
+      >
+        <fa-icon [icon]="removing ? fasSpinnerThird : fasTrashAlt" [spin]="removing" size="lg"></fa-icon>
+        <span class="hidden sm:inline">Премахни</span>
+      </button>
+    </sb-editor-panel>
+    <ng-container card-body>
+      <sb-text-field
+        class="-mt-5 col-start-1 col-span-full whitespace-pre-wrap"
+        label="Вид на протокола"
+        formControlName="protocolName"
+        [readonly]="true"
+      ></sb-text-field>
+      <div class="sm:grid grid-cols-3 gap-x-4 mb-2">
+        <sb-text-field label="Номер на протокола" formControlName="protocolNumber"></sb-text-field>
+        <sb-date-field label="Дата на протокола" formControlName="protocolDate"></sb-date-field>
+
+        <sb-nom-select
+          class="col-start-1 col-span-2"
+          label="Предмет"
+          formControlName="subjectId"
+          [nomService]="subjectNomsService"
+        ></sb-nom-select>
+
+        <sb-nom-select
+          label="Вид подготовка"
+          formControlName="subjectTypeId"
+          [nomService]="subjectTypeNomsService"
+        ></sb-nom-select>
+
+        <sb-text-field class="col-start-1" label="Номер на заповед" formControlName="orderNumber"></sb-text-field>
+
+        <sb-date-field label="Дата на заповед" formControlName="orderDate"></sb-date-field>
+
+        <sb-date-field label="Дата на протокола" formControlName="date"></sb-date-field>
+
+        <sb-text-field label="зала" formControlName="roomNumber"></sb-text-field>
+
+        <sb-nom-select
+          label="Форма на обучение"
+          formControlName="eduFormId"
+          [nomService]="eduFormNomsService"
+        ></sb-nom-select>
+
+        <sb-text-field label="Сесия" formControlName="sessionType"></sb-text-field>
+
+        <sb-number-field label="Модули" formControlName="modulesCount"></sb-number-field>
+
+        <sb-card-section class="col-span-full">Квестори</sb-card-section>
+
+        <sb-nom-select
+          class="col-start-1 col-span-full"
+          label="квестори"
+          formControlName="supervisorPersonIds"
+          [nomService]="instTeacherNomsService"
+          [multiple]="true"
+        ></sb-nom-select>
+      </div>
+    </ng-container>
+  </sb-card>
+</form>

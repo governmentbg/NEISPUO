@@ -1,0 +1,11 @@
+{
+  "production": false,
+  "APP_URL": "http://localhost:4201",
+  "BACKEND_URL": "http://localhost:3004",
+  "OIDC_BASE_URL": "http://localhost:3000",
+  "OIDC_CLIENT_ID": "neispuo-reporting",
+  "HELPDESK_URL": "https://helpdesk-neispuo.mon.bg/",
+  "ALLOWED_DOMAINS": "localhost:4000,localhost:4005",
+  "DISALLOWED_ROUTES": "http://localhost:3000",
+  "CUBEJS_API_URL": "http://localhost:4000/cubejs-api/v1"
+}

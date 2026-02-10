@@ -1,0 +1,32 @@
+[
+  {
+    "code": "school",
+    "label": "Училище",
+    "formName": "school",
+    "eikObligatory": true
+  },
+  {
+    "code": "kindergarden",
+    "label": "ДГ",
+    "formName": "kindergarden",
+    "eikObligatory": true
+  },
+  {
+    "code": "cplr",
+    "label": "ЦПЛР",
+    "formName": "cplr",
+    "eikObligatory": true
+  },
+  {
+    "code": "csop",
+    "label": "ЦСОП",
+    "formName": "csop",
+    "eikObligatory": true
+  },
+  {
+    "code": "soz",
+    "label": "СОЗ",
+    "formName": "soz",
+    "eikObligatory": false
+  }
+]

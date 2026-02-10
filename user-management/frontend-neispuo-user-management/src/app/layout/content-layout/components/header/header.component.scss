@@ -1,0 +1,58 @@
+@import '~@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/variables/variables';
+@import '~@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/mixins';
+
+.fixed-top {
+    z-index: 1000;
+}
+
+.navbar {
+    padding: 1rem 0.75rem;
+    box-shadow: -2px 0 5px $chart-mono-6;
+    &-container {
+        .logo {
+            display: flex;
+            align-items: center;
+            color: $white;
+            a {
+                background-size: 0;
+            }
+            i {
+                display: none;
+                margin-right: 1rem;
+                font-size: 2rem;
+            }
+            .mon-logo {
+                height: 32px;
+                width: auto;
+                margin-right: 1rem;
+            }
+            .mon-title {
+                margin: 0;
+            }
+        }
+    }
+}
+
+@include media-breakpoint-down(lg) {
+    .navbar {
+        &-container {
+            .logo {
+                i {
+                    display: block;
+                }
+            }
+        }
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    .navbar {
+        &-container {
+            .logo {
+                .mon-title {
+                    display: none;
+                }
+            }
+        }
+    }
+}

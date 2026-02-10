@@ -1,0 +1,71 @@
+:host ::ng-deep .mat-chip-list {
+  @apply outline-none;
+}
+
+:host ::ng-deep .mat-chip-list-wrapper {
+  @apply flex items-center bg-white border border-solid border-gray-200 outline-none p-0 pl-2 m-0 rounded w-full;
+
+  min-height: 34px;
+}
+
+:host ::ng-deep .disabled .mat-chip-list-wrapper {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+:host ::ng-deep .focused .mat-chip-list-wrapper {
+  @apply border-primary;
+}
+
+:host ::ng-deep .mat-chip-list-wrapper .mat-basic-chip {
+  @apply px-0 m-0 my-0.5 mr-3 font-normal;
+}
+
+:host ::ng-deep .mat-chip-list-wrapper input.mat-chip-input {
+  @apply w-4 m-0 outline-none;
+  flex: 1 0 auto;
+  caret-color: inherit;
+}
+
+.chip-content {
+  @apply w-full text-center cursor-pointer;
+
+  &::after {
+    content: ',';
+    color: #1d2530;
+    position: absolute;
+    top: 0;
+    right: -4px;
+    pointer-events: none;
+  }
+
+  &.readonly {
+    cursor: default;
+    @apply text-gray-900 text-opacity-50;
+  }
+
+  &.excused {
+    @apply border border-primary;
+    width: 26px;
+    height: 26px;
+    line-height: 25px;
+    border-radius: 50%;
+
+    &.readonly {
+      @apply border-opacity-50;
+    }
+
+    &.removed::before {
+      top: 17px;
+    }
+  }
+
+  &.removed::before {
+    content: '';
+    background: url('^assets/images/times-solid-red.svg') no-repeat;
+    position: absolute;
+    top: 14px;
+    left: calc(50% - 5px);
+    width: 14px;
+    height: 14px;
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "submitUrl": "",
+  "paramName": "instid",
+  "sections": [
+    {
+      "label": "Данни за паралелки",
+      "order": 1,
+      "table": {
+        "name": "classDetailList",
+        "paramName": "classDetailid",
+        "fields": [
+          {
+            "label": "Клас",
+            "name": "className",
+            "type": "input",
+            "inputType": "text",
+            "order": 1,
+            "width": 50,
+            "disabled": false,
+            "validations": []
+          },
+          {
+            "label": "Випуск(клас)",
+            "name": "basicClassID",
+            "type": "select",
+            "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+            "disabled": false,
+            "order": 2
+          },
+          {
+            "label": "Форма на обучение",
+            "name": "classEduFormID",
+            "type": "select",
+            "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+            "disabled": false,
+            "order": 3
+          },
+          {
+            "label": "Организация на учебния процес",
+            "name": "classShiftID",
+            "type": "select",
+            "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+            "disabled": false,
+            "order": 4
+          },
+          {
+            "label": "Срок на обучение",
+            "name": "classEduDurationID",
+            "type": "select",
+            "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+            "disabled": false,
+            "order": 5
+          },
+          {
+            "label": "Прием след",
+            "name": "entranceLevelID",
+            "type": "select",
+            "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+            "disabled": false,
+            "order": 6
+          },
+          {
+            "label": "Изучаван чужд език",
+            "name": "flID",
+            "type": "select",
+            "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+            "disabled": false,
+            "order": 7
+          },
+          {
+            "label": "Финансира се от",
+            "name": "budgetingClassTypeID",
+            "type": "select",
+            "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+            "disabled": false,
+            "order": 8
+          },
+          {
+            "label": "Адрес на обучение",
+            "name": "institutionDepartmentID",
+            "type": "select",
+            "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+            "disabled": false,
+            "order": 9
+          }
+        ]
+      }
+    }
+  ]
+}

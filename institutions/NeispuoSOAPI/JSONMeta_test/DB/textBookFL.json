@@ -1,0 +1,51 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_nom].[TextbooksInstFL] TB /**where**/ /**orderby**/",
+  "columns": [
+	{
+      "column": "TB.[TextbookFLID] AS code"
+    },
+	{
+      "column": "TB.[TextbookName] AS label"
+    }
+   ],
+  "params": [
+     {
+      "param": "@filterValue",
+      "column": "TB.LevelFLID",
+      "operator": "=",
+      "value": "filterValue",
+      "type": "int",
+      "logical_operator": "and",
+      "optional": true,
+      "static": false
+    },
+    {
+      "param": "@id",
+      "column": "TB.ID",
+      "operator": "=",
+      "value": "id",
+      "type": "text",
+      "logical_operator": "and",
+      "optional": true,
+      "static": false
+    },
+    {
+      "param": "@instid",
+      "column": "TB.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "TB.TextbookName",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+
+  ]
+}

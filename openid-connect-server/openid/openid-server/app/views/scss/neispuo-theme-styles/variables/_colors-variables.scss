@@ -1,0 +1,96 @@
+//
+// Override bootstrap variables
+//
+$white:    #FFFFFF;
+$gray-100: #f8f9fb;
+$gray-200: #eef1f6;
+$gray-300: #e4e8ee;
+$gray-400: #cdd3dd;
+$gray-500: #a8b1bd;
+$gray-600: #6a7381;
+$gray-700: #49505a;
+$gray-800: #1f2329;
+$gray-900: #121417;
+$gray-1000: #171212;
+
+$blue: #2f73da;
+$green: #09a57f;
+$red: #df320c;
+$yellow: #ffb400;
+
+
+$blue-100: #eaf1fb;
+$blue-200: #6fa1ec;
+$blue-300: $blue;
+$blue-400: #165ecc;
+$blue-500: #002966;
+$blue-600: #0dcaf0;
+$blue-700: #0b7ad1;
+$blue-800: #265cae;
+$blue-900: #19212c;
+
+$green-100: #ddfded;
+$green-200: #0ac295;
+$green-300: $green;
+$green-400: #078364;
+$green-500: #027357;
+
+$yellow-100: #fef7b9;
+$yellow-200: #ffda6c;
+$yellow-300: $yellow;
+$yellow-400: #e07c02;
+$yellow-500: #c33e01;
+
+$red-100: #fcd2cf;
+$red-200: #f45532;
+$red-300: $red;
+$red-400: #c61a0b;
+$red-500: #ae0a0a;
+
+//
+// Custom colors
+//
+$chart-mono-1: #c3eaff;
+$chart-mono-2: #8ed7ff;
+$chart-mono-3: #60a9ff;
+$chart-mono-4: #2f73da;
+$chart-mono-5: #034ab3;
+$chart-mono-6: #002966;
+
+$chart-monos: (
+  "chart-mono-1": $chart-mono-1,
+  "chart-mono-2": $chart-mono-2,
+  "chart-mono-3": $chart-mono-3,
+  "chart-mono-4": $chart-mono-4,
+  "chart-mono-5": $chart-mono-5,
+  "chart-mono-6": $chart-mono-6,
+);
+
+$chart-1: #74e4da;
+$chart-2: #ed64a4;
+$chart-3: #f3dc46;
+$chart-4: #60a9ff;
+$chart-5: #c8baee;
+$chart-6: #585e67;
+
+$theme-colors-100: (
+  "primary":    $blue-100,
+  "secondary":  $gray-300,
+  "success":    $green-100,
+  "info":       $chart-mono-1, //ne trqbva da e taka
+  "warning":    $yellow-100,
+  "danger":     $red-100,
+  "light":      $gray-300,
+  "dark":       $gray-700
+) !default;
+
+$theme-colors-400: (
+  "primary":    $blue-400,
+  "secondary":  $gray-700,
+  "success":    $green-400,
+  "info":       $chart-mono-3, //ne trqbva da e taka
+  "warning":    $yellow-400,
+  "danger":     $red-400,
+  "light":      $gray-200,
+  "dark":       $gray-900
+) !default;

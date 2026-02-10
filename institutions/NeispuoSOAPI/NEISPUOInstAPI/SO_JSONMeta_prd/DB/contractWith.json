@@ -1,0 +1,32 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[ContractWith] CW JOIN [inst_nom].[ContractWithLimit] CWL ON CW.ContractWithID=CWL.ContractWithID /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "CW.ContractWithID as code"
+        },
+        {
+            "column": "CW.Name as label"
+        },
+		{
+            "column": "CW.IsValid as isValid"
+        }
+    ],
+    "params": [
+		{
+			"param": "@instType",
+			"column": "CWL.InstType",
+			"operator": "=",
+			"value": "instType",
+			"type": "int",
+			"logical_operator": "and",
+			"static": false
+			}
+    ],
+    "order": [
+        {
+            "column": "CW.SortOrd",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

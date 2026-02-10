@@ -1,0 +1,77 @@
+{
+  "label": "Автобуси",
+  "sections": [
+    {
+      "order": 1,
+      "table": {
+        "createNew": "samePage",
+		"formName": "institutionVehicleData",
+		"paramName":"institutionVehicleID",
+		"canDeleteRow": true,
+		"name":"institutionVehicles",
+		"searchable": true,
+		"searchType": "column",
+		"procedureName": "inst_basic.institutionVechicleCUD",
+        "fields": [
+          {
+            "label": "Начин на придобиване",
+            "name": "acquisitionWayTypeID",
+            "type": "input",
+            "inputType": "text",
+			"width": 35,
+            "order": 1
+          },
+          {
+            "label": "Вид документ",
+            "name": "documentTypeID",
+            "type": "input",
+            "inputType": "text",
+			"width": 10,
+            "order": 2
+          },
+          {
+            "label": "Номер на документа",
+            "name": "documentNum",
+            "type": "input",
+            "inputType": "text",
+			"width": 10,
+            "order": 3
+          },
+          {
+            "label": "Дата на документа",
+            "name": "documentDate",
+            "type": "date",
+			"width": 8,
+            "order": 4
+          },
+          {
+            "label": "Регистрационен номер",
+            "name": "registrationNum",
+            "type": "input",
+            "inputType": "text",
+			"width": 10,
+            "order": 5
+          },
+          {
+            "label": "Година на производство",
+            "name": "producedYear",
+            "type": "input",
+            "inputType": "number",
+			"width": 8,
+            "order": 6
+          },
+          {
+            "label": "Брой места",
+            "name": "placeCountTypeID",
+            "type": "input",
+            "inputType": "text",
+			"width": 8,
+            "order": 7
+          }
+        ]
+      }
+    }
+  ]
+}
+
+

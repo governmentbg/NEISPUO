@@ -1,0 +1,49 @@
+[
+  {
+    "label": "Област",
+    "name": "region",
+    "type": "searchselect",
+    "optionsPath": "/data/get/region",
+    "width": 250,
+    "influence": [
+      {
+        "fieldName": "municipality",
+        "url": "/data/get/municipality",
+        "type": "options"
+      }
+    ]
+  },
+  {
+    "label": "Община",
+    "name": "municipality",
+    "type": "searchselect",
+    "width": 250,
+    "influence": [
+      {
+        "fieldName": "town",
+        "url": "/data/get/town",
+        "type": "options"
+      }
+    ]
+  },
+  {
+    "label": "Населено място",
+    "name": "town",
+    "width": 250,
+    "type": "searchselect"
+  },
+  {
+    "label": "Вид институция, съгласно чл.24-27 от ЗПУО",
+    "name": "instTypeID",
+    "width": 250,
+    "type": "select",
+    "optionsPath": "/data/get/baseSchoolTypes"
+  },
+  {
+    "label": "Вид институция, съгласно чл.35-36 от ЗПУО",
+    "name": "financialSchoolTypesID",
+    "type": "searchmultiselect",
+    "width": 250,
+    "optionsPath": "/data/get/financialSchoolTypes"
+  }
+]

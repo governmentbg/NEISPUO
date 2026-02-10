@@ -1,0 +1,30 @@
+.list-container {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.list-container::-webkit-scrollbar {
+  display: none;
+}
+
+.mat-expansion-panel-header {
+  padding-left: 4px !important;
+  padding-right: 0px !important;
+}
+
+::ng-deep .cdk-virtual-scroll-content-wrapper {
+  width: 100% !important;
+}
+
+::ng-deep .cdk-virtual-scroll-content-wrapper {
+  position: absolute !important;
+  width: 100% !important;
+}
+
+.line-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

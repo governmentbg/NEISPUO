@@ -1,0 +1,13 @@
+::ng-deep .compact-overlay-panel .p-overlaypanel-content {
+    padding: 0.25rem 0.5rem;
+    display: flex;
+    flex-direction: row;
+    gap: 0.25rem;
+    justify-content: flex-start;
+}
+::ng-deep .compact-overlay-panel .p-button {
+    min-width: 2.5rem;
+    min-height: 2.5rem;
+    font-size: 1.2rem;
+    margin-bottom: 0;
+}

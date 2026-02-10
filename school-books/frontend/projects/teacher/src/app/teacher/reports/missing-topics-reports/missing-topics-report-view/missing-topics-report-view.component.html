@@ -1,0 +1,106 @@
+<sb-breadcrumb
+  class="block mb-3"
+  [icon]="fadCalendarWeek"
+  [text]="
+    data.missingTopicsReport == null ? 'Създаване на справка невписани теми' : 'Преглед на справка невписани теми'
+  "
+  [parentItems]="[{ text: 'Невписани теми', routeCommands: ['../'] }]"
+></sb-breadcrumb>
+
+<form [formGroup]="form" autocomplete="off" novalidate>
+  <sb-card>
+    <ng-container card-title>
+      {{
+        data.missingTopicsReport == null ? 'Създаване на справка невписани теми' : 'Преглед на справка невписани теми'
+      }}
+    </ng-container>
+    <sb-editor-panel
+      card-buttons
+      [isNew]="data.missingTopicsReport == null"
+      [editBtnHidden]="true"
+      (save)="onSave($event)"
+    >
+      <a
+        *ngIf="data.missingTopicsReport != null"
+        [href]="downloadUrl"
+        class="mr-3"
+        disabled-mode-buttons
+        target="_blank"
+        download
+        color="primary"
+        mat-raised-button
+        [disabled]="!downloadUrl"
+      >
+        <fa-icon [icon]="fasFileExcel" size="lg"></fa-icon>
+        <span>Свали</span>
+      </a>
+      <button
+        disabled-mode-buttons
+        mat-raised-button
+        color="warn"
+        type="button"
+        (click)="onRemove()"
+        [disabled]="removing"
+      >
+        <fa-icon [icon]="removing ? fasSpinnerThird : fasTrashAlt" [spin]="removing" size="lg"></fa-icon>
+        <span class="hidden sm:inline">Премахни</span>
+      </button>
+    </sb-editor-panel>
+    <ng-container card-body>
+      <div class="sm:grid grid-cols-2 gap-x-4 mb-2">
+        <sb-nom-select
+          label="Период"
+          formControlName="period"
+          [nomService]="missingTopicsReportPeriodNomsService"
+        ></sb-nom-select>
+
+        <sb-select-field
+          class="col-start-1"
+          label="Месец"
+          formControlName="selectedMonth"
+          [items]="monthsSelect"
+        ></sb-select-field>
+
+        <sb-nom-select
+          class="col-start-1"
+          label="Учител"
+          formControlName="teacherPersonId"
+          [nomService]="instTeacherNomsService"
+        ></sb-nom-select>
+      </div>
+      <sb-card-section *ngIf="data.missingTopicsReport != null" class="col-span-full">
+        Невписани теми към {{ data.missingTopicsReport.createDate | sbDateTime }}
+      </sb-card-section>
+      <ng-container *ngIf="data.missingTopicsReport != null && dataSource != null">
+        <sb-table
+          [dataSource]="dataSource"
+          [displayedColumns]="['date', 'classBookName', 'curriculumName', 'teacherName']"
+        >
+          <ng-container cdkColumnDef="date">
+            <th cdk-header-cell *cdkHeaderCellDef>Дата</th>
+            <td cdk-cell *cdkCellDef="let row">{{ row.date | sbDate }}</td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="classBookName">
+            <th cdk-header-cell *cdkHeaderCellDef>Клас/Паралелка/Група</th>
+            <td cdk-cell *cdkCellDef="let row">{{ row.classBookName }}</td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="curriculumName">
+            <th cdk-header-cell *cdkHeaderCellDef>Премет</th>
+            <td cdk-cell *cdkCellDef="let row">{{ row.curriculumName }}</td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="teacherName">
+            <th cdk-header-cell *cdkHeaderCellDef>Учители</th>
+            <td cdk-cell *cdkCellDef="let row">{{ row.teacherName }}</td>
+          </ng-container>
+
+          <ng-container no-data-row>
+            <td colspan="4" class="text-center">Няма намерени невписани теми за периода</td>
+          </ng-container>
+        </sb-table>
+      </ng-container>
+    </ng-container>
+  </sb-card>
+</form>

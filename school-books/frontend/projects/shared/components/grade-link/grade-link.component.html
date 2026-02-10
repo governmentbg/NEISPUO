@@ -1,0 +1,57 @@
+<button
+  type="button"
+  *ngIf="grade?.category === GRADE_CATEGORY_DECIMAL"
+  (click)="click()"
+  [class.grade-forecast]="isForecast"
+  [class.active]="isSelected"
+  [ngClass]="[
+    'grade',
+    'grade-decimal',
+    'grade-' + (grade.decimalGrade | sbDecimalGradeColor),
+    grade.type === GRADE_TYPE_CLASS_EXAM ? 'grade-important' : '',
+    subjectTypeIsProfilingSubject ? 'w-[36px]' : ''
+  ]"
+  [attr.aria-label]="
+    (isForecast ? 'Прогнозна оценка ' : 'Оценка ') +
+    (grade.decimalGrade | sbDecimalGradeName) +
+    ' ' +
+    (isForecast || subjectTypeIsProfilingSubject
+      ? (grade.decimalGrade | sbDecimalGradeNumber)
+      : (grade.decimalGrade | sbDecimalGradeNumberRounded))
+  "
+>
+  <span *ngIf="isForecast" class="grade-text">({{ grade.decimalGrade | sbDecimalGradeNumber }})</span>
+  <span *ngIf="subjectTypeIsProfilingSubject" class="grade-text">
+    {{ grade.decimalGrade | sbDecimalGradeNumber }}
+  </span>
+  <span *ngIf="!isForecast && !subjectTypeIsProfilingSubject" class="grade-text">
+    {{ grade.decimalGrade | sbDecimalGradeNumberRounded }}
+  </span>
+</button>
+
+<button
+  type="button"
+  *ngIf="grade?.category === GRADE_CATEGORY_QUALITATIVE"
+  (click)="click()"
+  [class.grade-forecast]="isForecast"
+  [class.active]="isSelected"
+  [ngClass]="['grade', 'grade-qualitative', 'grade-' + (grade.qualitativeGrade | sbQualitativeGradeColor)]"
+  [attr.aria-label]="(isForecast ? 'Прогнозна оценка ' : 'Оценка ') + (grade.qualitativeGrade | sbQualitativeGradeName)"
+>
+  <i *ngIf="!isForecast" [ngClass]="['em', 'em-' + (grade.qualitativeGrade | sbQualitativeGradeEmoticon)]"></i>
+  <ng-container *ngIf="isForecast">
+    <span class="grade-text inline sm:hidden">({{ grade.qualitativeGrade | sbQualitativeGradeShortName }})</span>
+    <span class="grade-text hidden sm:inline">({{ grade.qualitativeGrade | sbQualitativeGradeName }})</span>
+  </ng-container>
+</button>
+
+<button
+  type="button"
+  *ngIf="grade?.category === GRADE_CATEGORY_SPECIAL_NEEDS"
+  (click)="click()"
+  [class.active]="isSelected"
+  [ngClass]="['grade', 'grade-sp-needs', grade.type === GRADE_TYPE_CLASS_EXAM ? 'grade-important' : '']"
+  [attr.aria-label]="'Оценка ' + (grade.specialGrade | sbSpecialGradeName)"
+>
+  <span class="grade-text">{{ grade.specialGrade | sbSpecialGradeShortName }}</span>
+</button>

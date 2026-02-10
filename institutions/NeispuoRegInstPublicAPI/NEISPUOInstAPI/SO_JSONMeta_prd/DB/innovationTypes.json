@@ -1,0 +1,24 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[InnovationType] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "InnovationTypeID as code"
+        },
+        {
+            "column": "Name as label"
+        },
+		{
+            "column": "IsValid as isValid"
+        }
+    ],
+    "params": [
+
+    ],
+    "order": [
+        {
+            "column": "InnovationTypeID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

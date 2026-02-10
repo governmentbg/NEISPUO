@@ -1,0 +1,68 @@
+{
+  "template": "SELECT TOP 1 /**select**/ FROM [inst_year].[ClassGroupAll] CGA /**where**/ /**orderby**/",
+  "sotemplate": "SELECT TOP 1 /**select**/ FROM [sob].[ClassGroupAll] CGA /**where**/ /**orderby**/",
+  "columns": [
+    {
+      "column": "CGA.ClassID as id"
+    },
+    {
+      "column": "CGA.ClassKind as classKind"
+    },
+    {
+      "column": "CGA.ClassName as className"
+    },
+    {
+      "column": "CGA.InstType as instType"
+    },
+    {
+      "column": "CGA.DetailedSchoolTypeID as detailedSchoolTypeID"
+    }
+  ],
+  "params": [
+    {
+      "param": "@parentclassid",
+      "column": "CGA.ClassID",
+      "operator": "=",
+      "value": "parentclassid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+    {
+      "param": "@instid",
+      "column": "CGA.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+    {
+      "param": "@year",
+      "column": "CGA.SchoolYear",
+      "operator": "=",
+      "value": "year",
+      "type": "int",
+      "logical_operator": "and",
+      "optional": true,
+      "static": false
+    },
+    {
+      "param": "@period",
+      "column": "CGA.Period",
+      "operator": "=",
+      "value": "period",
+      "type": "int",
+      "logical_operator": "and",
+      "optional": true,
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "CGA.ClassID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": []
+}

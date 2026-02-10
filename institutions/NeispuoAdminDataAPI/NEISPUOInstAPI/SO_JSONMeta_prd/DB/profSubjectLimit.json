@@ -1,0 +1,40 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[Subject] S JOIN [inst_nom].[ProfSubjectLimit] PSL ON S.SubjectID=PSL.ProfSubjectID /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "S.SubjectID as code"
+        },
+        {
+            "column": "S.SubjectName as label"
+        }
+    ],
+    "params": [
+	{
+      "param": "@classTypeID",
+      "column": "PSL.ClassTypeID",
+      "operator": "=",
+      "value": "classTypeID",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+	},
+	{
+      "param": "@profSubjType",
+      "column": "PSL.ProfSubjectTypeID",
+      "operator": "=",
+      "value": "profSubjType",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+	}
+    ],
+    "order": [
+        {
+            "column": "S.SubjectID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

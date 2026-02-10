@@ -1,0 +1,27 @@
+<div class="row">
+  <h4 class="col-12 mt-2">Таблица - опции</h4>
+  <div class="col-12 fw-bold mt-2 title">Видими колони</div>
+  <div class="col-12">
+    <div class="dimension-field">
+      <label for="dimensions" class="dimensions-label small mb-4"
+        ><span class="color-gray-600"
+          >Скрийте или покажете колони в таблицата, за да покажете само данните, които трябва да видите или отпечатате.</span
+        >
+        <br />
+        <br />
+        <span class="color-gray-500">* След избор на колоните, моля натиснете бутона "Зареди данни"</span>
+      </label>
+      <p-multiSelect
+        inputId="dimensions"
+        optionLabel="shortTitle"
+        [options]="availableDimensions$ | async"
+        [(ngModel)]="reportService.selectedDimensions"
+        (onChange)="tableReportService.updateSelectedColumns($event)"
+        placeholder="Изберете колони"
+      ></p-multiSelect>
+    </div>
+  </div>
+  <div class="col-12 load-data-btn-wrapper">
+    <button pButton type="button" label="Зареди данни" class="p-button-primary" (click)="updateTableColumns()"></button>
+  </div>
+</div>

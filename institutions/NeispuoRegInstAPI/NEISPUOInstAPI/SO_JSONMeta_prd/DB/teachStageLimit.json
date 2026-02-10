@@ -1,0 +1,43 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[TeachStage] TS JOIN [inst_nom].[TeachStageLimit] TSL ON TS.TeachStageID=TSL.TeachStageID  /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "TS.TeachStageID as code"
+        },
+        {
+            "column": "TS.Name as label"
+        },
+        {
+            "column": "TS.IsValid as isValid"
+        }
+    ],
+    "params": [
+        {
+            "param": "@canChoose",
+            "column": "TS.CanChoose",
+            "operator": "=",
+            "value": 1,
+            "type": "int",
+            "logical_operator": "and",
+            "optional": false,
+            "static": true
+        },
+        {
+            "param": "@filterValue",
+            "column": "TSL.DetailedSchoolTypeID",
+            "operator": "=",
+            "value": "filterValue",
+            "type": "int",
+            "logical_operator": "and",
+            "optional": true,
+            "static": false
+        }
+    ],
+    "order": [
+        {
+            "column": "TS.TeachStageID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

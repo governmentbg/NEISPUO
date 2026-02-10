@@ -1,0 +1,26 @@
+[
+  {
+    "code": "4",
+    "label": "една смяна",
+    "shiftOrder": "1",
+    "isValid": "1"
+  },
+  {
+    "code": "5",
+    "label": "две смени",
+    "shiftOrder": "4",
+    "isValid": "1"
+  },
+  {
+    "code": "6",
+    "label": "вечерна смяна",
+    "shiftOrder": "6",
+    "isValid": "1"
+  },
+  {
+    "code": "7",
+    "label": "три смени",
+    "shiftOrder": "5",
+    "isValid": "1"
+  }
+]

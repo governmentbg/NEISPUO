@@ -1,0 +1,27 @@
+<div class="dropdown">
+  <span class="mobile-avatar avatar avatar-32 bg-color-gray-300 color-blue-900 rounded-circle ms-3" id="dropdownProfileMenuButton" data-bs-toggle="dropdown" aria-expanded="false">{{ abbreviatedName$ | async }}</span>
+  <!-- <span class="avatar avatar-32 bg-color-gray-300 color-gray-600 rounded-circle ms-3" id="dropdownProfileMenuButton" data-bs-toggle="dropdown" aria-expanded="false">{{ abbreviatedName$ | async }}</span> -->
+  <a class="dropdown-toggle" type="button" id="dropdownProfileMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+    <div class="dropdown-toggle-content">
+      <span>{{ fullName$ | async }}</span>
+      <span>{{ email$ | async }}</span>
+    </div>
+  </a>
+  <div
+    class="user-menu dropdown-menu dropdown-menu-end boreder-radius-md shadow-right"
+    aria-labelledby="dropdownProfileMenuButton"
+  >
+    <div class="user-info-wrapper">
+      <span class="user-avatar avatar bg-color-gray-300 color-gray-700 rounded-circle me-3">{{ abbreviatedName$ | async }}</span>
+      <div class="user-info">
+        <div class="small user-name">{{ fullName$ | async }}</div>
+        <div class="small user-email color-gray-700">{{ email$ | async }}</div>
+      </div>
+    </div>
+    <div class="row justify-content-center px-3">
+      <button type="button" class="btn btn-link icon-right" (click)="logout()">
+        Изход
+      </button>
+    </div>
+  </div>
+</div>

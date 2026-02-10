@@ -1,0 +1,99 @@
+{
+    "label": "Незаети щатни бройки",
+    "procedureName": "inst_year.vacantStaffCUD",
+    "dataName": "if(operationType==1) {form.dataName=null} else {form.dataName='vacantStaffData'}",
+    "sections": [
+        {
+            "order": 1,
+            "label": "Незаети щатни бройки",
+            "subsections": [
+              {
+                "order": 1,
+                "name": "vacantStaff",
+                "fields": [
+                  {
+                    "label": "Вид персонал",
+                    "name": "staffTypeID",
+                    "type": "searchselect",
+                    "optionsPath": "/data/get/staffTypes",
+                    "disabled": false,
+                    "width": 500,
+                    "validations": [
+                      {
+                        "name": "required",
+                        "validator": "",
+                        "message": "Полето е задължително"
+                      }
+                    ],
+                    "influence": [
+                      {
+                        "type": "render",
+                        "fieldName": "positionSubjectGroupID",
+                        "condition": [
+                          1
+                        ]
+                      },
+                      {
+                        "fieldName": "nkpdPositionID",
+                        "url": "/data/get/nkpdPositions",
+                        "type": "options"
+                      }
+                    ],
+                    "order": 1
+                  },
+                  {
+                    "label": "Длъжност",
+                    "name": "nkpdPositionID",
+                    "type": "searchselect",
+                    "width": 500,
+                    "disabled": false,
+                    "validations": [
+                      {
+                        "name": "required",
+                        "validator": "",
+                        "message": "Полето е задължително"
+                      }
+                    ],
+                    "order": 2
+                  },
+                  {
+                    "label": "Щатно място по",
+                    "name": "positionSubjectGroupID",
+                    "type": "searchselect",
+                    "optionsPath": "/data/get/staffMainSubjectGroups",
+                    "width": 500,
+				          	"validations": [
+                    ],
+                    "order": 3
+                  },
+                  {
+                    "label": "Щатни бройки",
+                    "name": "positionCount",
+                    "type": "input",
+                    "inputType": "number",
+                    "order": 4,
+                    "width": 200,
+                    "validations": [
+                      {
+                        "name": "min",
+                        "validation": 0.5,
+                        "message": "Минимални щатни бройки 0.5"
+                      },
+					   {
+                        "name": "required",
+                        "validator": "",
+                        "message": "Полето е задължително"
+                      },
+                      {
+                        "name": "maxLength",
+                        "validation": 4,
+                        "message": "Максимална дължина 4 символа"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title></title>
+		<style>
+			body {
+				padding: 0;
+				margin: 0;
+				width: 100vw;
+				height: 100vh;
+				text-align: center;
+			}
+
+			.block-container {
+				display: block;
+				width: 100%;
+				margin-top: 15mm;
+				text-align: center;
+			}
+
+			.number-span {
+				font-size: 13pt;
+				font-weight: bold;
+				color: #000000;
+				font-family: Arial, sans-serif;
+			}
+
+			.hr-style {
+				margin-top: 25px;
+				margin-left: 50px;
+				margin-right: 50px;
+			}
+
+			.name-u {
+				display: block;
+				text-align: center;
+				margin-top: 10mm;
+			}
+
+			.name {
+				font-size: 18pt;
+				text-transform: uppercase;
+				line-height: 18pt;
+				color: black;
+				font-weight: bold;
+				font-family: Arial, sans-serif;
+			}
+
+			.number-under-name {
+				font-size: 13pt;
+				line-height: 13pt;
+				color: black;
+				font-weight: bold;
+				font-family: Arial, sans-serif;
+				padding-top: 10mm;
+				display: block;
+			}
+
+			.normal-span {
+				font-size: 10pt;
+				line-height: 12pt;
+				font-weight: bold;
+				font-family: Arial, sans-serif;
+				display: block;
+			}
+
+			.center-span {
+				font-size: 10pt;
+				line-height: 12pt;
+				font-weight: bold;
+				font-family: Arial, sans-serif;
+				display: block;
+				text-align: center;
+				margin-top: 10mm;
+			}
+
+			.div-table {
+				display: flex;
+				justify-content: center;
+				margin-bottom: 5px;
+			}
+
+			table {
+				width: 85%;
+				border: 1px solid black;
+				text-align: left;
+				margin-top: 8px;
+				font-family: arial;
+				font-size: 10pt;
+			}
+
+			.footer-container {
+				text-align: center;
+			}
+
+			.div-in-footer {
+				width: 85%;
+				text-align: justify;
+				display: inline-block;
+				margin-top: 5px;
+			}
+
+			.bor {
+				margin-left: 3px;
+				margin-right: 3px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="block-container">
+			<span class="number-span">Министерство на образованието и науката</span><br>
+			<span class="number-span">Национална електронна информационна система</span><br>
+			<span class="number-span">За предучилищно и училищно образование</span><br>
+			<hr class="hr-style">
+		</div>
+		<div class="name-u">
+			<span class="name">УДОСТОВЕРЕНИЕ</span>
+		</div>
+		<span class="number-under-name">№<span class="bor">{{certificateNumber}}</span>/<span class="bor">{{certificateDate}} {{certificateTime}}</span></span>
+		<span class="normal-span">за утвърждаване на Списък Образец
+			<span class="in-normal-span">{{schoolYearInfo}} учебна година</span>
+		</span>
+		<span class="normal-span">{{campaignPeriod}}</span>
+		<span class="center-span">Данни за институцията:</span>
+		<div class="div-table">
+			<table>
+				<tr>
+					<td>Наименование:</td>
+					<td>{{institutionName}}</td>
+				</tr>
+				<tr>
+					<td>Населено място:</td>
+					<td>{{instAddress}}</td>
+				</tr>
+				<tr>
+					<td>БУЛСТАТ:</td>
+					<td>{{bulstat}}</td>
+				</tr>
+				<tr>
+					<td>Вид на училището:</td>
+					<td>{{institutionType}}</td>
+				</tr>
+				<tr>
+					<td>Вид според начина на финансиране:</td>
+					<td>{{instFinancialType}}</td>
+				</tr>
+				<tr>
+					<td>Финансиране:</td>
+					<td>{{budgetingInstitution}}</td>
+				</tr>
+				<tr>
+					<td>Код:</td>
+					<td>{{code}}</td>
+				</tr>
+			</table>
+		</div>
+		<div class="footer-container">
+			<div class="div-in-footer">
+				<span class="normal-span">Данните са подадени с ел. подпис от <span clas="bor">{{firstRow.signerNamePos}}</span>, на <span clas="bor">{{firstRow.signDate}}</span></span>
+				<span class="normal-span">Данните са потвърдени с ел. подпис от <span clas="bor">{{secondRow.signerNamePos}}</span>, на <span clas="bor">{{secondRow.signDate}}</span></span>
+				<span class="normal-span">Данните са утвърдени с ел. подпис от <span clas="bor">{{thirdRow.signerNamePos}}</span> на <span class="bor">{{institutionName}} {{instAddress}}</span>, на <span clas="bor">{{thirdRow.signDate}}</span></span>
+			</div>
+		</div>
+	</body>
+</html>

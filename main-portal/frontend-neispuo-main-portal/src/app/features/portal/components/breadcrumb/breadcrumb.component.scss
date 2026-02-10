@@ -1,0 +1,35 @@
+@import "@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/variables/variables.scss";
+
+.second-nav {
+  padding-left: 3.375rem;
+  position: fixed;
+  width: 100%;
+  height: 4.5rem;
+  background-color: $white;
+  z-index: 1;
+  li {
+    list-style: none;
+    margin: 0.25rem;
+    color: $gray-500;
+    span {
+      cursor: pointer;
+      &:hover {
+        color: $gray-700;
+      }
+    }
+        
+    &:last-child {
+      margin-right: 1.25rem;
+    }
+    &::after {
+      content: "\\";
+      margin-left: 5px;
+    }
+    &:last-child::after {
+      content: "";
+    }
+  }
+  li:last-of-type {
+    color: $gray-700;
+  }
+}

@@ -1,0 +1,13 @@
+<div class="custom-tab-wrapper">
+  <div class="l-custom-wrapper-mat-tab">
+    <div class="l-custom-header-mat-tab custom-mat-tab-l">
+      <mat-tab-group mat-stretch-tabs>
+        <mat-tab *ngFor="let report of reports" [label]="report.label">
+          <app-custom-table *ngIf="report.meta && report.data" [tableMeta]="report.meta.sections[0].table"
+            [tableData]="report.data" [tableLabel]="report.meta.label">
+          </app-custom-table>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

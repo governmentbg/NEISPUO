@@ -1,0 +1,18 @@
+[
+  {
+    "name": "Област София",
+    "children": [
+      {
+        "name": "Община София",
+        "children": [
+          {
+            "name": "Център за подкрепа на личностно развитие - Общински детски комплекс",
+            "instid": "2999983",
+            "menuPath": "cplr",
+            "formName": "institutionCDepartments"
+          }
+        ]
+      }
+    ]
+  }
+]

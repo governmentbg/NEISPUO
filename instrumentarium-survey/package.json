@@ -1,0 +1,37 @@
+{
+  "name": "mon-neispuo-instrumentarium-survey",
+  "version": "1.0.0-next.18",
+  "description": "",
+  "main": "build-version-setter.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install",
+    "release": "npx semantic-release"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/dssbg/mon-neispuo-instrumentarium-survey.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/dssbg/mon-neispuo-instrumentarium-survey/issues"
+  },
+  "homepage": "https://gitlab.com/dssbg/mon-neispuo-instrumentarium-survey#readme",
+  "dependencies": {
+    "@semantic-release/exec": "^6.0.2",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/gitlab": "^7.0.4",
+    "@semantic-release/npm": "^8.0.2",
+    "@semantic-release/release-notes-generator": "^10.0.2",
+    "prettier": "^2.4.1",
+    "semantic-release": "^18.0.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^14.1.0",
+    "@commitlint/config-conventional": "^14.1.0",
+    "commitlint-config-jira": "^1.5.1",
+    "commitlint-plugin-jira-rules": "^1.5.1",
+    "husky": "^7.0.0"
+  }
+}

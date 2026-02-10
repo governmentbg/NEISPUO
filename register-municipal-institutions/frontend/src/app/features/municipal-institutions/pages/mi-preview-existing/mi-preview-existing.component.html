@@ -1,0 +1,81 @@
+<div class="fluid formgrid grid">
+  <app-user-tour-guide *ngIf="!isHistoryDropdownVisible && !isClosed"
+  [typeButton]="'pageGuide'"
+  [guideName]="guideName"
+  ></app-user-tour-guide>
+
+  <div class="col-12 pb-4">
+    <i class="bi bi-clock-history history-icon" [hidden]="isHistoryDropdownVisible" (click)="showHistory()" type="button"
+    data-bs-toggle="tooltip"
+    data-bs-placement="bottom"
+    title="Версии на институцията"
+    ></i>
+    <p-dialog position="bottom" [(visible)]="display" class="top-dialog" [closable]="false">
+      В момента сте в Режим на четене 
+      <button type="button" class="btn btn-primary ml-2 mb-1" (click)="hideHistory()" >Изход</button>
+      </p-dialog>
+    <p-dropdown
+      *ngIf="isHistoryDropdownVisible && historyEntries$ | async as historyEntries "
+      styleClass="history-selector"
+      [options]="historyEntries"
+      optionLabel="Abbreviation"
+      [autoDisplayFirst]="false"
+      inputId="history"
+      [ngModel]="selectedHistoryEntry"
+      (ngModelChange)="onHistoryEntryChange($event)"
+    >
+      <ng-template let-selectedEntry pTemplate="selectedItem">
+        <div>{{ selectedEntry.RIProcedure.YearDue }} - {{ selectedEntry.RIProcedure.ProcedureType.Name }}</div>
+      </ng-template>
+      <ng-template let-historyEntry pTemplate="item">
+        <div>{{ historyEntry.RIProcedure.YearDue }} - {{ historyEntry.RIProcedure.ProcedureType.Name }}</div>
+      </ng-template>
+    </p-dropdown>
+  </div>
+  <div class="col-12">
+    <div class="messageContainer" *ngIf="!isLatestVersion && isHistoryDropdownVisible">
+      <p>
+        Избрали сте преглед на предишна версия. Ако искате да промените или закриете институцията, моля посетете последна
+        версия <button type="button" class="btn btn-link" (click)="getLatestVersion()">тук</button>
+        .
+      </p>
+    </div>
+  </div>
+  <div class="col-12">
+    <app-mi-form
+      [form]="form"
+      [BaseSchoolTypes$]="BaseSchoolTypes$"
+      [displayRIProcedure]="true"
+      [displayDocument]="true"
+      [displayProcedureFields]="true"
+      [isViewFlexField]="true"
+    ></app-mi-form>
+  </div>
+  <ng-container *ngIf="!isHistoryDropdownVisible && (isEditButtonVisible$ | async) as actionEnabled">
+    <!-- <div class="field-grid col-12 mt-4">
+      <button type="button" class="btn btn-outline-primary" (click)="navigateBackward()">
+        Назад
+      </button>
+      <button *ngIf="actionEnabled && !isClosed" type="button" class="btn btn-primary position-right mb-2 sm:mb-0" (click)="btnClick('delete')">
+          Закриване
+      </button>
+      <button *ngIf="actionEnabled && !isClosed" type="button" class="btn btn-primary position-right mr-2 md:mr-4" (click)="btnClick('edit')">
+          Промяна
+      </button>  
+    </div> -->
+    <div class="field-grid col-12 mt-4">
+     <app-action-buttons
+     [showBack]="true"
+     [backLabel]="'Назад'"
+     [backwardCallback]="navigateBackward"
+     [showEdit]="actionEnabled && !isClosed"
+     [editLabel]="'Промяна'"
+     [editCallback]="btnClick"
+     [showDelete]="actionEnabled && !isClosed"
+     [deleteLabel]="'Закриване'"
+     [deleteCallback]="btnClick"
+     ></app-action-buttons>
+   </div>
+  </ng-container>
+
+</div>

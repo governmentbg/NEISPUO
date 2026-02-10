@@ -1,0 +1,170 @@
+<sb-banner type="warning" *ngIf="!studentPgResults.students.length">Паралелката няма въведени ученици.</sb-banner>
+
+<ng-container *ngIf="studentPgResults.students.length">
+  <div *ngIf="canCreate" class="sb-btn-wrapper">
+    <a [routerLink]="['./', 'new', { type: 'Bad' }]" mat-raised-button color="primary" aria-label="Добави Резултат">
+      <fa-icon [icon]="fasPlus" size="lg"></fa-icon>
+      <span>Добави Резултат</span>
+    </a>
+  </div>
+
+  <sb-transferred-students-banner class="mb-2.5" *ngIf="showTransferredStudentsBanner"></sb-transferred-students-banner>
+
+  <div class="sb-table-container">
+    <table class="sb-table">
+      <thead>
+        <tr>
+          <th>Дете</th>
+          <th class="text-center">Резултати</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let student of studentPgResults.students">
+          <tr>
+            <td *ngIf="student.showInfoLink" class="sb-names">
+              <a
+                [routerLink]="[
+                  '../../../student-info',
+                  this.data.classBookId,
+                  student.personId,
+                  'student-book',
+                  this.data.classBookId
+                ]"
+                class="text-primary"
+              >
+                {{ student.classNumber != null ? student.classNumber.toString() + '.' : '' }}
+
+                {{ student.firstName }}
+                {{ student.middleName }}
+                {{ student.lastName }}
+
+                <span *ngIf="student.abnormalStatus" class="sb-badge">{{ student.abnormalStatus }}</span>
+              </a>
+            </td>
+            <td *ngIf="!student.showInfoLink" class="sb-names">
+              {{ student.classNumber != null ? student.classNumber.toString() + '.' : '' }}
+
+              {{ student.firstName }}
+              {{ student.middleName }}
+              {{ student.lastName }}
+
+              <span *ngIf="student.abnormalStatus" class="sb-badge">{{ student.abnormalStatus }}</span>
+            </td>
+
+            <td class="w-px whitespace-nowrap text-center font-medium align-middle p-1">
+              <button
+                class="book-count-button excused"
+                [class.disabled]="student.pgResultsCount === 0"
+                [class.active]="selectedStudentPersonId === student.personId"
+                (click)="viewPgResults(student.personId)"
+              >
+                {{ student.pgResultsCount }}
+              </button>
+            </td>
+          </tr>
+          <tr *ngIf="selectedStudentPersonId === student.personId && loadingPgResults">
+            <td colspan="3" class="relative book-item-cell h-16 book-count-button excused">
+              <mat-spinner [diameter]="40" class="absolute top-1/2 left-1/2 -mt-5 -ml-5"></mat-spinner>
+            </td>
+          </tr>
+          <ng-container *ngIf="selectedStudentPersonId === student.personId && !loadingPgResults">
+            <tr *ngFor="let pgResult of selectedPgResults">
+              <td colspan="3" class="relative p-2 book-item-cell excused">
+                <div class="sm:flex">
+                  <div class="sm:grow">
+                    <div class="text-sm mb-2">
+                      <span class="block sm:inline whitespace-nowrap">
+                        <fa-icon [icon]="fadGraduationCap"></fa-icon>
+                        <span class="font-bold">Резултат</span>
+                      </span>
+                      {{ ' ' }}
+                      <span *ngIf="pgResult.subjectId != null" class="block sm:inline whitespace-nowrap">
+                        по
+                        <fa-icon [icon]="fasBookOpen"></fa-icon>
+                        <span class="font-bold">{{ pgResult.subjectName }}</span>
+                      </span>
+                      {{ ' ' }}
+                    </div>
+
+                    <span *ngIf="pgResult.startSchoolYearResult" class="font-bold">В началото на учебната година</span>
+                    <div class="text-xs">
+                      <span class="whitespace-pre-line">{{ pgResult.startSchoolYearResult }}</span>
+                    </div>
+
+                    <span *ngIf="pgResult.endSchoolYearResult" class="font-bold">В края на учебната година</span>
+                    <div class="text-xs">
+                      <span class="whitespace-pre-line">{{ pgResult.endSchoolYearResult }}</span>
+                    </div>
+
+                    <div class="text-xs italic">
+                      <span class="inline sm:hidden">Създ. от</span>
+                      <span class="hidden sm:inline">Създадено от</span>
+                      <span class="font-bold">
+                        {{ pgResult.createdBySysUserFirstName }} {{ pgResult.createdBySysUserLastName }}
+                      </span>
+                      на
+                      <span class="font-bold">{{ pgResult.createDate | sbDateTime }}</span>
+                    </div>
+
+                    <div *ngIf="pgResult.createDate.getTime() !== pgResult.modifyDate.getTime()" class="text-xs italic">
+                      <span class="inline sm:hidden">Пром. от</span>
+                      <span class="hidden sm:inline">Последна промяна от</span>
+
+                      <span class="font-bold">
+                        {{ pgResult.modifiedBySysUserFirstName }} {{ pgResult.modifiedBySysUserLastName }}
+                      </span>
+                      на
+                      <span class="font-bold">{{ pgResult.modifyDate | sbDateTime }}</span>
+                    </div>
+                  </div>
+
+                  <div class="sm:shrink-0">
+                    <button
+                      *ngIf="pgResult.canEdit"
+                      class="mt-2 sm:mt-0 mr-2"
+                      mat-raised-button
+                      color="accent"
+                      type="button"
+                      (click)="editPgResult(pgResult)"
+                      [disabled]="pgResult.viewing"
+                    >
+                      <fa-icon
+                        [icon]="pgResult.viewing ? fasSpinnerThird : fasPencil"
+                        [spin]="pgResult.viewing"
+                        size="lg"
+                      ></fa-icon>
+                      <span>Редактирай</span>
+                    </button>
+
+                    <button
+                      class="mt-2 sm:mt-0"
+                      *ngIf="pgResult.canRemove"
+                      mat-raised-button
+                      color="warn"
+                      type="button"
+                      (click)="removePgResult(pgResult)"
+                      [disabled]="pgResult.removing"
+                    >
+                      <fa-icon
+                        [icon]="pgResult.removing ? fasSpinnerThird : fasTrashAlt"
+                        [spin]="pgResult.removing"
+                        size="lg"
+                      ></fa-icon>
+                      <span>Изтрий</span>
+                    </button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </ng-container>
+        </ng-container>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>Общо</td>
+          <td class="text-center text-sm">{{ studentPgResults.totals.pgResultsCountTotal }}</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</ng-container>

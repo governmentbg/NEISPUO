@@ -1,0 +1,34 @@
+{
+  "status": "registration",
+  "codeNEISPUO": 1234,
+  "name": "ЦЕНТЪР ЗА СПЕЦИАЛНА ОБРАЗОВАТЕЛНА ПОДКРЕПА 'Проф. Димитър Кацаров'",
+  "shortName": "ЦСОП 'Димитър Кацаров'",
+  "eik": 1234565432,
+  "type37": 22,
+  "type38": 220,
+  "type3536": 68134,
+  "financialSource": "1",
+  "isProfessional": true,
+  "address": [
+    {
+      "id": "454654545",
+      "place": "68134",
+      "addressLine": "София, Красно село"
+    }
+  ],
+  "createdYear": 1968,
+  "createdDtl": "Наредба 834 от 12.06.2018 г.",
+  "updatedDtl": "Наредба 1287 от 12.06.2020 г.",
+  "isDelegatedBudget": true,
+  "yearlyBudgetApproved": 546500.0,
+  "iban": "BG49FINV84736546543",
+  "bic": "FINVBGSF",
+  "bank": "ПИБ",
+  "accountHolder": "Тинко Тинчев Тинчев",
+  "shifts": "7",
+  "hasHostel": false,
+  "nmbrPedagogical": 20,
+  "avrgSalaryPedagogical": 1700,
+  "nmbrNonPedagogical": 2,
+  "avrgSalaryNonPedagogical": 1000
+}

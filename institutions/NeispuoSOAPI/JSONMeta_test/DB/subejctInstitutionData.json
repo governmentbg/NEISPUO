@@ -1,0 +1,36 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[Subject] SAI  /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "SAI.SubjectID AS subjectID"
+        },
+        {
+            "column": "SAI.SubjectName AS subjectName"
+        },
+        {
+            "column": "SAI.SubjectNameShort AS subjectShortName"
+        },
+        {
+            "column": "SAI.IsValid AS isValid"
+        }
+    ],
+    "params": [
+        {
+            "param": "@subjectID",
+            "column": "SAI.SubjectID",
+            "operator": "=",
+            "value": "subjectID",
+            "type": "int",
+            "logical_operator": "and",
+            "optional": true,
+            "static": false
+        }
+    ],
+    "order": [
+        {
+            "column": "SAI.SubjectID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

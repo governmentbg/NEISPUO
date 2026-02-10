@@ -1,0 +1,64 @@
+  {
+    "template": "SELECT /**select**/ FROM [inst_year].[StudentListIndividual] CD JOIN [inst_basic].[InstitutionAll] I ON I.InstitutionID=CD.InstitutionID /**where**/ /**orderby**/",
+    "sotemplate": "SELECT /**select**/ FROM [sob].[StudentListIndividual] CD JOIN [sob].[InstitutionAll] I ON I.InstitutionID=CD.InstitutionID /**where**/ /**orderby**/",
+    "columns": [
+      {
+        "column": "CD.ID AS id"
+      },
+      {
+        "column": "CD.PersonID AS personID"
+      },
+      {
+        "column": "CD.FullName AS fullName"
+      },
+      {
+        "column": "I.DetailedSchoolTypeID AS detailedSchoolTypeID"
+      },
+      {
+        "column": "CD.BasicClassID AS basicClassID"
+      },
+      {
+        "column": "CD.ClassTypeID AS classTypeID"
+      }
+    ],
+    "params": [
+      {
+        "param": "@studentid",
+        "column": "CD.ID",
+        "operator": "=",
+        "value": "studentid",
+        "type": "int",
+        "logical_operator": "and",
+        "optional": true,
+        "static": false
+      },
+      {
+        "param": "@year",
+        "column": "CD.SchoolYear",
+        "operator": "=",
+        "value": "year",
+        "type": "int",
+        "logical_operator": "and",
+        "optional": true,
+        "static": false
+      },
+      {
+        "param": "@period",
+        "column": "CD.Period",
+        "operator": "=",
+        "value": "period",
+        "type": "int",
+        "logical_operator": "and",
+        "optional": true,
+        "static": false
+      }
+    ],
+    "order": [
+      {
+        "column": "CD.ID",
+        "type": "ASC"
+      }
+    ],
+    "inSelects": [
+    ]
+  }

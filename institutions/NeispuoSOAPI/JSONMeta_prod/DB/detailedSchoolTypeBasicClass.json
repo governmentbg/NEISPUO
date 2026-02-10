@@ -1,0 +1,32 @@
+{
+    "template": "SELECT /**select**/ FROM [noms].[DetailedSchoolType] DST JOIN [inst_nom].[BasicClassLimit] BCL ON DST.DetailedSchoolTypeID=BCL.BasicClassLimitID /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "DST.DetailedSchoolTypeID as code"
+        },
+        {
+            "column": "DST.Name as label"
+        },
+		{
+            "column": "DST.IsValid as isValid"
+        }
+    ],
+    "params": [
+        {
+      "param": "@filterValue",
+      "column": "BCL.InstType",
+      "operator": "=",
+      "value": "filterValue",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+    ],
+    "order": [
+        {
+            "column": "DST.DetailedSchoolTypeID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

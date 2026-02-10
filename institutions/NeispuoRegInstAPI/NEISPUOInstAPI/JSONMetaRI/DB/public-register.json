@@ -1,0 +1,133 @@
+{
+  "arrayName": "publicInstitutions",
+  "template": "SELECT /**select**/ FROM [reginst_basic].[RIPublicInstitutions] RIPI  /**where**/ /**orderby**/",
+  "columns": [
+      {
+        "column": "RIPI.InstitutionID AS id"
+      },
+      {
+        "column": "RIPI.InstitutionID AS instid"
+      },
+      {
+        "column": "RIPI.Name AS name"
+      },
+      {
+        "column": "RIPI.RegionID AS region"
+      },
+      {
+        "column": "RIPI.MunicipalityID AS municipality"
+      },
+      {
+        "column": "RIPI.TownID AS town"
+      },
+      {
+        "column": "RIPI.InstTypeID AS instType"
+      },
+	  {
+        "column": "RIPI.DetailedSchoolTypeID AS detailedSchoolType"
+      },
+      {
+        "column": "RIPI.FinancialSchoolTypeID AS financialSchoolType"
+      },
+      {
+        "column": "RIPI.TransformTypeID AS transformType"
+      },
+      {
+        "column": "RIPI.InstKind AS instKind"
+      },         
+      {
+        "column": "'institution' AS formName"
+      },
+      {
+        "column": "RIPI.RIprocedureID AS procID"
+      }
+	],
+  "params": [
+    {
+      "param": "@IsRIActive",
+      "column": "IsRIActive",
+	    "operator": "=",
+      "value": "isRIActive",
+	    "type": "int",
+      "logical_operator": "and",
+	  "optional": false,
+      "static": false,
+	  "from_claim": false
+    },
+	{
+      "param": "@region",
+      "column": "RegionID",
+	  "operator": "IN",
+      "value": "region",
+	  "type": "array",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false,
+	  "from_claim": false
+    },
+	{
+      "param": "@municipality",
+      "column": "MunicipalityID",
+	  "operator": "IN",
+      "value": "municipality",
+	  "type": "array",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false,
+	  "from_claim": false
+    },
+	{
+      "param": "@town",
+      "column": "TownID",
+	  "operator": "IN",
+      "value": "town",
+	  "type": "array",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false,
+	  "from_claim": false
+    },
+	{
+      "param": "@instType",
+      "column": "InstTypeID",
+	  "operator": "IN",
+      "value": "instType",
+	  "type": "array",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false,
+	  "from_claim": false
+    },
+	{
+      "param": "@financialSchoolType",
+      "column": "FinancialSchoolTypeID",
+	  "operator": "IN",
+      "value": "financialSchoolType",
+	  "type": "array",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false,
+	  "from_claim": false
+    },
+	{
+      "param": "@keyWord",
+      "column": "Name",
+	  "operator": "LIKE",
+      "value": "keyWord",
+	  "type": "string",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false,
+	  "from_claim": false
+    }
+  ],
+  "order": [
+    {
+      "column": "RIPI.RIprocedureID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+ 
+  ]
+}

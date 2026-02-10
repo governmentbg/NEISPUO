@@ -1,0 +1,51 @@
+        {
+          "order": 13,
+          "label": "Данни за сертификат",
+          "name": "certificate",
+          "fields": [
+            {
+              "order": 1,
+              "label": "Номер на сертификат",
+              "name": "certificateNumber",
+              "type": "input",
+              "inputType": "text",
+              "disabled": false,
+              "width": 100,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 255,
+                  "message": "Максимална дължина 255 символа"
+                }
+              ]
+            },
+            {
+              "label": "Дата на сертификата",
+              "name": "certificateDate",
+              "type": "date",
+              "disabled": false,
+              "order": 2,
+              "width": 200,
+              "validations": [
+              ]
+            },
+            {
+              "label": "Бележки",
+              "name": "certificateNotes",
+              "type": "textarea",
+              "disabled": false,
+              "order": 3,
+              "width": 900,
+              "height": 3,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 4000,
+                  "message": "Максимална дължина 4000 символа"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }

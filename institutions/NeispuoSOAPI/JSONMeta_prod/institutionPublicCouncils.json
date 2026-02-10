@@ -1,0 +1,78 @@
+{
+  "label": "Данни за обществен съвет",
+  "sections": [
+    {
+      "order": 1,
+      "name": "TablePublicCouncilData",
+      "table": 
+        {
+          "name": "publicCouncilData",
+          "createNew": "samePage",
+          "formName": "institutionPublicCouncilData",
+          "canDeleteRow": true,
+          "paramName": "publicCouncilID",
+          "procedureName": "inst_basic.institutionPublicCouncilCUD",
+		  "searchable": true,
+		  "searchType": "column",
+          "fields": [
+            {
+              "label": "Институция, на която е представител",
+              "name": "publicCouncilTypeID",
+              "type": "input",
+              "inputType": "text",
+			  "width": 10,
+              "order": 1
+            },
+            {
+              "label": "Роля",
+              "name": "publicCouncilRoleID",
+              "type": "input",
+              "inputType": "text",
+			  "width": 10,
+              "order": 2
+            },
+            {
+              "label": "Име",
+              "name": "firstName",
+              "type": "input",
+              "inputType": "text",
+			  "width": 20,
+              "order": 3
+            },
+			    {
+              "label": "Презиме",
+              "name": "middleName",
+              "type": "input",
+              "inputType": "text",
+			  "width": 20,
+              "order": 4
+            },
+			{
+              "label": "Фамилия",
+              "name": "familyName",
+              "type": "input",
+              "inputType": "text",
+			  "width": 20,
+              "order": 5
+            },
+            {
+              "label": "Електронна поща",
+              "name": "email",
+              "type": "input",
+              "inputType": "text",
+			  "width": 10,
+              "order": 6
+            },
+            {
+              "label": "Телефон",
+              "name": "phone",
+              "type": "input",
+              "inputType": "text",
+			  "width": 10,
+              "order": 7
+            }
+          ]
+        }
+    }
+  ]
+}

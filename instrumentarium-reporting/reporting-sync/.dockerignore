@@ -1,0 +1,10 @@
+node_modules
+npm-debug.log
+.env
+dist
+temp
+.git
+.gitignore
+README.md
+.prettierrc
+eslint.config.mjs

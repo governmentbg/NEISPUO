@@ -1,0 +1,34 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_nom].[InstPossibleChangeYear] ICD /**where**/ /**orderby**/",
+  "columns": [
+	  {
+        "column": "ICD.FromSchoolYear AS fromSchoolYear"
+      },
+	  {
+        "column": "ICD.FromSchoolYearText AS fromSchoolYearText"
+      },
+	  {
+        "column": "ICD.ToSchoolYear AS toSchoolYear"
+      },
+	  {
+        "column": "ICD.ToSchoolYearText AS toSchoolYearText"
+      }
+  ],
+  "params": [
+    {
+      "param": "@instid",
+      "column": "ICD.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+  ],
+  "order": [
+
+  ],
+  "inSelects": [
+   
+  ]
+}

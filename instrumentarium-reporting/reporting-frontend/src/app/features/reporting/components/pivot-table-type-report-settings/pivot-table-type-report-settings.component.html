@@ -1,0 +1,176 @@
+<div class="row">
+  <h4 class="col-12 mt-2">Пивот таблица - опции</h4>
+</div>
+<div *ngIf="!reportSummaryService.summaryGroupedBy.length || !reportSummaryService.sumarizedBy.name" class="row">
+  <div class="col-12 color-gray-600">
+    Моля, изберете колоните, по които искате да групирате и колоната, по която да обобщите, от опция "Обобщение", за да бъде
+    възможна визуализация тип пивот таблица.
+  </div>
+</div>
+
+<div
+  *ngIf="reportSummaryService.sumarizedBy.name && reportSummaryService.summaryGroupedBy.length && x && y"
+  class="drag-drop row"
+>
+  <div class="col-12">
+    <div class="text-lg color-gray-700 fw-bold mb-4">Полета, които да се използват в таблицата за редове</div>
+
+    <div
+      cdkDropList
+      #xList="cdkDropList"
+      [cdkDropListData]="x"
+      [cdkDropListConnectedTo]="[yList]"
+      class="drop-list"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div class="box" *ngFor="let key of x" cdkDrag [cdkDragDisabled]="pivotTableReportService.isLoading">
+        <div class="box-placeholder" *cdkDragPlaceholder></div>
+        <p-accordion>
+          <p-accordionTab [header]="findColumnDetails(key)?.shortTitle">
+            <div class="d-flex justify-content-between">
+              <div class="sort-title">Сортирай:</div>
+              <div class="sort-icons">
+                <i
+                  class="bi bi-sort-up-alt"
+                  [ngClass]="{ active: sortField === key && sortOrder === 'asc' }"
+                  (click)="sort('asc', key)"
+                ></i>
+                <i
+                  class="bi bi-sort-down"
+                  [ngClass]="{ active: sortField === key && sortOrder === 'desc' }"
+                  (click)="sort('desc', key)"
+                ></i>
+              </div>
+            </div>
+          </p-accordionTab>
+        </p-accordion>
+      </div>
+    </div>
+  </div>
+  <br />
+  <div class="col-12">
+    <div class="text-lg color-gray-700 fw-bold mb-4">Полета, които да се използват в таблицата за колони</div>
+
+    <div
+      cdkDropList
+      #yList="cdkDropList"
+      [cdkDropListData]="y"
+      [cdkDropListConnectedTo]="[xList]"
+      class="drop-list cdk-drop-list-dragging"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div class="box" *ngFor="let key of y" cdkDrag [cdkDragDisabled]="pivotTableReportService.isLoading">
+        <div class="box-placeholder" *cdkDragPlaceholder></div>
+        <p-accordion>
+          <p-accordionTab [header]="findColumnDetails(key)?.shortTitle">
+            <div class="d-flex justify-content-between">
+              <div class="sort-title">Сортирай:</div>
+              <div class="sort-icons">
+                <i
+                  class="bi bi-sort-up-alt"
+                  [ngClass]="{ active: sortField === key && sortOrder === 'asc' }"
+                  (click)="sort('asc', key)"
+                ></i>
+                <i
+                  class="bi bi-sort-down"
+                  [ngClass]="{ active: sortField === key && sortOrder === 'desc' }"
+                  (click)="sort('desc', key)"
+                ></i>
+              </div>
+            </div>
+          </p-accordionTab>
+        </p-accordion>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 load-data-btn-wrapper text-center">
+    <button pButton type="button" label="Зареди данни" class="p-button-primary" (click)="updatePivot()"></button>
+  </div>
+  <div class="col-12">
+    <hr />
+  </div>
+  <div class="col-12">
+    <div class="text-lg color-gray-700 fw-bold mb-3">Филтри</div>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="applyFilters(form.value.filters)" class="col-12">
+    <div formArrayName="filters" class="row">
+      <div
+        class="col-12"
+        *ngFor="let filterMember of form.get('filters')['controls']; let i = index"
+        formGroupName="{{ i }}"
+      >
+        <p-fieldset>
+          <ng-template pTemplate="header">
+            <div class="d-flex align-items-center justify-content-between">
+              <div>
+                {{ findColumnDetails(filterMember.get('filterMemberName').value)?.shortTitle }}
+                <input formControlName="filterMemberName" type="hidden" />
+                <input formControlName="filterMemberType" type="hidden" />
+              </div>
+              <span
+                ><button
+                  type="button"
+                  class="btn btn-secondary"
+                  (click)="removeFilterMember(i)"
+                  [pTooltip]="
+                    'Премахни всички филтри за ' + findColumnDetails(filterMember.get('filterMemberName').value)?.shortTitle
+                  "
+                  tooltipPosition="top"
+                >
+                  <i class="bi bi-trash-fill"></i></button
+              ></span>
+            </div>
+          </ng-template>
+          <div class="row" formArrayName="filterMemberValues">
+            <div
+              class="col-12"
+              *ngFor="let value of filterMember.controls.filterMemberValues.controls; let j = index"
+              formGroupName="{{ j }}"
+            >
+              <app-filter
+                [value]="value"
+                [type]="filterMember.get('filterMemberType').value"
+                [formGroup]="value"
+                (removeAppliedFilter)="removeFilterMemberValue(i, j)"
+              ></app-filter>
+              <hr />
+            </div>
+            <div class="col-12 text-center">
+              <button
+                pButton
+                pRipple
+                type="button"
+                label="Добави филтър"
+                icon="pi pi-plus"
+                class="p-button-outlined p-button-primary p-button-icon-left"
+                (click)="addFilterMemberValue(i)"
+              ></button>
+            </div>
+          </div>
+        </p-fieldset>
+      </div>
+    </div>
+    <div [ngClass]="{ 'mt-6': form.get('filters').value.length }">
+      <p-dropdown
+        #dropdown
+        styleClass="filter-dropdown"
+        inputId="columns"
+        [options]="columns"
+        [(ngModel)]="selectedFilterColumn"
+        [ngModelOptions]="{ standalone: true }"
+        optionLabel="shortTitle"
+        [filter]="true"
+        filterBy="shortTitle"
+        placeholder="Добавете поле за филтриране"
+        dataKey="name"
+        appendTo="body"
+        (onChange)="addNewFilterMember($event)"
+      >
+      </p-dropdown>
+    </div>
+    <div class="mt-6 mb-6 text-center">
+      <button type="submit" class="btn btn-primary" [disabled]="!form.get('filters').value.length">Приложи филтри</button>
+    </div>
+  </form>
+</div>

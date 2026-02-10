@@ -1,0 +1,75 @@
+@import "@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/variables/variables.scss";
+
+:host ::ng-deep {
+    .p-dialog {
+        position: absolute;
+        bottom: 5.5rem;
+        top: unset;
+        width: fit-content !important;
+        min-width: 20%;
+        left: 22rem;
+        right: 0;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    .p-dialog .p-dialog-header {
+        padding: 0.2rem;
+        background-color: $blue-500;
+    }
+
+    .p-dialog .p-dialog-content {
+        padding-bottom: 0.2rem;
+        background-color: $blue-500;
+        color: $gray-400;
+    }
+
+    .p-dialog .p-dialog-content>button {
+        padding: 0.5rem;
+    }
+
+    .history-selector {
+        width: 50%;
+        margin-left: 25% !important;
+    }
+
+    @media (max-width:944px) {
+        .p-dialog {
+            left: 0;
+            min-width: 40%;
+        }
+    }
+}
+
+.bi {
+    float: right;
+    font-size: 1.875rem;
+    cursor: pointer;
+}
+
+.messageContainer {
+    background: $blue-100;
+    padding-top: 0.6rem;
+    box-sizing: border-box;
+    border-radius: 0.25rem;
+    margin: 0.938rem 0.125rem 0.5rem 0.125rem;
+
+}
+
+.messageContainer p {
+    text-align: center;
+    margin-top: 0.188rem;
+    padding-bottom: 0.563rem;
+}
+
+.btn-link {
+    font-size: 1rem;
+}
+
+.btn {
+    vertical-align: unset;
+}
+
+.position-right {
+    float: right;
+}

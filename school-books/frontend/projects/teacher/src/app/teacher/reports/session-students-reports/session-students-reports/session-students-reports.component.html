@@ -1,0 +1,35 @@
+<sb-breadcrumb class="block mb-3" [icon]="fadCalendarMinus" text="Ученици за поправителни изпити"></sb-breadcrumb>
+
+<sb-card>
+  <ng-container card-title>Ученици за поправителни изпити</ng-container>
+  <ng-container card-buttons>
+    <button
+      type="button"
+      mat-raised-button
+      color="primary"
+      aria-label="Нова справка ученици за поправителни изпити"
+      [disabled]="creating"
+      (click)="create()"
+    >
+      <fa-icon [icon]="creating ? fasSpinnerThird : fasPlus" [spin]="creating" size="lg"></fa-icon>
+      <span class="hidden sm:inline">Нова справка ученици за поправителни изпити</span>
+    </button>
+  </ng-container>
+  <ng-container card-body>
+    <sb-table [dataSource]="dataSource" [displayedColumns]="['action', 'createDate']">
+      <ng-container cdkColumnDef="action">
+        <th cdk-header-cell *cdkHeaderCellDef></th>
+        <td cdk-cell *cdkCellDef="let row" class="sb-table-action">
+          <a [routerLink]="['./', row.sessionStudentsReportId]" aria-label="Редактирай" class="sb-link-btn">
+            <fa-icon [icon]="fadChevronCircleRight"></fa-icon>
+          </a>
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="createDate">
+        <th cdk-header-cell *cdkHeaderCellDef>Създадена на</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.createDate | sbDateTime }}</td>
+      </ng-container>
+    </sb-table>
+  </ng-container>
+</sb-card>

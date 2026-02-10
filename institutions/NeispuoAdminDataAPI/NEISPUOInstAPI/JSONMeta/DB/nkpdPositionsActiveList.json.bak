@@ -1,0 +1,38 @@
+{
+    "template": "SELECT DISTINCT /**select**/ FROM [inst_nom].[NKPDPositionNotInstitution] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "NKPDPositionID as code"
+        },
+        {
+            "column": "PositionName as label"
+        }
+    ],
+    "params": [
+		{
+     "param": "@isValid",
+     "column": "IsValidNKPD",
+     "operator": "=",
+     "value": 1,
+     "type": "int",
+     "logical_operator": "and",
+     "static": true
+    },
+	{
+     "param": "@isValid",
+     "column": "IsValidCustomVar",
+     "operator": "<>",
+     "value": 1,
+     "type": "int",
+     "logical_operator": "and",
+     "static": true
+    }
+    ],
+    "order": [
+        {
+            "column": "NKPDPositionID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

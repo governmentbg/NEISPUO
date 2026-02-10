@@ -1,0 +1,68 @@
+{
+  "label": "Списък на учениците",
+  "sections": [
+    {
+      "order": 1,
+	  "name": "TableStudentGroupList",
+      "table": 
+	  {
+          "name": "studentList",
+		  "canDelete":true,
+		  "paramName": "studentid",
+		  "action":"preview",
+		  "formName":"curriculumIndividualSubject",
+		  "additionalParams": ["classID","parentClassID"],
+		  "fields": [
+			{
+				"label": "Личен образователен номер",
+				"name": "publicEduNumber",
+				"type": "input",
+				"inputType": "number",
+				"width":10,
+				"order": 1
+			},
+			{
+				"label": "Имена на детето",
+				"name": "fullName",
+				"type": "input",
+				"inputType": "text",
+				"width":20,
+				"order": 2
+			},
+			{
+				"label": "Дата на раждане",
+				"name": "birthDate",
+				"type": "input",
+				"inputType": "date",
+				"width":10,
+				"order": 3
+			},
+			{
+				"label": "Клас",
+				"name": "basicClassName",
+				"type": "input",
+				"inputType": "text",
+				"width":8,
+				"order": 4
+			},
+			{
+				"label": "Вид обучение",
+				"name": "name",
+				"type": "input",
+				"inputType": "text",
+				"width":15,
+				"order": 5
+			},
+			{
+				"label": "Форма на обучение",
+				"name": "studentEdFormName",
+				"type": "input",
+				"inputType": "text",
+				"width":15,
+				"order": 6
+			}	
+		]
+      }
+    }
+  ]
+}

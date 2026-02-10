@@ -1,0 +1,24 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[VehicleDocumentType] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "VehicleDocumentTypeID as code"
+        },
+        {
+            "column": "Name as label"
+        },
+		{
+            "column": "IsValid as isValid"
+        }
+    ],
+    "params": [
+
+    ],
+    "order": [
+        {
+            "column": "VehicleDocumentTypeID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

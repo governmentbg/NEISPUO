@@ -1,0 +1,21 @@
+# Build runtime image
+
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-focal AS base
+RUN apt-get update && apt-get install -y apt-utils libgdiplus libc6-dev
+WORKDIR /app
+
+
+FROM mcr.microsoft.com/dotnet/sdk:3.1-focal AS build
+COPY . .
+COPY NEISPUOInstAPI/appsettings.prod.json NEISPUOInstAPI/appsettings.json
+COPY JSONMeta_prod NEISPUOInstAPI/JSONMeta
+RUN dotnet restore "NEISPUORegInstAPI.sln"
+RUN dotnet build "NEISPUORegInstAPI.sln" -c Release -o /app/build
+
+FROM build AS publish
+RUN dotnet publish "NEISPUORegInstAPI.sln" -c Release -o /app/publish
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "NEISPUORegInstAPI.dll"]

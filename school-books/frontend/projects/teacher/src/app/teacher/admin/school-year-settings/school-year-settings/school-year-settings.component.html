@@ -1,0 +1,70 @@
+<sb-breadcrumb
+  class="block mb-3"
+  [icon]="fadCalendarStar"
+  [text]="'Настройки на учебната ' + schoolYearName + ' година'"
+></sb-breadcrumb>
+
+<sb-card>
+  <ng-container card-title>Настройки на учебната {{ schoolYearName }} година</ng-container>
+  <ng-container *ngIf="canCreate" card-buttons>
+    <a [routerLink]="['./', 'new']" mat-raised-button color="primary" aria-label="Нови настройки на учебната година">
+      <fa-icon [icon]="fasPlus" size="lg"></fa-icon>
+      <span class="hidden sm:inline">Нови настройки на учебната година</span>
+    </a>
+  </ng-container>
+  <ng-container card-body>
+    <sb-table
+      [dataSource]="dataSource"
+      [displayedColumns]="[
+        'action',
+        'description',
+        'schoolYearStartDate',
+        'firstTermEndDate',
+        'secondTermStartDate',
+        'schoolYearEndDate',
+        'classes'
+      ]"
+    >
+      <ng-container cdkColumnDef="action">
+        <th cdk-header-cell *cdkHeaderCellDef></th>
+        <td cdk-cell *cdkCellDef="let row" class="sb-table-action">
+          <a [routerLink]="['./', row.schoolYearSettingsId]" aria-label="Редактирай" class="sb-link-btn">
+            <fa-icon [icon]="fadChevronCircleRight"></fa-icon>
+          </a>
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="description">
+        <th cdk-header-cell *cdkHeaderCellDef>Описание</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.description }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="schoolYearStartDate">
+        <th cdk-header-cell *cdkHeaderCellDef>Начало на учебната година</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.schoolYearStartDate | sbDate }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="firstTermEndDate">
+        <th cdk-header-cell *cdkHeaderCellDef>Край на първи срок</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.firstTermEndDate | sbDate }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="secondTermStartDate">
+        <th cdk-header-cell *cdkHeaderCellDef>Начало на втори срок</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.secondTermStartDate | sbDate }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="schoolYearEndDate">
+        <th cdk-header-cell *cdkHeaderCellDef>Край на учебната година</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.schoolYearEndDate | sbDate }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="classes">
+        <th cdk-header-cell *cdkHeaderCellDef>Класове/Паралелки/Групи</th>
+        <td cdk-cell *cdkCellDef="let row">
+          {{ row.IsForAllClasses ? 'всички' : row.basicClassNames.join(', ') || row.classBookNames.join(', ') }}
+        </td>
+      </ng-container>
+    </sb-table>
+  </ng-container>
+</sb-card>

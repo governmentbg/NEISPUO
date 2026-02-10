@@ -1,0 +1,62 @@
+{
+  "sections": [
+    {
+      "order": 1,
+      "name": "TableStudentSelfGovernmentList",
+      "table":
+      {
+        "name": "selfGovernmentData",
+        "searchable": true,
+        "searchType": "column",
+		"paramName":"Id",
+		"createNew": "samePage",
+		"formName": "studentSelfGovernmentData",
+        "hasEditButton": true,
+		"canDeleteRow": true,
+		"procedureName": "inst_basic.studentSelfGovernmentCUD",
+        "fields": [
+          {
+            "label": "Име на ученика (клас)",
+            "name": "studentName",
+            "type": "input",
+            "inputType": "text",
+            "width": 50,
+            "order": 1
+          },
+          {
+            "label": "Позиция",
+            "name": "selfGovernmentPositionName",
+            "type": "input",
+            "inputType": "text",
+            "width": 30,
+            "order": 3
+          },
+          {
+            "label": "Допълнителна информация",
+            "name": "additionalInformation",
+            "type": "input",
+            "inputType": "text",
+            "width": 80,
+            "order": 4
+          },
+		  {
+            "label": "Електронна поща",
+            "name": "email",
+            "type": "input",
+            "inputType": "text",
+            "width": 50,
+            "order": 5
+          },
+		  {
+            "label": "Моб. телефон",
+            "name": "mobilePhone",
+            "type": "input",
+            "inputType": "text",
+            "width": 50,
+            "order": 6
+          }
+        ]
+      }
+    }
+  ]
+}

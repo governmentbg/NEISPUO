@@ -1,0 +1,46 @@
+<form #ngForm="ngForm" [formGroup]="form" autocomplete="off" novalidate>
+  <sb-tab-card>
+    <ng-container card-title>
+      {{ data.pgResult == null ? 'Създаване на резултат' : 'Редакция на резултат' }}
+    </ng-container>
+    <sb-editor-panel card-buttons [isNew]="true" (save)="onSave($event)"></sb-editor-panel>
+    <ng-container card-body>
+      <sb-banner type="error" *ngIf="ngForm.submitted && form.errors?.startEndError" class="mb-4">
+        Поне едно от полетата за резултат в началото/края на учебната година трябва да бъде попълнено.
+      </sb-banner>
+
+      <div class="sm:grid grid-cols-2 gap-x-4 mb-2">
+        <sb-nom-select
+          class="col-span-full"
+          label="Дете"
+          formControlName="studentId"
+          [nomService]="classBookStudentNomsService"
+          [readonly]="data.pgResult != null"
+        ></sb-nom-select>
+
+        <sb-nom-select
+          *ngIf="data.pgResult == null || data.pgResult.subjectId != null"
+          class="col-span-2"
+          label="Образователно направление"
+          formControlName="subjectId"
+          [nomService]="classBookSubjectNomsService"
+          [readonly]="data.pgResult != null"
+        ></sb-nom-select>
+
+        <sb-textarea-field
+          label="В началото на учебната година"
+          formControlName="startSchoolYearResult"
+          [minRows]="20"
+          [textareaMaxSize]="10000"
+        ></sb-textarea-field>
+
+        <sb-textarea-field
+          label="В края на учебната година"
+          formControlName="endSchoolYearResult"
+          [minRows]="20"
+          [textareaMaxSize]="10000"
+        ></sb-textarea-field>
+      </div>
+    </ng-container>
+  </sb-tab-card>
+</form>

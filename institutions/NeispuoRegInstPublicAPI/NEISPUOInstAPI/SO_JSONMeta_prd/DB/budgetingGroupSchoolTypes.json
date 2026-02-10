@@ -1,0 +1,32 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[BudgetingClassLimit] BCL JOIN [noms].[BudgetingInstitution] BI ON BI.BudgetingInstitutionID=BCL.BudgetingClassID /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "BCL.BudgetingClassID as code"
+        },
+        {
+            "column": "BI.Name as label"
+        },
+		{
+            "column": "BI.IsValid as isValid"
+        }
+    ],
+    "params": [
+	{
+      "param": "@filterValue",
+      "column": "BCL.BudgetingSchoolID",
+      "operator": "=",
+      "value": "filterValue",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+    ],
+    "order": [
+        {
+            "column": "BCL.BudgetingClassID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

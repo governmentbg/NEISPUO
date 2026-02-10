@@ -1,0 +1,233 @@
+<p-toolbar *ngIf="hasAccess$ | async">
+    <div class="w-100 flex justify-content-end align-items-center">
+        <p-multiSelect
+            [dropdownIcon]="'pi pi-cog'"
+            [filter]="false"
+            [displaySelectedLabel]="false"
+            [defaultLabel]="CONSTANTS.PRIMENG_MULTISELECT_LABEL_PLACEHOLDER | translate"
+            [options]="columnService.optionallyVisibleColumns | async"
+            [emptyMessage]="CONSTANTS.PRIMENG_MULTISELECT_LABEL_EMPTY | translate"
+            [(ngModel)]="columnService.selectedOptionalColumns"
+            [options]="columnService.optionallyVisibleColumns | async"
+            (onChange)="onColumnChoiceChange($event)"
+            appendTo="body"
+        ></p-multiSelect>
+        <div class="ms-3">
+            <app-export-button (onClick)="exportExcel()" [loading]="exporting"></app-export-button>
+        </div>
+        <button
+            (click)="refreshTableData()"
+            pButton
+            type="button"
+            icon="pi pi-refresh"
+            pTooltip="{{ CONSTANTS.PRIMENG_TITLE_REFRESH | translate }}"
+            tooltipPosition="left"
+            class="w-auto ms-3 p-button p-button-primary"
+        ></button>
+    </div>
+</p-toolbar>
+<p-table
+    id="studentUsersTable"
+    #studentUsersTable
+    [value]="paginatedEntries.data"
+    [columns]="columnService.visibleColumns | async"
+    [paginator]="true"
+    [rowHover]="true"
+    [lazy]="true"
+    (onLazyLoad)="navigate($event)"
+    [lazyLoadOnInit]="false"
+    [loading]="loading"
+    [rows]="pageSize"
+    [filterDelay]="filterDelay"
+    [totalRecords]="paginatedEntries.total"
+>
+    <ng-template pTemplate="colgroup" let-columns>
+        <colgroup>
+            <col *ngFor="let col of columns" [ngStyle]="{ width: col.width }" />
+        </colgroup>
+    </ng-template>
+
+    <ng-template pTemplate="header" let-user let-columns>
+        <tr>
+            <th *ngFor="let col of columns" [pSortableColumn]="col?.notSortable ? '' : col.field">
+                <span *ngIf="hasAccess$ | async">
+                    {{ col.header }}
+                    <p-sortIcon *ngIf="!col?.notSortable" [field]="col.field"></p-sortIcon>
+                </span>
+                <span *ngIf="!(hasAccess$ | async) && col.field !== 'schoolBooksCodesID'">
+                    {{ col.header }}
+                    <p-sortIcon *ngIf="!col?.notSortable" [field]="col.field"></p-sortIcon>
+                </span>
+            </th>
+        </tr>
+        <tr>
+            <th *ngFor="let col of columns">
+                <p-dropdown
+                    *ngIf="col.filter?.type === 'select'"
+                    [ngModel]="studentUsersTable.filters[col.field]?.value"
+                    [options]="col.filter?.selectionOptions"
+                    (onChange)="studentUsersTable.filter($event.value, col.field, col.filter?.operator)"
+                    [placeholder]="CONSTANTS.PRIMENG_DROPDOWN_PLACEHOLDER | translate"
+                >
+                    <ng-template let-option pTemplate="selectedItem">
+                        <span [class]="'customer-badge status-' + option.value">{{ option.label | translate }}</span>
+                    </ng-template>
+                    <ng-template let-option pTemplate="item">
+                        <span [class]="'customer-badge status-' + option.value">{{ option.label | translate }}</span>
+                    </ng-template>
+                </p-dropdown>
+
+                <p-calendar
+                    *ngIf="col.filter?.type === 'date'"
+                    appendTo="body"
+                    [monthNavigator]="true"
+                    [yearNavigator]="true"
+                    yearRange="1900:2050"
+                    dateFormat="yy-mm-dd"
+                    firstDayOfWeek="1"
+                    [showButtonBar]="true"
+                    [dataType]="date"
+                    class="p-column-filter"
+                    (onSelect)="onDateSelect($event, col.field, col.filter?.operator)"
+                    (onClearClick)="onDateClear(col.field, col.filter?.operator)"
+                    [ngModel]="tempDate"
+                    [placeholder]="CONSTANTS.PRIMENG_CALENDAR_PLACEHOLDER | translate"
+                ></p-calendar>
+
+                <input
+                    *ngIf="
+                        ((hasAccess$ | async) && col.filter?.type === 'text') ||
+                        (!(hasAccess$ | async) && col.filter?.type === 'text' && col.field !== 'schoolBooksCodesID')
+                    "
+                    class="filter-text"
+                    pInputText
+                    type="text"
+                    [placeholder]="CONSTANTS.PRIMENG_INPUT_PLACEHOLDER | translate"
+                    (input)="studentUsersTable.filter($event.target.value, col.field, col.filter?.operator)"
+                    [readonly]="loading"
+                    [ngModel]="studentUsersTable.filters[col.field]?.value"
+                />
+                <input
+                    *ngIf="col.filter?.type === 'number' || col.filter?.type === 'date'"
+                    class="filter-text"
+                    pInputText
+                    type="text"
+                    placeholder="Търси"
+                    (input)="studentUsersTable.filter($event.target.value, col.field, col.filter?.operator)"
+                    [readonly]="loading"
+                    [ngModel]="studentUsersTable.filters[col.field]?.value"
+                />
+            </th>
+        </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-user let-columns="columns">
+        <tr class="ui-selectable-row">
+            <td
+                class="table-cell"
+                *ngFor="let col of columns"
+                [ngStyle]="{ 'text-align': col.field === 'options' ? 'center' : '' }"
+            >
+                <span *ngIf="(hasAccess$ | async) && col.field === 'options'" class="row-content">
+                    <span class="row-content flex">
+                        <button
+                            pButton
+                            type="button"
+                            icon="pi pi-refresh"
+                            pTooltip="{{ CONSTANTS.PRIMENG_TITLE_GENERATE_CODE | translate }}"
+                            tooltipPosition="top"
+                            (click)="updateSchoolBookCode(user.personID)"
+                            class="p-button-sm p-button-primary"
+                        ></button>
+                        <button
+                            pButton
+                            type="button"
+                            icon="pi pi-ellipsis-v"
+                            class="p-button-sm p-button-primary"
+                            (click)="overlay.toggle($event)"
+                        ></button>
+                    </span>
+                    <p-overlayPanel #overlay styleClass="compact-overlay-panel">
+                        <button
+                            pButton
+                            type="button"
+                            [icon]="user.azureID ? 'pi pi-sync' : 'pi pi-user-plus'"
+                            pTooltip="{{
+                                (user.azureID ? CONSTANTS.PRIMENG_TITLE_SYNC_USER : CONSTANTS.PRIMENG_TITLE_CREATE_USER)
+                                    | translate
+                            }}"
+                            tooltipPosition="top"
+                            (click)="syncAzureStudent(user)"
+                            class="p-button-sm p-button-text"
+                        ></button>
+                        <button
+                            *ngIf="
+                                isImpersonationEnabled &&
+                                !(isImpersonator$ | async) &&
+                                (canImpersonateTeacherStudent$ | async)
+                            "
+                            pButton
+                            type="button"
+                            icon="pi pi-users"
+                            pTooltip="{{ CONSTANTS.PRIMENG_TITLE_IMPERSONATION | translate }}"
+                            tooltipPosition="top"
+                            (click)="impersonate(user.personID)"
+                            class="p-button-sm p-button-text"
+                        ></button>
+                        <button
+                            *ngIf="isMon$ | async"
+                            pButton
+                            type="button"
+                            icon="pi pi-history"
+                            pTooltip="{{ CONSTANTS.PRIMENG_TITLE_SYNC_HISTORY | translate }}"
+                            tooltipPosition="top"
+                            (click)="routeToSyncHistory(user.personID)"
+                            class="p-button-sm p-button-text"
+                        ></button>
+                        <button
+                            *ngIf="isMon$ | async"
+                            pButton
+                            type="button"
+                            icon="pi pi-user-plus"
+                            pTooltip="{{ CONSTANTS.PRIMENG_TITLE_ADD_PARENT | translate }}"
+                            tooltipPosition="left"
+                            (click)="routeToLinkedUsersPage(user.personID)"
+                            class="p-button-sm p-button-text"
+                        ></button>
+                    </p-overlayPanel>
+                    <!--
+                    <button
+                        [disabled]="!enableCovertButton(user)"
+                        (click)="convertAzureStudentToTeacher(user)"
+                        pButton
+                        type="button"
+                        icon="pi pi-arrows-h"
+                        pTooltip="{{ CONSTANTS.PRIMENG_TITLE_CONVERT_USER | translate }}"
+                        tooltipPosition="left"
+                        class="p-button-sm p-button-primary"
+                    ></button>
+                    -->
+                </span>
+                <span *ngIf="col.filter?.type === 'int'" class="row-content">
+                    {{ getToDisplayValue(user, col.field) | translate }}
+                </span>
+                <span *ngIf="col.filter?.type === 'date'" class="row-content">
+                    {{ getToDisplayValue(user, col.field) | date: 'yyyy-MM-dd HH:mm:ss' }}
+                </span>
+                <span
+                    *ngIf="
+                        ((hasAccess$ | async) && col.filter?.type === 'text') ||
+                        (!(hasAccess$ | async) && col.filter?.type === 'text' && col.field !== 'schoolBooksCodesID')
+                    "
+                    class="row-content"
+                >
+                    {{ getToDisplayValue(user, col.field) | translate }}
+                </span>
+                <span *ngIf="col.filter?.type === 'select'" class="row-content">
+                    {{ getToDisplayValue(user, col.field) | enum: col.filter?.selectionOptions | translate }}
+                </span>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+<app-confirm-dialog></app-confirm-dialog>

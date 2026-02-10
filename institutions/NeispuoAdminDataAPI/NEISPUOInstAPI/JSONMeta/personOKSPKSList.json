@@ -1,0 +1,140 @@
+{
+  "label": "Данни за образование и квалификация на персонала",
+  "changeData": false,
+  "sections": [
+    {
+      "label": "Име на служител",
+      "order": 1,
+      "subsections": [
+        {
+          "order": 1,
+          "label": "fullName",
+          "type": "input",
+          "name": "fullName",
+          "bold": true,
+          "width": 200,
+          "disabled": false,
+          "flexible": false
+        }
+      ]
+    },
+    {
+      "label": "Образователна квалификационна степен",
+      "order": 2,
+      "name": "TableEducationData",
+	  "accordion": {"state":"closed"},
+      "table":
+      {
+        "name": "staffOKS",
+        "createNew": "redirect",
+        "formName": "personOKSData",
+        "paramName": "personOKSID",
+        "procedureName": "inst_basic.personOKSCUD",
+        "canDeleteRow": true,
+		"searchable":false,
+        "fields": [
+          {
+            "label": "Образователна степен",
+            "name": "educationGrade",
+            "type": "input",
+            "inputType": "text",
+            "order": 1
+          },
+          {
+            "label": "Поредна специалност",
+            "name": "specialityOrdType",
+            "type": "input",
+            "inputType": "text",
+            "order": 2
+          },
+          {
+            "label": "Диплома №",
+            "name": "certifcateNo",
+            "type": "input",
+            "inputType": "text",
+            "order": 3
+          },
+          {
+            "label": "Година на завършване",
+            "name": "yearOfGraduation",
+            "type": "input",
+            "inputType": "number",
+            "order": 4
+          },
+          {
+            "label": "Наименование на специалността",
+            "name": "speciality",
+            "type": "textarea",
+            "order": 5
+          },
+          {
+            "label": "Наименование на ПК",
+            "name": "acquiredPK",
+            "type": "textarea",
+            "order": 6
+          },
+          {
+            "label": "Обучаваща институция",
+            "name": "university",
+            "type": "input",
+            "inputType": "text",
+            "order": 7
+          }
+        ]
+      }
+    },
+    {
+      "label": "Професионална квалификационна степен",
+      "order": 3,
+      "name": "TablePKSData",
+	  "accordion": {"state":"closed"},
+      "table":
+      {
+        "order": 1,
+        "name": "staffPKS",
+        "createNew": "redirect",
+        "formName": "personPKSData",
+        "paramName": "personPKSID",
+        "procedureName": "inst_basic.personPKSCUD",
+        "canDeleteRow": true,
+		"searchable":false,
+        "fields": [
+          {
+            "label": "Степен ПКС",
+            "name": "pksType",
+            "type": "input",
+            "inputType": "text",
+            "order": 1
+          },
+          {
+            "label": "Документ №",
+            "name": "pksCertifcateNo",
+            "type": "input",
+            "inputType": "text",
+            "order": 2
+          },
+          {
+            "label": "Година",
+            "name": "pksYearOfGraduation",
+            "type": "input",
+            "inputType": "number",
+            "order": 3
+          },
+          {
+            "label": "Наименование на специалността",
+            "name": "pksSpeciality",
+            "type": "textarea",
+            "order": 4
+          },
+          {
+            "label": "Обучаваща институция",
+            "name": "pksUniversity",
+            "type": "input",
+            "inputType": "text",
+            "order": 5
+          }
+        ]
+      }
+    }
+  ]
+}

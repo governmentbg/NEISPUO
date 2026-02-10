@@ -1,0 +1,73 @@
+<div class="wrapper-table">
+    <form [formGroup]="parentGroup" *ngIf="array.controls.length">
+        <mat-card class="section-card card-table">
+            <mat-card-header class="no-color">
+                <mat-card-title *ngIf="table.label"><span>{{ table.label }}</span></mat-card-title>
+                <mat-form-field class="block-field default-field padding-0" floatLabel="never" *ngIf="table.searchable !== false">
+                    <mat-icon>search</mat-icon>
+                    <mat-label>Филтър</mat-label>
+                    <input matInput (keyup)="getData(true)" #input />
+                </mat-form-field>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="mat-elevation-z8">
+                    <mat-multi-sort-table-settings *ngIf="table.sortable !== false" [tableData]="tableData" sortToolTip="Промяна на реда на сортиране">
+                    </mat-multi-sort-table-settings>
+                    <div class="table-container">
+                        <table mat-table [dataSource]="tableData.dataSource" matMultiSort (matSortChange)="onSort()" [formArrayName]="table.name" class="l-custom-table" [trackBy]="trackByCellId" [ngClass]="{'no-sort': table.sortable === false, 'table-with-buttons': tableWithButtons(), 'table-one-button': tableWithOneButton()}">
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" class="custom-tr-for-th"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+                            <ng-container *ngFor="let field of table.fields" [matColumnDef]="field.name" sticky>
+                                <th mat-header-cell *matHeaderCellDef [mat-multi-sort-header]="field.name" [style.width.%]="field.width">
+                                    <div class="th-container-header" [ngClass]="{'sortable': table.sortable !== false}">
+                                        <span class="name-th-span">{{ field.label }}</span>
+                                        <mat-icon class="sort-custom-icon" title="сортиране" *ngIf="table.sortable !== false">import_export</mat-icon>
+                                      </div>
+                                </th>
+                                <td mat-cell *matCellDef="let row" [style.width.%]="field.width">
+                                    <span class="value-td" *ngIf="field.type !== type.Date && (field.disabled !== false || mode === modes.View)">{{ getFieldVal(row, field.name) }}</span>
+                                    <span class="value-td" *ngIf="field.type === type.Date && (field.disabled !== false || mode === modes.View)">{{ getFieldVal(row, field.name) | date: "dd.MM.yyyy" }}</span>
+                                    <ng-container dynamicField *ngIf="field.disabled === false && mode !== modes.View" [field]="getField(row, field.name)" [group]="getFormGroup(row)" [mode]="mode" [showLabel]="false"></ng-container>
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="actions" *ngIf="table.hasEditButton !== false">
+                                <th mat-header-cell *matHeaderCellDef><span class="name-th-span center-span"></span></th>
+                                <td mat-cell *matCellDef="let row; let i = index">
+                                    <div class="button-container">
+                                        <button mat-raised-button *ngIf="!preview(row)" (click)="navigate(row)" matTooltip="редакция" class="edit-button-td">
+                                            <mat-icon>edit</mat-icon>
+                                        </button>
+                                        <button mat-raised-button *ngIf="preview(row)" (click)="navigate(row)" matTooltip="преглед" class="view-button-td">
+                                            <mat-icon>remove_red_eye</mat-icon>
+                                        </button>
+                                        <button mat-raised-button *ngIf="table.canDeleteRow" (click)="deleteRow(row)" [disabled]="addNewRecord || row.opened" matTooltip="изтриване" class="delete-button-td" type="button">
+                                            <mat-icon>delete_forever</mat-icon>
+                                        </button>
+                                    </div>
+                                </td>
+                            </ng-container>
+                        </table>
+                        <div class="wrapper-button-table-container" *ngIf="table.createNew && (!table.disabledViewMode || mode !== modes.View)">
+                            <button (click)="createNew()" mat-raised-button color="primary" class="add-record-btn" matTooltip="Добави" [disabled]="addNewRecord" type="button">+</button>
+                        </div>
+                        <div *ngIf="addNewRecord" #newRecord class="add-new-column-container">
+                            <app-new-table-record [formName]="table.formName" [row]="row" [parentMode]="mode" [paramName]="table.paramName" (save)="onAddRecord($event)"></app-new-table-record>
+                        </div>
+                    </div>
+                </div>
+                <div class="l-pagination-container">
+                    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [length]="length" [pageIndex]="tableData.pageIndex" [pageSize]="10" (page)="tableData.onPaginationEvent($event)" showFirstLastButtons></mat-paginator>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </form>
+    <ng-container *ngIf="!array.controls.length">
+        <span>Няма намерени резултати</span>
+        <div class="wrapper-button-table-container" *ngIf="table.createNew && (!table.disabledViewMode || mode !== modes.View)">
+          <button (click)="createNew()" mat-raised-button color="primary" class="add-record-btn" matTooltip="Добави запис" [disabled]="addNewRecord" type="button">+</button>
+        </div>
+        <div *ngIf="addNewRecord" #newRecord class="add-new-column-container">
+          <app-new-table-record [formName]="table.formName" [row]="row" [parentMode]="mode" [paramName]="table.paramName" (save)="onAddRecord($event)"></app-new-table-record>
+        </div>
+      </ng-container>
+</div>

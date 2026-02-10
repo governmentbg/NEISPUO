@@ -1,0 +1,15 @@
+FROM node:14.18 AS production
+
+WORKDIR /app/server
+
+COPY "package.json" .
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 3333
+
+RUN npm run build
+
+CMD ["node", "dist/main"]

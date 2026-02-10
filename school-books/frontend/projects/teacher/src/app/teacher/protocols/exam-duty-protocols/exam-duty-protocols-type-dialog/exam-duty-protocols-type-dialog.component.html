@@ -1,0 +1,17 @@
+<form [formGroup]="form" novalidate (ngSubmit)="onSave()" class="sm:w-[700px]">
+  <div class="sb-btn-wrapper sb-btn-wrapper-right">
+    <button mat-raised-button color="primary" type="submit" [disabled]="saving">
+      <fa-icon [icon]="saving ? fasSpinnerThird : fasCheck" [spin]="saving" size="lg"></fa-icon>
+      <span>Избери</span>
+    </button>
+    <button mat-raised-button mat-dialog-close>Затвори</button>
+  </div>
+
+  <sb-nom-select
+    class="sb-single-row-mat-field"
+    label="Вид на протокола"
+    formControlName="examDutyProtocolType"
+    [nomService]="examDutyProtocolTypeNomsService"
+    [searchable]="false"
+  ></sb-nom-select>
+</form>

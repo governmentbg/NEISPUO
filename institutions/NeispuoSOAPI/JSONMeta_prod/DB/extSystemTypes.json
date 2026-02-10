@@ -1,0 +1,35 @@
+{
+    "template": "SELECT /**select**/ FROM [noms].[ExtSystemType] EST /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "EST.ExtSystemTypeID as code"
+        },
+        {
+            "column": "EST.Name as label"
+        }
+    ],
+    "params": [
+{
+     "param": "@isValid",
+     "column": "EST.IsValid",
+     "operator": "=",
+     "value": 1,
+     "type": "int",
+     "logical_operator": "and",
+     "static": true
+    },
+	{
+     "param": "@institutionCheck",
+     "column": "EST.InstitutionCheck",
+     "operator": "=",
+     "value": 1,
+     "type": "int",
+     "logical_operator": "and",
+     "static": true
+    }
+    ],
+    "order": [
+
+    ],
+    "inSelects": []
+}

@@ -1,0 +1,9 @@
+.vscode/
+/dist/
+/node_modules/
+.editorconfig
+.gitignore
+
+# docker specific
+Dockerfile*
+**/*.md

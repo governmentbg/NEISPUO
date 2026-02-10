@@ -1,0 +1,173 @@
+<app-auth-header></app-auth-header>
+<div class="login-page container-fluid">
+  <div class="overlay-gradient"></div>
+  <div class="login-page-wrapper row">
+    <div class="col-sm-12 col-md-8 offset-md-2 col-xl-5 offset-xl-6 my-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <div class="card-title">
+            <div class="mon-logo">
+              <img src="/assets/images/mon-logo.png" alt="" />
+            </div>
+            <h2 class="mb-0">НЕИСПУО</h2>
+          </div>
+          <h2 class="mb-1 text-center card-title">Регистрация като родител</h2>
+
+          <form class="form container" [formGroup]="parentRegisterForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <label class="col-sm-3 col-form-label" for="firstName">Име *</label>
+              <div class="col-sm-9">
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="firstName"
+                  placeholder="Име*"
+                  [ngClass]="{'submit-form': submitForm}"
+                />
+              </div>
+            </div>
+
+            <div class="row">
+              <label class="col-sm-3 col-form-label" for="middleName">Презиме</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" formControlName="middleName" placeholder="Презиме" />
+              </div>
+            </div>
+
+            <div class="row">
+              <label class="col-sm-3 col-form-label" for="lastName">Фамилия *</label>
+              <div class="col-sm-9">
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="lastName"
+                  placeholder="Фамилия *"
+                  [ngClass]="{'submit-form': submitForm}"
+                />
+              </div>
+            </div>
+
+            <div class="row">
+              <label class="col-md-3 col-sm-2 col-form-label" for="email">Имейл *</label>
+              <div class="col-md-9 col-sm-10">
+                <input
+                  type="email"
+                  pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
+                  class="form-control"
+                  formControlName="email"
+                  placeholder="Имейл *"
+                  [ngClass]="{'submit-form': submitForm}"
+                />
+                <div *ngIf="parentRegisterForm.get('email').dirty">
+                  <p *ngIf="parentRegisterForm.get('email').errors?.emailDomain " class="invalid-feedback">
+                    Само лични акаунти могат да участват процеса на регистрация на родител. Акаунти от тип @edu.mon.bg и
+                    @mon.bg могат да бъдат използвани за съответните административни цели на платформата.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <label class="col-md-3 col-sm-2 col-form-label" for="password">Парола *</label>
+              <div class="col-md-9 col-sm-10">
+                <input
+                  type="password"
+                  class="form-control"
+                  formControlName="password"
+                  placeholder="Парола*"
+                  [ngClass]="{'submit-form': submitForm}"
+                />
+                <small id="passwordHelp" class="form-text text-muted"
+                  >Паролата трябва да съдържа: минимум 8 символа, поне една голяма и малка латинска буква, и цифра. Паролата
+                  не може да съдържа интервали.</small
+                >
+              </div>
+            </div>
+
+            <div class="row">
+              <label class="col-md-3 col-sm-2 col-form-label" for="confirmPassword">Потвърждаване на парола *</label>
+              <div class="col-md-9 col-sm-10">
+                <input
+                  type="password"
+                  class="form-control"
+                  formControlName="confirmPassword"
+                  [ngClass]="{'submit-form': submitForm}"
+                  placeholder="Потвърждаване на парола *"
+                />
+              </div>
+            </div>
+
+            <div class="col-md-12 col-sm-12">
+              <div
+                class="alert alert-danger"
+                role="alert"
+                *ngIf="parentRegisterForm.get('confirmPassword').hasError('notEquivalent')"
+              >
+                <span>Паролите не съвпадат</span>
+              </div>
+            </div>
+
+            <div *ngIf="parentRegisterForm.get('childrenCodes')['length'] > 0">
+              <div
+                formArrayName="childrenCodes"
+                *ngFor="let item of parentRegisterForm.get('childrenCodes')['controls']; let i = index;"
+              >
+                <div [formGroupName]="i" class="children-code-container">
+                  <div class="row">
+                    <div class="col-10">
+                      <div class="col-12 row">
+                        <label class="col-form-label col-md-4" for="personalID">ЕГН/ЛНЧ на ученик {{i + 1}} *</label>
+                        <div class="col-md-8 childern-codes-input">
+                          <input
+                            class="form-control"
+                            type="text"
+                            formControlName="personalID"
+                            [placeholder]="'ЕГН/ЛНЧ на ученик ' + (i + 1) + '*'"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-12 row">
+                        <label class="col-form-label col-md-4" for="schoolBookCode"
+                          >Код за достъп на ученик {{i + 1}} *</label
+                        >
+                        <div class="col-md-8 childern-codes-input">
+                          <input
+                            class="form-control"
+                            type="text"
+                            formControlName="schoolBookCode"
+                            [placeholder]="'Код за достъп на ученик ' + (i + 1) + '*'"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-2 btn-remove-container">
+                      <button class="btn btn-icon-primary form-buttons" (click)="onRemoveChildCode(i)" type="button">
+                        <i class="bi bi-dash-lg"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 col-sm-12">
+                <button
+                  type="button"
+                  class="btn btn-block btn-primary form-buttons plus-icon col-12"
+                  (click)="onAddChildCode()"
+                >
+                  Добави код за достъп на ученик
+                </button>
+              </div>
+              <div class="col-md-12 col-sm-12">
+                <button [disabled]="submitForm" class="btn btn-block btn-primary form-buttons" type="submit">
+                  Регистрация
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

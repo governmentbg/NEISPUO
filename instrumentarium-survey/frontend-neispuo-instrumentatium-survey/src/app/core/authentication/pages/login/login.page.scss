@@ -1,0 +1,144 @@
+// @import './../../../../../neispuo-theme-styles/variables';
+
+// .login-page {
+//   height: 100vh;
+//   width: 100%;
+//   background-image: url('/assets/images/home.jpg');
+//   background-size: cover;
+//   background-repeat: no-repeat;
+//   position: relative;
+//   &-wrapper {
+//     height: inherit;
+//     align-items: center;
+//     margin: 0 !important;
+    
+//     .mon-logo img {
+//       height: 65px;
+//       width: auto;
+//       font: 400 16px/26px Lato, sans-serif;
+//       letter-spacing: 0.2px;
+//       margin-bottom: 3.2px;
+//     }
+//     .left-col {
+//       z-index: 3;
+//       .mon-logo {
+//         margin-bottom: 50px;
+//       }
+//       .page-title {
+//         color: $white;
+//         h3{
+//           font-family: Lato, sans-serif;
+//         }
+//         h1 {
+//           line-height: 1;
+//         }
+//       }
+//     }
+//     .right-col {
+//       z-index: 1;
+//       .form-wrapper {
+//         padding: 100px 50px;
+//         .form-title {
+//           text-align: center;
+//           margin-bottom: 80px;
+//           h2 {
+//             color: $stratos;
+//             margin-bottom: 0.15em;
+//           }
+//           p {
+//             font-size: 1.625em;
+//             color: $gray;
+//             margin: 0 0 6.4px;
+//           }
+//         }
+//         .submit-btn-wrapper{
+//           a{
+//             text-decoration-color: transparent;
+//             transition: text-decoration-color 300ms;
+//           }
+//         }
+//         .submit-btn-wrapper {
+//           margin-top: 50px;
+//           button {
+//             width: 100%;
+//             display: inline-block;
+//             padding: 0em 1em;
+//             line-height: 36px;
+//             background-color: #4f419f;
+//             box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+//           }
+//           > div {
+//             text-align: center;
+//             margin-top: 0.65em;
+//             span {
+//               color: $gray;
+//               font: 400 14px/20px Lato, sans-serif;
+//               font-family: "Inter", sans-serif;
+//               letter-spacing: normal;
+//             }
+//             a {
+//               padding: 0;
+//               line-height: 1;
+//               color: $gigas;
+//               font-size: 14px;
+//               .pi-angle-right{
+//                 font-size: 12px;
+//               }
+//               .underline{
+//                 display: inline-block;
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+//   @include respond-below(sm) {
+//     overflow: auto;
+//     &-wrapper {
+//       overflow: auto;
+//       padding-top: 3em;
+//       padding-bottom: 3em;
+//       .left-col {
+//         .mon-logo {
+//           display: none;
+//         }
+//         .page-title {
+//           text-align: center;
+//         }
+//       }
+//       .right-col {
+//         .form-wrapper {
+//           padding: 40px 16px;
+//           .form-title {
+//             margin-bottom: 50px;
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+
+// :host{
+//   ::ng-deep .p-card-content,
+//   ::ng-deep .p-card-body{
+//     padding: 0;
+//   }
+// }
+
+// a:hover {
+//   text-decoration-color: black;
+// }
+
+// .underline::after {
+//   content: '';
+//   width: 0px;
+//   height: 1px;
+//   display: block;
+//   background: #4f419f;
+//   transition: 300ms;
+// }
+
+// .underline:hover::after {
+//   width: 100%;
+// }

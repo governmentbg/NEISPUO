@@ -1,0 +1,5 @@
+<div class="l-checkbox l-container-component" [formGroup]="group">
+    <mat-checkbox color="primary" [formControlName]="field.name" (change)="onSelectionChange({ value: $event.checked })" [ngClass]="{'preview-mode': mode===modes.View}">
+        <ng-container *ngIf="showLabel">{{field.label}}</ng-container><app-info-tooltip *ngIf="field.info" [info]="field.info"></app-info-tooltip>
+    </mat-checkbox>
+</div>

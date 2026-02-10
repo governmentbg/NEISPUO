@@ -1,0 +1,40 @@
+<sb-breadcrumb
+  class="block mb-3"
+  [icon]="fadBellSchool"
+  [text]="data.shift == null ? 'Създаване на смяна' : data.shift.name"
+  [parentItems]="[{ text: 'Смени', routeCommands: ['../'] }]"
+></sb-breadcrumb>
+
+<form [formGroup]="form" #ngForm="ngForm" autocomplete="off" novalidate>
+  <sb-card>
+    <ng-container card-title>{{ data.shift == null ? 'Създаване на смяна' : 'Редакция на смяна' }}</ng-container>
+    <sb-editor-panel [editBtnHidden]="!canEdit" card-buttons [isNew]="data.shift == null" (save)="onSave($event)">
+      <button
+        *ngIf="canRemove"
+        disabled-mode-buttons
+        mat-raised-button
+        color="warn"
+        type="button"
+        (click)="onRemove()"
+        [disabled]="removing"
+      >
+        <fa-icon [icon]="removing ? fasSpinnerThird : fasTrashAlt" [spin]="removing" size="lg"></fa-icon>
+        <span class="hidden sm:inline">Премахни</span>
+      </button>
+    </sb-editor-panel>
+    <ng-container card-body>
+      <div class="sm:flex flex-row">
+        <div class="flex-1">
+          <sb-text-field label="Име" formControlName="name"></sb-text-field>
+        </div>
+      </div>
+
+      <sb-shift-form
+        formControlName="shift"
+        [submitted]="ngForm.submitted"
+        [usedHours]="data.hoursUsedInSchedule"
+        usedHoursMessage="Не могат да се премахват часове, за които има въведени занятия в разписание."
+      ></sb-shift-form>
+    </ng-container>
+  </sb-card>
+</form>

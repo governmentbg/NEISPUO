@@ -1,0 +1,20 @@
+.wrapper-dynamic-form-create {
+  display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  .flex-wrapper-form-create{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+  }
+  button{
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}

@@ -1,0 +1,45 @@
+@tailwind base;
+
+@layer base {
+  button:focus-visible,
+  a:focus-visible {
+    outline: theme('colors.blue.700') auto 1px;
+    outline-offset: 2px;
+  }
+}
+
+@tailwind components;
+
+@tailwind utilities;
+
+@layer utilities {
+  .max-w-screen-max {
+    max-width: 1440px;
+  }
+
+  .overflow-overlay {
+    overflow: auto;
+    overflow: overlay;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+
+  .overflow-x-overlay {
+    overflow-x: auto;
+    overflow-x: overlay;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+
+  .overflow-y-overlay {
+    overflow-y: auto;
+    overflow-y: overlay;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+
+  .text-horizontal-tb {
+    writing-mode: horizontal-tb;
+  }
+
+  .text-vertical-rl {
+    writing-mode: vertical-rl;
+  }
+}

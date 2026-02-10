@@ -1,0 +1,69 @@
+{
+  "submitUrl": "",
+  "sections": [
+    {
+      "label": "Отворени процедури",
+      "order": 8,
+      "table": {
+        "name": "openProcedures",
+        "fields": [
+          {
+            "label": "Код по НЕИСПУО",
+            "name": "codeNEISPUO",
+            "type": "input",
+            "inputType": "text",
+            "order": 1,
+            "width": 400
+          },
+          {
+            "label": "Наименование",
+            "name": "name",
+            "type": "input",
+            "inputType": "text",
+            "order": 2,
+            "width": 400
+          },
+          {
+            "label": "Вид процедура",
+            "name": "procedureType",
+            "type": "input",
+            "inputType": "text",
+            "order": 3,
+            "width": 400
+          },
+          {
+            "label": "Дата",
+            "name": "date",
+            "type": "date",
+            "order": 4,
+            "width": 150
+          },
+          {
+            "type": "select",
+            "optionsPath": "assets/json/basicschooltype.json",
+            "order": 5,
+            "label": "Вид по чл. 37",
+            "name": "type37",
+            "width": 400
+          },
+          {
+            "order": 6,
+            "label": "Вид по чл. 38",
+            "name": "type38",
+            "width": 400,
+            "type": "select",
+            "optionsPath": "assets/json/schooltype-12.json"
+          },
+          {
+            "order": 7,
+            "label": "Статус",
+            "name": "status",
+            "width": 400,
+            "type": "input",
+            "inputType": "text"
+          }
+        ]
+      }
+    }
+  ]
+}

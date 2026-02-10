@@ -1,0 +1,81 @@
+<p-fieldset legend="Флекс Поле">
+  <p-messages
+    *ngIf="form.disabled"
+    [escape]="false"
+    [closable]="false"
+    [value]="[{severity:'warn', summary:'Не можете да редактирате това поле.', detail:'Полето вече се използва в различни институции.'}]"
+  ></p-messages>
+
+  <form *ngIf="form" [formGroup]="form">
+    <div class="fluid formgrid grid">
+      <!-- Always visible fields -->
+      <div formGroupName="Data" class="field form-wrapper col-12 col-md-6 pb-6">
+        <label for="label" class="form-wrapper-label">Име</label>
+        <input id="label" type="text" pInputText formControlName="label" />
+        <ng-container *ngIf="form.get('Data.label').invalid && form.get('Data.label').dirty">
+          <small class="invalid-feedback">Задължително поле</small>
+        </ng-container>
+      </div>
+      <div class="field form-wrapper col-12 col-md-6 pb-6" formGroupName="Data">
+        <label for="type-selection" class="form-wrapper-label">Вид</label>
+        <p-dropdown
+          [inputId]="'type-selection'"
+          [options]="flexFieldTypes"
+          formControlName="type"
+          [optionLabel]="'label'"
+          [optionValue]="'value'"
+        ></p-dropdown>
+        <ng-container *ngIf="form.get('Data.type').invalid && form.get('Data.type').dirty">
+          <small class="invalid-feedback">Задължително поле</small>
+        </ng-container>
+      </div>
+      <div class="field form-wrapper col-12 col-md-6 pb-6">
+        <label for="mandatory" class="form-wrapper-label">Задължително</label>
+        <p-selectButton
+          [options]="mandatoryOptions"
+          formControlName="Mandatory"
+          optionLabel="label"
+          optionValue="value"
+          styleClass="select-bttn"
+        ></p-selectButton>
+        <ng-container *ngIf="form.get('Mandatory').invalid && form.get('Mandatory').dirty">
+          <small class="invalid-feedback">Задължително поле</small>
+        </ng-container>
+      </div>
+
+      <!-- Conditional fields -->
+      <ng-container *ngIf="form.get('Data.type').value === 'number'" formGroupName="Data">
+        <div class="field form-wrapper col-12 col-md-6">
+          <label for="maxValue" class="form-wrapper-label">Максимална стойност</label>
+          <p-inputNumber [inputId]="'maxValue'" formControlName="maxValue" styleClass="w-12"></p-inputNumber>
+          <ng-container *ngIf="form.get('Data.maxValue').invalid && form.get('Data.maxValue').dirty">
+            <small class="invalid-feedback">Задължително поле</small>
+          </ng-container>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="form.get('Data.type').value === 'text'" formGroupName="Data">
+        <div class="field form-wrapper col-12 col-md-6">
+          <label for="maxLength" class="form-wrapper-label">Максимална дължина</label>
+          <p-inputNumber [inputId]="'maxLength'" formControlName="maxLength" styleClass="w-12"></p-inputNumber>
+          <ng-container *ngIf="form.get('Data.maxLength').invalid && form.get('Data.maxLength').dirty">
+            <small class="invalid-feedback">Задължително поле</small>
+          </ng-container>
+        </div>
+      </ng-container>
+
+      <!-- Actions -->
+      <div class="field-grid col-12 mt-4">
+        <button type="button" class="btn btn-primary position-right"(click)="onSubmit()" [disabled]="form.disabled">
+            {{ pageMode ==='create' ? 'Създай' : 'Запази'}}
+        </button>
+      <div *ngIf="pageMode ==='edit'">
+        <button type="button" class="btn btn btn-danger mr-4"  style="float:right" (click)="onDelete()"
+          [disabled]="form.disabled">
+            Изтрий
+        </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</p-fieldset>

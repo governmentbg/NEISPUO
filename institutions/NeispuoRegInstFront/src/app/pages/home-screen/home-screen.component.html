@@ -1,0 +1,31 @@
+<div class="full-wrapper" *ngIf="!isLoading">
+    <div class="text-container">
+      <span class="bold-big">
+        Регистър на институциите в системата на предучилищното и училищното образование
+      </span>
+      <span class="bold-small">Служебен регистър</span>
+      <span class="normal-span">В този раздел можете за видите откритите процедури по вписване, преобразуване и закриване на институции, както и да стартирате процедура за вписване на нова институция.<br> За стартиране на процедура по преобразуване или закриване на институция, моля изберете съответната институция от раздел «Действащи институции»</span>
+    </div>
+    <button mat-raised-button class="btn-add-institution" (click)="createNew()" *ngIf="canCreateNew"><span>Впиши нова действаща институция</span></button>
+    <div class="table-container">
+        <form class="dynamic-form" [formGroup]="formGroup">
+            <div class="wrapper-card different-view view-mode home-screen">
+                <div class="l-container-card">
+                    <ng-container *ngFor="let section of form?.sections">
+                        <mat-card class="section-card max-width-none" color="primary" *ngIf="!section.hidden && section.rendered !== false">
+                            <mat-card-header class="bg-cornflower-blue">
+                                <mat-card-title>{{ section.label }}</mat-card-title>
+                            </mat-card-header>
+                            <mat-card-content>
+                                <ng-container *ngIf="section.table">
+                                    <app-table [table]="section.table" [parentGroup]="formGroup"></app-table>
+                                </ng-container>
+                            </mat-card-content>
+                        </mat-card>
+                    </ng-container>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<app-loader *ngIf="isLoading"></app-loader>

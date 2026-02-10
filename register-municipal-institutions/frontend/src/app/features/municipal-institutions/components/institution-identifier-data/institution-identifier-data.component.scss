@@ -1,0 +1,41 @@
+@import "@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/variables/variables.scss";
+
+.load-bustat-helper-msg {
+   font-size: 0.875rem;
+   color: $blue;
+
+   &>i::before {
+      font-size: 1.125rem;
+
+   }
+
+   &>i:last-of-type:before {
+      margin-left: 0.313rem;
+   }
+}
+
+.btn-icon-primary {
+   position: absolute;
+   top: 1.9rem;
+   right: 0.6rem;
+}
+
+.bulstat-field {
+   position: relative
+}
+
+label {
+   white-space: nowrap;
+}
+
+@media (max-width:1115px) and (min-width:768px) {
+   .institutioID-field {
+      width: 20%
+   }
+   .abbreviation-field {
+      width: 32%
+   }
+   .name-field {
+      width: 31%
+   }
+}

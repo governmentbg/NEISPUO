@@ -1,0 +1,5 @@
+<div class="l-container-component" [ngClass]="{'preview-mode': mode===modes.View}">
+    <div class="fake-container-mat-form-field">
+        <label class="value-label" [innerHtml]="field.defaultValue | dompurify"></label>
+    </div>
+</div>

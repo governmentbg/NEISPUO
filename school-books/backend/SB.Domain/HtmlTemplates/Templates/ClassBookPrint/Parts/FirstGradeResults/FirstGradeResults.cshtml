@@ -1,0 +1,33 @@
+@using SB.Common
+@using SB.Domain
+@model FirstGradeResultsModel
+
+<div class="page">
+  <h3 class="page-header">Общ годишен успех на учениците</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th class="three-rows-height align-bottom"><div class="vertical-text align-bottom">№ на ученика</div></th>
+        <th>Трите имена на ученика</th>
+        <th>Бележка</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (var result in Model.FirstGradeResults)
+      {
+        <tr>
+          <td>@result.ClassNumber</td>
+          <td>
+            @result.FullName
+            @if (result.IsTransferred)
+            {
+              <span class="sb-badge">ОТПИСАН</span>
+            }
+          </td>
+          <td>@(result.QualitativeGrade != null ? EnumUtils.GetEnumDescription(result.QualitativeGrade) : EnumUtils.GetEnumDescription(result.SpecialGrade))</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

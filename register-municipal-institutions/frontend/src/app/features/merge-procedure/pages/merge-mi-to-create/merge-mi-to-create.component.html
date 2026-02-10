@@ -1,0 +1,35 @@
+<p-fieldset legend="Създаване на институция">
+  <p-confirmDialog header="Потвърждение" icon="pi pi-exclamation-triangle"
+  acceptLabel = 'Потвърди'
+  rejectLabel = 'Откажи'
+  acceptButtonStyleClass="p-button-primary"
+  rejectButtonStyleClass="p-button-outlined p-button-primary">
+</p-confirmDialog>
+  <div class="grid fluid">
+    <div class="col-12">
+      <app-mi-form 
+      [BaseSchoolTypes$]="BaseSchoolTypes$" 
+      [form]="form"
+      [displayRIProcedure]="true"
+       [displayProcedureFields]="true"
+       [displayDocument]="false"
+       [isViewFlexField]="false"
+       [isBulstatLookupEnabled]="isBulstatLookupEnabled"
+       [displayBulstatMessage]="displayBulstatMessage"
+       [onBulstatLoad]="verifyBulstat"
+       [displayWarnMessage]="displayWarnMessage"
+       ></app-mi-form>
+    </div>
+    <div class="col-12">
+      <app-stepper-actions
+        [showBack]="true"
+        [backLabel]="'Назад'"
+        [backwardCallback]="backwardCallback"
+        [showForward]="true"
+        [forwardLabel]="'Напред'"
+        [forwardCallback]="forwardCallback"
+        [showSubmit]="false"
+      ></app-stepper-actions>
+    </div>
+  </div>
+</p-fieldset>

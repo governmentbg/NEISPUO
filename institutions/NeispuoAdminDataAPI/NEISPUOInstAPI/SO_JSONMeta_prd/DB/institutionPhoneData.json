@@ -1,0 +1,43 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_basic].[InstitutionPhone] IP /**where**/ /**orderby**/",
+  "columns": [
+		{
+          "column": "IP.InstitutionPhoneID AS institutionPhoneID"
+        },
+		{
+          "column": "IP.PhoneTypeID AS phoneTypeID"
+        },
+		{
+          "column": "IP.PhoneCode AS phoneCode"
+        },
+		{
+          "column": "IP.PhoneNumber AS phoneNumber"
+        },
+		{
+          "column": "IP.ContactKind AS contactKind"
+        },
+		{
+          "column": "IP.IsMain AS isMain"
+        }
+  ],
+  "params": [
+    {
+      "param": "@institutionPhoneID",
+      "column": "IP.InstitutionPhoneID",
+      "operator": "=",
+      "value": "institutionPhoneID",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "IP.InstitutionPhoneID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+
+  ]
+}

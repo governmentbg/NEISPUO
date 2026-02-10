@@ -1,0 +1,11 @@
+/node_modules/
+.vs/
+npm-debug.log
+.DS_Store
+Thumbs.db
+
+# docker specific
+.git/
+.vscode/
+Dockerfile*
+**/*.md

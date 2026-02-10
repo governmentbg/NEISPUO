@@ -1,0 +1,83 @@
+<form [formGroup]="form" novalidate (ngSubmit)="onSave()" class="sm:w-[700px] p-5" autocomplete="off" novalidate>
+  <div class="sb-btn-wrapper sb-btn-wrapper-right">
+    <button mat-raised-button color="primary" type="submit" [disabled]="saving">
+      <fa-icon [icon]="saving ? fasSpinnerThird : fasCheck" [spin]="saving" size="lg"></fa-icon>
+      <span>Запази</span>
+    </button>
+    <button mat-raised-button mat-dialog-close>Затвори</button>
+  </div>
+  <sb-banner type="error" *ngIf="showHourNumberError" class="mb-4">
+    {{ hourNumberErrorMessage }}
+  </sb-banner>
+  <sb-banner class="mb-2.5 w-80%" type="info">
+    При липса на предварително зададено разписание списъка с ученици се попълва при добавяне на час.
+  </sb-banner>
+  <sb-card>
+    <ng-container card-title>Час</ng-container>
+    <ng-container card-body>
+      <div class="sb-table-container sm:w-[500px] mb-2">
+        <table class="sb-table">
+          <thead>
+            <tr>
+              <th class="pl-1 w-1">Час</th>
+              <th class="pl-1 min-w-[78px]">Начало</th>
+              <th class="pl-1 min-w-[145px]">Продължителност</th>
+              <th class="pl-1 min-w-[78px]">Край</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="p-1 w-1">
+                <input
+                  class="sb-form-control sb-shift-hour-number"
+                  matInput
+                  sbNumber
+                  [sbNumberPrecision]="0"
+                  formControlName="hourNumber"
+                />
+              </td>
+              <td class="p-1">
+                <input class="sb-form-control" matInput formControlName="startTime" />
+              </td>
+              <td class="p-1">
+                <mat-select class="sb-form-control" formControlName="duration">
+                  <mat-option [value]="duration.id" *ngFor="let duration of predefinedDurations">
+                    {{ duration.text }}
+                  </mat-option>
+                </mat-select>
+              </td>
+              <td class="p-1">
+                <input
+                  class="sb-form-control sb-end-time"
+                  matInput
+                  formControlName="endTime"
+                  [readonly]="form.value.duration !== 0"
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <sb-card-section>Предмет</sb-card-section>
+      <div class="sm:grid grid-cols-3 gap-x-2">
+        <sb-nom-select
+          label="Предмет"
+          formControlName="curriculumId"
+          [nomService]="classBookCurriculumNomsService"
+          class="col-span-2"
+        ></sb-nom-select>
+        <sb-text-field label="Място на провеждане" formControlName="location"></sb-text-field>
+      </div>
+      <sb-card-section class="col-span-full">Тема</sb-card-section>
+      <sb-text-field label="Тема" formControlName="topicTitle"></sb-text-field>
+      <sb-card-section class="col-span-full">Ученици</sb-card-section>
+      <sb-nom-select
+        class="sb-single-row-mat-field"
+        label="Ученици"
+        formControlName="students"
+        [multiple]="true"
+        [nomService]="classBookStudentNomsService"
+      ></sb-nom-select>
+    </ng-container>
+  </sb-card>
+</form>

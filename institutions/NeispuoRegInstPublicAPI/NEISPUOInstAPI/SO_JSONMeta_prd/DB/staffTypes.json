@@ -1,0 +1,21 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[StaffType] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "StaffTypeID as code"
+        },
+        {
+            "column": "Name as label"
+        }
+    ],
+    "params": [
+
+    ],
+    "order": [
+        {
+            "column": "StaffTypeID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

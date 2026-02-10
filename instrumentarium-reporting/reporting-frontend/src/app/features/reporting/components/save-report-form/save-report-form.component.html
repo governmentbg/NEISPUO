@@ -1,0 +1,55 @@
+<div class="col-12">
+  <div class="radio-buttons" *ngIf="!reportService.isCubeData">
+    <div class="form-check">
+      <input class="form-check-input" id="new" value="create" type="radio" [(ngModel)]="pageType" name="pageType" />
+      <label for="new">Създай нова справка</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" id="edit" value="update" type="radio" [(ngModel)]="pageType" name="pageType" />
+      <label for="edit">Промени текущата справка</label>
+    </div>
+  </div>
+</div>
+<form *ngIf="form" class="form-group" [formGroup]="form">
+  <div>
+    <div class="col-12">
+      <div class="field">
+        <label class="form-label">Име на справка</label>
+        <input class="form-control" type="text" pInputText formControlName="Name" />
+        <div class="invalid-feedback" *ngIf="isNameInvalid()">Име на справка е задължително поле</div>
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="field">
+        <label class="form-label">Описание</label>
+        <textarea class="form-control" [rows]="5" [cols]="30" pInputTextarea formControlName="Description"></textarea>
+      </div>
+    </div>
+    <div class="col-12" *ngIf="rolesToShareWith.length">
+      <div class="field">
+        <label class="form-label">Сподели с:</label>
+        <p-multiSelect
+          [options]="rolesToShareWith"
+          formControlName="SharedWith"
+          defaultLabel="Избери"
+          appendTo="body"
+          display="chip"
+        ></p-multiSelect>
+        <div class="form-text">
+          <span>Изберете ролите, за които справката да е видима в режим "само за четене"</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-actions mt-3">
+    <button
+      pButton
+      type="button"
+      label="Запази"
+      [disabled]="!form.valid"
+      class="p-button-success"
+      icon="pi pi-check"
+      (click)="onSubmit()"
+    ></button>
+  </div>
+</form>

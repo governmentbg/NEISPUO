@@ -1,0 +1,37 @@
+<button class="btn-hide-menu" (click)="hidden = !hidden" [ngClass]="{'active': hidden}" *ngIf="currentTab !== tabs.list">
+  <span class="material-icons" *ngIf="!hidden"> keyboard_arrow_left </span>
+  <span class="material-icons" *ngIf="hidden"> keyboard_arrow_right </span>
+</button>
+<div class="head-body-menu" *ngIf="authorized">
+  <app-head-menu-body (pathChanged)="tabChanged($event)"></app-head-menu-body>
+</div>
+<div class="flex-wrapper" *ngIf="!isLoading" [ngClass]="{'hidden-menu-body': !authorized}">
+  <ng-container *ngIf="currentTab !== tabs.list">
+    <div class="menu-body-container" [ngClass]="{'hidden-menu': hidden}">
+      <app-second-main-tab></app-second-main-tab>
+    </div>
+    <div class="right-body-container">
+      <app-tab-menu-body></app-tab-menu-body>
+      <div class="footer d-flex align-items-center flex-column p-3">
+        <div class="flex-grow-1 p-small">© Министерство на образованието и науката</div>
+        <div class="custom">
+          <div class="flex-grow-1 p-small">За въпроси, моля да използвате <a target="_blank" href="https://helpdesk-neispuo.mon.bg">системата за
+              поддръжка</a></div>
+          <div class="flex-grow-1 tiny margin">Версия: {{version}}</div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <div *ngIf="currentTab === tabs.list" class="right-body-container">
+    <app-sample-list></app-sample-list>
+    <div class="footer d-flex align-items-center flex-column">
+      <div class="flex-grow-1 p-small">© Министерство на образованието и науката</div><br>
+      <div class="custom">
+        <div class="flex-grow-1 p-small">За въпроси, моля да използвате <a target="_blank" href="https://helpdesk-neispuo.mon.bg">системата за
+            поддръжка</a></div>
+        <div class="flex-grow-1 tiny margin">Версия: {{version}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-loader *ngIf="isLoading"></app-loader>

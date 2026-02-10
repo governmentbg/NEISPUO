@@ -1,0 +1,95 @@
+{
+	"label": "Групи/Класове",
+	"sections": [
+		{
+			"order": 1,
+			"name": "TableClassDetailList",
+			"table": {
+				"name": "classGroupListPT",
+				"createNew": "redirect",
+				"rendered": "if(instType==1 || instType==4) {table.rendered=true} else {table.rendered=false}",
+				"createParams": {
+					"classKind": 3
+				},
+				"formName": "classGroupDataPT",
+				"action": "preview",
+				"paramName": "classid",
+				"canDeleteRow": true,
+				"procedureName": "inst_basic.classGroupPTCUD",
+				"searchType": "column",
+				"additionalParams": [
+					"bClassID",
+					"classKind",
+					"parentclassid",
+					"classTypeID",
+					"showProfilePart"
+				],
+				"fields": [
+					{
+						"label": "Група",
+						"name": "className",
+						"type": "input",
+						"inputType": "text",
+						"width": 10,
+						"order": 1
+					},
+					{
+						"label": "Вид на групата",
+						"name": "classTypeName",
+						"type": "input",
+						"inputType": "text",
+						"width": 30,
+						"order": 2
+					},
+					{
+						"label": "Форма на обучение",
+						"name": "classEduFormName",
+						"type": "input",
+						"inputType": "text",
+						"width": 10,
+						"order": 3
+					},
+					{
+						"label": "Професия/Специалност",
+						"name": "SPPOOProfessionName",
+						"type": "input",
+						"inputType": "text",
+						"width": 20,
+						"order": 4
+					},
+					{
+						"label": "Начална дата",
+						"name": "startDate",
+						"type": "input",
+						"inputType": "text",
+						"width": 10,
+						"order": 5
+					},
+					{
+						"label": "Продължителност на курса (часове)",
+						"name": "duration",
+						"type": "input",
+						"inputType": "text",
+						"width": 15,
+						"order": 6
+					},
+					{
+						"label": "Адрес на обучение",
+						"name": "departmentName",
+						"type": "input",
+						"inputType": "text",
+						"width": 20,
+						"order": 7
+					},
+					{
+						"label": "Приключена група",
+						"name": "isFinished",
+						"type": "checkbox",
+						"width": 10,
+						"order": 8
+					}
+				]
+			}
+		}
+	]
+}

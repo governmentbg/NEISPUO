@@ -1,0 +1,1545 @@
+﻿{
+   "CodeGenerationMode": 1,
+   "ContextClassName": "MONContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": false,
+   "ModelNamespace": null,
+   "OutputContextPath": "",
+   "OutputPath": "",
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "MON.DataAccess",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "Name": "[core].[Certificate]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[core].[EducationalState]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[core].[Institution]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[core].[InstitutionConfData]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[core].[InstitutionSchoolYear]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[core].[Person]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[core].[Position]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[core].[SysRole]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[core].[SysUser]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[core].[SysUserSysRole]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[document].[BarcodeYear]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[document].[BasicDocument]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[document].[BasicDocumentGenerator]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[document].[BasicDocumentLimit]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[document].[BasicDocumentMargin]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[document].[BasicDocumentPart]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[document].[BasicDocumentPrintForm]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[document].[BasicDocumentRegDate]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[document].[BasicDocumentSequence]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[document].[BasicDocumentSubject]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[document].[Diploma]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[document].[DiplomaAdditionalDocument]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[document].[DiplomaCreateRequest]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[document].[DiplomaDocument]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[document].[DiplomaSubject]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[document].[DocManagementApplication]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[document].[DocManagementApplicationAttachment]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[document].[DocManagementApplicationItem]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[document].[DocManagementApplicationItemDeliveredDoc]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[document].[DocManagementApplicationStatus]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[document].[DocManagementCampaign]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[document].[DocManagementCampaignAttachment]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[document].[EducationType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[document].[EKRType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[document].[GraduationCommissionMember]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[document].[ITLevel]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[document].[NKRType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[document].[OriginalDiploma]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[document].[PrintTemplate]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[document].[Template]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[document].[TemplateSubject]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[family].[EducationType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[family].[Relative]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[family].[RelativeType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[family].[WorkStatus]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[finance].[NaturalIndicators]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[finance].[NaturalIndicatorsColumn]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[finance].[NaturalIndicatorsPrice]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[finance].[ResourceSupportData]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[finance].[ResourceSupportDataColumn]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_basic].[Building]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_basic].[BuildingRoomEquipment]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_basic].[CurrentYear]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_basic].[InstitutionDepartment]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_basic].[InstitutionDetail]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_basic].[InstitutionPhone]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_basic].[InstitutionPublicCouncil]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_basic].[StaffPosition]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[AcquisitionWayType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[BasicClass]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[BasicClassLimit]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[BasicEducationArea]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[BasicSubjectType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[BuildingAreaType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[BuildingRoomType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[BuildingType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[CategoryStaffType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[ClassEduDuration]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[ClassKind]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[ClassShift]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[ClassType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[ClassTypeLimit]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[CompSkill]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[CompSkillLevel]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[ContractReason]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[ContractType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[ContractWith]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[CurriculumCatalog]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[CurriculumLibrary]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[CurriculumPart]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[EducationArea]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[EducationGradeType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[EduForm]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[EduFormLimit]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[EntranceLevel]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[EquipmentType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[FL]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[FLLevel]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[FLStudyType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[InnovationType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[InstAdminData]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[InstType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[ModernizationDegree]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[NKPDClass]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[NKPDGroup]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[NKPDPosition]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[NKPDSubClass]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[NKPDSubGroup]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[PhoneType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[PKSType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[PlaceCountType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[PositionKind]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[ProfSubjectType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[ProjectPartnerType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[ProjectPriorityAreaType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[ProjectProgramType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[ProjectType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[PublicCouncilRole]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[PublicCouncilType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[QCourseActType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[QCourseBudgetSourceType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[QCourseDurationType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[QCourseType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[SchoolBasicProfile]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[SchoolProfile]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[SchoolShiftType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[SpecialityOrdType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[SPPOOEducArea]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[SPPOOProfArea]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[SPPOOProfession]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[SPPOOSpeciality]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[StaffType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[Subject]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[SubjectType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[TeachStage]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[TrustBoardRegistryStatus]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[University]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_nom].[VehicleDocumentType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_year].[ClassGroup]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_year].[Curriculum]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_year].[CurriculumClass]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_year].[CurriculumStudent]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_year].[CurriculumTeacher]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_year].[InstitutionOtherData]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_year].[PedStaffData]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[inst_year].[ProfileClass]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[location].[Country]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[location].[LocalArea]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[location].[Municipality]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[location].[Region]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[location].[Town]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[logs].[Audit]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[logs].[AuditModule]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[logs].[UIError]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[logs].[UserManagementAPIRequest]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[noms].[BaseSchoolType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[noms].[BudgetingInstitution]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[noms].[Currency]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[noms].[DetailedSchoolType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[noms].[FinancialSchoolType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[noms].[Gender]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[noms].[PersonalIDType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[refugee].[Application]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[refugee].[ApplicationChild]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[refugee].[ApplicationDocument]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[refugee].[GuardianType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[school_books].[Absence]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[school_books].[Attendance]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[school_books].[ClassBook]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[school_books].[FirstGradeResult]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[school_books].[Grade]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[school_books].[GradeResult]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[school_books].[GradeResultSubject]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[school_books].[PgResult]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[school_books].[Sanction]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[Absence]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[AbsenceCampaign]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[AbsenceExport]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[AbsenceHistory]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[AbsenceImport]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[AdditionalPersonalDevelopmentSupport]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[AdditionalPersonalDevelopmentSupportAttachment]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[AdditionalPersonalDevelopmentSupportItem]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[AdditionalPersonalDevelopmentSupportItemAttachment]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[AdditionalSupportType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[AdmissionDocument]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[AdmissionDocumentDocument]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[AdmissionPermissionRequest]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[AdmissionPermissionRequestAttachment]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[AdmissionReasonType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[AppSettings]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[AppSettingsForTenant]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[AspAskingTemp]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[ASPEnrolledStudentsExport]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[ASPMonthlyBenefit]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[ASPMonthlyBenefitInstitution]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[ASPMonthlyBenefitsImport]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[AspSubmittedDataHistory]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[AspZpTemp]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[AvailableArchitecture]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[Award]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[AwardCategory]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[AwardDocument]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[AwardReason]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[AwardTypes]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[BuildingArea]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[BuildingRoom]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[CommonPersonalDevelopmentSupport]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[CommonPersonalDevelopmentSupportAttachment]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[CommonPersonalDevelopmentSupportItem]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[CommonSupportType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[CommuterType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[ContextualInformation]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[DischargeDocument]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[DischargeDocumentDocument]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[DischargeReasonType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[Document]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[EarlyEvaluationReason]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[Equalization]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[EqualizationAttachment]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[EqualizationDetails]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[ExternalEvaluation]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[ExternalEvaluationItem]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[ExternalEvaluationType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[FirstToThirdClassGrade]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[Founder]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[Grade]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[GradeCategory]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[GradeNom]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[GradeType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[HealthInsuranceExport]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[HealthInsuranceIncomeRate]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[InstitutionChange]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[InternationalMobility]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[InternationalMobilityDocument]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[InternationalProtection]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[Language]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[LeadTeacher]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[LodAssessment]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[LodAssessmentGrade]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[LodAssessmentTemplate]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[LodEvaluationGeneral]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[LodEvaluationSectionAB]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[LodEvaluationSectionG]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[LodEvaluationSectionV]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[LodEvaluationsResult]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[LODFinalization]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[LodFinalizationSignatory]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[LodFirstGradeEvaluation]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[LodFirstGradeResult]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[LodSelfEduFormEvaluation]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[Message]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[MessageAttachment]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[Ministry]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[Month]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[Note]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[NoteDocument]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[Ores]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[OresAttachment]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[OresToEntity]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[ORESType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[OtherDocument]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[OtherDocumentDocument]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[OtherInstitution]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[Participation]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[PersonalDevelopmentAdditionalSupportType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[PersonalDevelopmentCommonSupportType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[PersonalDevelopmentDocument]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[PersonalDevelopmentEarlyEvaluationReason]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[PersonalDevelopmentSupport]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[PersonalEarlyAssessment]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[PersonalEarlyAssessmentAttachment]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[PersonalEarlyAssessmentDisabilityReason]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[PersonalEarlyAssessmentLearningDisability]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[PreSchoolEvaluation]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[PreSchoolReadiness]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[ReasonForEqualizationType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[ReasonForReassessmentType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[Reassessment]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[ReassessmentDetails]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[ReassessmentDocument]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[Recognition]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[RecognitionDocument]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[RecognitionEducationLevel]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[RecognitionEqualization]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[RelocationDocument]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[RelocationDocumentCurrentTermGrades]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[RelocationDocumentDocument]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[RepeaterReason]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[ResourceSupport]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[ResourceSupportDocument]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[ResourceSupportReport]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[ResourceSupportSpecialist]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[ResourceSupportSpecialistType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[ResourceSupportSpecialistWorkPlace]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[ResourceSupportSpecialistWorkPlaceToResourceSupportType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[ResourceSupportType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[Sanction]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[SanctionDocument]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[SanctionType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[ScholarshipAmount]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[ScholarshipFinancingOrgan]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[ScholarshipStudent]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[ScholarshipStudentDocument]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[ScholarshipType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[SchoolTypeLodAccess]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[SelfGovernment]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[SelfGovernmentPosition]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[SpecialEquipment]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[SpecialNeeds]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[SpecialNeedsSubType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[SpecialNeedsType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[SpecialNeedsYear]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[SpecialNeedsYearAttachment]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[Student]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[StudentClass]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[StudentClassDualFormCompany]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[StudentClassHistory]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[StudentEvaluation]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[StudentType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[SupportPeriod]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[Validation]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[student].[ValidationDocument]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[cioo].[CIOOReportCommon]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[cioo].[CIOOReportCommon_CurrData]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[cioo].[dir_CurrentData]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[document].[v_BasicDocumentSequenceList]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[document].[v_DiplomaList]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[document].[v_DocManagementDashboard]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[document].[v_DocManagementReport]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[document].[v_FreeDocManagementApplicationItems]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[document].[v_RegBookCertificate]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[document].[v_RegBookCertificateBasicDocument]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[document].[v_RegBookCertificateDuplicate]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[document].[v_RegBookCertificateDuplicateBasicDocument]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[document].[v_RegBookQualification]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[document].[v_RegBookQualificationBasicDocument]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[document].[v_RegBookQualificationDuplicate]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[document].[v_RegBookQualificationDuplicateBasicDocument]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[inst_basic].[InstitutionAll]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[inst_nom].[SubjectInstitution]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[inst_year].[ClassGroupAll]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[inst_year].[ClassTeacher199]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[reginst_basic].[Directors]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[student].[v_Absence_Reports]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[student].[v_ASPMonthlyBenefitReport]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[student].[v_AuditLogs]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[student].[v_AvailableArchitecture]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[student].[v_ClassStudents]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[student].[v_CurriculumStudentDetails]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[student].[v_InstitutionList]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[student].[v_LeadTeacher]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[student].[v_LoadAssessmentList]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[student].[v_LodStudentAbsences]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[student].[v_LodStudentClasses]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[student].[v_NotesList]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[student].[v_OresCalendarDetails]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[student].[v_OresList]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[student].[v_PersonDetails]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[student].[v_PersonExtendedDetails]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[student].[v_RefugeeAdmissionDetails]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[student].[v_RoomsAndEquipment]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[student].[v_SchoolBooksAbsences]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[student].[v_SchoolBooksAbsencesGroups]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[student].[v_SchoolBooksGrades]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[student].[v_SchoolBooksSanctions]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[student].[v_Sob_StudentClassDetails]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[student].[v_SopEnrollmentDetails]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[student].[v_StudentAbsencesList]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[student].[v_StudentClassDetails]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[student].[v_StudentClassTimeLineList]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[student].[v_StudentDiplomas]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[student].[v_StudentDualFormDetails]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[student].[v_StudentEnvironmentCharacteristic]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[student].[v_StudentEplrHoursTaken]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[student].[v_StudentExternalEvaluations]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[student].[v_StudentGeneralTrainingData]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[student].[v_studentList]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[student].[v_StudentLodAsssessmentList]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[student].[v_StudentLodAsssessments]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[student].[v_StudentLodCurrentAsssessments]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[student].[v_StudentLodFinalizations]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[student].[v_StudentsToDischarge]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[student].[v_StudentsToEnroll]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[student].[v_StudentSummary]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[document].[GetNextBasicDocumentSequence]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[student].[spGetStudentTermGrades]",
+         "ObjectType": 1
+      }
+   ],
+   "UiHint": "TESTSQL2\\SQL2019.neispuo-prod",
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": false,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": true,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoConstructor": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UseSchemaFolders": false,
+   "UseSpatial": false,
+   "UseT4": false
+}

@@ -1,0 +1,259 @@
+.flex {
+    display: flex !important;
+}
+.flex-row {
+    flex-direction: row !important;
+}
+.flex-col {
+    flex-direction: column !important;
+}
+.items-center {
+    align-items: center !important;
+}
+.justify-center {
+    justify-content: center !important;
+}
+.text-select-disabled {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.img-drag-disable {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+}
+div.padding-top-0 {
+    padding-top: 0 !important;
+}
+.min-width-120px {
+    min-width: 120px !important;
+}
+.min-width-100px {
+    min-width: 100px !important;
+}
+.w-140px {
+    width: 140px !important;
+}
+.w-c-140px {
+    width: 140px !important;
+    max-width: 140px !important;
+    min-width: 140px !important;
+}
+.w-c-90 {
+    width: 90px;
+    min-width: 90px;
+    max-width: 90px;
+}
+.w-c-60 {
+    width: 60px;
+    min-width: 60px;
+    max-width: 60px;
+}
+.w-c-30 {
+    width: 30px;
+    min-width: 30px;
+    max-width: 30px;
+}
+.w-c-100 {
+    width: 100px;
+    min-width: 100px;
+}
+.w-c-250 {
+    width: 250px;
+    min-width: 250px;
+}
+.w-c-200 {
+    width: 200px;
+    min-width: 200px;
+}
+.w-c-150 {
+    width: 150px;
+    min-width: 150px;
+}
+.w-c-110 {
+    width: 110px;
+    min-width: 110px;
+}
+.w-l-150 {
+    width: 150px;
+    min-width: 150px;
+    max-width: 150px;
+}
+.w-l-160 {
+    width: 160px;
+    min-width: 160px;
+}
+.w-300-min-max {
+    width: 300px !important;
+    min-width: 300px !important;
+    max-width: 300px !important;
+}
+.w-220-min-max {
+    width: 220px !important;
+    min-width: 220px !important;
+    max-width: 220px !important;
+}
+.w-230-min-max {
+    width: 230px !important;
+    min-width: 230px !important;
+    max-width: 230px !important;
+}
+.w-250-min-max {
+    width: 250px !important;
+    min-width: 250px !important;
+    max-width: 250px !important;
+}
+.w-200-min-max {
+    width: 200px !important;
+    min-width: 200px !important;
+    max-width: 200px !important;
+}
+.w-100-min-max {
+    width: 100px !important;
+    min-width: 100px !important;
+    max-width: 100px !important;
+}
+.w-250-min {
+    min-width: 250px !important;
+}
+.w-200-min {
+    min-width: 200px !important;
+}
+.w-170-min {
+    min-width: 170px !important;
+}
+.w-150-min {
+    min-width: 150px !important;
+}
+.w-200px {
+    width: 200px !important;
+}
+.w-250px {
+    width: 250px !important;
+}
+.pr-5px {
+    padding-right: 5px !important;
+}
+.pl-10px {
+    padding-left: 10px !important;
+}
+.pr-10px {
+    padding-right: 10px !important;
+}
+.font-size-9px {
+    font-size: 9px !important;
+}
+.font-size-12px {
+    font-size: 12px !important;
+}
+.font-size-20px {
+    font-size: 20px !important;
+}
+.font-size-30px {
+    font-size: 30px !important;
+}
+.font-size-43px {
+    font-size: 43px !important;
+}
+.w-150-max {
+    max-width: 150px !important;
+}
+.w-250px {
+    width: 250px !important;
+}
+.w-350px {
+    width: 350px !important;
+}
+.mt-5px {
+    margin-top: 5px;
+}
+.mb-5px {
+    margin-bottom: 5px;
+}
+.ml-5px {
+    margin-left: 5px;
+}
+.mr-5px {
+    margin-right: 5px;
+}
+.mr-10px {
+    margin-right: 10px;
+}
+.mt-10px {
+    margin-top: 10px;
+}
+.ml-10px {
+    margin-left: 10px;
+}
+.m-5px {
+    margin: 5px;
+}
+.pt-10px {
+    padding-top: 10px !important;
+}
+.pt-20px {
+    padding-top: 20px;
+}
+.pt-5px {
+    padding-top: 5px;
+}
+.pb-5px {
+    padding-bottom: 5px;
+}
+.pl-5px {
+    padding-left: 5px;
+}
+.pr-5px {
+    padding-right: 5px;
+}
+.plr-15px {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.pb-10px {
+    padding-bottom: 10px;
+}
+.p-2px {
+    padding: 2px;
+}
+.icon-no-w-h {
+    width: 100% !important;
+    height: 100% !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+}
+.border-bottom-title {
+    border-bottom: 1px solid #0000002e;
+}
+.mt-50px {
+    margin-top: 50px !important;
+}
+.mt-35px {
+    margin-top: 35px !important;
+}
+.mt-20px {
+    margin-top: 20px !important;
+}
+.p-small {
+    font-size: 11px;
+    line-height: 14px;
+}
+.tiny {
+    font-size: 0.625rem;
+    line-height: 0.75rem;
+}
+.flex-grow-1 {
+    flex-grow: 1;
+}
+$header-font-color: #121417;
+$background-color-header: #e7eef9;
+$card-header-text-left: left;
+$card-header-flex-left: start;

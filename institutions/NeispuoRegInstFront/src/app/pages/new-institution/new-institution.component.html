@@ -1,0 +1,57 @@
+<div class="full-wrapper">
+    <mat-card class="section-card first-card" color="primary" *ngIf="institutionArr">
+        <mat-card-header class="bg-cornflower-blue">
+            <mat-card-title>Нова институция</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="row-flex">
+                <div class="l-container-component w-200">
+                    <span class="l-custom-span-label">Вид институция
+                        <span class="required-span">*</span>
+                    </span>
+                    <mat-form-field class="l-select full-width" appearance="outline">
+                        <mat-select (selectionChange)="onSelectionChange($event.value)">
+                            <mat-option *ngFor="let option of institutionArr" [value]="option.code">{{option.label}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="l-container-component w-200">
+                    <span class="l-custom-span-label">Моля въведете БУЛСТАТ/ЕИК на институцията
+                        <span class="required-span">*</span>
+                    </span>
+                    <mat-form-field appearance="outline" floatLabel="never" class="full-width">
+                        <input matInput [(ngModel)]="eik" [disabled]="institutionType.value && institutionType.eikObligatory === false" pattern="^([0-9]{9}|[0-9]{13}|.{0})$" #eikfld="ngModel">
+                        <mat-error *ngIf="eikfld.invalid && eikfld.errors.pattern && (eikfld.dirty || eikfld.touched)" class="l-custom-error">Невалиден БУЛСТАТ/ЕИК</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <button *ngIf="institutionType.eikObligatory !== false" mat-raised-button color="primary" class="check-btn" [disabled]="eikfld.invalid || (!eik && institutionType.eikObligatory) || !institutionType.value" (click)="getData()"><span>Провери</span></button>
+            <button *ngIf="institutionType.eikObligatory === false" mat-raised-button color="primary" class="check-btn" (click)="navigate()"><span>Потвърди</span></button>
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="section-card second-card" color="primary" *ngIf="data">
+        <mat-card-header class="bg-cornflower-blue">
+            <mat-card-title>резултати</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="scroll-container">
+                <div class="body-result-container">
+                    <ng-container *ngFor="let section of data.sections">
+                        <ng-container *ngFor="let subsection of section.subsections">
+                            <app-subsection [subsection]="subsection" [formGroup]="getFormGroup(subsection)" [mode]="modes.View"></app-subsection>
+                        </ng-container>
+                    </ng-container>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    <span class="message-for-info" *ngIf="message">{{message}}</span>
+    
+    <div class="action-container" *ngIf="data || message === trMessage.MissingEIK">
+        <button mat-raised-button color="secondary" [routerLink]="['/', menu.Home]"><span>Откажи</span></button>
+        <button mat-raised-button class="btn-add-institution" *ngIf="data" color="primary" (click)="navigate()"><span>Потвърди</span></button>
+        <button mat-raised-button class="btn-add-institution" *ngIf="message && regixError" color="primary" (click)="navigate()"><span>Продължи с ръчно въвеждане на данните</span></button>
+        <button mat-raised-button class="btn-add-institution" *ngIf="message && !regixError && !data" color="primary" (click)="syncWithRegix()"><span>Продължи с проверка в ТР/БУЛСТАТ</span></button>
+    </div>
+</div>
+<app-loader *ngIf="isLoading"></app-loader>

@@ -1,0 +1,36 @@
+@import '~@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/variables/variables';
+@import '~@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/mixins';
+
+:host ::ng-deep {
+    .update-roles {
+        &-form {
+            background-color: $gray-200;
+            padding-top: 0.5rem;
+            .p-checkbox-label {
+                color: $gray-700;
+            }
+        }
+        .p-datatable {
+            min-height: calc(100vh - 367px); // 100vh - header - update-roles form - p-toolbar - footer
+            &-wrapper {
+                min-height: calc(100vh - 425px); // 100vh - header - update-roles form - p-toolbar - footer
+            }
+        }
+    }
+
+    @include media-breakpoint-down(sm) {
+        .update-roles {
+            &-form {
+                p.h2 {
+                    font-size: 1.25rem;
+                }
+            }
+            .p-datatable {
+                min-height: calc(100vh - 419px); // 100vh - header - update-roles form - p-toolbar - footer
+                &-wrapper {
+                    min-height: calc(100vh - 477px); // 100vh - header - update-roles form - p-toolbar - footer
+                }
+            }
+        }
+    }
+}

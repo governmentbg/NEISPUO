@@ -1,0 +1,2 @@
+src/.openapi-generator/FILES -merge
+src/** linguist-generated

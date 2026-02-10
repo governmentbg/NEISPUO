@@ -1,0 +1,22 @@
+.inner-loader-wrapper {
+  .wrapper-image-loader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    .inner-loader {
+      border-radius: 3px;
+      border: 1px solid #0000004f;
+      height: 20px;
+      width: 113px;
+    }
+    .span-please-wait {
+      font-size: 14px;
+      line-height: normal;
+      margin-top: 2px;
+      width: 113px;
+      color: #505050;
+    }
+  }
+}

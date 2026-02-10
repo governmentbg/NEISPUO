@@ -1,0 +1,47 @@
+<div *ngIf="reportSummaryService.sumarizedBy.name && pieChartService.loadOnInit; else pieChartMessage">
+  <div class="pie-spinner" [ngClass]="{ toggled: !sidebarService?.isSidebarOpen }" *ngIf="pieChartService.isLoading">
+    <p-progressSpinner [style]="{ width: '2rem', height: '2rem' }" strokeWidth="4"></p-progressSpinner>
+  </div>
+  <div
+    class="pie-chart-wrapper"
+    [ngClass]="{ recalculate: !reportService.isCubeData }"
+    [ngStyle]="pieChartService.isLoading ? { opacity: '0.15' } : { opacity: '1' }"
+  >
+    <canvas
+      baseChart
+      [datasets]="pieChartService.pieChartData"
+      [labels]="pieChartService.pieChartLabels"
+      [type]="'pie'"
+      [options]="pieChartService.pieChartOptions"
+      [legend]="pieChartService.pieChartLegend"
+      (chartClick)="openDrillDownDialog($event)"
+    >
+    </canvas>
+  </div>
+  <div class="settings" [ngClass]="{ toggled: !sidebarService?.isSidebarOpen }">
+    <app-reporting-sidebar-toggle></app-reporting-sidebar-toggle>
+    <div class="save-btn">
+      <app-save-report-button></app-save-report-button>
+    </div>
+  </div>
+</div>
+<ng-template #pieChartMessage>
+  <div
+    class="pie-spinner message"
+    [ngClass]="{ toggled: !sidebarService?.isSidebarOpen }"
+    *ngIf="pieChartService.isLoading; else message"
+  >
+    <p-progressSpinner [style]="{ width: '2rem', height: '2rem' }" strokeWidth="4"></p-progressSpinner>
+  </div>
+  <ng-template #message>
+    <div class="pie-chart-msg-wrapper" [ngClass]="{ recalculate: !reportService.isCubeData }">
+      <div class="icon">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+      </div>
+      <h3>Визуализация тип пай чарт е възможна само с агрегирани заявки.</h3>
+    </div>
+    <div class="settings" [ngClass]="{ toggled: !sidebarService?.isSidebarOpen }">
+      <app-reporting-sidebar-toggle></app-reporting-sidebar-toggle>
+    </div>
+  </ng-template>
+</ng-template>

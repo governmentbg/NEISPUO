@@ -1,0 +1,54 @@
+<ng-container [formGroup]="form">
+  <ng-container [ngSwitch]="type">
+    <div *ngSwitchCase="'string'">
+      <div class="field">
+        <p-dropdown [options]="textOptions" formControlName="matchMode" [autoDisplayFirst]="false"></p-dropdown>
+      </div>
+      <div class="field">
+        <input type="text" pInputText formControlName="value" />
+      </div>
+    </div>
+
+    <div *ngSwitchCase="'number'">
+      <div class="field">
+        <p-dropdown
+          [options]="numberOptions"
+          formControlName="matchMode"
+          [autoDisplayFirst]="false"
+          placeholder="Изберете"
+        ></p-dropdown>
+      </div>
+      <div class="field">
+        <p-inputNumber formControlName="value" mode="decimal"></p-inputNumber>
+      </div>
+    </div>
+
+    <div *ngSwitchCase="'time'">
+      <div class="field">
+        <p-dropdown [options]="dateOptions" formControlName="matchMode" [autoDisplayFirst]="false"></p-dropdown>
+      </div>
+      <div class="field">
+        <p-calendar
+          id="filterDate"
+          formControlName="value"
+          dateFormat="yy-mm-dd"
+          inputId="dateformat"
+          appendTo="body"
+        ></p-calendar>
+      </div>
+    </div>
+
+    <div *ngSwitchDefault></div>
+  </ng-container>
+  <div class="text-center">
+    <button
+      pButton
+      pRipple
+      type="button"
+      label="Премахни филтър"
+      icon="pi pi-trash"
+      class="p-button-text p-button-secondary p-button-sm p-button-icon-left"
+      (click)="removeFilter()"
+    ></button>
+  </div>
+</ng-container>

@@ -1,0 +1,41 @@
+<form [formGroup]="form" autocomplete="off" novalidate>
+  <sb-tab-card>
+    <ng-container card-title>
+      {{ data.note == null ? 'Създаване на бележка' : 'Редакция на бележка' }}
+    </ng-container>
+    <sb-editor-panel card-buttons [editBtnHidden]="!canEdit" [isNew]="data.note == null" (save)="onSave($event)">
+      <button
+        *ngIf="canRemove"
+        disabled-mode-buttons
+        mat-raised-button
+        color="warn"
+        type="button"
+        (click)="onRemove()"
+        [disabled]="removing"
+      >
+        <fa-icon [icon]="removing ? fasSpinnerThird : fasTrashAlt" [spin]="removing" size="lg"></fa-icon>
+        <span class="hidden sm:inline">Премахни</span>
+      </button>
+    </sb-editor-panel>
+    <ng-container card-body>
+      <sb-banner type="warning" *ngIf="form.value.studentIds.length" class="mb-3" type="warning">
+        Бележката е видима и в дневника на родителя/ученика.
+      </sb-banner>
+      <div class="sm:grid grid-cols-2 gap-x-4 mb-2">
+        <sb-nom-select
+          label="Ученици"
+          formControlName="studentIds"
+          [nomService]="classBookStudentNomsService"
+          [showAllGroup]="true"
+          [multiple]="true"
+        ></sb-nom-select>
+        <sb-textarea-field
+          class="col-start-1 col-span-full"
+          label="Описание"
+          formControlName="description"
+          [textareaMaxSize]="10000"
+        ></sb-textarea-field>
+      </div>
+    </ng-container>
+  </sb-tab-card>
+</form>

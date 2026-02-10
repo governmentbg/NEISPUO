@@ -1,0 +1,26 @@
+package bg.adminsoft.neispuo.model;
+
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+@Getter
+@Setter
+public class DBDataMapping {
+
+    @JsonProperty
+    Map<String, DBMapping> tableMapping = new LinkedHashMap<>();
+
+    @JsonProperty
+    DBLinkMapping[] linkMapping;
+
+    @JsonAnySetter
+    public void setParameter(String key, DBMapping value) {
+        tableMapping.put(key, value);
+    }
+
+}

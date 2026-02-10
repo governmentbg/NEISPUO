@@ -1,0 +1,62 @@
+{
+  "arrayName": "studentList",
+  "template": "SELECT /**select**/ FROM [inst_year].[StudentListIndividual] CD /**where**/ /**orderby**/",
+  "columns": [
+	{
+      "column": "CD.ID AS id"
+    },
+	{
+      "column": "CD.PersonID AS personid"
+    },
+	{
+      "column": "CD.PublicEduNumber AS publicEduNumber"
+    },
+	{
+      "column": "CD.FullName AS fullName"
+    },
+	{
+      "column": "CD.BirthDate AS birthDate"
+    },
+	{
+      "column": "CD.BasicClassName AS basicClassName"
+    },
+	{
+      "column": "CD.Name AS name"
+    },
+	{
+      "column": "CD.ClassId AS classID"
+    },
+	{
+      "column": "CD.StudentEdFormName AS studentEdFormName"
+    },
+	{
+      "column": "CD.ClassSpecialityName AS classSpecialityName"
+    },
+	{
+          "column": "'curriculumIndividualSubject' AS formName"
+    },
+    {
+          "column": "CD.ID AS formDataId"
+    }
+   ],
+  "params": [
+	{
+      "param": "@instid",
+      "column": "CD.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "CD.FullName",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+
+  ]
+}

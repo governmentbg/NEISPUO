@@ -1,0 +1,107 @@
+<div class="user-guides-container">
+  <p-table
+    #userGuidesTable
+    [value]="userGuides"
+    [rows]="6"
+    [paginator]="true"
+    [globalFilterFields]="['id', 'name', 'category.name']"
+    [rowHover]="true"
+    dataKey="id"
+    [showCurrentPageReport]="true"
+    [loading]="loading"
+  >
+    <ng-template pTemplate="caption">
+      <div>
+        <button class="btn btn-success rounded icon" (click)="openUserGuideModal()">Добави</button>
+      </div>
+      <div class="p-d-flex p-ai-center p-jc-between">
+        <span>
+          <input
+            pInputText
+            type="text"
+            (input)="userGuidesTable.filterGlobal($event.target.value, 'contains')"
+            placeholder="Търси"
+          />
+        </span>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="id">Идентификатор<p-sortIcon field="id"></p-sortIcon></th>
+        <th pSortableColumn="name">Име<p-sortIcon field="name"></p-sortIcon></th>
+        <th pSortableColumn="category.name">Категория <p-sortIcon field="category.name"></p-sortIcon></th>
+        <th>Действия</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-userGuide>
+      <tr>
+        <td>{{ userGuide.id }}</td>
+        <td class="overflow-ellipsis">
+          {{ userGuide.name }}
+        </td>
+        <td class="overflow-ellipsis">{{ userGuide.category.name }}</td>
+        <td>
+          <button
+            pButton
+            pRipple
+            icon="pi pi-download"
+            [pTooltip]="'Изтегли'"
+            class="p-button-text p-button-success p-mr-2"
+            [disabled]="shouldDisableDownload(userGuide)"
+            (click)="userGuideManagementService.downloadUserGuide(userGuide)"
+          ></button>
+          <button
+            pButton
+            pRipple
+            icon="pi pi-share-alt"
+            [pTooltip]="'Копирай връзка'"
+            class="p-button-text p-button-primary p-mr-2"
+            [disabled]="shouldDisableCopyLink(userGuide)"
+            (click)="userGuideManagementService.copyUserGuideLink(userGuide)"
+          ></button>
+          <button
+            pButton
+            pRipple
+            icon="pi pi-pencil"
+            [pTooltip]="'Редактирай'"
+            class="p-button-text p-button-warning p-mr-2"
+            (click)="openUserGuideModal(userGuide)"
+          ></button>
+          <button
+            pButton
+            pRipple
+            icon="pi pi-trash"
+            [pTooltip]="'Изтрий'"
+            class="p-button-text p-button-danger"
+            (click)="deleteUserGuide(userGuide.id)"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="4">
+          <div class="empty-message-cell" [class.error]="error">
+            <i class="pi" [class.pi-info-circle]="!error" [class.pi-exclamation-triangle]="error"></i>
+            <span [class.error-text]="error">
+              {{ error ? errorMessage : 'Няма намерени ръководства' }}
+            </span>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <p-confirmDialog
+    #cd
+    icon="pi pi-exclamation-triangle"
+    [acceptLabel]="'Да'"
+    [rejectLabel]="'Не'"
+    [acceptButtonStyleClass]="'p-button-danger'"
+    [rejectButtonStyleClass]="'p-button-outlined p-button-secondary'"
+  >
+    <ng-template pTemplate="footer">
+      <button type="button" pButton icon="pi" (click)="cd.accept()" class="p-button-secondary p-button-outlined"></button>
+      <button type="button" pButton icon="pi" (click)="cd.reject()" class="p-button-secondary p-button-outlined"></button>
+    </ng-template>
+  </p-confirmDialog>
+</div>

@@ -1,0 +1,74 @@
+<div class="flex">
+  <sb-breadcrumb
+    class="block mb-3 flex-1"
+    [icon]="fadTasksAlt"
+    [text]="templateData.monthName"
+    [parentItems]="[
+      { text: 'Проверка на дневници', routeCommands: ['../../'], routeExtras: { queryParamsHandling: 'preserve' } }
+    ]"
+  ></sb-breadcrumb>
+
+  <sb-book-verification-classbook-teacher-selector
+    class="mt-[-6px] w-[500px]"
+  ></sb-book-verification-classbook-teacher-selector>
+</div>
+
+<sb-card>
+  <ng-container card-title>Проверка на дневници</ng-container>
+  <ng-container card-buttons>
+    <a mat-raised-button class="ml-2" [routerLink]="['../../']" [queryParamsHandling]="'preserve'">
+      <fa-icon [icon]="fasArrowLeft" size="lg"></fa-icon>
+      <span class="hidden sm:inline">Назад</span>
+    </a>
+  </ng-container>
+  <ng-container card-body>
+    <label id="sb-choose-day">Изберете ден</label>
+    <div class="block sm:flex">
+      <div
+        class="grid grid-cols-7 gap-px border border-gray-200 rounded-lg overflow-hidden bg-gray-200 sm:w-[600px]"
+        role="group"
+        aria-labelledby="sb-choose-day"
+      >
+        <div *ngFor="let _ of templateData.firstWeekOffsetTiles" class="w-full px-4 py-4 text-center bg-gray-100"></div>
+        <button
+          *ngFor="let d of templateData.monthView"
+          class="w-full px-4 py-4 text-center outline-offset-[-1px]"
+          [ngClass]="d.hasData && !d.isOffDay ? 'bg-white hover:bg-sky-50' : 'bg-gray-100'"
+          (click)="goToDay(d.day)"
+          [disabled]="!d.hasData"
+        >
+          <span [attr.aria-label]="d.dayName">{{ d.day }}</span>
+
+          <sb-progress-bar
+            class="mt-2"
+            [class.invisible]="!d.hasData || d.isOffDay"
+            [percentage]="d.takenPercentage"
+            color="primary"
+            [attr.aria-label]="'взет ' + d.takenPercentage + '%'"
+          ></sb-progress-bar>
+
+          <sb-progress-bar
+            class="mt-1"
+            [class.invisible]="!d.hasData || d.isOffDay"
+            [percentage]="d.verifiedPercentage"
+            color="success"
+            [attr.aria-label]="'проверен ' + d.verifiedPercentage + '%'"
+          ></sb-progress-bar>
+        </button>
+        <div *ngFor="let _ of templateData.emptyEndTiles" class="w-full px-4 py-4 text-center bg-gray-100"></div>
+      </div>
+      <div class="mt-4 sm:mt-0 sm:ml-4" aria-hidden="true">
+        <div class="flex items-center">
+          <div class="shadow rounded bg-primary py-1 w-8"></div>
+          <span class="ml-2">Взети теми</span>
+        </div>
+        <div class="flex items-center">
+          <div class="shadow rounded bg-success py-1 w-8"></div>
+          <span class="ml-2">Проверени</span>
+        </div>
+      </div>
+    </div>
+
+    <router-outlet></router-outlet>
+  </ng-container>
+</sb-card>

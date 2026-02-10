@@ -1,0 +1,126 @@
+{
+  "arrayName": "staffPositionHorarium",
+  "template": "SELECT /**select**/ FROM [inst_year].[StaffPositionHorarium] SPH /**where**/ /**orderby**/",
+  "sotemplate": "SELECT /**select**/ FROM [sob].[StaffPositionHorarium] SPH /**where**/ /**orderby**/",
+  "columns": [
+    {
+      "column": "SPH.CurriculumID AS id"
+    },
+    {
+      "column": "SPH.CurriculumID AS curriculumID"
+    },
+    {
+      "column": "SPH.CurriculumTeacherID AS curriculumTeacherID"
+    },
+    {
+      "column": "SPH.StaffPositionID AS staffPositionID"
+    },
+    {
+      "column": "SPH.PersonID AS personID"
+    },
+    {
+      "column": "SPH.StaffOrd AS staffOrd"
+    },
+    {
+      "column": "SPH.StaffPositionNo AS staffPositionNo"
+    },
+    {
+      "column": "SPH.SubjectName AS subjectName"
+    },
+    {
+      "column": "SPH.SubjectTypeID AS subjectTypeID"
+    },
+    {
+      "column": "SPH.ClassName AS className"
+    },
+    {
+      "column": "SPH.CurriculumGroupNum AS curriculumGroupID"
+    },
+    {
+      "column": "SPH.WeeksFirstTerm AS weeksFirstTerm"
+    },
+    {
+      "column": "SPH.HoursWeeklyFirstTerm AS hoursWeeklyFirstTerm"
+    },
+    {
+      "column": "SPH.WeeksSecondTerm AS weeksSecondTerm"
+    },
+    {
+      "column": "SPH.HoursWeeklySecondTerm AS hoursWeeklySecondTerm"
+    },
+    {
+      "column": "SPH.HoursAll AS hoursAll"
+    },
+    {
+      "column": "SPH.NormaS AS normaS"
+    },
+    {
+      "column": "SPH.SubjectTypeName AS subjectTypeName"
+    },
+    {
+      "column": "SPH.NotRegularTeacher AS notRegularTeacher"
+    },
+    {
+      "column": "SPH.NormaTS AS normaTS"
+    }
+  ],
+  "params": [
+    {
+      "param": "@isValid",
+      "column": "SPH.IsValid",
+      "operator": "=",
+      "value": 1,
+      "type": "int",
+      "logical_operator": "and",
+      "static": true
+    },
+    {
+      "param": "@staffPositionID",
+      "column": "SPH.StaffPositionID",
+      "operator": "=",
+      "value": "staffPositionID",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+    {
+      "param": "@year",
+      "column": "SPH.SchoolYear",
+      "operator": "=",
+      "value": "year",
+      "type": "int",
+      "logical_operator": "and",
+      "optional": true,
+      "static": false
+    },
+    {
+      "param": "@period",
+      "column": "SPH.Period",
+      "operator": "=",
+      "value": "period",
+      "type": "int",
+      "logical_operator": "and",
+      "optional": true,
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "SPH.SubjectID",
+      "type": "ASC"
+    },
+    {
+      "column": "SPH.SubjectTypeID",
+      "type": "ASC"
+    },
+    {
+      "column": "SPH.BasicClassID",
+      "type": "ASC"
+    },
+    {
+      "column": "SPH.ClassName",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": []
+}

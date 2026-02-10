@@ -1,0 +1,25 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[SubjectTypes] ST /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "ST.SubjectTypeID as code"
+        },
+        {
+            "column": "ST.Description as label"
+        }
+    ],
+    "params": [
+        {
+            "param": "@filterValue",
+            "column": "ST.CurriculumPartDetailsPTID",
+            "operator": "=",
+            "value": "filterValue",
+            "type": "int",
+            "logical_operator": "and",
+            "optional": true,
+            "static": false
+        }
+    ],
+    "order": [],
+    "inSelects": []
+}

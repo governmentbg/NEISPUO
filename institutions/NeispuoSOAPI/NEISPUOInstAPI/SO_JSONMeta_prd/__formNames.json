@@ -1,0 +1,140 @@
+[
+  {
+    "name": "institution",
+    "label": "Институция: Общи данни"
+  },
+  {
+    "name": "institutionDepartmentData",
+    "label": "Институция: Други адреси"
+  },
+  {
+    "name": "institutionPublicCouncilData",
+    "label": "Институция: Обществен съвет"
+  },
+  {
+    "name": "institutionProjectData",
+    "label": "Институция: Проектна и други дейности"
+  },
+
+  {
+    "name": "institutionVehicleData",
+    "label": "Институция: Транспорт"
+  },
+  {
+    "name": "classGroupData",
+    "label": "Групи/Класове: Описание"
+  },
+  {
+    "name": "classStudentList",
+    "label": "Групи/Класове: Деца/ученици"
+  },
+  {
+    "name": "classStudentListCDO",
+    "label": "Групи в ЦДО: Деца/ученици"
+  },
+  {
+    "name": "classStudentListOtherGroups",
+    "label": "Други групи: Деца/ученици"
+  },
+  {
+    "name": "person",
+    "label": "Персонал: Основни данни"
+  },
+  {
+    "name": "personData",
+    "label": "Персонал: Подробни данни"
+  },
+  {
+    "name": "staffPositions",
+    "label": "Персонал: Длъжност"
+  },
+  {
+    "name": "staffPositionData",
+    "label": "Персонал: Длъжност - подробни данни"
+  },
+  {
+    "name": "personOKSPKSList",
+    "label": "Персонал: ОКС/ПКС"
+  },
+  {
+    "name": "personOKSData",
+    "label": "Персонал: ОКС - подробни данни"
+  },
+  {
+    "name": "personPKSData",
+    "label": "Персонал: ПКС - подробни данни"
+  },
+  {
+    "name": "personQCourses",
+    "label": "Персонал: Квалификационна дейност"
+  },
+  {
+    "name": "personQCourseData",
+    "label": "Персонал: Квалификационна дейност по реда на Наредби 12 и 15"
+  },
+  {
+    "name": "personQCourseOtherData",
+    "label": "Персонал: Друга квалификационна дейност"
+  },
+  {
+    "name": "personCLSkillsList",
+    "label": "Персонал: Ключови компетентности"
+  },
+  {
+    "name": "personComputerSkillData",
+    "label": "Персонал: Компютърни умения"
+  },
+  {
+    "name": "personFLSkillData",
+    "label": "Персонал: Езикови умения"
+  },
+  {
+    "name": "staffPedDataPositions",
+    "label": "Персонал: Преподавателска заетост"
+  },
+    {
+    "name": "staffPositionCurriculum",
+    "label": "Персонал: годишна преподавателска заетост"
+  },
+  {
+    "name": "student",
+    "label": "Деца/ученици: Профил"
+  },
+  {
+    "name": "resourceSupport",
+    "label": "Деца/ученици: Ресурсно подпомагане"
+  },
+ {
+    "name": "curriculumList",
+    "label": "Учебен план: Училищни УП"
+  },
+    {
+    "name": "curriculumSubject",
+    "label": "Училищни УП - подробни данни"
+  },
+    {
+    "name": "curriculumIndividualSubjects",
+    "label": "Учебен план: Индивидуални УП"
+  },
+    {
+    "name": "individualCurriculumSubject",
+    "label": "Индивидуални УП - подробни данни"
+  },
+  {
+    "name": "curriculumCatalogDataList",
+    "label": "Рамкови/типови УП"
+  },
+
+  {
+    "name": "building",
+    "label": "ФС: Сграден фонд"
+  },
+  {
+    "name": "buildingRoom",
+    "label": "ФС: Помещения"
+  },
+  {
+    "name": "distanceLearningConditionData",
+    "label": "ФС: Дистанционна форма"
+  }
+]

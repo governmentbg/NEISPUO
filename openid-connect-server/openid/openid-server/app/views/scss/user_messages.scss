@@ -1,0 +1,154 @@
+@import './neispuo-theme-styles/variables/variables';
+$background-color: $gray-100;
+
+.user-msg-page {
+  min-height: calc(100vh - 130px);
+  margin-top: 130px;
+  background-image: linear-gradient(rgba(23, 42, 83, 0.325), rgba(23, 42, 83, 0.325)),
+    url('/images/home.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: $background-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &-content {
+    width: 100%;
+    max-width: 60rem;
+    height: 35rem;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .card-body {
+      padding: 1.25rem 3.5rem 0;
+
+      p,
+      p.h1 {
+        color: $gray-800;
+      }
+
+      p.h1 {
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+
+      hr {
+        margin: 1.5rem 0;
+        background-color: $gray-600;
+      }
+
+      .message-scroll {
+        overflow-y: auto;
+        max-height: 22rem;
+        padding-right: 1rem;
+
+        .card-title {
+          font-size: 1.25rem;
+          color: $gray-800;
+          margin-bottom: 0.5rem;
+        }
+
+        .card-content {
+          color: $gray-700;
+        }
+
+        hr {
+          background-color: $gray-600;
+        }
+      }
+    }
+
+    .card-footer {
+      background-color: transparent;
+      border-top-color: transparent;
+      text-align: right;
+      margin-top: auto;
+      padding-top: 0;
+
+      button {
+        text-transform: uppercase;
+      }
+    }
+  }
+}
+
+@media (max-width: 767.98px) {
+  .user-msg-page {
+    min-height: calc(100vh - 100px);
+    margin-top: 100px;
+  }
+
+  .user-msg-page-content {
+    height: 85vh;
+    max-width: 95%;
+
+    .card-body {
+      padding: 1rem;
+      .message-scroll {
+        max-height: calc(85vh - 13rem);
+        overflow-y: auto;
+      }
+
+      p.h1 {
+        font-size: 1.5rem;
+      }
+
+      .card-title {
+        font-size: 1.125rem;
+      }
+
+      .card-content {
+        font-size: 0.95rem;
+      }
+    }
+
+    .card-footer {
+      padding: 0.5rem 1rem;
+      button {
+        font-size: 0.85rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 575.98px) {
+  .user-msg-page-content {
+    height: 85vh;
+    max-width: 95%;
+
+    .card-body {
+      padding: 1rem;
+      .message-scroll {
+        max-height: calc(85vh - 13rem);
+        overflow-y: auto;
+      }
+
+      p.h1 {
+        font-size: 1.4rem;
+      }
+
+      .card-title {
+        font-size: 1.1rem;
+      }
+
+      .card-content {
+        font-size: 0.9rem;
+      }
+    }
+
+    .card-footer {
+      padding: 0.5rem 1rem;
+      button {
+        font-size: 0.75rem;
+      }
+    }
+  }
+}

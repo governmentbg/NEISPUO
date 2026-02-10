@@ -1,0 +1,35 @@
+@use '@angular/material' as mat;
+
+$dark-primary-text: rgba(black, 0.87);
+$light-primary-text: white;
+
+// Override palette
+mat.$red-palette: (
+  50: #fcd2cf,
+  100: #f45532,
+  500: #df320c,
+  700: #c61a0b,
+  900: #ae0a0a,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    500: $light-primary-text,
+    700: $light-primary-text,
+    900: $light-primary-text
+  )
+);
+
+mat.$blue-palette: (
+  50: #eaf1fb,
+  100: #6fa1ec,
+  500: #2f73da,
+  700: #165ecc,
+  900: #002966,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    500: $light-primary-text,
+    700: $light-primary-text,
+    900: $light-primary-text
+  )
+);

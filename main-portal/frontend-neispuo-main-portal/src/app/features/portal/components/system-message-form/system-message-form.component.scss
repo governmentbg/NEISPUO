@@ -1,0 +1,52 @@
+.form-layout {
+  padding: 2rem;
+
+  .field {
+    margin-bottom: 1.5rem;
+
+    label {
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      display: block;
+    }
+  }
+
+  .three-column-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: flex-start;
+
+    .field {
+      flex: 1 1 30%;
+      min-width: 220px;
+    }
+  }
+
+  .actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #ddd;
+
+    @media (max-width: 576px) {
+      flex-direction: column-reverse;
+      align-items: stretch;
+
+      button {
+        width: 100%;
+      }
+    }
+  }
+}
+
+::ng-deep .force-panel-up {
+  position: absolute !important;
+  top: auto !important;
+  bottom: 100% !important;
+  transform-origin: bottom !important;
+  margin-bottom: 0.25rem;
+  z-index: 10000 !important;
+}

@@ -1,0 +1,37 @@
+<sb-tab-card [hideHeader]="true">
+  <ng-container card-body>
+    <a
+      *ngIf="canCreate"
+      [routerLink]="['./', 'new']"
+      mat-raised-button
+      color="primary"
+      aria-label="Нова бележка"
+      class="mb-2.5"
+    >
+      <fa-icon [icon]="fasPlus" size="lg"></fa-icon>
+      <span>Нова бележка</span>
+    </a>
+    <sb-table [dataSource]="dataSource" [displayedColumns]="['action', 'students', 'description']">
+      <ng-container cdkColumnDef="action">
+        <th cdk-header-cell *cdkHeaderCellDef></th>
+        <td cdk-cell *cdkCellDef="let row" class="sb-table-action">
+          <a [routerLink]="['./', row.noteId]" aria-label="Детайли" class="sb-link-btn">
+            <fa-icon [icon]="fadChevronCircleRight"></fa-icon>
+          </a>
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="students">
+        <th cdk-header-cell *cdkHeaderCellDef mat-sort-header>Ученици</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.isForAllStudents ? 'Всички' : row.students }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="description">
+        <th cdk-header-cell *cdkHeaderCellDef>Описание</th>
+        <td cdk-cell *cdkCellDef="let row">
+          <span class="whitespace-pre-line">{{ row.description }}</span>
+        </td>
+      </ng-container>
+    </sb-table>
+  </ng-container>
+</sb-tab-card>

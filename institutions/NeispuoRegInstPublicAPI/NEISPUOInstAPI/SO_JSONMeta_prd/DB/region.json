@@ -1,0 +1,20 @@
+{
+    "template": "SELECT /**select**/ FROM [location].[Region] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "RegionID as code"
+        },
+        {
+            "column": "Name as label"
+        }
+    ],
+    "params": [
+    ],
+    "order": [
+        {
+            "column": "RegionID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

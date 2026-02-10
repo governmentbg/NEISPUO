@@ -1,0 +1,52 @@
+<sb-app-chrome [currentSchoolYear]="schoolYear" [schoolYears]="schoolYears" [unreadConversations]="unreadConversations">
+  <sb-app-menu left-side [menuItems]="menuItems"></sb-app-menu>
+  <div main-content>
+    <sb-banner type="error" *ngIf="shouldShowEnvError" class="mb-3">
+      <div class="flex justify-between">
+        <span>
+          Това приложение е само за тестови цели и данните в него не са актуални. Ако желаете да работите с актуални
+          данни, моля деинсталирайте това приложение и го инсталирайте наново, следвайки инструкциите
+          <a [href]="docsUrl" target="_blank">
+            <span class="font-bold italic underline">тук</span>
+            .
+          </a>
+        </span>
+      </div>
+    </sb-banner>
+    <sb-banner type="info" *ngIf="!mobileAppBannerHidden" class="mb-3">
+      <div class="flex justify-between">
+        <span>
+          Уважаеми потребители, уведомяваме Ви, че поддръжката на мобилното приложение на НЕИСПУО „Ученически бележник“,
+          което е публикувано в Play store и App store, ще бъде прекратена на 01.03.2025 г. След спиране на поддръжката,
+          е възможно данните в приложението да не съответстват на тези от електронния дневник на НЕИСПУО. Мобилното
+          приложение ще бъде заменено с ново уеб приложение, поради което Ви молим да използвате него. Указания за
+          инсталиране на новото приложение можете да намерите
+          <a [href]="docsUrl" target="_blank">
+            <span class="font-bold italic underline">тук</span>
+            .
+          </a>
+        </span>
+
+        <button class="sb-link-btn -mt-px -mb-[3px]" (click)="hideMobileAppBanner()">
+          <fa-icon [icon]="fasTimes"></fa-icon>
+        </button>
+      </div>
+    </sb-banner>
+    <sb-card *ngIf="isBaseUrl" style="text-align: center">
+      <ng-container card-title>Добре дошли в НЕИСПУО!</ng-container>
+      <ng-container card-body>
+        <p class="lg:hidden">
+          Моля изберете институция за вашето дете от иконата
+          <span class="text-white bg-blue-900 w-4 h-4">
+            <img class="sb-mat-icon w-4 h-4" src="assets/images/material-icons-menu-baseline.svg" />
+          </span>
+          в навигационната лента.
+        </p>
+        <p class="hidden lg:block">Моля изберете институция за вашето дете от менюто вляво.</p>
+        <br />
+        <p>За да проверите информация от предходни учебни години, изберете година от падащото меню за учебни години.</p>
+      </ng-container>
+    </sb-card>
+    <router-outlet></router-outlet>
+  </div>
+</sb-app-chrome>

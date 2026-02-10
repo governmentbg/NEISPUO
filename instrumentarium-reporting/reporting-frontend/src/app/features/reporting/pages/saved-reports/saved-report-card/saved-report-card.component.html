@@ -1,0 +1,20 @@
+<div class="card" (click)="goToReport()">
+  <h5 class="card-header bg-transparent">
+    {{ report.Name }}
+    <div class="report-type" [ngSwitch]="report.Visualization">
+      <div *ngSwitchCase="'table'" class="report-type-table">Таблица</div>
+      <div *ngSwitchCase="'pivot_table'" class="report-type-pivot">Пивот Таблица</div>
+    </div>
+  </h5>
+  <div class="card-body">
+    <div class="card-text" [ngClass]="{ 'line-clamp line-clamp-3': !!report.Description }">
+      {{ report.Description }}
+    </div>
+    <div *ngIf="report.SharedWith.length || isCreatedByVisible" class="card-footer bg-transparent">
+      <ul>
+        <li *ngIf="report.SharedWith.length" class="shared-with">{{ sharedWithRoles }}</li>
+        <li *ngIf="isCreatedByVisible" class="created-by">{{ report.CreatedBy.Username }}</li>
+      </ul>
+    </div>
+  </div>
+</div>

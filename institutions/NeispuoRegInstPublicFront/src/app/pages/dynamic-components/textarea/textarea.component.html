@@ -1,0 +1,15 @@
+<div class="l-container-component" *ngIf="mode===modes.Edit">
+    <span class="l-custom-span-label" *ngIf="showLabel">{{field.label}}
+        <span class="required-span" *ngIf="required">*</span>
+    </span>
+    <mat-form-field [formGroup]="group" appearance="outline" class="l-textarea" floatLabel="never">
+        <textarea matInput [formControlName]="field.name" [style.width.px]="field.width" [rows]="field.height">{{field.value}}</textarea>
+        <ng-container *ngFor="let validation of field.validations;" ngProjectAs="mat-error">
+            <mat-error *ngIf="group.get(field.name).hasError(validation.name.toLowerCase())" class="l-custom-error">{{validation.message}}</mat-error>
+        </ng-container>
+    </mat-form-field>
+</div>
+<div class="l-container-component preview-mode" *ngIf="mode===modes.View">
+    <span class="l-custom-span-label" *ngIf="showLabel">{{field.label}}</span>
+    <label class="value-label">{{field.value}}</label>
+</div>

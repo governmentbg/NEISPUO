@@ -1,0 +1,14 @@
+<div
+  class="pl-4 rounded-md tracking-wide border flex items-center"
+  [ngClass]="{
+    'pr-4 py-2': !small,
+    'pr-2 py-[5px]': small,
+    'border-blue-100 bg-blue-50 text-blue-900': type === 'info',
+    'border-green-100 bg-green-50 text-green-900': type === 'success',
+    'border-yellow-100 bg-yellow-50 text-yellow-900': type === 'warning',
+    'border-red-100 bg-red-50 text-red-900': type === 'error'
+  }"
+>
+  <fa-icon *ngIf="showIcon" [icon]="icon" size="lg" class="-ml-2 mr-2"></fa-icon>
+  <div class="flex-1"><ng-content></ng-content></div>
+</div>

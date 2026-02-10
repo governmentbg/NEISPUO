@@ -1,0 +1,167 @@
+{
+  "status": 1,
+  "data": [
+    {
+      "id": 9630,
+      "publicEduNumber": 200350,
+      "fullName": "\u0410\u043D\u0434\u0440\u0435\u0439 \u0422\u0435\u0441\u0442\u043E\u0432 \u0423\u0447\u0435\u043D\u0438\u043A",
+      "className": "9 \u0430"
+    },
+    {
+      "id": 9634,
+      "publicEduNumber": 201383,
+      "fullName": "\u0411\u043E\u044F\u043D \u0422\u0435\u0441\u0442\u043E\u0432 \u0423\u0447\u0435\u043D\u0438\u043A",
+      "className": "9 \u0430"
+    },
+    {
+      "id": 9629,
+      "publicEduNumber": 200341,
+      "fullName": "\u0412\u0430\u043D\u0435\u0441\u0430 \u0422\u0435\u0441\u0442\u043E\u0432 \u0423\u0447\u0435\u043D\u0438\u043A",
+      "className": "9 \u0430"
+    },
+    {
+      "id": 9621,
+      "publicEduNumber": 200256,
+      "fullName": "\u0412\u0430\u043D\u0435\u0441\u0430 \u0422\u0435\u0441\u0442\u043E\u0432 \u0423\u0447\u0435\u043D\u0438\u043A",
+      "className": "9 \u0430"
+    },
+    {
+      "id": 9622,
+      "publicEduNumber": 200261,
+      "fullName": "\u0412\u043B\u0430\u0434\u0438\u043C\u0438\u0440 \u0422\u0435\u0441\u0442\u043E\u0432 \u0423\u0447\u0435\u043D\u0438\u043A",
+      "className": "9 \u0430"
+    },
+    {
+      "id": 9624,
+      "publicEduNumber": 200284,
+      "fullName": "\u0413\u0435\u043E\u0440\u0433\u0438 \u0422\u0435\u0441\u0442\u043E\u0432 \u0423\u0447\u0435\u043D\u0438\u043A",
+      "className": "9 \u0430"
+    },
+    {
+      "id": 9633,
+      "publicEduNumber": 200360,
+      "fullName": "\u0415\u0434\u0443\u0430\u0440\u0434 \u0422\u0435\u0441\u0442\u043E\u0432 \u0423\u0447\u0435\u043D\u0438\u043A",
+      "className": "9 \u0430"
+    },
+    {
+      "id": 9626,
+      "publicEduNumber": 200315,
+      "fullName": "\u0419\u043E\u0430\u043D\u0430 - \u041C\u0430\u0440\u0438\u044F \u0422\u0435\u0441\u0442\u043E\u0432 \u0423\u0447\u0435\u043D\u0438\u043A",
+      "className": "9 \u0430"
+    },
+    {
+      "id": 9627,
+      "publicEduNumber": 200320,
+      "fullName": "\u041C\u0430\u0433\u0434\u0430\u043B\u0435\u043D\u0430 \u0422\u0435\u0441\u0442\u043E\u0432 \u0423\u0447\u0435\u043D\u0438\u043A",
+      "className": "9 \u0430"
+    },
+    {
+      "id": 9631,
+      "publicEduNumber": 200354,
+      "fullName": "\u041D\u0430\u0442\u0430\u043B\u0438\u044F \u0422\u0435\u0441\u0442\u043E\u0432 \u0423\u0447\u0435\u043D\u0438\u043A",
+      "className": "9 \u0430"
+    },
+    {
+      "id": 9625,
+      "publicEduNumber": 200290,
+      "fullName": "\u041D\u0430\u0442\u0430\u043B\u0438\u044F \u0422\u0435\u0441\u0442\u043E\u0432 \u0423\u0447\u0435\u043D\u0438\u043A",
+      "className": "9 \u0430"
+    },
+    {
+      "id": 9628,
+      "publicEduNumber": 200326,
+      "fullName": "\u041D\u0438\u043A\u043E\u043B\u0430 \u0422\u0435\u0441\u0442\u043E\u0432 \u0423\u0447\u0435\u043D\u0438\u043A",
+      "className": "9 \u0430"
+    },
+    {
+      "id": 9623,
+      "publicEduNumber": 200273,
+      "fullName": "\u041F\u043E\u043B\u0438\u043D\u0430 \u0422\u0435\u0441\u0442\u043E\u0432 \u0423\u0447\u0435\u043D\u0438\u043A",
+      "className": "9 \u0430"
+    },
+    {
+      "id": 9632,
+      "publicEduNumber": 200355,
+      "fullName": "\u0421\u0435\u043B\u0435\u043D\u0430 \u0422\u0435\u0441\u0442\u043E\u0432 \u0423\u0447\u0435\u043D\u0438\u043A",
+      "className": "9 \u0430"
+    },
+    {
+      "id": 9635,
+      "publicEduNumber": 201553,
+      "fullName": "\u0421\u0442\u0435\u0444\u0430\u043D\u0438 \u0422\u0435\u0441\u0442\u043E\u0432 \u0423\u0447\u0435\u043D\u0438\u043A",
+      "className": "9 \u0430"
+    },
+    {
+      "id": 9466,
+      "publicEduNumber": 200316,
+      "fullName": "\u0410\u043B\u0435\u043A\u0441\u0430\u043D\u0434\u044A\u0440 \u0422\u0435\u0441\u0442\u043E\u0432 \u0423\u0447\u0435\u043D\u0438\u043A",
+      "className": "9 \u0431"
+    },
+    {
+      "id": 9473,
+      "publicEduNumber": 200390,
+      "fullName": "\u0412\u0430\u043B\u0435\u043D\u0442\u0438\u043D \u0422\u0435\u0441\u0442\u043E\u0432 \u0423\u0447\u0435\u043D\u0438\u043A",
+      "className": "9 \u0431"
+    },
+    {
+      "id": 9465,
+      "publicEduNumber": 200311,
+      "fullName": "\u0412\u0430\u0441\u0438\u043B\u0435\u043D\u0430 \u0422\u0435\u0441\u0442\u043E\u0432 \u0423\u0447\u0435\u043D\u0438\u043A",
+      "className": "9 \u0431"
+    },
+    {
+      "id": 9463,
+      "publicEduNumber": 200300,
+      "fullName": "\u0412\u044F\u0440\u0430 \u0422\u0435\u0441\u0442\u043E\u0432 \u0423\u0447\u0435\u043D\u0438\u043A",
+      "className": "9 \u0431"
+    },
+    {
+      "id": 9464,
+      "publicEduNumber": 200303,
+      "fullName": "\u0413\u0435\u043E\u0440\u0433\u0438\u0439 \u0422\u0435\u0441\u0442\u043E\u0432 \u0423\u0447\u0435\u043D\u0438\u043A",
+      "className": "9 \u0431"
+    },
+    {
+      "id": 9470,
+      "publicEduNumber": 200330,
+      "fullName": "\u0413\u044E\u0440\u0430 \u0422\u0435\u0441\u0442\u043E\u0432 \u0423\u0447\u0435\u043D\u0438\u043A",
+      "className": "9 \u0431"
+    },
+    {
+      "id": 9469,
+      "publicEduNumber": 200323,
+      "fullName": "\u0414\u0430\u043D\u0438\u0435\u043B \u0422\u0435\u0441\u0442\u043E\u0432 \u0423\u0447\u0435\u043D\u0438\u043A",
+      "className": "9 \u0431"
+    },
+    {
+      "id": 9468,
+      "publicEduNumber": 200322,
+      "fullName": "\u0414\u0435\u043D\u0438\u0441 \u0422\u0435\u0441\u0442\u043E\u0432 \u0423\u0447\u0435\u043D\u0438\u043A",
+      "className": "9 \u0431"
+    },
+    {
+      "id": 9462,
+      "publicEduNumber": 200291,
+      "fullName": "\u041B\u0438\u043B\u0438 \u0422\u0435\u0441\u0442\u043E\u0432 \u0423\u0447\u0435\u043D\u0438\u043A",
+      "className": "9 \u0431"
+    },
+    {
+      "id": 9472,
+      "publicEduNumber": 200356,
+      "fullName": "\u0421\u043B\u0430\u0432\u0447\u043E \u0422\u0435\u0441\u0442\u043E\u0432 \u0423\u0447\u0435\u043D\u0438\u043A",
+      "className": "9 \u0431"
+    },
+    {
+      "id": 9467,
+      "publicEduNumber": 200318,
+      "fullName": "\u0425\u0430\u0447\u043E \u0422\u0435\u0441\u0442\u043E\u0432 \u0423\u0447\u0435\u043D\u0438\u043A",
+      "className": "9 \u0431"
+    },
+    {
+      "id": 9471,
+      "publicEduNumber": 200338,
+      "fullName": "\u042E\u043B\u0438\u044F\u043D \u0422\u0435\u0441\u0442\u043E\u0432 \u0423\u0447\u0435\u043D\u0438\u043A",
+      "className": "9 \u0431"
+    }
+  ]
+}

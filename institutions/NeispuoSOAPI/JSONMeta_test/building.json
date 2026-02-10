@@ -1,0 +1,316 @@
+{
+    "label": "Данни за сгради",
+    "procedureName": "inst_basic.buildingCUD",
+    "sections": [
+        {
+            "order": 1,
+            "label": "Данни за сграда",
+            "subsections": [
+                {
+                    "order": 1,
+                    "label": "Основни данни",
+                    "name": "basicData",
+                    "fields": [
+                        {
+                            "label": "Към адрес",
+                            "name": "institutionDepartmentID",
+                            "type": "select",
+                            "optionsPath": "/data/get/institutionDepartments",
+                            "rendered": false,
+                            "disabled": false,
+                            "defaultValue": "address",
+                            "width": 200,
+                            "validations": [
+                                {
+                                    "name": "required",
+                                    "validator": "",
+                                    "message": "Полето е задължително"
+                                }
+                            ],
+                            "order": 0,
+                            "influence": []
+                        },
+                        {
+                            "label": "Тип сграда",
+                            "name": "buildingTypeID",
+                            "type": "select",
+                            "optionsPath": "/data/get/buildingType",
+                            "rendered": true,
+                            "disabled": false,
+                            "defaultValue": 1,
+                            "width": 200,
+                            "validations": [
+                                {
+                                    "name": "required",
+                                    "validator": "",
+                                    "message": "Полето е задължително"
+                                }
+                            ],
+                            "influence": [
+                                {
+                                    "type": "hide",
+                                    "fieldName": "schoolShiftTypeID",
+                                    "condition": [
+                                        2
+                                    ]
+                                }
+                            ],
+                            "order": 0,
+                            "info": ""
+                        },
+                        {
+                            "label": "Наименование",
+                            "name": "name",
+                            "type": "input",
+                            "inputType": "text",
+                            "disabled": false,
+                            "width": 400,
+                            "validations": [
+                                {
+                                    "name": "required",
+                                    "validator": "",
+                                    "message": "Полето е задължително"
+                                }
+                            ],
+                            "order": 1,
+                            "influence": []
+                        },
+                        {
+                            "label": "Капацитет (брой деца/ученици)",
+                            "name": "expectedStudentCount",
+                            "type": "input",
+                            "inputType": "number",
+                            "disabled": false,
+                            "validations": [
+                                {
+                                    "name": "required",
+                                    "validator": "",
+                                    "message": "Полето е задължително"
+                                }
+                            ],
+                            "order": 2,
+                            "influence": [],
+                            "info": ""
+                        },
+                        {
+                            "label": "Брой структурни единици",
+                            "name": "structureCount",
+                            "type": "input",
+                            "inputType": "number",
+                            "disabled": false,
+                            "validations": [
+                                {
+                                    "name": "required",
+                                    "validator": "",
+                                    "message": "Полето е задължително"
+                                }
+                            ],
+                            "order": 3,
+                            "influence": []
+                        },
+                        {
+                            "order": 4,
+                            "label": "Сменност на обучение",
+                            "name": "schoolShiftTypeID",
+                            "type": "select",
+                            "optionsPath": "/data/get/schoolShiftTypes",
+                            "disabled": false,
+                            "rendered": "if(instType==1 || instType==4) {field.rendered=true} else {field.rendered=false}",
+                            "validations": [
+                                {
+                                    "name": "required",
+                                    "validator": "",
+                                    "message": "Полето е задължително"
+                                }
+                            ],
+                            "influence": []
+                        },
+                        {
+                            "label": "Година на последен ремонт",
+                            "name": "latestRepairYear",
+                            "type": "input",
+                            "inputType": "number",
+                            "order": 5,
+                            "width": 95,
+                            "validations": [
+                                {
+                                    "name": "maxLength",
+                                    "validation": 4,
+                                    "message": "Максимална дължина 4 символа"
+                                },
+								{
+								"name": "minLength",
+								"validation": 4,
+								"message": "Минимална дължина 4 символа"
+								},
+                                {
+                                    "name": "max",
+                                    "validation": 9999,
+                                    "message": "Невалидна година"
+                                },
+                                {
+                                    "name": "pattern",
+                                    "validation": "^\\d+$",
+                                    "message": "Полето трябва да съдържа цяло неотрицателно число"
+                                }
+                            ],
+                            "influence": []
+                        },
+                        {
+                            "label": "Забележка",
+                            "name": "note",
+                            "type": "textarea",
+                            "order": 6,
+                            "width": 400,
+                            "height": 2,
+                            "validations": [
+                                {
+                                    "name": "maxLength",
+                                    "validation": 1024,
+                                    "message": "Максимална дължина 1024 символа"
+                                }
+                            ],
+                            "influence": []
+                        }
+                    ],
+                    "idntfr": 245
+                },
+                {
+                    "order": 2,
+                    "label": "Кадастрални данни",
+                    "name": "cadasterData",
+                    "fields": [
+                        {
+                            "label": "Код от кадастъра",
+                            "name": "cadastralCode",
+                            "type": "input",
+                            "inputType": "text",
+                            "disabled": false,
+                            "validations": [
+                                {
+                                    "name": "required",
+                                    "validator": "",
+                                    "message": "Полето е задължително"
+                                }
+                            ],
+                            "order": 1,
+                            "influence": []
+                        },
+                        {
+                            "label": "Географски координати (ширина)",
+                            "name": "latitude",
+                            "type": "input",
+                            "inputType": "text",
+                            "disabled": false,
+                            "validations": [
+                                {
+                                    "name": "pattern",
+                                    "validation": "^(\\+|-)?(?:90(?:(?:\\.0{1,9})?)|(?:[0-9]|[1-8][0-9])(?:(?:\\.[0-9]{1,9})?))$",
+                                    "message": "Данните в полето трябва да бъдат представени в десетични градуси с разделител точка, напр. 42.6932246"
+                                }
+                            ],
+                            "order": 2,
+                            "influence": [],
+							"info": "Географските координати се въвеждат в следният формат пример:42.6901504"
+                        },
+                        {
+                            "label": "Географски координати (дължина)",
+                            "name": "longitude",
+                            "type": "input",
+                            "inputType": "text",
+                            "disabled": false,
+                            "validations": [
+                                {
+                                    "name": "pattern",
+                                    "validation": "^(\\+|-)?(?:180(?:(?:\\.0{1,9})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\\.[0-9]{1,9})?))$",
+                                    "message": "Данните в полето трябва да бъдат представени в десетични градуси с разделител точка, напр. 23.3520844"
+                                }
+                            ],
+                            "order": 3,
+                            "influence": [],
+                            "info": "Географските координати се въвеждат в следният формат пример:24.6024106"
+                        },
+                        {
+                            "label": "Акт за собственост",
+                            "name": "initialOwnershipDoc",
+                            "type": "file",
+                            "disabled": false,
+							"rendered": true,
+                            "order": 4,
+                            "influence": [],
+                            "validations": []
+                        },
+                        {
+                            "label": "Последен акт за собственост",
+                            "name": "latestOwnershipDoc",
+                            "type": "file",
+                            "disabled": false,
+							"rendered": true,
+                            "order": 5,
+                            "influence": [],
+                            "validations": []
+                        }
+                    ],
+                    "idntfr": 254
+                }
+            ]
+        },
+        {
+            "label": "Модернизация на сградата",
+            "order": 2,
+            "table": {
+                "name": "buildingModernizationDegree",
+                "hasEditButton": false,
+                "multiAdd": {
+                    "addFrom": "modernizationDegree",
+                    "listColumns": [
+                        "modernizationDegreeID",
+                        "modernizationDegreeName"
+                    ],
+                    "comparisonColumn": "modernizationDegreeID",
+                    "tableColumns": [
+                        "modernizationDegreeID",
+                        "modernizationDegreeName"
+                    ],
+                    "title": "Избор на вид модернизация",
+					"tooltip": "Моля въведете извършената модернизация на сградата"
+                },
+                "fields": [
+                    {
+                        "label": "№",
+                        "name": "modernizationDegreeID",
+                        "type": "input",
+                        "inputType": "number",
+                        "width": 2,
+                        "order": 1
+                    },
+                    {
+                        "label": "Вид модернизация",
+                        "name": "modernizationDegreeName",
+                        "type": "input",
+                        "inputType": "text",
+                        "width": 50,
+                        "order": 2
+                    },
+					 {
+                        "label": "Брой",
+                        "name": "countModernizationDegree",
+                        "type": "input",
+                        "inputType": "number",
+                        "width": 10,
+						"disabled": false,
+						"validations": [
+						
+                {
+                  "name": "pattern",
+                  "validation": "^\\d+$",
+                  "message": "Полето трябва да съдържа цяло неотрицателно число"
+                }
+              ],
+                        "order": 3
+                    }
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,46 @@
+{
+  "sections": [
+    {
+      "order": 1,
+      "name": "",
+      "rendered": true,
+      "table": {
+        "fields": [
+          {
+            "type": "label",
+            "order": 1,
+            "rendered": true,
+            "label": "идентификатор",
+            "name": "number"
+          },
+          {
+            "type": "label",
+            "order": 2,
+            "rendered": true,
+            "label": "име",
+            "name": "name"
+          },
+          {
+            "type": "label",
+            "order": 3,
+            "rendered": true,
+            "label": "статус",
+            "name": "status"
+          }
+        ],
+        "name": "signatureTable",
+        "rendered": true,
+        "hasEditButton": true,
+        "action": "edit",
+        "searchable": true,
+        "searchType": "all",
+        "sortable": true,
+        "createParams": null,
+        "editableByMonRuo": true,
+        "paramName": "signatureid",
+        "formName": "signatureData",
+        "createNew": "redirect"
+      }
+    }
+  ]
+}

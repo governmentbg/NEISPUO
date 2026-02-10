@@ -1,0 +1,113 @@
+[
+    {
+    "code": "1",
+    "label": "Държавно училище",
+    "formName": "institution",
+    "roleID": 2,
+    "eikObligatory": true,
+    "instType": 1
+  },
+  {
+    "code": "2",
+    "label": "Общинско училище",
+    "formName": "institution",
+    "roleID": 2,
+    "eikObligatory": true,
+    "instType": 1
+  },
+  {
+    "code": "3",
+    "label": "Частно училище",
+    "formName": "institution",
+    "roleID": 1,
+    "eikObligatory": true,
+    "instType": 1
+  },
+  {
+    "code": "3",
+    "label": "Частно училище",
+    "formName": "institution",
+    "roleID": 15,
+    "eikObligatory": true,
+    "instType": 1
+  },
+  {
+    "code": "4",
+    "label": "Духовно училище",
+    "formName": "institution",
+    "roleID": 1,
+    "eikObligatory": true,
+    "instType": 1
+  },
+  {
+    "code": "5",
+    "label": "Държавна детска градина",
+    "formName": "institution",
+    "roleID": 2,
+    "eikObligatory": true,
+    "instType": 2
+  },
+  {
+    "code": "7",
+    "label": "Частна детска градина",
+    "formName": "institution",
+    "roleID": 1,
+    "eikObligatory": true,
+    "instType": 2
+  },
+  {
+    "code": "7",
+    "label": "Частна детска градина",
+    "formName": "institution",
+    "roleID": 15,
+    "eikObligatory": true,
+    "instType": 2
+  },
+  {
+    "code": "9",
+    "label": "Държавен ЦСОП",
+    "formName": "institution",
+    "roleID": 1,
+    "eikObligatory": true,
+    "instType": 4
+  },
+  {
+    "code": "14",
+    "label": "Българско държавно училище в чужбина (по чл. 310, ал. 3 от ЗПУО)",
+    "formName": "institution",
+    "roleID": 1,
+    "eikObligatory": true,
+    "instType": 1
+  },
+  {
+    "code": "13",
+    "label": "По силата на международен договор",
+    "formName": "institution",
+    "roleID": 1,
+    "eikObligatory": false
+  },
+  {
+    "code": "12",
+    "label": "СОЗ (НДД, ДЛЦ, РЦПППО)",
+    "formName": "institution",
+    "roleID": 1,
+    "eikObligatory": true,
+    "instType": 5
+  },
+  {
+    "code": "10",
+    "label": "Общински ЦСОП",
+    "formName": "institution",
+    "roleID": 2,
+    "eikObligatory": true,
+    "instType": 4
+  },
+  {
+    "code": "11",
+    "label": "СОЗ (други)",
+    "formName": "institution",
+    "roleID": 1,
+    "eikObligatory": true,
+    "instType": 5
+  }
+]

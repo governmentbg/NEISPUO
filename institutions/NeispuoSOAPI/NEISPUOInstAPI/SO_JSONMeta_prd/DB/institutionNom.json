@@ -1,0 +1,52 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_basic].[InstitutionAll] B /**where**/ /**orderby**/",
+  "sotemplate": "SELECT /**select**/ FROM [sob].[InstitutionAll] B /**where**/ /**orderby**/",
+  "columns": [
+	{
+      "column": "B.InstitutionID AS code"
+    },
+	{
+      "column": "B.FullName AS label"
+    }
+   ],
+  "params": [
+    {
+      "param": "@instid",
+      "column": "B.InstitutionID",
+      "operator": "<>",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+			{
+			"param": "@year",
+			"column": "B.SchoolYear",
+			"operator": "=",
+			"value": "year",
+			"type": "int",
+			"logical_operator": "and",
+			"optional": true,
+			"static": false
+    },
+		{
+			"param": "@period",
+			"column": "B.Period",
+			"operator": "=",
+      "value": "period",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "B.Name",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+
+  ]
+}

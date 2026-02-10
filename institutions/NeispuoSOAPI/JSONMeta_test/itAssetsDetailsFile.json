@@ -1,0 +1,29 @@
+{
+  "procedureName": "",
+  "sections": [
+    {
+      "order": 1,
+      "label": "Зареждане на IT активи от файл",
+      "name": "ITAssetsFiles",
+       "subsections": [
+        {
+          "order": 1,
+          "name": "ITAssetsFileMessages",
+          "label": "Зареждане от файл",
+          "fields": [
+            {
+              "label": "Посочете файл за зареждане на IT активи",
+              "name": "ITAssetsFile",
+              "type": "file",
+              "disabled": false,
+		          "rendered": true,
+              "order": 1,
+              "influence": [],
+              "validations": []
+            }
+          ]
+        }
+      ]  
+    }
+  ]
+}

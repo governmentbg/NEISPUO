@@ -1,0 +1,43 @@
+{
+  "openProcedures": [
+    {
+      "id": "4654d5a",
+      "formName": "school",
+      "formDataId": "2999991",
+      "codeNEISPUO": "2999991",
+      "name": "Тестово училище 1",
+      "region": 1,
+      "municipality": 1,
+      "town": 2676,
+      "type37": 12,
+      "type38": 124,
+      "status": 1
+    },
+    {
+      "id": "6465das46d",
+      "formName": "kindergarden",
+      "formDataId": "2999998",
+      "codeNEISPUO": "2999998",
+      "name": "Детска градина 'Здравец'",
+      "region": 2,
+      "municipality": 15,
+      "town": 151,
+      "type37": 12,
+      "type38": 124,
+      "status": 1
+    },
+    {
+      "id": "6d54sad4",
+      "formName": "csop",
+      "formDataId": "2999984",
+      "codeNEISPUO": "2999984",
+      "name": "ЦСОП",
+      "region": 3,
+      "municipality": 28,
+      "town": 84,
+      "type37": 12,
+      "type38": 124,
+      "status": 1
+    }
+  ]
+}

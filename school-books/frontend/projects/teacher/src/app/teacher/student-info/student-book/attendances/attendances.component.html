@@ -1,0 +1,137 @@
+<div class="sb-table-container">
+  <table class="sb-table">
+    <thead>
+      <tr>
+        <th rowspan="2">Месец</th>
+        <th rowspan="2" class="text-center">
+          <span class="inline sm:hidden">Присъст.</span>
+          <span class="hidden sm:inline">Присъствия</span>
+        </th>
+        <th colspan="3" class="text-center">Отсъствия</th>
+      </tr>
+      <tr>
+        <th class="text-center">
+          <span class="inline sm:hidden">Неув.</span>
+          <span class="hidden sm:inline">Неуваж.</span>
+        </th>
+        <th class="text-center">
+          <span>Уваж.</span>
+        </th>
+        <th class="text-center">
+          <span class="inline sm:hidden">Об.</span>
+          <span class="hidden sm:inline">Общо</span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let monthAttendance of studentAttendances.monthAttendances">
+        <tr>
+          <td>
+            {{ monthAttendance.monthName }}
+          </td>
+
+          <td class="w-px whitespace-nowrap text-center font-medium align-middle p-1">
+            {{ monthAttendance.presencesCount }}
+          </td>
+
+          <td class="w-px whitespace-nowrap text-center font-medium align-middle p-1">
+            <button
+              class="book-count-button unexcused"
+              [class.disabled]="monthAttendance.unexcusedAbsencesCount === 0"
+              [class.active]="
+                selectedYear === monthAttendance.year &&
+                selectedMonth === monthAttendance.month &&
+                selectedType === ATTENDANCE_TYPE_UNEXCUSED
+              "
+              (click)="viewAttendances(monthAttendance.year, monthAttendance.month, ATTENDANCE_TYPE_UNEXCUSED)"
+            >
+              {{ monthAttendance.unexcusedAbsencesCount }}
+            </button>
+          </td>
+          <td class="w-px whitespace-nowrap text-center font-medium align-middle p-1">
+            <button
+              class="book-count-button excused"
+              [class.disabled]="monthAttendance.excusedAbsencesCount === 0"
+              [class.active]="
+                selectedYear === monthAttendance.year &&
+                selectedMonth === monthAttendance.month &&
+                selectedType === ATTENDANCE_TYPE_EXCUSED
+              "
+              (click)="viewAttendances(monthAttendance.year, monthAttendance.month, ATTENDANCE_TYPE_EXCUSED)"
+            >
+              {{ monthAttendance.excusedAbsencesCount }}
+            </button>
+          </td>
+          <td class="w-px whitespace-nowrap text-center font-medium align-middle p-1">
+            {{ monthAttendance.unexcusedAbsencesCount + monthAttendance.excusedAbsencesCount }}
+          </td>
+        </tr>
+        <tr
+          *ngIf="selectedYear === monthAttendance.year && selectedMonth === monthAttendance.month && loadingAttendances"
+        >
+          <td
+            colspan="5"
+            class="relative book-item-cell h-16"
+            [class.unexcused]="selectedType === ATTENDANCE_TYPE_UNEXCUSED"
+            [class.excused]="selectedType === ATTENDANCE_TYPE_EXCUSED"
+          >
+            <mat-spinner [diameter]="40" class="absolute top-1/2 left-1/2 -mt-5 -ml-5"></mat-spinner>
+          </td>
+        </tr>
+        <ng-container
+          *ngIf="
+            selectedYear === monthAttendance.year && selectedMonth === monthAttendance.month && !loadingAttendances
+          "
+        >
+          <tr *ngFor="let attendance of selectedAttendances">
+            <td
+              colspan="5"
+              class="relative p-2 book-item-cell"
+              [class.unexcused]="selectedType === ATTENDANCE_TYPE_UNEXCUSED"
+              [class.excused]="selectedType === ATTENDANCE_TYPE_EXCUSED"
+            >
+              <div class="sm:flex">
+                <div class="sm:grow">
+                  <div class="text-sm">
+                    <span class="block sm:inline whitespace-nowrap">
+                      <fa-icon [icon]="farCalendarTimes"></fa-icon>
+                      <span class="font-bold">{{ attendance.typeName }}</span>
+                    </span>
+                    {{ ' ' }}
+                    <span class="block sm:inline whitespace-nowrap">
+                      на
+                      <fa-icon [icon]="fasCalendarAlt"></fa-icon>
+                      <span class="font-bold">{{ attendance.date | sbDate }}</span>
+                    </span>
+                  </div>
+                  <div *ngIf="attendance.excusedReasonName" class="text-xs italic">
+                    Причини:
+                    <span class="font-bold">{{ attendance.excusedReasonName }}</span>
+                  </div>
+                  <div *ngIf="attendance.excusedReasonComment" class="text-xs italic">
+                    Коментар:
+                    <ng-container *ngIf="attendance.excusedReasonComment.indexOf('\n') !== -1"><br /></ng-container>
+                    <span class="font-bold whitespace-pre-line">{{ attendance.excusedReasonComment }}</span>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </ng-container>
+      </ng-container>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>Общо</td>
+        <td class="text-center text-sm">{{ studentAttendances.totals.presencesCountTotal }}</td>
+        <td class="text-center text-sm">{{ studentAttendances.totals.unexcusedAbsencesCountTotal }}</td>
+        <td class="text-center text-sm">{{ studentAttendances.totals.excusedAbsencesCountTotal }}</td>
+        <td class="text-center text-sm">
+          {{
+            studentAttendances.totals.unexcusedAbsencesCountTotal + studentAttendances.totals.excusedAbsencesCountTotal
+          }}
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>

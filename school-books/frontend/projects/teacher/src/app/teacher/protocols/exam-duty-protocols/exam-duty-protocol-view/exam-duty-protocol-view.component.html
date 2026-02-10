@@ -1,0 +1,207 @@
+<form [formGroup]="form" autocomplete="off" novalidate>
+  <sb-card>
+    <ng-container card-title>
+      {{
+        data.examDutyProtocol == null
+          ? 'Създаване на протокола за дежурство при провеждане на изпит'
+          : 'Редакция на протокола за дежурство при провеждане на изпит'
+      }}
+    </ng-container>
+    <sb-editor-panel
+      [backBtnRouteCommands]="['../']"
+      card-buttons
+      [editBtnHidden]="!canEdit"
+      [isNew]="data.examDutyProtocol == null"
+      (save)="onSave($event)"
+    >
+      <a
+        [href]="downloadUrl"
+        class="mr-3"
+        disabled-mode-buttons
+        target="_blank"
+        download
+        color="primary"
+        mat-raised-button
+        [disabled]="!downloadUrl || loading"
+      >
+        <fa-icon [icon]="loading ? fasSpinnerThird : fasFileWord" [spin]="loading" size="lg"></fa-icon>
+        <span>Свали</span>
+      </a>
+      <a
+        [href]="downloadTemplateUrl"
+        class="mr-3"
+        new-mode-buttons
+        target="_blank"
+        download
+        color="primary"
+        mat-raised-button
+        [disabled]="!downloadTemplateUrl || loadingTemplate"
+      >
+        <fa-icon [icon]="loadingTemplate ? fasSpinnerThird : fasFileWord" [spin]="loadingTemplate" size="lg"></fa-icon>
+        <span>Свали шаблон</span>
+      </a>
+      <a
+        [href]="downloadTemplateUrl"
+        class="mr-3"
+        disabled-mode-buttons
+        target="_blank"
+        download
+        color="primary"
+        mat-raised-button
+        [disabled]="!downloadTemplateUrl || loadingTemplate"
+      >
+        <fa-icon [icon]="loadingTemplate ? fasSpinnerThird : fasFileWord" [spin]="loadingTemplate" size="lg"></fa-icon>
+        <span>Свали шаблон</span>
+      </a>
+      <button
+        *ngIf="canRemove"
+        disabled-mode-buttons
+        mat-raised-button
+        color="warn"
+        type="button"
+        (click)="onRemove()"
+        [disabled]="removing"
+      >
+        <fa-icon [icon]="removing ? fasSpinnerThird : fasTrashAlt" [spin]="removing" size="lg"></fa-icon>
+        <span class="hidden sm:inline">Премахни</span>
+      </button>
+    </sb-editor-panel>
+    <ng-container card-body>
+      <sb-text-field
+        class="col-start-1 col-span-full whitespace-pre-wrap"
+        label="Вид на протокола"
+        formControlName="protocolName"
+        [readonly]="true"
+      ></sb-text-field>
+      <div class="sm:grid grid-cols-3 gap-x-4 mb-2">
+        <sb-text-field label="Номер на протокола" formControlName="protocolNumber"></sb-text-field>
+        <sb-date-field label="Дата на протокола" formControlName="protocolDate"></sb-date-field>
+
+        <sb-nom-select
+          class="col-start-1 col-span-2"
+          label="Предмет"
+          formControlName="subjectId"
+          [nomService]="subjectNomsService"
+        ></sb-nom-select>
+
+        <sb-nom-select
+          label="Вид подготовка"
+          formControlName="subjectTypeId"
+          [nomService]="subjectTypeNomsService"
+        ></sb-nom-select>
+
+        <sb-text-field class="col-start-1" label="Номер на заповед" formControlName="orderNumber"></sb-text-field>
+
+        <sb-date-field label="Дата на заповед" formControlName="orderDate"></sb-date-field>
+
+        <sb-date-field label="Дата на протокола" formControlName="date"></sb-date-field>
+
+        <sb-text-field label="група" formControlName="groupNum"></sb-text-field>
+        <sb-nom-select
+          label="Класове"
+          formControlName="classIds"
+          [multiple]="true"
+          [nomService]="classGroupNomsService"
+        ></sb-nom-select>
+
+        <sb-nom-select
+          label="Форма на обучение"
+          formControlName="eduFormId"
+          [nomService]="eduFormNomsService"
+        ></sb-nom-select>
+
+        <sb-text-field class="col-start-1" label="Сесия" formControlName="sessionType"></sb-text-field>
+
+        <sb-nom-select
+          label="Вид изпит"
+          formControlName="protocolExamTypeId"
+          [nomService]="examTypeNomsService"
+        ></sb-nom-select>
+
+        <sb-nom-select
+          label="Форма на изпита"
+          formControlName="protocolExamSubTypeId"
+          [nomService]="examSubTypeNomsService"
+        ></sb-nom-select>
+
+        <sb-card-section class="col-span-full">Квестори</sb-card-section>
+
+        <sb-nom-select
+          class="col-start-1 col-span-full"
+          label="квестори"
+          formControlName="supervisorPersonIds"
+          [nomService]="instTeacherNomsService"
+          [multiple]="true"
+        ></sb-nom-select>
+      </div>
+
+      <sb-card-section class="col-span-full">Ученици</sb-card-section>
+
+      <sb-banner type="info" *ngIf="data.examDutyProtocol == null">
+        Трябва да запишете протокола, за да може да добавите ученици
+      </sb-banner>
+
+      <ng-container *ngIf="data.examDutyProtocol != null">
+        <button
+          *ngIf="canEdit"
+          (click)="openAddStudentDialog()"
+          [disabled]="editable"
+          mat-raised-button
+          color="primary"
+          aria-label="Добави ученици"
+          type="button"
+          class="mb-2.5 mr-3"
+        >
+          <fa-icon [icon]="fasPlus" size="lg"></fa-icon>
+          <span>Добави ученици</span>
+        </button>
+        <button
+          *ngIf="canEdit"
+          (click)="openAddWholeClassDialog()"
+          [disabled]="editable"
+          mat-raised-button
+          color="primary"
+          aria-label="Добави цяла паралелка/група"
+          type="button"
+          class="mb-2.5"
+        >
+          <fa-icon [icon]="fasPlus" size="lg"></fa-icon>
+          <span>Добави цяла паралелка/група</span>
+        </button>
+        <sb-table
+          [dataSource]="dataSource"
+          [displayedColumns]="canEdit ? ['action', 'className', 'name'] : ['className', 'name']"
+        >
+          <ng-container cdkColumnDef="action">
+            <th cdk-header-cell *cdkHeaderCellDef></th>
+            <td cdk-cell *cdkCellDef="let row" class="sb-table-action">
+              <button
+                (click)="onRemoveStudent(row.classId, row.personId)"
+                [disabled]="editable || removingAct[row.personId]"
+                aria-label="Изтрий"
+                class="sb-link-btn"
+                type="button"
+              >
+                <fa-icon
+                  [icon]="removingAct[row.personId] ? fasSpinnerThird : fasTrashAlt"
+                  [spin]="removingAct[row.personId]"
+                  size="lg"
+                ></fa-icon>
+              </button>
+            </td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="className">
+            <th cdk-header-cell *cdkHeaderCellDef>Клас</th>
+            <td cdk-cell *cdkCellDef="let row">{{ row.className }}</td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="name">
+            <th cdk-header-cell *cdkHeaderCellDef>Ученик</th>
+            <td cdk-cell *cdkCellDef="let row">{{ row.name }}</td>
+          </ng-container>
+        </sb-table>
+      </ng-container>
+    </ng-container>
+  </sb-card>
+</form>

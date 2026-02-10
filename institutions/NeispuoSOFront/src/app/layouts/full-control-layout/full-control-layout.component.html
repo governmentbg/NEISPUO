@@ -1,0 +1,4 @@
+<app-full-control-header></app-full-control-header>
+<div class="body-layount-container" [ngClass]="{'history-mode-active': isHistory}"  *ngIf="!isLoading">
+  <router-outlet></router-outlet>
+</div>

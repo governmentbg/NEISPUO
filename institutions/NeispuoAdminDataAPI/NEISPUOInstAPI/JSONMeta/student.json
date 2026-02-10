@@ -1,0 +1,411 @@
+{
+  "label": "Профил на детето/ученика",
+  "changeData": false,
+  "sections": [
+    {
+      "label": "Профил на детето/ученика",
+      "order": 1,
+      "subsections": [
+        {
+          "order": 1,
+          "name": "personData",
+          "subsections": [
+            {
+              "order": 1,
+              "label": "Лични данни",
+              "fields": [
+                {
+                  "label": "Име",
+                  "name": "firstName",
+                  "type": "input",
+                  "inputType": "text",
+                  "order": 2,
+                  "width": 150,
+                  "disabled": true,
+                  "influence": []
+                },
+                {
+                  "label": "Презиме",
+                  "name": "middleName",
+                  "type": "input",
+                  "inputType": "text",
+                  "order": 3,
+                  "width": 150,
+                  "disabled": true,
+                  "influence": []
+                },
+                {
+                  "label": "Фамилия",
+                  "name": "lastName",
+                  "type": "input",
+                  "inputType": "text",
+                  "order": 4,
+                  "width": 200,
+                  "disabled": true,
+                  "influence": []
+                },
+                {
+                  "label": "Тип идентификатор",
+                  "name": "personalIDType",
+                  "type": "input",
+                  "inputType": "text",
+                  "disabled": true,
+                  "order": 5,
+                  "influence": [],
+                  "validations": []
+                },
+                {
+                  "label": "ЕГН/ЛНЧ",
+                  "name": "personalID",
+                  "type": "input",
+                  "inputType": "text",
+                  "order": 6,
+                  "disabled": true,
+                  "influence": [],
+                  "info": ""
+                },
+                {
+                  "label": "Личен образователен номер",
+                  "name": "publicEduNumber",
+                  "type": "input",
+                  "inputType": "text",
+                  "order": 7,
+                  "disabled": true,
+                  "influence": [],
+                  "info": ""
+                },
+                {
+                  "label": "Пол",
+                  "name": "gender",
+                  "type": "input",
+                  "inputType": "text",
+                  "disabled": true,
+                  "order": 8,
+                  "influence": [],
+                  "validations": []
+                },
+                {
+                  "label": "Дата на раждане",
+                  "name": "birthDate",
+                  "type": "date",
+                  "disabled": true,
+                  "order": 9,
+                  "width": 200,
+                  "validations": [],
+                  "influence": []
+                },
+                {
+                  "label": "Националност",
+                  "name": "nationality",
+                  "type": "input",
+                  "inputType": "text",
+                  "disabled": true,
+                  "order": 10,
+                  "influence": [],
+                  "validations": []
+                },
+                {
+                  "label": "Място на раждане (град)",
+                  "name": "birthPlaceTown",
+                  "type": "input",
+                  "inputType": "text",
+                  "disabled": true,
+                  "order": 11,
+                  "influence": [],
+                  "validations": []
+                },
+                {
+                  "label": "Място на раждане (държава)",
+                  "name": "birthPlaceCountry",
+                  "type": "input",
+                  "inputType": "text",
+                  "disabled": true,
+                  "order": 12,
+                  "influence": [],
+                  "validations": []
+                },
+                {
+                  "order": 13,
+                  "type": "breakpoint"
+                },
+                {
+                  "order": 14,
+                  "label": "Постоянен адрес (област)",
+                  "name": "permanentRegion",
+                  "type": "input",
+                  "inputType": "text",
+                  "disabled": true
+                },
+                {
+                  "order": 15,
+                  "label": "Постоянен адрес (община)",
+                  "name": "permanentMunicipality",
+                  "type": "input",
+                  "inputType": "text",
+                  "disabled": true
+                },
+                {
+                  "order": 16,
+                  "label": "Постоянен адрес (населено място)",
+                  "name": "permanentTown",
+                  "type": "input",
+                  "inputType": "text",
+                  "disabled": true
+                },
+                {
+                  "label": "Адрес",
+                  "name": "permanentAddress",
+                  "type": "input",
+                  "inputType": "text",
+                  "order": 17,
+                  "width": 600,
+                  "disabled": true
+                },
+                {
+                  "order": 18,
+                  "type": "breakpoint"
+                },
+                {
+                  "order": 19,
+                  "label": "Настоящ адрес (област)",
+                  "name": "currentRegion",
+                  "type": "input",
+                  "inputType": "text",
+                  "disabled": true
+                },
+                {
+                  "order": 20,
+                  "label": "Настоящ адрес (община)",
+                  "name": "currentMunicipality",
+                  "type": "input",
+                  "inputType": "text",
+                  "disabled": true
+                },
+                {
+                  "order": 21,
+                  "label": "Настоящ адрес (населено място)",
+                  "name": "currentTown",
+                  "type": "input",
+                  "inputType": "text",
+                  "disabled": true
+                },
+                {
+                  "label": "Адрес",
+                  "name": "currentAddress",
+                  "type": "input",
+                  "inputType": "text",
+                  "order": 22,
+                  "width": 600,
+                  "disabled": true,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 255,
+                      "message": "Максимална дължина 255 символа"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Данни за специални образователни потребности",
+      "order": 2,
+      "accordion": {"state": "closed","dataName":"studentSpecialNeedsData"},
+      "table": {
+        "name": "specialNeedsData",
+        "hasEditButton": false,
+        "searchable": false,
+        "sortable": false,
+        "fields": [
+          {
+            "label": "Вид",
+            "name": "specialNeedsTypeName",
+            "type": "input",
+            "inputType": "text",
+            "order": 1,
+            "width": 50
+          },
+          {
+            "label": "Под вид",
+            "name": "specialNeedsSubTypeName",
+            "type": "input",
+            "inputType": "text",
+            "order": 2,
+            "width": 50
+          }
+        ]
+      }
+    },
+    {
+      "label": "Международна закрила",
+      "order": 3,
+      "accordion": {"state": "closed","dataName":"studentInternationalProtection"},
+      "table": {
+        "name": "internationalProtection",
+        "hasEditButton": false,
+        "searchable": false,
+        "sortable": false,
+        "fields": [
+            {
+              "label": "id",
+              "name": "id",
+              "type": "input",
+              "rendered":false,
+              "inputType": "number",
+              "width": 10,
+              "order": 0
+            },           
+            {
+              "label": "Номер на документ",
+              "name": "docNumber",
+              "type": "input",
+              "inputType": "text",
+              "order": 1,
+              "width": 150,
+              "disabled": false,
+              "influence": [],
+              "validations": []
+            },
+            {
+              "label": "Дата на документ",
+              "name": "docDate",
+              "type": "date",
+              "order": 2,
+              "width": 150,
+              "disabled": false,
+              "influence": [],
+              "validations": []
+            },
+            {
+              "label": "Валиден от",
+              "name": "validFrom",
+              "type": "date",
+              "order": 3,
+              "width": 150,
+              "disabled": false,
+              "influence": [],
+              "validations": []
+            },
+            {
+              "label": "Валиден до",
+              "name": "validTo",
+              "type": "date",
+              "order": 4,
+              "width": 150,
+              "disabled": false,
+              "influence": [],
+              "validations": []
+            }
+          ]
+        }
+    },
+    {
+      "label": "Стипендии",
+      "order": 4,
+      "accordion": {"state": "closed","dataName":"studentScholarships"},
+      "table": {
+        "name": "studentScholarships",
+        "hasEditButton": false,
+        "searchable": false,
+        "sortable": false,
+        "fields": [
+          {
+            "label": "Вид стипендия",
+            "name": "scholarshipType",
+            "type": "input",
+            "inputType": "text",
+            "order": 1,
+            "width": 80
+          },
+          {
+            "label": "Размер на стипендия (%)",
+            "name": "scholarshipAmount",
+            "type": "input",
+            "inputType": "text",
+            "order": 2,
+            "width": 40
+          },
+          {
+            "label": "Сума на стипендия",
+            "name": "amountRate",
+            "type": "input",
+            "inputType": "number",
+            "order": 3,
+            "width": 40
+          },
+          {
+            "label": "Описание",
+            "name": "description",
+            "type": "input",
+            "inputType": "textArea",
+            "order": 4,
+            "width": 80
+          },
+          {
+            "label": "Начална дата на получаване",
+            "name": "validFrom",
+            "type": "date",
+            "order": 5,
+            "width": 30
+          },
+          {
+            "label": "Крайна дата на получаване",
+            "name": "validTo",
+            "type": "date",
+            "order": 6,
+            "width": 30
+          }
+        ]
+      }
+    },
+    {
+      "label": "Данни за обучение в друга институция",
+      "order": 5,
+      "accordion": {"state": "closed","dataName":"otherInstitutionData"},
+      "table": {
+        "name": "otherInstitutionData",
+        "hasEditButton": false,
+        "searchable": false,
+        "sortable": false,
+        "fields": [
+          {
+            "label": "Код и наименование на институция",
+            "name": "institutionName",
+            "type": "input",
+            "inputType": "text",
+            "order": 1,
+            "width": 600
+          },
+          {
+            "label": "Адрес",
+            "name": "address",
+            "type": "input",
+            "inputType": "text",
+            "order": 2,
+            "width": 300
+          },
+          {
+            "label": "Випуск (клас)/Възрастова група",
+            "name": "basicClass",
+            "type": "input",
+            "inputType": "text",
+            "width": 150,
+            "order": 3
+          },
+          {
+            "label": "Вид",
+            "name": "classType",
+            "type": "input",
+            "inputType": "text",
+            "width": 150,
+            "order": 4
+          }
+        ]
+      }
+    }
+  ]
+}

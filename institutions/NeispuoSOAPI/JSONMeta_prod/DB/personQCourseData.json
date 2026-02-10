@@ -1,0 +1,95 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_basic].[PersonQCourse] PQC /**where**/ /**orderby**/",
+  "sotemplate": "SELECT /**select**/ FROM [sob].[PersonQCourse] PQC /**where**/ /**orderby**/",
+  "columns": [
+    {
+      "column": "PQC.PersonQCourseID AS personQCourseDataID"
+    },
+    {
+      "column": "PQC.PersonID AS personID"
+    },
+    {
+      "column": "PQC.QCourseTypeID AS qCourseTypeID"
+    },
+    {
+      "column": "PQC.QCourseActTypeID AS qCourseActTypeID"
+    },
+    {
+      "column": "PQC.QCourseYear AS qCourseYear"
+    },
+    {
+      "column": "PQC.QCourseTypeNotes AS qCourseTypeNotes"
+    },
+    {
+      "column": "PQC.QCourseBudgetSourceTypeID AS qCourseBudgetSourceTypeID"
+    },
+    {
+      "column": "PQC.QCourseFinancingMethodID AS qCourseFinancingMethodID"
+    },
+    {
+      "column": "PQC.QCourseFinancingMethodProgramsID AS qCourseFinancingMethodProgramsID"
+    },
+    {
+      "column": "PQC.InternalCoursePrice AS internalCoursePrice"
+    },
+    {
+      "column": "PQC.UniversityID AS universityID"
+    },
+    {
+      "column": "PQC.UniversityNotes AS universityNotes"
+    },
+    {
+      "column": "PQC.QCourseTopic AS qCourseTopic"
+    },
+    {
+      "column": "PQC.QCourseDurationTypeID AS qCourseDurationTypeID"
+    },
+    {
+      "column": "PQC.QCourseDurationCredits AS qCourseDurationCredits"
+    },
+    {
+      "column": "PQC.QCourseDurationHours AS qCourseDurationHours"
+    },
+    {
+      "column": "PQC.DocumentType AS documentType"
+    }
+  ],
+  "params": [
+    {
+      "param": "@personQCourseDataID",
+      "column": "PQC.PersonQCourseID",
+      "operator": "=",
+      "value": "personQCourseDataID",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+    {
+      "param": "@year",
+      "column": "PQC.SchoolYear",
+      "operator": "=",
+      "value": "year",
+      "type": "int",
+      "logical_operator": "and",
+      "optional": true,
+      "static": false
+    },
+    {
+      "param": "@period",
+      "column": "PQC.Period",
+      "operator": "=",
+      "value": "period",
+      "type": "int",
+      "logical_operator": "and",
+      "optional": true,
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "PQC.PersonQCourseID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": []
+}

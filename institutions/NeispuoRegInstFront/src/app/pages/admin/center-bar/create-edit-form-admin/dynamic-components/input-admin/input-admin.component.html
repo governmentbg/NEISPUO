@@ -1,0 +1,12 @@
+<div class="l-container-component l-focused-element" [style.width.px]="field.width" [ngClass]="{'focused': updateJsonService.focusedElement.index === field.idntfr}" (click)="focus()">
+    <span class="l-custom-info-span">текстово поле</span>
+    <span class="l-custom-span-label">
+      <span class="required-span" *ngIf="required">*</span>
+      <span class="label-label">{{ field.pseudoLabel }}</span>
+      <app-info-tooltip *ngIf="field.info" [info]="field.info"></app-info-tooltip>
+    </span>
+    <mat-form-field appearance="outline" floatLabel="never" matTooltipClass="l-custom-tooltip" [matTooltip]="field.disabled ? field.value : ''">
+      <input matInput [type]="field.inputType" disabled/>
+    </mat-form-field>
+</div>
+  

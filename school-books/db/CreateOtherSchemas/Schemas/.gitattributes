@@ -1,0 +1,12 @@
+core_noms_location_family.fks.sql linguist-generated
+core_noms_location_family.sql linguist-generated
+document.fks.sql linguist-generated
+document.sql linguist-generated
+inst_basic.fks.sql linguist-generated
+inst_basic.sql linguist-generated
+inst_nom.fks.sql linguist-generated
+inst_nom.sql linguist-generated
+inst_year.fks.sql linguist-generated
+inst_year.sql linguist-generated
+student.fks.sql linguist-generated
+student.sql linguist-generated

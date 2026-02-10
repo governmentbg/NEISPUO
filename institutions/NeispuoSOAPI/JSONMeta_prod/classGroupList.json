@@ -1,0 +1,220 @@
+{
+  "procedureName": "inst_basic.classGroupCUD",
+  "dataName": "classGroupDataOnlyBasicData",
+  "sections": [
+    {
+      "name": "classGroupBasicData",
+      "order": 1,
+      "label": "if(instType==2 || instType==3) {section.label='Данни за група'} else {section.label='Данни за група/клас'}",
+      "subsections": [
+        {
+          "order": 1,
+          "name": "classBasicData",
+          "fields": [
+            {
+              "label": "if(instType==2 || instType==3) {field.label='Наименование на група'} else {field.label='Наименование на група/клас'}",
+              "name": "className",
+              "type": "input",
+              "inputType": "text",
+              "order": 1,
+              "width": 400,
+              "rendered": true,
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ],
+              "info": "За промяна на данни, моля изберете бутон 'Редактиране'",
+              "disabled": false
+            },
+            {
+              "label": "Адрес на обучение",
+              "name": "institutionDepartmentID",
+              "type": "select",
+              "optionsPath": "/data/get/institutionDepartments",
+              "disabled": false,
+              "width": 600,
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ],
+              "order": 2,
+              "info": "За промяна на данни, моля изберете бутон 'Редактиране'",
+              "influence": []
+            },
+            {
+              "label": "Създай РУП за класа",
+              "name": "createRUP",
+              "type": "checkbox",
+              "disabled": false,
+              "rendered": "if(instType==1 || instType==4) {field.rendered=true} else {field.rendered=false}",
+              "info": "При избор на флага се добавя рамков учебен план съгласно Приложенията към чл. 12 ал. 2 на НАРЕДБА № 4 за учебния план",
+              "influence": [
+                {
+                  "fieldName": "className",
+                  "type": "disable",
+                  "condition": [
+                    true
+                  ]
+                },
+                {
+                  "fieldName": "institutionDepartmentID",
+                  "type": "disable",
+                  "condition": [
+                    true
+                  ]
+                }
+              ],
+              "order": 3
+            },
+            {
+              "label": "BasicClassIDLabel",
+              "name": "basicClassID",
+              "rendered": false,
+              "order": 4,
+              "type": "input",
+              "inputType": "number",
+              "influence": [
+                {
+                  "fieldName": "createRUP",
+                  "type": "render",
+                  "condition": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "hasCurriculumLabel",
+              "name": "hasCurriculum",
+              "rendered": false,
+              "order": 5,
+              "type": "checkbox",
+              "influence": [
+                {
+                  "fieldName": "createRUP",
+                  "type": "render",
+                  "condition": [
+                    0
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "classKindLabel",
+              "name": "classKind",
+              "type": "input",
+              "inputType": "number",
+              "width": 10,
+              "order": 7,
+              "rendered": false,
+              "disabled": true
+            },
+            {
+              "label": "isCombinedLabel",
+              "name": "isCombined",
+              "rendered": false,
+              "order": 8,
+              "type": "checkbox",
+              "influence": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "TableClassGroup",
+      "order": 2,
+      "label": "Списък групи",
+      "table": {
+        "order": 1,
+        "name": "classGroupDataList",
+        "searchable": false,
+        "canDeleteRow": "if (hasClassBook == 1) {table.canDeleteRow = false} else {table.canDeleteRow = true}",
+        "createNew": "redirect",
+        "formName": "classGroupDataEducational",
+        "createParams": {
+          "classKind": 1
+        },
+        "additionalParams": [
+          "basicClassID",
+          "classKind",
+          "hasClassBook"
+        ],
+        "paramName": "classid",
+        "rendered": "if(operationType==2) {table.rendered=false} else {table.rendered=true}",
+        "procedureName": "inst_basic.classGroupCUD",
+        "fields": [
+          {
+            "label": "Наличие на създаден дневник",
+            "name": "hasClassBook",
+            "type": "input",
+            "inputType": "number",
+            "width": 50,
+            "rendered": false,
+            "order": 0,
+            "disabled": true
+          },
+          {
+            "label": "Група",
+            "name": "classGroupID",
+            "type": "input",
+            "inputType": "number",
+            "rendered": true,
+            "disabled": false,
+            "order": 1
+          },
+          {
+            "label": "if(instType==1 || instType==4) {field.label='Випуск (клас)'} else {field.label='Възрастова група'}",
+            "name": "basicClass",
+            "type": "input",
+            "inputType": "text",
+            "disabled": false,
+            "order": 2
+          },
+          {
+            "label": "if(instType==3) {field.label='Организационна форма'} else {field.label='Вид'}",
+            "name": "classTypeName",
+            "type": "input",
+            "inputType": "text",
+            "disabled": false,
+            "order": 3
+          },
+          {
+            "label": "Специалност",
+            "name": "classSpecialityName",
+            "type": "input",
+            "inputType": "text",
+            "disabled": false,
+            "rendered": "if(instType==2) {field.rendered=false} else {field.rendered=true}",
+            "order": 4
+          },
+          {
+            "label": "Специална",
+            "name": "isSpecNeed",
+            "type": "input",
+            "inputType": "text",
+            "disabled": false,
+            "order": 5
+          }
+        ]
+      }
+    }
+  ]
+}

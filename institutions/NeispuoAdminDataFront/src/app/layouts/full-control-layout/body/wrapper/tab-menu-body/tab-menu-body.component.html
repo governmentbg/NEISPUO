@@ -1,0 +1,13 @@
+<div class="custom-tab-wrapper">
+  <button mat-raised-button *ngIf="hasBackButton" (click)="goBack()" class="back-btn" color="secondary"><span class="material-icons"> keyboard_arrow_left </span>назад</button>
+  <div class="l-custom-wrapper-mat-tab">
+    <div class="l-custom-header-mat-tab custom-mat-tab-l" [ngClass]="{'go-back-button': hasBackButton}">
+      <nav mat-tab-nav-bar>
+        <a mat-tab-link *ngFor="let tab of currentTab.children; let i = index" (click)="onTabChanged(tab)" [active]="childTab == tab"> {{ tab.label }} </a>
+      </nav>
+    </div>
+    <div class="l-custom-body-mat-tab">
+      <app-form-wrapper></app-form-wrapper>
+    </div>
+  </div>
+</div>

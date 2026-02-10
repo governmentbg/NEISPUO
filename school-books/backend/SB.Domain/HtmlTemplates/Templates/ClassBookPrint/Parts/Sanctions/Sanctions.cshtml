@@ -1,0 +1,52 @@
+@using SB.Domain
+@model SanctionsModel
+
+<div class="page">
+  <h3 class="page-header">Наложени и отменени санкции на ученици</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th rowspan="2" class="three-rows-height align-bottom"><div class="vertical-text">№ на ученика</div></th>
+        <th rowspan="2">Трите имена на ученика</th>
+        <th rowspan="2">Основание</th>
+        <th colspan="2">Заповед за налагане</th>
+        <th colspan="2">Заповед за отмяна</th>
+      </tr>
+      <tr>
+        <th>Номер</th>
+        <th>Дата</th>
+        <th>Номер</th>
+        <th>Дата</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (var student in Model.Students)
+      {
+        int rowspan = student.Sanctions.Length;
+
+        for (int i = 0; i < student.Sanctions.Length; i++)
+        {
+          <tr>
+            @if (i == 0)
+            {
+              <td rowspan="@rowspan">@student.ClassNumber</td>
+              <td rowspan="@rowspan">
+                @student.FullName
+                @if (student.IsTransferred)
+                {
+                  <span class="sb-badge">ОТПИСАН</span>
+                }
+              </td>
+            }
+            <td>@student.Sanctions[i].SanctionType</td>
+            <td>@student.Sanctions[i].OrderNumber</td>
+            <td>@student.Sanctions[i].OrderDate.ToString("dd.MM.yy")</td>
+            <td>@student.Sanctions[i].CancelOrderNumber</td>
+            <td>@(student.Sanctions[i].CancelOrderDate?.ToString("dd.MM.yy") ?? "")</td>
+          </tr>
+        }
+      }
+    </tbody>
+  </table>
+</div>

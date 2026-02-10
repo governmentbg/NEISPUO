@@ -1,0 +1,67 @@
+#twroot .sb-form-control {
+  @apply box-border bg-white border border-solid border-gray-200 p-2 py-1.5 mt-0 rounded w-full;
+
+  &:not([readonly]) {
+    @apply focus:border-primary;
+  }
+
+  &[readonly] {
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+}
+
+.sb-form-control-select-wrapper {
+  position: relative;
+
+  > select {
+    appearance: none;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: 9px;
+    top: 16px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid;
+    margin: 0 4px;
+    color: rgba(0, 0, 0, 0.54);
+  }
+}
+
+#twroot .sb-form-control.ng-touched.ng-invalid,
+#twroot .ng-submitted .sb-form-control.ng-invalid {
+  border-color: theme('colors.error');
+}
+
+#twroot .mat-form-field .mat-error {
+  display: none;
+}
+
+#twroot .mat-hint {
+  @apply text-gray-700;
+}
+
+#twroot .mat-form-field.ng-touched.ng-invalid .mat-error,
+#twroot .ng-submitted .mat-form-field.ng-invalid .mat-error {
+  display: block;
+}
+
+.sb-single-row-mat-field {
+  .mat-form-field:not(.mat-form-field-invalid) .mat-form-field-wrapper {
+    padding-bottom: 0;
+  }
+
+  .sb-nom-select:not(.sb-nom-select-error-state) .ng-select {
+    margin-bottom: 0;
+  }
+}
+
+.sb-wrapped-text-mat-field {
+  .ng-value-container .ng-value {
+    white-space: normal !important;
+  }
+}

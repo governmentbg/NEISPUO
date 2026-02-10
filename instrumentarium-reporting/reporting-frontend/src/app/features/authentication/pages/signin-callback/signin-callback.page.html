@@ -1,0 +1,26 @@
+<app-auth-header></app-auth-header>
+<div *ngIf="error; else loading" class="callback-page error container-fluid">
+  <div class="callback-page-content card">
+    <div class="card-body">
+      <p class="h1 mb-6">Възникна грешка!</p>
+      <p>
+        Възникна грешка по време на вход в системата. Моля натиснете
+        <a routerLink="/">тук</a>, за да опитате отново.
+      </p>
+      <p>В случай че продъжавате да виждате същата грешка се свържете с администратор.</p>
+    </div>
+  </div>
+</div>
+<ng-template #loading>
+  <div class="callback-page loading container-fluid">
+    <div class="callback-page-content">
+      <div class="loader">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <p class="h1 mb-6">Пренасочване</p>
+      <p>Моля изчакайте, пренасочваме Ви към страницата на модула.</p>
+    </div>
+  </div>
+</ng-template>

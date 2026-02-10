@@ -1,0 +1,32 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_nom].[ProjectProgram] PP /**where**/ /**orderby**/",
+  "columns": [
+	{
+      "column": "PP.ProjectProgramID AS code"
+    },
+	{
+      "column": "PP.Description AS label"
+    }
+   ],
+  "params": [
+		{
+      "param": "@filterValue",
+      "column": "PP.AcquisitionMethodID",
+      "operator": "=",
+      "value": "filterValue",
+      "type": "int",
+      "logical_operator": "and",
+      "optional": true,
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "PP.Description",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+
+  ]
+}

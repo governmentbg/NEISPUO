@@ -1,0 +1,37 @@
+<div class="full-wrapper">
+    <mat-card class="section-card first-card" color="primary">
+        <mat-card-header class="bg-cornflower-blue">
+            <mat-card-title>Нов предмет</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="row-flex">
+                <div class="l-container-component w-200">
+                    <span class="l-custom-span-label">Моля въведете наименование на предмета
+                        <span class="required-span">*</span>
+                    </span>
+                    <mat-form-field appearance="outline" floatLabel="never" class="full-width">
+                        <input matInput [(ngModel)]="subjectName" #subjectNameFld="ngModel" [pattern]="regex">
+                    </mat-form-field>
+                    <div *ngIf="subjectNameFld.invalid" class="l-custom-error">Наименованието на учебния предмет може да бъде само на кирилица и символите: -,.:;()/\"'</div>
+                </div>
+            </div>
+            <button mat-raised-button color="primary" class="check-btn" [disabled]="!subjectName || subjectNameFld.invalid" (click)="getData()"><span>Провери</span></button>
+        </mat-card-content>
+    </mat-card>
+    <span class="message-for-info" *ngIf="message">{{message}}</span>
+    <mat-card class="section-card second-card" color="primary" *ngIf="data">
+        <mat-card-content>
+            <ng-container *ngFor="let section of data.sections">
+                <ng-container *ngIf="section.table">
+                    <app-table [table]="section.table" [parentGroup]="formGroup" [mode]="modes.View"></app-table>
+                </ng-container>
+            </ng-container>
+        </mat-card-content>
+    </mat-card>
+    
+    <div class="action-container" *ngIf="dataTaken">
+        <button mat-raised-button color="secondary" (click)="goBack()"><span>Откажи</span></button>
+        <button mat-raised-button class="btn-add-institution" color="primary" (click)="navigate()"><span>Въведи като нов предмет</span></button>
+    </div>
+</div>
+<app-loader *ngIf="isLoading"></app-loader>

@@ -1,0 +1,6 @@
+<div class="l-container-component" [ngClass]="{'preview-mode': mode === modes.View}">
+  <div class="wrap" (click)="download()">
+    <span class="l-custom-span-label">{{ fileLabel }}</span>
+    <img class="icon-pdf" src="../../../../assets/images/pdf.png" />
+  </div>
+</div>

@@ -1,0 +1,49 @@
+{
+  "institutionDepartments": [],
+  "departmentPhones": [{ "id": 25, "departmentPhone": "123456789" }],
+  "isNonIndDomitory": false,
+  "isInternContract": false,
+  "isInnovative": true,
+  "region": "София-град",
+  "municipality": "Столична",
+  "country": "България",
+  "town": "Яна",
+  "address": "\u0431\u0443\u043B. \u0410\u0440\u0441\u0435\u043D\u0430\u043B 123",
+  "postCode": 2030,
+  "email": "m.petkova@adminsoft.bg",
+  "website": "www.tu.com",
+  "established": "1990",
+  "incActFirst": "\u0417\u0430\u043F\u043E\u0432\u0435\u0434 \u2116 \u0420\u041485-850/05.12.1990\u0433. \u043D\u0430 \u043C\u0438\u043D\u0438\u0441\u0442\u044A\u0440\u0430 \u043D\u0430  \u043D\u0430\u0440\u043E\u0434\u043D\u0430\u0442\u0430 \u043F\u0440\u043E\u0441\u0432\u0435\u0442\u0430",
+  "incActLast": "\u0417\u0430\u043F\u043E\u0432\u0435\u0434 345 \u043E\u0442 2016 \u0433.",
+  "schoolShiftTypeID": null,
+  "isProtected": false,
+  "isStateFunding": false,
+  "pedagogStaffCount": 94.5,
+  "pedagogNonStaffCount": 29,
+  "pedagogStaffSalary": 1050,
+  "pedagogNonStaffSalary": 906,
+  "yearlyBudget": 1352968,
+  "innovations": [
+    {
+      "id": 565,
+      "deedОfОwnership": 1217
+    }
+  ],
+  "institutionPhones": [
+    {
+      "id": 25,
+      "institutionPhoneTypeID": "стационарен",
+      "institutionPhoneCode": "02",
+      "institutionPhone": "123456789",
+      "institutionContactKind": "\u0434\u0438\u0440\u0435\u043A\u0442\u043E\u0440",
+      "isMain": true
+    },
+    {
+      "id": 25,
+      "institutionPhoneTypeID": "мобилен",
+      "institutionPhone": "0888111222",
+      "institutionContactKind": "\u0434\u0438\u0440\u0435\u043A\u0442\u043E\u0440",
+      "isMain": false
+    }
+  ]
+}

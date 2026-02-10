@@ -1,0 +1,37 @@
+const EventStatusEnum = Object.freeze({
+  AWAITING_CREATION: 0,
+  IN_CREATION: 1,
+  FAILED: 2,
+  SUCCESSFUL: 3,
+  SYNCHRONIZED: 4,
+  FAILED_CREATION: 5,
+  FAILED_SYNCRONIZATION: 6,
+  IN_USERNAME_GENERATION: 7,
+  FAILED_USERNAME_GENERATION: 8,
+  STUCK: 500,
+});
+
+const WorkflowTypeEnum = Object.freeze({
+  SCHOOL_CREATE: 1,
+  SCHOOL_UPDATE: 2,
+  SCHOOL_DELETE: 3,
+  CLASS_CREATE: 4,
+  CLASS_UPDATE: 5,
+  CLASS_DELETE: 6,
+  USER_CREATE: 7,
+  USER_UPDATE: 8,
+  USER_DELETE: 9,
+  ENROLLMENT_CREATE: 10,
+  ENROLLMENT_CLASS_CREATE: 11,
+  ENROLLMENT_SCHOOL_CREATE: 12,
+  ENROLLMENT_DELETE: 13,
+  ENROLLMENT_CLASS_DELETE: 14,
+  ENROLLMENT_SCHOOL_DELETE: 15,
+});
+
+const IsForArchivationEnum = Object.freeze({
+  NO: 0,
+  YES: 1,
+});
+
+module.exports = { EventStatusEnum, WorkflowTypeEnum, IsForArchivationEnum };

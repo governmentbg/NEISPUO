@@ -1,0 +1,14 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[DBVersion] /**where**/ /**orderby**/",
+    "columns": [
+		{
+            "column": "VersionName as Version"
+        }
+    ],
+    "params": [
+
+    ],
+    "order": [
+    ],
+    "inSelects": []
+}

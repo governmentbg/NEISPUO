@@ -1,0 +1,37 @@
+{
+  "sections": [
+    {
+      "order": 1,
+      "name": "TableExternalProvidersList",
+      "table":
+      {
+        "name": "externalProvidersList",
+		"searchable": false,
+        "formName":"externalProviderData",
+		"createNew":"samePage",
+        "paramName":"instExtSystemID",
+		"hasEditButton":false,
+		"canDeleteRow": true,
+		"procedureName": "inst_year.instConfData",
+        "fields": [
+		 {
+            "label": "Тип система",
+            "name": "extSystemType",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 1
+          },
+          {
+            "label": "Външен доставчик",
+            "name": "extSystemName",
+            "type": "input",
+            "inputType": "text",
+            "width": 8,
+            "order": 2
+          } 
+        ]
+      }
+    }
+  ]
+}

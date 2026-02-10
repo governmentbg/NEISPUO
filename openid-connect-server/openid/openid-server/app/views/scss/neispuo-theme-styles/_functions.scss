@@ -1,0 +1,8 @@
+@function get-color($color, $map) {
+    @if(map-has-key($map, $color)) {
+        $value: map-get($map, unquote($color));
+        @if type-of($value) == color {
+            @return $value;
+        }
+    }
+}

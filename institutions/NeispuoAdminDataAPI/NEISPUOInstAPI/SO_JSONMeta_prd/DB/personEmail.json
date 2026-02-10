@@ -1,0 +1,21 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_basic].[PersonAll] PA /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "PA.Email AS email"
+        }
+    ],
+    "params": [
+        {
+            "param": "@personID",
+            "column": "PA.PersonID",
+            "operator": "=",
+            "value": "personID",
+            "type": "int",
+            "logical_operator": "and",
+            "static": false
+        }
+    ],
+    "order": [],
+    "inSelects": []
+}

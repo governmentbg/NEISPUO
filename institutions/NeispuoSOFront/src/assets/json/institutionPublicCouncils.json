@@ -1,0 +1,72 @@
+{
+  "label": "Данни за обществен съвет",
+  "sections": [
+    {
+      "label": "Обществен съвет",
+      "order": 1,
+      "name": "TablePublicCouncilData",
+      "table": {
+        "label": "Данни за обществен съвет",
+        "name": "publicCouncilData",
+        "paramName": "councilId",
+        "canDeleteRow": true,
+        "canDeleteLastRow": false,
+        "createNew": "samePage",
+        "createParams": { "tableType": "staff", "test": 1524 },
+        "formName": "institutionPublicCouncilsData",
+        "firstRowDisabled": true,
+        "fields": [
+          {
+            "label": "Институция, на която е представител",
+            "name": "publicCouncilType",
+            "type": "input",
+            "inputType": "text",
+            "order": 1
+          },
+          {
+            "label": "Роля",
+            "name": "publicCouncilRole",
+            "type": "input",
+            "inputType": "text",
+            "order": 2
+          },
+          {
+            "label": "Име",
+            "name": "firstName",
+            "type": "input",
+            "inputType": "text",
+            "order": 3
+          },
+          {
+            "label": "Презиме",
+            "name": "middleName",
+            "type": "input",
+            "inputType": "text",
+            "order": 4
+          },
+          {
+            "label": "Фамилия",
+            "name": "familyName",
+            "type": "input",
+            "inputType": "text",
+            "order": 5
+          },
+          {
+            "label": "Електронна поща",
+            "name": "email",
+            "type": "input",
+            "inputType": "text",
+            "order": 6
+          },
+          {
+            "label": "Телефон",
+            "name": "phone",
+            "type": "input",
+            "inputType": "text",
+            "order": 7
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "template": "SELECT * FROM neispuo.reginst_basic.navigation /**where**/",
+  "outputColumns": "RIprocedureID as ProcID, InstitutionID as SchoolID, Abbreviation as Name",
+  "params": [
+    {
+      "param": "@InstType",
+      "column": "InstType",
+      "value": 4
+    }
+  ],
+  "filters": [
+    {
+      "role": 2,
+      "param": "@RegID",
+      "column": "RegID",
+      "claim": "region"
+    },
+    {
+      "role": 3,
+      "param": "@MunID",
+      "column": "MunID",
+      "claim": "municipality"
+    }
+  ],
+  "levels": [
+    {
+      "role": 1,
+      "level": {
+        "id": "RegID",
+        "name": "RegName",
+        "orderBy": "RegID",
+        "sublevel": [
+          {
+            "id": "MunID",
+            "name": "MunName",
+            "orderBy": "MunID",
+            "parentKey": "RegID",
+            "sublevel": [
+              {
+                "id": "InstitutionID",
+                "name": "",
+                "orderBy": "InstitutionID",
+                "parentKey": "MunID",
+                "sublevel": []
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "role": 2,
+      "level": {
+        "id": "MunID",
+        "name": "MunName",
+        "orderBy": "MunID",
+        "sublevel": [
+          {
+            "id": "InstitutionID",
+            "name": "",
+            "orderBy": "InstitutionID",
+            "parentKey": "MunID",
+            "sublevel": []
+          }
+        ]
+      }
+    },
+    {
+      "role": 3,
+      "level": {
+        "id": "InstitutionID",
+        "name": "",
+        "orderBy": "InstitutionID",
+        "sublevel": []
+      }
+    }
+  ]
+}

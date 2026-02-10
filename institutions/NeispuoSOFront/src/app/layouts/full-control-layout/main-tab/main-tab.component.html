@@ -1,0 +1,4 @@
+<ul class="l-custom-main-tab">
+    <li class="flex items-center justify-center button-item" *ngFor="let tab of tabItems; let i = index" [ngClass]="{'active': tabIndex === i}" (click)="onPathChanged(i)">
+        <span>{{tab}}</span></li>
+</ul>

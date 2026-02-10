@@ -1,0 +1,15 @@
+<div class="fluid">
+    <ng-container [formGroup]="form">
+    <div class="fluid formgrid grid">
+        <div class="col-12">
+          <p-fieldset legend="Данни за заповед">
+            <app-institution-procedure-data 
+            [controlName]="'RIProcedure'" 
+            [isView]="isView" 
+            [displayDocument]="displayDocument"
+            ></app-institution-procedure-data>    
+          </p-fieldset>
+        </div>
+      </div>
+    </ng-container>
+  </div>

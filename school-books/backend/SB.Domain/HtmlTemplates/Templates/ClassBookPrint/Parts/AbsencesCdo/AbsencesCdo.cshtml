@@ -1,0 +1,115 @@
+@using SB.Domain
+@model AbsencesCdoModel
+
+<div class="page">
+  <h3 class="page-header">Отсъствия на учениците</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th rowspan="2" class="three-rows-height align-bottom"><div class="vertical-text">№ на ученика</div></th>
+        <th rowspan="2">Трите имена на ученика</th>
+        <th colspan="2">Септември</th>
+        <th colspan="2">Октомври</th>
+        <th colspan="2">Ноември</th>
+        <th colspan="2">Декември</th>
+        <th colspan="2">Януари</th>
+      </tr>
+      <tr>
+        <th>Уваж.</th>
+        <th>Неуваж.</th>
+        <th>Уваж.</th>
+        <th>Неуваж.</th>
+        <th>Уваж.</th>
+        <th>Неуваж.</th>
+        <th>Уваж.</th>
+        <th>Неуваж.</th>
+        <th>Уваж.</th>
+        <th>Неуваж.</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (var absence in Model.Absences)
+      {
+        <tr>
+          <td>@absence.ClassNumber</td>
+          <td>
+            @absence.FullName
+            @if (absence.IsTransferred)
+            {
+              <span class="sb-badge">ОТПИСАН</span>
+            }
+          </td>
+          <td>@absence.SepAbsences.ExcusedAbsences</td>
+          <td>@absence.SepAbsences.UnexcusedAbsences</td>
+          <td>@absence.OctAbsences.ExcusedAbsences</td>
+          <td>@absence.OctAbsences.UnexcusedAbsences</td>
+          <td>@absence.NovAbsences.ExcusedAbsences</td>
+          <td>@absence.NovAbsences.UnexcusedAbsences</td>
+          <td>@absence.DecAbsences.ExcusedAbsences</td>
+          <td>@absence.DecAbsences.UnexcusedAbsences</td>
+          <td>@absence.JanAbsences.ExcusedAbsences</td>
+          <td>@absence.JanAbsences.UnexcusedAbsences</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+
+  <div class="page-break"></div>
+
+  <h3 class="page-header">Отсъствия на учениците</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th rowspan="2" class="three-rows-height align-bottom"><div class="vertical-text">№ на ученика</div></th>
+        <th colspan="2">Февруари</th>
+        <th colspan="2">Март</th>
+        <th colspan="2">Април</th>
+        <th colspan="2">Май</th>
+        <th colspan="2">Юни</th>
+        <th colspan="2">Юли</th>
+        <th colspan="2">Август</th>
+      </tr>
+      <tr>
+        <th>Уваж.</th>
+        <th>Неуваж.</th>
+        <th>Уваж.</th>
+        <th>Неуваж.</th>
+        <th>Уваж.</th>
+        <th>Неуваж.</th>
+        <th>Уваж.</th>
+        <th>Неуваж.</th>
+        <th>Уваж.</th>
+        <th>Неуваж.</th>
+        <th>Уваж.</th>
+        <th>Неуваж.</th>
+        <th>Уваж.</th>
+        <th>Неуваж.</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (var absence in Model.Absences)
+      {
+        <tr>
+          <td>@absence.ClassNumber</td>
+          <td>@absence.FebAbsences.ExcusedAbsences</td>
+          <td>@absence.FebAbsences.UnexcusedAbsences</td>
+          <td>@absence.MarAbsences.ExcusedAbsences</td>
+          <td>@absence.MarAbsences.UnexcusedAbsences</td>
+          <td>@absence.AprAbsences.ExcusedAbsences</td>
+          <td>@absence.AprAbsences.UnexcusedAbsences</td>
+          <td>@absence.MayAbsences.ExcusedAbsences</td>
+          <td>@absence.MayAbsences.UnexcusedAbsences</td>
+          <td>@absence.JunAbsences.ExcusedAbsences</td>
+          <td>@absence.JunAbsences.UnexcusedAbsences</td>
+          <td>@absence.JulAbsences.ExcusedAbsences</td>
+          <td>@absence.JulAbsences.UnexcusedAbsences</td>
+          <td>@absence.AugAbsences.ExcusedAbsences</td>
+          <td>@absence.AugAbsences.UnexcusedAbsences</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

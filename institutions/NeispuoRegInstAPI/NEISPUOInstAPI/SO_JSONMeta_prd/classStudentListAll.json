@@ -1,0 +1,107 @@
+{
+  "paramName": "classid",
+  "changeData":false,
+  "sections": [
+      {
+      "label": "Списък на учениците",
+      "order": 1,
+	  "name": "TableClassStudentGroupList",
+      "table": 
+	  {
+          "name": "classStudentList",
+		  "action":"preview",
+		  "paramName": "personid",
+		  "searchable":true,
+		  "searchType":"column",
+		  "fields": [
+			{
+				"label": "Клас/група",
+				"name": "className",
+				"type": "input",
+				"inputType": "text",
+				"width":8,
+				"order": 1
+			},
+		  	{
+				"label": "Личен образователен номер",
+				"name": "publicEduNumber",
+				"type": "input",
+				"inputType": "number",
+				"width":8,
+				"order": 2
+			},
+			{
+				"label": "Номер в класа",
+				"name": "classNumber",
+				"type": "input",
+				"inputType": "number",
+				"rendered": "if(instType==2) {field.rendered=false} else {field.rendered=true}",
+				"width":8,
+				"order": 3
+			},
+			{
+				"label": "Име",
+				"name": "fullName",
+				"type": "input",
+				"inputType": "text",
+				"width":15,
+				"order": 4
+			},
+			{
+				"label": "Дата на раждане",
+				"name": "birthDate",
+				"type": "input",
+				"inputType": "date",
+				"width":10,
+				"order": 5
+			},
+			{
+				"label": "if(instType==2) {field.label='Вид организация'} else {field.label='Форма на обучение'}",
+				"name": "studentEdFormName",
+				"type": "input",
+				"inputType": "text",
+				"rendered": "if(instType==3 || instType==5 || instType==2) {field.rendered=false} else {field.rendered=true}",
+				"width":10,
+				"order": 6
+			},
+			{
+				"label": "Профил/Професия/Специалност",
+				"name": "classSpecialityName",
+				"type": "input",
+				"inputType": "text",
+				"width":20,
+				"rendered": "if(instType==3 || instType==5 || instType==2) {field.rendered=false} else {field.rendered=true}",
+				"order": 7
+			},
+			{
+				"label": "Повторно записан",
+				"name": "repeaterName",
+				"type": "input",
+				"inputType": "text",
+				"width":10,
+				"rendered": "if(instType==3 || instType==5) {field.rendered=false} else {field.rendered=true}",
+				"order": 8
+			},
+			{
+				"label": "СОП",
+				"name": "sopDecode",
+				"type": "input",
+				"inputType": "text",
+				"width":10,
+				"rendered": "if(instType==1 || instType==2 || instType==4) {field.rendered=true} else {field.rendered=false}",
+				"order": 9
+			},
+			{
+				"label": "РП",
+				"name": "rpDecode",
+				"type": "input",
+				"inputType": "text",
+				"width":10,
+				"rendered": "if(instType==1 || instType==2 || instType==4) {field.rendered=true} else {field.rendered=false}",
+				"order": 10
+			}
+		]
+      }
+    }
+  ]
+}

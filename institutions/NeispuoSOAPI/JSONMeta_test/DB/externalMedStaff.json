@@ -1,0 +1,46 @@
+{
+  "arrayName": "MedicalStaffTable",
+  "template": "SELECT /**select**/ FROM [inst_basic].[MedicalStaffList] MS  /**where**/ /**orderby**/",
+  "sotemplate": "",
+  "columns": [
+    {
+      "column": "MS.ExMedStaffID AS id"
+    },
+    {
+      "column": "MS.FirstName AS firstName"
+    },
+    {
+      "column": "MS.MiddleName AS middleName"
+    },
+    {
+      "column": "MS.LastName AS lastName"
+    },
+    {
+      "column": "MS.NKPDname AS nkpdPositionID"
+    },
+    {
+      "column": "MS.PersonalIDTypeName AS personalIDType"
+    },
+    {
+      "column": "MS.PersonalID AS personalID"
+    }
+  ],
+  "params": [
+    {
+      "param": "@instid",
+      "column": "MS.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "MS.ExMedStaffID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": []
+}

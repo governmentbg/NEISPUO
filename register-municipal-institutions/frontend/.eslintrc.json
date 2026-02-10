@@ -1,0 +1,51 @@
+{
+    "root": true,
+    "overrides": [
+      {
+        "files": ["*.ts"],
+        "parserOptions": {
+          "project": ["tsconfig.json"],
+          "createDefaultProgram": true
+        },
+        "extends": [
+          "plugin:@angular-eslint/recommended",
+          "plugin:@angular-eslint/template/process-inline-templates",
+          "airbnb-base",
+          "airbnb-typescript/base"
+        ],
+        "plugins": ["unused-imports"],
+        "rules": {
+          "no-empty-function": "off",
+          "@typescript-eslint/no-useless-constructor": "off",
+          "linebreak-style": "off",
+          "@angular-eslint/use-lifecycle-interface": "off",
+          "import/no-cycle": "off",
+          "no-alert": "off",
+          "max-len": "off",
+          "import/prefer-default-export": "off",
+          "no-underscore-dangle": "off",
+          "unused-imports/no-unused-imports": "error",
+            "@typescript-eslint/no-unused-vars": [
+              "error",{ "args": "none" }
+            ],
+          "class-methods-use-this": "off",
+          "@typescript-eslint/no-empty-function": "off",
+          "@angular-eslint/component-class-suffix": "off",
+          "@angular-eslint/no-empty-lifecycle-method": "off",
+          "no-param-reassign": "off",
+          "no-console": "off",
+          "no-unsafe-optional-chaining": "off",
+          "no-restricted-syntax": "off",
+          "no-return-assign": "off",
+          "consistent-return": "off",
+          "no-cond-assign": "off",
+          "prefer-destructuring": "off",
+          "@typescript-eslint/no-unused-expressions": "off",
+          "no-nested-ternary": "off",
+          "no-mixed-operators": "off",
+          "no-constant-condition": "off",
+          "no-continue":"off"
+        }
+      }
+    ]
+  }

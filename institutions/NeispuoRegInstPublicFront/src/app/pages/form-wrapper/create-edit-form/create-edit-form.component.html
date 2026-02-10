@@ -1,0 +1,27 @@
+<form class="dynamic-form" *ngIf="form" [formGroup]="formGroup" [ngClass]="{'view-mode': mode === modes.View, 'history-mode': isHistoryActive && historyPosition !== 0, 'history-mode-last-version': isHistoryActive && historyPosition === 0}">
+    <div class="wrapper-card different-view">
+        <div class="l-container-card">
+            <ng-container *ngFor="let section of form?.sections">
+                <mat-card class="section-card" color="primary" *ngIf="!section.hidden && section.rendered !== false">
+                    <mat-card-header class="bg-cornflower-blue">
+                        <mat-card-title>{{ section.label }}</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <div class="wrapper-body">
+                            <ng-container *ngFor="let subsection of section?.subsections">
+                                <app-subsection *ngIf="!subsection.hidden && subsection.rendered !== false && hasNonHiddenField(subsection)" [procId]="procId" [subsection]="subsection" [formGroup]="getFormGroup(subsection)" [mode]="mode"></app-subsection>
+                            </ng-container>
+                        </div>
+                        <ng-container *ngIf="section.table">
+                            <app-table [table]="section.table" [parentGroup]="formGroup"></app-table>
+                        </ng-container>
+                    </mat-card-content>
+                </mat-card>
+            </ng-container>
+        </div>
+    </div>
+    <div class="l-footer-control-container">
+        <button class="back-button" type="button" mat-raised-button color="secondary" (click)="goBack()"><span>Назад</span></button>
+        <button type="button" mat-raised-button color="primary" onclick="window.print()" class="print-button"><mat-icon>print</mat-icon><span>Печат</span></button>
+    </div>
+</form>

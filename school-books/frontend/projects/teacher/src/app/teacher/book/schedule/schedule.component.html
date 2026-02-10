@@ -1,0 +1,100 @@
+<div class="sm:flex justify-between items-end">
+  <sb-paginator class="mb-2.5" [items]="weekPaginatorItems"></sb-paginator>
+
+  <ng-container *ngIf="data.individualCurriculumStudents.length">
+    <div class="hidden md:block w-[400px]">
+      <mat-select
+        placeholder="Разписание"
+        class="sb-form-control mb-2.5 max-w-full truncate"
+        [formControl]="individualCurriculumStudentControl"
+      >
+        <mat-option [value]="''">Разписание на паралелката</mat-option>
+        <mat-option *ngFor="let student of data.individualCurriculumStudents" [value]="student.id">
+          Разписание ИУП {{ student.name }}
+          <span *ngIf="student.badge" class="sb-badge text-sm">{{ student.badge }}</span>
+        </mat-option>
+      </mat-select>
+    </div>
+
+    <div class="block md:hidden">
+      <mat-form-field appearance="fill" class="w-full">
+        <mat-label>Разписание</mat-label>
+        <mat-select [formControl]="individualCurriculumStudentControl">
+          <mat-option value="class">Разписание на паралелката</mat-option>
+          <mat-option *ngFor="let student of data.individualCurriculumStudents" [value]="student.id">
+            Разп. ИУП {{ student.name }} {{ student.badge }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </ng-container>
+</div>
+
+<div class="sb-table-container">
+  <table class="sb-table">
+    <thead>
+      <tr>
+        <th class="w-px whitespace-nowrap">Час</th>
+        <th>Понеделник</th>
+        <th>Вторник</th>
+        <th>Сряда</th>
+        <th>Четвъртък</th>
+        <th>Петък</th>
+        <ng-container *ngIf="templateData.scheduleIncludesWeekend">
+          <th>Събота</th>
+          <th>Неделя</th>
+        </ng-container>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let shiftHour of templateData.shiftHours; let i = index">
+        <td class="w-px">
+          <span class="whitespace-nowrap">{{ shiftHour.startTime }} -</span>
+          {{ shiftHour.endTime }}
+        </td>
+        <td *ngFor="let slot of templateData.slotsByNumberByDay[i]">
+          <div *ngIf="slot.isOffDay && slot.slotNumber === 0" class="font-bold">Неучебен ден</div>
+          <div *ngIf="!slot.isOffDay" class="divide-y divide-gray-200">
+            <div *ngFor="let hour of slot.hours" class="py-1">
+              <div class="inline sm:hidden">
+                <div class="font-bold whitespace-pre-line">
+                  {{ hour.subjectShort }}
+                </div>
+                <div>
+                  {{ hour.topicTeacherShort ?? hour.teacherShort ?? '' }}
+                </div>
+                <div>
+                  {{ hour.location }}
+                </div>
+              </div>
+
+              <div class="hidden sm:inline">
+                <div class="font-bold whitespace-pre-line">
+                  {{ hour.subject }}
+                </div>
+                <div>
+                  {{ hour.topicTeacher ?? hour.teacher ?? '' }}
+                  <fa-icon
+                    *ngIf="hour.isTaken"
+                    [icon]="fadCheckSquare"
+                    matTooltip="{{ hour.topicTitles | topicTitlesList }}"
+                    matTooltipPosition="right"
+                  ></fa-icon>
+                  <fa-icon
+                    *ngIf="hour.location"
+                    [icon]="fadMapMarkerAlt"
+                    matTooltip="{{ hour.location }}"
+                    matTooltipPosition="right"
+                  ></fa-icon>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr *ngIf="!templateData.shiftHours.length">
+        <td colspan="6" class="text-center">Няма въведена програма за седмицата</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

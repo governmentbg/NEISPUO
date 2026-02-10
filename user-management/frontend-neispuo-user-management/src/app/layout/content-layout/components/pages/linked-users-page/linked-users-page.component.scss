@@ -1,0 +1,13 @@
+:host ::ng-deep .p-datatable-wrapper {
+    min-height: 10rem !important;
+    height: auto !important;
+}
+
+:host ::ng-deep .p-datatable {
+    min-height: unset !important;
+    height: auto !important;
+}
+
+:host ::ng-deep .p-datatable-table {
+    min-width: 40rem !important;
+}

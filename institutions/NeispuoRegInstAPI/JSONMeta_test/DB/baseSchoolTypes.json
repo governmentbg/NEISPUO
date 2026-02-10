@@ -1,0 +1,34 @@
+{
+    "template": "SELECT /**select**/ FROM [noms].[BaseSchoolType] BST JOIN [reginst_nom].[BaseSchoolTypeLimit] BSTL ON BST.BaseSchoolTypeID=BSTL.BaseSchoolTypeID /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "BST.BaseSchoolTypeID as code"
+        },
+        {
+            "column": "BST.Name as label"
+        },
+        {
+            "column": "BST.IsValid as isValid"
+        }        
+    ],
+    "params": [
+		{
+            "param": "@instKind",
+            "column": "BSTL.InstKind",
+            "operator": "=",
+            "value": "instKind",
+            "type": "int",
+            "logical_operator": "and",
+			"optional": true,
+			"static": false,
+			"from_claim": false
+        }
+    ],
+    "order": [
+        {
+            "column": "BST.IsValid",
+            "type": "DESC"
+        }
+    ],
+    "inSelects": []
+}

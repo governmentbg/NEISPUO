@@ -1,0 +1,94 @@
+{
+  "status": 1,
+  "codeNEISPUO": 1234,
+  "name": "125 средно училище „Проф. Боян Пенев“",
+  "shortName": "125то СУ",
+  "eik": 1234565432,
+  "financialSource": "1",
+  "isCentral": true,
+  "isProtected": false,
+  "hasNationalMeaning": false,
+  "isInovative": true,
+  "isProfessional": false,
+  "region": 1,
+  "municipality": 1,
+  "town": 2676,
+  "address": [
+    {
+      "id": 4,
+      "place": "68134",
+      "addressLine": "София, Дружба 1",
+      "phone": [
+        {
+          "id": 1,
+          "phoneType": "asdf",
+          "telephone": "+359888444555"
+        },
+        {
+          "id": 2,
+          "phoneType": "fdsa",
+          "telephone": "+359888444666"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "place": "68134",
+      "addressLine": "София, Дружба 15555",
+      "phone": [
+        {
+          "id": 1,
+          "phoneType": "klm",
+          "telephone": "+359888444111"
+        },
+        {
+          "id": 2,
+          "phoneType": "hij",
+          "telephone": "+359888444222"
+        },
+        {
+          "id": 3,
+          "phoneType": "efg",
+          "telephone": "+359888444333"
+        }
+      ]
+    }
+  ],
+  "createdYear": 1956,
+  "createdDtl": "Наредба 457 от 03.06.2003 г.",
+  "updatedDtl": "Наредба 1287 от 12.06.2020 г.",
+  "isDelegatedBudget": true,
+  "yearlyBudgetApproved": 1346900.0,
+  "iban": "BG49FINV847366445903",
+  "bic": "FINVBGSF",
+  "bank": "ПИБ",
+  "accountHolder": "Георги Петров Иванов",
+  "shifts": "5",
+  "hasHostel": false,
+  "nmbrPedagogical": 15,
+  "avrgSalaryPedagogical": 1500,
+  "nmbrNonPedagogical": 0,
+  "avrgSalaryNonPedagogical": 0,
+  "subjects": [
+    { "id": "4654d5a", "subject": "Английски", "grade": "7а" },
+    { "id": "54786dsa7", "subject": "Испански", "grade": "7а" },
+    { "id": "4s4444sda", "subject": "Биология", "grade": "7а" },
+    { "id": "44ds4ds", "subject": "Немски", "grade": "7б" },
+    { "id": "4ds5ads45", "subject": "Италиански", "grade": "7б" },
+    { "id": "88sd8a", "subject": "Химия", "grade": "7б" },
+    { "id": "6saas5", "subject": "Английски език", "grade": "8а" },
+    { "id": "88s8s8", "subject": "Информатика", "grade": "8а" },
+    { "id": "9dsa45", "subject": "Немски език", "grade": "8б" },
+    { "id": "54dsa35", "subject": "Информационни технологии", "grade": "8б" },
+    { "id": "54das5ds", "subject": "Английски", "grade": "9а" },
+    { "id": "5452dsa322", "subject": "Испански", "grade": "9а" },
+    { "id": "6ds45da", "subject": "Биология", "grade": "9а" },
+    { "id": "5d5ss55", "subject": "Немски", "grade": "9б" },
+    { "id": "das7d988", "subject": "Италиански", "grade": "9б" },
+    { "id": "5d5d5", "subject": "Химия", "grade": "9б" },
+    { "id": "55s5da5d", "subject": "Английски език", "grade": "10а" },
+    { "id": "33d54d55", "subject": "Информатика", "grade": "10а" },
+    { "id": "5d5d466s", "subject": "Немски език", "grade": "10б" },
+    { "id": "4d5646sd", "subject": "Информационни технологии", "grade": "10б" }
+  ]
+}

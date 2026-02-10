@@ -1,0 +1,77 @@
+<form [formGroup]="form">
+  <div *ngIf="showEmailSettings">
+    <span class="ml-4 flex items-center font-medium text-primary">
+      <span class="text-sm">Имейл настройки:</span>
+    </span>
+    <mat-slide-toggle
+      color="primary"
+      formControlName="allowGradeEmails"
+      class="flex text-sm mx-4 my-2"
+      (click)="stopPropagation($event)"
+    >
+      Имейл за нови оценки
+    </mat-slide-toggle>
+    <mat-slide-toggle
+      color="primary"
+      formControlName="allowAbsenceEmails"
+      class="flex text-sm mx-4 my-2"
+      (click)="stopPropagation($event)"
+    >
+      Имейл за нови отсъствия
+    </mat-slide-toggle>
+    <mat-slide-toggle
+      color="primary"
+      formControlName="allowRemarkEmails"
+      class="flex text-sm mx-4 my-2"
+      (click)="stopPropagation($event)"
+    >
+      Имейл за нови отзиви
+    </mat-slide-toggle>
+    <mat-slide-toggle
+      color="primary"
+      formControlName="allowMessageEmails"
+      class="flex text-sm mx-4 my-2"
+      (click)="stopPropagation($event)"
+    >
+      Имейл за ново съобщение
+    </mat-slide-toggle>
+  </div>
+
+  <div *ngIf="showNotificationSettings">
+    <span class="ml-4 flex items-center font-medium text-primary">
+      <span class="text-sm">Настройки за известия:</span>
+    </span>
+    <mat-slide-toggle
+      color="primary"
+      formControlName="allowGradeNotifications"
+      class="flex text-sm mx-4 my-2"
+      (click)="stopPropagation($event, true)"
+    >
+      Известия за нови оценки
+    </mat-slide-toggle>
+    <mat-slide-toggle
+      color="primary"
+      formControlName="allowAbsenceNotifications"
+      class="flex text-sm mx-4 my-2"
+      (click)="stopPropagation($event, true)"
+    >
+      Известия за нови отсъствия
+    </mat-slide-toggle>
+    <mat-slide-toggle
+      color="primary"
+      formControlName="allowRemarkNotifications"
+      class="flex text-sm mx-4 my-2"
+      (click)="stopPropagation($event, true)"
+    >
+      Известия за нови отзиви
+    </mat-slide-toggle>
+    <mat-slide-toggle
+      color="primary"
+      formControlName="allowMessageNotifications"
+      class="flex text-sm mx-4 my-2"
+      (click)="stopPropagation($event, true)"
+    >
+      Известия за ново съобщение
+    </mat-slide-toggle>
+  </div>
+</form>

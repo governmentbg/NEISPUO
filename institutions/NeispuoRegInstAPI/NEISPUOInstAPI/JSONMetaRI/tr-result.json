@@ -1,0 +1,179 @@
+{
+  "sections": [
+    {
+      "order": 1,
+      "label": "Данни за юридическото лице",
+      "name": "juridicalPersonData",
+      "subsections": [
+        {
+          "order": 1,
+          "label": "Основни данни за юридическото лице",
+          "name": "jpBasicData",
+          "fields": [
+            {
+              "label": "ЕИК",
+              "name": "eik",
+              "type": "input",
+              "inputType": "text",
+              "order": 1,
+              "validations": [
+              ]
+            },
+            {
+              "label": "Наименование",
+              "name": "name",
+              "type": "input",
+              "inputType": "text",
+              "order": 2,
+              "validations": [
+              ]
+            },
+            {
+              "label": "Правна форма",
+              "name": "legalForm",
+              "type": "input",
+              "inputType": "text",
+			  "flexible": "true",
+              "order": 3,
+              "validations": [
+              ]
+            },
+            {
+              "label": "Предмет на дейност",
+              "name": "subjectOfActivity",
+              "type": "input",
+              "inputType": "text",
+              "order": 4,
+			  "flexible": "true",
+              "validations": [
+              ]
+            },
+            {
+              "label": "Статус",
+              "name": "status",
+			  "type": "select",
+              "optionsPath": "/data/get/statusJuridicalPerson",
+              "inputType": "text",
+              "order": 5,
+              "validations": [
+              ]
+            },
+            {
+              "label": "Към дата",
+              "name": "statusDate",
+              "type": "date",
+              "order": 6,
+			  "flexible": "true",
+              "validations": [
+              ]
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "label": "Седалище и адрес на управление",
+          "name": "jpSeatAddress",
+          "fields": [
+            {
+              "label": "Държава",
+              "name": "seatAddressCountry",
+			  "type": "select",
+              "optionsPath": "/data/get/country",
+              "order": 1,
+              "validations": [
+              ]
+            },
+            {
+              "label": "Област",
+              "name": "seatAddressRegion",
+			  "type": "select",
+              "optionsPath": "/data/get/region",
+              "order": 2,
+              "validations": [
+              ]
+            },
+            {
+              "label": "Община",
+              "name": "seatAddressMunicipality",
+			  "type": "select",
+              "optionsPath": "/data/get/municipality",
+              "order": 3,
+              "validations": [
+              ]
+            },
+            {
+              "label": "Адрес",
+              "name": "seatAddress",
+              "type": "input",
+              "inputType": "text",
+              "order": 5,
+              "validations": [
+              ]
+            },
+            {
+              "label": "Пощенски код",
+              "name": "seatAddressPostalCode",
+              "type": "input",
+              "inputType": "text",
+              "order": 6,
+              "validations": [
+              ]
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "label": "Адрес за кореспонденция",
+          "name": "jpCorrespondenceAddress",
+          "fields": [
+            {
+              "label": "Държава",
+              "name": "correspondenceAddressCountry",
+			  "type": "select",
+              "optionsPath": "/data/get/country",
+              "order": 1,
+              "validations": [
+              ]
+            },
+            {
+              "label": "Област",
+              "name": "correspondenceAddressRegion",
+			  "type": "select",
+              "optionsPath": "/data/get/region",
+              "order": 2,
+              "validations": [
+              ]
+            },
+            {
+              "label": "Община",
+              "name": "correspondenceAddressMunicipality",
+			  "type": "select",
+              "optionsPath": "/data/get/municipality",
+              "order": 3,
+              "validations": [
+              ]
+            },
+            {
+              "label": "Адрес",
+              "name": "correspondenceAddress",
+              "type": "input",
+              "inputType": "text",
+              "order": 5,
+              "validations": [
+              ]
+            },
+            {
+              "label": "Пощенски код",
+              "name": "correspondenceAddressPostalCode",
+              "type": "input",
+              "inputType": "text",
+              "order": 6,
+              "validations": [
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

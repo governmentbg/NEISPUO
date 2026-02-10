@@ -1,0 +1,177 @@
+{
+  "changeData": false,
+  "sections": [
+    {
+      "label": "Име на служител",
+      "order": 1,
+      "subsections": [
+          {
+            "order": 1,
+            "label": "fullName",
+            "type": "input",
+            "name": "fullName",
+            "bold": true,
+            "width": 200,
+            "disabled": false,
+            "flexible": false
+          }
+      ]
+    },
+    {
+      "order": 2,
+      "name":"staffPositionsData",
+      "label": "Текущи длъжности на служителя",
+      "table":
+      {
+        "name": "staffPositions",
+        "createNew": "redirect",
+        "formName": "staffPositionData",
+        "paramName": "staffPositionID",
+		"createParams": {"isValid":1},
+		"additionalParams":["isValid"],
+        "canDeleteRow": false,
+		"procedureName": "inst_basic.personStaffPositionCUD",
+        "searchable": false,
+		"forceOperation": 0,
+        "fields": [
+          {
+            "label": "Пореден номер",
+            "name": "staffOrd",
+            "type": "input",
+            "inputType": "number",
+            "width":10,
+            "order": 1
+          },
+          {
+            "label": "Длъжност номер",
+            "name": "staffPositionNo",
+            "type": "input",
+            "inputType": "number",
+            "width":10,
+            "order": 2
+          },
+          {
+            "label": "Титуляр/Заместник",
+            "name": "positionKind",
+            "type": "input",
+            "inputType": "text",
+            "width":20,
+            "order": 3
+          },
+		  {
+            "label": "Категория персонал",
+            "name": "categoryStaffType",
+            "type": "input",
+            "inputType": "text",
+            "width":20,
+            "order": 4
+          },
+          {
+            "label": "Длъжност",
+            "name": "NKPDposition",
+            "type": "input",
+            "inputType": "text",
+            "width":15,
+            "order": 5
+          },
+          {
+            "label": "Щат",
+            "name": "positionCount",
+            "type": "input",
+            "inputType": "number",
+            "width":5,
+            "order": 6
+          },
+		  {
+            "label": "Активна (текуща година)",
+            "name": "currentlyValid",
+            "type": "input",
+            "inputType": "text",
+			"width": 20,
+            "order": 7
+          }
+        ]
+      }
+    },
+	{
+      "order": 2,
+      "name":"staffPositionsData",
+      "label": "Предишни длъжности на служителя",
+      "table":
+      {
+        "name": "staffArchivePositions",
+        "formName": "staffPositionData",
+        "paramName": "staffPositionID",
+		"action": "edit",
+        "searchable": false,
+        "canDeleteRow": true,
+		"additionalParams":["isValid"],
+        "fields": [
+          {
+            "label": "Пореден номер",
+            "name": "staffOrd",
+            "type": "input",
+            "inputType": "number",
+            "width": 10,
+            "order": 1
+          },
+          {
+            "label": "Длъжност номер",
+            "name": "staffPositionNo",
+            "type": "input",
+            "inputType": "number",
+            "width": 10,
+            "order": 2
+          },
+          {
+            "label": "Титуляр/Заместник",
+            "name": "positionKind",
+            "type": "input",
+            "inputType": "text",
+            "width": 10,
+            "order": 3
+          },
+		  {
+            "label": "Категория персонал",
+            "name": "categoryStaffType",
+            "type": "input",
+            "inputType": "text",
+            "width": 20,
+            "order": 4
+          },
+          {
+            "label": "Длъжност",
+            "name": "NKPDposition",
+            "type": "input",
+            "inputType": "text",
+            "width": 20,
+            "order": 5
+          },
+          {
+            "label": "Щат",
+            "name": "positionCount",
+            "type": "input",
+            "inputType": "number",
+            "width": 5,
+            "order": 6
+          },
+          {
+            "label": "Дата на прекратяване",
+            "name": "terminationDate",
+            "type": "date",
+            "width": 10,
+            "order": 7
+          },
+          {
+            "label": "Основание за прекратяване",
+            "name": "terminationReason",
+            "type": "input",
+            "inputType": "text",
+            "width": 10,
+            "order": 8
+          }
+        ]
+      }
+    }
+  ]
+}

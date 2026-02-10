@@ -1,0 +1,24 @@
+@using SB.Domain
+@model StudentTeachersModel
+
+<div class="page">
+  <h3 class="page-header">Списък на учителите по отделните учебни предмети/модули</h3>
+
+  <table rules="all">
+    <thead>
+      <tr>
+        <th style="width: 50%">Учебен предмет/модул</th>
+        <th style="width: 50%">Име и фамилия на учителя</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (var subject in Model.Subjects)
+      {
+        <tr>
+          <td>@subject.SubjectName / @subject.SubjectTypeName</td>
+          <td>@subject.TeacherName</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

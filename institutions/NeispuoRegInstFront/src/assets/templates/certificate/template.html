@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title></title>
+	<style>
+		@font-face {
+			font-family: calibri;
+			src: url("assets/fonts/calibri.TTF");
+		}
+
+		html,
+		body {
+			margin: 0;
+			padding: 0;
+			border: 0;
+			outline: 0;
+		}
+
+		.wrapper-a4 {
+			width: 810px;
+			height: 1121px;
+			padding: 0;
+			margin: 0;
+			text-align: center;
+			overflow: hidden;
+			position: relative;
+			border: 0;
+			outline: 0;
+		}
+
+		.img-custom {
+			width: 810px;
+			height: 1122px;
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: -1;
+			border: 0;
+			outline: 0;
+		}
+
+		.center-number {
+			display: block;
+			width: 100%;
+			margin-top: 93mm;
+			text-align: center;
+		}
+
+		.number-span {
+			font-size: 31pt;
+			font-weight: bold;
+			color: #3d3d3d;
+		}
+
+		.name-u {
+			display: block;
+			text-align: center;
+			margin-top: 36mm;
+			padding: 0 17mm;
+		}
+
+		.name {
+			font-size: 31pt;
+			text-transform: uppercase;
+			line-height: 31pt;
+			font-family: calibri;
+			color: #3d3d3d;
+		}
+
+		.specific {
+			display: block;
+			padding: 0 20mm;
+			margin-top: 9mm;
+			font-family: calibri;
+			color: #3d3d3d;
+			text-align: center;
+		}
+
+		.text {
+			display: block;
+		}
+
+		strong {
+			color: black;
+		}
+
+		.text-hardcode {
+			margin-top: 8mm;
+			display: block;
+			line-height: 5mm;
+			padding: 0 23mm;
+			font-size: 4mm;
+			font-family: calibri;
+		}
+
+		.date-container {
+			position: absolute;
+			bottom: 52mm;
+			left: 47mm;
+			font-size: 14pt;
+			font-family: calibri;
+			color: #3d3d3d;
+		}
+
+		.name-container {
+			position: absolute;
+			right: 34mm;
+			bottom: 40mm;
+			font-family: calibri;
+			color: #3d3d3d;
+			text-align: left;
+		}
+
+		.name-name {
+			display: block;
+			text-transform: uppercase;
+			font-size: 14pt;
+			font-weight: bold;
+		}
+
+		.under {
+			font-size: 10pt;
+			font-style: italic;
+			max-width: 44mm;
+			width: 100%;
+			display: block;
+			text-align: left;
+			line-height: 10pt;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper-a4">
+		<img class="img-custom" src="assets/templates/certificate/Scan4.jpg" />
+		<div class="center-number">
+			<span class="number-span">No. {{certificateNo}}</span>
+		</div>
+		<div class="name-u">
+			<span class="name">{{institutionName}}</span>
+		</div>
+		<div class="specific">
+			<span class="text"><strong>ЕИК/Булстат: </strong><span>{{eik}}</span></span>
+			<span class="text"><strong>Седалище: </strong><span>{{TRFullAddress}}</span></span>
+			<span class="text"><strong>Официален адрес: </strong><span>{{instDepFullAddress}}</span></span>
+			<span class="text-hardcode">Институцията е вписана в Регистъра на институциите в системата на предучилищното и училищното образование на основание заповед No. <span>{{documentInfo}}</span> г. на Министъра на образованието и науката</span>
+		</div>
+		<div class="date-container">
+			<span>{{certificateDate}}</span><span>г.</span>
+		</div>
+		<div class="name-container">
+			<span class="name-name">{{signatoryPerson}}</span>
+			<span class="under">{{signatoryPosition}}</span>
+		</div>
+	</div>
+</body>
+</html>

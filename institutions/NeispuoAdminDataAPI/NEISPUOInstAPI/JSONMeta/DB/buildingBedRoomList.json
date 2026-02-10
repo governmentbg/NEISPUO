@@ -1,0 +1,90 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_basic].[InstitutionDepartment] ID /**where**/ /**orderby**/",
+  "columns": [
+    {
+      "column": "ID.InstitutionDepartmentID AS instDepID"
+    }
+  ],
+  "params": [
+    {
+      "param": "@address",
+      "column": "ID.InstitutionDepartmentID",
+      "operator": "=",
+      "value": "address",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "ID.InstitutionDepartmentID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+    {
+      "arrayName": "buildingAreaTypeBedRoom",
+      "template": "SELECT /**select**/ FROM [inst_basic].[BuildingRoomList] BRL JOIN [inst_basic].[InstitutionDepartment] ID ON ID.InstitutionDepartmentID=BRL.InstitutionDepartmentID /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "BRL.BuildingRoomID AS id"
+        },
+        {
+          "column": "BRL.BuildingName AS buildingName"
+        },
+        {
+          "column": "BRL.Name AS name"
+        },
+        {
+          "column": "BRL.BuildingRoomTypeName AS buildingRoomTypeName"
+        },
+        {
+          "column": "BRL.MeetRequirementsLevelName AS meetRequirementsLevelName"
+        },
+		{
+          "column": "'buildingRoom' AS formName"
+        },
+        {
+          "column": "BRL.BuildingRoomID AS formDataId"
+        }
+
+      ],
+      "params": [
+        {
+          "param": "@address",
+          "column": "BRL.InstitutionDepartmentID",
+          "operator": "=",
+          "value": "address",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        },
+        {
+          "param": "@buildingAreaTypeID",
+          "column": "BRL.BuildingAreaTypeID",
+          "operator": "=",
+          "value": 41,
+          "type": "int",
+          "logical_operator": "and",
+          "static": true
+        },
+        {
+          "param": "@areaKind",
+          "column": "BRL.BuildingAreaKind",
+          "operator": "=",
+          "value": 2,
+          "type": "int",
+          "logical_operator": "and",
+          "static": true
+        }
+      ],
+      "order": [
+        {
+          "column": "BRL.BuildingRoomID",
+          "type": "ASC"
+        }
+      ]
+    }
+  ]
+}

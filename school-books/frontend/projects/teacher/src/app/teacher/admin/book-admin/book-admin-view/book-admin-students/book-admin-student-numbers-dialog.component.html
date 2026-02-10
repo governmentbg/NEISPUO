@@ -1,0 +1,38 @@
+<form [formGroup]="form" autocomplete="off" novalidate>
+  <div class="sb-btn-wrapper sb-btn-wrapper-right">
+    <button mat-raised-button color="primary" type="button" (click)="onSave()" [disabled]="saving">
+      <fa-icon [icon]="saving ? fasSpinnerThird : fasCheck" [spin]="saving" size="lg"></fa-icon>
+      <span>Запази</span>
+    </button>
+    <button mat-raised-button mat-dialog-close>Затвори</button>
+  </div>
+
+  <div class="sm:grid grid-cols-5 gap-x-4">
+    <div class="col-span-full sb-table-container mb-5">
+      <table class="sb-table">
+        <thead>
+          <tr>
+            <th class="w-14">#</th>
+            <th>Ученик</th>
+          </tr>
+        </thead>
+        <tbody formArrayName="studentNumbersArray">
+          <tr *ngFor="let student of data.studentNumbers; index as i" [formGroupName]="i">
+            <td class="p-0.5">
+              <input
+                sbNumber
+                [sbNumberPrecision]="0"
+                class="sb-form-control text-lg font-bold"
+                matInput
+                formControlName="classNumber"
+              />
+            </td>
+            <td class="sb-names">
+              {{ student.studentFullName }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,337 @@
+<ng-template #topicsEdit>
+  <sb-banner *ngIf="this.data.mode === TOPICS_EDIT_MODE_NEW" class="mb-2.5 w-80%" type="info">
+    При предварително зададено разписание списъка с ученици се взима от въведените за часа присъствия, след като се
+    отбележи взета тема.
+  </sb-banner>
+
+  <div class="sm:flex justify-between items-end mb-2.5">
+    <sb-paginator [items]="weekPaginatorItems"></sb-paginator>
+
+    <ng-container *ngIf="data.individualCurriculumStudents.length">
+      <div class="hidden md:block w-[400px]">
+        <mat-select
+          placeholder="Разписание"
+          class="sb-form-control mb-2.5 max-w-full truncate"
+          [formControl]="individualCurriculumStudentControl"
+        >
+          <mat-option [value]="''">Разписание на паралелката</mat-option>
+          <mat-option *ngFor="let student of data.individualCurriculumStudents" [value]="student.id">
+            Разписание ИУП {{ student.name }}
+            <span *ngIf="student.badge" class="sb-badge text-sm">{{ student.badge }}</span>
+          </mat-option>
+        </mat-select>
+      </div>
+
+      <div class="block md:hidden mt-2.5">
+        <mat-form-field appearance="fill" class="w-full">
+          <mat-label>Разписание</mat-label>
+          <mat-select [formControl]="individualCurriculumStudentControl">
+            <mat-option value="class">Разписание на паралелката</mat-option>
+            <mat-option *ngFor="let student of data.individualCurriculumStudents" [value]="student.id">
+              Разп. ИУП {{ student.name }} {{ student.badge }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </ng-container>
+  </div>
+
+  <sb-banner *ngIf="hasPastMonthLockMessage" class="mb-2.5" type="info">
+    {{ hasPastMonthLockMessage }}
+  </sb-banner>
+
+  <div class="sb-table-container">
+    <table class="sb-table sb-schedule-table">
+      <thead>
+        <tr>
+          <th class="p-0 w-px whitespace-nowrap text-center">Ден</th>
+          <th class="sb-schedule-subject w-px pr-0">Час/Предмет</th>
+          <th class="px-1 w-px">Взет</th>
+          <th>Тема</th>
+          <th class="px-1 w-px text-center">Ученици</th>
+          <th *ngIf="data.mode === TOPICS_EDIT_MODE_REMOVE" class="px-1 w-px"></th>
+          <th *ngIf="data.mode === TOPICS_EDIT_MODE_REMOVE_TOPIC_DPLR" class="px-1 w-px"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let day of scheduleByDay; index as j">
+          <ng-container *ngIf="day.hours.length && !day.isOffDay">
+            <tr *ngFor="let hour of day.hours; index as i">
+              <td class="sb-schedule-day w-px whitespace-nowrap" *ngIf="i === 0" [attr.rowspan]="day.hours.length + 1">
+                <div>
+                  <div>{{ day.dayString }}</div>
+                  <div class="text-sm">{{ day.dateString }}</div>
+                </div>
+              </td>
+              <td class="sb-schedule-subject w-px pr-0">
+                <div>
+                  <span>{{ hour.hourNumber }}.</span>
+                  <ng-container *ngIf="hour.curriculumId">
+                    <span class="inline sm:hidden">
+                      {{ hour.subjectShort }}
+                      {{
+                        hour.extTeacherName ?? hour.topicTeacherShort ?? hour.teacherShort
+                          ? ' - ' + ((hour.extTeacherName ? hour.teacherShort : null) ?? hour.teacherShort)
+                          : ''
+                      }}
+                    </span>
+                    <span class="hidden sm:inline">
+                      {{ hour.subject }}
+                      {{
+                        hour.extTeacherName ?? hour.topicTeacher ?? hour.teacher
+                          ? ' - ' + ((hour.extTeacherName ? hour.teacher : null) ?? hour.topicTeacher ?? hour.teacher)
+                          : ''
+                      }}
+                    </span>
+                  </ng-container>
+                </div>
+              </td>
+              <td class="w-px p-0.5 text-center">
+                <mat-checkbox
+                  color="primary"
+                  *ngIf="!hour.isEmptyHour"
+                  [checked]="hour.isTaken"
+                  [disabled]="data.mode !== TOPICS_EDIT_MODE_NEW || !hour.canCreate"
+                  (change)="isTakenChange($event, hour)"
+                ></mat-checkbox>
+              </td>
+              <td class="py-0.5 pr-0.5">
+                <div
+                  class="flex items-center"
+                  *ngIf="data.mode === TOPICS_EDIT_MODE_NEW && hour.canCreate && hour.isTaken"
+                >
+                  <textarea
+                    *ngIf="(!hour.hasTopicPlan || !hour.useTopicPlan) && hour.topicFormControl"
+                    class="sb-form-control w-full grow"
+                    [formControl]="hour.topicFormControl"
+                    cdkTextareaAutosize
+                    cdkAutosizeMinRows="1"
+                  ></textarea>
+
+                  <div class="ng-select-default grow">
+                    <ng-select
+                      class="w-full"
+                      *ngIf="hour.hasTopicPlan && hour.useTopicPlan && hour.topicPlanItemFormControl"
+                      [items]="hour.topicPlanItems$ && (hour.topicPlanItems$ | async)"
+                      bindValue="classBookTopicPlanItemId"
+                      bindLabel="title"
+                      [multiple]="true"
+                      [searchable]="true"
+                      [closeOnSelect]="true"
+                      [loading]="hour.topicPlanItemsLoading === true"
+                      (open)="onTopicPlanSelectOpened()"
+                      [formControl]="hour.topicPlanItemFormControl"
+                      [appendTo]="'#ng-select-dropdown-default'"
+                      notFoundText="Няма намерени теми"
+                      loadingText="Зареждане..."
+                      clearAllText="Изчисти"
+                      typeToSearchText="Напишете нещо за търсене"
+                    >
+                      <ng-template ng-label-tmp let-item="item">
+                        <span class="px-1 whitespace-normal box-decoration-clone">{{ item.title }}</span>
+                      </ng-template>
+                      <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+                        <fa-icon *ngIf="item.taken" [icon]="fasCheck" class="icon-taken"></fa-icon>
+                        <span class="ng-option-label whitespace-normal box-decoration-clone" [title]="item.title">
+                          {{ item.title }}
+                        </span>
+                      </ng-template>
+                    </ng-select>
+                  </div>
+
+                  <button
+                    *ngIf="hour.hasTopicPlan"
+                    class="flex-none min-w-0 leading-8 h-8 px-1.5 ml-0.5"
+                    mat-raised-button
+                    type="button"
+                    (click)="toggleUseTopicPlan(hour)"
+                  >
+                    <fa-icon [icon]="hour.useTopicPlan ? fasAlignJustify : fasAlignSlash"></fa-icon>
+                  </button>
+                </div>
+
+                <ng-container *ngIf="(data.mode !== TOPICS_EDIT_MODE_NEW || !hour.canCreate) && hour.topicTitles">
+                  <span
+                    *ngIf="hour.topicTitles.length === 1"
+                    class="whitespace-pre-line"
+                    [class.line-through]="hour.isRemoved"
+                  >
+                    {{ hour.topicTitles[0] }}
+                  </span>
+                  <ul *ngIf="hour.topicTitles.length > 1" class="list-disc">
+                    <li
+                      *ngFor="let title of hour.topicTitles"
+                      class="whitespace-pre-line"
+                      [class.line-through]="hour.isRemoved"
+                    >
+                      {{ title }}
+                    </li>
+                  </ul>
+                </ng-container>
+              </td>
+              <td *ngIf="hour.isTaken" class="text-center">
+                <ng-container *ngIf="hour.topicStudents">
+                  <fa-icon
+                    *ngIf="!(data.mode === TOPICS_EDIT_MODE_NEW && hour.canCreate && hour.isTaken)"
+                    [icon]="hour.topicStudents.length > 0 ? fadUsers : fadUserSlash"
+                    [matTooltip]="
+                      hour.topicStudents.length > 0
+                        ? (getStudentsNames(hour.topicStudents) | topicTitlesList)
+                        : 'Няма присъстващи ученици'
+                    "
+                    matTooltipPosition="right"
+                  ></fa-icon>
+                </ng-container>
+              </td>
+              <td *ngIf="data.mode === TOPICS_EDIT_MODE_REMOVE" class="p-1 w-px">
+                <button
+                  *ngIf="
+                    hour.scheduleLessonId != null &&
+                    !hour.isRemoved &&
+                    (hour.canRemove || (hour.canUndo && (hour.undoExpired$ | async) === false))
+                  "
+                  (click)="remove(hour)"
+                  class="sb-link-btn"
+                  type="button"
+                >
+                  <fa-icon [icon]="fasTrashAlt"></fa-icon>
+                </button>
+                <button *ngIf="hour.isRemoved" (click)="undoRemove(hour)" class="sb-link-btn" type="button">
+                  <fa-icon [icon]="fasUndo"></fa-icon>
+                </button>
+              </td>
+              <td *ngIf="data.mode === TOPICS_EDIT_MODE_REMOVE_TOPIC_DPLR" class="p-1 w-px">
+                <button
+                  *ngIf="
+                    hour.topicDplrId != null &&
+                    !hour.isRemoved &&
+                    (hour.canRemoveTopicDplr || (hour.canUndo && (hour.undoExpired$ | async) === false))
+                  "
+                  (click)="removeTopicsDplr(hour.topicDplrId)"
+                  class="sb-link-btn"
+                  type="button"
+                >
+                  <fa-icon [icon]="fasTrashAlt"></fa-icon>
+                </button>
+              </td>
+            </tr>
+            <tr
+              *ngIf="data.mode === TOPICS_EDIT_MODE_VIEW && !day.isOffDay && day.isDplrTopics"
+              class="sb-schedule-day align-middle items-center"
+            >
+              <td [attr.colspan]="4" class="sb-schedule-day w-px p-2 whitespace-nowrap">
+                <button
+                  *ngIf="day.canCreateTopicDplr"
+                  title="Добави час"
+                  aria-label="Добави час"
+                  class="sb-link-btn"
+                  type="button"
+                  (click)="openAddTopicDplrDialog(day.date)"
+                >
+                  <fa-icon [icon]="fadPlusCircle"></fa-icon>
+                  <span class="ml-2">Добави час</span>
+                </button>
+              </td>
+            </tr>
+            <tr class="bg-gray-100 h-2">
+              <td
+                class="p-1"
+                [attr.colspan]="
+                  data.mode !== TOPICS_EDIT_MODE_REMOVE &&
+                  data.mode !== TOPICS_EDIT_MODE_REMOVE_TOPIC_DPLR &&
+                  !day.isDplrTopics
+                    ? 4
+                    : 5
+                "
+              ></td>
+            </tr>
+          </ng-container>
+          <tr *ngIf="!day.hours.length || day.isOffDay">
+            <td class="sb-schedule-day w-px p-2 whitespace-nowrap">
+              <div>
+                <div>{{ day.dayString }}</div>
+                <div class="text-sm">{{ day.dateString }}</div>
+              </div>
+            </td>
+            <td
+              [attr.colspan]="
+                data.mode !== TOPICS_EDIT_MODE_REMOVE && data.mode !== TOPICS_EDIT_MODE_REMOVE_TOPIC_DPLR ? 4 : 5
+              "
+              class="text-center align-middle bg-gray-100 text-xs font-medium text-gray-500 uppercase tracking-wider"
+            >
+              <div>{{ !day.isOffDay ? 'Няма въведена програма за деня' : 'Неучебен ден' }}</div>
+              <div *ngIf="data.mode === TOPICS_EDIT_MODE_VIEW && !day.isOffDay" class="mt-4 items-center">
+                <button
+                  *ngIf="day.canCreateTopicDplr"
+                  title="Добави час"
+                  aria-label="Добави час"
+                  class="sb-link-btn"
+                  type="button"
+                  (click)="openAddTopicDplrDialog(day.date)"
+                >
+                  <fa-icon [icon]="fadPlusCircle"></fa-icon>
+                  <span class="ml-2">Добави час</span>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+</ng-template>
+
+<ng-template #elseBlock>
+  <!-- This block is shown if the condition is false -->
+  Condition is false!
+</ng-template>
+
+<ng-container *ngIf="data.mode === TOPICS_EDIT_MODE_VIEW">
+  <div class="sb-btn-wrapper">
+    <a [routerLink]="['../../new', data.year, data.weekNumber]" mat-raised-button color="primary">
+      <fa-icon [icon]="farCalendarCheck" size="lg"></fa-icon>
+      <span>Отбележи взет</span>
+    </a>
+
+    <a [routerLink]="['../../remove', data.year, data.weekNumber]" mat-raised-button color="warn">
+      <fa-icon [icon]="fasTrashAlt" size="lg"></fa-icon>
+      <span>Премахни тема</span>
+    </a>
+
+    <a [routerLink]="['../../removeTopicDplr', data.year, data.weekNumber]" mat-raised-button color="warn">
+      <fa-icon [icon]="fasTrashAlt" size="lg"></fa-icon>
+      <span>Премахни час</span>
+    </a>
+  </div>
+
+  <ng-container *ngTemplateOutlet="topicsEdit"></ng-container>
+</ng-container>
+
+<form *ngIf="data.mode !== TOPICS_EDIT_MODE_VIEW" [formGroup]="form" #ngForm="ngForm" autocomplete="off" novalidate>
+  <sb-tab-card>
+    <ng-container card-title>
+      {{ modeTitle }}
+    </ng-container>
+    <sb-editor-panel
+      *ngIf="data.mode !== TOPICS_EDIT_MODE_REMOVE_TOPIC_DPLR"
+      card-buttons
+      [isNew]="true"
+      (save)="onSave($event)"
+      [backBtnRouteCommands]="['../../../', data.year, data.weekNumber]"
+    ></sb-editor-panel>
+    <ng-container *ngIf="data.mode === TOPICS_EDIT_MODE_REMOVE_TOPIC_DPLR" card-buttons>
+      <a
+        mat-raised-button
+        class="ml-2"
+        [routerLink]="['../../../', data.year, data.weekNumber]"
+        [queryParamsHandling]="'preserve'"
+      >
+        <fa-icon [icon]="fasArrowLeft" size="lg"></fa-icon>
+        <span class="hidden sm:inline">Назад</span>
+      </a>
+    </ng-container>
+    <ng-container card-body>
+      <ng-container *ngTemplateOutlet="topicsEdit"></ng-container>
+    </ng-container>
+  </sb-tab-card>
+</form>

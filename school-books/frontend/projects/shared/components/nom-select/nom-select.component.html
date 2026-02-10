@@ -1,0 +1,48 @@
+<div
+  [ngClass]="{
+    'sb-nom-select ng-select-material': theme === 'material',
+    'ng-select-default': theme === 'default'
+  }"
+  [class.sb-nom-select-error-state]="theme === 'material' && errorStateMatcher.isErrorState(control, form)"
+>
+  <ng-select
+    [items]="items"
+    bindValue="id"
+    bindLabel="name"
+    [multiple]="multiple"
+    [groupBy]="$any(showAllGroup ? allGroup : null)"
+    [groupValue]="$any(showAllGroup ? allGroupValue : null)"
+    [hideSelected]="showAllGroup && items.length > 0"
+    [searchable]="searchable"
+    [closeOnSelect]="true"
+    [selectableGroup]="true"
+    [selectableGroupAsModel]="true"
+    [typeahead]="typeahead$"
+    [loading]="loading"
+    [compareWith]="$any(complexValue ? deepEqual : null)"
+    (open)="onOpened()"
+    (close)="onClosed()"
+    (scrollToEnd)="onScrollToEnd()"
+    [formControl]="control"
+    [placeholder]="label"
+    [appendTo]="theme === 'material' ? '#ng-select-dropdown-material' : '#ng-select-dropdown-default'"
+    [readonly]="readonly"
+    notFoundText="Няма намерени резултати"
+    loadingText="Зареждане..."
+    clearAllText="Изчисти"
+    typeToSearchText="Напишете нещо за търсене"
+  >
+    <ng-template ng-label-tmp let-item="item">
+      {{ item.name }}
+      <span *ngIf="item.badge" class="sb-badge text-sm">{{ item.badge }}</span>
+    </ng-template>
+    <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+      <span class="ng-option-label" [title]="item.name">
+        {{ item.name }}
+      </span>
+      <span *ngIf="item.badge" class="sb-badge text-sm">{{ item.badge }}</span>
+    </ng-template>
+  </ng-select>
+  <mat-error *ngIf="theme === 'material' && errorMessage">{{ errorMessage }}</mat-error>
+  <mat-hint *ngIf="theme === 'material' && !control.disabled && !readonly && hint" align="start">{{ hint }}</mat-hint>
+</div>

@@ -1,0 +1,7 @@
+<div class="search-container">
+    <mat-icon>search</mat-icon>
+    <input matInput (keyup)="getList($event)" />
+</div>
+<ul class="custom-navigation-json">
+    <li class="li-item-json" [ngClass]="{'active-json': jsonSelected === item.name}" *ngFor="let item of filteredList" (click)="onJsonChange(item.name)">{{ item.label }}</li>
+</ul>

@@ -1,0 +1,57 @@
+@using SB.Domain
+@model Student_Book_CSOPModel
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    @{ await IncludeAsync("ClassBookPrint.Parts._Styles", null); }
+  </head>
+  <body>
+    @{ await IncludeAsync("ClassBookStudentPrint.Parts.CoverPage.StudentCoverPageCSOP", Model.CoverPageModel); }
+
+    @{ await IncludeAsync("ClassBookStudentPrint.Parts.Teachers.StudentTeachers", Model.TeachersModel); }
+
+    @{ await IncludeAsync("ClassBookStudentPrint.Parts.Schedules.StudentSchedules", Model.SchedulesModel); }
+
+    @if (Model.ParentMeetingsModel.ParentMeetings.Any())
+    {
+      await IncludeAsync("ClassBookStudentPrint.Parts.ParentMeetings.StudentParentMeetings", Model.ParentMeetingsModel);
+    }
+
+    @{ await IncludeAsync("ClassBookStudentPrint.Parts.Grades.StudentGrades", Model.TermOneGradesModel); }
+
+    @{ await IncludeAsync("ClassBookStudentPrint.Parts.Grades.StudentGrades", Model.TermTwoGradesModel); }
+
+    @if (Model.HasFirstGradeResults)
+    {
+      await IncludeAsync("ClassBookStudentPrint.Parts.FirstGradeResults.StudentFirstGradeResults", Model.FirstGradeResultsModel);
+    }
+    else
+    {
+      await IncludeAsync("ClassBookStudentPrint.Parts.FinalGrades.StudentFinalGrades", Model.FinalGradesModel);
+    }
+
+    @{ await IncludeAsync("ClassBookStudentPrint.Parts.AbsencesCdo.StudentAbsencesCdo", Model.AbsencesCdoModel); }
+
+    @if (Model.SupportsModel.Supports.Any())
+    {
+      await IncludeAsync("ClassBookStudentPrint.Parts.Supports.StudentSupports", Model.SupportsModel);
+    }
+
+    @{ await IncludeAsync("ClassBookStudentPrint.Parts.Absences.StudentAbsences", Model.AbsencesModel); }
+
+    @if (Model.IndividualWorksModel.IndividualWorks.Any())
+    {
+      await IncludeAsync("ClassBookStudentPrint.Parts.IndividualWorks.StudentIndividualWorks", Model.IndividualWorksModel);
+    }
+
+    @if (Model.NotesModel.Notes.Any())
+    {
+      await IncludeAsync("ClassBookStudentPrint.Parts.Notes.StudentNotes", Model.NotesModel);
+    }
+
+    @{ await IncludeAsync("ClassBookStudentPrint.Parts.FooterPage.StudentFooterPage"); }
+
+  </body>
+</html>

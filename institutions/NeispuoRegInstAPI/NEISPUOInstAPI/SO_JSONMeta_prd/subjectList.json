@@ -1,0 +1,43 @@
+{
+  "label": "Учебни предмети",
+  "sections": [
+    {
+      "order": 1,
+	  "name": "TableCurriculumCatalogList",
+      "table": 
+	  {
+          "name": "subjectList",
+		  "action": "preview",
+		  "paramName": "subjectID",
+		  "searchable":true,
+		  "searchType":"column",
+		  "fields": [
+			{
+				"label": "Наименование",
+				"name": "subjectName",
+				"type": "input",
+				"inputType": "text",
+				"width":50,
+				"order": 1
+			},
+			{
+				"label": "Предметна група",
+				"name": "subjectGroupName",
+				"type": "input",
+				"inputType": "text",
+				"width":50,
+				"order": 2
+			},
+			{
+				"label": "Поредност",
+				"name": "sortOrd",
+				"type": "input",
+				"inputType": "number",
+				"width":50,
+				"order": 3
+			}
+		]
+      }
+    }
+  ]
+}

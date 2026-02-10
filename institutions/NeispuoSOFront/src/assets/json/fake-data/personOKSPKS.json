@@ -1,0 +1,310 @@
+{
+  "id": 1434360,
+  "staffOKS": [
+    {
+      "id": 152,
+      "educationGrade": null,
+      "specialityOrdType": "\u041F\u0440\u0435\u043A\u0432\u0430\u043B\u0438\u0444\u0438\u043A\u0430\u0446\u0438\u044F (\u043D\u043E\u0432\u0430 \u043F\u0440\u043E\u0444\u0435\u0441\u0438\u043E\u043D\u0430\u043B\u043D\u0430 \u043F\u043E\u0434\u0433\u043E\u0442\u043E\u0432\u043A\u0430)",
+      "certifcateNo": "2",
+      "yearOfGraduation": 2000,
+      "isMainOKS": null,
+      "speciality": "\u0410\u043D\u0433\u043B\u0438\u0439\u0441\u043A\u0438 \u0435\u0437\u0438\u043A \u0438 \u043B\u0438\u0442\u0435\u0440\u0430\u0442\u0443\u0440\u0430",
+      "acquiredPK": "\u0423\u0447\u0438\u0442\u0435\u043B \u043F\u043E \u0430\u043D\u0433\u043B\u0438\u0439\u0441\u043A\u0438 \u0435\u0437\u0438\u043A",
+      "university": "\u041D\u0411\u0423 \u0421\u043E\u0444\u0438\u044F",
+      "universityNotes": null,
+      "formName": "personOKSData",
+      "formDataId": 152
+    },
+    {
+      "id": 153,
+      "educationGrade": "\u0432\u0438\u0441\u0448\u0435 - \u043C\u0430\u0433\u0438\u0441\u0442\u044A\u0440",
+      "specialityOrdType": "\u041F\u044A\u0440\u0432\u0430 \u0441\u043F\u0435\u0446\u0438\u0430\u043B\u043D\u043E\u0441\u0442:",
+      "certifcateNo": "3",
+      "yearOfGraduation": 1976,
+      "isMainOKS": null,
+      "speciality": "\u041F\u0441\u0438\u0445\u043E\u043B\u043E\u0433\u0438\u044F \u0438 \u0438\u0441\u0442\u043E\u0440\u0438\u044F \u043D\u0430 \u043F\u0441\u0438\u0445\u043E\u043B\u043E\u0433\u0438\u044F\u0442\u0430",
+      "acquiredPK": null,
+      "university": "\u0434\u0440\u0443\u0433\u043E",
+      "universityNotes": "\u041C\u0414\u0423 - \u041C\u043E\u0441\u043A\u0432\u0430",
+      "formName": "personOKSData",
+      "formDataId": 153
+    }
+  ],
+  "staffPKS": [
+    {
+      "id": 1,
+      "pksType": "\u041F\u041A\u0421 IV",
+      "pksCertifcateNo": "5200",
+      "pksYearOfGraduation": 2007,
+      "pksSpeciality": "\u0410\u043D\u0433\u043B\u0438\u0439\u0441\u043A\u0438 \u0435\u0437\u0438\u043A \u0438 \u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u044F",
+      "pksUniversity": "\u041F\u0423 \u041F\u043B\u043E\u0432\u0434\u0438\u0432",
+      "pksUniversityNotes": "-",
+      "formName": "personPKSData",
+      "formDataId": 1
+    },
+    {
+      "id": 2,
+      "pksType": "\u041F\u041A\u0421 IV",
+      "pksCertifcateNo": "5201",
+      "pksYearOfGraduation": 2007,
+      "pksSpeciality": "\u0410\u043D\u0433\u043B\u0438\u0439\u0441\u043A\u0438 \u0435\u0437\u0438\u043A \u0438 \u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u044F",
+      "pksUniversity": "\u041F\u0423 \u041F\u043B\u043E\u0432\u0434\u0438\u0432",
+      "pksUniversityNotes": "-",
+      "formName": "personPKSData",
+      "formDataId": 2
+    },
+    {
+      "id": 3,
+      "pksType": "\u041F\u041A\u0421 IV",
+      "pksCertifcateNo": "5202",
+      "pksYearOfGraduation": 2007,
+      "pksSpeciality": "\u0410\u043D\u0433\u043B\u0438\u0439\u0441\u043A\u0438 \u0435\u0437\u0438\u043A \u0438 \u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u044F",
+      "pksUniversity": "\u041F\u0423 \u041F\u043B\u043E\u0432\u0434\u0438\u0432",
+      "pksUniversityNotes": "-",
+      "formName": "personPKSData",
+      "formDataId": 3
+    },
+    {
+      "id": 4,
+      "pksType": "\u041F\u041A\u0421 IV",
+      "pksCertifcateNo": "5203",
+      "pksYearOfGraduation": 2007,
+      "pksSpeciality": "\u0410\u043D\u0433\u043B\u0438\u0439\u0441\u043A\u0438 \u0435\u0437\u0438\u043A \u0438 \u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u044F",
+      "pksUniversity": "\u041F\u0423 \u041F\u043B\u043E\u0432\u0434\u0438\u0432",
+      "pksUniversityNotes": "-",
+      "formName": "personPKSData",
+      "formDataId": 4
+    },
+    {
+      "id": 5,
+      "pksType": "\u041F\u041A\u0421 IV",
+      "pksCertifcateNo": "5204",
+      "pksYearOfGraduation": 2007,
+      "pksSpeciality": "\u0410\u043D\u0433\u043B\u0438\u0439\u0441\u043A\u0438 \u0435\u0437\u0438\u043A \u0438 \u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u044F",
+      "pksUniversity": "\u041F\u0423 \u041F\u043B\u043E\u0432\u0434\u0438\u0432",
+      "pksUniversityNotes": "-",
+      "formName": "personPKSData",
+      "formDataId": 5
+    },
+    {
+      "id": 5,
+      "pksType": "\u041F\u041A\u0421 IV",
+      "pksCertifcateNo": "5205",
+      "pksYearOfGraduation": 2007,
+      "pksSpeciality": "\u0410\u043D\u0433\u043B\u0438\u0439\u0441\u043A\u0438 \u0435\u0437\u0438\u043A \u0438 \u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u044F",
+      "pksUniversity": "\u041F\u0423 \u041F\u043B\u043E\u0432\u0434\u0438\u0432",
+      "pksUniversityNotes": "-",
+      "formName": "personPKSData",
+      "formDataId": 5
+    },
+    {
+      "id": 6,
+      "pksType": "\u041F\u041A\u0421 IV",
+      "pksCertifcateNo": "5206",
+      "pksYearOfGraduation": 2007,
+      "pksSpeciality": "\u0410\u043D\u0433\u043B\u0438\u0439\u0441\u043A\u0438 \u0435\u0437\u0438\u043A \u0438 \u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u044F",
+      "pksUniversity": "\u041F\u0423 \u041F\u043B\u043E\u0432\u0434\u0438\u0432",
+      "pksUniversityNotes": "-",
+      "formName": "personPKSData",
+      "formDataId": 6
+    },
+    {
+      "id": 7,
+      "pksType": "\u041F\u041A\u0421 IV",
+      "pksCertifcateNo": "5207",
+      "pksYearOfGraduation": 2007,
+      "pksSpeciality": "\u0410\u043D\u0433\u043B\u0438\u0439\u0441\u043A\u0438 \u0435\u0437\u0438\u043A \u0438 \u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u044F",
+      "pksUniversity": "\u041F\u0423 \u041F\u043B\u043E\u0432\u0434\u0438\u0432",
+      "pksUniversityNotes": "-",
+      "formName": "personPKSData",
+      "formDataId":7
+    },
+    {
+      "id": 8,
+      "pksType": "\u041F\u041A\u0421 IV",
+      "pksCertifcateNo": "5208",
+      "pksYearOfGraduation": 2007,
+      "pksSpeciality": "\u0410\u043D\u0433\u043B\u0438\u0439\u0441\u043A\u0438 \u0435\u0437\u0438\u043A \u0438 \u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u044F",
+      "pksUniversity": "\u041F\u0423 \u041F\u043B\u043E\u0432\u0434\u0438\u0432",
+      "pksUniversityNotes": "-",
+      "formName": "personPKSData",
+      "formDataId": 8
+    },
+    {
+      "id": 9,
+      "pksType": "\u041F\u041A\u0421 IV",
+      "pksCertifcateNo": "5209",
+      "pksYearOfGraduation": 2007,
+      "pksSpeciality": "\u0410\u043D\u0433\u043B\u0438\u0439\u0441\u043A\u0438 \u0435\u0437\u0438\u043A \u0438 \u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u044F",
+      "pksUniversity": "\u041F\u0423 \u041F\u043B\u043E\u0432\u0434\u0438\u0432",
+      "pksUniversityNotes": "-",
+      "formName": "personPKSData",
+      "formDataId": 9
+    },
+    {
+      "id": 10,
+      "pksType": "\u041F\u041A\u0421 IV",
+      "pksCertifcateNo": "5210",
+      "pksYearOfGraduation": 2007,
+      "pksSpeciality": "\u0410\u043D\u0433\u043B\u0438\u0439\u0441\u043A\u0438 \u0435\u0437\u0438\u043A \u0438 \u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u044F",
+      "pksUniversity": "\u041F\u0423 \u041F\u043B\u043E\u0432\u0434\u0438\u0432",
+      "pksUniversityNotes": "-",
+      "formName": "personPKSData",
+      "formDataId": 10
+    },
+    {
+      "id": 11,
+      "pksType": "\u041F\u041A\u0421 IV",
+      "pksCertifcateNo": "5211",
+      "pksYearOfGraduation": 2007,
+      "pksSpeciality": "\u0410\u043D\u0433\u043B\u0438\u0439\u0441\u043A\u0438 \u0435\u0437\u0438\u043A \u0438 \u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u044F",
+      "pksUniversity": "\u041F\u0423 \u041F\u043B\u043E\u0432\u0434\u0438\u0432",
+      "pksUniversityNotes": "-",
+      "formName": "personPKSData",
+      "formDataId": 11
+    },
+    {
+      "id": 52,
+      "pksType": "\u041F\u041A\u0421 IV",
+      "pksCertifcateNo": "5252",
+      "pksYearOfGraduation": 2007,
+      "pksSpeciality": "\u0410\u043D\u0433\u043B\u0438\u0439\u0441\u043A\u0438 \u0435\u0437\u0438\u043A \u0438 \u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u044F",
+      "pksUniversity": "\u041F\u0423 \u041F\u043B\u043E\u0432\u0434\u0438\u0432",
+      "pksUniversityNotes": "-",
+      "formName": "personPKSData",
+      "formDataId": 52
+    },
+    {
+      "id": 13,
+      "pksType": "\u041F\u041A\u0421 IV",
+      "pksCertifcateNo": "5213",
+      "pksYearOfGraduation": 2007,
+      "pksSpeciality": "\u0410\u043D\u0433\u043B\u0438\u0439\u0441\u043A\u0438 \u0435\u0437\u0438\u043A \u0438 \u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u044F",
+      "pksUniversity": "\u041F\u0423 \u041F\u043B\u043E\u0432\u0434\u0438\u0432",
+      "pksUniversityNotes": "-",
+      "formName": "personPKSData",
+      "formDataId": 13
+    },
+    {
+      "id": 14,
+      "pksType": "\u041F\u041A\u0421 IV",
+      "pksCertifcateNo": "5214",
+      "pksYearOfGraduation": 2007,
+      "pksSpeciality": "\u0410\u043D\u0433\u043B\u0438\u0439\u0441\u043A\u0438 \u0435\u0437\u0438\u043A \u0438 \u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u044F",
+      "pksUniversity": "\u041F\u0423 \u041F\u043B\u043E\u0432\u0434\u0438\u0432",
+      "pksUniversityNotes": "-",
+      "formName": "personPKSData",
+      "formDataId": 14
+    },
+    {
+      "id": 15,
+      "pksType": "\u041F\u041A\u0421 IV",
+      "pksCertifcateNo": "5215",
+      "pksYearOfGraduation": 2007,
+      "pksSpeciality": "\u0410\u043D\u0433\u043B\u0438\u0439\u0441\u043A\u0438 \u0435\u0437\u0438\u043A \u0438 \u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u044F",
+      "pksUniversity": "\u041F\u0423 \u041F\u043B\u043E\u0432\u0434\u0438\u0432",
+      "pksUniversityNotes": "-",
+      "formName": "personPKSData",
+      "formDataId": 15
+    },
+    {
+      "id": 16,
+      "pksType": "\u041F\u041A\u0421 IV",
+      "pksCertifcateNo": "5216",
+      "pksYearOfGraduation": 2007,
+      "pksSpeciality": "\u0410\u043D\u0433\u043B\u0438\u0439\u0441\u043A\u0438 \u0435\u0437\u0438\u043A \u0438 \u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u044F",
+      "pksUniversity": "\u041F\u0423 \u041F\u043B\u043E\u0432\u0434\u0438\u0432",
+      "pksUniversityNotes": "-",
+      "formName": "personPKSData",
+      "formDataId": 16
+    },
+    {
+      "id": 17,
+      "pksType": "\u041F\u041A\u0421 IV",
+      "pksCertifcateNo": "5217",
+      "pksYearOfGraduation": 2007,
+      "pksSpeciality": "\u0410\u043D\u0433\u043B\u0438\u0439\u0441\u043A\u0438 \u0435\u0437\u0438\u043A \u0438 \u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u044F",
+      "pksUniversity": "\u041F\u0423 \u041F\u043B\u043E\u0432\u0434\u0438\u0432",
+      "pksUniversityNotes": "-",
+      "formName": "personPKSData",
+      "formDataId": 17
+    },
+    {
+      "id": 18,
+      "pksType": "\u041F\u041A\u0421 IV",
+      "pksCertifcateNo": "5218",
+      "pksYearOfGraduation": 2007,
+      "pksSpeciality": "\u0410\u043D\u0433\u043B\u0438\u0439\u0441\u043A\u0438 \u0435\u0437\u0438\u043A \u0438 \u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u044F",
+      "pksUniversity": "\u041F\u0423 \u041F\u043B\u043E\u0432\u0434\u0438\u0432",
+      "pksUniversityNotes": "-",
+      "formName": "personPKSData",
+      "formDataId": 18
+    },
+    {
+      "id": 19,
+      "pksType": "\u041F\u041A\u0421 IV",
+      "pksCertifcateNo": "5219",
+      "pksYearOfGraduation": 2007,
+      "pksSpeciality": "\u0410\u043D\u0433\u043B\u0438\u0439\u0441\u043A\u0438 \u0435\u0437\u0438\u043A \u0438 \u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u044F",
+      "pksUniversity": "\u041F\u0423 \u041F\u043B\u043E\u0432\u0434\u0438\u0432",
+      "pksUniversityNotes": "-",
+      "formName": "personPKSData",
+      "formDataId": 19
+    },
+    {
+      "id": 21,
+      "pksType": "\u041F\u041A\u0421 IV",
+      "pksCertifcateNo": "5220",
+      "pksYearOfGraduation": 2007,
+      "pksSpeciality": "\u0410\u043D\u0433\u043B\u0438\u0439\u0441\u043A\u0438 \u0435\u0437\u0438\u043A \u0438 \u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u044F",
+      "pksUniversity": "\u041F\u0423 \u041F\u043B\u043E\u0432\u0434\u0438\u0432",
+      "pksUniversityNotes": "-",
+      "formName": "personPKSData",
+      "formDataId": 21
+    },
+    {
+      "id": 31,
+      "pksType": "\u041F\u041A\u0421 IV",
+      "pksCertifcateNo": "5221",
+      "pksYearOfGraduation": 2007,
+      "pksSpeciality": "\u0410\u043D\u0433\u043B\u0438\u0439\u0441\u043A\u0438 \u0435\u0437\u0438\u043A \u0438 \u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u044F",
+      "pksUniversity": "\u041F\u0423 \u041F\u043B\u043E\u0432\u0434\u0438\u0432",
+      "pksUniversityNotes": "-",
+      "formName": "personPKSData",
+      "formDataId": 31
+    },
+    {
+      "id": 41,
+      "pksType": "\u041F\u041A\u0421 IV",
+      "pksCertifcateNo": "5222",
+      "pksYearOfGraduation": 2007,
+      "pksSpeciality": "\u0410\u043D\u0433\u043B\u0438\u0439\u0441\u043A\u0438 \u0435\u0437\u0438\u043A \u0438 \u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u044F",
+      "pksUniversity": "\u041F\u0423 \u041F\u043B\u043E\u0432\u0434\u0438\u0432",
+      "pksUniversityNotes": "-",
+      "formName": "personPKSData",
+      "formDataId": 41
+    },
+    {
+      "id": 51,
+      "pksType": "\u041F\u041A\u0421 IV",
+      "pksCertifcateNo": "5223",
+      "pksYearOfGraduation": 2007,
+      "pksSpeciality": "\u0410\u043D\u0433\u043B\u0438\u0439\u0441\u043A\u0438 \u0435\u0437\u0438\u043A \u0438 \u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u044F",
+      "pksUniversity": "\u041F\u0423 \u041F\u043B\u043E\u0432\u0434\u0438\u0432",
+      "pksUniversityNotes": "-",
+      "formName": "personPKSData",
+      "formDataId": 51
+    },
+    {
+      "id": 61,
+      "pksType": "\u041F\u041A\u0421 IV",
+      "pksCertifcateNo": "5224",
+      "pksYearOfGraduation": 2007,
+      "pksSpeciality": "\u0410\u043D\u0433\u043B\u0438\u0439\u0441\u043A\u0438 \u0435\u0437\u0438\u043A \u0438 \u0433\u0435\u043E\u0433\u0440\u0430\u0444\u0438\u044F",
+      "pksUniversity": "\u041F\u0423 \u041F\u043B\u043E\u0432\u0434\u0438\u0432",
+      "pksUniversityNotes": "-",
+      "formName": "personPKSData",
+      "formDataId": 61
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+<ul class="l-custom-main-tab">
+    <li class="button-item text-select-disabled img-drag-disable" *ngFor="let tab of menuData" [ngClass]="{'active': menuItem === tab.path}" (click)="onPathChanged(tab.path)">
+        <span class="material-icons" *ngIf="tab.icon">{{ tab.icon }}</span>
+        <ng-container *ngIf="!tab.icon">
+            <span class="material-icons" *ngIf="tab.path === 'institution'"> account_balance</span>
+            <span class="material-icons" *ngIf="tab.path === 'classes'">groupicon</span>
+            <span class="material-icons" *ngIf="tab.path === 'staff'"> badge </span>
+            <span class="material-icons" *ngIf="tab.path === 'students'"> groups </span>
+            <span class="material-icons" *ngIf="tab.path === 'curriculum'"> list_alt </span>
+            <span class="material-icons" *ngIf="tab.path === 'settings'"> view_module </span>
+        </ng-container>
+        <span class="span-name">{{ tab.label }}</span>
+    </li>
+</ul>
+<button *ngIf="showActualizationButton()" class="save-all-btn" type="button" mat-raised-button (click)="actualizeData()">Потвърди актуализираните
+    данни</button>
+<app-loader *ngIf="isLoading"></app-loader>

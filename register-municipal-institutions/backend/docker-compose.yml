@@ -1,0 +1,15 @@
+version: "3.7"
+services:
+  db:
+    container_name: mssql2019
+    image: mcr.microsoft.com/mssql/server:2019-CU5-ubuntu-16.04
+    user: root
+    environment:
+      SA_PASSWORD: "Password."
+      ACCEPT_EULA: "Y"
+    ports:
+      - 1433:1433
+    volumes:
+      - mssql-volume:/var/opt/mssql
+volumes:
+  mssql-volume:

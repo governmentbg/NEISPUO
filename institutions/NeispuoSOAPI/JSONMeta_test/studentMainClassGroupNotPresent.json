@@ -1,0 +1,164 @@
+{
+  "label": "Профил на детето/ученика",
+  "procedureName": "inst_basic.studentClassCUD",
+  "sections": [
+    {
+      "order": 1,
+      "subsections": [
+        {
+          "order": 1,
+          "name": "studentClassGroups",
+          "label": "Клас/група",
+          "fields": [
+            {
+              "label": "classID",
+              "name": "classID",
+              "type": "input",
+              "inputType": "number",
+              "order": 0,
+              "width": 150,
+              "disabled": true,
+              "rendered": false,
+              "influence": [],
+              "validations": [],
+              "info": ""
+            },
+            {
+              "label": "Наименование",
+              "name": "className",
+              "type": "input",
+              "inputType": "text",
+              "order": 1,
+              "width": 150,
+              "disabled": true,
+              "rendered": false,
+              "influence": [],
+              "validations": [],
+              "info": ""
+            },
+            {
+              "label": "Форма на обучение",
+              "name": "studentEdFormName",
+              "type": "input",
+              "inputType": "text",
+              "order": 2,
+              "width": 400,
+              "disabled": true,
+              "influence": [],
+              "validations": []
+            },
+            {
+              "label": "Профил/Професия/Специалност",
+              "name": "classSpecialityName",
+              "type": "input",
+              "inputType": "text",
+              "order": 3,
+              "width": 800,
+              "disabled": true,
+              "influence": [],
+              "validations": []
+            },
+            {
+              "order": 4,
+              "type": "breakpoint"
+            },
+            {
+              "label": "Обучава се на индивидуален план",
+              "name": "isIndividualCurriculum",
+              "type": "checkbox",
+              "order": 5,
+              "width": 200,
+              "disabled": false,
+              "rendered": false,
+              "influence": [],
+              "validations": []
+            },
+            {
+              "label": "Обучава се на почасова организация",
+              "name": "isHourlyOrganization",
+              "type": "checkbox",
+              "order": 6,
+              "width": 200,
+              "disabled": false,
+              "rendered": false,
+              "influence": [],
+              "validations": []
+            },
+            {
+              "label": "Повторно записан в същия клас",
+              "name": "repeaterReasonId",
+              "type": "select",
+              "optionsPath": "/data/get/repeaterReasons",
+              "order": 7,
+              "width": 400,
+              "disabled": false,
+              "influence": [],
+              "validations": []
+            },
+            {
+              "label": "Пътуващ с организиран от училището транспорт",
+              "name": "commuterTypeId",
+              "type": "select",
+              "optionsPath": "/data/get/commuterTypes",
+              "order": 8,
+              "width": 600,
+              "disabled": false,
+              "influence": [],
+              "validations": []
+            },
+            {
+              "label": "ОРЕС",
+              "name": "oresType",
+              "type": "select",
+              "optionsPath": "/data/get/oresTypes",
+              "order": 9,
+              "width": 800,
+              "disabled": false,
+              "influence": [],
+              "validations": []
+            },
+            {
+              "name": "studentEduFormId",
+              "type": "select",
+              "optionsPath": "/data/get/studentEdForms",
+              "order": 10,
+              "width": 600,
+              "disabled": false,
+              "rendered": false,
+              "influence": [
+                {
+                  "type": "render",
+                  "fieldName": "oresType",
+                  "condition": [
+                    1,
+                    5,
+                    51,
+                    52,
+                    53,
+                    54,
+                    8,
+                    81,
+                    82,
+                    83,
+                    9
+                  ]
+                }
+              ],
+              "validations": []
+            },
+            {
+              "name": "classTypeID",
+              "type": "select",
+              "optionsPath": "/data/get/classTypes",
+              "order": 11,
+              "width": 600,
+              "disabled": false,
+              "rendered": false,
+              "validations": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

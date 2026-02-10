@@ -1,0 +1,58 @@
+INSERT INTO [school_books].[SchoolYearSettingsDefault] (
+    [SchoolYear],
+    [PgSchoolYearStartDateLimit],
+    [PgSchoolYearStartDate],
+    [PgFirstTermEndDate],
+    [PgSecondTermStartDate],
+    [PgSchoolYearEndDate],
+    [PgSchoolYearEndDateLimit],
+    [SportSchoolYearStartDateLimit],
+    [SportSchoolYearStartDate],
+    [SportFirstTermEndDate],
+    [SportSecondTermStartDate],
+    [SportSchoolYearEndDate],
+    [SportSchoolYearEndDateLimit],
+    [CplrSchoolYearStartDateLimit],
+    [CplrSchoolYearStartDate],
+    [CplrFirstTermEndDate],
+    [CplrSecondTermStartDate],
+    [CplrSchoolYearEndDate],
+    [CplrSchoolYearEndDateLimit],
+    [OtherSchoolYearStartDateLimit],
+    [OtherSchoolYearStartDate],
+    [OtherFirstTermEndDate],
+    [OtherSecondTermStartDate],
+    [OtherSchoolYearEndDate],
+    [OtherSchoolYearEndDateLimit]
+)
+VALUES (
+    2024,
+    -- Pg
+    [school_books].[fn_closest_weekday](CONVERT(DATE, '2024-09-15')),
+    [school_books].[fn_closest_weekday](CONVERT(DATE, '2024-09-15')),
+    CONVERT(DATE, '2025-02-04'),
+    CONVERT(DATE, '2025-02-06'),
+    CONVERT(DATE, '2025-05-31'),
+    CONVERT(DATE, '2025-09-14'),
+    -- Sport
+    [school_books].[fn_closest_weekday](CONVERT(DATE, '2024-09-01')),
+    [school_books].[fn_closest_weekday](CONVERT(DATE, '2024-09-01')),
+    CONVERT(DATE, '2025-02-04'),
+    CONVERT(DATE, '2025-02-06'),
+    CONVERT(DATE, '2025-06-28'),
+    CONVERT(DATE, '2025-08-31'),
+    -- Cplr
+    [school_books].[fn_closest_weekday](CONVERT(DATE, '2024-09-15')),
+    [school_books].[fn_closest_weekday](CONVERT(DATE, '2024-10-01')),
+    CONVERT(DATE, '2025-02-04'),
+    CONVERT(DATE, '2025-02-06'),
+    CONVERT(DATE, '2025-09-30'),
+    CONVERT(DATE, '2025-09-30'),
+    -- Other
+    [school_books].[fn_closest_weekday](CONVERT(DATE, '2024-09-15')),
+    [school_books].[fn_closest_weekday](CONVERT(DATE, '2024-09-15')),
+    CONVERT(DATE, '2025-02-04'),
+    CONVERT(DATE, '2025-02-06'),
+    CONVERT(DATE, '2025-06-28'),
+    CONVERT(DATE, '2025-09-14')
+)

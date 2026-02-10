@@ -1,0 +1,34 @@
+{
+  "name": "reporting-sync",
+  "version": "1.9.0",
+  "description": "A TypeScript-based data synchronization service that transfers data from Microsoft SQL Server to ClickHouse for reporting purposes. This service provides both CLI and cron-based execution modes for managing data synchronization jobs.",
+  "author": "",
+  "private": true,
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start:cron": "node dist/entrypoints/cron-job.entrypoints.js",
+    "start:cli": "node --max-old-space-size=1024 dist/entrypoints/cli.entrypoints.js",
+    "start:migration": "node dist/entrypoints/migration.entrypoints.js",
+    "start:cron-dev": "ts-node src/entrypoints/cron-job.entrypoints.ts",
+    "start:cli-dev": "ts-node src/entrypoints/cli.entrypoints.ts"
+  },
+  "dependencies": {
+    "@clickhouse/client": "^1.12.0",
+    "@inquirer/prompts": "^3.3.0",
+    "dotenv": "^17.2.1",
+    "luxon": "^3.7.1",
+    "mssql": "^11.0.1",
+    "node-cron": "^3.0.3"
+  },
+  "devDependencies": {
+    "@types/mssql": "^9.1.7",
+    "@types/node": "^22.10.7",
+    "@types/node-cron": "^3.0.11",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  }
+}

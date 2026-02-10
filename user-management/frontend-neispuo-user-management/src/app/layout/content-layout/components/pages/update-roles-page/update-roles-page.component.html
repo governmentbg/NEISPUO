@@ -1,0 +1,33 @@
+<div class="update-roles">
+    <div class="update-roles-form container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <p class="h2 color-gray-800">Управление на достъп</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="field-checkbox">
+                    <p-checkbox
+                        label="Директорски достъп"
+                        [binary]="true"
+                        [(ngModel)]="hasInstitutionAccess"
+                        (click)="updateInstitutionRole(hasInstitutionAccess)"
+                    ></p-checkbox>
+                </div>
+                <div class="field-checkbox">
+                    <p-checkbox
+                        label="Счетоводителски достъп"
+                        [binary]="true"
+                        [(ngModel)]="hasAccountantAccess"
+                        (click)="updateAccountantRole(hasAccountantAccess)"
+                    ></p-checkbox>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="role-audit">
+        <app-role-audit #roleAudit [personID]="personID" [institutionID]="institutionID"></app-role-audit>
+    </div>
+</div>

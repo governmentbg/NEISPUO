@@ -1,0 +1,32 @@
+body {
+  font-family: $font-family-base;
+  line-height: $body-line-height;
+}
+
+h1 {
+  @extend %heading;
+  font-size: $h1-font-size;
+  line-height: $h1-line-height;
+}
+
+h2 {
+  @extend %heading;
+  font-family: $h2-font-family;
+  font-size: $h2-font-size;
+  line-height: $h2-line-height;
+}
+
+h3 {
+  @extend %heading;
+  font-size: $h3-font-size;
+  line-height: $h3-line-height;
+}
+
+p {
+  line-height: $p-line-height;
+}
+
+small {
+  font-size: $font-size-sm;
+  line-height: $small-line-height;
+}

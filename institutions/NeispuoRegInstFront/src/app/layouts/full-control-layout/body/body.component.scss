@@ -1,0 +1,15 @@
+.body-body-container {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    .left-body-container {
+        display: flex;
+        width: 302px;
+        background-color: white;
+        border-right: 1px solid #0800446e
+    }
+    .right-body-container {
+        width: calc(100vw - 303px);
+        background-color: #ececec;
+    }
+}

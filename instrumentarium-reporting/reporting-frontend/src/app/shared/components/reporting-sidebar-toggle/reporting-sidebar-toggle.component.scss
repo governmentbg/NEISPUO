@@ -1,0 +1,34 @@
+@import '@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/variables/variables';
+@import '@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/mixins';
+
+.sidebar-toggle {
+  display: flex;
+  align-items: center;
+  button {
+    border-radius: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    font-size: $font-size-sm;
+    i {
+      margin-right: 0.5rem;
+    }
+  }
+  &.mobile {
+    display: none;
+    button {
+      margin-right: 0.5rem;
+
+      i {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .sidebar-toggle {
+    display: none;
+    &.mobile {
+      display: flex;
+    }
+  }
+}

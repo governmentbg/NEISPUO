@@ -1,0 +1,65 @@
+<div class="dashboard-page container-fluid">
+  <ng-container *ngIf="(categories$ | async).length === 0">
+    <div class="card card-with-actions h-100" *ngIf="!(!(error$ | async).status && (isLoading$ | async))">
+      <div class="card-header bg-transparent">
+        <i class="bi bi-exclamation-triangle"></i>
+        <h5>Грешка</h5>
+      </div>
+      <div class="card-body">
+        <div *ngIf="(error$ | async).status as errorStatus; else noError">
+          <p class="card-text">
+            {{ errorStatus === 401 || errorStatus === 403 ? 'Нямате достъп да преглеждате модули' : 'Проблем при зареждане на модулите за потребител ' + (fullName$ | async) }}
+          </p>
+          <small *ngIf="errorStatus !== 401 && errorStatus !== 403">{{ (error$ | async).error.message }}</small>
+        </div>
+        <ng-template #noError>
+          <p class="card-text">
+            Няма намерени модули за потребител {{ fullName$ | async }}
+          </p>
+        </ng-template>
+      </div>
+    </div>
+    <div class="callback-page container-fluid" *ngIf="!(error$ | async).status && (isLoading$ | async)">
+      <div class="callback-page-content">
+        <div>
+          <div class="loader">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+          <p class="h1 mb-6">Пренасочване</p>
+          <p>Модулите се зареждат, моля изчакайте.</p>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="selectedCategory$ | async as selectedCategory; else allCategories">
+    <div class="section bg-selago row">
+      <div class="col-12 section-title">
+        <h4>{{selectedCategory.name}}</h4>
+      </div>
+      <ng-container *ngFor="let module of selectedCategory.neispuoModules">
+        <app-neispuo-module-card style="display: contents" [module]="module"></app-neispuo-module-card>
+      </ng-container>
+    </div>
+  </ng-container>
+  <ng-template #allCategories>
+    <ng-container *ngIf="!(selectedCategory$ | async);">
+      <div *ngFor="let category of categories$ | async">
+        <div class="section bg-selago row">
+          <div class="col-12 section-title">
+            <h4>{{category.name}}</h4>
+          </div>
+          <ng-container *ngFor="let module of category.neispuoModules">
+            <app-neispuo-module-card style="display: contents" [module]="module"></app-neispuo-module-card>
+          </ng-container>
+          <div class="col-12">
+            <a class="btn-link category-link" [routerLink]="category.id">
+              Зареди всички
+            </a>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </ng-template>
+</div>

@@ -1,0 +1,13 @@
+<!-- <div class="demo-full-width margin-top" [formGroup]="group">
+    <label class="radio-label-padding">{{field.label}}:</label>
+    <mat-radio-group [formControlName]="field.name">
+        <mat-radio-button *ngFor="let item of field.options" [value]="item.code">{{item.label}}</mat-radio-button>
+    </mat-radio-group>
+</div> -->
+
+<div class="l-container-component l-radio" [formGroup]="group" *ngIf="field.options?.length">
+    <span class="l-custom-span-label">{{field.label}}</span>
+    <div class="container-radio">
+        <mat-checkbox *ngFor="let item of field.options" (change)="onSelectionChange(item.code)" [value]="item.code" [checked]="item.code === checkedCode">{{ item.label }}</mat-checkbox>
+    </div>
+</div>

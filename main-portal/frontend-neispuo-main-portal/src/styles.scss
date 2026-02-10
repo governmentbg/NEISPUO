@@ -1,0 +1,5 @@
+@import "@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/bootstrap-theme.scss";
+@import "@dssbg/neispuo-style-guide/neispuo-primeng-theme-styles/primeng-theme.scss";
+@import "./app/shared/styles/user-tour.scss";
+// fixes color-picker not appearing in Rich Text Editor when used in a Modal
+@import "./app//features/portal/components/system-message-form/_editor.styles.scss";

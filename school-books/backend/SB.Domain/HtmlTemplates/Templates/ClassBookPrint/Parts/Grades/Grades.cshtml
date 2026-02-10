@@ -1,0 +1,197 @@
+@using SB.Domain
+@using System.Linq
+@model GradesModel
+
+<div class="page">
+  @{
+    var months = Model.Term == SchoolTerm.TermOne ?
+    new Dictionary<string, string>()
+    {
+        {"SeptemberGrades", "IX"},
+        {"OctoberGrades", "X"},
+        {"NovemberGrades", "XI"},
+        {"DecemberGrades", "XII"},
+        {"JanuaryGrades", "I,II"},
+        {"TermGrade", "Ср."}
+    }
+    : new Dictionary<string, string>()
+    {
+        {"FebruaryGrades", "II"},
+        {"MarchGrades", "III"},
+        {"AprilGrades", "IV"},
+        {"MayGrades", "V"},
+        {"JuneGrades", "VI,VII"},
+        {"TermGrade", "Ср."}
+    };
+
+    int monthsCount = months.Count();
+    int curriculumForFirstPage = 2;
+    int curriculumPerPage = 4;
+    var curriculumPages =
+        Model.Curriculum
+        .Take(curriculumForFirstPage)
+        .GroupBy(
+            cc => 0, // first page
+            cc => cc)
+        .Union(
+            Model.Curriculum
+            .Skip(curriculumForFirstPage)
+            .Select((cc, i) => new { cc, i })
+            // the ones with the same quotient are in the same page
+            // grouping indexes by page this way - (0, 1, 2), (3, 4, 5), ...
+            .GroupBy(
+                cci => (cci.i / curriculumPerPage) + 1,
+                cci => cci.cc));
+
+    foreach(var curriculumPage in curriculumPages)
+    {
+      <h3 class="page-header">@($"Текущи и срочни оценки на учениците за {(Model.Term == SchoolTerm.TermOne ? "първия" : "втория")} учебен срок")</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th rowspan="3" class="three-rows-height align-bottom"><div class="vertical-text align-bottom">№ на ученика</div></th>
+            @if (curriculumPage.Key == 0)
+            {
+              <th rowspan="3">Трите имена на ученика</th>
+            }
+            <th colspan="@(Math.Max(curriculumPage.Count(), (curriculumPage.Key != 0 ? curriculumPerPage : 0)) * monthsCount)">Учебни предмети/модули</th>
+          </tr>
+          <tr>
+            @foreach (var curriculum in curriculumPage)
+            {
+              <th colspan="@monthsCount">@curriculum.SubjectName / @curriculum.SubjectTypeName</th>
+            }
+            @if (curriculumPage.Key != 0 && curriculumPage.Count() < curriculumPerPage)
+            {
+              for (int i = 0; i < curriculumPerPage - curriculumPage.Count(); i++)
+              {
+                <th colspan="@monthsCount"></th>
+              }
+            }
+          </tr>
+
+          <tr>
+            @for (int i = 0; i < curriculumPage.Count(); i++)
+            {
+              foreach (var month in months)
+              {
+                <th class="grade-cell-width">@month.Value</th>
+              }
+            }
+            @if (curriculumPage.Key != 0 && curriculumPage.Count() < curriculumPerPage)
+            {
+              for (int i = 0; i < curriculumPerPage - curriculumPage.Count(); i++)
+              {
+                foreach (var month in months)
+                {
+                  <th class="grade-cell-width">@month.Value</th>
+                }
+              }
+            }
+          </tr>
+        </thead>
+        <tbody>
+          @foreach (var student in Model.Students)
+            {
+              var studentGrades = Model.Items
+                  .Where(i => i.PersonId == student.PersonId)
+                  .SelectMany(i => i.Curriculum)
+                  .ToArray();
+
+              <tr class="two-rows-height">
+                <td>@student.ClassNumber</td>
+
+                @if (curriculumPage.Key == 0)
+                {
+                  <td>
+                    @student.FullName
+                    @if (student.IsTransferred)
+                    {
+                      <span class="sb-badge">ОТПИСАН</span>
+                    }
+                  </td>
+                }
+
+                @foreach (var curriculum in curriculumPage)
+                {
+                  var gradesByMonths = studentGrades
+                      .Where(i => i.CurriculumId == curriculum.CurriculumId)
+                      .Select(i => i.GradesByMonths)
+                      .FirstOrDefault();
+
+                  if (gradesByMonths != null)
+                  {
+                    foreach (var month in months)
+                    {
+                      switch (month.Key)
+                      {
+                        case "SeptemberGrades":
+                          <td class="sb-attendance-cell">@string.Join(", ", gradesByMonths.SeptemberGrades)</td>
+                          break;
+                        case "OctoberGrades":
+                          <td class="sb-attendance-cell">@string.Join(", ", gradesByMonths.OctoberGrades)</td>
+                          break;
+                        case "NovemberGrades":
+                          <td class="sb-attendance-cell">@string.Join(", ", gradesByMonths.NovemberGrades)</td>
+                          break;
+                        case "DecemberGrades":
+                          <td class="sb-attendance-cell">@string.Join(", ", gradesByMonths.DecemberGrades)</td>
+                          break;
+                        case "JanuaryGrades":
+                          <td class="sb-attendance-cell">@string.Join(", ", gradesByMonths.JanuaryGrades)</td>
+                          break;
+                        case "FebruaryGrades":
+                          <td class="sb-attendance-cell">@string.Join(", ", gradesByMonths.FebruaryGrades)</td>
+                          break;
+                        case "MarchGrades":
+                          <td class="sb-attendance-cell">@string.Join(", ", gradesByMonths.MarchGrades)</td>
+                          break;
+                        case "AprilGrades":
+                          <td class="sb-attendance-cell">@string.Join(", ", gradesByMonths.AprilGrades)</td>
+                          break;
+                        case "MayGrades":
+                          <td class="sb-attendance-cell">@string.Join(", ", gradesByMonths.MayGrades)</td>
+                          break;
+                        case "JuneGrades":
+                          <td class="sb-attendance-cell">@string.Join(", ", gradesByMonths.JuneGrades)</td>
+                          break;
+                        case "TermGrade":
+                          <td class="sb-attendance-cell">@string.Join(", ", gradesByMonths.TermGrade)</td>
+                          break;
+                        default:
+                          <td class="sb-attendance-cell"></td>
+                          break;
+                      }
+                    }
+                  }
+                  else
+                  {
+                    foreach(var month in months.ToList())
+                    {
+                      <td></td>
+                    }
+                  }
+                }
+                @if (curriculumPage.Key != 0 && curriculumPage.Count() < curriculumPerPage)
+                {
+                  for (int i = 0; i < curriculumPerPage - curriculumPage.Count(); i++)
+                  {
+                    foreach(var month in months.ToList())
+                    {
+                      <td></td>
+                    }
+                  }
+                }
+              </tr>
+            }
+        </tbody>
+      </table>
+
+      if (curriculumPage.Key < curriculumPages.Count() - 1)
+      {
+        <div class="page-break"></div>
+      }
+    }
+  }
+</div>

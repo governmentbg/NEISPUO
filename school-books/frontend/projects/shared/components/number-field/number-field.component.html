@@ -1,0 +1,13 @@
+<mat-form-field class="w-full" appearance="fill">
+  <mat-label>{{ label }}</mat-label>
+  <input
+    sbNumber
+    [sbNumberPrecision]="precision"
+    matInput
+    [formControl]="control"
+    [readonly]="readonly"
+    [placeholder]="placeholder"
+  />
+  <mat-error *ngIf="errorMessage">{{ errorMessage }}</mat-error>
+  <mat-hint *ngIf="!control.disabled && !readonly && hint" align="start">{{ hint }}</mat-hint>
+</mat-form-field>

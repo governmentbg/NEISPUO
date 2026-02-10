@@ -1,0 +1,50 @@
+{
+  "arrayName": "schoolBoards",
+  "template": "SELECT /**select**/ FROM [inst_basic].[SchoolBoardList] IPC /**where**/ /**orderby**/",
+  "columns": [
+     {
+          "column": "IPC.InstitutionSchoolBoardID AS id"
+        },
+		{
+          "column": "IPC.FirstName AS firstName"
+        },
+		{
+          "column": "IPC.MiddleName AS middleName"
+        },
+		{
+          "column": "IPC.FamilyName AS familyName"
+        },
+		{
+          "column": "IPC.SchoolBoardRole AS schoolBoardRole"
+        },
+		{
+          "column": "IPC.Email AS email"
+        },
+		{
+          "column": "IPC.PhoneNumber AS phone"
+        },
+		{
+          "column": "'institutionSchoolBoardData' AS formName"
+        },
+		{
+          "column": "IPC.InstitutionSchoolBoardID AS formDataId"
+        }
+  ],
+  "params": [
+    {
+      "param": "@instid",
+      "column": "IPC.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+  ],
+  "order": [
+
+  ],
+  "inSelects": [
+ 
+  ]
+}

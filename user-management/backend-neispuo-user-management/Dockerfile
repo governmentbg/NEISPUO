@@ -1,0 +1,88 @@
+FROM node:14.17.4-alpine3.14
+
+COPY ./ /usermng-be/
+WORKDIR /usermng-be/
+
+RUN mv /usermng-be/.env-example-docker /usermng-be/.env
+
+## Build the project
+RUN npm install
+RUN npm install pm2 -g
+RUN npm run build
+
+
+## NODE_ENV - development/staging/production
+ENV APP_ENV=development
+ENV APP_GROUP=
+ENV APP_NAME="User Management"
+ENV APP_URL="https://dev-usermng-server.mon.bg"
+ENV FRONTEND_URL="https://dev-usermng.mon.bg"
+ENV APP_PORT=3001
+
+## Database
+
+ENV DB_CLIENT=mssql
+ENV DB_HOST=
+ENV DB_PORT=
+ENV DB_USERNAME=
+ENV DB_PASSWORD=
+ENV DB=
+ENV DB_NAME_AZURE_TEMP=
+ENV DB_MAX_QUERY_EXECUTION_TIME_MILI=
+
+ENV REDIS_HOSTNAME=
+ENV REDIS_PORT=
+ENV REDIS_PASSWORD=
+
+ENV TELELINK_PUBLIC_KEY=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCnF4dxbiHIMJX1zF7bHtA7HMj+w0cuv7nb6itC87OF4akF6TaBHuLXeiyc3O0iK6GwkdbRW+kTkQj+EFnSltwKFupBiWDuicxSYOljWxMolB4JO4Q5CQtH/Sau0B+OQn5BACQQYHHrx5feDp0Rf0tcBW7dCWhiUxwc73Pio899BwIDAQAB
+ENV TENANT_URL=
+ENV TENANT_CLIENT_ID=
+ENV TENANT_CLIENT_SECRET=
+ENV TENANT_GRANT_TYPE=
+ENV TELELINK_SCOPE=
+ENV TELELINK_API_URL=
+ENV GRAPH_API_URL=
+ENV PARENT_TENANT_URL=
+ENV PARENT_TENANT_CLIENT_ID=
+ENV PARENT_TENANT_CLIENT_SECRET=
+
+## CORS
+ENV CORS_DOMAINS=any
+ENV CORS_METHODS="GET,PUT,POST,DELETE,PATCH,HEAD"
+ENV CORS_ALLOWED_HEADERS=
+ENV CORS_EXPOSED_HEADERS=
+ENV CORS_CREDENTIALS=false
+ENV CORS_MAX_AGE=
+ENV CORS_PREFLIGHT_CONTINUE=false
+ENV CORS_OPTIONS_SUCCESS_STATUS=204
+
+ENV AUTO_RUN_MIGRATIONS=false
+
+## JWKS
+ENV JWKS_ENDPOINT="http://oidc-dev.dev.svc.mon.local/jwks"
+ENV JWKS_STRICT_SSL=false
+
+## Logging
+ENV LOG_FILE_JOBS=logs/jobs/%DATE%/jobs.log
+ENV LOG_FILE_USERS=logs/users/%DATE%/user-loggings.log
+ENV LOG_FILE_PERFORMANCE=logs/performance/%DATE%/performance.log
+ENV LOG_LEVEL=info
+
+ENV GRAPH_API_URI=https://graph.microsoft.com/beta/
+ENV INTERNAL_API_KEY=de67500e-37d2-4507-8061-18bb35b9210c
+
+ENV EMAIL_FROM=trademarket.mon@gmail.com
+ENV EMAIL_HOST=smtp.gmail.com
+ENV EMAIL_PORT=465
+ENV EMAIL_POOL=true
+ENV EMAIL_USER=trademarket.mon
+ENV EMAIL_PASSWORD=SuperSecret123!@#
+ENV EMAIL_SECURE=true
+ENV DSS_SUPPORT_MAIL=neispuo.dev.support@dss.bg
+ENV STOP_EMAILS=false
+
+EXPOSE 3001
+
+RUN chmod +x /usermng-be/docker-entrypoint.sh
+
+ENTRYPOINT ["./docker-entrypoint.sh"]

@@ -1,0 +1,78 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_nom].[CurriculumCatalog] /**where**/ /**orderby**/",
+  "columns": [
+    {
+      "column": "Name as curriculumCatalogName"
+    }
+  ],
+  "params": [
+    {
+      "param": "@curriculumCatalogID",
+      "column": "CurriculumCatalogID",
+      "operator": "=",
+      "value": "curriculumCatalogID",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+  ],
+  "order": [
+
+  ],
+  "inSelects": [
+    {
+      "arrayName": "curriculumCatalogDataList",
+      "template": "SELECT /**select**/ FROM [inst_nom].[ListCurriculumLibrary] /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "CurriculumLibraryID as id"
+        },
+        {
+          "column": "BasicClassName as basicClassName"
+        },
+        {
+          "column": "SubjectName as subjectName"
+        },
+        {
+          "column": "Name as subjectTypeName"
+        },
+        {
+          "column": "WeeksFirstTerm as weeksFirstTerm"
+        },
+        {
+          "column": "HoursWeeklyFirstTerm as hoursWeeklyFirstTerm"
+        },
+        {
+          "column": "WeeksSecondTerm as weeksSecondTerm"
+        },
+        {
+          "column": "HoursWeeklySecondTerm as hoursWeeklySecondTerm"
+        },
+		{
+          "column": "HoursYear as hoursYear"
+        }
+      ],
+      "params": [
+        {
+          "param": "@curriculumCatalogID",
+          "column": "CurriculumCatalogID",
+          "operator": "=",
+          "value": "curriculumCatalogID",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        }
+      ],
+      "order": [
+        {
+          "column": "SortOrder",
+          "type": "ASC"
+        },
+        {
+          "column": "BasicClassID",
+          "type": "ASC"
+        }
+      ]
+    }
+  ]
+}

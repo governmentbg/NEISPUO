@@ -1,0 +1,379 @@
+{
+  "procedureName": "inst_basic.curriculumCUD",
+  "sections": [
+    {
+      "order": 1,
+      "label": "if(instType==2) {section.label=\u0027\u0414\u0430\u043D\u043D\u0438 \u0437\u0430 \u043E\u0431\u0440\u0430\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u043D\u043E \u043D\u0430\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u0435\u0027} else {section.label=\u0027\u0414\u0430\u043D\u043D\u0438 \u0437\u0430 \u0443\u0447\u0435\u0431\u0435\u043D \u043F\u0440\u0435\u0434\u043C\u0435\u0442\u0027}",
+      "name": "curriculumSubject",
+      "subsections": [
+        {
+          "order": 1,
+          "name": "basicData",
+          "label": "\u041E\u0441\u043D\u043E\u0432\u043D\u0438 \u0434\u0430\u043D\u043D\u0438",
+          "fields": [
+            {
+              "label": "\u0418\u043D\u0434\u0438\u0432\u0438\u0434\u0443\u0430\u043B\u0435\u043D \u0443\u0447\u0435\u0431\u0435\u043D \u043F\u043B\u0430\u043D",
+              "name": "isIndividualCurriculum",
+              "type": "checkbox",
+              "disabled": true,
+              "rendered": false,
+              "defaultValue": false,
+              "order": 0
+            },
+            {
+              "label": "\u0410\u0434\u0440\u0435\u0441 \u043D\u0430 \u043A\u043B\u0430\u0441/\u0433\u0440\u0443\u043F\u0430 (\u043E\u0441\u043D\u043E\u0432\u043D\u0430)",
+              "name": "classDepartment",
+              "type": "select",
+              "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+              "defaultValue": "classdpt",
+              "width": 300,
+              "disabled": true,
+              "rendered": false,
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "\u041F\u043E\u043B\u0435\u0442\u043E \u0435 \u0437\u0430\u0434\u044A\u043B\u0436\u0438\u0442\u0435\u043B\u043D\u043E"
+                }
+              ],
+              "influence": [{ "type": "fill", "fieldName": "institutionDepartmentID" }],
+              "order": 0
+            },
+            {
+              "label": "\u0420\u0430\u0437\u0434\u0435\u043B",
+              "name": "curriculumPartID",
+              "type": "select",
+              "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+              "width": 300,
+              "disabled": true,
+              "influence": [
+                {
+                  "fieldName": "subjectTypeID",
+                  "url": "assets/json/fake-data/baseSchoolTypes.json",
+                  "type": "options"
+                },
+                { "type": "render", "fieldName": "isIndividualLesson", "condition": [1, 2, 3, 4] }
+              ],
+              "defaultValue": "partid",
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "\u041F\u043E\u043B\u0435\u0442\u043E \u0435 \u0437\u0430\u0434\u044A\u043B\u0436\u0438\u0442\u0435\u043B\u043D\u043E"
+                }
+              ],
+              "order": 1
+            },
+            {
+              "label": "if(instType==2) {field.label=\u0027\u041E\u0431\u0440\u0430\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u043D\u043E \u043D\u0430\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u0435\u0027} else if(instType==1) {field.label=\u0027\u0423\u0447\u0435\u0431\u0435\u043D \u043F\u0440\u0435\u0434\u043C\u0435\u0442\u0027} else {field.label=\u0027\u0414\u0435\u0439\u043D\u043E\u0441\u0442\u0027}",
+              "name": "subjectID",
+              "type": "searchselect",
+              "width": 600,
+              "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+              "disabled": "if(operationType==1) {field.disabled=false} else {field.disabled=true}",
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "\u041F\u043E\u043B\u0435\u0442\u043E \u0435 \u0437\u0430\u0434\u044A\u043B\u0436\u0438\u0442\u0435\u043B\u043D\u043E"
+                }
+              ],
+              "order": 2
+            },
+            {
+              "label": "\u0410\u0434\u0440\u0435\u0441 \u043D\u0430 \u043F\u0440\u043E\u0432\u0435\u0436\u0434\u0430\u043D\u0435",
+              "name": "institutionDepartmentID",
+              "type": "searchselect",
+              "width": 400,
+              "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+              "order": 3
+            },
+            {
+              "label": "\u041F\u0440\u0435\u0434\u043C\u0435\u0442\u044A\u0442 \u0441\u0435 \u0438\u0437\u0443\u0447\u0430\u0432\u0430 \u043D\u0430 \u0427\u0415",
+              "name": "isFL",
+              "type": "checkbox",
+              "disabled": false,
+              "influence": [
+                { "type": "render", "fieldName": "FLSubjectID", "condition": [true] },
+                {
+                  "fields": ["FLSubjectID"],
+                  "type": "require",
+                  "message": "\u041F\u043E\u043B\u0435\u0442\u043E \u0435 \u0437\u0430\u0434\u044A\u043B\u0436\u0438\u0442\u0435\u043B\u043D\u043E",
+                  "condition": [true]
+                }
+              ],
+              "order": 4
+            },
+            {
+              "label": "\u0427\u0443\u0436\u0434 \u0435\u0437\u0438\u043A",
+              "name": "FLSubjectID",
+              "type": "searchselect",
+              "width": 400,
+              "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+              "order": 5
+            },
+            {
+              "label": "if(instType==2) {field.label=\u0027\u0424\u043E\u0440\u043C\u0430 \u043D\u0430 \u043F\u0435\u0434\u0430\u0433.\u0432\u0437\u0430\u0438\u043C\u043E\u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0435\u0027} else {field.label=\u0027\u041D\u0430\u0447\u0438\u043D \u043D\u0430 \u0438\u0437\u0443\u0447\u0430\u0432\u0430\u043D\u0435\u0027}",
+              "name": "subjectTypeID",
+              "type": "select",
+              "width": 700,
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "\u041F\u043E\u043B\u0435\u0442\u043E \u0435 \u0437\u0430\u0434\u044A\u043B\u0436\u0438\u0442\u0435\u043B\u043D\u043E"
+                }
+              ],
+              "influence": [
+                { "type": "render", "fieldName": "parentCurriculumID", "condition": [105, 151] },
+                {
+                  "fields": ["parentCurriculumID"],
+                  "type": "require",
+                  "message": "\u041F\u043E\u043B\u0435\u0442\u043E \u0435 \u0437\u0430\u0434\u044A\u043B\u0436\u0438\u0442\u0435\u043B\u043D\u043E",
+                  "condition": [105, 151]
+                },
+                { "type": "disable", "fieldName": "isWholeClass", "condition": [152, 153, 154, 155] },
+                { "type": "hide", "fieldName": "curriculumGroupID", "condition": [152, 153, 154, 155] },
+                { "type": "hide", "fieldName": "isAllStudents", "condition": [152, 153, 154, 155] },
+                { "type": "hide", "subsectionName": "horarium", "condition": [152, 153, 154, 155] },
+                { "type": "hide", "sectionName": "TableStudentGroupList", "condition": [152, 153, 154, 155] },
+                { "type": "hide", "sectionName": "TableStudentGroupList", "condition": [152, 153, 154, 155] }
+              ],
+              "order": 6
+            },
+            {
+              "label": "\u041A\u044A\u043C \u043F\u0440\u043E\u0444\u0438\u043B\u0438\u0440\u0430\u0449 \u043F\u0440\u0435\u0434\u043C\u0435\u0442",
+              "name": "parentCurriculumID",
+              "type": "searchselect",
+              "width": 800,
+              "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+              "order": 7
+            },
+            {
+              "label": "\u0418\u0437\u0443\u0447\u0430\u0432\u0430 \u0441\u0435 \u043E\u0442 \u0446\u0435\u043B\u0438\u044F \u043A\u043B\u0430\u0441/\u0433\u0440\u0443\u043F\u0430",
+              "name": "isWholeClass",
+              "type": "checkbox",
+              "defaultValue": "true",
+              "disabled": false,
+              "influence": [{ "type": "hide", "fieldName": "curriculumGroupID", "condition": [true] }],
+              "order": 8
+            },
+            {
+              "label": "\u0413\u0440\u0443\u043F\u0430",
+              "name": "curriculumGroupID",
+              "type": "input",
+              "inputType": "number",
+              "validations": [
+                {
+                  "name": "min",
+                  "validation": 1,
+                  "message": "\u041C\u0438\u043D\u0438\u043C\u0430\u043B\u0435\u043D \u0431\u0440\u043E\u0439 \u0433\u0440\u0443\u043F\u0438 1"
+                },
+                {
+                  "name": "max",
+                  "validation": 12,
+                  "message": "\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u0435\u043D \u0431\u0440\u043E\u0439 \u0433\u0440\u0443\u043F\u0438 12"
+                },
+                {
+                  "name": "pattern",
+                  "validation": "^\\d\u002B$",
+                  "message": "\u041F\u043E\u043B\u0435\u0442\u043E \u0442\u0440\u044F\u0431\u0432\u0430 \u0434\u0430 \u0441\u044A\u0434\u044A\u0440\u0436\u0430 \u0446\u044F\u043B\u043E \u043D\u0435\u043E\u0442\u0440\u0438\u0446\u0430\u0442\u0435\u043B\u043D\u043E \u0447\u0438\u0441\u043B\u043E"
+                }
+              ],
+              "order": 9
+            },
+            {
+              "label": "\u041F\u0440\u0435\u0434\u043C\u0435\u0442\u044A\u0442 \u0441\u0435 \u0438\u0437\u0443\u0447\u0430\u0432\u0430 \u043E\u0442 \u0432\u0441\u0438\u0447\u043A\u0438 \u0434\u0435\u0446\u0430/\u0443\u0447\u0435\u043D\u0438\u0446\u0438 \u0432 \u0438\u043D\u0441\u0442\u0438\u0442\u0443\u0446\u0438\u044F\u0442\u0430",
+              "name": "isAllStudents",
+              "type": "checkbox",
+              "disabled": "if(operationType==1) {field.disabled=false} else {field.disabled=true}",
+              "influence": [{ "type": "hide", "sectionName": "TableStudentGroupList", "condition": [true] }],
+              "order": 10
+            },
+            {
+              "label": "\u041F\u0440\u0435\u0434\u043C\u0435\u0442\u044A\u0442 \u0441\u0435 \u0438\u0437\u0443\u0447\u0430\u0432\u0430 \u043A\u0430\u0442\u043E \u0438\u043D\u0434\u0438\u0432\u0438\u0434\u0443\u0430\u043B\u0435\u043D \u0447\u0430\u0441",
+              "name": "isIndividualLesson",
+              "type": "checkbox",
+              "disabled": false,
+              "order": 11
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "name": "horarium",
+          "label": "\u0425\u043E\u0440\u0430\u0440\u0438\u0443\u043C",
+          "fields": [
+            {
+              "label": "\u041D\u043E\u0440\u043C\u0430 \u043D\u0430 \u043F\u0440\u0435\u0434\u043C\u0435\u0442\u0430",
+              "name": "normaS",
+              "type": "input",
+              "inputType": "number",
+              "order": 1
+            },
+            {
+              "label": "if(instType==2 || instType==3) {field.label=\u0027\u0423\u0421 \u0433\u043E\u0434\u0438\u0448\u043D\u043E\u0027} else {field.label=\u0027I \u0441\u0440\u043E\u043A \u0423\u0421\u0027}",
+              "name": "weeksFirstTerm",
+              "type": "input",
+              "inputType": "number",
+              "order": 2
+            },
+            {
+              "label": "if(instType==2 || instType==3) {field.label=\u0027\u0427\u0421 \u0433\u043E\u0434\u0438\u0448\u043D\u043E\u0027} else {field.label=\u0027I \u0441\u0440\u043E\u043A \u0427\u0421\u0027}",
+              "name": "hoursWeeklyFirstTerm",
+              "type": "input",
+              "inputType": "number",
+              "order": 3
+            },
+            {
+              "label": "II \u0441\u0440\u043E\u043A \u0423\u0421",
+              "name": "weeksSecondTerm",
+              "type": "input",
+              "inputType": "number",
+              "rendered": "if(instType==2 || instType==3) {field.rendered=false} else {field.rendered=true}",
+              "order": 4
+            },
+            {
+              "label": "II \u0441\u0440\u043E\u043A \u0427\u0421",
+              "name": "hoursWeeklySecondTerm",
+              "type": "input",
+              "inputType": "number",
+              "rendered": "if(instType==2 || instType==3) {field.rendered=false} else {field.rendered=true}",
+              "order": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Тест",
+      "order": 2,
+      "name": "aserehe",
+      "subsections": [
+        {
+          "order": 1,
+          "name": "aserehe",
+          "fields": [
+            {
+              "label": "Тип на институцията",
+              "name": "aserehe",
+              "type": "select",
+              "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+              "rendered": true,
+              "influence": [
+                {
+                  "createNewTableName": "curriculumClasses",
+                  "condition": [12],
+                  "type": "hide"
+                }
+              ],
+              "order": 1,
+              "validations": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "label": "if(instType==2) {section.label=\u0027\u0413\u0440\u0443\u043F\u0438\u0027} else {section.label=\u0027\u0413\u0440\u0443\u043F\u0438/\u041A\u043B\u0430\u0441\u043E\u0432\u0435\u0027}",
+      "name": "TableCurriculumClasses",
+      "table": {
+        "name": "curriculumClasses",
+        "searchable": false,
+        "sortable": false,
+        "createNew": "samePage",
+        "paramName": "curriculumClassesID",
+        "formName": "curriculumClassData",
+        "hasEditButton": false,
+        "canDeleteRow": true,
+        "fields": [
+          {
+            "name": "classID",
+            "type": "select",
+            "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+            "order": 1
+          }
+        ]
+      }
+    },
+    {
+      "label": "\u0421\u043F\u0438\u0441\u044A\u043A \u043D\u0430 \u0434\u0435\u0446\u0430\u0442\u0430/\u0443\u0447\u0435\u043D\u0438\u0446\u0438\u0442\u0435",
+      "order": 3,
+      "name": "TableStudentGroupList",
+      "table": {
+        "name": "curriculumStudents",
+        "hasEditButton": false,
+        "searchable": true,
+        "sortable": false,
+        "searchType": "column",
+        "canDeleteRow": true,
+        "multiAdd": "if(operationType === 2) {table.multiAdd = null} else {table.multiAdd = {'addFrom': 'students','listColumns': ['className', 'publicEduNumber', 'fullName'],'title': 'нещо си там', 'comparisonColumn': 'publicEduNumber','tableColumns': ['className', 'publicEduNumber','fullName'],'dependsOn': ['classID']}}",
+        "fields": [
+          { "name": "curriculumStudentID", "type": "input", "inputType": "number", "rendered": false, "order": 1 },
+          { "name": "personID", "type": "input", "inputType": "number", "rendered": false, "order": 2 },
+          {
+            "label": "\u041A\u043B\u0430\u0441/\u0433\u0440\u0443\u043F\u0430",
+            "name": "className",
+            "type": "input",
+            "inputType": "text",
+            "order": 3
+          },
+          {
+            "label": "\u041E\u0431\u0440\u0430\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u0435\u043D \u043D\u043E\u043C\u0435\u0440",
+            "name": "publicEduNumber",
+            "type": "input",
+            "inputType": "text",
+            "order": 4
+          },
+          {
+            "label": "\u0418\u043C\u0435 \u043D\u0430 \u0434\u0435\u0442\u0435\u0442\u043E",
+            "name": "fullName",
+            "type": "input",
+            "inputType": "text",
+            "order": 5
+          }
+        ]
+      }
+    },
+    {
+      "order": 4,
+      "name": "TableCurriculumTeachersList",
+      "label": "\u041F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u0442\u0435\u043B\u0438",
+      "table": {
+        "name": "curriculumTeachers",
+        "hasEditButton": false,
+        "searchable": true,
+        "sortable": false,
+        "searchType": "column",
+        "multiAdd": {
+          "addFrom": "teachers",
+          "listColumns": ["fullName"],
+          "title": "Включване на преподаватели",
+          "comparisonColumn": "staffPositionID",
+          "tableColumns": ["fullName"],
+          "dependsOn": []
+        },
+        "fields": [
+          { "name": "id", "type": "input", "inputType": "number", "width": 5, "rendered": false, "order": 0 },
+          {
+            "name": "staffPositionID",
+            "type": "input",
+            "inputType": "number",
+            "width": 5,
+            "rendered": false,
+            "order": 1
+          },
+          { "name": "fullName", "type": "input", "inputType": "text", "width": 80, "rendered": true, "order": 2 },
+          {
+            "label": "\u041D\u0435 \u043E\u0442\u0433\u043E\u0432\u0430\u0440\u044F \u043D\u0430 \u0438\u0437\u0438\u0441\u043A\u0432\u0430\u043D\u0438\u044F\u0442\u0430",
+            "name": "isNotRegularTeacher",
+            "type": "checkbox",
+            "disabled": false,
+            "order": 3
+          }
+        ]
+      }
+    }
+  ]
+}

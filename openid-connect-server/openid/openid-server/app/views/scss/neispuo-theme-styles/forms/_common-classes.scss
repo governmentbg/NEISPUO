@@ -1,0 +1,48 @@
+//label-left is used for checkbox, radio button and switch
+.label-left {
+  padding-left: 0;
+  .form-check-input {
+    float: none;
+    margin-left: $margin-left-label-left;
+  }
+  .form-check-label {
+    float: left;
+  }
+}
+
+//used for input, valid or invalid
+.form-group {
+  position: relative;
+}
+
+.form-control {
+  border-color: #657285;
+  background-color: transparent;
+  &.ng-invalid.ng-touched {
+    border: 0.125rem solid #df320c;
+    margin: -1px;
+  }
+  &.is-invalid {
+    padding-right: 0.813rem;
+    margin: -1px;
+  }
+  &:focus{
+    background-color: transparent;
+  }
+}
+
+.is-invalid {
+  border-width: 0.125rem;
+  box-shadow: none;
+  color: #df320c;
+}
+
+.invalid-feedback {
+  display: block;
+  &::before {
+    content: "\F623";
+    font-family: "bootstrap-icons";
+    font-size: 0.75rem;
+    margin-right: 0.25rem;
+  }
+}

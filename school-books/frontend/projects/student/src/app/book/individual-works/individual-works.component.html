@@ -1,0 +1,25 @@
+<sb-tab-card [hideHeader]="true">
+  <ng-container card-body>
+    <sb-table
+      [dataSource]="dataSource"
+      [displayedColumns]="['date', 'individualWorkActivity', 'createdBySysUserFullName']"
+    >
+      <ng-container cdkColumnDef="date">
+        <th cdk-header-cell *cdkHeaderCellDef>Дата</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.date | sbDate }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="individualWorkActivity">
+        <th cdk-header-cell *cdkHeaderCellDef>Проведена индивидуална работа с ученика</th>
+        <td cdk-cell *cdkCellDef="let row">
+          <span class="whitespace-pre-line">{{ row.individualWorkActivity }}</span>
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="createdBySysUserFullName">
+        <th cdk-header-cell *cdkHeaderCellDef>Създадена от</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.createdBySysUserFullName }}</td>
+      </ng-container>
+    </sb-table>
+  </ng-container>
+</sb-tab-card>

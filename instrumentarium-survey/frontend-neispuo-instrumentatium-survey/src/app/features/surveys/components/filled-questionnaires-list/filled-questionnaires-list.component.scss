@@ -1,0 +1,136 @@
+@import "@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/variables/variables.scss";
+
+.spinner-container {
+  justify-content: center;
+  text-align: center;
+  display: block;
+}
+
+.top-container {
+  height: fit-content;
+  border-bottom: 0.125rem solid $gray-300;
+  min-height: 4.5rem;
+  align-items: center;
+  margin: 0;
+
+  .btn-container {
+    border-right: 0.125rem solid $gray-300;
+    width: 4.375rem;
+    text-align: center;
+  }
+
+  .heading {
+    align-items: center;
+    font-family: "Inter";
+
+    .title {
+      margin: 0 0 0 1.5rem;
+      font-weight: 700;
+      line-height: 1rem;
+      font-size: 1rem;
+      font-family: "Inter", sans-serif;
+    }
+  }
+}
+
+.users-who-filled-campaign {
+  text-align: center;
+  justify-content: center;
+  margin-top: 1.25rem;
+  height: 3.75rem;
+
+  h4 {
+    font-size: 1.25rem;
+    margin-bottom: 0.938rem;
+    display: inline;
+  }
+
+  span {
+    font-size: 1.25rem;
+    color: $gray-500;
+    font-weight: 600;
+
+    strong {
+      color: $blue-900;
+      font-size: 2.188em;
+      margin-right: 0.625rem;
+    }
+  }
+}
+
+.table-container {
+  margin: 1.563rem;
+
+  span.submitted {
+    color: $green-500;
+    margin-left: 0.938rem;
+    background: $green-100;
+    padding: 0.188rem 0.5rem;
+    border-radius: 1.25rem;
+    font-size: 0.625rem;
+    font-weight: 600;
+    font-family: "Inter", sans-serif;
+    text-transform: uppercase;
+    margin-left: 0;
+    display: inline-block;
+  }
+
+  span.draft {
+    color: $blue-400;
+    background: $blue-100;
+    padding: 0.188rem 0.5rem;
+    border-radius: 1.25rem;
+    font-size: 0.625rem;
+    font-weight: 600;
+    font-family: "Inter", sans-serif;
+    text-transform: uppercase;
+    margin-left: 0;
+    display: inline-block;
+  }
+}
+
+:host {
+  ::ng-deep .p-datatable {
+    margin-bottom: 6.25rem;
+
+    table {
+      table-layout: unset;
+    }
+
+    .p-paginator-bottom {
+      width: 100%;
+      height: 3.75rem;
+      display: inline-table;
+      background-color: $gray-200;
+      text-align: center;
+    }
+  }
+
+  ::ng-deep .p-datatable-thead {
+    height: 3rem;
+
+    &>tr>th {
+      font-size: 0.875rem;
+      padding-top: 0;
+      padding-bottom: 0;
+      background-color: $gray-200;
+    }
+  }
+
+  ::ng-deep .p-datatable-tbody>tr>td {
+    height: 3rem;
+    font-size: 0.875rem;
+    padding-top: 0;
+    padding-bottom: 0;
+    cursor: pointer;
+  }
+
+  ::ng-deep .p-paginator .p-paginator-current {
+    width: 75%;
+    height: unset;
+    margin: 0;
+    padding: 0;
+    margin-right: auto;
+    display: table-cell;
+  }
+}

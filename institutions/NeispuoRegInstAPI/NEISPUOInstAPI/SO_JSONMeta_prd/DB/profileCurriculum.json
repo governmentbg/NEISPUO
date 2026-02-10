@@ -1,0 +1,61 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_year].[ProfileCurriculum] CL /**where**/ /**orderby**/",
+  "sotemplate": "SELECT /**select**/ FROM [sob].[ProfileCurriculum] CL /**where**/ /**orderby**/",
+  "columns": [
+	{
+      "column": "CL.CurriculumID AS code"
+    },
+	{
+      "column": "CL.ProfileSubject AS label"
+    }
+   ],
+  "params": [
+    {
+      "param": "@instid",
+      "column": "CL.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+	{
+      "param": "@parentclassid",
+      "column": "CL.ClassID",
+      "operator": "=",
+      "value": "parentclassid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+				{
+      "param": "@year",
+      "column": "CL.SchoolYear",
+      "operator": "=",
+      "value": "year",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    },
+	{
+      "param": "@period",
+      "column": "CL.Period",
+      "operator": "=",
+      "value": "period",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "CL.ProfileSubject",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+
+  ]
+}

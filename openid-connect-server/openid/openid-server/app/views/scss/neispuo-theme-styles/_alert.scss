@@ -1,0 +1,54 @@
+.alert {
+    max-width: 19.875rem;
+    border-color: transparent;
+    border-left: 0.25rem solid $blue;
+    padding-left: 2.25rem;
+    background-color: white;
+    color: $gray-900;
+    span {
+        font-size: 0.875rem;
+        display: inline-block;
+        margin-bottom: 0.75rem;
+    }
+    .btn-alert {
+        padding: 0;
+        margin-right: 1.5rem;
+        font-size: 0.875rem;
+    }
+    .btn-close {
+        position: absolute;
+        right: 0.5rem;
+        top: 0.5rem;
+        color: #19212C;
+        font-size: 0.625rem;
+        padding: 0.313rem;
+    }
+    &-success {
+        border-left: 0.25rem solid $green;
+    }
+    &-danger {
+        border-left: 0.25rem solid $red;
+    }
+}
+
+.alert::before,
+.alert-success::before,
+.alert-danger::before {
+    font-family: 'bootstrap-icons';
+    position: absolute;
+    left: 0.5rem;
+    top: 0.875rem;
+}
+.alert::before {
+    content: '\F430';
+    color: $blue;
+}
+.alert-success::before {
+    content: '\F26A';
+    color: $green;
+}
+.alert-danger::before {
+    content: '\F622';
+    font-family: 'bootstrap-icons';
+    color: $red;
+}

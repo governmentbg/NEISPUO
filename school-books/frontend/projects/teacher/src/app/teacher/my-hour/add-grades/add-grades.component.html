@@ -1,0 +1,85 @@
+<div class="flex justify-between mb-2">
+  <sb-breadcrumb
+    class="block"
+    [icon]="fadChalkboardTeacher"
+    [text]="hourDescriptionShort"
+    [parentItems]="[{ text: 'Моите часове', routeCommands: ['../'] }]"
+  ></sb-breadcrumb>
+
+  <button class="sb-link-btn" [matMenuTriggerFor]="menu" aria-label="Настройки">
+    <fa-icon [icon]="fadCog" size="lg"></fa-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <sb-book-settings-form></sb-book-settings-form>
+  </mat-menu>
+</div>
+
+<form [formGroup]="form" #ngForm="ngForm" autocomplete="off" novalidate>
+  <sb-card>
+    <ng-container card-title>
+      Въвеждане на оценки
+      <span class="hidden sm:inline">за {{ hourDescription }}</span>
+    </ng-container>
+    <sb-editor-panel card-buttons [isNew]="true" (save)="onSave($event)"></sb-editor-panel>
+    <div card-body>
+      <sb-banner type="info" *ngIf="data.teacherLesson.individualCurriculumPersonId != null" class="mb-4">
+        Избрали сте занятие за ученик с ИУП
+      </sb-banner>
+
+      <sb-banner type="warning" *ngIf="hasComments" class="mb-4">
+        Коментарите към оценките са видими и в модула за ученици/родители
+      </sb-banner>
+
+      <sb-nom-select label="Вид на оценката" formControlName="type" [nomService]="gradeTypeNomsService"></sb-nom-select>
+
+      <div class="sb-table-container mt-2.5 sm:mt-4 md:mt-0">
+        <table class="sb-table">
+          <thead>
+            <tr>
+              <th>Ученик</th>
+              <th>Оценка</th>
+              <th>Коментар</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let student of templateData.students" [formGroup]="studentForm(student.studentFormIndex)">
+              <td class="sb-names">
+                {{ student.classNumber != null ? student.classNumber.toString() + '.' : '' }}
+
+                {{ student.firstName }}
+                {{ student.middleName }}
+                {{ student.lastName }}
+
+                <span class="sb-badge" *ngIf="student.abnormalStatus">{{ student.abnormalStatus }}</span>
+              </td>
+              <td *ngIf="!student.hasSpecialNeeds && !templateData.hasQualitativeGrades" class="w-px py-0">
+                <sb-decimal-grade-picker
+                  formControlName="decimalGrade"
+                  [allowFractional]="true"
+                ></sb-decimal-grade-picker>
+              </td>
+              <td *ngIf="!student.hasSpecialNeeds && templateData.hasQualitativeGrades" class="w-px py-0">
+                <sb-qualitative-grade-picker formControlName="qualitativeGrade"></sb-qualitative-grade-picker>
+              </td>
+              <td *ngIf="student.hasSpecialNeeds" class="w-px py-0">
+                <mat-select class="sb-form-control min-w-[205px]" formControlName="specialGrade">
+                  <mat-option [value]="item.id" *ngFor="let item of this.data.specialNeedsGradeNoms">
+                    {{ item.name }}
+                  </mat-option>
+                </mat-select>
+              </td>
+              <td class="py-1">
+                <textarea
+                  class="sb-form-control block w-full"
+                  formControlName="comment"
+                  cdkTextareaAutosize
+                  cdkAutosizeMinRows="1"
+                ></textarea>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </sb-card>
+</form>

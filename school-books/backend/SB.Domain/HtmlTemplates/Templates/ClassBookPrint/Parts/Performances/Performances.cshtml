@@ -1,0 +1,37 @@
+@using SB.Domain
+@model PerformancesModel
+
+<div class="page">
+  <h3 class="page-header">Изяви</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th rowspan="2">Наименование</th>
+        <th rowspan="2">Описание</th>
+        <th rowspan="2">Вид на изявата</th>
+        <th colspan="2">Период на провеждане</th>
+        <th rowspan="2">Място на провеждане</th>
+        <th rowspan="2">Получени награди от учениците</th>
+      </tr>
+      <tr>
+        <th>От</th>
+        <th>До</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (var performance in Model.Performances)
+      {
+        <tr class="three-rows-height">
+          <td>@performance.Name</td>
+          <td>@performance.Description</td>
+          <td>@performance.PerformanceType</td>
+          <td>@performance.StartDate.ToString("dd.MM.yy")</td>
+          <td>@performance.EndDate.ToString("dd.MM.yy")</td>
+          <td>@performance.Location</td>
+          <td>@performance.StudentAwards</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

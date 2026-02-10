@@ -1,0 +1,36 @@
+@import '~@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/variables/variables';
+@import '~@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/mixins';
+
+:host ::ng-deep {
+    .school-books-access {
+        &-form {
+            background-color: $gray-200;
+            padding-top: 0.5rem;
+            .p-checkbox-label {
+                color: $gray-700;
+            }
+        }
+        .p-datatable,
+        .p-datatable-wrapper {
+            min-height: calc(100vh - 443px);
+        }
+    }
+
+    .p-input-icon-left > .p-inputtext:hover,
+    .p-input-icon-left > .p-inputtext:active,
+    .p-input-icon-left > .p-inputtext:focus {
+        padding-left: 2rem;
+    }
+
+    .p-paginator-current {
+        display: none;
+    }
+
+    .p-button {
+        margin-right: 0.375em;
+    }
+
+    .p-dropdown {
+        width: 6rem;
+    }
+}

@@ -1,0 +1,262 @@
+{
+  "template": "SELECT * FROM reginst_basic.Navigation /**where**/",
+  "outputColumns": "RIprocedureID as procID, InstitutionID as instid, Abbreviation as Name, InstKind as instKind, \"institution\" as formName, InstTreeColor as color, InstTreeColorDescription as status",
+  "params": [
+    {
+      "param": "@IsRIActive",
+      "column": "IsRIActive",
+      "value": "isRIActive",
+	  "static": false,
+	  "from_claim": false
+    },
+    {
+      "param": "@InstType",
+      "column": "InstType",
+      "value": "instType",
+	  "static": false,
+	  "from_claim": false
+    }	
+  ],
+  "filters": [
+    {
+      "role": 2,
+      "param": "@RegID",
+      "column": "RegID",
+      "claim": "RegionID"
+    },
+	{
+      "role": 9,
+      "param": "@RegID",
+      "column": "RegID",
+      "claim": "RegionID"
+    },
+    {
+      "role": 3,
+      "param": "@MunID",
+      "column": "MunID",
+      "claim": "MunicipalityID"
+    }
+  ],
+  "levels": [
+    {
+      "role": 1,
+      "level": {
+        "id": "RegID",
+        "name": "RegName",
+        "orderBy": "RegID",
+        "sublevel": [
+          {
+            "id": "MunID",
+            "name": "MunName",
+            "orderBy": "MunID",
+            "parentKey": "RegID",
+            "sublevel": [
+              {
+                "id": "InstitutionID",
+                "name": "",
+                "orderBy": "InstitutionID",
+                "parentKey": "MunID",
+                "sublevel": []
+              }
+            ]
+          }
+        ]
+      }
+    },
+	{
+      "role": 15,
+      "level": {
+        "id": "RegID",
+        "name": "RegName",
+        "orderBy": "RegID",
+        "sublevel": [
+          {
+            "id": "MunID",
+            "name": "MunName",
+            "orderBy": "MunID",
+            "parentKey": "RegID",
+            "sublevel": [
+              {
+                "id": "InstitutionID",
+                "name": "",
+                "orderBy": "InstitutionID",
+                "parentKey": "MunID",
+                "sublevel": []
+              }
+            ]
+          }
+        ]
+      }
+    },
+	{
+      "role": 10,
+      "level": {
+        "id": "RegID",
+        "name": "RegName",
+        "orderBy": "RegID",
+        "sublevel": [
+          {
+            "id": "MunID",
+            "name": "MunName",
+            "orderBy": "MunID",
+            "parentKey": "RegID",
+            "sublevel": [
+              {
+                "id": "InstitutionID",
+                "name": "",
+                "orderBy": "InstitutionID",
+                "parentKey": "MunID",
+                "sublevel": []
+              }
+            ]
+          }
+        ]
+      }
+    },
+	{
+      "role": 12,
+      "level": {
+        "id": "RegID",
+        "name": "RegName",
+        "orderBy": "RegID",
+        "sublevel": [
+          {
+            "id": "MunID",
+            "name": "MunName",
+            "orderBy": "MunID",
+            "parentKey": "RegID",
+            "sublevel": [
+              {
+                "id": "InstitutionID",
+                "name": "",
+                "orderBy": "InstitutionID",
+                "parentKey": "MunID",
+                "sublevel": []
+              }
+            ]
+          }
+        ]
+      }
+    },
+	{
+      "role": 16,
+      "level": {
+        "id": "RegID",
+        "name": "RegName",
+        "orderBy": "RegID",
+        "sublevel": [
+          {
+            "id": "MunID",
+            "name": "MunName",
+            "orderBy": "MunID",
+            "parentKey": "RegID",
+            "sublevel": [
+              {
+                "id": "InstitutionID",
+                "name": "",
+                "orderBy": "InstitutionID",
+                "parentKey": "MunID",
+                "sublevel": []
+              }
+            ]
+          }
+        ]
+      }
+    },
+	{
+      "role": 17,
+      "level": {
+        "id": "RegID",
+        "name": "RegName",
+        "orderBy": "RegID",
+        "sublevel": [
+          {
+            "id": "MunID",
+            "name": "MunName",
+            "orderBy": "MunID",
+            "parentKey": "RegID",
+            "sublevel": [
+              {
+                "id": "InstitutionID",
+                "name": "",
+                "orderBy": "InstitutionID",
+                "parentKey": "MunID",
+                "sublevel": []
+              }
+            ]
+          }
+        ]
+      }
+    },
+	{
+      "role": 13,
+      "level": {
+        "id": "RegID",
+        "name": "RegName",
+        "orderBy": "RegID",
+        "sublevel": [
+          {
+            "id": "MunID",
+            "name": "MunName",
+            "orderBy": "MunID",
+            "parentKey": "RegID",
+            "sublevel": [
+              {
+                "id": "InstitutionID",
+                "name": "",
+                "orderBy": "InstitutionID",
+                "parentKey": "MunID",
+                "sublevel": []
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "role": 2,
+      "level": {
+        "id": "MunID",
+        "name": "MunName",
+        "orderBy": "MunID",
+        "sublevel": [
+          {
+            "id": "InstitutionID",
+            "name": "",
+            "orderBy": "InstitutionID",
+            "parentKey": "MunID",
+            "sublevel": []
+          }
+        ]
+      }
+    },
+	{
+      "role": 9,
+      "level": {
+        "id": "MunID",
+        "name": "MunName",
+        "orderBy": "MunID",
+        "sublevel": [
+          {
+            "id": "InstitutionID",
+            "name": "",
+            "orderBy": "InstitutionID",
+            "parentKey": "MunID",
+            "sublevel": []
+          }
+        ]
+      }
+    },
+    {
+      "role": 3,
+      "level": {
+        "id": "InstitutionID",
+        "name": "",
+        "formName": "school",
+        "color": "institutionColor",
+        "orderBy": "InstitutionID",
+        "sublevel": []
+      }
+    }
+  ]
+}

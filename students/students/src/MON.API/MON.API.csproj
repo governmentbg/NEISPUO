@@ -1,0 +1,153 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <!-- Този параметър се използва най-долу в секцията за Publish. -->
+    <SpaRoot>..\MON.SPA\</SpaRoot>
+    <DocRoot>..\MON.SPA\docs</DocRoot>
+    <DebugType>portable</DebugType>
+    <UserSecretsId>888d6600-5058-4c84-8bc4-c030d5c31131</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..</DockerfileContext>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Hangfire.AspNetCore" Version="1.7.31" />
+    <PackageReference Include="Hangfire.Redis.StackExchange" Version="1.8.6" />
+    <PackageReference Include="Humanizer.Core" Version="2.8.26" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.11" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.11" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.StackExchangeRedis" Version="3.1.21" />
+    <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.1.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.11">
+      <!--<PrivateAssets>all</PrivateAssets>-->
+      <!--<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>-->
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="3.1.21" />
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="3.1.11" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.13" />
+    <PackageReference Include="prometheus-net" Version="6.0.0" />
+    <PackageReference Include="prometheus-net.AspNetCore" Version="6.0.0" />
+    <PackageReference Include="prometheus-net.AspNetCore.HealthChecks" Version="6.0.0" />
+    <PackageReference Include="prometheus-net.SystemMetrics" Version="2.0.0" />
+    <PackageReference Include="Serilog" Version="2.10.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="3.4.0" />
+    <PackageReference Include="Serilog.Enrichers.ClientInfo" Version="1.1.3" />
+    <PackageReference Include="Serilog.Enrichers.CorrelationId" Version="3.0.1" />
+    <PackageReference Include="Serilog.Enrichers.Environment" Version="2.1.3" />
+    <PackageReference Include="Serilog.Enrichers.Process" Version="2.0.1" />
+    <PackageReference Include="Serilog.Enrichers.Thread" Version="3.1.0" />
+    <PackageReference Include="Serilog.Exceptions" Version="6.0.0" />
+    <PackageReference Include="Serilog.Settings.Configuration" Version="3.1.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="4.1.0" />
+    <PackageReference Include="Serilog.Sinks.MSSqlServer" Version="5.6.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.11" />
+    <PackageReference Include="System.Text.Json" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MON.Models\MON.Models.csproj" />
+    <ProjectReference Include="..\MON.Services\MON.Services.csproj" />
+    <ProjectReference Include="..\Regix\Kontrax.RegiX.Core\Kontrax.RegiX.Core.csproj" />
+    <ProjectReference Include="..\Report\MON.Report.Service\MON.Report.Service.csproj" />
+  </ItemGroup>
+  
+    <ItemGroup>
+      <!-- ZXing.net компилирана версия -->
+      <Reference Include="zxing">
+        <HintPath>..\..\Lib\ZXing.net\netstandard2.1\zxing.dll</HintPath>
+      </Reference>      
+    <!-- Основната библиотека на Telerik за справки и печатни бланки. Не се вижда транзитивно от Hippocrates.Report.Service, затова е обявена изрично. -->
+    <Reference Include="Telerik.Reporting">
+      <!--<HintPath>..\..\Lib\telerik.reporting\14.2.20.1021\lib\netstandard2.0\Telerik.Reporting.dll</HintPath>-->
+      <!--<HintPath>..\..\Lib\telerik.reporting\15.0.21.326\lib\netstandard2.0\Telerik.Reporting.dll</HintPath>-->
+      <HintPath>..\..\Lib\telerik.reporting\15.2.21.1125\netstandard2.0\Telerik.Reporting.dll</HintPath>
+    </Reference>
+    <!-- Предоставя ReportsControllerBase, който е входната точка за ползване на Telerik reporting-а от JavaScript. -->
+    <Reference Include="Telerik.Reporting.Services.AspNetCore">
+      <!--<HintPath>..\..\Lib\telerik.reporting.services.aspnetcore\14.2.20.1021\lib\netcoreapp3.0\Telerik.Reporting.Services.AspNetCore.dll</HintPath>-->
+      <!--<HintPath>..\..\Lib\telerik.reporting.services.aspnetcore\15.0.21.326\lib\netcoreapp3.1\Telerik.Reporting.Services.AspNetCore.dll</HintPath>-->
+      <HintPath>..\..\Lib\telerik.reporting.services.aspnetcore\15.2.21.1125\netcoreapp3.1\Telerik.Reporting.Services.AspNetCore.dll</HintPath>
+    </Reference>
+      <!-- Report Designer DLLs-->
+      <Reference Include="Telerik.Reporting.Data.Schema">
+        <!--<HintPath>..\..\Lib\telerik.webreportdesigner.services\15.0.21.326\lib\netcoreapp3.1\Telerik.Reporting.Data.Schema.dll</HintPath>-->
+        <HintPath>..\..\Lib\telerik.webreportdesigner.services\15.2.21.1125\netcoreapp3.1\Telerik.Reporting.Data.Schema.dll</HintPath>
+      </Reference>
+      <Reference Include="Telerik.Reporting.JsonSerialization">
+        <!--<HintPath>..\..\Lib\telerik.reporting.jsonserialization\15.0.21.326\lib\netstandard2.0\Telerik.Reporting.JsonSerialization.dll</HintPath>-->
+        <HintPath>..\..\Lib\telerik.reporting.jsonserialization\15.2.21.1125\netstandard2.0\Telerik.Reporting.JsonSerialization.dll</HintPath>
+      </Reference>
+      <Reference Include="Telerik.WebReportDesigner.Services">
+        <!--<HintPath>..\..\Lib\telerik.webreportdesigner.services\15.0.21.326\lib\netcoreapp3.1\Telerik.WebReportDesigner.Services.dll</HintPath>-->
+        <HintPath>..\..\Lib\telerik.webreportdesigner.services\15.2.21.1125\netcoreapp3.1\Telerik.WebReportDesigner.Services.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+  <!--
+    Тази секция се изпълнява при Publish. Копира съдържанието на dist папката от SPA проекта, т.е. компилираното Vue.js приложение,
+    в папка wwwroot на този проект, която е стандартната папка на asp.net за статично съдържание.
+  -->
+  <!--<Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
+    -->
+  <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
+  <!--
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build" />
+
+    <ItemGroup>
+      <DistFiles Include="$(SpaRoot)dist\**" />
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+        -->
+  <!--
+          %(DistFiles.Identity) има стойност например "..\MON.SPA\dist\index.html"
+          Следният Replace заменя "..\MON.SPA\dist" с "wwwroot" и така файлът се появява тук: (publish папката)\wwwroot\index.html.
+          Тук е описано как се ползва Replace: https://stackoverflow.com/a/27865918/1932338
+        -->
+  <!--
+        <RelativePath>$([System.String]::Copy("%(DistFiles.Identity)").Replace("$(SpaRoot)dist", "wwwroot"))</RelativePath>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>-->
+
+  <Target Name="PublishRunWebpackTestIIS" AfterTargets="ComputeFilesToPublish" Condition="'$(EnvironmentName)' != ''">
+    <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build -- --mode $(EnvironmentName)" />
+    <!-- Компилиране на документацията -->
+    <Exec EnvironmentVariables="VITEPRESS_ENV=$(EnvironmentName)" WorkingDirectory="$(DocRoot)" Command="npm run docs:build" />    
+
+    <ItemGroup>
+      <DistFiles Include="$(SpaRoot)dist\**" />
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+        <!--
+          %(DistFiles.Identity) има стойност например "..\MON.SPA\dist\index.html"
+          Следният Replace заменя "..\MON.SPA\dist" с "wwwroot" и така файлът се появява тук: (publish папката)\wwwroot\index.html.
+          Тук е описано как се ползва Replace: https://stackoverflow.com/a/27865918/1932338
+        -->
+        <RelativePath>$([System.String]::Copy("%(DistFiles.Identity)").Replace("$(SpaRoot)dist", "wwwroot"))</RelativePath>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+
+    <ItemGroup>
+      <DistFiles Include="$(DocRoot)docs\.vitepress\dist\**" />
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+        <!--
+          %(DistFiles.Identity) има стойност например "..\MON.SPA\dist\index.html"
+          Следният Replace заменя "..\MON.SPA\dist" с "wwwroot" и така файлът се появява тук: (publish папката)\wwwroot\index.html.
+          Тук е описано как се ползва Replace: https://stackoverflow.com/a/27865918/1932338
+        -->
+        <RelativePath>$([System.String]::Copy("%(DistFiles.Identity)").Replace("$(DocRoot).vitepress\dist", "wwwroot\docs"))</RelativePath>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="https://json.schemastore.org/band-manifest.json" /></VisualStudio></ProjectExtensions>
+</Project>

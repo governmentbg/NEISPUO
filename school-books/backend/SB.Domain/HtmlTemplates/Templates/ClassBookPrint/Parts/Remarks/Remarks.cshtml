@@ -1,0 +1,46 @@
+@using SB.Domain
+@model RemarksModel
+
+<div class="page">
+  <h3 class="page-header">Отзиви</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th class="three-rows-height align-bottom"><div class="vertical-text">№ на ученика</div></th>
+        <th>Трите имена на ученика</th>
+        <th>Дата</th>
+        <th>Вид</th>
+        <th>Учебен предмет/модул</th>
+        <th>Съдържание</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (var student in Model.Students)
+      {
+        int rowspan = student.Remarks.Length;
+
+        for (int i = 0; i < student.Remarks.Length; i++)
+        {
+          <tr>
+            @if (i == 0)
+            {
+              <td rowspan="@rowspan">@student.ClassNumber</td>
+              <td rowspan="@rowspan">
+                @student.FullName
+                @if (student.IsTransferred)
+                {
+                  <span class="sb-badge">ОТПИСАН</span>
+                }
+              </td>
+            }
+            <td>@student.Remarks[i].Date.ToString("dd.MM.yy")</td>
+            <td>@student.Remarks[i].RemarkType</td>
+            <td>@student.Remarks[i].SubjectName / @student.Remarks[i].SubjectTypeName</td>
+            <td>@student.Remarks[i].Description</td>
+          </tr>
+        }
+      }
+    </tbody>
+  </table>
+</div>

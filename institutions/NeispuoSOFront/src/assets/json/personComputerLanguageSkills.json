@@ -1,0 +1,98 @@
+{
+  "label": "Умения на персонала",
+  "paramName": "personid",
+  "sections": [
+    {
+      "order": 1,
+      "label": "Компютърни умения",
+      "name": "computerSkills",
+      "subsections": [
+        {
+          "order": 1,
+          "name": "staffComputerSkills",
+          "label": "Данни за компютърно умение",
+          "canDuplicate": true,
+          "fields": [
+            {
+              "label": "Компютърно умение",
+              "name": "computerSkillID",
+              "type": "select",
+              "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+              "disabled": false,
+              "order": 1
+            },
+            {
+              "label": "Ниво",
+              "name": "computerSkillLevelID",
+              "type": "select",
+              "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+              "disabled": false,
+              "order": 2
+            },
+            {
+              "label": "Бележки",
+              "name": "computerSkillNotes",
+              "type": "textarea",
+              "order": 3,
+              "width": 1000,
+              "height": 2,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 1024,
+                  "message": "Максимална дължина 1024 символа"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "label": "Езикови умения",
+      "name": "languageSkills",
+      "subsections": [
+        {
+          "order": 1,
+          "name": "staffLanguageSkills",
+          "label": "Данни за езиково умение",
+          "canDuplicate": true,
+          "fields": [
+            {
+              "label": "Езиково умение",
+              "name": "languageSkillID",
+              "type": "select",
+              "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+              "disabled": false,
+              "order": 1
+            },
+            {
+              "label": "Ниво",
+              "name": "languageSkillLevelID",
+              "type": "select",
+              "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+              "disabled": false,
+              "order": 2
+            },
+            {
+              "label": "Бележки",
+              "name": "languageSkillNotes",
+              "type": "textarea",
+              "order": 3,
+              "width": 1000,
+              "height": 2,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 1024,
+                  "message": "Максимална дължина 1024 символа"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

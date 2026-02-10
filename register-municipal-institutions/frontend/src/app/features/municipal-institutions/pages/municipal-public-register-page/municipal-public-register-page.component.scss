@@ -1,0 +1,88 @@
+@import "@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/variables/variables.scss";
+
+.public-register-page {
+    margin-top: 0;
+    background-image: url('/assets/images/home.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100%;
+
+    &-wrapper {
+        height: 100%;
+        min-height: 100vh;
+        background: linear-gradient(rgba(23, 42, 83, 0.325), rgba(23, 42, 83, 0.325));
+        padding-bottom: 1em;
+        margin: 0;
+
+        h1 {
+            width: 100%;
+            text-align: center;
+            color: $white;
+            font-weight: 100;
+            margin-top: 0.5em;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+        }
+        a:hover {
+            background-size: 0;
+        }
+        .mon-logo img {
+            height: 4.063rem;
+            width: auto;
+            margin: 0.5rem;
+        }
+
+        .go-to-login-button {
+            float: right;
+            margin: 0.5rem;
+        }
+    }
+}
+
+.table-container {
+    width: 95vw;
+    margin-left: 2vw;
+}
+
+.expanded-info-div {
+    width: 95vw;
+    background-color: $white;
+    padding: 1rem;
+}
+
+:host ::ng-deep {
+    .p-button .p-button-icon-left::before {
+        right: 0.2rem;
+        top: 1.2rem;
+    }
+
+    .pi-chevron-down:before {
+        content: '\F282';
+        font-family: 'bootstrap-icons';
+        right: 0.2rem;
+        top: 1.2rem;
+        position: inherit;
+    }
+
+    .pi-chevron-right:before {
+        content: "\F285";
+        font-family: 'bootstrap-icons';
+    }
+
+    @media screen and (max-width: 568px) {
+        .p-datatable-responsive .p-datatable-tbody>tr>td {
+            font-size: 1.063rem;
+        }
+    }
+
+    .p-paginator {
+        background-color: $white;
+    }
+}
+
+@media (max-width: 749px) {
+    .go-to-login-button {
+        float: left !important;
+    }
+}

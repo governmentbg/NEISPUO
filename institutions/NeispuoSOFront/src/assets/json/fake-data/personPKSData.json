@@ -1,0 +1,8 @@
+{
+  "educationGradeType": "бакалавър",
+  "specialityOrdType": "първа",
+  "certifcateNo": 123456,
+  "dateOfGraduation": "2018-12-31T00:00:00",
+  "isMainOKS": true,
+  "someData": "asdf"
+}

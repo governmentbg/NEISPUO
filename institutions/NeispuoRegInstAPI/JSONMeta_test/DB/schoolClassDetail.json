@@ -1,0 +1,74 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_year].[ClassDetailAll] CD /**where**/ /**orderby**/",
+  "columns": [
+	{
+      "column": "CD.ClassTypeID AS classTypeID"
+    },
+	{
+      "column": "CD.ClassName AS className"
+    },
+	{
+      "column": "CD.ClassEduFormID AS classEduFormID"
+    },
+	{
+      "column": "CD.BasicClassID AS basicClassID"
+    },
+	{
+      "column": "CD.ClassEduDurationID AS classEduDurationID"
+    },
+	{
+      "column": "CD.InstitutionDepartmentID AS institutionDepartmentID"
+    },
+	{
+      "column": "CD.ClassShiftID AS classShiftID"
+    },
+	{
+      "column": "CD.BudgetingClassTypeID AS budgetingClassTypeID"
+    },
+	{
+      "column": "CD.EntranceLevelID AS entranceLevelID"
+    },
+	{
+      "column": "CD.FlID AS flID"
+    },
+	{
+      "column": "CD.FlStudyTypeID AS flStudyTypeID"
+    },
+	{
+      "column": "CD.IsProfModule AS isProfModule"
+    },
+	{
+      "column": "CD.SPPOOEducAreaID AS SPPOOEducAreaID"
+    },
+	{
+      "column": "CD.SPPOOProfAreaID AS SPPOOProfAreaID"
+    },
+	{
+      "column": "CD.SPPOOProfessionID AS SPPOOProfessionID"
+    },
+	{
+      "column": "CD.SPPOOSpecialityID AS SPPOOSpecialityID"
+    }
+   ],
+  "params": [
+    {
+      "param": "@classDetailid",
+      "column": "CD.ClassDetailID",
+      "operator": "=",
+      "value": "classDetailid",
+      "type": "int",
+      "logical_operator": "and",
+      	"static": false,
+		"from_claim": false
+    }
+  ],
+  "order": [
+    {
+      "column": "CD.ClassDetailID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+
+  ]
+}

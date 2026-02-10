@@ -1,0 +1,121 @@
+[
+  {
+    "client_id": "survey",
+    "response_types": ["code"],
+    "redirect_uris": [
+      "https://test-survey.mon.bg/silent-signin-callback",
+      "https://test-survey.mon.bg/signin-callback"
+    ],
+    "post_logout_redirect_uris": ["https://test-survey.mon.bg/login"],
+    "token_endpoint_auth_method": "none"
+  },
+  {
+    "client_id": "reporting",
+    "response_types": ["code"],
+    "redirect_uris": [
+      "https://test-reporting.mon.bg/silent-signin-callback",
+      "https://test-reporting.mon.bg/signin-callback"
+    ],
+    "post_logout_redirect_uris": ["https://test-reporting.mon.bg/login"],
+    "token_endpoint_auth_method": "none"
+  },
+  {
+    "client_id": "user-management",
+    "response_types": ["code"],
+    "redirect_uris": [
+      "https://test-usermng.mon.bg/silent-signin-callback",
+      "https://test-usermng.mon.bg/signin-callback"
+    ],
+    "post_logout_redirect_uris": ["https://test-usermng.mon.bg/login"],
+    "token_endpoint_auth_method": "none"
+  },
+  {
+    "client_id": "neispuo-portal",
+    "response_types": ["code"],
+    "redirect_uris": [
+      "https://test-neispuo.mon.bg/signin-callback",
+      "https://test-neispuo.mon.bg/silent-signin-callback",
+      "https://test-portal.mon.bg/signin-callback",
+      "https://test-portal.mon.bg/silent-signin-callback"
+    ],
+    "post_logout_redirect_uris": [
+      "https://test-portal.mon.bg/login",
+      "https://test-neispuo.mon.bg/login"
+    ],
+    "token_endpoint_auth_method": "none"
+  },
+  {
+    "client_id": "reg_inst",
+    "response_types": ["code"],
+    "redirect_uris": [
+      "https://test-institutions.mon.bg/silent-signin-callback",
+      "https://test-institutions.mon.bg/signin-callback",
+      "https://test-ri.mon.bg/signin-callback",
+      "https://test-ri.mon.bg/silent-signin-callback"
+    ],
+    "post_logout_redirect_uris": [
+      "https://test-institutions.mon.bg/home",
+      "https://test-ri.mon.bg/home"
+    ],
+    "token_endpoint_auth_method": "none"
+  },
+  {
+    "client_id": "students_code_client",
+    "response_types": ["code"],
+    "redirect_uris": [
+      "https://test-students.mon.bg",
+      "https://test-students.mon.bg/callback.html",
+      "https://test-students.mon.bg/silent-renew.html"
+    ],
+    "post_logout_redirect_uris": ["https://test-students.mon.bg"],
+    "token_endpoint_auth_method": "none"
+  },
+  {
+    "client_id": "school-books-frontend",
+    "response_types": ["code"],
+    "redirect_uris": [
+      "https://test-dnevnik.mon.bg",
+      "https://test-dnevnik.mon.bg/t/",
+      "https://test-dnevnik.mon.bg/s/",
+      "https://test-dnevnik.mon.bg/silent-refresh.html",
+      "https://test-dnevnik.mon.bg/t/silent-refresh.html",
+      "https://test-dnevnik.mon.bg/s/silent-refresh.html"
+    ],
+    "post_logout_redirect_uris": [
+      "https://test-dnevnik.mon.bg/t/",
+      "https://test-dnevnik.mon.bg/s/"
+    ],
+    "token_endpoint_auth_method": "none"
+  },
+  {
+    "client_id": "test-rmi",
+    "response_types": ["code"],
+    "redirect_uris": [
+      "https://test-rmi.mon.bg/signin-callback",
+      "https://test-rmi.mon.bg/silent-signin-callback"
+    ],
+    "post_logout_redirect_uris": ["https://test-rmi.mon.bg/login"],
+    "token_endpoint_auth_method": "none"
+  },
+  {
+    "client_id": "inst_basic",
+    "response_types": ["code"],
+    "redirect_uris": [
+      "https://test-so.mon.bg/signin-callback",
+      "https://test-so.mon.bg/silent-signin-callback"
+    ],
+    "post_logout_redirect_uris": ["https://test-so.mon.bg/home"],
+    "token_endpoint_auth_method": "none"
+  },
+  {
+    "client_id": "helpdesk_code_client",
+    "response_types": ["code"],
+    "redirect_uris": [
+      "https://test-helpdesk-neispuo.mon.bg",
+      "https://test-helpdesk-neispuo.mon.bg/callback.html",
+      "https://test-helpdesk-neispuo.mon.bg/silent-renew.html"
+    ],
+    "post_logout_redirect_uris": ["https://test-helpdesk-neispuo.mon.bg"],
+    "token_endpoint_auth_method": "none"
+  }
+]

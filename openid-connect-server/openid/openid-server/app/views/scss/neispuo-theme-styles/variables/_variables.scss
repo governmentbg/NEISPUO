@@ -1,0 +1,93 @@
+// Any default variable overrides need to be imported between functions and variables bootstrap file
+// https://getbootstrap.com/docs/5.0/customize/sass/
+// Functions and variables bootstrap file needs to be imported beacuse we use variables from these files
+
+@import 'bootstrap/scss/functions';
+@import './colors-variables';
+@import './border-radius-varaibles';
+@import './breadcrumb_variables';
+@import './avatar-variables';
+@import './forms/radio-variables';
+@import './forms/switch-variables';
+@import './badge-variables';
+@import './nav-variables';
+@import './tooltip-variables';
+@import './shadows-variables';
+@import './forms/checkbox-variables';
+@import './forms/dropdown-variables';
+@import './forms/forms-variables';
+@import './forms/calendar-variables';
+@import './buttons-variables';
+@import './modal-variables';
+@import './alert-variables';
+@import './table-variables';
+@import './card-variables';
+@import './accordion-variables';
+@import './confirm-dialog-variables';
+@import 'bootstrap/scss/variables';
+//
+// Override bootstrap variables
+//
+
+// Typography
+$font-family-base: 'Inter', sans-serif;
+
+$font-size-sm: $font-size-base * 0.875;
+
+$h1-font-size: $font-size-base * 2;
+$h2-font-size: $font-size-base * 1.5;
+$h3-font-size: $font-size-base * 1.25;
+
+$headings-font-weight: 700;
+
+// Spacing
+$spacers: (
+  0: 0,
+  1: $spacer * 0.25,
+  2: $spacer * 0.5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 2,
+  6: $spacer * 2.5,
+  7: $spacer * 3,
+  8: $spacer * 4,
+  9: $spacer * 6,
+);
+
+// Links
+$link-decoration: none;
+
+//
+// Custom variables
+//
+
+// Typography
+$h2-font-family: 'Roboto', sans-serif;
+
+$font-size-xs: $font-size-base * 0.75;
+$font-size-tiny: $font-size-base * 0.625;
+
+$h1-line-height: 2.5rem;
+$h2-line-height: 2rem;
+$h3-line-height: 1.5rem;
+$body-line-height: 1.25rem;
+$p-line-height: 1.5rem;
+$p-small-line-height: 1.25rem;
+$small-line-height: 1rem;
+$xsmall-line-height: 1rem;
+$tiny-line-height: 0.75rem;
+
+// Form label
+$margin-left-label-left: 0.5rem;
+
+//Icons
+$theme-icons: (
+  'F422': '\F422',
+  'F3D7': '\F3D7',
+  'F4CF': '\F4CF',
+  'F4DB': '\F4DB',
+  'F4D7': '\F4D7',
+  'F228': '\F228',
+  'F153': '\F153',
+  'F5B7': '\F5B7',
+) !default;

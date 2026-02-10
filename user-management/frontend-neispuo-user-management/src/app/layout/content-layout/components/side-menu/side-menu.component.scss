@@ -1,0 +1,111 @@
+@import '~@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/variables/variables';
+@import '~@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/mixins';
+
+.sidebar {
+    top: 64px;
+    position: fixed;
+    width: 320px;
+    box-shadow: $box-shadow-right;
+    transition: 0.5s ease;
+    z-index: 999;
+    &.shown {
+        visibility: visible;
+        transform: none;
+        transition: 0.5s ease;
+    }
+    .side-menu {
+        &-scrollable {
+            height: calc(100vh - 153px);
+            overflow-y: auto;
+            margin-bottom: 0;
+            .btn-toggle {
+                position: relative;
+                font-size: 1.125rem;
+                font-weight: bold;
+                display: flex;
+                align-items: center;
+                padding: 1.25rem 1.75rem;
+                width: 100%;
+                color: $gray-900;
+                background-color: transparent;
+                border: 0;
+                pointer-events: none; // Currently, all submenus are open
+                &:not(.collapsed),
+                &:focus,
+                &:hover {
+                    color: $blue-400;
+                    background-color: $blue-100;
+                }
+                //
+                // Currently, all submenus are open
+                //
+                // &:not(.collapsed)::after {
+                //     transform: rotate(180deg);
+                // }
+                // &::after {
+                //     content: '\F282';
+                //     font-family: 'bootstrap-icons';
+                //     transition: transform 0.35s ease;
+                //     transform-origin: 0.5em 50%;
+                //     position: absolute;
+                //     right: 1.75rem;
+                // }
+                &-nav {
+                    a {
+                        display: flex;
+                        padding: 1.25rem 1.75rem;
+                        margin-left: 3.75rem;
+                        background-size: 0;
+                        font-size: 1rem;
+                        color: $gray-700;
+                        &.active,
+                        &:hover {
+                            color: $blue-400;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+hr {
+    width: 90%;
+    color: $gray-400;
+    margin: auto;
+}
+
+@include media-breakpoint-down(lg) {
+    .sidebar {
+        visibility: hidden;
+        transform: translate3d(-100%, 0, 0);
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    .sidebar {
+        .side-menu {
+            &-scrollable {
+                height: calc(100vh - 204px);
+            }
+        }
+    }
+}
+
+@media (max-width: 300px) {
+    .sidebar {
+        width: 270px;
+        .side-menu {
+            &-scrollable {
+                .btn-toggle {
+                    font-size: 1rem;
+                    &-nav {
+                        a {
+                            font-size: 0.875rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,32 @@
+<sb-tab-card [hideHeader]="true">
+  <ng-container card-body>
+    <sb-table [dataSource]="dataSource" [displayedColumns]="['title', 'date', 'startTime', 'location', 'description']">
+      <ng-container cdkColumnDef="title">
+        <th cdk-header-cell *cdkHeaderCellDef>Тема</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.title }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="date">
+        <th cdk-header-cell *cdkHeaderCellDef>Дата</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.date | sbDate }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="startTime">
+        <th cdk-header-cell *cdkHeaderCellDef>Начален час</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.startTime }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="location">
+        <th cdk-header-cell *cdkHeaderCellDef>Място</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.location }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="description">
+        <th cdk-header-cell *cdkHeaderCellDef>Описание</th>
+        <td cdk-cell *cdkCellDef="let row">
+          <span class="whitespace-pre-line">{{ row.description }}</span>
+        </td>
+      </ng-container>
+    </sb-table>
+  </ng-container>
+</sb-tab-card>

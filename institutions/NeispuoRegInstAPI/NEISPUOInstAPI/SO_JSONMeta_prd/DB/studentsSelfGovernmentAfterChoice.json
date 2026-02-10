@@ -1,0 +1,66 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_year].[StudentList] CD JOIN [student].[SelfGovernment] SG ON SG.PersonId=CD.PersonID AND SG.SchoolYear=CD.SchoolYear AND SG.InstitutionId=CD.InstitutionID /**where**/ /**orderby**/",
+  "columns": [
+	{
+      "column": "CD.PersonID AS code"
+    },
+	{
+      "column": "CD.FullNameWithClassName AS label"
+    }
+   ],
+  "params": [
+	{
+      "param": "@instid",
+      "column": "CD.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+	{
+      "param": "@isNotPresentForm",
+      "column": "CD.IsNotPresentForm",
+      "operator": "=",
+      "value": 0,
+      "type": "int",
+      "logical_operator": "and",
+      "static": true
+    },
+	{
+      "param": "@classKind",
+      "column": "CD.ClassKind",
+      "operator": "=",
+      "value": 1,
+      "type": "int",
+      "logical_operator": "and",
+      "static": true
+    },
+	{
+      "param": "@participation",
+      "column": "sG.ParticipationId",
+      "operator": "=",
+      "value": 1,
+      "type": "int",
+      "logical_operator": "and",
+      "static": true
+    }
+  ],
+  "order": [
+    {
+      "column": "CD.BasicClassID",
+      "type": "ASC"
+    },
+	{
+      "column": "CD.ClassName",
+      "type": "ASC"
+    },
+	{
+      "column": "CD.FullName",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+
+  ]
+}

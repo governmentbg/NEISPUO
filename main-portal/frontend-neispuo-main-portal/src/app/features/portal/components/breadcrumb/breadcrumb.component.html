@@ -1,0 +1,9 @@
+<div class="second-nav py-4">
+  <ol class="breadcrumb">
+    <li *ngFor="let breadcrumb of breadcrumbs">
+      <span [routerLink]="breadcrumb.label === 'Табло за управление' || breadcrumb.label === 'Всички' ? '/' : breadcrumb.label" routerLinkActive="active">
+        {{ breadcrumb.label }}
+      </span>
+    </li>
+  </ol>
+</div>

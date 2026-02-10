@@ -1,0 +1,55 @@
+.schedule-dialog-content {
+  max-width: 1000px;
+}
+
+.schedule-weeks {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -5px;
+}
+
+.schedule-week {
+  position: relative;
+  width: 90px;
+  margin: 0 0 5px 5px;
+  text-align: center;
+  user-select: none;
+
+  input[type='checkbox'] {
+    display: none;
+
+    & + label {
+      display: block;
+      border: 1px solid theme('colors.blue.100');
+      padding: 4px;
+      margin: 0;
+    }
+
+    &:checked + label {
+      color: white;
+      background-color: theme('colors.primary');
+      border-color: theme('colors.primary');
+    }
+
+    &:disabled + label {
+      color: black;
+      background-color: hsl(0, 0%, 87%);
+      border-color: hsl(0, 0%, 87%);
+    }
+
+    &:checked:disabled + label {
+      color: white;
+      background-color: gray;
+      border-color: gray;
+    }
+  }
+
+  .week-dates {
+    font-weight: 500;
+  }
+
+  .week-month {
+    font-weight: 300;
+    text-transform: capitalize;
+  }
+}

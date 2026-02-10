@@ -1,0 +1,16 @@
+<button type="button" mat-icon-button class="btn-menu-profile" #menuTrigger="matMenuTrigger" [matMenuTriggerFor]="menu">
+    <span>{{nameAbr}}</span>
+</button>
+<mat-menu #menu="matMenu" class="profile-menu-container">
+  <div class="container-profile">
+    <span class="like-btn-item">{{nameAbr}}</span>
+    <div class="name-container">
+      <span class="name-span">{{name}}</span>
+      <span class="mail-span">{{email}}</span>
+    </div>
+  </div>
+  <div class="btn-container">
+    <button class="mat-primary" mat-raised-button color="primary">Моят профил</button>
+    <button class="sign-out-btn" (click)="logout()">Изход</button>
+  </div>
+</mat-menu>

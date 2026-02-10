@@ -1,0 +1,263 @@
+{
+  "label": "Данни за адрес за осъществяване на дейността",
+  "procedureName": "inst_basic.institutionDepartmentCUD",
+  "dataName": "if(operationType==1) {form.dataName=null} else {form.dataName='institutionDepartmentData'}",
+  "sections": [
+    {
+      "label": "Данни за адрес за осъществяване на дейността",
+      "order": 1,
+      "subsections": [
+        {
+          "order": 1,
+          "name": "institutionDepartmentData",
+          "label": "Данни за адрес",
+          "fields": [
+            {
+              "label": "Наименование/Предназначение",
+              "name": "departmentName",
+              "type": "input",
+              "inputType": "text",
+              "order": 1,
+              "disabled": false,
+              "width": 1200,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 255,
+                  "message": "Максимална дължина 255 символа"
+                },
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ],
+              "influence": [],
+              "info": "Въведете информация за основните дейности, извършвани на адреса"
+            },
+			{
+              "label": "Активен",
+              "name": "isValid",
+              "type": "checkbox",
+              "disabled": false,
+			  "defaultValue":true,
+              "order": 2,
+              "influence": [],
+              "validations": []
+            },
+			{
+              "name": "breakpoint",
+              "type": "breakpoint",
+              "order": 3
+            },
+            {
+              "label": "Държава",
+              "name": "country",
+              "type": "select",
+              "optionsPath": "/data/get/country",
+              "disabled": false,
+              "defaultValue": 34,
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ],
+              "order": 4,
+              "influence": []
+            },
+            {
+              "label": "Област",
+              "name": "region",
+              "type": "select",
+              "optionsPath": "/data/get/region",
+              "disabled": false,
+              "influence": [
+                {
+                  "fieldName": "municipality",
+                  "url": "/data/get/municipality",
+                  "type": "options"
+                }
+              ],
+              "order": 5,
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ]
+            },
+            {
+              "label": "Община",
+              "name": "municipality",
+              "type": "select",
+              "disabled": false,
+              "influence": [
+                {
+                  "fieldName": "town",
+                  "url": "/data/get/town",
+                  "type": "options"
+                }
+              ],
+              "order": 6,
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ]
+            },
+            {
+              "label": "Населено място",
+              "name": "town",
+              "type": "select",
+              "influence": [
+                {
+                  "fieldName": "localArea",
+                  "url": "/data/get/localArea",
+                  "type": "options"
+                }
+              ],
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ],
+              "disabled": false,
+              "order": 7
+            },
+            {
+              "label": "Район",
+              "name": "localArea",
+              "type": "select",
+              "disabled": false,
+              "order": 8,
+              "influence": [],
+              "validations": []
+            },
+            {
+              "label": "Адрес",
+              "name": "departmentAddress",
+              "type": "input",
+              "inputType": "text",
+              "order": 9,
+              "disabled": false,
+              "width": 700,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 255,
+                  "message": "Максимална дължина 255 символа"
+                }
+              ],
+              "influence": []
+            },
+            {
+              "label": "Пощенски код",
+              "name": "departmentPostalCode",
+              "type": "input",
+              "inputType": "number",
+              "order": 10,
+              "disabled": false,
+              "width": 100,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 4,
+                  "message": "Максимална дължина 4 символа"
+                }
+              ],
+              "influence": []
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "label": "Административни данни",
+          "name": "institutionAdministrativeData",
+          "fields": [
+            {
+              "label": "Защитен",
+              "name": "isProtected",
+              "type": "checkbox",
+              "disabled": true,
+              "order": 1,
+              "influence": [],
+              "validations": []
+            },
+            {
+              "label": "Средищен",
+              "name": "isCentral",
+              "type": "checkbox",
+              "disabled": true,
+              "order": 2,
+              "influence": [],
+              "validations": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "label": "Телефони",
+      "name": "departmentPhonesTable",
+      "table": {
+        "name": "departmentPhones",
+		"searchable": false,
+		"createNew": "samePage",
+		"paramName":"institutionPhoneID",
+		"formName": "institutionPhoneData",
+		"hasEditButton": true,
+		"canDeleteRow": true,    
+		"disabledViewMode": true,
+        "fields": [
+          {
+            "label": "Тип телефон",
+            "name": "phoneTypeID",
+			"type": "select",
+            "optionsPath": "/data/get/phoneTypes",
+			"width": 20,
+            "order": 1
+          },
+          {
+            "label": "Код за АТМ",
+            "name": "phoneCode",
+            "type": "input",
+            "inputType": "text",
+            "order": 2,
+            "width": 10
+          },
+          {
+            "label": "Телефон",
+            "name": "phoneNumber",
+            "type": "input",
+            "inputType": "text",
+            "order": 3,
+            "width": 50
+          },
+          {
+            "label": "Вид телефон",
+            "name": "contactKind",
+            "type": "input",
+            "inputType": "text",
+            "order": 4,
+            "width": 80
+          },
+		    {
+            "label": "Основен",
+            "name": "isMain",
+            "type": "checkbox",
+            "order": 6,
+			"width": 10
+          }
+        ]
+      }
+    }
+  ]
+}

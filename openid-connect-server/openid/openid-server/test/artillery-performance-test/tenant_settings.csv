@@ -1,0 +1,2 @@
+clientId,redirectUri,responseType,scope
+user-management,http://localhost:4205/signin-callback,code,openid

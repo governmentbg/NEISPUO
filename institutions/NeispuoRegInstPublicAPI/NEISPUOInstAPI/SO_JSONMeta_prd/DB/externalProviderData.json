@@ -1,0 +1,31 @@
+{
+  "template": "SELECT /**select**/ FROM [core].[InstitutionConfData] ICD /**where**/ /**orderby**/",
+  "columns": [
+      {
+        "column": "ICD.InstitutionConfDataID AS id"
+      },
+	  {
+        "column": "ICD.SOExtProviderID AS SOExtProviderID"
+      },
+	  {
+        "column": "ICD.CBExtProviderID AS CBExtProviderID"
+      }
+  ],
+  "params": [
+    {
+      "param": "@confDataID",
+      "column": "ICD.InstitutionConfDataID",
+      "operator": "=",
+      "value": "confDataID",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+  ],
+  "order": [
+
+  ],
+  "inSelects": [
+   
+  ]
+}

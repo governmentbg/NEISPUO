@@ -1,0 +1,32 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[NKPDSubClass] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "NKPDSubClassID as code"
+        },
+        {
+            "column": "Name as label"
+        },
+		{
+            "column": "IsValid as isValid"
+        }
+    ],
+    "params": [
+    {
+      "param": "@filterValue",
+      "column": "NKPDClassID",
+      "operator": "=",
+      "value": "filterValue",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+    ],
+    "order": [
+        {
+            "column": "NKPDSubClassID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

@@ -1,0 +1,44 @@
+namespace SB.Api;
+
+using System;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using SB.ApiAbstractions;
+
+public class ReportAccessRequirement : IAuthorizationRequirement
+{
+}
+
+public class ReportAccessRequirementHandler : AuthorizationHandler<ReportAccessRequirement>
+{
+    private HttpContext httpContext;
+    private IAuthService authService;
+
+    public ReportAccessRequirementHandler(
+        IHttpContextAccessor httpContextAccessor,
+        IAuthService authService)
+    {
+        if (httpContextAccessor.HttpContext == null)
+        {
+            throw new Exception($"'{nameof(ReportAccessRequirementHandler)}' called outside of a request. IHttpContextAccessor.HttpContext is null!");
+        }
+
+        this.httpContext = httpContextAccessor.HttpContext;
+        this.authService = authService;
+    }
+
+    protected override async Task HandleRequirementAsync(AuthorizationHandlerContext context, ReportAccessRequirement requirement)
+    {
+        if (this.httpContext.GetToken() is OidcToken token &&
+            this.httpContext.GetIntFromRoute("instId") is int instId &&
+            await this.authService.HasInstitutionAccessAsync(
+                token,
+                AccessType.Read,
+                instId,
+                this.httpContext.RequestAborted))
+        {
+            context.Succeed(requirement);
+        }
+    }
+}

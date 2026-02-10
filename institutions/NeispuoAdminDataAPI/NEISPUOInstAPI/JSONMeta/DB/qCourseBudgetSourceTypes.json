@@ -1,0 +1,34 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[QCourseBudgetSourceType] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "QCourseBudgetSourceTypeID as code"
+        },
+        {
+            "column": "Name as label"
+        },
+		{
+            "column": "IsValid as isValid"
+        }
+    ],
+    "params": [
+		{
+            "param": "@filterValue",
+            "column": "QCourseActTypeID",
+            "operator": "=",
+            "value": "filterValue",
+            "type": "int",
+            "logical_operator": "and",
+			"optional": true,
+            "static": false
+        }
+		
+    ],
+    "order": [
+        {
+            "column": "QCourseBudgetSourceTypeID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

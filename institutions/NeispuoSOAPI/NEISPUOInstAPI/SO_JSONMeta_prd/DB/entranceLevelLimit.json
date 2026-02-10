@@ -1,0 +1,43 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[EntranceLevel] EL JOIN [inst_nom].[EntranceLevelLimit] ELL ON EL.EntranceLevelID=ELL.EntranceLevelID /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "EL.EntranceLevelID as code"
+        },
+        {
+            "column": "EL.Name as label"
+        },
+		{
+            "column": "EL.IsValid as isValid"
+        }
+    ],
+    "params": [
+       {
+      "param": "@basicClassID",
+      "column": "ELL.BasicClassID",
+      "operator": "=",
+      "value": "basicClassID",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    },
+	     {
+      "param": "@classTypeID",
+      "column": "ELL.ClassTypeID",
+      "operator": "=",
+      "value": "classTypeID",
+      "type": "int",
+      "logical_operator": "and",
+	  "optional": true,
+      "static": false
+    }
+    ],
+    "order": [
+        {
+            "column": "EL.EntranceLevelID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

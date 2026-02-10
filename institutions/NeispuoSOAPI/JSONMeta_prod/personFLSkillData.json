@@ -1,0 +1,66 @@
+{
+  "label": "Умения на персонала",
+  "procedureName": "inst_basic.personFLSkillCUD",
+  "dataName": "if(operationType==1) {form.dataName=null} else {form.dataName='personFLSkillData'}",  
+  "sections": [
+	{
+      "order": 1,
+	  "label": "Езикови умения",
+	  "name": "languageSkills",
+      "subsections": [
+        {
+          "order": 1,
+          "name": "staffLanguageSkills",
+          "label": "Данни за езикови умения",
+          "fields": [
+            {
+              "label": "Чужд език",
+              "name": "flID",
+              "type": "searchselect",
+              "optionsPath": "/data/get/fls",
+              "disabled": false,
+			      "validations": [
+                    {
+                      "name": "required",
+                      "validator": "",
+                      "message": "Полето е задължително"
+                    }
+                  ],
+              "order": 1
+            },
+            {
+              "label": "Ниво на владеене",
+              "name": "flLevelID",
+              "type": "select",
+              "optionsPath": "/data/get/flLevels",
+              "disabled": false,
+			      "validations": [
+                    {
+                      "name": "required",
+                      "validator": "",
+                      "message": "Полето е задължително"
+                    }
+                  ],
+              "order": 2
+            },
+            {
+              "label": "Бележки",
+              "name": "notes",
+              "type": "textarea",
+              "order": 3,
+              "width": 1000,
+              "height": 2,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 1024,
+                  "message": "Максимална дължина 1024 символа"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

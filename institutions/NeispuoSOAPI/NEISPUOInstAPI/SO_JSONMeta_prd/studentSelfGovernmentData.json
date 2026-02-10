@@ -1,0 +1,186 @@
+{
+  "procedureName": "inst_basic.studentSelfGovernmentCUD",
+  "dataName": "if(operationType==1) {form.dataName=null} else {form.dataName='studentSelfGovernmentData'}",
+  "sections": [
+    {
+      "order": 1,
+      "subsections": [
+        {
+          "order": 1,
+          "label": "Данни за включване на ученик в ученически съвет",
+          "name": "studentSelfGovernment",
+          "fields": [
+            {
+              "label": "Сист. ID",
+              "name": "Id",
+              "type": "input",
+              "inputType": "number",
+              "rendered": false,
+              "disabled": true,
+              "order": 0
+            },
+            {
+              "label": "Сист. ID на контекста (институцията)",
+              "name": "instid",
+              "type": "input",
+              "inputType": "number",
+              "rendered": false,
+              "disabled": true,
+              "order": 0
+            },
+            {
+              "label": "Избор на ученик",
+              "name": "personID",
+              "type": "searchselect",
+              "optionsPath": "/data/get/studentsSelfGovernment",
+              "disabled": "if(operationType==1) {field.disabled=false} else {field.disabled=true}",
+              "width": 800,
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ],
+              "influence": [
+                {
+                  "type": "fill",
+                  "fieldName": "studentName"
+                },
+                {
+                  "fieldName": "email",
+                  "url": "/data/get/personEmail",
+                   "type": "setValue"
+                }
+
+              ],
+              "order": 1,
+              "info": "За членове на ученическия съвет на училището могат да се посочват само ученици, които преди това са посочени като членове на ученическия съвет на паралелката"
+            },
+            {
+              "label": "Избор на ученик",
+              "name": "studentName",
+              "type": "select",
+              "optionsPath": "/data/get/studentsSelfGovernmentAfterChoice",
+              "disabled": true,
+              "rendered": false,
+              "width": 800,
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ],
+              "order": 2
+            },
+            {
+              "label": "Позиция",
+              "name": "positionId",
+              "type": "select",
+              "optionsPath": "/data/get/studentSelfGovernmentPosition",
+              "disabled": false,
+              "width": 400,
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ],
+              "influence": [
+                {
+                  "type": "fill",
+                  "fieldName": "selfGovernmentPositionName"
+                }
+              ],
+              "order": 3
+            },
+            {
+              "label": "Позиция",
+              "name": "selfGovernmentPositionName",
+              "type": "select",
+              "optionsPath": "/data/get/studentSelfGovernmentPosition",
+              "disabled": true,
+              "rendered": false,
+              "width": 400,
+              "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ],
+              "order": 3
+            },
+            {
+              "name": "additionalInformation",
+              "label": "Допълнителна информация",
+              "type": "textarea",
+              "order": 4,
+              "width": 800,
+              "height": 5,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 1024,
+                  "message": "Максимална дължина 1024 символа"
+                }
+              ],
+              "influence": []
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "label": "Данни за контакт",
+          "fields": [
+            {
+              "label": "Електронна поща",
+              "name": "email",
+              "type": "input",
+              "inputType": "text",
+              "order": 1,
+              "disabled": false,
+              "width": 400,
+              "validations": [
+                {
+                  "name": "pattern",
+                  "validation": "^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$",
+                  "message": "Невалиден адрес на електронна поща"
+                },
+                {
+                  "name": "maxLength",
+                  "validation": 50,
+                  "message": "Максимална дължина 50 символа"
+                },
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ]
+            },
+            {
+              "label": "Телефон",
+              "name": "mobilePhone",
+              "type": "input",
+              "inputType": "text",
+              "order": 2,
+              "rendered": false,
+              "disabled": false,
+              "width": 150,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 15,
+                  "message": "Максимална дължина 15 символа"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

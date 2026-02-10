@@ -1,0 +1,4 @@
+dist
+node_modules
+summary.html
+/openapi-generator-k6/

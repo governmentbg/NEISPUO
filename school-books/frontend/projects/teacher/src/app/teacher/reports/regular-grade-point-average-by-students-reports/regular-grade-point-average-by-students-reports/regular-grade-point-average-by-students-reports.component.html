@@ -1,0 +1,51 @@
+<sb-breadcrumb
+  class="block mb-3"
+  [icon]="fadCalendarMinus"
+  text="Среден успех от текущи оценки по ученици"
+></sb-breadcrumb>
+
+<sb-card>
+  <ng-container card-title>Среден успех от текущи оценки по ученици</ng-container>
+  <ng-container card-buttons>
+    <a
+      [routerLink]="['./', 'new']"
+      mat-raised-button
+      color="primary"
+      aria-label="Нова справка среден успех от текущи оценки по ученици"
+    >
+      <fa-icon [icon]="fasPlus" size="lg"></fa-icon>
+      <span class="hidden sm:inline">Нова справка среден успех от текущи оценки по ученици</span>
+    </a>
+  </ng-container>
+  <ng-container card-body>
+    <sb-table [dataSource]="dataSource" [displayedColumns]="['action', 'period', 'classBookNames', 'createDate']">
+      <ng-container cdkColumnDef="action">
+        <th cdk-header-cell *cdkHeaderCellDef></th>
+        <td cdk-cell *cdkCellDef="let row" class="sb-table-action">
+          <a
+            [routerLink]="['./', row.regularGradePointAverageByStudentsReportId]"
+            aria-label="Редактирай"
+            class="sb-link-btn"
+          >
+            <fa-icon [icon]="fadChevronCircleRight"></fa-icon>
+          </a>
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="period">
+        <th cdk-header-cell *cdkHeaderCellDef>Период</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.period }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="classBookNames">
+        <th cdk-header-cell *cdkHeaderCellDef>Клас</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.classBookNames }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="createDate">
+        <th cdk-header-cell *cdkHeaderCellDef>Създадена на</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.createDate | sbDateTime }}</td>
+      </ng-container>
+    </sb-table>
+  </ng-container>
+</sb-card>

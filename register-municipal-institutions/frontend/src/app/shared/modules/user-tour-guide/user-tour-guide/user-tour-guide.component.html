@@ -1,0 +1,17 @@
+<button 
+  pButton 
+  type="button" 
+  label="Ръководство" 
+  class="p-button-outlined p-button-light"
+  *ngIf="typeButton==='globalGuide'" 
+  (click)="startGuide()"
+></button>
+
+<button
+   pButton 
+   type="button" 
+   label="Помощ" 
+   *ngIf="typeButton==='pageGuide'" 
+   class="p-button-primary btn-page-tour"
+   (click)="startGuide()"
+></button>

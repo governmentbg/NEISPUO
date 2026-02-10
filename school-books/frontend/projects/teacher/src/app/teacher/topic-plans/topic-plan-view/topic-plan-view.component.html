@@ -1,0 +1,185 @@
+<sb-breadcrumb
+  [icon]="fasListOl"
+  [text]="data.topicPlan == null ? 'Създаване на тематично разпределение' : data.topicPlan.name"
+  [parentItems]="[{ text: 'Мои тематични разпределения', routeCommands: ['../'] }]"
+></sb-breadcrumb>
+
+<form [formGroup]="form" autocomplete="off" novalidate>
+  <sb-card>
+    <ng-container card-title>
+      {{ data.topicPlan == null ? 'Създаване на тематично разпределение' : 'Редакция на тематично разпределение' }}
+    </ng-container>
+    <sb-editor-panel
+      card-buttons
+      [isNew]="data.topicPlan == null"
+      (save)="onSave($event)"
+      (editableChange)="editable = $event"
+    >
+      <button
+        disabled-mode-buttons
+        mat-raised-button
+        color="warn"
+        type="button"
+        (click)="onRemove()"
+        [disabled]="removing"
+      >
+        <fa-icon [icon]="removing ? fasSpinnerThird : fasTrashAlt" [spin]="removing" size="lg"></fa-icon>
+        <span class="hidden sm:inline">Премахни</span>
+      </button>
+    </sb-editor-panel>
+    <ng-container card-body>
+      <div class="sm:grid grid-cols-4 gap-x-4 mb-2">
+        <sb-nom-select
+          class="col-span-2"
+          label="Випуск(Клас)"
+          formControlName="basicClassId"
+          [nomService]="basicClassNomsService"
+        ></sb-nom-select>
+
+        <sb-nom-select
+          class="col-start-1 col-span-2"
+          label="Предмет"
+          formControlName="subjectId"
+          [nomService]="subjectNomsService"
+        ></sb-nom-select>
+
+        <sb-nom-select
+          class="col-start-1 col-span-2"
+          label="Вид подготовка"
+          formControlName="subjectTypeId"
+          [nomService]="subjectTypeNomsService"
+        ></sb-nom-select>
+
+        <sb-nom-select
+          class="col-start-1 col-span-2"
+          label="Издателство"
+          formControlName="topicPlanPublisherId"
+          [nomService]="topicPlanPublisherNomsService"
+        ></sb-nom-select>
+
+        <sb-text-field
+          class="col-start-1 col-span-2"
+          *ngIf="form.value.topicPlanPublisherId === topicPlanPublisherOtherId"
+          label="Друго издателство"
+          formControlName="topicPlanPublisherOther"
+        ></sb-text-field>
+
+        <sb-text-field
+          class="col-start-1 col-span-4"
+          label="Наименование"
+          formControlName="name"
+          (change)="setNameChanged()"
+        ></sb-text-field>
+      </div>
+
+      <sb-card-section class="col-span-full">Теми</sb-card-section>
+
+      <sb-banner type="info" *ngIf="data.topicPlan == null">
+        Трябва да запишете тематичното разпределение, за да може да добавите теми
+      </sb-banner>
+
+      <ng-container *ngIf="data.topicPlan != null">
+        <button
+          *ngIf="itemsLength != null"
+          (click)="openAddOrUpdateItemDialog(null)"
+          [disabled]="editable"
+          mat-raised-button
+          color="primary"
+          type="button"
+          class="mb-2.5 mr-3"
+        >
+          <fa-icon [icon]="fasPlus" size="lg"></fa-icon>
+          <span>Нова тема</span>
+        </button>
+
+        <a
+          *ngIf="itemsLength != null && itemsLength > 0"
+          [href]="downloadUrl"
+          target="_blank"
+          download
+          color="primary"
+          mat-raised-button
+          [disabled]="!downloadUrl"
+          class="mr-3"
+        >
+          <fa-icon [icon]="fasFileExcel" size="lg"></fa-icon>
+          <span class="hidden sm:inline">Свали</span>
+        </a>
+
+        <button
+          *ngIf="itemsLength != null && itemsLength === 0"
+          type="button"
+          mat-raised-button
+          color="primary"
+          [disabled]="editable"
+          (click)="openImportFromExcelDialog(data.topicPlan.topicPlanId)"
+        >
+          <fa-icon [icon]="fasFileImport" size="lg"></fa-icon>
+          <span>Зареди от Ексел</span>
+        </button>
+
+        <button
+          *ngIf="itemsLength != null && itemsLength > 0"
+          disabled-mode-buttons
+          mat-raised-button
+          color="warn"
+          type="button"
+          (click)="onRemoveAllItems()"
+          [disabled]="editable || removingAllItems"
+        >
+          <fa-icon
+            [icon]="removingAllItems ? fasSpinnerThird : fasTrashAlt"
+            [spin]="removingAllItems"
+            size="lg"
+          ></fa-icon>
+          <span class="hidden sm:inline">Премахни всички теми</span>
+        </button>
+
+        <sb-table [dataSource]="dataSource" [displayedColumns]="['action', 'number', 'title', 'note']">
+          <ng-container cdkColumnDef="action">
+            <th cdk-header-cell *cdkHeaderCellDef></th>
+            <td cdk-cell *cdkCellDef="let row" class="sb-table-action">
+              <button
+                aria-label="Детайли"
+                (click)="openAddOrUpdateItemDialog(row.topicPlanItemId)"
+                [disabled]="editable"
+                class="sb-link-btn"
+                type="button"
+              >
+                <fa-icon [icon]="fasPencil"></fa-icon>
+              </button>
+              <button
+                (click)="onRemoveItem(row.topicPlanItemId)"
+                [disabled]="editable || removingAct[row.topicPlanItemId]"
+                aria-label="Изтрий"
+                class="sb-link-btn"
+                type="button"
+              >
+                <fa-icon
+                  [icon]="removingAct[row.topicPlanItemId] ? fasSpinnerThird : fasTrashAlt"
+                  [spin]="removingAct[row.topicPlanItemId]"
+                  size="lg"
+                ></fa-icon>
+              </button>
+            </td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="number">
+            <th cdk-header-cell *cdkHeaderCellDef>№</th>
+            <td cdk-cell *cdkCellDef="let row">{{ row.number }}</td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="title">
+            <th cdk-header-cell *cdkHeaderCellDef>Тема</th>
+            <td cdk-cell *cdkCellDef="let row">{{ row.title }}</td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="note">
+            <th cdk-header-cell *cdkHeaderCellDef>Забележки</th>
+            <td cdk-cell *cdkCellDef="let row">{{ row.note }}</td>
+          </ng-container>
+        </sb-table>
+      </ng-container>
+    </ng-container>
+  </sb-card>
+</form>

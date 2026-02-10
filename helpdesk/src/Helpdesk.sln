@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Helpdesk.API", "Helpdesk.API\Helpdesk.API.csproj", "{A73DC9B5-39A0-4091-984C-ABE4118A6DFB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Helpdesk.DataAccess", "Helpdesk.DataAccess\Helpdesk.DataAccess.csproj", "{B4887B5C-4B96-4284-BA14-76A77750E700}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Helpdesk.Models", "Helpdesk.Models\Helpdesk.Models.csproj", "{844404AA-23C0-4E36-A46A-92AB2DF264C3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Helpdesk.Services", "Helpdesk.Services\Helpdesk.Services.csproj", "{D4B6D5C1-E038-443D-98B7-76C8B6F3F0AF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{14D13575-79F0-4437-AD74-0884C6FF5482}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Helpdesk.Shared", "Helpdesk.Shared\Helpdesk.Shared.csproj", "{1AF68C49-7262-4C42-92DE-8DC9FF5E4065}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "db", "db", "{4945D698-CBC0-4D47-A753-A1A40DBD0238}"
+	ProjectSection(SolutionItems) = preProject
+		..\db\01 Init.sql = ..\db\01 Init.sql
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A73DC9B5-39A0-4091-984C-ABE4118A6DFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A73DC9B5-39A0-4091-984C-ABE4118A6DFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A73DC9B5-39A0-4091-984C-ABE4118A6DFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A73DC9B5-39A0-4091-984C-ABE4118A6DFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4887B5C-4B96-4284-BA14-76A77750E700}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4887B5C-4B96-4284-BA14-76A77750E700}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4887B5C-4B96-4284-BA14-76A77750E700}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4887B5C-4B96-4284-BA14-76A77750E700}.Release|Any CPU.Build.0 = Release|Any CPU
+		{844404AA-23C0-4E36-A46A-92AB2DF264C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{844404AA-23C0-4E36-A46A-92AB2DF264C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{844404AA-23C0-4E36-A46A-92AB2DF264C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{844404AA-23C0-4E36-A46A-92AB2DF264C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4B6D5C1-E038-443D-98B7-76C8B6F3F0AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4B6D5C1-E038-443D-98B7-76C8B6F3F0AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4B6D5C1-E038-443D-98B7-76C8B6F3F0AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4B6D5C1-E038-443D-98B7-76C8B6F3F0AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AF68C49-7262-4C42-92DE-8DC9FF5E4065}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AF68C49-7262-4C42-92DE-8DC9FF5E4065}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AF68C49-7262-4C42-92DE-8DC9FF5E4065}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AF68C49-7262-4C42-92DE-8DC9FF5E4065}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A73DC9B5-39A0-4091-984C-ABE4118A6DFB} = {14D13575-79F0-4437-AD74-0884C6FF5482}
+		{B4887B5C-4B96-4284-BA14-76A77750E700} = {14D13575-79F0-4437-AD74-0884C6FF5482}
+		{844404AA-23C0-4E36-A46A-92AB2DF264C3} = {14D13575-79F0-4437-AD74-0884C6FF5482}
+		{D4B6D5C1-E038-443D-98B7-76C8B6F3F0AF} = {14D13575-79F0-4437-AD74-0884C6FF5482}
+		{1AF68C49-7262-4C42-92DE-8DC9FF5E4065} = {14D13575-79F0-4437-AD74-0884C6FF5482}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {999250B4-35CC-4689-B554-4EC7C73AFB23}
+	EndGlobalSection
+EndGlobal

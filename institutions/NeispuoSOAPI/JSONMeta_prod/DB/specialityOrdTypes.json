@@ -1,0 +1,33 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[SpecialityOrdType] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "SpecialityOrdTypeID as code"
+        },
+        {
+            "column": "Description as label"
+        },
+		{
+            "column": "IsValid as isValid"
+        }
+    ],
+    "params": [
+ {
+              "param": "@canChoose",
+              "column": "CanChoose",
+              "operator": "=",
+              "value": 1,
+              "type": "int",
+              "logical_operator": "and",
+              "optional": false,
+              "static": true
+            }
+    ],
+    "order": [
+        {
+            "column": "SpecialityOrdTypeID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

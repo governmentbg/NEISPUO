@@ -1,0 +1,32 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_nom].[AccountingAccount] AA /**where**/ /**orderby**/",
+  "columns": [
+	  {
+      "column": "AA.AccountingAccountID AS code"
+    },
+	  {
+      "column": "AA.Description AS label"
+    }
+   ],
+  "params": [
+		{
+      "param": "@filterValue",
+      "column": "AA.ITAssetCategoryID",
+      "operator": "=",
+      "value": "filterValue",
+      "type": "int",
+      "logical_operator": "and",
+      "optional": true,
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "AA.Description",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+
+  ]
+}

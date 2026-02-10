@@ -1,0 +1,29 @@
+@using SB.Domain
+@model StudentExamsModel
+
+<div class="page">
+  <h3 class="page-header">@($"График на планираните {(Model.Type == BookExamType.ClassExam ? "класни" : "контролни")} работи през учебната година")</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th rowspan="2">Учебен предмет</th>
+        <th colspan="2">Дата на провеждането</th>
+      </tr>
+      <tr>
+        <th>I срок</th>
+        <th>II срок</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (var exam in Model.Exams)
+      {
+        <tr>
+          <td>@exam.SubjectName / @exam.SubjectTypeName</td>
+          <td>@string.Join(", ", exam.FirstTermDates.Select(d => d.ToString("dd.MM.yyyy")))</td>
+          <td>@string.Join(", ", exam.SecondTermDates.Select(d => d.ToString("dd.MM.yyyy")))</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

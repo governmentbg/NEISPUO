@@ -1,0 +1,124 @@
+<p-toolbar>
+    <div class="w-100 flex justify-content-end align-items-center">
+        <button
+            (click)="refreshTableData()"
+            pButton
+            type="button"
+            icon="pi pi-refresh"
+            pTooltip="{{ CONSTANTS.PRIMENG_TITLE_REFRESH | translate }}"
+            tooltipPosition="left"
+            class="w-auto ms-3 p-button p-button-primary"
+        ></button>
+    </div>
+</p-toolbar>
+<p-table
+    #datatable
+    [columns]="cols"
+    [value]="jobs"
+    [paginator]="true"
+    styleClass="p-datatable-sm"
+    [rows]="itemsPerPage"
+    [filterDelay]="filterDelay"
+    [resizableColumns]="true"
+    columnResizeMode="fit"
+    [first]="first"
+    [resizableColumns]="true"
+    columnResizeMode="fit"
+>
+    <ng-template pTemplate="colgroup" let-columns>
+        <colgroup>
+            <col *ngFor="let col of columns" [ngStyle]="{ width: col.width }" />
+        </colgroup>
+    </ng-template>
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th *ngFor="let col of columns" pResizableColumn>
+                {{ col.header }}
+            </th>
+        </tr>
+        <tr>
+            <th *ngFor="let col of columns" pResizableColumn>
+                <input
+                    *ngIf="col.filterType === 'date'"
+                    pInputText
+                    type="date"
+                    class="p-column-filter p-inputtext-sm"
+                    (change)="datatable.filter($any($event.target).value, col.field, 'contains')"
+                    placeholder="Filter..."
+                />
+                <input
+                    *ngIf="col.filterType === 'text'"
+                    pInputText
+                    type="text"
+                    class="p-column-filter p-inputtext-sm"
+                    (change)="datatable.filter($any($event.target).value, col.field, 'contains')"
+                    placeholder="Filter..."
+                />
+                <input
+                    *ngIf="col.filterType === 'numeric'"
+                    pInputText
+                    type="number"
+                    class="p-column-filter p-inputtext-sm"
+                    (change)="datatable.filter($any($event.target).value, col.field, 'contains')"
+                    placeholder="Filter..."
+                />
+                <input
+                    *ngIf="col.filterType === 'boolean'"
+                    type="checkbox"
+                    pInputCheckBox
+                    class="p-column-filter p-inputtext-lg"
+                    (change)="datatable.filter($any($event.target).value, col.field, 'contains')"
+                    placeholder="Filter..."
+                />
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-job let-columns="columns">
+        <tr>
+            <ng-container *ngFor="let col of columns">
+                <td [ngStyle]="{ width: col.width }">
+                    <span *ngIf="col.field === 'options'" class="row-content">
+                        <button
+                            (click)="saveJob(job)"
+                            pButton
+                            pTooltip="{{ CONSTANTS.PRIMENG_TITLE_SAVE | translate }}"
+                            pTooltipPosition="left"
+                            type="button"
+                            icon="pi pi-save"
+                            class="p-button-sm p-button-primary"
+                        ></button>
+                    </span>
+                    <span *ngIf="col.field === 'isActive'" class="row-content">
+                        <p-inputSwitch
+                            [(ngModel)]="!!job.isActive"
+                            pTooltipPosition="left"
+                            pTooltip="{{ CONSTANTS.PRIMENG_TITLE_TOGGLE | translate }}"
+                        ></p-inputSwitch>
+                    </span>
+                    <span *ngIf="col.field === 'markedForStoppage'" class="row-content">
+                        <p-inputSwitch
+                            [(ngModel)]="!!job.markedForStoppage"
+                            pTooltipPosition="left"
+                            pTooltip="{{ CONSTANTS.PRIMENG_TITLE_TOGGLE | translate }}"
+                        ></p-inputSwitch>
+                    </span>
+                    <span
+                        *ngIf="col.field !== 'options' && col.field !== 'isActive' && col.field !== 'markedForStoppage'"
+                        class="row-content"
+                    >
+                        <td pEditableColumn>
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="job[col.field]" />
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{ job | dotNotationPipe: col.field }}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                    </span>
+                </td>
+            </ng-container>
+        </tr>
+    </ng-template>
+</p-table>

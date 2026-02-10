@@ -1,0 +1,77 @@
+<sb-tab-card [hideHeader]="true">
+  <ng-container card-body>
+    <button
+      *ngIf="canCreate"
+      type="button"
+      mat-raised-button
+      color="primary"
+      aria-label="Ново разписание"
+      class="mb-2.5"
+      (click)="onNew()"
+    >
+      <fa-icon [icon]="fasPlus" size="lg"></fa-icon>
+      <span>Ново разписание {{ isIndividualSchedule ? 'ИУП' : '' }}</span>
+    </button>
+
+    <sb-table [dataSource]="dataSource" [displayedColumns]="displayedColumns">
+      <ng-container cdkColumnDef="action">
+        <th cdk-header-cell *cdkHeaderCellDef></th>
+        <td cdk-cell *cdkCellDef="let row" class="sb-table-action">
+          <button
+            title="Детайли"
+            aria-label="Детайли"
+            class="sb-link-btn"
+            type="button"
+            (click)="openScheduleDialog(row.scheduleId)"
+          >
+            <fa-icon [icon]="fadChevronCircleRight"></fa-icon>
+          </button>
+          <button
+            title="Премахни"
+            aria-label="Премахни"
+            class="sb-link-btn"
+            type="button"
+            (click)="onRemove(row.scheduleId)"
+            [disabled]="removing[row.scheduleId]"
+          >
+            <fa-icon
+              [icon]="removing[row.scheduleId] ? fasSpinnerThird : fasTrashAlt"
+              [spin]="removing[row.scheduleId]"
+            ></fa-icon>
+          </button>
+          <button
+            title="Раздели"
+            aria-label="Раздели"
+            class="sb-link-btn"
+            type="button"
+            (click)="openSplitScheduleDialog(row.scheduleId)"
+          >
+            <fa-icon [icon]="farClone"></fa-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="studentNames">
+        <th cdk-header-cell *cdkHeaderCellDef>Ученик</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.studentNames }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="term">
+        <th cdk-header-cell *cdkHeaderCellDef>Срок</th>
+        <td cdk-cell *cdkCellDef="let row">
+          {{ row.term === 'TermOne' ? 'първи' : row.term === 'TermTwo' ? 'втори' : '' }}
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="shiftName">
+        <th cdk-header-cell *cdkHeaderCellDef>Смяна</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.shiftName }}</td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="dates">
+        <th cdk-header-cell *cdkHeaderCellDef>Дати</th>
+        <td cdk-cell *cdkCellDef="let row">{{ row.dates }}</td>
+      </ng-container>
+    </sb-table>
+  </ng-container>
+</sb-tab-card>

@@ -1,0 +1,33 @@
+<app-neispuo-profile-card
+    [data]="neispuoProfile"
+    [entityType]="SyncHistoryEntityEnum.STUDENT"
+    [loading]="neispuoLoading"
+    [error]="neispuoError"
+    [empty]="neispuoEmpty"
+    (refresh)="loadPersonData()"
+></app-neispuo-profile-card>
+
+<app-sys-user-table [personID]="personID"></app-sys-user-table>
+
+<app-profile-tabbar
+    [entityType]="SyncHistoryEntityEnum.STUDENT"
+    [entityInfo]="entityInfo"
+    [loading]="entityLoading"
+    [error]="entityError"
+    [empty]="entityEmpty"
+    [userLoadMethodState]="userLoadMethodState"
+    (userLoadMethodStateChange)="onUserLoadMethodStateChange($event)"
+    (refresh)="loadEntityInfo()"
+></app-profile-tabbar>
+
+<div class="user-history-tabbar">
+    <h5 class="mb-2">{{ CONSTANTS.PRIMENG_TAB_SYNC | translate }}</h5>
+    <p-tabView>
+        <p-tabPanel [header]="CONSTANTS.PROFILE_TAB_PROFILE | translate">
+            <app-azure-sync-user-table [personID]="personID"></app-azure-sync-user-table>
+        </p-tabPanel>
+        <p-tabPanel [header]="CONSTANTS.PRIMENG_TAB_ENROLLMENTS | translate">
+            <app-azure-sync-enrollments-table [personID]="personID"></app-azure-sync-enrollments-table>
+        </p-tabPanel>
+    </p-tabView>
+</div>

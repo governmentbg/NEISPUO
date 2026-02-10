@@ -1,0 +1,31 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_year].[ClassStudentList] CD /**where**/ /**orderby**/",
+  "columns": [
+	{
+      "column": "CD.PersonID AS id"
+    },
+	{
+      "column": "CD.FullName AS studentName"
+    }
+   ],
+  "params": [
+		{
+          "param": "@classid",
+          "column": "CD.ParentClassID",
+          "operator": "=",
+          "value": "classid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        }
+  ],
+  "order": [
+    {
+      "column": "CD.FullName",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+
+  ]
+}

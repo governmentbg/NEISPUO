@@ -1,0 +1,53 @@
+.sb-link-btn {
+  @apply text-blue hover:text-blue-900 text-sm font-medium;
+
+  > .ng-fa-icon {
+    @apply text-xl;
+  }
+
+  &.sb-link-btn-sm {
+    > .ng-fa-icon {
+      @apply text-base;
+    }
+  }
+}
+
+.sb-btn-wrapper {
+  @apply mb-2.5 flex flex-wrap gap-2.5;
+
+  &.sb-btn-wrapper-right > :not(.hidden) {
+    @apply ml-auto;
+  }
+
+  &.sb-btn-wrapper-right > :not(.hidden) ~ :not(.hidden) {
+    @apply ml-0;
+  }
+
+  &.sb-btn-wrapper-bottom {
+    @apply mb-0 mt-2.5;
+  }
+}
+
+button:disabled * {
+  pointer-events: none;
+}
+
+.btn-group {
+  @apply relative inline-flex rounded-md -space-x-px;
+
+  .btn {
+    @apply relative inline-flex items-center px-2 py-1.5 border border-gray-300 bg-white text-gray-700;
+
+    &:first-child {
+      @apply rounded-l;
+    }
+
+    &:last-child {
+      @apply rounded-r;
+    }
+  }
+}
+
+.sb-pill {
+  @apply px-2 py-0.5 rounded border border-gray-300 text-sm font-bold text-gray-700;
+}

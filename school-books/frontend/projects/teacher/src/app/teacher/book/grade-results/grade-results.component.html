@@ -1,0 +1,73 @@
+<sb-banner type="warning" *ngIf="!studentGradeResults.length">Паралелката няма въведени ученици.</sb-banner>
+
+<ng-container *ngIf="studentGradeResults.length">
+  <a *ngIf="canEdit" class="mb-2.5" [routerLink]="['./edit']" mat-raised-button color="primary">
+    <fa-icon [icon]="fasPencil" size="lg"></fa-icon>
+    <span>Редактирай</span>
+  </a>
+
+  <sb-transferred-students-banner class="mb-2.5" *ngIf="showTransferredStudentsBanner"></sb-transferred-students-banner>
+
+  <div class="sb-table-container">
+    <table class="sb-table">
+      <thead>
+        <tr>
+          <th colspan="2">Ученик</th>
+          <th class="text-center">Резултат</th>
+          <th class="text-center">Полага изпит/и по</th>
+          <th class="text-center">Резултат от сесиите</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let student of studentGradeResults">
+          <tr>
+            <td *ngIf="student.showInfoLink" colspan="2" class="sb-names whitespace-nowrap">
+              <a
+                [routerLink]="[
+                  '../../../student-info',
+                  this.data.classBookId,
+                  student.personId,
+                  'student-book',
+                  this.data.classBookId
+                ]"
+                class="text-primary"
+              >
+                {{ student.classNumber != null ? student.classNumber.toString() + '.' : '' }}
+
+                {{ student.firstName }}
+                {{ student.middleName }}
+                {{ student.lastName }}
+
+                <span *ngIf="student.abnormalStatus" class="sb-badge">{{ student.abnormalStatus }}</span>
+              </a>
+            </td>
+
+            <td *ngIf="!student.showInfoLink" colspan="2" class="sb-names whitespace-nowrap">
+              {{ student.classNumber != null ? student.classNumber.toString() + '.' : '' }}
+
+              {{ student.firstName }}
+              {{ student.middleName }}
+              {{ student.lastName }}
+
+              <span *ngIf="student.abnormalStatus" class="sb-badge">{{ student.abnormalStatus }}</span>
+            </td>
+
+            <td class="whitespace-nowrap font-medium align-middle p-1">
+              <span *ngIf="student.gradeResult?.initialResultType === 'CompletesGrade'">Завършва</span>
+              <span *ngIf="student.gradeResult?.initialResultType === 'MustRetakeExams'" color="warn">
+                Полага изпити по
+              </span>
+            </td>
+            <td class="text-center align-middle p-1">
+              {{ student.gradeResult?.retakeExamSubjects }}
+            </td>
+            <td class="whitespace-nowrap text-center font-medium align-middle p-1">
+              <span *ngIf="student.gradeResult?.finalResultType === 'CompletesGrade'">Завършва</span>
+              <span *ngIf="student.gradeResult?.finalResultType === 'RepeatsGrade'" color="warn">Повтаря</span>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+</ng-container>

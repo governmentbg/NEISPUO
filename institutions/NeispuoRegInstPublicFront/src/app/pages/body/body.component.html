@@ -1,0 +1,33 @@
+<div class="wrapper-body" *ngIf="filters">
+    <span class="text-span">
+        За да получите информация за търсеното от вас училище, детска градина, център за подкрепа за личностно развитие или специализирано обслужващо
+        звено, изберете един или повече критерии и натиснете бутона „Търси“.
+        <span class="different-span">Ако търсената от вас институция не е в списъка, моля проверете в раздел "{{active | active}} институции".</span>
+        Повече от един критерий може да бъде зададен и в рамките на едно поле (например: едновременно да
+        се посочат областите Варна и Бургас). При необходимост от корекция на търсенето, то може да се допълни с нов критерий или премахване на вече
+        зададен. След получаване на резултат, в списъка на институциите можете да приложите допълнителни филтри, като
+        под наименованието на всяка колона изпишете ключова дума и натиснете клавиша Enter.
+    </span>
+    <div class="filter-container">
+        <ng-container *ngFor="let field of filters" dynamicField [field]="field" [group]="filtersFormGroup" [mode]="modes.Edit"
+            (valueChange)="onValueChange($event)"></ng-container>
+    </div>
+    <span class="span-or">ИЛИ</span>
+    <div class="search-container">
+        <mat-form-field class="block-field default-field padding-0 bg-transparent" floatLabel="never">
+            <mat-icon>search</mat-icon>
+            <mat-label>търсене по ключова дума</mat-label>
+            <input matInput [value]="keyWord" (input)="onInput($event.target.value)" [disabled]="filtersFormGroup.valid" />
+        </mat-form-field>
+        <div class="btn-container">
+            <button mat-raised-button class="btn-search" color="primary" [disabled]="!filtersFormGroup.valid && !keyWord"
+                (click)="onSearch()"><span>Търси</span></button>
+            <button mat-raised-button class="btn-search" color="primary" [disabled]="!filtersFormGroup.valid && !keyWord"
+                (click)="clear()"><span>Изчисти филтрите</span></button>
+        </div>
+    </div>
+    <div class="table-wrapper" *ngIf="table">
+        <app-table [table]="table" [parentGroup]="tableFormGroup"></app-table>
+    </div>
+</div>
+<app-loader *ngIf="isLoading"></app-loader>

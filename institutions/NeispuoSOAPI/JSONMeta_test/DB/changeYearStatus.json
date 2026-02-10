@@ -1,0 +1,18 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[ChangeYearStatus] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "ChangeYearStatusID as code"
+        },
+        {
+            "column": "Name as label"
+        }
+    ],
+    "params": [
+
+    ],
+    "order": [
+
+    ],
+    "inSelects": []
+}

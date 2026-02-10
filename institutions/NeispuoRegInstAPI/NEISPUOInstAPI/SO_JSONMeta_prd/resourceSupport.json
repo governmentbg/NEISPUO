@@ -1,0 +1,167 @@
+{  
+  "procedureName": "inst_basic.resourceSupportUpdate",
+  "sections": [
+    {
+      "order": 1,
+      "label": "Данни за ресурсно подпомагане",
+      "subsections": [
+        {
+          "order": 1,
+          "label": "Данни за документа за насочване за РП на детето от РЦПППО",
+          "name": "basicData",
+          "fields": [
+		    {
+              "label": "Номер на документ",
+			  "name": "reportNumber",
+              "type": "input",
+              "inputType": "text",
+              "order": 1,
+              "rendered": true,
+              "disabled": true,
+              "width": 200
+            },
+			{
+              "label": "Дата на документ",
+			  "name": "reportDate",
+              "type": "date",
+              "order": 2,
+              "rendered": true,
+              "disabled": true,
+              "width": 100
+            },
+			{
+              "label": "Извършва се от",
+              "name": "resourceSupportTypeName",
+              "type": "input",
+			  "inputType":"text",
+			  "rendered": true,
+              "disabled": true,
+              "order": 3
+            },
+			{
+              "label": "Извършва се от",
+              "name": "resourceSupportTypeId",
+			  "type": "select",
+              "optionsPath": "/data/get/resourceSupportTypes",
+			  "rendered": false,
+              "disabled": true,
+              "order": 4,
+			  "influence": [
+                {
+                  "type": "render",
+                  "fieldName": "name",
+                  "condition": [23]
+                },
+				{
+                  "type": "render",
+                  "fieldName": "organizationType",
+                  "condition": [23]
+                },
+				{
+                  "type": "render",
+                  "fieldName": "organizationName",
+                  "condition": [23]
+                },
+				{
+                  "type": "render",
+                  "fieldName": "specialistType",
+                  "condition": [23]
+                }
+				]
+            }
+			
+      ]
+    },
+	{
+          "order": 2,
+          "label": "Допълнителни данни за осъществане на ресурсното подпомагане",
+          "name": "resourceSupportSpecialist",
+		      "canDuplicate":true,
+          "fields": [
+		        {
+              "label": "Вид специалист",
+              "name": "resourceSupportSpecialistTypeId",
+              "type": "select",
+              "optionsPath": "/data/get/resourceSupportSpecialistTypes",
+              "rendered": true,
+              "disabled": false,
+              "width": 600,
+			         "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ],
+              "order": 1
+            },
+		      	{
+              "label": "Работи в",
+              "name": "workPlaceID",
+              "type": "select",
+              "optionsPath": "/data/get/resourceSupportSpecialistWorkPlaces",
+              "rendered": true,
+              "disabled": false,
+              "width": 600,
+			        "validations": [
+                {
+                  "name": "required",
+                  "validator": "",
+                  "message": "Полето е задължително"
+                }
+              ],
+              "order": 2
+            },
+		      	{
+              "type": "breakpoint",
+              "order": 3,
+              "rendered": true
+            },
+			      {
+              "label": "Име на специалиста",
+			        "name": "name",
+              "type": "input",
+              "inputType": "text",
+              "order": 4,
+              "rendered": true,
+              "disabled": false,
+              "width": 400
+            },
+			      {
+              "label": "Организация-вид",
+			        "name": "organizationType",
+              "type": "input",
+              "inputType": "text",
+              "order": 5,
+              "rendered": true,
+              "disabled": false,
+              "width": 400
+            },
+			      {
+              "label": "Организация-име",
+			        "name": "organizationName",
+              "type": "input",
+              "inputType": "text",
+              "order": 6,
+              "rendered": true,
+              "disabled": false,
+              "width": 400
+            },
+			      {
+              "label": "Вид специалист",
+			        "name": "specialistType",
+              "type": "input",
+              "inputType": "text",
+              "order": 7,
+              "rendered": true,
+              "disabled": false,
+              "width": 400
+            }
+      ]
+    }
+]
+}
+  ]
+}
+
+

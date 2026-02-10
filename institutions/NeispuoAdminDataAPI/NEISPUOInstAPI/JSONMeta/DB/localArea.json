@@ -1,0 +1,29 @@
+{
+    "template": "SELECT /**select**/ FROM [location].[LocalArea] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "LocalAreaID as code"
+        },
+        {
+            "column": "Name as label"
+        }
+    ],
+    "params": [
+    {
+      "param": "@filterValue",
+      "column": "TownCode",
+      "operator": "=",
+      "value": "filterValue",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+    ],
+    "order": [
+        {
+            "column": "LocalAreaID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

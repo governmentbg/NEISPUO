@@ -1,0 +1,10 @@
+@import "@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/variables/variables.scss";
+
+:host ::ng-deep{
+  .p-disabled {
+    border-color: $gray-400;
+  }
+  .p-button.p-button-icon-only {
+    margin-left: 1rem;
+  }
+}

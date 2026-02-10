@@ -1,0 +1,60 @@
+// Globals
+$body-font-family: Roboto, Avenir, Helvetica, Arial, sans-serif;
+$border-radius-root: 6px;
+$font-size-root: 16px;
+
+// Variables must come before the import
+$btn-letter-spacing: 0;
+$btn-font-weight: 400;
+$list-item-title-font-size: 0.929rem;
+$list-item-dense-title-font-size: 0.929rem;
+$list-item-dense-title-font-weight: initial;
+$card-border-radius: 8px;
+$fab-icon-sizes: (
+  "small": 20,
+);
+$btn-sizes: (
+  "default": 41,
+  "large": 54,
+);
+
+// НЕИСПУО theme
+$stratos: #002966;
+$cornflower-blue: #7476f7;
+.text-h1 {
+  font-size: 45px !important;
+}
+.text-h2 {
+  font-size: 35px !important;
+}
+
+$btn-border-radius: 4px;
+
+.bg-cornflower-blue{
+  background-color: $cornflower-blue;
+  color: white !important;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.v-textarea textarea[readonly="readonly"] {
+  color: rgb(0,0,0,0.70)
+}
+.v-text-field input[readonly="readonly"] {
+  color: rgb(0,0,0,0.70)
+}
+
+.v-textarea textarea[disabled="disabled"] {
+  color: rgb(0,0,0,0.70)
+}
+.v-text-field input[disabled="disabled"] {
+  color: rgb(0,0,0,0.70)
+}
+
+.tracking-wider {
+  letter-spacing: .05em;
+}
+
+// .v-application--is-ltr .v-list-item__icon:last-of-type:not(:only-child) {
+//   margin-left: 0px !important;
+// }

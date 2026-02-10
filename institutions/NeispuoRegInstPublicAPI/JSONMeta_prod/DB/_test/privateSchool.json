@@ -1,0 +1,29 @@
+{
+  "template": "SELECT /**select**/ FROM [neispuo].[reginst_basic].[RIAll] RIALL  /**where**/ /**orderby**/",
+  "columns": [
+    {
+      "column": "RIALL.Name AS name"
+    }
+  ],
+  "params": [
+    {
+      "param": "@procid",
+      "column": "RIALL.RIProcedureID",
+      "operator": "=",
+      "value": "procid",
+      "type": "int",
+      "logical_operator": "and",
+      	"static": false,
+		"from_claim": false
+    }
+  ],
+  "order": [
+    {
+      "column": "RIALL.RIProcedureID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+ 
+  ]
+}

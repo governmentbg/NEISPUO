@@ -1,0 +1,109 @@
+<div class="system-user-messages-container">
+  <div class="table-scroll-wrapper">
+    <p-table
+      #messagesTable
+      [value]="messages"
+      [rows]="6"
+      [paginator]="true"
+      [globalFilterFields]="['title', 'content']"
+      [rowHover]="true"
+      dataKey="id"
+      [loading]="loading"
+    >
+      <!-- top bar with search box -->
+      <ng-template pTemplate="caption">
+        <div>
+          <button class="btn btn-success rounded icon" (click)="openAddModal()">Добави</button>
+        </div>
+        <div class="p-d-flex p-ai-center p-jc-between">
+          <input
+            pInputText
+            type="text"
+            (input)="messagesTable.filterGlobal($event.target.value, 'contains')"
+            placeholder="Търси"
+          />
+        </div>
+      </ng-template>
+
+      <!-- table header -->
+      <ng-template pTemplate="header">
+        <tr>
+          <th class="col-title">Заглавие</th>
+
+          <th class="col-content">Съобщение</th>
+          <th pSortableColumn="startDate" class="col-date">
+            Начало <p-sortIcon field="startDate" class="responsive-sort-icon"></p-sortIcon>
+          </th>
+          <th pSortableColumn="endDate" class="col-date">
+            Край <p-sortIcon field="endDate" class="responsive-sort-icon"></p-sortIcon>
+          </th>
+          <th class="col-roles">Роли</th>
+          <th class="col-actions">Действия</th>
+        </tr>
+      </ng-template>
+
+      <!-- table body -->
+      <ng-template pTemplate="body" let-message>
+        <tr>
+          <td class="col-title">
+            <div class="message-title" [class.expanded]="expandedMessages[message.id]" pTooltip="{{ message.title }}">
+              {{ message.title }}
+            </div>
+          </td>
+
+          <td class="col-content">
+            <div
+              class="message-content"
+              [class.expanded]="expandedMessages[message.id]"
+              [innerHTML]="getTrustedHtml(message.content)"
+            ></div>
+            <button class="toggle-btn" (click)="toggleMessage(message.id)">
+              {{ expandedMessages[message.id] ? 'Скрий' : 'Прочети още' }}
+            </button>
+          </td>
+
+          <td class="col-date">{{ message.startDate | date: 'dd/MM/yy' }}</td>
+          <td class="col-date">{{ message.endDate | date: 'dd/MM/yy' }}</td>
+
+          <td class="col-roles">
+            <app-tags [items]="message.roles" [expanded]="expandedMessages[message.id]"></app-tags>
+          </td>
+          <td class="col-actions">
+            <button
+              pButton
+              type="button"
+              icon="pi pi-pencil"
+              class="p-button-text p-button-sm"
+              (click)="editMessage(message)"
+              pTooltip="Редактиране"
+              tooltipPosition="top"
+            ></button>
+
+            <button
+              pButton
+              type="button"
+              icon="pi pi-trash"
+              class="p-button-text p-button-sm delete-btn"
+              (click)="confirmDelete(message.id)"
+              pTooltip="Изтриване"
+              tooltipPosition="top"
+            ></button>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="6">
+            <div class="empty-message-cell" [class.error]="error">
+              <i class="pi" [class.pi-info-circle]="!error" [class.pi-exclamation-triangle]="error"></i>
+              <span [class.error-text]="error">
+                {{ error ? errorMessage : 'Няма намерени системни съобщения' }}
+              </span>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  <p-confirmDialog styleClass="confirm-delete-dialog"></p-confirmDialog>
+</div>

@@ -1,0 +1,25 @@
+{
+    "template": "SELECT /**select**/ FROM [inst_nom].[EducationGradeType] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "EducationGradeTypeID as code"
+        },
+        {
+            "column": "Name as label"
+        },
+		 {
+            "column": "IsValid as isValid"
+        }
+		
+    ],
+    "params": [
+
+    ],
+    "order": [
+        {
+            "column": "SortOrd",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

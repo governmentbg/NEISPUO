@@ -1,0 +1,50 @@
+{
+  "arrayName": "staff",
+  "template": "SELECT /**select**/ FROM [inst_year].[VacantStaffList] VS  /**where**/ /**orderby**/",
+  "columns": [
+    {
+      "column": "VS.VacantStaffID AS vacantStaffID"
+    },
+    {
+      "column": "VS.StaffType AS staffType"
+    },
+    {
+      "column": "VS.NKPDPosition AS nkpdPosition"
+    },
+    {
+      "column": "VS.PositionCount AS positionCount"
+    },
+    {
+      "column": "VS.PositionSubjectGroup AS positionSubjectGroup"
+    },	
+    {
+      "column": "'vacantStaffData' AS formName"
+    },
+    {
+      "column": "VS.VacantStaffID AS formDataId"
+    }
+
+  ],
+  "params": [
+    {
+      "param": "@instid",
+      "column": "VS.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "VS.StaffTypeID",
+      "type": "ASC"
+    },
+    {
+      "column": "VS.NKPDPosition",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": []
+}

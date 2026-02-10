@@ -1,0 +1,127 @@
+.full-wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 20px 5px 20px;
+  margin-top: 20px;
+  .mat-card-content {
+    padding: 0 !important;
+    .scroll-container {
+      overflow-y: auto !important;
+      overflow: hidden;
+      max-height: calc(100vh - 475px);
+      display: block;
+      flex-direction: column;
+      justify-content: center;
+      padding: 15px;
+      .result-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        .result-card {
+          border: 1px solid #00000061;
+          margin-top: 20px;
+          mat-card-header {
+            justify-content: center;
+            align-items: center;
+            padding: 4px !important;
+            border-radius: 0 !important;
+            background-color: #6e6e6f !important;
+            mat-card-title {
+              font-size: 15px;
+              color: white;
+              text-shadow: 1px 1px 3px #0000007a;
+              font-weight: normal;
+            }
+          }
+          .body-result-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+          }
+          .action-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            margin-top: 13px;
+            margin-bottom: 8px;
+          }
+        }
+      }
+    }
+    .check-btn {
+      width: 200px;
+    }
+  }
+  .btn-add-institution {
+    &:hover {
+      background-color: #14924f !important;
+    }
+    margin-left: 20px;
+    background-color: #00a000 !important;
+    text-shadow: 1px 1px 3px #000000d1 !important;
+  }
+  .l-container-component {
+    max-width: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 5px;
+    margin-right: 5px;
+    .l-custom-span-label {
+      font-family: Roboto, "Helvetica Neue", sans-serif;
+      font-size: 12px;
+      line-height: normal;
+      margin-left: 3px;
+      position: relative;
+      padding-left: 7px;
+      display: inline-block;
+      .required-span {
+        position: absolute;
+        left: -1px;
+        top: -3px;
+        color: red;
+        font-size: 17px;
+      }
+    }
+  }
+}
+
+.first-card {
+  margin-bottom: 15px;
+  .mat-card-content {
+    padding: 15px !important;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    .row-flex {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      flex-direction: row;
+    }
+  }
+}
+
+.second-card {
+  margin-bottom: 15px;
+}
+
+.w-130 {
+  width: 130px;
+}
+
+.w-200 {
+  width: 200px;
+  min-width: 200px;
+  max-width: 200px;
+}
+.message-for-info {
+  margin-bottom: 30px;
+  margin-top: 15px;
+}

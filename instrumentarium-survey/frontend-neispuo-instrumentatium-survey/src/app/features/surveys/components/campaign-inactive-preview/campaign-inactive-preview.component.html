@@ -1,0 +1,48 @@
+<div *ngIf="campaign" class="top-container grid flex-nowrap">
+    <div class="btn-container">
+        <button pButton pRipple type="button" icon="pi pi-arrow-left" [routerLink]="['/']" class="p-button-text btn-icon-primary"></button>
+        </div>
+    <div class="heading grid col-6 col-md-8">
+        <h4 class="title">{{ campaign.name }}</h4>
+        <span class="campaign-status">
+            <i [ngClass]="campaign.isActive ? 'active' : 'past'" class="pi pi-circle-on"></i>
+            {{ campaign.isActive ? content.ACTIVE : content.INACTIVE }}
+        </span>
+    </div>
+</div>
+<div *ngIf="score" class="main">
+    <div class="wrapper">
+        <div class="data-container grid justify-content-evenly">
+            <div class="campaign-result-container grid align-items-center col-12 col-md-6">
+                <div class="campaign-score col-12 col-md-6">
+                        <h4>{{ content.SCORE }}</h4>
+                        <span><strong>{{ averageScore }}</strong>/4</span>
+                </div>
+                <div class="campaign-score-by-role col-12 col-md-6">
+                    <div class="score-box mt-5 mt-md-0" *ngFor="let user of score.scoreByRoles">
+                        <span class="user-avgscore"><strong>{{ user.score }}</strong> /4</span>
+                        <p class="user-questionnaire">{{ user.role }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="users-who-filled-campaign grid flex-column align-items-center justify-content-center col-12 col-md-6 mt-5 mt-md-0">
+                <h4>{{ content.FILLED }}</h4>
+                <span><strong>{{ totalUsersSubmitted }}</strong>/{{ totalUsersAssignedTo }}</span>
+            </div>
+        </div>
+        <div class="indicators-score col-md-12">
+            <div *ngFor="let questionnaire of questionnaires | keyvalue">
+                <h3 
+                *ngIf="questionnaire.value.length !== 0" 
+                pTooltip="{{ content.AGGREGATED_RESULTS}} '{{ questionnaire.key }}'" 
+                >
+                    {{ content.SCORE_BY_INDICATOR }} {{ questionnaire.key }}
+                </h3>
+                <div class="indicator-box grid align-items-center mb-5" *ngFor="let score of questionnaire.value">
+                    <span class="indicator-score col-2 col-md-fixed">{{ score.totalScore }}<span>/4</span></span>
+                    <p class="indicator-name col-11 pt-4">{{ score.indicatorId.name }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

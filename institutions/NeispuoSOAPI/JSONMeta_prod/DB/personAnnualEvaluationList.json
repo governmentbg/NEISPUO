@@ -1,0 +1,97 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_year].[StaffList] SL /**where**/ /**orderby**/",
+  "columns": [
+    {
+      "column": "SL.PersonID AS id"
+    },
+    {
+      "column": "SL.FullName AS fullName"
+    }
+  ],
+  "params": [
+    {
+      "param": "@personid",
+      "column": "SL.PersonID",
+      "operator": "=",
+      "value": "personid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+    {
+      "param": "@year",
+      "column": "SL.SchoolYear",
+      "operator": "=",
+      "value": "year",
+      "type": "int",
+      "logical_operator": "and",
+      "optional": true,
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "SL.PersonID",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+    {
+      "arrayName": "annualStaffEvaluation",
+      "template": "SELECT /**select**/ FROM [inst_year].[AnnualStaffEvaluationList] ASE /**where**/ /**orderby**/",
+      "columns": [
+        {
+          "column": "ASE.AnnualStaffEvaluationID AS id"
+        },
+        {
+          "column": "ASE.FromDate AS fromDate"
+        },
+        {
+          "column": "ASE.ToDate AS toDate"
+        },
+        {
+          "column": "ASE.SelfAssessmentResult AS selfAssessmentResult"
+        },
+        {
+          "column": "ASE.CommissionEvaluationResult AS commissionEvaluationResult"
+        },
+        {
+          "column": "ASE.FinalResultIndicator AS finalResultIndicator"
+        },
+        {
+          "column": "'personAnnualEvaluationData' AS formName"
+        },
+        {
+          "column": "ASE.AnnualStaffEvaluationID AS formDataId"
+        }
+      ],
+      "params": [
+        {
+          "param": "@personid",
+          "column": "ASE.PersonID",
+          "operator": "=",
+          "value": "personid",
+          "type": "int",
+          "logical_operator": "and",
+          "static": false
+        },
+        {
+          "param": "@year",
+          "column": "ASE.SchoolYear",
+          "operator": "=",
+          "value": "year",
+          "type": "int",
+          "logical_operator": "and",
+          "optional": true,
+          "static": false
+        }
+      ],
+      "order": [
+        {
+          "column": "ASE.AnnualStaffEvaluationID",
+          "type": "ASC"
+        }
+      ]
+    }
+  ]
+}

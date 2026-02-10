@@ -1,0 +1,18 @@
+.form-check-input {
+    &[type="radio"] {
+        border-color: $gray-600;
+        &:checked {
+            border-color: $blue;
+            background-color: $blue-100;
+            &:disabled {
+                border-color: $gray-500;
+                background-color: $gray-100;
+                background-image: escape-svg($form-check-radio-checked-bg-image-disabled);;
+            }
+        }
+        &:disabled {
+            border-color: $gray-400;
+            background-color: $gray-100;
+        }
+    }
+}

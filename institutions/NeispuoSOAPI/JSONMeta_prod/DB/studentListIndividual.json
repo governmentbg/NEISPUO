@@ -1,0 +1,90 @@
+{
+  "arrayName": "studentList",
+  "template": "SELECT /**select**/ FROM [inst_year].[StudentListIndividual] SI /**where**/ /**orderby**/",
+  "sotemplate": "SELECT /**select**/ FROM [sob].[StudentListIndividual] SI /**where**/ /**orderby**/",
+  "columns": [
+    {
+      "column": "SI.ID AS id"
+    },
+    {
+      "column": "SI.PersonID AS personID"
+    },
+    {
+      "column": "SI.PublicEduNumber AS publicEduNumber"
+    },
+    {
+      "column": "SI.FullName AS fullName"
+    },
+    {
+      "column": "SI.BirthDate AS birthDate"
+    },
+    {
+      "column": "SI.BasicClassName AS basicClassName"
+    },
+    {
+      "column": "SI.Name AS name"
+    },
+    {
+      "column": "SI.ClassId AS classID"
+    },
+    {
+      "column": "SI.ParentClassID AS parentClassID"
+    },
+    {
+      "column": "SI.StudentEdFormName AS studentEdFormName"
+    },
+    {
+      "column": "SI.ClassSpecialityName AS classSpecialityName"
+    },
+    {
+      "column": "SI.BasicClassID AS basicClassID"
+    },
+    {
+      "column": "'curriculumIndividualSubject' AS formName"
+    },
+    {
+      "column": "SI.ID AS formDataId"
+    },
+    {
+      "column": "SI.ShowProfilePart AS showProfilePart"
+    }
+  ],
+  "params": [
+    {
+      "param": "@instid",
+      "column": "SI.InstitutionID",
+      "operator": "=",
+      "value": "instid",
+      "type": "int",
+      "logical_operator": "and",
+      "static": false
+    },
+    {
+      "param": "@year",
+      "column": "SI.SchoolYear",
+      "operator": "=",
+      "value": "year",
+      "type": "int",
+      "logical_operator": "and",
+      "optional": true,
+      "static": false
+    },
+    {
+      "param": "@period",
+      "column": "SI.Period",
+      "operator": "=",
+      "value": "period",
+      "type": "int",
+      "logical_operator": "and",
+      "optional": true,
+      "static": false
+    }
+  ],
+  "order": [
+    {
+      "column": "SI.FullName",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": []
+}

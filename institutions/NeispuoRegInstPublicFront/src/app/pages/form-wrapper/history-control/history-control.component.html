@@ -1,0 +1,9 @@
+<div class="history-wrapper">
+    <button class="btn-left" [disabled]="currentPos <= 0" (click)="goTo(currentPos - 1)"><mat-icon>navigate_before</mat-icon></button>
+    <mat-form-field class="l-select padding-0" appearance="outline">
+        <mat-select [value]="currentOption" (selectionChange)="onSelectionChange($event.value)" #historySelect>
+            <mat-option *ngFor="let option of history" [value]="option.code">{{option.label}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button class="btn-right" [disabled]="currentPos === history.length - 1" (click)="goTo(currentPos + 1)"><mat-icon>navigate_next</mat-icon></button>
+</div>

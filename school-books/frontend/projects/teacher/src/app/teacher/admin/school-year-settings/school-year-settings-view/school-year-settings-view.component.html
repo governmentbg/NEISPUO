@@ -1,0 +1,149 @@
+<sb-breadcrumb
+  class="block mb-3"
+  [icon]="fadCalendarStar"
+  [text]="
+    data.schoolYearSettings == null
+      ? 'Създаване на настройки на учебната ' + data.schoolYearName + ' година'
+      : data.schoolYearSettings.description
+  "
+  [parentItems]="[{ text: 'Настройки на учебната ' + data.schoolYearName + ' година', routeCommands: ['../'] }]"
+></sb-breadcrumb>
+
+<form [formGroup]="form" autocomplete="off" novalidate>
+  <sb-card>
+    <ng-container card-title>
+      {{
+        data.schoolYearSettings == null
+          ? 'Създаване на настройки на учебната ' + data.schoolYearName + ' година'
+          : 'Редакция на настройки на учебната ' + data.schoolYearName + ' година'
+      }}
+    </ng-container>
+    <sb-editor-panel
+      [editBtnHidden]="!canEdit"
+      card-buttons
+      [isNew]="data.schoolYearSettings == null"
+      (save)="onSave($event)"
+      (editableChange)="onEditableChange($event)"
+    >
+      <button
+        *ngIf="canRemove"
+        disabled-mode-buttons
+        mat-raised-button
+        color="warn"
+        type="button"
+        (click)="onRemove()"
+        [disabled]="removing"
+      >
+        <fa-icon [icon]="removing ? fasSpinnerThird : fasTrashAlt" [spin]="removing" size="lg"></fa-icon>
+        <span class="hidden sm:inline">Премахни</span>
+      </button>
+    </sb-editor-panel>
+    <ng-container card-body>
+      <div class="sm:grid grid-cols-4 gap-x-4 mb-2">
+        <sb-text-field class="col-start-1 col-span-full" label="Описание" formControlName="description"></sb-text-field>
+
+        <sb-select-field
+          formControlName="appliesTo"
+          class="col-start-1"
+          [class.col-span-4]="form.value.appliesTo === AppliesToValues_All"
+          [class.col-span-2]="form.value.appliesTo !== AppliesToValues_All"
+          label="Важи за"
+          [items]="[
+            { id: AppliesToValues_All, name: 'Всички' },
+            { id: AppliesToValues_BasicClass, name: 'Випуски' },
+            { id: AppliesToValues_ClassBook, name: 'Паралелки/Групи' }
+          ]"
+          [hint]="
+            form.value.appliesTo === AppliesToValues_All
+              ? 'Датите за начало/край на УГ не важат за предучилищните групи'
+              : null
+          "
+        ></sb-select-field>
+        <sb-nom-select
+          class="col-span-2"
+          [class.hidden]="form.value.appliesTo !== AppliesToValues_BasicClass"
+          label="Випуски"
+          formControlName="basicClassIds"
+          [multiple]="true"
+          [nomService]="basicClassNomsService"
+          [hint]="showPGHint ? 'Датите за начало/край на УГ не важат за предучилищните групи' : null"
+        ></sb-nom-select>
+        <sb-nom-select
+          class="col-span-2"
+          [class.hidden]="form.value.appliesTo !== AppliesToValues_ClassBook"
+          label="Паралелки/Групи"
+          formControlName="classBookIds"
+          [multiple]="true"
+          [nomService]="classBookNomsService"
+        ></sb-nom-select>
+
+        <sb-date-field
+          class="col-start-1 col-span-2"
+          label="Начало на учебната година"
+          formControlName="schoolYearStartDate"
+          [hint]="
+            !form.value.schoolYearStartDate
+              ? 'При празна стойност се използва дата определена със заповед на МОН'
+              : null
+          "
+        ></sb-date-field>
+        <sb-date-field
+          class="col-span-2"
+          label="Край на първи срок"
+          formControlName="firstTermEndDate"
+          [hint]="
+            !form.value.firstTermEndDate ? 'При празна стойност се използва дата определена със заповед на МОН' : null
+          "
+        ></sb-date-field>
+
+        <sb-date-field
+          class="col-start-1 col-span-2"
+          label="Начало на втори срок"
+          formControlName="secondTermStartDate"
+          [hint]="
+            !form.value.secondTermStartDate
+              ? 'При празна стойност се използва дата определена със заповед на МОН'
+              : null
+          "
+        ></sb-date-field>
+        <sb-date-field
+          class="col-span-2"
+          label="Край на учебната година"
+          formControlName="schoolYearEndDate"
+          [hint]="
+            !form.value.schoolYearEndDate ? 'При празна стойност се използва дата определена със заповед на МОН' : null
+          "
+        ></sb-date-field>
+
+        <sb-select-field
+          formControlName="hasFutureEntryLock"
+          class="col-start-1 col-span-4"
+          label="Забрани въвеждане на оценки/отсъствия/теми за бъдещи дати"
+          [items]="[
+            { id: false, name: 'Не' },
+            { id: true, name: 'Да' }
+          ]"
+        ></sb-select-field>
+
+        <sb-select-field
+          formControlName="hasPastMonthLock"
+          class="col-start-1"
+          [class.col-span-4]="!form.value.hasPastMonthLock"
+          [class.col-span-2]="form.value.hasPastMonthLock"
+          label="Заключване на оценки/отсъствия/теми за предходните месеци"
+          [items]="[
+            { id: false, name: 'Не' },
+            { id: true, name: 'Да' }
+          ]"
+        ></sb-select-field>
+        <sb-number-field
+          formControlName="pastMonthLockDay"
+          label="Ден от месеца, след който се заключват предходните месеци"
+          class="col-span-2"
+          [class.hidden]="!form.value.hasPastMonthLock"
+          [validations]="{ min: 'Минималната стойност е 1', max: 'Максималната стойност е 31' }"
+        ></sb-number-field>
+      </div>
+    </ng-container>
+  </sb-card>
+</form>

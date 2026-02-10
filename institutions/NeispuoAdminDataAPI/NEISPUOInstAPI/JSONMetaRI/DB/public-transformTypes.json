@@ -1,0 +1,34 @@
+{
+    "template": "SELECT /**select**/ FROM [reginst_nom].[TransformType] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "TransformTypeID as code"
+        },
+        {
+            "column": "PublicName as label"
+        },
+        {
+            "column": "IsValid as isValid"
+        }
+    ],
+    "params": [
+        {
+            "param": "@IsValid",
+            "column": "IsValid",
+            "operator": "=",
+            "value": 1,
+            "type": "int",
+            "logical_operator": "and",
+			"optional": true,
+  			"static": true,
+			"from_claim": false
+        }
+    ],
+    "order": [
+        {
+            "column": "TransformTypeID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

@@ -1,0 +1,24 @@
+{
+    "template": "SELECT /**select**/ FROM [noms].[DetailedSchoolType] /**where**/ /**orderby**/",
+    "columns": [
+        {
+            "column": "DetailedSchoolTypeID as code"
+        },
+        {
+            "column": "Name as label"
+        },
+		{
+            "column": "IsValid as isValid"
+        }
+    ],
+    "params": [
+
+    ],
+    "order": [
+        {
+            "column": "DetailedSchoolTypeID",
+            "type": "ASC"
+        }
+    ],
+    "inSelects": []
+}

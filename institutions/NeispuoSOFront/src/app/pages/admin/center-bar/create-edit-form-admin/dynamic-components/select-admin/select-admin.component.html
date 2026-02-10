@@ -1,0 +1,12 @@
+<div class="l-container-component l-focused-element" [style.width.px]="field.width" [ngClass]="{'focused': updateJsonService.focusedElement.index === field.idntfr}" (click)="focus()">
+    <span class="l-custom-info-span">поле за избор</span>
+    <span class="l-custom-span-label">
+      <span class="required-span" *ngIf="required">*</span>
+      <span class="label-label">{{ field.pseudoLabel }}</span>
+      <app-info-tooltip *ngIf="field.info" [info]="field.info"></app-info-tooltip>
+    </span>
+    <div class="l-select" appearance="outline" matTooltipClass="l-custom-tooltip" [matTooltip]="s.selectedItems && s.selectedItems[0] ? s.selectedItems[0].label : ''">
+      <ng-select #s [appendTo]="appendClass" [items]="[]" [disabled]="true" [(ngModel)]="field.value" virtualScroll="true" bindLabel="label" bindValue="code" notFoundText="Няма намерени резултати" [clearable]="false" [searchable]="false"> </ng-select>
+    </div>
+</div>
+  

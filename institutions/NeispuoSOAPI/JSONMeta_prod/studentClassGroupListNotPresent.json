@@ -1,0 +1,105 @@
+{
+  "label": "Профил на детето/ученика",
+  "changeData": false,
+  "sections": [
+    {
+      "order": 1,
+      "name": "studentMainClassGroupTable",
+      "label": "Клас/група",
+      "table": {
+        "name": "studentMainClassGroups",
+        "formName": "studentMainClassGroupNotPresent",
+        "paramName": "studentid",
+        "additionalParams": [
+          "parentclassid",
+          "classid",
+          "classKind"
+        ],
+        "searchable": false,
+        "hasEditButton": true,
+        "procedureName": "inst_basic.studentClassCUD",
+        "fields": [
+          {
+            "name": "classTypeID",
+            "type": "input",
+            "inputType": "number",
+            "order": 0,
+            "width": 10,
+            "rendered": false,
+            "disabled": false,
+            "influence": [],
+            "validations": []
+          },
+          {
+            "name": "parentclassid",
+            "type": "input",
+            "inputType": "text",
+            "order": 1,
+            "width": 50,
+            "rendered": false,
+            "disabled": false,
+            "influence": [],
+            "validations": []
+          },
+          {
+            "label": "Наименование",
+            "name": "className",
+            "type": "input",
+            "inputType": "text",
+            "order": 2,
+            "width": 300,
+            "disabled": true,
+            "rendered": false,
+            "influence": [],
+            "validations": [],
+            "info": ""
+          },
+          {
+            "label": "Форма на обучение",
+            "name": "studentEdFormName",
+            "type": "input",
+            "inputType": "text",
+            "order": 3,
+            "width": 200,
+            "disabled": true,
+            "influence": [],
+            "validations": []
+          },
+          {
+            "label": "Профил/Професия/Специалност",
+            "name": "classSpecialityName",
+            "type": "input",
+            "inputType": "text",
+            "order": 4,
+            "width": 400,
+            "disabled": true,
+            "influence": [],
+            "validations": []
+          },
+          {
+            "label": "Повторно записан в същия клас",
+            "name": "repeaterName",
+            "type": "input",
+            "inputType": "text",
+            "order": 5,
+            "width": 400,
+            "disabled": false,
+            "influence": [],
+            "validations": []
+          },
+          {
+            "label": "Пътуващ с организиран от училището транспорт",
+            "name": "commuterTypeName",
+            "type": "input",
+            "inputType": "text",
+            "order": 6,
+            "width": 600,
+            "disabled": false,
+            "influence": [],
+            "validations": []
+          }
+        ]
+      }
+    }
+  ]
+}

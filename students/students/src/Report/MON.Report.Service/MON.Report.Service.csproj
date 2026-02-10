@@ -1,0 +1,103 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <!-- .trdp файловете се копират при .dll-ката и се зареждат от там runtime. -->
+  <ItemGroup>
+    <None Include="**\*.trdp" Exclude="bin\**\*.trdp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="fonts\cour.ttf" />
+    <None Remove="fonts\GARA.TTF" />
+    <None Remove="fonts\GARABD.TTF" />
+    <None Remove="fonts\GARAIT.TTF" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\cour.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fonts\GARA.TTF">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fonts\GARABD.TTF">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fonts\GARAIT.TTF">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <!--
+      Reporting-ът на Telerik има редица dependencies:
+      - изисква сериализатора на Newtonsoft и не работи с вградения в asp.net core 3.1.
+      - настроен е да кешира в база данни, за което изисква System.Data.SqlClient.
+      - разархивира .trdp файловете, за което изисква System.IO.Packaging.
+      Ако библиотеките на Telerik се реферираха като Nuget пакети, тези редове щяха да се подразбират.
+    -->
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.9" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+    <PackageReference Include="System.IO.Packaging" Version="4.7.0" />
+  </ItemGroup>
+
+  <!--
+    Библиотеките на Telerik са в solution-а и не се взимат чрез Nuget, защото във VS трябва да се добавя
+    custom repository на Telerik, в което се влиза с име и парола и профилът трябва да има лиценз.
+  -->  
+  <ItemGroup>
+    <!-- Основната библиотека на Telerik за справки и печатни бланки. -->
+    <Reference Include="Telerik.Reporting">
+      <!--<HintPath>..\..\..\Lib\telerik.reporting\14.2.20.1021\lib\netstandard2.0\Telerik.Reporting.dll</HintPath>-->
+      <!--<HintPath>..\..\..\Lib\telerik.reporting\15.0.21.326\lib\netstandard2.0\Telerik.Reporting.dll</HintPath>-->
+      <HintPath>..\..\..\Lib\telerik.reporting\15.2.21.1125\netstandard2.0\Telerik.Reporting.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.WebReportDesigner.Services">
+      <!--<HintPath>..\..\..\Lib\telerik.webreportdesigner.services\15.0.21.326\lib\netcoreapp3.1\Telerik.WebReportDesigner.Services.dll</HintPath>-->
+      <HintPath>..\..\..\Lib\telerik.webreportdesigner.services\15.2.21.1125\netcoreapp3.1\Telerik.WebReportDesigner.Services.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\MON.Services\MON.Services.csproj" />
+    <ProjectReference Include="..\MON.Report.Model\MON.Report.Model.csproj" />
+    <!-- Забранява се на WebApi да вижда Data транзитивно през Report.Service: https://stackoverflow.com/questions/46709000/disable-transitive-project-reference-in-net-standard-2 -->
+    <ProjectReference Include="..\..\MON.DataAccess\MON.DataAccess.csproj">
+      <PrivateAssets>all</PrivateAssets>
+    </ProjectReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Diploma\Diploma_3_20_blank.trdp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Diploma\Diploma_3_22_A.trdp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Diploma\Diploma_3_22.trdp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Diploma\Diploma.trdp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Diploma\Diploma_3_20_blank.trdp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Diploma\Diploma_3_20.trdp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Diploma\Diploma_3_103.trdp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Diploma\Diploma_3_31.trdp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

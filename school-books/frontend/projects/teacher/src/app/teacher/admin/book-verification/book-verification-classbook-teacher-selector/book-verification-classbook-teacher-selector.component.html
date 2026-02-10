@@ -1,0 +1,15 @@
+<div class="grid gap-4 grid-cols-2">
+  <sb-nom-select
+    theme="default"
+    label="Изберете клас"
+    [formControl]="classBookIdFormControl"
+    [nomService]="classBookNomsService"
+  ></sb-nom-select>
+
+  <sb-nom-select
+    theme="default"
+    label="Изберете учител"
+    [formControl]="teacherPersonIdFormControl"
+    [nomService]="instTeacherNomsService"
+  ></sb-nom-select>
+</div>

@@ -1,0 +1,16 @@
+:host ::ng-deep {
+  .p-multiselect-item {
+    > span {
+      white-space: pre-wrap;
+    }
+  }
+}
+.title {
+  margin-bottom: 1.25rem;
+}
+
+.load-data-btn-wrapper {
+  position: absolute;
+  bottom: 1rem;
+  text-align: center;
+}

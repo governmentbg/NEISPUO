@@ -1,0 +1,349 @@
+{
+  "paramName":"personid",
+  "sections": [
+    {
+      "label": "Данни за годишна преподавателска заетост",
+      "name": "staffPositionData",
+      "order": 1,
+      "subsections": [
+        {
+          "order": 1,
+          "name": "staffPedData",
+          "label": "Годишна преподавателска заетост",
+          "subsections": [
+            {
+              "order": 1,
+              "name": "norma",
+              "label": "Преподавателска норма",
+              "canDuplicate": false,
+              "fields": [
+                {
+                  "label": "Часове по норматив на РМ",
+                  "name": "normaS",
+                  "type": "input",
+                  "inputType": "number",
+                  "order": 1,
+                  "width": 95,
+                  "disabled": true,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 4,
+                      "message": "Максимална дължина 4 символа"
+                    },
+                    {
+                      "name": "pattern",
+                      "validation": "^\\d+$",
+                      "message": "Полето трябва да съдържа цяло неотрицателно число"
+                    }
+                  ]
+                },
+                {
+                  "label": "Минимална ЗНПР",
+                  "name": "norma",
+                  "type": "input",
+                  "inputType": "number",
+                  "order": 2,
+                  "width": 95,
+                  "disabled": true,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 4,
+                      "message": "Максимална дължина 4 символа"
+                    },
+                    {
+                      "name": "pattern",
+                      "validation": "^\\d+$",
+                      "message": "Полето трябва да съдържа цяло неотрицателно число"
+                    }
+                  ]
+                },
+                {
+                  "label": "Индивидуална ЗНПР",
+                  "name": "normaT",
+                  "type": "input",
+                  "inputType": "number",
+                  "order": 3,
+                  "width": 95,
+                  "disabled": true,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 4,
+                      "message": "Максимална дължина 4 символа"
+                    },
+                    {
+                      "name": "pattern",
+                      "validation": "^\\d+$",
+                      "message": "Полето трябва да съдържа цяло неотрицателно число"
+                    }
+                  ]
+                },
+                {
+                  "label": "Недостиг до минимална ЗНПР",
+                  "name": "deficitNorma",
+                  "type": "input",
+                  "inputType": "number",
+                  "order": 4,
+                  "width": 95,
+                  "disabled": true,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 4,
+                      "message": "Максимална дължина 4 символа"
+                    },
+                    {
+                      "name": "pattern",
+                      "validation": "^\\d+$",
+                      "message": "Полето трябва да съдържа цяло неотрицателно число"
+                    }
+                  ]
+                },
+                {
+                  "label": "Недостиг до индивидуална ЗНПР",
+                  "name": "deficitNormaT",
+                  "type": "input",
+                  "inputType": "number",
+                  "order": 5,
+                  "width": 95,
+                  "disabled": true,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 4,
+                      "message": "Максимална дължина 4 символа"
+                    },
+                    {
+                      "name": "pattern",
+                      "validation": "^\\d+$",
+                      "message": "Полето трябва да съдържа цяло неотрицателно число"
+                    }
+                  ]
+                },
+                {
+                  "label": "Коефициент на редукция към ЗНПР на РМ",
+                  "name": "reductionCoef",
+                  "type": "input",
+                  "inputType": "number",
+                  "order": 6,
+                  "width": 95,
+                  "disabled": true,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 4,
+                      "message": "Максимална дължина 4 символа"
+                    },
+                    {
+                      "name": "pattern",
+                      "validation": "^\\d+$",
+                      "message": "Полето трябва да съдържа цяло неотрицателно число"
+                    }
+                  ]
+                },
+                {
+                  "label": "Часове с различен норматив",
+                  "name": "diffNorma",
+                  "type": "input",
+                  "inputType": "number",
+                  "order": 7,
+                  "width": 95,
+                  "disabled": true,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 4,
+                      "message": "Максимална дължина 4 символа"
+                    },
+                    {
+                      "name": "pattern",
+                      "validation": "^\\d+$",
+                      "message": "Полето трябва да съдържа цяло неотрицателно число"
+                    }
+                  ]
+                },
+                {
+                  "label": "Часове, подлежащи на редукция до инд.ЗНПР",
+                  "name": "hoursForReduction",
+                  "type": "input",
+                  "inputType": "number",
+                  "order": 8,
+                  "width": 95,
+                  "disabled": true,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 4,
+                      "message": "Максимална дължина 4 символа"
+                    },
+                    {
+                      "name": "pattern",
+                      "validation": "^\\d+$",
+                      "message": "Полето трябва да съдържа цяло неотрицателно число"
+                    }
+                  ]
+                },
+                {
+                  "label": "Брой часове след редукция",
+                  "name": "reductionHours",
+                  "type": "input",
+                  "inputType": "number",
+                  "order": 9,
+                  "width": 95,
+                  "disabled": true,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 4,
+                      "message": "Максимална дължина 4 символа"
+                    },
+                    {
+                      "name": "pattern",
+                      "validation": "^\\d+$",
+                      "message": "Полето трябва да съдържа цяло неотрицателно число"
+                    }
+                  ]
+                },
+                {
+                  "label": "Лекторски / недостиг - инд.ЗНПР",
+                  "name": "lect",
+                  "type": "input",
+                  "inputType": "number",
+                  "order": 10,
+                  "width": 95,
+                  "disabled": true,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 4,
+                      "message": "Максимална дължина 4 символа"
+                    },
+                    {
+                      "name": "pattern",
+                      "validation": "^\\d+$",
+                      "message": "Полето трябва да съдържа цяло неотрицателно число"
+                    }
+                  ]
+                },
+                {
+                  "label": "Лекторски / недостиг - инд.ЗНПР (год.)",
+                  "name": "lectYear",
+                  "type": "input",
+                  "inputType": "number",
+                  "order": 11,
+                  "width": 95,
+                  "disabled": true,
+                  "validations": [
+                    {
+                      "name": "maxLength",
+                      "validation": 4,
+                      "message": "Максимална дължина 4 символа"
+                    },
+                    {
+                      "name": "pattern",
+                      "validation": "^\\d+$",
+                      "message": "Полето трябва да съдържа цяло неотрицателно число"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "name": "staffPositionHorariumTable",
+      "label": "Учебен план",
+      "table": {
+        "order": 1,
+        "name": "staffPositionHorarium",
+        "hasEditButton": false,
+        "sortable": false,
+        "searchable": false,
+        "fields": [
+          {
+            "label": "Учебен предмет",
+            "name": "subjectName",
+            "type": "input",
+            "inputType": "text",
+            "order": 1
+          },
+          {
+            "label": "Клас",
+            "name": "classNames",
+            "type": "input",
+            "inputType": "text",
+            "order": 2
+          },
+          {
+            "label": "Група",
+            "name": "curriculumGroupID",
+            "type": "input",
+            "inputType": "number",
+            "order": 3
+          },
+          {
+            "label": "Брой ученици",
+            "name": "stdsCount",
+            "type": "input",
+            "inputType": "number",
+            "order": 4
+          },
+          {
+            "label": "I срок УС",
+            "name": "curriculumWeeksFirstTerm",
+            "type": "input",
+            "inputType": "number",
+            "order": 5
+          },
+          {
+            "label": "I срок ЧС",
+            "name": "curriculumHoursWeeklyFirstTerm",
+            "type": "input",
+            "inputType": "number",
+            "order": 6
+          },
+          {
+            "label": "II срок УС",
+            "name": "curriculumWeeksSecondTerm",
+            "type": "input",
+            "inputType": "number",
+            "order": 7
+          },
+          {
+            "label": "II срок ЧС",
+            "name": "curriculumHoursWeeklySecondTerm",
+            "type": "input",
+            "inputType": "number",
+            "order": 8
+          },
+          {
+            "label": "Общ бр.ч.",
+            "name": "curriculumHoursAll",
+            "type": "input",
+            "inputType": "number",
+            "order": 9
+          },
+          {
+            "label": "Норма на предмета",
+            "name": "curriculumNormaS",
+            "type": "input",
+            "inputType": "number",
+            "order": 10
+          },
+          {
+            "label": "Не отговаря на изискванията",
+            "name": "notRegularTeacher",
+            "type": "input",
+            "inputType": "text",
+            "order": 11
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,241 @@
+[
+  {
+    "label": "Институция",
+    "path": "institution",
+    "children": [
+      {
+        "label": "Институция",
+        "path": "institution",
+        "history": true,
+        "extData": false
+      },
+      {
+        "label": "Други адреси за осъществяване на дейността",
+        "path": "institutionDepartmentList",
+        "history": true,
+        "extData": false
+      },
+      {
+        "label": "Проектна и други дейности",
+        "path": "institutionProjects",
+        "history": true,
+        "extData": true
+      },
+      {
+        "label": "Транспорт",
+        "path": "institutionVehicles",
+        "history": true,
+        "extData": true
+      },
+      {
+        "label": "Обобщение",
+        "path": "institutionReports",
+        "history": false,
+        "extData": false
+      }
+    ]
+  },
+  {
+    "label": "Групи",
+    "path": "classes",
+    "children": [
+      {
+        "label": "Групи",
+        "path": "classGroupsOther",
+        "extData": true,
+        "children": [
+          {
+            "label": "Данни за групата",
+            "path": "classGroupData",
+            "history": true,
+            "extData": true
+          },
+          {
+            "label": "Списък деца",
+            "path": "classStudentListOther",
+            "history": true,
+            "extData": true
+          },
+          {
+            "label": "Дейности за ПЛР",
+            "path": "classGroupCurriculumInternalList",
+            "history": true,
+            "extData": true
+          }
+        ]
+      },
+      {
+        "label": "Обобщение",
+        "path": "classGroupReports",
+        "history": false,
+        "extData": false
+      }
+    ]
+  },
+  {
+    "label": "Персонал",
+    "path": "staff",
+    "children": [
+      {
+        "label": "Персонал",
+        "path": "staffList",
+        "history": true,
+        "children": [
+          {
+            "label": "Основни данни",
+            "path": "person",
+            "extData": true
+          },
+          {
+            "label": "Образователна степен, ПКС",
+            "path": "personOKSPKSList",
+            "extData": true
+          },
+          {
+            "label": "Длъжности",
+            "path": "staffPositions",
+            "extData": true
+          },
+          {
+            "label": "Преподавателска заетост",
+            "path": "teachingNorm",
+            "children": [
+              {
+                "label": "Данни за предишна длъжност",
+                "path": "teachingNormData",
+                "history": true,
+                "extData": true
+              }
+            ]
+          },
+          {
+            "label": "Квалификационна дейност",
+            "path": "personQCourses",
+            "extData": true
+          },
+          {
+            "label": "Ключови компетентности",
+            "path": "personCLSkillsList",
+            "extData": true
+          }
+        ]
+      },
+      {
+				"label": "Незаети щатни бройки",
+				"path": "vacantStaff",
+				"history": true,
+				"extData": true
+			},
+      {
+        "label": "Обобщение",
+        "path": "personReports",
+        "history": false,
+        "extData": false
+      }
+    ]
+  },
+  {
+    "label": "Деца/ученици",
+    "path": "students",
+    "children": [
+      {
+        "label": "Деца/ученици",
+        "path": "classStudentListAll",
+        "children": [
+          {
+            "label": "Основни данни",
+            "path": "student",
+            "history": true,
+            "extData": true
+          },
+          {
+            "label": "Обучение в институцията",
+            "path": "studentClassGroupList",
+            "history": true,
+            "extData": true
+          },
+          {
+            "label": "Данни за ресурсно подпомагане",
+            "path": "resourceSupportList",
+            "history": true,
+            "extData": true
+          }
+        ]
+      },
+      {
+        "label": "Обобщение",
+        "path": "studentReports",
+        "history": false,
+        "extData": false
+      }
+    ]
+  },
+  {
+    "label": "Дейности за ПЛР",
+    "path": "curriculum",
+    "children": [
+      {
+        "label": "Дейности за ПЛР",
+        "path": "curriculumClassList",
+        "children": [
+          {
+            "label": "Дейности за ПЛР",
+            "path": "curriculumList",
+            "history": true,
+            "extData": true
+          }
+        ]
+      },
+      {
+        "label": "Рамкови/Типови УП - библиотека",
+        "path": "curriculumCatalogs",
+        "history": false,
+        "children": [
+          {
+            "label": "Съдържание",
+            "path": "curriculumCatalogDataList",
+            "extData": true
+          }
+        ]
+      },
+      {
+        "label": "Обобщение",
+        "path": "curriculumReports",
+        "history": false,
+        "extData": false
+      }
+    ]
+  },
+  {
+    "label": "Настройки",
+    "path": "settings",
+    "history": false,
+    "children": [
+      {
+        "label": "Настройки за предоставяне на достъп на външни доставчици",
+        "path": "externalProvidersList",
+				"extData": false
+      },
+			{
+				"label": "Задължителни предмети",
+				"path": "basicSubjectInstitutionList",
+				"extData": false
+			},
+			{
+				"label": "Други предмети",
+				"path": "subjectInstitutionList",
+				"extData": false
+			},
+			{
+				"label": "НКПД за институцията",
+				"path": "nkpdList",
+				"extData": false
+			},
+      {
+        "label": "Преминаване в нова учебна година",
+        "path": "changeYearDataList",
+				"extData": false
+      }
+    ]
+  }
+]

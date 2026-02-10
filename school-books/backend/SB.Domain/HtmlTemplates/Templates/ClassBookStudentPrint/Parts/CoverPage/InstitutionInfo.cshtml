@@ -1,0 +1,16 @@
+@using SB.Domain
+@model StudentCoverPageModel
+
+<p>@Model.InstitutionAbbreviation</p>
+@if (!string.IsNullOrEmpty(@Model.InstitutionTownName))
+{
+  <p>@Model.InstitutionTownTypeName @Model.InstitutionTownName</p>
+  <p>
+    община @Model.InstitutionMunicipalityName
+    @if (!string.IsNullOrEmpty(Model.InstitutionLocalAreaName))
+    {
+      <span>, район @Model.InstitutionLocalAreaName</span>
+    }
+  </p>
+  <p>област @Model.InstitutionRegionName</p>
+}

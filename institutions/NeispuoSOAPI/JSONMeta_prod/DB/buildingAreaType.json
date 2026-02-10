@@ -1,0 +1,23 @@
+{
+  "template": "SELECT /**select**/ FROM [inst_nom].[BuildingAreaType] BRT /**where**/ /**orderby**/",
+  "columns": [
+	{
+      "column": "BRT.BuildingAreaTypeID AS code"
+    },
+	{
+      "column": "BRT.BuildingAreaTypeName AS label"
+    }
+   ],
+  "params": [
+
+  ],
+  "order": [
+    {
+      "column": "BRT.BuildingAreaTypeName",
+      "type": "ASC"
+    }
+  ],
+  "inSelects": [
+
+  ]
+}

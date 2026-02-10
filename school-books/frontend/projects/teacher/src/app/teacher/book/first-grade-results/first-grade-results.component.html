@@ -1,0 +1,73 @@
+<sb-banner type="warning" *ngIf="!gradeResults.length">Паралелката няма въведени ученици.</sb-banner>
+
+<ng-container *ngIf="gradeResults.length">
+  <a *ngIf="canEdit" class="mb-2.5" [routerLink]="['./edit']" mat-raised-button color="primary">
+    <fa-icon [icon]="fasPencil" size="lg"></fa-icon>
+    <span>Редактирай</span>
+  </a>
+
+  <sb-transferred-students-banner class="mb-2.5" *ngIf="showTransferredStudentsBanner"></sb-transferred-students-banner>
+
+  <div class="sb-table-container">
+    <table class="sb-table">
+      <thead>
+        <tr>
+          <th>Ученик</th>
+          <th class="w-px sm:whitespace-nowrap">Общ годишен успех</th>
+          <th class="hidden sm:table-cell"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let student of gradeResults">
+          <tr>
+            <td *ngIf="student.showInfoLink" class="sb-names">
+              <a
+                [routerLink]="[
+                  '../../../student-info',
+                  this.data.classBookId,
+                  student.personId,
+                  'student-book',
+                  this.data.classBookId
+                ]"
+                class="text-primary"
+              >
+                {{ student.classNumber != null ? student.classNumber.toString() + '.' : '' }}
+
+                {{ student.firstName }}
+                {{ student.middleName }}
+                {{ student.lastName }}
+
+                <span *ngIf="student.abnormalStatus" class="sb-badge">{{ student.abnormalStatus }}</span>
+              </a>
+            </td>
+            <td *ngIf="!student.showInfoLink" class="sb-names">
+              {{ student.classNumber != null ? student.classNumber.toString() + '.' : '' }}
+
+              {{ student.firstName }}
+              {{ student.middleName }}
+              {{ student.lastName }}
+
+              <span *ngIf="student.abnormalStatus" class="sb-badge">{{ student.abnormalStatus }}</span>
+            </td>
+
+            <td class="grade-cell">
+              <div class="flex">
+                <sb-grade-link
+                  *ngIf="student.grade.qualitativeGrade != null || student.grade.specialGrade != null"
+                  [grade]="student.grade"
+                ></sb-grade-link>
+                <div *ngIf="student.grade.qualitativeGrade != null" class="ml-3 font-bold">
+                  {{ student.grade.qualitativeGrade | sbQualitativeGradeName }}
+                </div>
+                <div *ngIf="student.grade.specialGrade != null" class="ml-3 font-bold">
+                  {{ student.grade.specialGrade | sbSpecialGradeName }}
+                </div>
+              </div>
+            </td>
+            <td class="hidden sm:table-cell"></td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+</ng-container>

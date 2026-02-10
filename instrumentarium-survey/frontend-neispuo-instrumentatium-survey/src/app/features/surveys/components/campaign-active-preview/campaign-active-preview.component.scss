@@ -1,0 +1,186 @@
+@import "@dssbg/neispuo-style-guide/neispuo-bootstrap-theme-styles/variables/variables.scss";
+
+.top-container {
+    height: 4.5rem;
+    align-items: center;
+    min-width: 30%;
+    border-bottom: 0.125rem solid $gray-300;
+    margin: 0;
+
+    .btn-container {
+        width: 4.375rem;
+        text-align: center;
+        border-right: 0.125rem solid $gray-300;
+    }
+    .heading {
+        align-items: center;
+        .title {
+            margin: 0 0 0 1.5rem;
+            font-size: 1.25rem;
+            font-weight: 700;
+            font-family: "Inter", sans-serif;
+            font-weight: 700;
+        }
+        .campaign-status {
+            // margin: 0.125rem 0 0 1.5rem;
+            font-size: 0.875rem;
+            color: $gray-900;
+            margin: 0 1.5rem;
+            i {
+              font-size: 0.688rem;
+              margin-right: 0.313rem;
+              &.active {
+                color: $green;
+              }
+              &.past {
+                color: $red;
+              }
+            }
+          }
+    }
+}
+
+.main {
+    overflow: hidden;
+    padding-top: 1.25rem;
+    background-color: $gray-100;
+    .preview-content {
+        margin: 0 auto;
+        overflow: hidden;
+        background: $white;
+        box-shadow: 0rem 0.125rem 0.5rem rgb(106 115 129 / 12%);
+        .preview-details,
+        .preview-questionnaire,
+        .preview-participants {
+            padding: 1.5rem;
+            border-bottom: 0.125rem solid $gray-300;
+            .title {
+                font-size: 1rem;
+                font-weight: 600;
+            }
+        }
+        .properties {
+            color: $gray-900;
+            .properties-key {
+                color: $gray-700;
+                font-size: 0.813rem;
+                font-weight: 600;
+                span {
+                    margin-bottom: 0.938rem;
+                }
+            }
+            .properties-value {
+                color: $gray-900;
+                font-size: 0.813rem;
+                font-weight: 400;
+                span {
+                    margin-bottom: 0.938rem;
+                }
+                span.evaluation {
+                    color: $green-500;
+                    margin-left: 0.938rem;
+                    background: $green-100;
+                    padding: 0.188rem 0.5rem;
+                    border-radius: 1.25rem;
+                    font-size: 0.625rem;
+                    font-weight: 600;
+                    font-family: "Inter", sans-serif;
+                    text-transform: uppercase;
+                    margin-left: 0;
+                    display: inline-block;
+                }
+                span.self-esteem {
+                    color: $blue-400;
+                    background: $blue-100;
+                    padding: 0.188rem 0.5rem;
+                    border-radius: 1.25rem;
+                    font-size: 0.625rem;
+                    font-weight: 600;
+                    font-family: "Inter", sans-serif;
+                    text-transform: uppercase;
+                    margin-left: 0;
+                    display: inline-block;
+                }
+                .criteria-name {
+                    display: flex;
+                    cursor: pointer;
+                    align-items: center;
+                    color: $blue;
+                    width: fit-content;
+                    .pi.pi-list {
+                        margin-right: 0.313rem;
+                    }
+                }
+                .participants-container {
+                    padding: 0.313rem 0;
+                    .participant-name {
+                        margin: 0;
+                        font-size: 0.875rem;
+                        font-weight: 400;
+                    }
+                    .participant-email {
+                        color: $gray-600;
+                        font-size: 10.125rem;
+                    }
+                }
+            }
+            span {
+                display: block;
+                margin-bottom: 0.625rem;
+            }
+        }
+    }
+}
+
+.spinner-container {
+    justify-content: center;
+    text-align: center;
+    display: block;
+    padding-top: 1.875rem;
+  }
+
+// Edit Dialog
+.form-details {
+    .campaign-name,
+    ::ng-deep .p-dropdown,
+    ::ng-deep .p-calendar {
+        height: 3rem!important;
+        width: 100%!important;
+        border-radius: 0.25rem!important;
+    }
+    ::ng-deep .p-calendar-w-btn .p-datepicker-trigger.p-button span {
+        color: $blue;
+    }
+    ::ng-deep .p-dropdown .p-dropdown-label {
+        padding: 0.688rem;
+    }
+    .btn-save {
+        color: $white;
+        float: right;
+        height: 2.75rem;
+        border-radius: 0.25rem;
+        background-color: $blue;
+    }
+}
+
+@media (max-width:1230px) {
+    .top-container {
+        height: fit-content;
+        min-height: 4.5rem;
+    }
+}
+.edit-button-container {
+    margin-left: auto;
+}
+
+@media (max-width:280px) {
+    .top-container {
+       padding-top:2rem
+    // padding: 1px;
+    // .form-wrapper-text::before {
+    //     display: none;
+    // }
+    // .btn-save {
+    //     float: right;
+    }
+}

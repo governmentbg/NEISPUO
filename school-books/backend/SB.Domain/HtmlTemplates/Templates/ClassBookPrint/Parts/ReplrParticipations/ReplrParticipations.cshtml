@@ -1,0 +1,30 @@
+@using SB.Domain
+@model ReplrParticipationsModel
+
+<div class="page">
+  <h3 class="page-header">Участия в РЕПЛР</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Вид на участието</th>
+        <th>Дата</th>
+        <th>Тема</th>
+        <th>Институция</th>
+        <th>Присъстващи</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (var replrParticipation in Model.ReplrParticipations)
+      {
+        <tr class="two-rows-height">
+          <td>@replrParticipation.ReplrParticipationType</td>
+          <td>@replrParticipation.Date.ToString("dd.MM.yy")</td>
+          <td>@replrParticipation.Topic</td>
+          <td>@replrParticipation.InstName</td>
+          <td>@replrParticipation.Attendees</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

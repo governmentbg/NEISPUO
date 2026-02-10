@@ -1,0 +1,124 @@
+[
+  {
+    "label": "Институция",
+    "path": "institution",
+    "icon": "home",
+    "children": [
+      {
+        "label": "Институция",
+        "path": "institution"
+      },
+      {
+        "label": "Други адреси на институцията",
+        "extData": true,
+        "path": "institutionDepartmentList"
+      },
+      {
+        "label": "Обществен съвет",
+        "path": "institutionPublicCouncils"
+      },
+      {
+        "label": "Проекти",
+        "path": "institutionProjects"
+      },
+      {
+        "label": "Транспорт",
+        "path": "institutionVehicles"
+      }
+    ]
+  },
+  {
+    "label": "Групи/Класове",
+    "path": "classes",
+    "children": [
+      {
+        "label": "Учебни",
+        "path": "classGroups",
+        "children": [
+          {
+            "label": "Данни за група/клас",
+            "path": "classGroupData"
+          },
+          {
+            "label": "Списък ученици",
+            "path": "classStudentList"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "label": "Персонал",
+    "path": "staff",
+    "icon": "account_circle",
+    "children": [
+      {
+        "label": "Персонал",
+        "path": "staffList",
+        "children": [
+          {
+            "label": "Основни данни за лицето",
+            "history": false,
+            "path": "person"
+          },
+          {
+            "label": "Длъжности",
+            "path": "staffPositions"
+          },
+          {
+            "label": "Образователна степен, ПКС",
+            "path": "personOKSPKS",
+            "children": [
+              {
+                "label": "Part 1",
+                "extData": true,
+                "path": "personOKSData"
+              },
+              {
+                "label": "Part 2",
+                "history": false,
+                "path": "personOKSData2"
+              }
+            ]
+          },
+          {
+            "label": "Квалификационна дейност",
+            "path": "personQCourses"
+          },
+          {
+            "label": "Ключови компетентности",
+            "path": "personComputerLanguageSkills"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "label": "Деца/ученици",
+    "icon": "face",
+    "path": "students",
+    "children": [
+      {
+        "label": "Деца/ученици",
+        "path": "studentList"
+      }
+    ]
+  },
+  {
+    "label": "Учебен план",
+    "path": "curriculum",
+    "history": false,
+    "children": [
+      {
+        "label": "Училищни учебни планове",
+        "path": "curriculumClassList",
+        "children": [
+          {
+            "label": "Учебен план",
+            "path": "curriculumList"
+          }
+        ]
+      }
+    ]
+  }
+]

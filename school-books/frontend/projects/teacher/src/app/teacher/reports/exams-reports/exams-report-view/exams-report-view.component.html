@@ -1,0 +1,81 @@
+<sb-breadcrumb
+  class="block mb-3"
+  [icon]="fadCalendarMinus"
+  [text]="data.examsReport == null ? 'Създаване на справка контролни/класни' : 'Преглед на справка контролни/класни'"
+  [parentItems]="[{ text: 'Контролни/класни', routeCommands: ['../'] }]"
+></sb-breadcrumb>
+
+<form [formGroup]="form" autocomplete="off" novalidate>
+  <sb-card>
+    <ng-container card-title>
+      {{ data.examsReport == null ? 'Създаване на справка контролни/класни' : 'Преглед на справка контролни/класни' }}
+    </ng-container>
+    <sb-editor-panel card-buttons [isNew]="data.examsReport == null" [editBtnHidden]="true">
+      <a
+        *ngIf="data.examsReport != null"
+        [href]="downloadUrl"
+        class="mr-3"
+        disabled-mode-buttons
+        target="_blank"
+        download
+        color="primary"
+        mat-raised-button
+        [disabled]="!downloadUrl"
+      >
+        <fa-icon [icon]="fasFileExcel" size="lg"></fa-icon>
+        <span>Свали</span>
+      </a>
+      <button
+        disabled-mode-buttons
+        mat-raised-button
+        color="warn"
+        type="button"
+        (click)="onRemove()"
+        [disabled]="removing"
+      >
+        <fa-icon [icon]="removing ? fasSpinnerThird : fasTrashAlt" [spin]="removing" size="lg"></fa-icon>
+        <span class="hidden sm:inline">Премахни</span>
+      </button>
+    </sb-editor-panel>
+    <ng-container card-body>
+      <sb-card-section *ngIf="data.examsReport != null" class="col-span-full">
+        Контролни/класни към {{ data.examsReport.createDate | sbDateTime }}
+      </sb-card-section>
+      <ng-container *ngIf="data.examsReport != null && dataSource != null">
+        <sb-table
+          [dataSource]="dataSource"
+          [displayedColumns]="['date', 'classBookName', 'bookExamType', 'curriculumName', 'createdBySysUserName']"
+        >
+          <ng-container cdkColumnDef="date">
+            <th cdk-header-cell *cdkHeaderCellDef>Дата</th>
+            <td cdk-cell *cdkCellDef="let row">{{ row.date | sbDate }}</td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="classBookName">
+            <th cdk-header-cell *cdkHeaderCellDef>Паралелка</th>
+            <td cdk-cell *cdkCellDef="let row">{{ row.classBookName }}</td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="bookExamType">
+            <th cdk-header-cell *cdkHeaderCellDef>Тип</th>
+            <td cdk-cell *cdkCellDef="let row">{{ row.bookExamType }}</td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="curriculumName">
+            <th cdk-header-cell *cdkHeaderCellDef>Предмет</th>
+            <td cdk-cell *cdkCellDef="let row">{{ row.curriculumName }}</td>
+          </ng-container>
+
+          <ng-container cdkColumnDef="createdBySysUserName">
+            <th cdk-header-cell *cdkHeaderCellDef>Въведена от</th>
+            <td cdk-cell *cdkCellDef="let row">{{ row.createdBySysUserName }}</td>
+          </ng-container>
+
+          <ng-container no-data-row>
+            <td colspan="5" class="text-center">Няма контролни/класни за периода</td>
+          </ng-container>
+        </sb-table>
+      </ng-container>
+    </ng-container>
+  </sb-card>
+</form>

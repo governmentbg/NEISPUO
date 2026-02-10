@@ -1,0 +1,110 @@
+{
+  "label": "Автобуси",
+  "paramName": "instid",
+  "sections": [
+    {
+      "order": 1,
+      "label": "Автобуси",
+      "subsections": [
+        {
+          "order": 1,
+          "label": "Данни за регистрацията",
+          "name": "institutionVehicles",
+          "canDuplicate": true,
+          "fields": [
+            {
+              "label": "Начин на придобиване",
+              "name": "acquisitionWayTypeID",
+              "type": "select",
+              "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+              "disabled": false,
+              "order": 1
+            },
+            {
+              "label": "Вид документ",
+              "name": "vehicleDocumentTypeID",
+              "type": "select",
+              "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+              "disabled": false,
+              "order": 2
+            },
+            {
+              "label": "Номер на документа",
+              "name": "documentNum",
+              "type": "input",
+              "inputType": "text",
+              "disabled": false,
+              "order": 3,
+              "width": 200,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 255,
+                  "message": "Максимална дължина 255 символа"
+                }
+              ]
+            },
+            {
+              "label": "Дата на документа",
+              "name": "documentDate",
+              "type": "date",
+              "disabled": false,
+              "order": 4,
+              "width": 200,
+              "validations": []
+            },
+            {
+              "label": "Регистрационен номер",
+              "name": "registrationNum",
+              "type": "input",
+              "inputType": "text",
+              "disabled": false,
+              "order": 5,
+              "width": 200,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 255,
+                  "message": "Максимална дължина 255 символа"
+                }
+              ]
+            },
+            {
+              "label": "Година на производство",
+              "name": "producedYear",
+              "type": "input",
+              "inputType": "number",
+              "order": 6,
+              "width": 95,
+              "validations": [
+                {
+                  "name": "maxLength",
+                  "validation": 4,
+                  "message": "Максимална дължина 4 символа"
+                },
+                {
+                  "name": "max",
+                  "validation": 9999,
+                  "message": "Невалидна година"
+                },
+                {
+                  "name": "pattern",
+                  "validation": "^\\d+$",
+                  "message": "Полето трябва да съдържа цяло неотрицателно число"
+                }
+              ]
+            },
+            {
+              "label": "Брой места",
+              "name": "placeCountTypeID",
+              "type": "select",
+              "optionsPath": "assets/json/fake-data/baseSchoolTypes.json",
+              "disabled": false,
+              "order": 7
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

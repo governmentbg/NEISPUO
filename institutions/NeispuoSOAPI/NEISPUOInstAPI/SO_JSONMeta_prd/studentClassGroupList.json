@@ -1,0 +1,182 @@
+{
+  "label": "Профил на детето/ученика",
+  "changeData": false,
+  "sections": [
+    {
+      "order": 1,
+      "name": "studentMainClassGroupTable",
+      "label": "Клас/група",
+      "rendered": "if((instType==3 || instType==5)) {section.rendered=false} else {section.rendered=true}",
+      "table": {
+        "name": "studentMainClassGroups",
+        "formName": "studentMainClassGroup",
+        "paramName": "classid",
+        "additionalParams": [
+          "parentclassid",
+          "studentid",
+          "classKind"
+        ],
+        "searchable": false,
+        "procedureName":"inst_basic.studentClassCUD",
+        "canDeleteRow": "if(classTypeID==38 || classTypeID==39 || classTypeID==48 || classTypeID==49) {table.canDeleteRow=true} else {table.canDeleteRow=false}",
+        "fields": [
+          {
+            "name": "classTypeID",
+            "type": "input",
+            "inputType": "number",
+            "order": 0,
+            "width": 10,
+            "rendered": false,
+            "disabled": false,
+            "influence": [],
+            "validations": []
+          },
+          {
+            "name": "parentclassid",
+            "type": "input",
+            "inputType": "text",
+            "order": 1,
+            "width": 50,
+            "rendered": false,
+            "disabled": false,
+            "influence": [],
+            "validations": []
+          },
+          {
+            "label": "Наименование",
+            "name": "className",
+            "type": "input",
+            "inputType": "text",
+            "order": 2,
+            "width": 300,
+            "disabled": true,
+            "influence": [],
+            "validations": [],
+            "info": ""
+          },
+          {
+            "label": "Форма на обучение",
+            "name": "studentEdFormName",
+            "type": "input",
+            "inputType": "text",
+            "order": 3,
+            "width": 400,
+            "disabled": true,
+            "influence": [],
+            "validations": []
+          },
+          {
+            "label": "Профил/Професия/Специалност",
+            "name": "classSpecialityName",
+            "type": "input",
+            "inputType": "text",
+            "order": 4,
+            "width": 400,
+            "disabled": true,
+            "influence": [],
+            "validations": []
+          },
+          {
+            "label": "Обучава се на индивидуален план",
+            "name": "isIndividualCurriculum",
+            "type": "input",
+            "inputType": "text",
+            "order": 5,
+            "width": 200,
+            "disabled": false,
+            "influence": [],
+            "validations": []
+          },
+          {
+            "label": "Обучава се на почасова организация",
+            "name": "isHourlyOrganizationDecode",
+            "type": "input",
+            "inputType": "text",
+            "order": 6,
+            "width": 200,
+            "disabled": false,
+            "influence": [],
+            "validations": []
+          },
+          {
+            "label": "Повторно записан в същия клас",
+            "name": "repeaterName",
+            "type": "input",
+            "inputType": "text",
+            "order": 7,
+            "width": 400,
+            "disabled": false,
+            "influence": [],
+            "validations": []
+          },
+          {
+            "label": "Пътуващ с организиран от училището транспорт",
+            "name": "commuterTypeName",
+            "type": "input",
+            "inputType": "text",
+            "order": 8,
+            "width": 600,
+            "disabled": false,
+            "influence": [],
+            "validations": []
+          }
+        ]
+      }
+    },
+    {
+      "order": 2,
+      "name": "studentOtherClassGroupTable",
+      "label": "Дейности в други групи",
+      "table": {
+        "name": "studentOtherClassGroups",
+        "formName": "studentOtherClassGroup",
+        "canDeleteRow": "if(classTypeID==38 || classTypeID==39 || classTypeID==48 || classTypeID==49) {table.canDeleteRow=true} else {table.canDeleteRow=false}",
+        "procedureName": "inst_basic.studentClassCUD",
+        "paramName": "classid",
+        "additionalParams": [
+          "parentclassid",
+          "studentid",
+          "classKind"
+        ],
+        "searchable": false,
+        "hasEditButton": true,
+        "fields": [
+          {
+            "name": "classTypeID",
+            "type": "input",
+            "inputType": "number",
+            "order": 0,
+            "width": 10,
+            "rendered": false,
+            "disabled": false,
+            "influence": [],
+            "validations": []
+          },
+          {
+            "name": "parentclassid",
+            "type": "input",
+            "inputType": "text",
+            "order": 1,
+            "width": 50,
+            "rendered": false,
+            "disabled": false,
+            "influence": [],
+            "validations": []
+          },
+          {
+            "label": "Наименование",
+            "name": "className",
+            "type": "input",
+            "inputType": "text",
+            "order": 2,
+            "width": 150,
+            "disabled": true,
+            "influence": [],
+            "validations": [],
+            "info": ""
+          }
+        ]
+      }
+    }
+  ]
+}

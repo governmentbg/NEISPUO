@@ -1,0 +1,24 @@
+@using SB.Domain
+@model StudentPgResultsModel
+
+<div class="page">
+  <h3 class="page-header">Резултати от предучилищната подготовка по образователни направления</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>В началото на учебната година</th>
+        <th>В края на учебната година</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (var result in Model.PgResults)
+      {
+        <tr class="three-rows-height">
+          <td>@result.StartSchoolYearResult</td>
+          <td>@result.EndSchoolYearResult</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
